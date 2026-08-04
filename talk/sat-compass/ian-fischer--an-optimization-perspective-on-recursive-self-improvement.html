@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>An Optimization Perspective on Recursive Self-Improvement · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Real recursive self-improvement requires both the *recursive* and the *self* to hold; treating the LLM as one component of a broader system rather than the sole improvement target lets you build se…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/ian-fischer--an-optimization-perspective-on-recursive-self-improvement.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="An Optimization Perspective on Recursive Self-Improvement · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Real recursive self-improvement requires both the *recursive* and the *self* to hold; treating the LLM as one component of a broader system rather than the sole improvement target lets you build se…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/ian-fischer--an-optimization-perspective-on-recursive-self-improvement.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-compass" data-talk="ian-fischer--an-optimization-perspective-on-recursive-self-improvement">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="An Optimization Perspective on Recursive Self-Improvement" data-title-zh="從最佳化視角看遞迴自我改進">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">An Optimization Perspective on Recursive Self-Improvement</span><span class="lang-zh">從最佳化視角看遞迴自我改進</span></h1>
+        <p class="dialog__speaker"><strong>Ian Fischer</strong> — Co-CEO, Poetiq</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 02:10:11–02:21:20 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=7811s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:10:11</span><span class="lang-zh">從 02:10:11 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Real recursive self-improvement requires both the *recursive* and the *self* to hold; treating the LLM as one component of a broader system rather than the sole improvement target lets you build self-optimizing optimizers whose every RSI step costs one inference run instead of one training run.</span><span class="lang-zh">真正的 RSI 需要「遞迴」與「自我」同時成立;把 LLM 當成系統的一個零件、而非改進的唯一目標,就能用「會自我最佳化的最佳化器」在每一步只花一次 inference(而非一次訓練)的成本下做到真正的複利式自我改進。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>RSI 的定義要嚴格</strong>:<em>Recursive</em> = 每一步的改進驅動下一輪改進;<em>Self</em> = 系統改進的是它自己,不是別的目標。兩者缺一不可。常見用法同時「太寬鬆」(把普通的迭代最佳化叫 RSI)又「太嚴苛」(認為只有改 LLM 參數才算 RSI)。</li>
+<li><strong>從 LLM-centric 轉向 systems-oriented</strong>:把 LLM 只當成更大系統中的一個元件,能打開大量原本看不到的改進空間,而且更快更便宜。Poetiq 的迴路每一步只需要一次 inference run,而不是重新訓練一個 LLM。</li>
+<li><strong>Self-optimizing optimizers</strong>:拿一個通用最佳化器(不依賴 gradient 等特化訊號、只要求目標能給出可測量的回饋),先用它最佳化任務目標——那還只是普通迭代最佳化;把它<strong>指向最佳化器自己</strong>,就成了 RSI。條件只有兩個:最佳化器要是通用的,而且要能回報自己的表現。</li>
+<li><strong>結果</strong>:這套 meta system 全自動(零人工介入)在多個公開 benchmark 上刷到 SOTA;其中一半的 benchmark 是用<strong>比前紀錄保持者更舊、更便宜的模型</strong>達成的。他們因此宣稱「benchmarks are dead」——不是說 benchmark 沒用,而是在一個真正會遞迴自我改進的系統面前,靜態 benchmark 的價值有限。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>什麼才算 RSI(約 02:11–02:13)</h4>
+<p>Poetiq 是 Ian Fischer 與共同創辦人約一年半前創立的新創,<strong>整間公司只做遞迴自我改進</strong>——「building AI that improves itself」。團隊 10 位科學家與工程師,主要來自 Google DeepMind,以及 Apple、Microsoft、Amazon、ByteDance。早期成果在 reasoning、knowledge extraction 與 coding 上都刷出 SOTA。</p>
+<p>他對 RSI 三個字逐字拆解:</p>
+<ul>
+<li><strong>Recursive</strong>:每一步產出的改進,要能驅動下一輪的改進。</li>
+<li><strong>Self</strong>:系統改進的對象<strong>就是它自己</strong>,不是某個外部目標。</li>
+<li><strong>Improvement</strong>:這個沒什麼好講的,大家都在做某種形式的 improvement。</li>
+</ul>
+<p>他刻意咬文嚼字,是因為業界對 RSI 的用法同時犯了兩個相反的錯:一邊<strong>太寬鬆</strong>——把單純的迭代改進迴路叫作 RSI;一邊<strong>太嚴苛</strong>——認為只有更新 LLM 參數才算 RSI。後者的問題在於,一個智慧系統裡<strong>還有很多其他零件可以被有效改進</strong>。</p>
+<p>為什麼 RSI 重要?因為真正的 RSI <strong>改進會複利(compound)</strong>,而人類驅動的改進不會——原因很直白:人類不會在改進模型的過程中自己也變得越來越聰明,但 RSI 系統會。</p>
+<h4>版圖:兩軸四象限(約 02:13–02:16)</h4>
+<p>他用兩個軸畫出 RSI 的地景:y 軸是成本(上便宜、下昂貴),x 軸是「是不是真的 RSI」(左邊是普通迭代最佳化,右邊才是 RSI)。</p>
+<ul>
+<li><strong>右下(貴但真 RSI)</strong>:資金最雄厚的一群——Anthropic、OpenAI、Google 都投入大量資源,也就是一般人講 RSI 時想的那種 LLM-centric 路線。是真 RSI,但<strong>每一步都要從頭訓練一個 LLM</strong>。</li>
+<li><strong>右上(便宜且真 RSI)</strong>:Poetiq 自己放在這裡,而且說這不是隨便放的——他們的迴路確實會複利,而每一步 RSI <strong>只要一次 inference run</strong>。鄰居包括 Darwin Gödel Machine 與 SICA(兩者主要針對 coding),以及會用自己生成的資料訓練的 MiniMax harness——都是真 RSI 也都便宜,只是比他們的做法窄。</li>
+</ul>
+<p>換個切法就是:<strong>下半是 LLM-centric,上半是 systems-oriented</strong>——後者把 LLM 只當成一個應該被改進的更大系統的元件。從 LLM-centric 轉到 systems-oriented,會打開大量原本會錯過的改進可能,而且通常更快更便宜。</p>
+<p>他接著點評兩種當紅路線:</p>
+<ul>
+<li><strong>Anthropic 的「AI that builds itself」</strong>:拿一版 Claude 放進 Claude Code,然後「人類 + Claude Code」一起改進 Claude。這是<strong>部分 RSI</strong>——Claude 既是被改進的東西也是改進者的一部分,但迴路裡有人類,他不算(Anthropic 自己也不算)。修法很簡單:<strong>把人拿掉</strong>;他認為 Anthropic 已經在往那走,而且那大概也是他們擔心的事。</li>
+<li><strong>Automated AI scientist / auto research</strong>:生成假設 → 實作 → 量測 → 寫論文 → 論文丟回知識庫。這<strong>通常不是 RSI</strong>,因為它針對的不是自己系統的某個部分。修法也簡單:把最佳化目標指向迴路裡用的那個 LLM——但這樣做會比現在大多數 automated AI scientist 貴得多。</li>
+</ul>
+<h4>Poetiq 的做法:self-optimizing optimizers(約 02:16–02:19)</h4>
+<p>拆成三步:</p>
+<ol>
+<li><strong>從一個通用最佳化器出發</strong>。「通用」的定義是:不依賴 gradient 這類特化訊號,只需要最佳化目標給出<strong>可測量的回饋</strong>。這比 hill climbing 之類的 black-box optimizer 還要更一般,因為回饋甚至不必是量化的。</li>
+<li><strong>拿它去最佳化一個目標</strong>。回饋可以很任意:accuracy、cost 這類標準指標,也可以是 rubric evaluations 或 reasoning targets 這類非典型訊號。到這裡<strong>還不是 RSI</strong>,只是標準的迭代最佳化。</li>
+<li><strong>把這個通用最佳化器指向最佳化器自己</strong>。現在是「最佳化器最佳化著那個正在最佳化目標的最佳化器」——<strong>這才是 RSI</strong>。</li>
+</ol>
+<p>要讓一個最佳化器能最佳化自己,只需要兩個條件:它是通用最佳化器,而且它能提供關於自身表現的回饋。因為起點就是通用最佳化器,而任何最佳化器都能回報自己的表現,所以這裡沒有障礙。他特別澄清:<strong>這跟說「最佳化器是 Adam 或 SGD」完全不同,那樣是行不通的。</strong></p>
+<p>這就是他們稱為 <strong>Poetiq meta system</strong> 的東西:它是 RSI,而且他們用它最佳化一切——meta system 最佳化的每一個任務,都會回過頭幫助它把自己最佳化得更好、成為更強的最佳化器。既然是通用最佳化器,就可以指向 meta system 自身的任何部分,也可以指向任何可量測的任務:benchmark、客戶資料等等。</p>
+<h4>實證結果與「benchmarks are dead」(約 02:19–02:21)</h4>
+<p>他們有一篇 blog post 主張 <strong>benchmarks are dead</strong>。他澄清這不是說 benchmark 沒用,而是:<strong>在一個真正會遞迴自我改進的系統面前,靜態 benchmark 的價值相當有限</strong>——因為他們能全自動地在「每一個他們打開來跑的 benchmark」上拿到 SOTA。全自動意味著<strong>零人工介入</strong>,而且通常很快。</p>
+<p>投影片上的成績表裡,他認為最有意思的一點是:這些 benchmark 橫跨許多他們<strong>從未接觸過的領域</strong>,而其中<strong>一半的 SOTA 是用比前紀錄保持者更舊、更便宜的模型</strong>取得的——而前紀錄通常是 Fable 5。</p>
+<p>接下來的方向是不再聚焦 benchmark,轉向與多個領域的早期客戶合作。他留下的觀點:<strong>AI 的下一次相變,會來自一個能發明自己改進方式的系統</strong>;Poetiq 刻意用「最佳化視角看 RSI、並用它去最佳化一切(包括最佳化器本身)」來為這次相變撒一張非常大的網。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Recursive means that the new improvements at each step are going to drive the next round of improvements. And self — the system really is going to improve itself, not some other target."(約 02:11)</p>
+</blockquote>
+<p>整場演講的定義基準線,後面所有的分類都建立在這句話上。</p>
+<blockquote>
+<p>"Humans don't become inexorably smarter while improving models, but RSI systems can."(約 02:12)</p>
+</blockquote>
+<p>一句話解釋為什麼 RSI 的改進會複利而人類驅動的不會。</p>
+<blockquote>
+<p>"In the case of Anthropic, we can just get rid of the humans. They've kind of indicated that that's where they're headed and that's maybe something that they're worried about."(約 02:16)</p>
+</blockquote>
+<p>把 Claude Code 迴路變成純 RSI 的「修法」,以及對此的一句冷處理。</p>
+<blockquote>
+<p>"The next phase transition in AI is going to come from a system that invents its own improvements."(約 02:20)</p>
+</blockquote>
+<p>收尾的核心主張。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Be strict about the definition.</strong> <em>Recursive</em> means each step's improvements drive the next round; <em>self</em> means the system improves itself, not some other target. Common usage is simultaneously too permissive (calling ordinary iterative loops RSI) and too restrictive (insisting only LLM parameter updates count).</li>
+<li><strong>Shift from LLM-centric to systems-oriented.</strong> Treating the LLM as one component of a broader system opens up improvement possibilities you'd otherwise miss — and tends to be faster and cheaper. Poetiq's loop costs one inference run per step, not one training run.</li>
+<li><strong>Self-optimizing optimizers.</strong> Start with a general-purpose optimizer (no specialized signals like gradients; it only needs measurable feedback from the target). Point it at a task and you have plain iterative optimization. Point it at <em>itself</em> and you have RSI. The only two requirements: the optimizer must be general-purpose, and it must report feedback on its own performance.</li>
+<li><strong>Results</strong>: the meta system sets state-of-the-art fully automatically — zero human intervention — across public benchmarks, and on half of them it did so using <strong>older, cheaper models than the previous record holder</strong>. Hence their claim that "benchmarks are dead" — not useless, but of limited value in the presence of a genuinely self-improving system.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>What actually counts as RSI (~02:11–02:13)</h4>
+<p>Poetiq is a roughly 18-month-old startup built entirely around recursive self-improvement — "AI that improves itself." Ten scientists and engineers, mostly ex-Google DeepMind, plus Apple, Microsoft, Amazon, ByteDance. Early results set state-of-the-art on reasoning, knowledge extraction, and coding.</p>
+<p>He unpacks the acronym deliberately, because two of the three letters do all the work. <em>Recursive</em>: improvements at each step drive the next round. <em>Self</em>: the target of improvement is the system itself. <em>Improvement</em>: everyone's doing some version of that.</p>
+<p>The pedantry has a purpose. Common usage is <strong>too permissive</strong> — labeling standard iterative improvement loops as RSI — and <strong>too restrictive</strong> — insisting RSI only counts when you're updating an LLM's parameters. The latter misses that a lot of other pieces of an intelligent system can be improved quite effectively.</p>
+<p>Why does it matter? Because real RSI <strong>compounds</strong>, and human-driven improvement doesn't: humans don't get inexorably smarter while improving models, but RSI systems do. That's why he calls it the most important frontier in AI research and the shortest path to superintelligence.</p>
+<h4>The landscape: two axes (~02:13–02:16)</h4>
+<p>Y-axis: cheap at the top, expensive at the bottom. X-axis: not-really-RSI on the left, genuine RSI on the right.</p>
+<ul>
+<li><strong>Lower right (expensive, genuine RSI)</strong>: where the best-funded efforts live — Anthropic, OpenAI, Google. This is the LLM-centric picture most people have of RSI. Genuine, but every step requires training an LLM from scratch.</li>
+<li><strong>Upper right (cheap, genuine RSI)</strong>: where Poetiq places itself, and not arbitrarily — their loop does compound, and each RSI step costs only an inference run. Neighbors: Darwin Gödel Machine and SICA (both primarily targeting coding), and the MiniMax harness (trains on some of its own generated data). All genuine and cheap, just narrower.</li>
+</ul>
+<p>The same split read horizontally: the bottom half is LLM-centric, the top half is systems-oriented — viewing the LLM as just a component of a broader system worth improving.</p>
+<p>He then diagnoses two prominent approaches:</p>
+<ul>
+<li><strong>Anthropic's "AI that builds itself"</strong>: put a version of Claude inside Claude Code, then humans + Claude Code improve Claude. <strong>Partial RSI</strong> — Claude is both the thing improved and part of the improver, but there are humans in the loop and he doesn't count them (neither does Anthropic). The fix: remove the humans, which he thinks is where they're headed and maybe what they're worried about.</li>
+<li><strong>The automated AI scientist / auto-research pattern</strong>: generate a hypothesis → implement it → measure it → write a paper → file it in a knowledge store. <strong>Usually not RSI</strong>, because it isn't targeting a piece of its own system. The fix is equally simple — target the LLM used inside the loop — but that makes it far more expensive than what most people run today.</li>
+</ul>
+<h4>Poetiq's approach: self-optimizing optimizers (~02:16–02:19)</h4>
+<ol>
+<li><strong>Start with a general-purpose optimizer</strong> — one that relies on no specialized signals like gradients, requiring only measurable feedback from the target. This is more general even than black-box optimizers like hill climbing, because the feedback need not be quantitative.</li>
+<li><strong>Point it at an optimization target.</strong> Feedback can be conventional (accuracy, cost) or unusual (rubric evaluations, reasoning targets). This is still just iterative optimization.</li>
+<li><strong>Point it at the optimizer itself.</strong> Now the optimizer is optimizing the optimizer that's optimizing the target — and <em>that</em> is RSI.</li>
+</ol>
+<p>Two requirements only: general-purpose, and able to report on its own performance. Since every optimizer can do the latter, there's no obstacle. He's explicit that this is very different from saying the optimizer is Adam or SGD — that would not work.</p>
+<p>The result is the <strong>Poetiq meta system</strong>. Every task it optimizes helps it optimize itself into a more powerful optimizer, and because it's general-purpose it can be aimed at any part of the meta system as well as at any measurable task — benchmarks, customer data, whatever.</p>
+<h4>Empirical results and "benchmarks are dead" (~02:19–02:21)</h4>
+<p>Their blog post declaring benchmarks dead isn't a claim that benchmarks are useless — it's that in the presence of a properly recursive self-improving system, <em>static</em> benchmarks have limited value, because the system gets state-of-the-art fully automatically on every benchmark they've turned it on. Zero human interventions, usually quite quickly.</p>
+<p>The most interesting detail in the results table: the benchmarks span a wide variety of domains they'd never worked on before, and on <strong>half of them they hit SOTA using older, cheaper models than the previous record holder</strong> — which was typically Fable 5.</p>
+<p>What's next: less benchmark focus, more work with early customers across a variety of domains. His closing framing: the next phase transition in AI will come from a system that invents its own improvements, and Poetiq is deliberately casting a wide net for it by taking the optimization perspective on RSI and using it to optimize everything, optimizers included. (He also noted they're hiring.)</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Recursive means that the new improvements at each step are going to drive the next round of improvements. And self — the system really is going to improve itself, not some other target." (~02:11)</p>
+</blockquote>
+<p>The definitional baseline the whole taxonomy rests on.</p>
+<blockquote>
+<p>"Humans don't become inexorably smarter while improving models, but RSI systems can." (~02:12)</p>
+</blockquote>
+<p>Why RSI compounds and human-driven improvement doesn't.</p>
+<blockquote>
+<p>"In the case of Anthropic, we can just get rid of the humans. They've kind of indicated that that's where they're headed and that's maybe something that they're worried about." (~02:16)</p>
+</blockquote>
+<p>The one-line fix that turns the Claude Code loop into pure RSI, delivered dryly.</p>
+<blockquote>
+<p>"The next phase transition in AI is going to come from a system that invents its own improvements." (~02:20)</p>
+</blockquote>
+<p>The closing thesis.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Poetiq</td>
+<td>講者共同創辦的新創,專做遞迴自我改進;核心產品是 Poetiq meta system</td>
+<td>Speaker's startup, entirely focused on RSI; core product is the Poetiq meta system</td>
+<td>由 Ian Fischer 與 Shumeet Baluja(皆前 Google DeepMind)創立 / founded by Ian Fischer &amp; Shumeet Baluja, both ex-Google DeepMind</td>
+</tr>
+<tr>
+<td>Poetiq meta system</td>
+<td>會自我最佳化的通用最佳化器,每步 RSI 只需一次 inference</td>
+<td>Self-optimizing general-purpose optimizer; one inference run per RSI step</td>
+<td>演講核心 / the talk's central construct</td>
+</tr>
+<tr>
+<td>"Benchmarks are dead" blog post</td>
+<td>主張靜態 benchmark 在真 RSI 系統前價值有限</td>
+<td>Blog post arguing static benchmarks have limited value against a real RSI system</td>
+<td>詳見 poetiq.ai / see poetiq.ai</td>
+</tr>
+<tr>
+<td>Anthropic "AI that builds itself"</td>
+<td>Claude 放進 Claude Code,人類 + Claude Code 改進 Claude;講者評為「部分 RSI」</td>
+<td>Claude inside Claude Code, humans + Claude Code improving Claude; he calls it partial RSI</td>
+<td></td>
+</tr>
+<tr>
+<td>Darwin Gödel Machine</td>
+<td>便宜且真 RSI,但主要針對 coding</td>
+<td>Cheap, genuine RSI, primarily targeting coding</td>
+<td>字幕聽成 "Darwin Girdle machines"</td>
+</tr>
+<tr>
+<td>SICA</td>
+<td>同上,自我改進的 coding agent</td>
+<td>Same quadrant; self-improving coding agent</td>
+<td>字幕聽成 "Sika";全名待確認 / spelling of full name to verify</td>
+</tr>
+<tr>
+<td>MiniMax harness</td>
+<td>會用自己生成的資料訓練的 harness</td>
+<td>A harness that trains on some of its own generated data</td>
+<td>字幕聽成 "Miniax"</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bodic / Poetic / PUDK</td>
+<td>Poetiq</td>
+</tr>
+<tr>
+<td>Darwin Girdle machines</td>
+<td>Darwin Gödel Machine</td>
+</tr>
+<tr>
+<td>Sika</td>
+<td>SICA</td>
+</tr>
+<tr>
+<td>Miniax harness</td>
+<td>MiniMax harness</td>
+</tr>
+<tr>
+<td>by dance</td>
+<td>ByteDance</td>
+</tr>
+<tr>
+<td>cloud / cloud code</td>
+<td>Claude / Claude Code</td>
+</tr>
+<tr>
+<td>Google Deep Mind</td>
+<td>Google DeepMind</td>
+</tr>
+<tr>
+<td>soda</td>
+<td>SOTA (state of the art)</td>
+</tr>
+<tr>
+<td>atom or SGD</td>
+<td>Adam or SGD</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>SICA</strong> 的正確全稱與出處(字幕作 "Sika",語境為與 Darwin Gödel Machine 並列的便宜 RSI coding 系統)。/ Full name and source for "SICA".</li>
+<li>投影片上的 benchmark 成績表細節(哪些 benchmark、用了哪些模型)——逐字稿只提到「一半用了更舊更便宜的模型」與「前紀錄通常是 Fable 5」。/ The specifics of the results table — the transcript only gives the aggregate claim.</li>
+<li>「benchmarks are dead」blog post 的正確標題與連結。/ Exact title and URL of the "benchmarks are dead" post.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/ian-fischer--an-optimization-perspective-on-recursive-self-improvement.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

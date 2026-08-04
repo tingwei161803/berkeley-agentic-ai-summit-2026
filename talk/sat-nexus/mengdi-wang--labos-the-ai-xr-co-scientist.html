@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>LabOS: The AI-XR Co-Scientist That Sees and Works With Humans · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="The real bottleneck on scaling AI isn&#x27;t hypotheses, it&#x27;s verification — physical experiments have no checkpoints, no logs, and no way to backtrack — so Wang&#x27;s answer is to put AI behind smart glass…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/mengdi-wang--labos-the-ai-xr-co-scientist.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="LabOS: The AI-XR Co-Scientist That Sees and Works With Humans · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="The real bottleneck on scaling AI isn&#x27;t hypotheses, it&#x27;s verification — physical experiments have no checkpoints, no logs, and no way to backtrack — so Wang&#x27;s answer is to put AI behind smart glass…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/mengdi-wang--labos-the-ai-xr-co-scientist.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="mengdi-wang--labos-the-ai-xr-co-scientist">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="LabOS: The AI-XR Co-Scientist That Sees and Works With Humans" data-title-zh="LabOS:看得見人、也與人協作的 AI-XR 共同科學家">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: AI for Science</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">LabOS: The AI-XR Co-Scientist That Sees and Works With Humans</span><span class="lang-zh">LabOS:看得見人、也與人協作的 AI-XR 共同科學家</span></h1>
+        <p class="dialog__speaker"><strong>Mengdi Wang</strong> — Professor, Princeton</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 01:03:11–01:11:25 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=LB7IkZhEYic&amp;t=3791s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:03:11</span><span class="lang-zh">從 01:03:11 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">The real bottleneck on scaling AI isn&#x27;t hypotheses, it&#x27;s verification — physical experiments have no checkpoints, no logs, and no way to backtrack — so Wang&#x27;s answer is to put AI behind smart glasses in the lab and turn every physical action into an observable, debuggable environment.</span><span class="lang-zh">AI 擴張的真正瓶頸不是假設,是驗證——實體實驗沒有 checkpoint、沒有 log、無法回溯,所以 Mengdi Wang 的解法是讓 AI 戴上智慧眼鏡進實驗室,把每一個實體動作變成可觀測、可除錯的環境。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><blockquote>
+<p>註:本場因時間超時被主持人中斷,最後一頁投影片是倉促帶過的。</p>
+</blockquote>
+<h3>TL;DR</h3>
+<ul>
+<li><strong>瓶頸在驗證,不在假設</strong>。這也是為什麼這麼多 AI 公司在拼命建 trace data 與 RL environment——AI 要更快擴張,得先有辦法擴張「環境」與「驗證」。但這件事在科學裡難得要命。</li>
+<li><strong>可重現性危機的數字很難看</strong>:Nature 的調查顯示 <strong>70% 的生醫論文無法被他人重現,50% 連原作者自己都重現不出來</strong>,而且橫跨化學、生物、物理、地球環境各領域。原因很簡單:實體實驗<strong>沒有 checkpoint</strong>(訓練模型有,agent workflow 也有,在無塵室裡沒有)、<strong>沒有 log 可以 debug</strong>、也沒辦法回頭改 harness。</li>
+<li><strong>AI 讓科學變慢而不是變快</strong>:她引用同事的部落格——最近一次 NeurIPS 有 4 萬份投稿,論文與 agent 都爆量,但<strong>驗證沒有同步加速</strong>,結果是訊噪比更差,在滿坑滿谷 AI 生成內容裡更難撈到有用資訊。</li>
+<li><strong>LabOS 的賭注</strong>:把多模態推理 AI 藏在智慧眼鏡後面,讓實驗室裡的<strong>每個動作、每次狀態改變都被 AI 觀測到</strong>,即時抓錯、把實體流程數位化、故障排除、給提示。搭配機器人做的端到端奈米製造迷你實驗室,把物理博士生原本要三個月的工作壓到一週,並開放成 API 讓任何人送 job 進去重現實驗。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>驗證,而不是假設,才是 AI 擴張的瓶頸(約 01:03–01:07)</h4>
+<p>前幾位講者已經談了 AI agent 在數位空間的大量進展。她把科學研究拆成幾個階段:<strong>hypothesize</strong>(讓模型思考、推理、往深處挖)、<strong>computation</strong>(用代理模型模擬、找出最佳候選)、以及最後的 <strong>validation / verification</strong>。</p>
+<p>她的主張很直接:<strong>驗證已經成為擴張任何 AI 模型的主要瓶頸</strong>。這正是為什麼現在這麼多 AI 公司與新創在積極打造新的 trace data 與新的 RL environment。<strong>如果有辦法擴張環境與驗證,AI 就能跑得快得多</strong>——但在科學裡,這件事難得要命。</p>
+<p>她現場丟了一個問題:隨便挑一篇 Nature 上的化學或生物論文,可重現的比例是多少?台下猜 5%、30%。答案來自 Nature 自己做的調查:<strong>70% 的生醫論文無法被其他人重現,50% 甚至連原作者自己都重現不出來</strong>,而且這在化學、生物、物理、地球環境等領域都成立。</p>
+<p>原因不在人不努力,而在<strong>驗證本身的結構</strong>。當有人在實驗檯或無塵室裡跑一個實驗:</p>
+<ul>
+<li><strong>沒有 checkpoint</strong>。訓練模型有 checkpoint,agent workflow 可以回溯,實體實驗兩者都沒有。</li>
+<li><strong>沒有 log</strong>,無從 debug,也無從改進 harness。</li>
+</ul>
+<p>她的同事幾個月前寫了一篇部落格,結論是:<strong>有了 AI,科學沒有變快,反而變慢了</strong>。理由是最近一次 NeurIPS 收到 4 萬份投稿——論文太多了;而真正提供新知識與新資訊的是驗證,驗證卻沒有被加速。於是<strong>論文更多、agent 更多,訊噪比反而更糟</strong>,在大量 AI 生成內容裡撈出有用資訊變得更難。</p>
+<p>回到驗證問題:我們可以有各種很炫的模型,告訴我們幾百萬個新穎假設,<strong>但瓶頸永遠會在實驗室裡</strong>。而做實驗的科學家同事把整個職涯、好幾年時間投在實體實驗室裡,即使拚盡全力,這整條 workflow 仍然非常容易出錯。</p>
+<p>所以真正的大哉問是:<strong>我們要怎麼把每一間科學實驗室都變成一個可驗證的環境(verifiable environment)?</strong></p>
+<p>一邊是 AI 跑得飛快——每家前沿實驗室與新創都有 AI co-scientist;另一邊是科學家在實驗檯與無塵室裡,要花好幾個月甚至好幾年才能驗證一個假設。中間缺了關鍵的一塊。</p>
+<h4>LabOS:把實體實驗室變成可觀測環境(約 01:07–01:11)</h4>
+<p><strong>LabOS 是一個 AI-XR agent</strong>:一個藏在智慧眼鏡後面的多模態推理 AI。她放的第一個例子是一位從印度來訪的大學部實習生,在 LabOS 協助下<strong>幾乎第一天就能執行進階的基因體工程實驗</strong>。</p>
+<p>系統提供的東西是:讓科學實驗室裡<strong>每一個動作、每一次狀態改變都變成 AI 可觀測的</strong>,同時建立多層串流系統,讓 AI 能<strong>即時協助人類研究者</strong>——抓錯、把實體流程數位化、故障排除、在事情不對勁時給出指引與提示。</p>
+<p>第二個例子(她強調「這不是動畫」)是與 <strong>Princeton Quantum Institute</strong> 同事合作的<strong>端到端迷你機器人實驗室</strong>,用來自動化<strong>單原子層 graphene 元件的奈米製造</strong>。多模態 agent 在電腦裡跑 auto research,而實際的量測、製造、tape-out 與所有顯微影像都由機器人完成。成果是:<strong>原本物理博士生要花三個月的工作,現在一週完成</strong>。她的同事正把這套系統開放成 <strong>API</strong>,任何人都可以送 job 進去重現實驗、測試新假設——目標是規模化。</p>
+<p>(被主持人以時間為由中斷後的最後一頁)他們正在 pilot 的 LabOS 是一套讓<strong>人類研究者與機器人並肩工作</strong>的系統:每一條實體 workflow 都會被數位化,每一條 trace 都被收集並交由 AI 推理;而且這套系統設計成能<strong>跨科學領域通用</strong>——從生物實驗室、化學實驗室,到無塵室與奈米設施。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"70% of biomedical research papers are not reproducible by others, and 50% are not even reproducible by the same authors."(約 01:05:21)</p>
+</blockquote>
+<p>這不是態度問題,是驗證沒有基礎建設的必然結果。</p>
+<blockquote>
+<p>"With AI, science is not faster. Science is actually getting slower."(約 01:06:28)</p>
+</blockquote>
+<p>假設端加速、驗證端沒動,結果是訊噪比崩壞。</p>
+<blockquote>
+<p>"How do we turn every scientific lab into a verifiable environment?"(約 01:07)</p>
+</blockquote>
+<p>整場演講的問題陳述。</p></section>
+        <section class="lang-en"><blockquote>
+<p>Note: the talk was cut short by the host for time; the final slide was rushed.</p>
+</blockquote>
+<h3>TL;DR</h3>
+<ul>
+<li><strong>The bottleneck is verification, not hypothesis generation.</strong> That's why so many AI companies are racing to build trace data and RL environments — AI scales much faster if you can scale environments and verification. In science, that is brutally hard.</li>
+<li><strong>The reproducibility numbers are ugly</strong>: a Nature survey found <strong>70% of biomedical papers aren't reproducible by others and 50% aren't reproducible by their own authors</strong>, and it holds across chemistry, biology, physics, and earth/environmental science. The reason is structural: physical experiments have <strong>no checkpoints</strong> (model training has them, agent workflows have them, a clean room doesn't), <strong>no logs to debug</strong>, and no way to go back and improve the harness.</li>
+<li><strong>AI is making science slower, not faster</strong>: she cites a colleague's blog — 40,000 submissions at the most recent NeurIPS, an explosion of papers and agents, but <strong>verification hasn't sped up</strong>, so the signal-to-noise ratio degrades and useful information gets harder to find amid AI-generated content.</li>
+<li><strong>LabOS's bet</strong>: put a multimodal reasoning AI behind smart glasses so that <strong>every action and state change in a lab becomes observable to AI</strong> — catching errors in real time, digitalizing physical workflows, troubleshooting, offering hints. Paired with an end-to-end robotic nanofabrication lab that compressed three months of PhD-student work into one week and is being released as an API.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Verification, not hypothesis, is what limits AI (~01:03–01:07)</h4>
+<p>Earlier speakers covered the advances in AI agents in the digital space. Wang breaks scientific research into stages: <strong>hypothesize</strong> (getting models to think, reason, dig deep), <strong>computation</strong> (simulation and surrogate models to find the best candidates), and finally <strong>validation / verification</strong>.</p>
+<p>Her claim is blunt: <strong>verification has become the major bottleneck for scaling any AI model.</strong> That's precisely why so many AI companies and startups are actively building new trace data and new RL environments. <strong>AI would scale much faster if there were a way to scale environments and verification</strong> — and in science this is extraordinarily hard.</p>
+<p>She put a question to the room: pick a random chemistry or biology paper in <em>Nature</em> — what fraction is reproducible? The audience guessed 5%, then 30%. The answer, from a survey run by researchers and <em>Nature</em>: <strong>70% of biomedical research papers are not reproducible by others, and 50% are not even reproducible by the same authors</strong> — and this holds across chemistry, biology, physics, and earth and environmental science.</p>
+<p>The cause isn't effort, it's the <strong>structure of verification</strong>. When someone runs an experiment at a bench or in a clean room:</p>
+<ul>
+<li>There are <strong>no checkpoints</strong>. Model training has them; agent workflows can backtrack; physical experimentation has neither.</li>
+<li>There are <strong>no logs</strong> to inspect, nothing to debug, no way to improve the harness.</li>
+</ul>
+<p>A colleague wrote a blog a few months earlier concluding that <strong>with AI, science is not faster — science is getting slower</strong>. The most recent NeurIPS cycle drew 40,000 submissions. There are simply too many papers, while verification — which is what actually supplies new knowledge and new information — hasn't sped up. <strong>More papers and more agents therefore mean a worse signal-to-noise ratio</strong>, and it becomes harder to extract anything useful from the volume of AI-generated content.</p>
+<p>Back to verification: we can have all the fancy models telling us millions of novel hypotheses, but <strong>the bottleneck will be in the lab</strong>. Her experimental colleagues devote their careers and years of work to physical laboratories, and even at their best the workflow remains highly error-prone.</p>
+<p>Hence the question that frames the talk: <strong>how do we turn every scientific lab into a verifiable environment?</strong></p>
+<p>On one side AI is advancing fast, with AI co-scientists from every major frontier lab and startup. On the other, scientists at the bench and in clean rooms spend months to years validating a single hypothesis. Something critical is missing in between.</p>
+<h4>LabOS: making the physical lab observable (~01:07–01:11)</h4>
+<p><strong>LabOS is an AI-XR agent</strong>: a multimodal reasoning AI hiding behind smart glasses. Her first example was an undergraduate intern visiting from India who, with LabOS's help, could <strong>perform an advanced genome engineering experiment essentially on day one</strong>.</p>
+<p>What the system provides: <strong>every single action and every state change in a scientific lab becomes observable by AI</strong>, alongside multi-tier streaming so that AI can <strong>assist human researchers in real time</strong> — catching errors, digitalizing physical workflows, troubleshooting, and offering guidance and hints when something doesn't work.</p>
+<p>Her second example — and she stressed it was not an animation — is an <strong>end-to-end mini robotic lab</strong> built with colleagues at the <strong>Princeton Quantum Institute</strong>, automating the <strong>nanofabrication of one-atom-thin graphene devices</strong>. A multimodal agent runs auto-research inside the computer while the robot does the measurements, fabrication, tape-outs, and microscopic imaging. The result: work that <strong>used to take physics PhD students three months now takes one week</strong>. Her colleague is releasing the system as an <strong>API</strong>, so anyone can submit a job to reproduce an experiment or test a new hypothesis — the goal being to enable this at scale.</p>
+<p>(Her final slide, after the host cut in for time.) They are piloting LabOS as a system where <strong>human researchers work side by side with robots</strong>: every physical workflow gets digitalized, every trace collected and reasoned over by the AI. It's designed to <strong>generalize across scientific domains</strong> — biology labs, chemistry labs, clean rooms, and nanofabrication facilities.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"70% of biomedical research papers are not reproducible by others, and 50% are not even reproducible by the same authors." (~01:05:21)</p>
+</blockquote>
+<p>Not an attitude problem — the predictable outcome of having no infrastructure for verification.</p>
+<blockquote>
+<p>"With AI, science is not faster. Science is actually getting slower." (~01:06:28)</p>
+</blockquote>
+<p>Accelerate hypothesis generation without accelerating verification and the signal-to-noise ratio collapses.</p>
+<blockquote>
+<p>"How do we turn every scientific lab into a verifiable environment?" (~01:07)</p>
+</blockquote>
+<p>The problem statement for the whole talk.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LabOS</td>
+<td>AI-XR co-scientist:智慧眼鏡背後的多模態推理 AI,即時觀測並輔助實體實驗</td>
+<td>AI-XR co-scientist: multimodal reasoning AI behind smart glasses that observes and assists physical experiments in real time</td>
+<td>對應論文 arXiv:2510.14861 / bioRxiv 2025.10.16.679418;Stanford–Princeton 合作(Le Cong × Mengdi Wang)/ Stanford–Princeton collaboration</td>
+</tr>
+<tr>
+<td>迷你機器人奈米製造實驗室 / mini robotic nanofab lab</td>
+<td>自動化單原子層 graphene 元件製造:量測、製造、tape-out、顯微影像全由機器人執行</td>
+<td>Automates one-atom-thin graphene device fabrication end to end — measurement, fabrication, tape-out, microscopy</td>
+<td>與 Princeton Quantum Institute 同事合作;三個月 → 一週;將開放為 API / with Princeton Quantum Institute colleagues; 3 months → 1 week; being released as an API</td>
+</tr>
+<tr>
+<td>Nature 可重現性調查 / Nature reproducibility survey</td>
+<td>70% 生醫論文他人無法重現、50% 原作者也無法重現</td>
+<td>70% of biomedical papers not reproducible by others; 50% not reproducible by their own authors</td>
+<td>演講中僅稱「a survey run by researchers and Nature」/ described only as "a survey run by researchers and Nature"</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mangdi Wang</td>
+<td>Mengdi Wang</td>
+</tr>
+<tr>
+<td>lab OS</td>
+<td>LabOS</td>
+</tr>
+<tr>
+<td>Europe submission</td>
+<td>NeurIPS submissions</td>
+</tr>
+<tr>
+<td>clean rooms(字幕正確)</td>
+<td>clean rooms</td>
+</tr>
+<tr>
+<td>nanop fabrication</td>
+<td>nanofabrication</td>
+</tr>
+<tr>
+<td>graphing devices</td>
+<td>graphene devices</td>
+</tr>
+<tr>
+<td>purity students</td>
+<td>PhD students</td>
+</tr>
+<tr>
+<td>AI co-cientists</td>
+<td>AI co-scientists</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>實習生姓名</strong>:字幕作 "Simmeran",拼寫未確認。/ The intern's name, transcribed as "Simmeran", is unverified.</li>
+<li><strong>同事的部落格</strong>(主張「有了 AI 科學反而變慢」)作者與連結未提及。/ The colleague's blog arguing science is getting slower with AI was neither named nor linked.</li>
+<li><strong>NeurIPS 4 萬份投稿</strong>的年度未指明(字幕作 "the most recent Europe submission")。/ The year of the 40,000-submission NeurIPS cycle wasn't specified.</li>
+<li><strong>Nature 可重現性調查</strong>的年份與正式出處未提供(公開常引的是 2016 年 Nature 的 1,576 人調查)。/ The year and citation for the Nature reproducibility survey weren't given (the commonly cited one is Nature's 2016 survey of 1,576 researchers).</li>
+<li>開放為 API 的那位 Princeton 同事姓名與服務名稱未提及。/ The Princeton colleague releasing the API, and the service's name, weren't mentioned.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/mengdi-wang--labos-the-ai-xr-co-scientist.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

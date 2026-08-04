@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Unified Orchestration System for Verifier-Free Evolution · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Strip the external verifier out of evolutionary search and a single model degrades its own solutions — it simply doesn&#x27;t carry enough entropy. Squeeze Evolve&#x27;s answer is to run one evolution loop a…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/ben-athiwaratkun--unified-orchestration-system-for-verifier-free-evolution.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Unified Orchestration System for Verifier-Free Evolution · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Strip the external verifier out of evolutionary search and a single model degrades its own solutions — it simply doesn&#x27;t carry enough entropy. Squeeze Evolve&#x27;s answer is to run one evolution loop a…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/ben-athiwaratkun--unified-orchestration-system-for-verifier-free-evolution.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="ben-athiwaratkun--unified-orchestration-system-for-verifier-free-evolution">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Unified Orchestration System for Verifier-Free Evolution" data-title-zh="免驗證器演化的統一編排系統">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: AI Systems</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Unified Orchestration System for Verifier-Free Evolution</span><span class="lang-zh">免驗證器演化的統一編排系統</span></h1>
+        <p class="dialog__speaker"><strong>Ben Athiwaratkun</strong> — Senior Director, Core ML (Turbo), Together AI</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:41:53–00:47:58 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=2513s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:41:53</span><span class="lang-zh">從 00:41:53 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Strip the external verifier out of evolutionary search and a single model degrades its own solutions — it simply doesn&#x27;t carry enough entropy. Squeeze Evolve&#x27;s answer is to run one evolution loop across multiple heterogeneous models, routing hard solutions to expensive models and easy ones to cheap models, which fixes diversity and cost at once: 97.5% on ARC-AGI in fewer evolution steps at meaningfully lower cost per task.</span><span class="lang-zh">當演化式探索拿掉外部驗證器之後,單一模型會因為「熵不夠」而讓解答退化;Squeeze Evolve 的解法是用多個異質模型跑同一條演化迴圈——難的交給貴模型、易的交給便宜模型,同時修復多樣性與成本兩個問題,在 ARC-AGI 上以更少的演化步數維持 97.5% 準確率並顯著降低單題成本。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>問題在「驗證器太貴」</strong>:既有的科學/演算法探索框架多半需要外部驗證器,但在物理科學等領域,評估本身既昂貴又耗時。他們要問的是:<strong>沒有 verification in the loop 的演化系統,上限在哪裡?順便能不能省錢?</strong></li>
+<li><strong>單模型演化會自己退化</strong>:用單一模型跑演化,常常反而讓效能變差——因為一個模型的<strong>熵與創造力就是有限</strong>。解法是把演化迴圈變成<strong>多模型</strong>的,用模型異質性本身當作多樣性的來源。</li>
+<li><strong>難易分流同時買到多樣性與成本效益</strong>:用 <strong>token log-probability 或解答多樣性</strong>當 fitness function,把困難的解交給昂貴模型,把「容易評估與合併」的解交給便宜模型。結果:ARC-AGI 上 10 步演化搭配強模型可達 <strong>97.5%</strong>、約 <strong>$7/題</strong>;把便宜模型混進來後,<strong>只要 2 步演化就能保住同樣準確率</strong>,成本降到約 $5.9/題。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>探索迴圈的四個零件,以及 verifier 的成本問題(約 00:41:53–00:44:20)</h4>
+<p>Ben Athiwaratkun 講的是 <strong>Squeeze Evolve</strong>——一套用於免驗證器演化(verifier-free evolution)的多模型統一編排系統,應用場景是科學探索。</p>
+<p>他先拆解科學探索迴圈的組成(這個拆法取自 <strong>SkyDiscover</strong>),有四個明確零件:</p>
+<ol>
+<li><strong>Context builder</strong>:提供問題脈絡,並把想法、指引、以及對過去失敗與成功的反思注入 prompt。</li>
+<li><strong>Solution generator</strong>:通常是一個 LLM,可以存取環境——例如執行程式碼,或查網路。</li>
+<li><strong>Evaluator</strong>:給分數、給 log、給回饋,以及必要的產出物。</li>
+<li><strong>Solution selector</strong>:從解答與 metadata 中挑出樣本解,送回 context builder,進入下一輪迴圈。</li>
+</ol>
+<p>問題來了:<strong>既有的探索框架大多需要外部 evaluator/verifier</strong>。在物理科學這類領域,評估既昂貴又耗時。所以他們的研究問題是:<strong>在沒有 verification in the loop 的情況下,演化系統的上限在哪裡?同時能不能把成本壓下來?</strong></p>
+<h4>為什麼要多模型:單模型演化的退化(約 00:44:20–00:46:00)</h4>
+<p>演化系統的另一個典型問題是<strong>解答退化(degradation)</strong>(約 00:44:31)。他講得很直白:如果用<strong>單一模型</strong>跑演化,常常反而讓效能變差,因為<strong>一個模型裡的熵與創造力就是有限的</strong>。他們的解法就是:<strong>用多個模型來處理這個多樣性問題。</strong></p>
+<p>機制上,從前幾代與當代的多個解答/世代中選樣,並指派<strong>機率式的 fitness score</strong>。Fitness function 用的是 <strong>token log-probability,或是解答本身的多樣性</strong>(約 00:45:12)。</p>
+<p>分流規則很直接:</p>
+<ul>
+<li><strong>困難的解 → 交給昂貴模型</strong>(用來提升多樣性)。</li>
+<li><strong>判定為「夠容易評估與合併」的解 → 交給便宜模型</strong>(約 00:45:47)。</li>
+</ul>
+<p>這樣一來,<strong>多樣性與成本效益同時提升</strong>——這正是這套方法的核心設計。</p>
+<h4>結果:更少步數、同樣準確率、更低成本(約 00:46:00–00:47:58)</h4>
+<p><strong>主要數字</strong>(約 00:46:11):完整 pipeline 跑 <strong>10 步演化</strong>、搭配強模型(逐字稿聽為 Gemini 3.1 Pro),在 <strong>ARC-AGI</strong> 上準確率達 <strong>97.5%</strong>,成本約 <strong>$7/題</strong>。而在混入便宜模型(逐字稿聽為 Gemini 3.0 Flash)的情境下,<strong>只要 2 步演化就能保住同樣的準確率</strong>,成本降到約 <strong>$5.9/題</strong>。</p>
+<p><strong>另一個有意思的觀察</strong>:在視覺類任務上,<strong>aggregator 階段不使用視覺元件</strong>反而能顯著提升成本效益。圖表上那條紅色曲線是全程使用強多模態模型的情況——效能確實很高,但累積的每題成本也等比例地高。而在 Squeeze Evolve 的做法裡,結合強模型與較便宜的模型層級後,成本大幅下降,而且<strong>在部分異質配置下甚至能勝過單模型的表現</strong>。</p>
+<p>最後他分享兩件落地資訊:這項工作已<strong>整合進 NVIDIA Dynamo</strong>(現場向 NVIDIA 致謝),並且有一個 <strong>Claude Code plugin</strong> 可用。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"If we use a single model to perform evolution, it is often the case degrading the performance, because there's only so much entropy and only so much creativeness in a single model."(約 00:44:35)</p>
+</blockquote>
+<p>多樣性不是調參數調出來的,是靠模型異質性換來的。</p>
+<blockquote>
+<p>"In the scenario where we use a cheap model in the mix … we're able to retain the same accuracy with only two evolution steps."(約 00:46:25)</p>
+</blockquote>
+<p>混入便宜模型不只是省錢,還把需要的演化步數壓下來了。</p>
+<blockquote>
+<p>"In the heterogeneous case we're able to outperform the single model scenario."(約 00:47:25)</p>
+</blockquote>
+<p>異質組合的價值不只在成本,有時直接贏過最強的單一模型。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The problem is that verifiers are expensive.</strong> Existing discovery frameworks generally require an external verifier, but in domains like the physical sciences evaluation is both costly and time-consuming. Their question: <strong>what is the upper bound of an evolution system with no verification in the loop — and can it also be cheaper?</strong></li>
+<li><strong>Single-model evolution degrades itself.</strong> Running evolution with one model often makes performance <em>worse</em>, because a single model carries only so much entropy and creativity. The fix is to make the evolution loop <strong>multi-model</strong>, using model heterogeneity itself as the source of diversity.</li>
+<li><strong>Routing by difficulty buys diversity and cost efficiency simultaneously.</strong> Using <strong>token log-probabilities or solution diversity</strong> as the fitness function, hard solutions go to expensive models and solutions easy enough to evaluate and combine go to a cheap one. Result: on ARC-AGI, 10 evolution steps with a strong model reach <strong>97.5% at roughly $7/task</strong>; mixing in a cheap model <strong>retains the same accuracy in just 2 evolution steps</strong> at about $5.9/task.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Four components of the discovery loop, and the verifier cost problem (~00:41:53–00:44:20)</h4>
+<p>Ben Athiwaratkun presented <strong>Squeeze Evolve</strong>, a unified multi-model orchestration system for verifier-free evolution, aimed at scientific discovery.</p>
+<p>He opened by decomposing the discovery loop — a decomposition taken from <strong>SkyDiscover</strong> — into four distinct components:</p>
+<ol>
+<li><strong>Context builder</strong> — supplies problem context and injects ideas, guidance, and reflections on previous mistakes and successes into the prompt.</li>
+<li><strong>Solution generator</strong> — an LLM with access to environments such as code execution or web lookup.</li>
+<li><strong>Evaluator</strong> — provides scores, logs, feedback, and any necessary artifacts.</li>
+<li><strong>Solution selector</strong> — picks sample solutions from the candidates and their metadata to hand back to the context builder for the next loop.</li>
+</ol>
+<p>The catch: <strong>prior discovery frameworks generally require an external evaluator or verifier</strong>, and in fields like the physical sciences evaluators are costly and time-consuming. Hence the research question: <strong>what is the upper bound of an evolution system without verification in the loop, and can cost come down too?</strong></p>
+<h4>Why multiple models: the degradation problem (~00:44:20–00:46:00)</h4>
+<p>The other characteristic failure of evolution systems is <strong>degradation of solutions</strong> (~00:44:31). His summary was blunt: using a single model to run evolution often degrades performance, because <strong>there is only so much entropy and only so much creativeness in a single model</strong>. Their answer: <strong>use multiple models to attack the diversity problem directly.</strong></p>
+<p>Mechanically, multiple solutions and generations are sampled from previous and current generations and assigned probabilistic fitness scores. The fitness function uses <strong>token log-probabilities or the diversity of the solutions themselves</strong> (~00:45:12).</p>
+<p>The routing rule is simple:</p>
+<ul>
+<li><strong>Difficult solutions → expensive models</strong>, to raise diversity.</li>
+<li><strong>Solutions judged easy enough to evaluate and combine → a cheaper model</strong> (~00:45:47).</li>
+</ul>
+<p>That single split increases <strong>diversity and cost effectiveness at the same time</strong>, which is the design idea at the heart of the method.</p>
+<h4>Results: fewer steps, same accuracy, lower cost (~00:46:00–00:47:58)</h4>
+<p><strong>The headline numbers</strong> (~00:46:11): the full pipeline with <strong>10 evolution steps</strong> using a strong model (heard in the captions as Gemini 3.1 Pro) reaches <strong>97.5% accuracy on ARC-AGI</strong> at roughly <strong>$7 per task</strong>. Mixing in a cheap model (heard as Gemini 3.0 Flash), they <strong>retain the same accuracy with only 2 evolution steps</strong> at about <strong>$5.9 per task</strong>.</p>
+<p><strong>A second observation</strong> concerns vision tasks: <em>not</em> using the vision component for the <strong>aggregator stage</strong> significantly improves cost effectiveness. The red curve on his chart shows a strong multimodal model used throughout — performance climbs high, but cumulative dollars per problem climb proportionally. Under Squeeze Evolve, combining a powerful model with a cheaper tier cuts cost substantially, and <strong>in some heterogeneous configurations they outperform the single-model scenario outright</strong>.</p>
+<p>He closed with two adoption notes: the work has been <strong>integrated into NVIDIA Dynamo</strong> (with a shout-out to NVIDIA), and a <strong>Claude Code plugin</strong> is available.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"If we use a single model to perform evolution, it is often the case degrading the performance, because there's only so much entropy and only so much creativeness in a single model." (~00:44:35)</p>
+</blockquote>
+<p>Diversity isn't something you tune into a single model; you buy it with heterogeneity.</p>
+<blockquote>
+<p>"In the scenario where we use a cheap model in the mix … we're able to retain the same accuracy with only two evolution steps." (~00:46:25)</p>
+</blockquote>
+<p>Mixing in the cheap model didn't just cut cost — it cut the number of evolution steps needed.</p>
+<blockquote>
+<p>"In the heterogeneous case we're able to outperform the single model scenario." (~00:47:25)</p>
+</blockquote>
+<p>The heterogeneous mix isn't only cheaper; sometimes it beats the strongest single model.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Squeeze Evolve</td>
+<td>本演講主題:免驗證器演化的多模型統一編排系統</td>
+<td>The talk's subject: unified multi-model orchestration for verifier-free evolution</td>
+<td>已查證:arXiv 2604.07725,GitHub <code>squeeze-evolve/squeeze-evolve</code></td>
+</tr>
+<tr>
+<td>SkyDiscover</td>
+<td>AI 驅動的科學/演算法探索框架,本講的四零件拆解取自此</td>
+<td>Framework for AI-driven scientific and algorithmic discovery; the four-component decomposition comes from it</td>
+<td>已查證:UC Berkeley Sky Lab 出品</td>
+</tr>
+<tr>
+<td>ARC-AGI</td>
+<td>主要評測對象;論文中為 ARC-AGI-V2</td>
+<td>Primary benchmark cited; the paper reports ARC-AGI-V2</td>
+<td>論文載明 97.5%、$7.74/題(不含程式碼執行)</td>
+</tr>
+<tr>
+<td>NVIDIA Dynamo</td>
+<td>Squeeze Evolve 已整合進去的推論框架</td>
+<td>Inference framework into which Squeeze Evolve has been integrated</td>
+<td></td>
+</tr>
+<tr>
+<td>Claude Code plugin</td>
+<td>現場提到的可用外掛</td>
+<td>Plugin mentioned as available</td>
+<td>逐字稿 "cloud code plug-in"</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ben(僅名)</td>
+<td>Ben Athiwaratkun</td>
+</tr>
+<tr>
+<td>squeeze evolve</td>
+<td>Squeeze Evolve</td>
+</tr>
+<tr>
+<td>sky discover</td>
+<td>SkyDiscover</td>
+</tr>
+<tr>
+<td>verifier free</td>
+<td>verifier-free</td>
+</tr>
+<tr>
+<td>ARC AGI</td>
+<td>ARC-AGI</td>
+</tr>
+<tr>
+<td>cloud code plug-in</td>
+<td>Claude Code plugin</td>
+</tr>
+<tr>
+<td>log token probabilities</td>
+<td>token log-probabilities(講者當場自我修正)</td>
+</tr>
+<tr>
+<td>multimodel model</td>
+<td>multimodal model</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>演講中的模型版本:逐字稿聽為 "Gemini 3.1 Pro" 與 "Gemini 3.0 zero flash",自動字幕在版本號上錯誤率高,需看投影片確認。/ Model versions heard as "Gemini 3.1 Pro" and "Gemini 3.0 Flash" — auto-captions are unreliable on version numbers; confirm from slides.</li>
+<li>講者口述成本為 $7 與 $5.9 每題,論文載明 ARC-AGI-V2 為 $7.74/題,兩者對應關係與是否為同一組實驗待確認。/ He said ~$7 and ~$5.9 per task; the paper reports $7.74/task on ARC-AGI-V2 — confirm whether these are the same experiment.</li>
+<li>ARC-AGI 的版本(V1 或 V2):講者只說 "ARC AGI",論文為 ARC-AGI-V2。/ ARC-AGI version — he only said "ARC AGI"; the paper uses ARC-AGI-V2.</li>
+<li>Claude Code plugin 的名稱與取得位置未在逐字稿中出現。/ The name and location of the Claude Code plugin never appear in the transcript.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/ben-athiwaratkun--unified-orchestration-system-for-verifier-free-evolution.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

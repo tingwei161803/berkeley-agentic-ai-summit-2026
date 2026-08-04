@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Rate Limiter on AI Adoption Is Organizational · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Enterprise AI stalls on people and process, not on model capability — Ironclad&#x27;s answer was to upskill every function simultaneously, treat education as infrastructure, and move spec-writing to the…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/sunita-verma--rate-limiter-on-ai-adoption-is-organizational.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Rate Limiter on AI Adoption Is Organizational · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Enterprise AI stalls on people and process, not on model capability — Ironclad&#x27;s answer was to upskill every function simultaneously, treat education as infrastructure, and move spec-writing to the…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/sunita-verma--rate-limiter-on-ai-adoption-is-organizational.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-atlas" data-talk="sunita-verma--rate-limiter-on-ai-adoption-is-organizational">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Rate Limiter on AI Adoption Is Organizational" data-title-zh="AI 採用的速率限制器來自組織,不是技術">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--keynote"><span class="lang-en">Keynote</span><span class="lang-zh">主題演講</span></span>
+          <span class="dialog__session">Session 1: Enterprise AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Rate Limiter on AI Adoption Is Organizational</span><span class="lang-zh">AI 採用的速率限制器來自組織,不是技術</span></h1>
+        <p class="dialog__speaker"><strong>Sunita Verma</strong> — Chief Technology Officer, Ironclad</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Atlas Stage · 00:00:24–00:18:06 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=LGW_6P1CMC8&amp;t=24s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:00:24</span><span class="lang-zh">從 00:00:24 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sun</span><span class="lang-zh">回 Atlas · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Enterprise AI stalls on people and process, not on model capability — Ironclad&#x27;s answer was to upskill every function simultaneously, treat education as infrastructure, and move spec-writing to the front of the process so agents get well-specified work.</span><span class="lang-zh">企業導入 AI 卡住,不是因為技術不夠好,而是因為技能落差、流程與文化沒跟著改;Ironclad 的解法是「全員同時賦能 + 把教育當基礎設施 + 把流程從瀑布式改成前期共同定規格」,九個月內把工程速度換了一個檔次。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>主張</strong>:企業 AI 採用卡關的原因不是「技術不行」,而是流程、文化與技能落差。所有前沿研究最終要靠這幾千家公司裡的人把價值兌現,否則就白做了。</li>
+<li><strong>診斷起點</strong>:同一個 feature,兩位工程師的估時差距大到讓她停下來調查。差異不在年資或熟悉度,而在於一位是 <strong>AI-pilled</strong>(懂得怎麼駕馭、引導這項技術),另一位把 AI 當 chatbot 用卻自認已經掌握。</li>
+<li><strong>為什麼人會誤判自己</strong>:手機、雲端這些前代技術出錯時,技術本身會「頂回來」,你被迫學會;AI 的介面是自然語言,光是能對話就讓人以為自己會了,忽略了輸出與結果都需要驗證。這是一套完全不同的心智模型。</li>
+<li><strong>只賦能工程師是短視</strong>:多數大企業說「我們先讓工程師用起來」,結果是解開一個環節、卻在其他環節製造瓶頸。Ironclad 從第一天就讓 engineering / product / design <strong>同時</strong>上車。</li>
+<li><strong>撞到 Amdahl's Law</strong>:技能補起來之後,產品開發速度仍沒起飛——因為流程沒改。仍是瀑布式(product 研究 → 交棒 UX → 交棒工程),工程端做完就在等產品回答。你只優化一段,沒碰的那段就變成新瓶頸。</li>
+<li><strong>三個修正</strong>:教育即基礎設施(共同語彙、共用工具、context / RAG / memory 的統一系統)、流程前移(相關角色早期一起把問題吵清楚並把解法 memorialize 成 markdown 或 Notion 頁,再交給 agent 執行)、工具與護欄(code review agent + 一整套 skills 把關產出品質)。</li>
+<li><strong>成果可複製</strong>:一家 Fortune 100 客戶主動要求跑同一套計畫,結果非常相似——他們的工作也同樣加速了。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>主張:卡住的不是技術(約 00:01)</h4>
+<p>演講一開始就把結論放上桌:企業裡 AI 的採用停滯,<strong>不是因為技術不 work 或還沒到位</strong>,而是流程、文化這類「其他原因」。她接著自問一個更根本的問題:為什麼在座的人該在意企業有沒有把技術部署下去?她的答案是——峰會上這兩天講的所有好東西,最終都必須轉化成價值,否則就是白費;而技術的最終使用者,是散落在我們周圍那幾千幾萬家公司裡的人。</p>
+<h4>起點:兩位工程師,兩個天差地遠的估時(約 00:02)</h4>
+<p>她加入 Ironclad 大約一兩個月後(演講當下往回推九個月),在一場 feature 討論裡刻意做了個實驗:分別問兩位工程師「做這個要多久」。回來的數字差距大到讓她停下來追究。</p>
+<p>深入查下去,差異<strong>不是</strong>資深程度,也<strong>不是</strong>對 codebase 的熟悉度:一位是 AI-pilled,理解怎麼跟這項技術協作、怎麼引導它;另一位主要把 AI 當 chatbot 用,而且覺得自己已經掌握了。</p>
+<p>她意識到當下有個選擇:以技術演進的速度,這道落差只會被複利放大,她可以接受一個「雙速工程組織」,也可以現在就動手處理。</p>
+<h4>為什麼人們會誤以為自己已經掌握 AI(約 00:03)</h4>
+<p>她的推論是介面造成的錯覺。行動、雲端這些前一代技術,出錯時錯誤是<strong>顯性</strong>的——技術會把你頂回來,你必須先搞懂哪裡錯了才能往前。AI 不一樣:介面是自然語言,光是能跟它對話,就讓人覺得自己知道在做什麼,卻沒意識到<strong>輸出要驗證、結果也要驗證</strong>。</p>
+<p>她也提醒台下:在場的人多半會說「這我早就知道」,但外面有一大批勞動力並不在同一個心智模型上。要讓技術被那群人採用,就得針對這件事做點什麼。</p>
+<h4>只賦能工程師是短視:全員同時上車(約 00:05)</h4>
+<p>她跟很多 Fortune 500 甚至更大的公司聊過,絕大多數的做法是「我們會先賦能工程師」。她認為這是短視的:<strong>你解開一個職能,卻在組織的其他部分製造瓶頸</strong>。</p>
+<p>Ironclad 從一開始就刻意反著做:所有人同時賦能。即使有些人已經很 AI-native、覺得不需要,他們仍然堅持 engineering、product、design 要一起被賦能。她給團隊設的目標是:讓公司變成一個「<strong>用 AI 做東西、以及做 AI 這件事,都不是少數人的特製品</strong>」的地方。</p>
+<p>三個原則:</p>
+<ol>
+<li>不會有一群「光環組」在旁邊做 AI、然後拖著其他人走。</li>
+<li>難的部分——結果驗證、eval、eval harness——透過<strong>工具</strong>交付,讓所有人同時受益。</li>
+<li>不是只有頂尖的人能用 AI:<strong>每個人都必須用、也都會用</strong>。</li>
+</ol>
+<h4>執行:20 天養成計畫與 12 月 hackathon(約 00:06)</h4>
+<p>她利用了一個現成的節點:2025 年 12 月的公司 hackathon(當時她到職才三個月)。她要團隊帶著 AI 能力進場,讓 hackathon 產出的是 AI 相關的成果。</p>
+<p>於是她設計了一個 20 天的計畫,在 hackathon 前跑完:</p>
+<ul>
+<li><strong>第一天</strong>:她自己開課(因為她本來就是做技術出身),全公司任何人都可以來聽。內容是 LLM 基本功——LLM 底層怎麼運作、怎麼思考 context、in-context learning、prompt optimization、tuning、evaluations。</li>
+<li><strong>第 2–20 天</strong>:每天一位工程師上台講自己用這項技術做了什麼、怎麼做的、踩到什麼問題、學到什麼。</li>
+<li>中間靠 Slack 頻道、日常互動和工程師自發的臨時聚會維持動能。</li>
+</ul>
+<p>hackathon 當天參與度極高,團隊做出了她原本不覺得做得出來的東西,正面地嚇到她。<strong>就「流暢度」而言,公司當時已經到位了。</strong></p>
+<h4>撞牆:Amdahl's Law(約 00:09)</h4>
+<p>時間來到 2026 年 1 月。她原本預期產品裡的功能開發會跟著起飛,實驗端確實起來了,但<strong>產品端沒有</strong>。</p>
+<p>她的診斷是 <strong>Amdahl's Law</strong>:你優化了流程的一段,那些你沒動到的環節就會變成新的瓶頸。具體來說,各職能都在用 AI、也在做 AI,但<strong>流程一點都沒改</strong>——仍然是瀑布式:product 做研究 → 交棒給 UX → 再交到工程手上;工程端很快做完,然後大部分時間都在等產品團隊回答問題。</p>
+<h4>三個修正(約 00:10)</h4>
+<p><strong>一、教育即基礎設施。</strong> 不只是上課,而是建立共同語彙(shared lexicon)、共用工具、共用 harness,以及全公司統一的 context management、RAG、memory 系統——把組織記憶收斂進單一系統。</p>
+<p><strong>二、流程前移。</strong> 現在要做一個東西時,相關的人會在<strong>很早期</strong>就聚在一起:討論問題、辯論問題、提出解法、反覆迭代,最後把解法 <strong>memorialize 成一份 markdown 或 Notion 頁</strong>,再把這份被打磨過的規格交給 AI agent 去執行。</p>
+<p>她在這裡呼應了前一天 Ion Stoica 教授的演講:AI 的產出之所以不如預期,很大一部分來自<strong>需求的 under-specification</strong>。讓所有人在流程最前端把需求攤開講清楚,正是在處理這件事。她強調 Ironclad 並不完美,但把問題的<strong>約束、邊界與解空間</strong>先講清楚再交給 agent,確實看到很好的結果。</p>
+<p><strong>三、工具與護欄。</strong> 除了 code review agent,他們還建了一整套 skills,確保 agent 產出的品質(特別是寫程式這塊)符合公司標準,<strong>讓沒有人需要去猜自己的 agent 有沒有做對事</strong>。</p>
+<h4>今天的樣子:agent framework、自動 eval、自建 code-gen harness(約 00:12)</h4>
+<ul>
+<li><strong>Agent framework</strong>:讓任何人都能很快建出一個 agent。底層用 OpenAI 的 Agents SDK 與 Vercel 的 AI SDK,接上各家前沿模型;他們也開始 tune 自己的模型,掛在這些 agent 後面。周邊建了持續 context 最佳化、memory 管理、持續 evals、prompting 等基礎設施。</li>
+<li><strong>自動化 evals</strong>:系統大部分區域都有。用 LLM judge 評估 agent 產出,再交給一個 evaluation agent 對照 rubric 比較,直到它判定 eval 已經足夠接近 rubric 為止;整個過程持續執行、<strong>不需要工程師介入</strong>。東西一旦被建好、review 完、check in,就自動走這條評估流程。</li>
+<li><strong>自建 code generation harness</strong>:他們評估過市面上的方案(Codex harness、Claude 的 harness 等),結論是沒有一個貼近他們想要的樣子。於是把其中一些(含開源方案)當作 benchmark 與底材,在上面搭建自己的 harness,並使用 <strong>Temporal</strong>。</li>
+<li>使用方式:任何人(<strong>包含現在也在寫程式的 PM</strong>)都能對 harness 下任務——要一個 UI、要一段後端服務、要任何一塊程式碼都可以。</li>
+<li>Harness 會<strong>開一台 VM</strong>,在裡面把環境架到接近 production 的狀態,產生程式碼、在裡面測試,最後產出一個 <strong>review-ready 的 PR</strong>,再交給人類或 review agent 審查。</li>
+<li>目前處於 dogfood 階段,結果非常好。</li>
+</ul>
+<h4>成果與外推(約 00:15)</h4>
+<ul>
+<li><strong>產品端</strong>:Ironclad 是商用法務(legal tech)產品,幾乎所有矽谷公司都是客戶,<strong>包含各家前沿實驗室</strong>。產品裡已經有許多 agent 在跑真實運行中的合約,背後承載的是數十億美元等級的價值。</li>
+<li><strong>工程統計</strong>:執行速度和一年前完全不是同一回事(她特別說明圖表尾端的下墜是資料未收齊,不是退步)。</li>
+<li><strong>可複製性</strong>:一家 Fortune 100 客戶主動找上門,希望跑同一套計畫。這個計畫原本不是設計來給外部用的,但他們還是幫客戶跑了,<strong>結果非常相似</strong>,客戶端也看到工作加速。</li>
+<li><strong>收尾</strong>:她呼應前一天 Andrew Ng 的 fireside chat——Ng 擔心做 AI 的人對「教育」投資不足,而這會成為採用的一大障礙。她說自己這場就是在替這個論點補上一個來自實務的資料點。</li>
+</ul>
+<h3>金句</h3>
+<blockquote>
+<p>"The adoption of AI in enterprises is not stalling because the technology is not working or is not there. It's stalling because of other reasons. And one of the other reasons tends to be processes, culture and so on."(約 00:01:30)</p>
+</blockquote>
+<p>整場演講的論點就壓在這一句上:瓶頸在組織,不在模型。</p>
+<blockquote>
+<p>"We want to make sure we are a company where building with AI and building AI is not a bespoke act for certain people."(約 00:05:38)</p>
+</blockquote>
+<p>「AI 不該是少數人的特製品」——這是她拒絕雙速組織的理由。</p>
+<blockquote>
+<p>"It's actually Amdahl's law … you update one part of the process, but now the parts of the process that you didn't touch actually become the bottleneck."(約 00:09:11)</p>
+</blockquote>
+<p>補完技能只是第一段;不改流程,瓶頸只是換了個位置。</p>
+<blockquote>
+<p>"Education is an important component of getting AI deployed in enterprises."(約 00:17)</p>
+</blockquote>
+<p>呼應 Andrew Ng 的擔憂,也是她整場的收束。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The claim</strong>: enterprise AI adoption isn't stalling because the technology doesn't work — it stalls on process, culture, and a skills gap. All the frontier research showcased at the summit only pays off if people inside thousands of ordinary companies can turn it into value.</li>
+<li><strong>The diagnosis started with an experiment</strong>: two engineers gave wildly different estimates for the same feature. The gap tracked neither seniority nor codebase familiarity — one engineer was AI-pilled and knew how to steer the technology; the other used AI mostly as a chatbot while believing they had already mastered it.</li>
+<li><strong>Why people misjudge themselves</strong>: with mobile or cloud, errors were obvious and the technology pushed back, forcing you to learn. AI's natural-language interface makes conversation feel like competence, and hides the fact that both outputs and outcomes need validation. It requires a genuinely different mental model.</li>
+<li><strong>Enabling only engineers is myopic</strong>: most large companies start there, which unblocks one function while creating bottlenecks everywhere else. Ironclad deliberately enabled engineering, product, and design at the same time.</li>
+<li><strong>Then they hit Amdahl's Law</strong>: fluency arrived, but product velocity didn't follow, because the process hadn't changed. They were still running waterfall — product research, hand-off to UX, hand-off to engineering — and engineers finished fast, then waited on answers.</li>
+<li><strong>Three fixes</strong>: education as infrastructure (shared lexicon, shared tooling and harnesses, one system for context management, RAG, and memory); moving specification to the front (the right people convene early, argue the problem out, and memorialize the solution as markdown or a Notion page before handing it to an agent); and tooling and guardrails (code-review agents plus a library of skills that enforce output quality).</li>
+<li><strong>It generalizes</strong>: a Fortune 100 customer asked Ironclad to run the same program for them; the outcomes were very similar, and the customer saw the same acceleration.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The claim: the bottleneck isn't the technology (~00:01)</h4>
+<p>She put the conclusion on the table immediately: AI adoption in enterprises is not stalling because the technology is missing or broken — it stalls for other reasons, chiefly process and culture. The follow-up question is why anyone in the room should care, and her answer is that all the excellent work presented at the summit has to deliver value or it was for nothing. The eventual users of this technology are the people inside the thousands of companies around us.</p>
+<h4>The starting point: two engineers, two very different estimates (~00:02)</h4>
+<p>About a month or two after joining Ironclad — nine months before the talk — she ran a deliberate experiment during a feature discussion, asking two engineers separately what it would take to build the same thing. The estimates diverged enough to give her pause.</p>
+<p>Digging in, the difference was not seniority and not familiarity with the codebase. One engineer was AI-pilled — they understood how to work with the technology and steer it. The other was using AI mainly as a chatbot while feeling they had already mastered it.</p>
+<p>That left her with a choice. Given how fast the technology was moving, the gap would compound: she could accept a two-speed engineering organization, or do something about it.</p>
+<h4>Why people believe they've mastered it (~00:03)</h4>
+<p>Her explanation is that the interface creates the illusion. With previous technology waves — mobile, cloud — errors were obvious. The technology pushed back, and you had to learn what was going wrong before you could make progress. With AI, the interface is natural language, so simply talking to it makes you feel you know what you're doing, without realizing that the outputs need to be validated and the outcomes need to be validated. It is a very different mental model.</p>
+<p>She also noted that many people in the audience would say they already knew this — but a huge workforce out there does not share that mindset, and getting the technology adopted by that group requires doing something deliberate.</p>
+<h4>Enabling everyone at once (~00:05)</h4>
+<p>Talking to other companies — Fortune 500 and larger — she found that most say some version of "we'll enable our engineers." She considers this myopic: you enable one function and manufacture bottlenecks elsewhere in the organization.</p>
+<p>Ironclad did the opposite from the start: everyone gets enabled simultaneously. Some people were already AI-native and felt they didn't need it; the company was nevertheless clear that engineering, product, and design would be enabled together. The goal she set: be a company where building with AI, and building AI, is not a bespoke act reserved for certain people.</p>
+<p>Three principles:</p>
+<ol>
+<li>There will be no halo group doing AI off to one side and dragging everyone else along.</li>
+<li>The hard parts — outcome validation, evals, eval harnesses — get delivered through tooling, so everyone benefits at once.</li>
+<li>It isn't that only top people get to use AI: everybody has to, and everybody will.</li>
+</ol>
+<h4>Execution: a 20-day program before the December hackathon (~00:06)</h4>
+<p>She used an event already on the calendar — the company hackathon in December 2025, when she was three months into the job. She wanted the team to arrive AI-ready and the hackathon to produce AI-built outcomes, so she designed a 20-day program to run beforehand.</p>
+<p>Day one, she taught the classes herself, open to anyone in the company: LLM fundamentals, how LLMs work under the hood, how to think about context, in-context learning, prompt optimization, tuning, and evaluations. For the remaining days, one engineer per day presented what they had built with the technology, how they built it, what problems they ran into, and what they learned. Momentum was sustained through Slack channels and impromptu get-togethers the engineers organized themselves.</p>
+<p>Participation at the hackathon was very high, and the team built capabilities she hadn't thought they could — a positive surprise. On fluency, the company had arrived.</p>
+<h4>Hitting Amdahl's Law (~00:09)</h4>
+<p>By January 2026, feature development still hadn't accelerated the way she expected. Experimentation had taken off; shipping into the product hadn't.</p>
+<p>The diagnosis was Amdahl's Law: you update one part of the process, and the parts you didn't touch become the bottleneck. Every function was building AI and building with AI, but the process itself had not shifted at all. They were still running a waterfall — product does research, hands off to UX, hands off to engineering — and engineers would finish quickly, then spend most of their time waiting on answers from product.</p>
+<h4>The three fixes (~00:10)</h4>
+<p><strong>Education as infrastructure.</strong> Beyond classes: a shared lexicon, shared tooling, shared harnesses, and common systems for context management, RAG, and memory — pulling organizational memory into a single system.</p>
+<p><strong>Move specification to the front.</strong> Now, when building something, the relevant people convene early: they discuss the problem, debate it, propose a solution, iterate on it, and memorialize the result as a markdown doc or a Notion page. Only then is that fleshed-out work handed to an agent to execute.</p>
+<p>She tied this to Ion Stoica's talk the previous day: a major reason AI outcomes disappoint is under-specification of requirements. Getting everyone together at the front of the process is how you flesh those requirements out first. She was careful not to claim perfection, but clearly specifying the constraints, the boundaries, and the solution space before handing work to an agent has produced good outcomes.</p>
+<p><strong>Tooling and guardrails.</strong> Beyond code-review agents, they built a library of skills that ensure agent output — especially code — meets company standards, so nobody has to wonder whether their agent is doing the right thing.</p>
+<h4>Where they are now (~00:12)</h4>
+<ul>
+<li><strong>Agent framework</strong>: lets anyone create an agent quickly. Built on OpenAI's Agents SDK and Vercel's AI SDK, connected to the frontier models; they have also started tuning their own models, which are hooked up behind these agents. Around it sits infrastructure for continuous context optimization, memory management, continuous evals, and prompting.</li>
+<li><strong>Automated evals</strong> across large parts of the system: LLM judges evaluate agent output, then an evaluation agent compares it against a rubric and keeps iterating until the eval comes close enough to the rubric. It runs continuously without pulling engineers in — once something is built, reviewed, and checked in, it flows into this evaluation process automatically.</li>
+<li><strong>Their own code-generation harness</strong>: they evaluated what was available — the Codex harness, Claude's harness — and none matched what they wanted, so they used those (and open-source ones) as benchmarks and substrate and built their own on top, running on Temporal. Anyone, including product managers who now code, can hand the harness a job: a UI, a backend service, any piece of code. The harness spins up a VM, sets up an environment close to production inside it, generates the code there, tests it there, and produces a review-ready PR for a human or a review agent. It is in dogfood and producing very good results.</li>
+</ul>
+<h4>Results and generalization (~00:15)</h4>
+<p>Ironclad is a commercial legal-tech product; nearly every Silicon Valley company is a customer, including the frontier labs. Agents live in the product today, acting on live contracts carrying billions of dollars of value. Engineering statistics show a very different execution velocity than a year ago (she flagged that the drop at the end of the curve is incomplete data, not regression).</p>
+<p>None of this is proprietary to Ironclad. A Fortune 100 customer asked to run the same program; although it hadn't been designed for external use, they ran it, and the outcomes were very similar — that customer is also seeing acceleration.</p>
+<p>She closed by connecting to Andrew Ng's fireside chat the day before: Ng worries that people building AI under-invest in education, and that this becomes a barrier to adoption. Her talk, she said, is a data point from experience in support of that claim.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"The adoption of AI in enterprises is not stalling because the technology is not working or is not there. It's stalling because of other reasons. And one of the other reasons tends to be processes, culture and so on." (~00:01:30)</p>
+</blockquote>
+<p>The whole talk rests on this: the bottleneck is organizational, not architectural.</p>
+<blockquote>
+<p>"We want to make sure we are a company where building with AI and building AI is not a bespoke act for certain people." (~00:05:38)</p>
+</blockquote>
+<p>Her stated reason for refusing a two-speed organization.</p>
+<blockquote>
+<p>"It's actually Amdahl's law … you update one part of the process, but now the parts of the process that you didn't touch actually become the bottleneck." (~00:09:11)</p>
+</blockquote>
+<p>Closing the skills gap was only the first segment; without process change, the bottleneck just moves.</p>
+<blockquote>
+<p>"Education is an important component of getting AI deployed in enterprises." (~00:17)</p>
+</blockquote>
+<p>Her closing line, and an echo of Andrew Ng's concern from the previous day.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ironclad</td>
+<td>商用法務 / 合約管理平台,幾乎所有矽谷公司(含前沿實驗室)都是客戶</td>
+<td>Commercial legal-tech / contract platform; nearly all Silicon Valley companies including frontier labs are customers</td>
+<td>講者任 CTO / speaker is CTO</td>
+</tr>
+<tr>
+<td>OpenAI Agents SDK</td>
+<td>Ironclad 內部 agent framework 的基礎之一</td>
+<td>One of the foundations of Ironclad's internal agent framework</td>
+<td>逐字稿作 "agent SDK from OpenAI"</td>
+</tr>
+<tr>
+<td>Vercel AI SDK</td>
+<td>Ironclad agent framework 的另一個基礎</td>
+<td>The other foundation of their agent framework</td>
+<td>逐字稿誤植為 "Versell"</td>
+</tr>
+<tr>
+<td>Temporal</td>
+<td>自建 code generation harness 的工作流引擎</td>
+<td>Workflow engine behind their in-house code-generation harness</td>
+<td>講者提到 Temporal 前一天也在會場</td>
+</tr>
+<tr>
+<td>Ironclad 內部 agent framework</td>
+<td>讓全公司任何人快速建 agent,含 context 最佳化、memory、持續 evals</td>
+<td>Internal framework letting anyone build agents; context optimization, memory, continuous evals</td>
+<td>未公開命名 / unnamed publicly</td>
+</tr>
+<tr>
+<td>Ironclad code generation harness</td>
+<td>開 VM、架近似 production 環境、生成並測試程式碼、產出 review-ready PR</td>
+<td>Spins up a VM, builds a near-production environment, generates and tests code, emits a review-ready PR</td>
+<td>dogfood 階段 / in dogfood</td>
+</tr>
+<tr>
+<td>Ion Stoica 前一天的演講</td>
+<td>談 AI 產出不如預期源於需求 under-specification</td>
+<td>Prior-day talk on under-specification of requirements as a cause of poor AI outcomes</td>
+<td>逐字稿誤植為 "Ian Stoya"</td>
+</tr>
+<tr>
+<td>Andrew Ng fireside chat</td>
+<td>擔憂教育投資不足會成為 AI 採用的障礙</td>
+<td>Warned that under-investment in education will become an adoption barrier</td>
+<td>逐字稿誤植為 "Andrew Ing"</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sunita WHMA / Senita</td>
+<td>Sunita Verma</td>
+</tr>
+<tr>
+<td>Andel's law</td>
+<td>Amdahl's Law</td>
+</tr>
+<tr>
+<td>Ian Stoya</td>
+<td>Ion Stoica</td>
+</tr>
+<tr>
+<td>Andrew Ing</td>
+<td>Andrew Ng</td>
+</tr>
+<tr>
+<td>Versell</td>
+<td>Vercel</td>
+</tr>
+<tr>
+<td>AI pled / AID / AI'd</td>
+<td>AI-pilled</td>
+</tr>
+<tr>
+<td>evas</td>
+<td>evals</td>
+</tr>
+<tr>
+<td>hardness / Codex hardness / Claude's hardness</td>
+<td>harness / Codex harness / Claude's harness</td>
+</tr>
+<tr>
+<td>eval harnesses(語音正確,但字幕多處拼作 "harnesses"/"hardness" 混用)</td>
+<td>eval harnesses</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Ironclad 內部 agent framework 與 code generation harness 均未公開命名,無法查證產品名。/ Ironclad's internal agent framework and code-generation harness were not named publicly.</li>
+<li>「以某些開源方案作為 substrate」具體指哪些開源 harness,講者未點名。/ Which open-source harnesses they used as substrate was not specified.</li>
+<li>工程統計圖表(執行速度曲線)的具體數字未在演講中念出,只有定性描述。/ The engineering-velocity chart's figures were shown on slides but never stated aloud.</li>
+<li>那家跑同一套計畫的 Fortune 100 客戶未具名。/ The Fortune 100 customer that ran the same program was not named.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-atlas/sunita-verma--rate-limiter-on-ai-adoption-is-organizational.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

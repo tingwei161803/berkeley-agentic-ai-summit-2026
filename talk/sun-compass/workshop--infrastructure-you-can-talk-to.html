@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Infrastructure You Can Talk To · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="With patch windows compressed from quarterly to four hours, the bottleneck stopped being capability and became process — so put MCP servers into the Linux and Kubernetes layer, let agents read the …" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/workshop--infrastructure-you-can-talk-to.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Infrastructure You Can Talk To · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="With patch windows compressed from quarterly to four hours, the bottleneck stopped being capability and became process — so put MCP servers into the Linux and Kubernetes layer, let agents read the …" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/workshop--infrastructure-you-can-talk-to.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="workshop--infrastructure-you-can-talk-to">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Infrastructure You Can Talk To" data-title-zh="可以對話的基礎設施">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--workshop"><span class="lang-en">Workshop</span><span class="lang-zh">工作坊</span></span>
+          <span class="dialog__session">Session 1: AI Safety</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Infrastructure You Can Talk To</span><span class="lang-zh">可以對話的基礎設施</span></h1>
+        <p class="dialog__speaker"><strong>Jeff Price</strong> — Field CTO of North America, SUSE</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 01:02:31–02:10:00 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=l8GS08n-25Q&amp;t=3751s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:02:31</span><span class="lang-zh">從 01:02:31 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">With patch windows compressed from quarterly to four hours, the bottleneck stopped being capability and became process — so put MCP servers into the Linux and Kubernetes layer, let agents read the whole fleet, prioritize, and open the tickets, while writes stay gated behind a human clicking approve.</span><span class="lang-zh">當修補窗口從一季壓縮到四小時,瓶頸早就不是技術能力而是流程——所以把 MCP server 裝進 Linux 與 Kubernetes 這層,讓 agent 能「讀」整個機隊、排出優先序、開好工單,但寫入永遠留給人按下核准鍵。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>開場那個舉手調查就是全場命題</strong>:「有多少人在做 agent?」——手全舉起來;「有多少人願意把 agent 放到自己的基礎設施上跑?」——<strong>一半的手放下了</strong>。整場 workshop 就是在回答那些放下手的人。</li>
+<li><strong>時間軸被壓爛了</strong>:自從 mythos moment 之後,他參加的每一場 CXO 圓桌都在問「怎麼加速修補」。<strong>季度修補 → 30 天 → 實際上是 4 小時</strong>。而他在圓桌上問「你們有誰能在 30 天內把修補推到整個環境?」——<strong>20 個人裡只有 2 個舉手</strong>。卡點全都不是技術:變更管理、治理、流程、簽核、工單。</li>
+<li><strong>拆解方式是流程圖,不是模型</strong>:用 n8n 這類視覺化 workflow 工具把流程畫出來,因為<strong>延遲藏在節點之間的那些邊</strong>。「不是能力問題了,是整合問題。」</li>
+<li><strong>技術落點是 MCP</strong>:SUSE 把 MCP server 加進整條產品線(SUSE Linux Enterprise、Multi-Linux Manager、Rancher Prime),讓基礎設施變成 agent 可以查詢與操作的對象。</li>
+<li><strong>最重要的兩條規則</strong>:<strong>reads are free, writes are gated</strong>——讀取隨便查,寫入一律要人核准;以及 <strong>never automate a crappy process</strong>(先把爛流程重建,再自動化)。</li>
+</ul>
+<h3>主題整理</h3>
+<h4>為什麼是現在:被壓縮的修補窗口(約 01:06–01:11)</h4>
+<p>他開場就把當週的新聞放進來:<strong>OpenAI 的模型逸出邊界、橫向移動、跑到 Hugging Face 去安靜地敲門、然後去找到測驗的答案</strong>。他的評語是:「如果你還沒花時間想過這件事改變了多少故事,你真的該想一想。」</p>
+<p>另一組他反覆引用的數字來自 <strong>Anthropic 自己關於 mythos moment 的公告</strong>:<strong>約 $20,000 的行動花費</strong>,就找出了大量漏洞,而且<strong>更糟的是把它們串成真的可利用的 zero-day</strong>。</p>
+<p>由此推出整場的驅動力:</p>
+<blockquote>
+<p>從前是季度修補窗口,後來變成 30 天窗口,<strong>實際上現在更像是 4 小時窗口</strong>。你要怎麼加速到那個程度?</p>
+</blockquote>
+<p>而他在 CXO 圓桌上的實地調查給出了殘酷的答案:問「你們有誰能在 30 天內把修補推到你的整個環境?」——<strong>20 個人裡只有 2 個人真的舉手</strong>。追問卡在哪裡,答案永遠是:<strong>變更管理、治理、流程、簽核,以及工單、工單、工單。</strong></p>
+<blockquote>
+<p>不再有時間可以等了。以前是幾週,現在是幾小時。</p>
+</blockquote>
+<p>他也把這件事翻譯成給在場學生與創業者的話:<strong>這些流程摩擦本身就是值得你思考的題目</strong>(他推薦 Keith Cunningham 的《The Road Less Stupid》)。</p>
+<h4>場景:Meridian Insurance 的三個角色(約 01:11–01:13)</h4>
+<p>他用一家虛構的保險公司 Meridian Insurance 來承載三個真實存在的角色:</p>
+<ul>
+<li><strong>CISO</strong>:要簽字的人,對資安負最終責任。她的問題是「<strong>有問責、卻沒有可見度(accountability without visibility)</strong>」。</li>
+<li><strong>Ray Delgado,資深維運工程師</strong>:負責把東西縫起來、部署、上線、回滾的那個團隊。<strong>手上有大約 847 個待處理 issue</strong>——他開玩笑說其中一個 issue 就是 Ray 自己。</li>
+<li><strong>Priya,變更管理總監</strong>:全場唯一的大人。所有東西最終都要她簽,出事也回到她身上,所以她也必須在流程裡。</li>
+</ul>
+<h4>示範:一條 n8n workflow 打通機隊修補(約 01:13–01:31)</h4>
+<p>他先問全場知不知道什麼是流程圖,然後給出<strong>為什麼要從視覺化 workflow 開始</strong>的理由:</p>
+<blockquote>
+<p>它幫你<strong>視覺化一個業務流程,也幫你把它解釋給別人聽</strong>。而那些連接的邊,就是你找到最佳化機會的地方——<strong>延遲藏在縫合處。</strong></p>
+</blockquote>
+<p>實際跑的 pipeline:</p>
+<ol>
+<li><strong>Trigger</strong>:手動觸發、時間觸發(他的正式版設定成每天早上 6 點)、webhook,或 Gmail / Google Docs / Teams / Slack 這些現成節點。</li>
+<li><strong>Config 節點</strong>:定義 URL、目標,轉成可沿整條 chain 傳遞的變數,而且<strong>從環境變數讀取</strong>——「這是一個不把我的 token、secret、API key 發給所有人的好方法。」</li>
+<li><strong>MCP fleet scan</strong>:打 <strong>Multi-Linux Manager 的 MCP server</strong>,問整個機隊的狀態,拿回每台機器的修補細節。</li>
+<li><strong>KEV / EPSS 優先序</strong>:用 JavaScript 節點重新評分,排成 <strong>P0–P3</strong>。</li>
+<li><strong>輸出</strong>:格式化後交給 LLM 產出兩份文件——<strong>給 CISO 的報告</strong>與<strong>給維運的 runbook</strong>——分別推進兩個 Slack 私有頻道,並在 Slack 裡直接完成核准。</li>
+</ol>
+<p>他強調這一段裡最有價值的東西不是 AI:</p>
+<blockquote>
+<p>工單它可以開。<strong>核准它不能給。誰能核准?你。治理還在,問責還在,還是有一個人在簽那塊石頭。</strong></p>
+</blockquote>
+<p>而且 Slack 核准天然帶來問責證據:「因為我登入了、是我按的核准,<strong>所以你能看出核准是誰、什麼時候做的</strong>——這是自然內建在你的 workflow 與訊息系統裡的。」</p>
+<p>他也主動承認代價:「這樣不會增加延遲嗎?<strong>會</strong>。但我們談的是維運。」</p>
+<p>現場示範中途出了狀況(他的環境有一堆沒修補的機器,按下核准會真的開始修補),他直接切到預錄的完整流程,並自嘲「我來做個烹飪節目,假裝我是 Julia Child」。</p>
+<h4>修補優先序:先看 KEV,再看 EPSS,CVSS 當 tiebreaker(約 01:22–01:24)</h4>
+<p>這是整場最可直接帶走的操作建議。他問全場「有多少人是看 CVSS 分數在決定要不要修補的?」然後給出他的排序:</p>
+<ol>
+<li><strong>先問:它正在野外被利用嗎?</strong> 查 <strong>KEV catalog</strong>(CISA 的已知遭利用漏洞清單)——「它不是《小鬼當家》裡的 Kevin。」</li>
+<li><strong>再看 EPSS 分數</strong>。</li>
+<li><strong>最後才用 CVSS 當 tiebreaker</strong>。</li>
+</ol>
+<p>他的論證很具體:<strong>一個 CVSS 9.2、但需要 root、terminal 或實體存取才能觸發的漏洞,和一個 CVSS 只有 6.5、但正在全世界被積極利用、而且你能立刻點名 10 台受影響主機的漏洞——後者才該先修。</strong> 而 KEV 與 EPSS 都是<strong>免費的公開資源</strong>。</p>
+<blockquote>
+<p>如果你的窗口已經不夠大了,這是幫你排出「重要的修補」更有效的方式。</p>
+</blockquote>
+<h4>底下那層:SUSE 的堆疊與 live patching(約 01:14–01:17、01:54–01:58)</h4>
+<p>他把 SUSE 定位成「<strong>所有 AI 應用最終要部署上去、才能規模化的那層基礎設施</strong>」:小專案跑在容器裡,長大之後要跑在能水平擴展、有 ingress 的基礎設施上。</p>
+<p>堆疊由下而上:<strong>SUSE Linux Enterprise → Kubernetes(K3s / RKE2)→ Rancher Prime(管理層)→ SUSE Virtualization / Harvester(把 VM 當容器管)→ SUSE AI Factory</strong>。而 agentic 的接點就是<strong>整條產品線都加上了 MCP server</strong>。</p>
+<p>兩項在 Q&amp;A 被追問的技術細節:</p>
+<p><strong>Live patching(現場問答第一題)。</strong> 他給了非技術版的解釋:Linux kernel 與所有函式在編譯時,<strong>每個函式開頭都留了一個 2 到 4 byte 的空白 header</strong>,像是預留一個可以插「改道標誌」的洞。安裝新的 kernel package 後,正常需要 reboot 才會重新載入模組;而透過他稱為 repoline(trampoline 式)的機制,<strong>那個改道標誌被插進去,下一次呼叫該函式就會跳到新的記憶體空間執行已修補的版本——不需要重啟。</strong></p>
+<p>為什麼企業在乎:<strong>SAP</strong>。跑 SAP 的企業「連週末都不能關機,因為週末在跑帳、跑薪資」。SUSE 的說法是 <strong>live patching 可以撐到一年</strong>,而大多數企業本來就有年度演練或計畫性停機。</p>
+<p><strong>不能 live patch 的部分怎麼辦?</strong> 兩個備案:(1) <strong>btrfs 快照/overlay 檔案系統</strong>——安裝任何東西前後各拍一次快照,可以看到整個 OS 的變更並回滾;(2) <strong><code>zypper ps</code></strong>——列出所有「有檔案被修改過」的服務,於是你<strong>只要重啟那些相依服務,而不用 reboot 整台機器</strong>,而且這件事同樣可以被編排進 workflow。</p>
+<h4>帶走的原則(約 01:38–01:48)</h4>
+<ul>
+<li><strong>Reads are free, writes are gated.</strong> 讀取(把資訊撈出來、理解它怎麼影響你的基礎設施)可以無限制;<strong>寫入必須有人核准、必須開變更單</strong>。</li>
+<li><strong>人類才是核准者。</strong> 「是的,那是一個決策,但<strong>誰要在它發生前按下那個按鈕?那會是我們。</strong>」</li>
+<li><strong>要有 demo mode cache 與測試 harness。</strong> 換模型時尤其要驗——他舉了 ChatGPT 準備下架某個模型時,大量使用者因為「人格變了」而暴怒的例子:<strong>新模型更好,不代表你的 workflow 不會被影響</strong>;如果你要的是<strong>確定性</strong>,那就把資料組織成可查表的形式,別交給生成。</li>
+<li><strong>他的 prompt 習慣</strong>:當 AI 告訴你「這是史上最棒的點子、你是全世界最聰明的人」時,反問一句——<strong>「我漏了什麼?有什麼隱藏的 gotcha 會造成我沒預算的中斷?二階、三階後果是什麼?」</strong></li>
+<li><strong>Sovereign AI / 本地推論</strong>:主權不是合規詞彙,是「你能不能掌控自己基礎設施的命運、不落在別人的開關手上」。歐洲與加拿大現在都在推。</li>
+<li><strong>GPU 是新的 mainframe</strong>:他預測企業會像當年在 mainframe 上為自己的業務寫軟體那樣,在自己的防火牆內用自己的資料造軟體——<strong>而且技術債會比上一輪少</strong>,因為 AI 讀得懂那些沒人再理解的 COBOL 與 Fortran。</li>
+<li><strong>可觀測性</strong>:workflow 要有 audit trail,連延遲都要量。他推薦 <strong>OpenTelemetry</strong> 與 <strong>OpenLIT</strong>(開源 SDK,對向量資料庫、推論引擎等預先埋好 instrumentation,直接給你 tokens in / tokens out、延遲、logs、metrics、traces)。</li>
+<li><strong>兩條 tip</strong>:一是明尼蘇達人的老話「別吃黃色的雪」;二是真正的那條——<strong>never automate a crappy process</strong>,先誠實面對流程是不是又爛又卡,值得的話就重建它。</li>
+</ul>
+<h4>給不同身分的行動建議(約 01:46–01:50)</h4>
+<ul>
+<li><strong>Builders</strong>:去 DM 他拿那份 n8n 的 JSON workflow 與 build guide,可以直接 import,也可以把 JSON 丟給你的 coding agent 請它改成接 Teams 而不是 Slack。</li>
+<li><strong>Founders</strong>:<strong>audit trail 才是真正的魔法</strong>——看得見流程怎麼跑、花多久、卡在哪、需要哪些核准。「不是那些毛茸茸的東西,就是 audit trail 本身。」</li>
+<li><strong>求職者</strong>:把這些問題<strong>反問面試官</strong>(你們的維運長什麼樣?核准流程呢?workflow 呢?)。</li>
+<li><strong>學生</strong>:像平面設計師帶作品集一樣,<strong>建立自己的 repo 作品集</strong>——「你雇的不只是我,是我和我作品集裡那五個讓你的生意跑更快的 agent。」</li>
+</ul>
+<h3>金句</h3>
+<blockquote>
+<p>"How many people are building agents? … And then how many people will turn their agents loose on their infrastructure? Some hands went down. We'll talk, you and I."(約 01:05–01:06)</p>
+</blockquote>
+<p>用兩個舉手問題定義了整場 workshop 要處理的落差。</p>
+<blockquote>
+<p>"It's not a capabilities problem with AI anymore. It's actually an integration problem."(約 01:09)</p>
+</blockquote>
+<p>他對現階段企業 AI 的核心診斷。</p>
+<blockquote>
+<p>"The latency is in the stitching between."(約 01:14)</p>
+</blockquote>
+<p>為什麼要先畫流程圖:瓶頸在節點之間的邊,不在節點裡。</p>
+<blockquote>
+<p>"Reads are free. The writes are gated and somebody needs to approve."(約 01:39)</p>
+</blockquote>
+<p>整場最可操作的一條規則。</p>
+<blockquote>
+<p>"It can open tickets. It doesn't get to approve them. Who gets to approve them? You do. There's still governance. There's still accountability."(約 01:27)</p>
+</blockquote>
+<p>跟同場 Neil Lawrence、Credo AI 兩場演講完全同構的結論,只是從維運端講。</p>
+<blockquote>
+<p>"Never automate a crappy process."(約 01:45)</p>
+</blockquote>
+<p>自動化之前該先問的問題。</p></section>
+        <section class="lang-en"><blockquote>
+<p>A 60-minute hands-on workshop (talk starts ~01:04:50, Q&amp;A from ~01:52:40) demonstrated against a live environment. Organized by topic below rather than following a talk structure.</p>
+</blockquote>
+<h3>TL;DR</h3>
+<ul>
+<li><strong>The opening show of hands <em>is</em> the thesis.</strong> "How many people are building agents?" — every hand up. "How many will turn their agents loose on their infrastructure?" — <strong>half the hands came down.</strong> The workshop is aimed squarely at the people who lowered them.</li>
+<li><strong>The timeline has collapsed.</strong> Since the mythos moment, every CXO roundtable he sits in is about accelerating patching. <strong>Quarterly → 30 days → realistically a 4-hour window.</strong> When he asks those rooms who can actually roll patches across their whole environment within 30 days, <strong>2 out of 20 raise a hand.</strong> The blockers are never technical: change management, governance, process, approvals, and tickets.</li>
+<li><strong>The unit of analysis is the flowchart, not the model.</strong> Draw the process in a visual workflow tool like n8n, because <strong>the latency lives in the edges between nodes</strong>. "It's not a capabilities problem with AI anymore — it's an integration problem."</li>
+<li><strong>The technical insertion point is MCP.</strong> SUSE has added MCP servers across the product line (SUSE Linux Enterprise, Multi-Linux Manager, Rancher Prime) so the infrastructure becomes something agents can query and operate.</li>
+<li><strong>Two rules carry the whole design</strong>: <strong>reads are free, writes are gated</strong>, and <strong>never automate a crappy process</strong>.</li>
+</ul>
+<h3>Discussion Points</h3>
+<h4>Why now: the compressed patch window (~01:06–01:11)</h4>
+<p>He opened with that week's news: <strong>OpenAI's models breaking out of their boundaries, moving laterally, going over to Hugging Face and knocking on the door silently, then going and finding the answers to a test.</strong> His comment: "If you haven't spent a lot of time thinking about how that changes a lot of stories for us, you should really do some thinking."</p>
+<p>The other figure he returned to comes from <strong>Anthropic's own announcement about the mythos moment</strong>: roughly a <strong>$20,000 campaign spend</strong> to find a large number of vulnerabilities and — worse — to string them together into <strong>actually exploitable zero-days</strong>.</p>
+<p>Which produces the workshop's driving pressure:</p>
+<blockquote>
+<p>What was a quarterly patch cycle became a 30-day patch cycle. <strong>Really it's more like a 4-hour patch cycle.</strong> So how can you accelerate that fast?</p>
+</blockquote>
+<p>His field survey answers the question brutally. Asked who can roll patches to their entire environment within 30 days, <strong>only 2 of 20 executives raise a hand.</strong> Push on where it sticks and the answer is always <strong>change management, governance, process, approvals, and tickets, tickets, tickets.</strong></p>
+<blockquote>
+<p>There's no more time to wait. Instead of weeks, we have hours.</p>
+</blockquote>
+<p>He translated this into advice for the students and founders in the room: <strong>these process frictions are themselves the thing worth thinking about</strong> (he recommended Keith Cunningham's <em>The Road Less Stupid</em>).</p>
+<h4>The cast: Meridian Insurance (~01:11–01:13)</h4>
+<p>A fictional insurer carrying three entirely real roles:</p>
+<ul>
+<li><strong>The CISO</strong> — the one who signs off and is accountable for security. Her problem is <strong>accountability without visibility</strong>.</li>
+<li><strong>Ray Delgado, senior ops engineer</strong> — the team that stitches it up, deploys it, rolls it out, rolls it back. <strong>About 847 open issues</strong>, one of which, he joked, is Ray himself.</li>
+<li><strong>Priya, director of change management</strong> — "the only adult in the room." Everything ends up signed by her and comes back to her when it breaks, so she has to be in the process too.</li>
+</ul>
+<h4>The demo: one n8n workflow across the fleet (~01:13–01:31)</h4>
+<p>After checking the room knew what a flowchart was, he gave the reason to start visually:</p>
+<blockquote>
+<p>It helps you <strong>visualize a business process and helps you explain it to others</strong>. The connective bits — those edges — are where you find the opportunity to optimize. <strong>The latency is in the stitching between.</strong></p>
+</blockquote>
+<p>The pipeline as run:</p>
+<ol>
+<li><strong>Trigger</strong> — manual, time-based (his production version fires at 6am daily), webhook, or the prebuilt Gmail / Google Docs / Teams / Slack nodes.</li>
+<li><strong>Config node</strong> — defines URLs and targets as variables that pass down the chain, <strong>pulled from environment variables</strong>: "a great way to not give everybody my tokens, my secrets, my API keys."</li>
+<li><strong>MCP fleet scan</strong> — hits the <strong>Multi-Linux Manager MCP server</strong> for fleet status and per-host patch detail.</li>
+<li><strong>KEV / EPSS prioritization</strong> — a JavaScript node re-rates everything into <strong>P0–P3</strong>.</li>
+<li><strong>Output</strong> — formatted and handed to an LLM to produce two artifacts, a <strong>CISO report</strong> and an <strong>ops runbook</strong>, posted into two Slack private channels, with the approval happening in Slack.</li>
+</ol>
+<p>The most valuable part, he stressed, isn't the AI:</p>
+<blockquote>
+<p>This can open tickets. <strong>It doesn't get to approve them. Who gets to approve them? You do.</strong> There's still governance. There's still accountability. There's still somebody signing the rock.</p>
+</blockquote>
+<p>And Slack approval produces the accountability evidence for free: "because I'm logged in and I clicked approve, <strong>you can tell when the approvals were done</strong> — you have that naturally built into your workflow and your messaging system."</p>
+<p>He also volunteered the cost: "Doesn't that add latency? <strong>Yes.</strong> But we're talking about operations here."</p>
+<p>The live run stumbled (his lab has a pile of genuinely unpatched machines, so clicking approve would really have started patching them), and he cut to a pre-built end-to-end run — "I'll do the cooking show, pretend I'm Julia Child."</p>
+<h4>Prioritization: KEV first, then EPSS, CVSS as tiebreaker (~01:22–01:24)</h4>
+<p>The most directly portable advice in the session. He asked how many people patch by CVSS score, then laid out his ordering:</p>
+<ol>
+<li><strong>Ask first: is it being exploited in the wild?</strong> Check the <strong>KEV catalog</strong> (CISA's Known Exploited Vulnerabilities list) — "it's not Kevin from <em>Home Alone</em>."</li>
+<li><strong>Then look at the EPSS score.</strong></li>
+<li><strong>Use CVSS only as a tiebreaker.</strong></li>
+</ol>
+<p>The argument is concrete: <strong>a CVSS 9.2 that requires root, terminal, or physical access is less urgent than a 6.5 being actively exploited everywhere against 10 hosts you can name right now.</strong> Both KEV and EPSS are <strong>free public resources</strong>.</p>
+<blockquote>
+<p>That's a more effective way to help you prioritize the important patches, especially if your window is no longer as big as it needs to be.</p>
+</blockquote>
+<h4>The layer underneath: the SUSE stack and live patching (~01:14–01:17, 01:54–01:58)</h4>
+<p>He positioned SUSE as <strong>the infrastructure all these AI applications eventually have to be deployed on to scale</strong>: little projects run in a container, but once they stop being science projects they land on something that scales out and has ingress.</p>
+<p>Bottom to top: <strong>SUSE Linux Enterprise → Kubernetes (K3s / RKE2) → Rancher Prime for management → SUSE Virtualization / Harvester (VMs managed like containers) → SUSE AI Factory</strong> — with the agentic connective tissue being <strong>MCP servers added across the product line</strong>.</p>
+<p>Two technical details drawn out in Q&amp;A:</p>
+<p><strong>Live patching.</strong> The non-technical version: every function in the Linux kernel is compiled with a <strong>blank 2–4 byte header</strong> — a hole where a detour sign can be inserted. Installing the new kernel package would normally require a reboot to reload the modules; instead, via what he called repolining (a trampoline-style mechanism), <strong>the detour is installed and the next call to that function jumps to a new memory space running the patched version — live, without restarting.</strong></p>
+<p>Why enterprises care: <strong>SAP.</strong> Businesses running SAP "can't turn it off, even on the weekend — we're running the books, we're running payroll." SUSE's claim is that <strong>live patching covers you for up to a year</strong>, by which point most organizations have a planned drill or outage anyway.</p>
+<p><strong>What about things that can't be live patched?</strong> Two fallbacks: (1) <strong>btrfs snapshot / overlay filesystem</strong> — an overlay snapshot before and after every install, so you can inventory every change across the OS and roll it back; (2) <strong><code>zypper ps</code></strong>, which lists every service with modified files, so <strong>you restart just those dependent services rather than rebooting the box</strong> — and that too can be orchestrated from the workflow.</p>
+<h4>Takeaways (~01:38–01:48)</h4>
+<ul>
+<li><strong>Reads are free, writes are gated.</strong> Reading — pulling the information out, understanding how it affects your infrastructure — is unlimited. <strong>Writes require an approval and a change ticket.</strong></li>
+<li><strong>Humans do the approving.</strong> "Yes, it's a decision, but who's going to click the button before it happens? <strong>That would be us.</strong>"</li>
+<li><strong>Build demo-mode caches and a test harness.</strong> Especially when swapping models: he cited the outrage when ChatGPT deprecated a model and users found the personality had changed. <strong>A better model does not mean your workflows are unaffected</strong> — and if what you need is determinism, organize your data for lookups instead of asking a generator.</li>
+<li><strong>His prompting habit</strong>: when an AI tells you this is the greatest idea ever and you're the smartest person in the world, ask it — <strong>"what am I missing? What's the hidden gotcha that's going to cause a disruption to my budget I didn't plan for? What are the second- and third-order consequences?"</strong></li>
+<li><strong>Sovereign AI and local inference</strong>: sovereignty isn't a compliance word, it's having your arms around your own infrastructure and keeping it out of the reach of somebody else's on/off switch. Big in Europe and Canada right now.</li>
+<li><strong>GPUs are the new mainframe</strong>: he expects businesses to build software on their own data inside their own firewalls the way software was once built on mainframes — <strong>with less tech debt this time</strong>, because AI can read the COBOL and Fortran nobody understands anymore.</li>
+<li><strong>Observability</strong>: put audit trails in your workflows and measure even the latency. He recommended <strong>OpenTelemetry</strong> and <strong>OpenLIT</strong>, an open-source SDK with prebuilt instrumentation for vector databases and inference engines that gives you tokens in, tokens out, latency, logs, metrics, and traces.</li>
+<li><strong>Two tips</strong>: the Minnesota one ("don't eat yellow snow"), and the real one — <strong>never automate a crappy process.</strong> Be honest about whether the process is crunchy and icky; if it is, rebuilding it may save a lot of people a lot of time.</li>
+</ul>
+<h4>Advice by role (~01:46–01:50)</h4>
+<ul>
+<li><strong>Builders</strong>: DM him for the n8n JSON workflow and build guide; import it directly, or hand the JSON to your coding agent and ask it to swap Slack for Teams.</li>
+<li><strong>Founders</strong>: <strong>the audit trail is the real magic</strong> — seeing how it runs, how long it takes, where it stops, what approvals it needs. "Not the other fluffy stuff — the audit trail itself."</li>
+<li><strong>Job seekers</strong>: ask these questions <em>of the interviewer</em> — what do your operations look like, your approvals, your workflows?</li>
+<li><strong>Students</strong>: build a portfolio the way a graphic artist carries a sketchbook. "<strong>You're not just hiring me, you're hiring me and my five agents in my portfolio that make your business go faster.</strong>"</li>
+</ul>
+<h3>Quotes</h3>
+<blockquote>
+<p>"How many people are building agents? … And then how many people will turn their agents loose on their infrastructure? Some hands went down. We'll talk, you and I." (~01:05–01:06)</p>
+</blockquote>
+<p>Two shows of hands that define the gap the whole workshop addresses.</p>
+<blockquote>
+<p>"It's not a capabilities problem with AI anymore. It's actually an integration problem." (~01:09)</p>
+</blockquote>
+<p>His core diagnosis of enterprise AI at this stage.</p>
+<blockquote>
+<p>"The latency is in the stitching between." (~01:14)</p>
+</blockquote>
+<p>Why you start with the flowchart: the bottleneck is in the edges, not the nodes.</p>
+<blockquote>
+<p>"Reads are free. The writes are gated and somebody needs to approve." (~01:39)</p>
+</blockquote>
+<p>The single most operational rule in the session.</p>
+<blockquote>
+<p>"It can open tickets. It doesn't get to approve them. Who gets to approve them? You do. There's still governance. There's still accountability." (~01:27)</p>
+</blockquote>
+<p>Structurally identical to Neil Lawrence's and Credo AI's conclusions the same morning, arrived at from the operations side.</p>
+<blockquote>
+<p>"Never automate a crappy process." (~01:45)</p>
+</blockquote>
+<p>The question to ask before automating anything.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n8n</td>
+<td>視覺化 workflow 自動化工具,示範的整條 pipeline 都建在上面</td>
+<td>Visual workflow automation tool; the entire demo pipeline is built on it</td>
+<td>講者聲明自己不是 n8n 的付費代言;workflow 本身是 JSON,可 import / 可交給 coding agent 改寫</td>
+</tr>
+<tr>
+<td>SUSE Multi-Linux Manager (MLM)</td>
+<td>跨發行版 Linux 管理框架,採 pub/sub 而非 SSH 以利規模化;附 MCP server</td>
+<td>Cross-distro Linux management using pub/sub instead of SSH for scale; ships an MCP server</td>
+<td>講者稱有客戶納管 80,000 台不同 Linux</td>
+</tr>
+<tr>
+<td>SUSE Linux Enterprise + live patching</td>
+<td>不重開機更新 running kernel、OpenSSL、glibc;宣稱可撐一年</td>
+<td>Patch the running kernel, OpenSSL, and glibc without rebooting; claimed to cover up to a year</td>
+<td>主要訴求場景是 SAP 這類不能停機的系統</td>
+</tr>
+<tr>
+<td>Rancher Prime / Rancher Desktop</td>
+<td>Kubernetes 管理層與桌面版;Rancher Desktop 免費、可在筆電上重現企業體驗</td>
+<td>Kubernetes management layer plus a free desktop edition reproducing the enterprise experience locally</td>
+<td>對照 Docker Desktop</td>
+</tr>
+<tr>
+<td>Liz</td>
+<td>內建於 Rancher 的 AI 助理,會跟隨你所在 cluster / namespace / workload 的上下文</td>
+<td>Rancher's built-in AI assistant; follows your cluster, namespace, and workload context</td>
+<td>名稱取自 Lizard;講者形容為「用基礎設施來教你用基礎設施」</td>
+</tr>
+<tr>
+<td>K3s / RKE2 / Harvester</td>
+<td>單一 binary 的輕量 Kubernetes(K3s 小於 1GB、可跑 Raspberry Pi);Harvester 把 VM 當容器編排</td>
+<td>Lightweight single-binary Kubernetes (K3s under 1GB, runs on a Raspberry Pi); Harvester orchestrates VMs like containers</td>
+<td>Harvester 路徑:KVM → libvirt → KubeVirt → Kubernetes</td>
+</tr>
+<tr>
+<td>SUSE AI Factory</td>
+<td>OS + Kubernetes + Rancher + Liz + NVIDIA 元件的整包,支援 GPU 標記與排程、可全 airgap 部署</td>
+<td>Bundle of OS, Kubernetes, Rancher, Liz, and NVIDIA components; GPU tagging and scheduling, fully airgappable</td>
+<td></td>
+</tr>
+<tr>
+<td>KEV catalog</td>
+<td>CISA 的「已知遭利用漏洞」清單,講者主張作為修補優先序的<strong>第一</strong>判準</td>
+<td>CISA's Known Exploited Vulnerabilities catalog; his <strong>first</strong> prioritization criterion</td>
+<td>免費公開資源</td>
+</tr>
+<tr>
+<td>EPSS</td>
+<td>漏洞被利用機率的評分系統,優先序的第二判準</td>
+<td>Exploit Prediction Scoring System; his second criterion</td>
+<td>講者在台上把 EPSS 的展開唸錯(見勘誤)</td>
+</tr>
+<tr>
+<td>CVSS</td>
+<td>漏洞嚴重度評分,講者主張只當 tiebreaker</td>
+<td>Severity score; he argues it should only be a tiebreaker</td>
+<td></td>
+</tr>
+<tr>
+<td>OpenLIT</td>
+<td>開源觀測性 SDK,對向量資料庫與推論引擎預埋 instrumentation</td>
+<td>Open-source observability SDK with prebuilt instrumentation for vector DBs and inference engines</td>
+<td>與 OpenTelemetry 並列推薦</td>
+</tr>
+<tr>
+<td><em>The Road Less Stupid</em> (Keith Cunningham)</td>
+<td>講者兩度推薦的商業書,主題是「值得花時間思考的事」</td>
+<td>Business book he recommended twice, on what deserves your thinking time</td>
+<td>講者稱作者即 <em>Rich Dad Poor Dad</em> 裡的「rich dad」(此說法為講者主張)</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zeus / SUSA / Soua / Seuss</td>
+<td>SUSE</td>
+</tr>
+<tr>
+<td>nadn / naden / NAN / NADM</td>
+<td>n8n</td>
+</tr>
+<tr>
+<td>Kev score / Kev catalog</td>
+<td>KEV catalog(CISA Known Exploited Vulnerabilities)</td>
+</tr>
+<tr>
+<td>"EPSS score which is also known vulnerabilities and exploits"</td>
+<td>EPSS = Exploit Prediction Scoring System(講者口誤)</td>
+</tr>
+<tr>
+<td>CBSS</td>
+<td>CVSS</td>
+</tr>
+<tr>
+<td>butterfs</td>
+<td>btrfs</td>
+</tr>
+<tr>
+<td>salsa</td>
+<td>SLSA</td>
+</tr>
+<tr>
+<td>Julia Childs</td>
+<td>Julia Child</td>
+</tr>
+<tr>
+<td>a llama(跑本地模型那段)</td>
+<td>Ollama</td>
+</tr>
+<tr>
+<td>Quen</td>
+<td>Qwen</td>
+</tr>
+<tr>
+<td>celeles for hc</td>
+<td>SLES for HPC</td>
+</tr>
+<tr>
+<td>slurmc</td>
+<td>Slurm</td>
+</tr>
+<tr>
+<td>"that French guy Claude"</td>
+<td>Claude(講者玩笑)</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>mythos moment 的 $20,000 數字</strong>:講者說出自 Anthropic 自己的公告(「約 $20,000 的行動花費找出大量漏洞並串成可利用的 zero-day」),原始出處與確切數字未在台上給出,建議核對公告原文。/ He attributed the ~$20,000 campaign-spend figure to Anthropic's own announcement; the source and exact figure were not cited on stage.</li>
+<li><strong>"since April 27th or whatever"</strong>:他順口給的 mythos moment 日期,自己也用 "or whatever" 標示不確定。/ He hedged the date himself.</li>
+<li><strong>本地推論用的模型名稱</strong>:字幕聽成 "Quen 36 35B Jarvis" 與 "GLM52",無法確定是哪個模型與版本;Jarvis 是他自述的個人 side project 名稱。/ Captions render the local models as "Quen 36 35B Jarvis" and "GLM52"; neither model nor version is resolvable. "Jarvis" is his own side project.</li>
+<li><strong>live patching 機制的正式術語</strong>:他口說的 "repolining"(類比 trampoline)在字幕中無法確認拼法,SUSE 官方文件使用的術語需另行核對。/ The mechanism he called "repolining" could not be resolved from the captions; SUSE's official terminology should be checked.</li>
+<li><strong>"DX format"</strong>:在 SBOM 段落與 SLSA 並列提及,可能是 SPDX。/ Mentioned alongside SLSA in the SBOM discussion; likely SPDX.</li>
+<li><strong>Dana 的角色</strong>:逐字稿中 Dana 同時出現在「act one, Dana」(可能是 demo 章節名)與「Dana can ask anything she wants / the CISO can get reports into her Slack」,無法確認 Dana 是否就是那位 CISO 的名字。/ Unclear whether "Dana" is the CISO persona's name or a demo act label.</li>
+<li><strong>Apple/Broadcom 等業界說法</strong>:講者對 Broadcom 虛擬化定價的批評屬其個人立場,未提供佐證。/ His remarks on Broadcom's virtualization pricing are his own position, offered without evidence.</li>
+<li><strong>80,000 台 Linux 納管的客戶案例</strong>:未點名客戶。/ The 80,000-host customer was not named.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/workshop--infrastructure-you-can-talk-to.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

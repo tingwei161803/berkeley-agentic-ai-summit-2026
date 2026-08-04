@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Building a Token-Efficient OpenClaw Agentic System · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Agentic work moves the unit of account from tokens per second to cost per finished task, and the two levers that lower it are tiered caching — stop recomputing what the last turn already computed —…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/workshop--token-efficient-openclaw.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Building a Token-Efficient OpenClaw Agentic System · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Agentic work moves the unit of account from tokens per second to cost per finished task, and the two levers that lower it are tiered caching — stop recomputing what the last turn already computed —…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/workshop--token-efficient-openclaw.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="workshop--token-efficient-openclaw">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Building a Token-Efficient OpenClaw Agentic System" data-title-zh="打造 token 高效的 OpenClaw Agentic 系統">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--workshop"><span class="lang-en">Workshop</span><span class="lang-zh">工作坊</span></span>
+          <span class="dialog__session">Session 1: AI for Science</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Building a Token-Efficient OpenClaw Agentic System</span><span class="lang-zh">打造 token 高效的 OpenClaw Agentic 系統</span></h1>
+        <p class="dialog__speaker"><strong>Mahdi Ghodsi、Satya Devineni、Eda Zhou</strong> — AI Solutions Architect, AMD;Product Application Engineer, AMD;Software Development Engineer, AMD</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 01:26:03–02:20:25 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=LB7IkZhEYic&amp;t=5163s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:26:03</span><span class="lang-zh">從 01:26:03 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Agentic work moves the unit of account from tokens per second to cost per finished task, and the two levers that lower it are tiered caching — stop recomputing what the last turn already computed — and model routing — stop sending &quot;find me a file&quot; to a frontier model.</span><span class="lang-zh">agentic 工作把計價單位從「每秒 token 數」推向「每個完成任務的成本」,而降低那個成本的兩把刀是分層快取(別重算上一輪算過的東西)與模型路由(別把找檔案的請求送去前沿模型)。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><blockquote>
+<p>形式:前 10 分鐘為 AMD 的簡報(原講者為 AMD 副總,因故未到,由 Mahdi Ghodsi 代講),其後約 40 分鐘為現場動手工作坊,由 Mahdi Ghodsi 與 Satya Devineni 帶領,現場另有 TA 協助。以下依主題整理。</p>
+</blockquote>
+<h3>TL;DR</h3>
+<ul>
+<li><strong>計價單位變了</strong>:chat 是有界任務(prompt → response → 結束);agentic 是無界的(規劃、呼叫工具、看結果、不滿意再來一次),同一份工作可能幾秒也可能幾小時。因此該報的指標是<strong>每個成功完成任務的成本與時間</strong>,不是 tokens/sec。</li>
+<li><strong>這打壞三件事</strong>:預算(同一個服務,兩個使用者的成本可能差 10–100 倍——他們自己年初編的全年算力預算幾週就燒光了)、最佳化目標(從 flops 變成 memory-bound 的全系統問題)、以及計分卡本身。</li>
+<li><strong>一切都回到快取</strong>:每一輪都在重算上一輪算過的東西。三條戰線同時做——模型層(Kimi K3 的 93 層中有 69 層是 KDA 線性注意力,固定大小的遞迴狀態而非不斷長大的 KV cache)、GPU serving 層(HBM → CPU DRAM → SSD → pooled memory 的分層快取,P99 TTFT 從 17.3 秒降到 5.4 秒)、CPU 層(tokenization 快取:1.7 秒 → 0.09 毫秒)。</li>
+<li><strong>反直覺的一課</strong>:快取命中率從 88.5% <strong>降到</strong> 87.5%,但 TTFT 快了 3 倍——因為命中率不是使用者體驗,完成任務的時間才是。</li>
+<li><strong>工作坊主軸</strong>:用 OpenClaw 做 <strong>mixture of models</strong>(而非 mixture of experts),依成本、品質、隱私三個理由把請求路由到本地或雲端模型;四種難度遞增的路由方式一路做到 Lemonade Router 的語意路由。</li>
+</ul>
+<h3>主題與內容</h3>
+<h4>主題一:從 tokens 到 outcomes——為什麼計價單位變了(約 01:27–01:31)</h4>
+<p>聽起來理所當然但後果昂貴的一件事:<strong>AI chat 是有界任務</strong>——使用者送出 prompt、拿到回應、人讀完,結束。<strong>Agentic AI 不是</strong>:同一個查詢進去之後,agent 會規劃、也許呼叫工具、看結果、可能不滿意再叫一次,甚至展開一整張 agent 的圖。<strong>同樣一份工作,可能是幾秒,也可能是幾小時。</strong></p>
+<p>這對規劃容量或編列團隊預算的人來說是根本性的改變:過去是按「席次」把使用者掛到模型或服務上;現在<strong>一個使用者可能幾秒就結束,另一個可能跑幾小時</strong>,兩者所需算力是完全不同的數量級。</p>
+<p>他點名這會打壞三件事:</p>
+<ol>
+<li><strong>預算</strong>。同一個服務,兩個人的成本可能差 10 倍或 100 倍。他直說這大概就是他們副總把這頁放進來的原因——他們在年初編了整年的團隊算力預算,<strong>幾週就燒完了</strong>,而且整個產業都在發生同一件事。</li>
+<li><strong>最佳化目標</strong>。過去大家執著於 flops 與 tokens/sec、GPU 夠不夠快;現在 multi-turn agent run 讓 context 長得飛快,問題變成<strong>整個系統的、而且大量是 memory-bound 的</strong>。</li>
+<li><strong>計分卡</strong>。tokens/sec 已經說明不了什麼,因為重點是<strong>完成的任務</strong>,不是單次回應。</li>
+</ol>
+<h4>主題二:三條戰線上的同一個原則——快取(約 01:31–01:38)</h4>
+<p>原則一句話:<strong>每一輪都在重複上一輪已經做過的工作</strong>。跑到第 12 輪時,你其實還在重算前 11 輪算過的東西,只為了處理第 12 輪多出來的一點內容。答案很明顯——<strong>別重算,把它留著</strong>。這件事做了好幾年,但 agentic 讓它的重要性完全不同。他們在<strong>模型、GPU stack、CPU</strong> 三條線上並行處理,以下例子來自與 Moonshot AI 就 <strong>Kimi K3</strong> 的 day-zero 支援合作。</p>
+<ul>
+<li><strong>模型層</strong>:KV cache 每來一次回應就長大一次,大模型可以長到數百 GB,不可能全放進 HBM(GPU 最快的記憶體)。Kimi K3 的做法是:<strong>93 層裡有 69 層用 KDA(Kimi Delta Attention)</strong>——帶遞迴層的線性注意力,那些層計算的 token 量是固定的。在 AMD <strong>MI355</strong> 上(一個節點八張 GPU、每張 288 GB)實測<strong>只用了約 15.5 GB</strong>。</li>
+<li><strong>GPU serving 層</strong>:如果每個請求的 cache 都要放在 HBM,資料中心的經濟性不成立。他們對新模型重做了<strong>分層快取</strong>:<strong>HBM → CPU 的 DRAM → SSD → pooled memory</strong>。關鍵洞見是 agentic run 有<strong>大量閒置時間</strong>(agent 送出任務後在等工具或 CPU 的結果),所以要讓 eviction 發生時 GPU 仍然忙著;分層之後,模型準備好跑下一步時 prefix 已經就緒。成績:<strong>P99 的 time-to-first-token 從 17.3 秒降到 5.4 秒,約 3.2 倍</strong>。</li>
+<li><strong>CPU 層</strong>:agentic 讓 CPU 變得重要得多——大量計算發生在那裡,工具呼叫與執行都可以更有效率。他舉的例子是 <strong>tokenization 也可以快取</strong>:只算新的部分就得到<strong>固定 0.09 毫秒</strong>,而整份重算是 <strong>1.7 秒</strong>。</li>
+</ul>
+<p><strong>最反直覺的一頁</strong>:很多人報快取命中率,但他們的例子裡命中率<strong>從 88.5% 掉到 87.5%</strong>。乍看變糟了,但前面說的 TTFT 快了三倍——因為<strong>如果你還是得重算第一個 token,那 88.5% 並不代表什麼</strong>。結論:<strong>該報的是每次成功執行的成本與時間,不是 tokens/sec、也不是命中率</strong>。</p>
+<h4>主題三:mixture of models 與它的三個理由(約 01:41–01:47)</h4>
+<p>工作坊的主軸是把「routing」從模型內部搬到模型之間。他先鋪背景:多數開發者聽到 routing 想到的是 MoE(mixture of experts)——1991 年 Geoffrey Hinton 團隊那篇早期論文,2017 年在大得多的模型上重新探索並帶出 sparse gating 等技術,至今仍是主流方向。<strong>但同一個 routing 想法可以把端點從「expert」換成「model」</strong>,這就是這天要做的 <strong>mixture of models</strong>。</p>
+<p>三個理由:</p>
+<ol>
+<li><strong>成本</strong>——「不是每個 token 都值得那個最好的前沿模型」。找一個檔案、跑一個簡單指令,沒必要送去 Fable 5。</li>
+<li><strong>品質</strong>——需要時再升級(escalate),也可以讓專門模型處理專門任務。</li>
+<li><strong>隱私與安全</strong>——他個人電腦上有大量私人檔案,「我不想我的社會安全號碼出現在別人的訓練資料裡」,那就留在本機。</li>
+</ol>
+<p>他也點名這不是 AMD 的原創,學界早有探索:<strong>FrugalGPT</strong>(2023)用一個模型判斷小模型的回應,滿意就留、不滿意才升級到雲端模型,宣稱省下 98% 總成本且結果與當時的 GPT-4 相當;<strong>RouteLLM</strong>(Berkeley)則改成<strong>先用 router 決定該用哪個模型</strong>,同樣顯示 2 倍以上的成本節省;再往下就是<strong>語意路由</strong>——把進來的請求 embed 成向量,依你定義的規則用餘弦相似度分類該送去哪個模型。</p>
+<p><strong>硬體與環境</strong>:本地模型跑在 <strong>AMD Ryzen AI「Halo」box</strong>(Ryzen AI Max+ 395,市面可買的小型機),CPU/iGPU/NPU 共用 <strong>128 GB 統一記憶體</strong>,低精度下可跑到約 2,000 億參數等級;需要升級時走 <strong>Fireworks AI</strong>,其後端是 AMD <strong>MI355</strong> GPU。本地推論用 AMD 自研的 <strong>Lemonade</strong>(桌面 app 下載模型即可跑,語意路由內建),Lemonade 的一位創辦人 Krishna 也在現場。</p>
+<p><strong>OpenClaw 的角色</strong>:當天的 agentic runtime。他形容它「今年稍早爆紅,現在大概是最熱門的開源軟體」,創辦人也在會場。工作坊只用到它的 agent 建立機制:<strong>每個 agent 有自己的 workspace</strong>,裡面是一批 <code>.md</code> 設定檔(例如 <code>SOUL.md</code>、<code>AGENTS.md</code>)與 <code>openclaw.json</code>(模型設定與權限)。主辦方預先建好三個 agent:<code>local-brain</code>(接本地模型)、<code>cloud-brain</code>(接雲端 Kimi)、<code>smart-router</code>。</p>
+<h4>主題四:四層路由,由淺入深(約 01:47–02:06)</h4>
+<ol>
+<li><strong>手動 <code>/model</code> 切換</strong>。任何用過 coding agent 的人都會,最簡單。</li>
+<li><strong>一個模型一個專屬 agent</strong>。現場有人問「為什麼不用一個大 agent 就好?」答案是<strong>規則、權限與 context 都能按 agent 分開設定</strong>——例如規定「雲端 agent 永遠不准碰我的個人檔案」。示範:把 <code>cloud-brain</code> 的本地檔案權限關掉並重啟 gateway 後,叫它讀一份財務 CSV,它回「我沒有本地檔案系統的存取權」;切到 <code>local-brain</code> 同樣的指令則正常讀出。</li>
+<li><strong>自動升級路由</strong>。改 <code>smart-router</code> 這個 agent 的 <code>SOUL.md</code>,規定<strong>每則回應都必須以 <code>CLOUD</code> 或 <code>LOCAL</code> 其中一行開頭</strong>,並給出分類規則(要寫程式 → cloud;要讀檔案 → local)。示範兩則:「什麼是四年 vesting、一年 cliff?」→ 分類 LOCAL,本地模型回答;「寫一個計算貸款利息的 Python function」→ 分類 CLOUD,轉去 Fireworks 模型。實作上升級是<strong>開一個帶雲端模型的 sub-agent</strong>,把 context 傳過去、等它回來再取結果。</li>
+<li><strong>Lemonade Router 的語意路由</strong>(Satya Devineni 主講)。架構是:prompt → OpenClaw → 本機的 Lemonade Router → 依判斷分流:敏感問題走小型本地模型、複雜問題走雲端 Kimi K2.6、既複雜又敏感則走較大的本地模型。</li>
+</ol>
+<h4>主題五:語意路由實作——三個 agent、三種規則(約 02:06–02:19)</h4>
+<p>情境設定是「你在管一家新創」:員工到職離職、福利、財務、法務。每個 agent 用 OpenClaw 的 <strong>skills</strong>(<code>skills/</code> 資料夾下的 <code>SKILL.md</code>)界定資料來源、輸出期待、可以做與不可以做的事。</p>
+<ul>
+<li><strong>HR admin agent —— LLM-as-router</strong>。<code>employees.csv</code> 裡有 SSN、email、電話等 PII。先用雲端模型做到職,資料就外流了;改用 <code>user.hr-admin-router</code> 之後,routing prompt 只有一句話:「看到任何 PII 就送本地模型,其餘送 Fireworks」。同樣的到職請求就由本地模型完成,<strong>零資料離開機器</strong>。Lemonade dashboard(<code>localhost:1305</code>)可以看到本地模型被載入,以及 TTFT、TPS 等指標。</li>
+<li><strong>Benefits agent —— 關鍵字與規則路由</strong>。對 <code>benefits-handbook.md</code> 做 RAG。規則是:出現 401k、vesting 等關鍵字<strong>且</strong> prompt 短於 400 字元 → 本地;涉及比較、分析、benchmarking,或 prompt 長於 800 字元 → 雲端 Kimi K2.6。兩則示範分別命中兩條規則,而使用者完全不需要自己切模型。</li>
+<li><strong>Finance agent —— 語意相似度 + LLM 分類器</strong>。對 CSV 做資料分析。用 embedding 模型計算輸入 prompt 與預先定義概念之間的<strong>餘弦相似度</strong>(0–1 分):「what is our current burn rate」對應到 "simple metric lookup",門檻 &gt; 0.6 → 本地;多來源分析則對應 "deep modeling",此處<strong>兩條規則任一觸發就升級</strong>——LLM 分類器判定為 complex 且分數 &gt; 0.5,或語意相似度 &gt; 0.72 → 雲端。</li>
+</ul>
+<p><strong>挑戰與收尾</strong>:最後留約 10 分鐘讓與會者解一道題,規則是<strong>用最少 token 完成</strong>(本地、雲端、Lemonade Router 隨你選),排行榜計分、AMD 周邊當獎品。線上參加者可透過表單申請 AMD Developer Program 的免費算力額度,之後以 email 收到專屬連結跟做同一份工作坊。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"So the winner is whoever finishes the most tasks per dollar."(約 01:38:29)</p>
+</blockquote>
+<p>一句話定義 agentic 時代的計分卡。</p>
+<blockquote>
+<p>"…not every token deserves that best frontier model out there. If for example you're looking for a file or looking for simple command, you don't need to send that to your Fable 5."(約 01:44:37)</p>
+</blockquote>
+<p>mixture of models 的全部理由,濃縮成一句。</p></section>
+        <section class="lang-en"><blockquote>
+<p>Format: a 10-minute AMD deck (originally prepared by an AMD VP who couldn't attend, delivered by Mahdi Ghodsi), followed by roughly 40 minutes of hands-on workshop led by Mahdi Ghodsi and Satya Devineni with TAs on the floor. Organized by theme below.</p>
+</blockquote>
+<h3>TL;DR</h3>
+<ul>
+<li><strong>The unit of account changed.</strong> Chat is a bounded task: prompt in, response out, done. Agentic work is unbounded — plan, call a tool, inspect the result, dislike it, call again — so the same job might take seconds or hours. The metric to report is <strong>cost and time per successful run</strong>, not tokens per second.</li>
+<li><strong>This breaks three things</strong>: budgeting (two users of the same service can differ 10–100× in cost — their own team burned a full year's compute budget in a few weeks), the optimization target (from flops to a memory-bound whole-system problem), and the scorecard itself.</li>
+<li><strong>It all comes back to caching</strong>: every turn repeats work the last turn already did. Three fronts at once — model level (69 of Kimi K3's 93 layers use KDA linear attention with a fixed-size recurrent state instead of a growing KV cache), GPU serving stack (tiered HBM → CPU DRAM → SSD → pooled memory, taking P99 TTFT from 17.3s to 5.4s), and CPU (cached tokenization: 1.7s → 0.09ms).</li>
+<li><strong>The counterintuitive lesson</strong>: cache hit rate went <strong>down</strong> from 88.5% to 87.5% while TTFT improved 3× — because hit rate isn't the user experience, finished tasks are.</li>
+<li><strong>The workshop's through-line</strong>: use OpenClaw to build a <strong>mixture of models</strong> (not experts), routing requests to local or cloud models for reasons of cost, quality, and privacy — through four escalating routing techniques, ending in Lemonade Router's semantic routing.</li>
+</ul>
+<h3>Themes</h3>
+<h4>Theme 1: From tokens to outcomes — why the unit of account changed (~01:27–01:31)</h4>
+<p>Something that sounds obvious and turns out to be expensive: <strong>AI chat is a bounded task</strong> — the user sends a prompt, gets a response, reads it, done. <strong>Agentic AI isn't.</strong> The same query goes in, but the agent plans, maybe calls a tool, looks at the result, maybe doesn't like it and calls again, maybe spins up a whole graph of agents. <strong>The same work could be seconds or could be hours.</strong></p>
+<p>For anyone planning capacity or a team budget, this is a structural change. Previously you bought seats and assigned users to models or services. Now <strong>one user might take seconds and another might take hours</strong>, and the compute those two need differs by orders of magnitude.</p>
+<p>Three things break:</p>
+<ol>
+<li><strong>Budgeting.</strong> Two people on the same service can differ 10× or 100× in cost. He suspected that's why his VP put the slide in: they budgeted a full year of compute for the team at the start of the year and <strong>blew through it in a few weeks</strong> — and it's happening across the industry.</li>
+<li><strong>The optimization target.</strong> Everyone used to obsess over flops, tokens per second, and whether the GPU was fast enough. Now multi-turn agent runs grow context so fast that it's a <strong>whole-system, largely memory-bound</strong> problem.</li>
+<li><strong>The scorecard.</strong> Tokens per second doesn't tell you much when what matters is the <strong>finished task</strong>, not one response.</li>
+</ol>
+<h4>Theme 2: One principle across three fronts — caching (~01:31–01:38)</h4>
+<p>The principle in a sentence: <strong>every turn repeats work from the last turn.</strong> By turn 12 you're still recomputing all 11 previous turns just to handle what's new in turn 12. The obvious answer is not to redo it. People have been doing this for years, but agentic work changes its weight. They attack it on three fronts — <strong>models, the GPU stack, and the CPU</strong> — with examples from their day-zero <strong>Kimi K3</strong> collaboration with Moonshot AI.</p>
+<ul>
+<li><strong>Model level</strong>: the KV cache grows with every response, reaching hundreds of gigabytes for large models — impossible to keep in HBM, the GPU's fastest memory. Kimi K3's approach: <strong>69 of its 93 layers use KDA (Kimi Delta Attention)</strong>, linear attention with recurrent layers, so those layers compute over a fixed token budget. On AMD <strong>MI355</strong> (one node, eight GPUs, 288 GB each) their experiment used <strong>only ~15.5 GB</strong>.</li>
+<li><strong>GPU serving stack</strong>: keeping every request's cache in HBM makes the data center economics untenable. They redesigned <strong>tiered caching</strong> around the new model: <strong>HBM → CPU DRAM → SSD → pooled memory</strong>. The key observation is that agentic runs have <strong>a lot of idle time</strong> — the agent fires a task and waits on a tool call or CPU work — so when eviction happens you want the GPU still busy. With tiering, the prefix is ready when the model is ready to run. Result: <strong>P99 time-to-first-token from 17.3s to 5.4s, roughly 3.2×</strong>.</li>
+<li><strong>CPU side</strong>: agentic workloads make CPUs far more relevant — a lot of compute happens there, and tool calls and execution can be made much more efficient. His example: <strong>tokenization can be cached too</strong>, giving a flat <strong>0.09 ms</strong> when you only compute what's new versus <strong>1.7 s</strong> to recompute everything.</li>
+</ul>
+<p><strong>The counterintuitive slide</strong>: plenty of people report cache hit rate, and in their example it went <strong>down</strong>, from 88.5% to 87.5%. At first glance that's worse — but TTFT improved 3×, because <strong>88.5% doesn't mean much if you still have to compute the first token.</strong> Conclusion: <strong>report cost and time per successful run, not tokens per second and not hit rate.</strong></p>
+<h4>Theme 3: Mixture of models, and the three reasons for it (~01:41–01:47)</h4>
+<p>The workshop's through-line is moving routing from inside the model to between models. He set up the background: most developers hear "routing" and think MoE — the notable early paper from Geoffrey Hinton's team in 1991, revisited in 2017 on a far larger model where sparse gating and better expert-selection gating emerged, still state of the art today. <strong>But the same routing idea works with models, rather than experts, as the endpoints</strong> — the <strong>mixture of models</strong> they'd be building.</p>
+<p>Three reasons:</p>
+<ol>
+<li><strong>Cost</strong> — "not every token deserves that best frontier model." Finding a file or running a simple command doesn't need to go to Fable 5.</li>
+<li><strong>Quality</strong> — escalate when it's needed, and use specialized models for tasks they handle well.</li>
+<li><strong>Privacy and security</strong> — he has plenty of personal files on his machine and doesn't want his social security number showing up in someone's training data, so it stays local.</li>
+</ol>
+<p>He was explicit that none of this is AMD's idea. <strong>FrugalGPT</strong> (2023) used a judge model on the small model's response, keeping it if satisfactory and escalating to a cloud model otherwise, claiming 98% total cost savings with results comparable to GPT-4 at the time. <strong>RouteLLM</strong> (from Berkeley) moved the decision up front — a router picks the model before inference — showing over 2× cost savings. Then <strong>semantic routing</strong>: embed the incoming request and classify the resulting vector against your rules using cosine similarity.</p>
+<p><strong>Hardware and environment</strong>: the local model runs on an <strong>AMD Ryzen AI "Halo" box</strong> (Ryzen AI Max+ 395, purchasable as a small-form-factor machine), with CPU, iGPU and NPU sharing <strong>128 GB of unified memory</strong> — enough to serve models up to roughly 200B parameters at lower precision. Escalation goes to <strong>Fireworks AI</strong>, served on AMD <strong>MI355</strong> GPUs. Local inference uses AMD's own <strong>Lemonade</strong> (desktop app, download a model and go, semantic routing built in); one of Lemonade's founders, Krishna, was in the room.</p>
+<p><strong>OpenClaw's role</strong>: the agentic runtime for the day. He described it as having gone hugely popular earlier in the year and being probably the most popular open-source software right now, with its founder also at the conference. The workshop uses only its agent-creation mechanics: <strong>each agent gets its own workspace</strong> containing <code>.md</code> config files (<code>SOUL.md</code>, <code>AGENTS.md</code>) and <code>openclaw.json</code> for models and permissions. Three agents were pre-built: <code>local-brain</code> (local model), <code>cloud-brain</code> (cloud Kimi), and <code>smart-router</code>.</p>
+<h4>Theme 4: Four levels of routing (~01:47–02:06)</h4>
+<ol>
+<li><strong>Manual <code>/model</code> switching.</strong> Anyone who's used a coding agent knows it; simplest possible.</li>
+<li><strong>A dedicated agent per model.</strong> An attendee asked why not just use one big agent. The answer: <strong>rules, permissions, and context can be set per agent</strong> — e.g. "the cloud agent must never touch my personal files." Demo: after disabling local-file access for <code>cloud-brain</code> and restarting the gateway, asking it to read a financial CSV returned "I don't have access to the local file system"; switching to <code>local-brain</code> and issuing the same command printed the report fine.</li>
+<li><strong>Automatic escalation routing.</strong> Edit the <code>smart-router</code> agent's <code>SOUL.md</code> so <strong>every response must begin with exactly one of two lines — <code>CLOUD</code> or <code>LOCAL</code></strong> — plus classification rules (write code → cloud; read a file → local). Two demos: "what does a four-year vesting schedule with a one-year cliff mean?" classified LOCAL and answered locally; "write a Python function to calculate loan interest payments" classified CLOUD and routed to the Fireworks model. Under the hood, escalation <strong>spawns a sub-agent</strong> carrying the cloud model, passes it the context, and waits for it to return.</li>
+<li><strong>Lemonade Router's semantic routing</strong> (Satya Devineni's section). Architecture: prompt → OpenClaw → Lemonade Router running locally → sensitive questions to a small local model, complex questions to cloud Kimi K2.6, complex-and-sensitive to a larger local model.</li>
+</ol>
+<h4>Theme 5: Semantic routing in practice — three agents, three rule types (~02:06–02:19)</h4>
+<p>The scenario: you're running a startup — onboarding and offboarding, benefits, finance, legal. Each agent is scoped by OpenClaw <strong>skills</strong> (a <code>SKILL.md</code> in the <code>skills/</code> folder) that point at data sources, state output expectations, and specify what the agent is and isn't authorized to do.</p>
+<ul>
+<li><strong>HR admin agent — LLM-as-router.</strong> <code>employees.csv</code> holds PII: SSNs, emails, phone numbers. Onboarding an employee through the cloud model leaks all of it. Switching to <code>user.hr-admin-router</code> applies a one-line routing prompt — "if you see any personally identifiable information send it to a local model; for anything else, send it to Fireworks" — and the same onboarding request completes locally with <strong>zero data leaving the machine</strong>. The Lemonade dashboard at <code>localhost:1305</code> shows the local model loading, plus TTFT, TPS, and other metrics.</li>
+<li><strong>Benefits agent — keyword and rule routing.</strong> RAG over <code>benefits-handbook.md</code>. Rules: keywords like 401k or vesting <strong>and</strong> a prompt under 400 characters → local; comparison, analysis, or benchmarking questions, or prompts over 800 characters → cloud Kimi K2.6. Two demos hit the two rules, with the user never switching models.</li>
+<li><strong>Finance agent — semantic similarity plus an LLM classifier.</strong> Data analysis over CSVs. An embedding model computes <strong>cosine similarity</strong> (scored 0–1) between the input prompt and predefined concepts: "what is our current burn rate" maps to <em>simple metric lookup</em> with a threshold above 0.6 → local. Multi-source analysis maps to <em>deep modeling</em>, where <strong>either of two rules triggers escalation</strong> — an LLM classifier labeling the question complex above 0.5, or a semantic score above 0.72 → cloud.</li>
+</ul>
+<p><strong>Challenge and wrap-up</strong>: roughly 10 minutes at the end for attendees to solve a task using <strong>the fewest tokens possible</strong> — local, cloud, or Lemonade Router, their choice — scored on a leaderboard with AMD swag as prizes. Virtual attendees could request free compute credits through the AMD Developer Program form and receive a personal link by email to follow the same workshop later.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"So the winner is whoever finishes the most tasks per dollar." (~01:38:29)</p>
+</blockquote>
+<p>The agentic-era scorecard in one line.</p>
+<blockquote>
+<p>"…not every token deserves that best frontier model out there. If for example you're looking for a file or looking for simple command, you don't need to send that to your Fable 5." (~01:44:37)</p>
+</blockquote>
+<p>The entire case for mixture of models, compressed.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kimi K3(Moonshot AI)</td>
+<td>93 層中 69 層採 KDA 線性注意力,遞迴狀態固定大小而非成長的 KV cache</td>
+<td>69 of 93 layers use KDA linear attention — a fixed-size recurrent state instead of a growing KV cache</td>
+<td>2.8T 參數 MoE、1M context;AMD 提供 day-zero 支援 / 2.8T-param MoE with 1M context; AMD provided day-zero support</td>
+</tr>
+<tr>
+<td>KDA(Kimi Delta Attention)</td>
+<td>帶遞迴層的線性注意力,固定 token 計算量</td>
+<td>Linear attention with recurrent layers and a fixed token compute budget</td>
+<td>MI355 上實測記憶體約 15.5 GB / measured ~15.5 GB on MI355</td>
+</tr>
+<tr>
+<td>分層快取 / tiered caching</td>
+<td>HBM → CPU DRAM → SSD → pooled memory,利用 agentic run 的閒置時間</td>
+<td>HBM → CPU DRAM → SSD → pooled memory, exploiting agentic runs' idle time</td>
+<td>P99 TTFT 17.3s → 5.4s(≈3.2×)/ P99 TTFT 17.3s → 5.4s (~3.2×)</td>
+</tr>
+<tr>
+<td>Lemonade / Lemonade Router</td>
+<td>AMD 自研本地 LLM server,內建 rule / classifier / 語意相似度 / LLM-as-router 四種路由策略</td>
+<td>AMD's local LLM server with rule, classifier, semantic-similarity, and LLM-as-router policies built in</td>
+<td>dashboard 在 <code>localhost:1305</code>;創辦人之一 Krishna 在場 / dashboard at <code>localhost:1305</code>; co-founder Krishna present</td>
+</tr>
+<tr>
+<td>OpenClaw</td>
+<td>工作坊使用的 agentic runtime;每個 agent 有 workspace、<code>SOUL.md</code>/<code>AGENTS.md</code> 與 <code>openclaw.json</code></td>
+<td>The workshop's agentic runtime; each agent has a workspace with <code>SOUL.md</code>/<code>AGENTS.md</code> and <code>openclaw.json</code></td>
+<td>講者稱其為「目前最熱門的開源軟體」/ described as "the most popular open source software out there right now"</td>
+</tr>
+<tr>
+<td>FrugalGPT(2023)</td>
+<td>用 judge 判斷小模型回應,不滿意才升級雲端;宣稱省 98% 成本</td>
+<td>Judge the small model's answer and escalate only if unsatisfied; claimed 98% cost savings</td>
+<td>講者引為 mixture-of-models 的學界先例 / cited as academic prior art</td>
+</tr>
+<tr>
+<td>RouteLLM(Berkeley)</td>
+<td>事前用 router 決定該用哪個模型,顯示 2 倍以上成本節省</td>
+<td>A router picks the model up front; over 2× cost savings</td>
+<td>同上 / same</td>
+</tr>
+<tr>
+<td>AMD Ryzen AI Max+ 395(“Halo” box)</td>
+<td>CPU + iGPU + NPU 共用 128 GB 統一記憶體,低精度下可跑約 200B 參數模型</td>
+<td>CPU, iGPU, and NPU sharing 128 GB unified memory; runs models up to ~200B params at lower precision</td>
+<td>工作坊的本地模型主機 / the workshop's local model host</td>
+</tr>
+<tr>
+<td>AMD Instinct MI355</td>
+<td>一節點八張、每張 288 GB;Fireworks AI 用它服務雲端模型</td>
+<td>Eight per node at 288 GB each; Fireworks AI serves the cloud model on them</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mati Goodsy / Maddie / Mari</td>
+<td>Mahdi Ghodsi</td>
+</tr>
+<tr>
+<td>Satia / Satio</td>
+<td>Satya Devineni</td>
+</tr>
+<tr>
+<td>Kim K3 / Kimmy K3 / Kimik2.6</td>
+<td>Kimi K3 / Kimi K2.6</td>
+</tr>
+<tr>
+<td>KDA、Kimmy delta attention</td>
+<td>KDA(Kimi Delta Attention)</td>
+</tr>
+<tr>
+<td>HPM</td>
+<td>HBM(High Bandwidth Memory)</td>
+</tr>
+<tr>
+<td>AMDMI 355 / MI 355</td>
+<td>AMD Instinct MI355</td>
+</tr>
+<tr>
+<td>open claw / opencloud / open cloud / openclaw(混用)</td>
+<td>OpenClaw</td>
+</tr>
+<tr>
+<td>opencloud.json / open cloud JSON</td>
+<td><code>openclaw.json</code></td>
+</tr>
+<tr>
+<td>solar MD / soul MD / MD 檔</td>
+<td><code>SOUL.md</code></td>
+</tr>
+<tr>
+<td>Lemonate / Lemonade(混用)</td>
+<td>Lemonade</td>
+</tr>
+<tr>
+<td>Jeff Henon</td>
+<td>Geoffrey Hinton</td>
+</tr>
+<tr>
+<td>frugal GPT / GPD4</td>
+<td>FrugalGPT / GPT-4</td>
+</tr>
+<tr>
+<td>route LLM</td>
+<td>RouteLLM</td>
+</tr>
+<tr>
+<td>Quen 3.635B / quen 3.59B</td>
+<td>Qwen 3(版本待確認 / version to verify)</td>
+</tr>
+<tr>
+<td>coine similarity</td>
+<td>cosine similarity</td>
+</tr>
+<tr>
+<td>Ryzen AI Halobox / AMX 395</td>
+<td>Ryzen AI Max+ 395</td>
+</tr>
+<tr>
+<td>rack / rag(混用)</td>
+<td>RAG</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>本地模型的確切版本</strong>:字幕在同一段裡出現 "Quen 3.635B"、"quen 3.59B"、"Quen 3.635B" 等多種寫法,推測是 Qwen 3 系列的兩個尺寸(較小的路由/分類模型與較大的本地模型),但參數規模無法確認。/ The local model versions are ambiguous — the transcript gives several spellings suggesting two Qwen 3 sizes (a smaller router/classifier and a larger local model), but the parameter counts can't be confirmed.</li>
+<li><strong>原講稿作者</strong>:字幕稱 AMD 副總為 "Ramen" / "Ram",姓名未確認。/ The AMD VP who prepared the deck is transcribed as "Ramen" / "Ram"; name unconfirmed.</li>
+<li><strong>第三位議程講者 Eda Zhou</strong> 在逐字稿中未被點名;講者提到一位穿龍蝦裝的同事擔任 TA,是否為同一人待確認。/ Eda Zhou, listed on the agenda, is never named in the transcript; a colleague in a lobster costume is mentioned as a TA, but the identification is unconfirmed.</li>
+<li><strong>1991 年 MoE 論文</strong>:講者說「Jeff Henon 和他的團隊」,應指 Jacobs、Jordan、Nowlan、Hinton 的 mixture-of-experts 工作;2017 年那篇「超過一兆參數」的說法與公開紀錄不符(2017 sparsely-gated MoE 約 137B),需查證他實際指的是哪一篇。/ The 1991 MoE reference is presumably Jacobs, Jordan, Nowlan &amp; Hinton; his "over one trillion parameters" claim for the 2017 revisit doesn't match the public record (the 2017 sparsely-gated MoE was ~137B) — which paper he meant needs checking.</li>
+<li><strong>FrugalGPT 省下 98% 成本</strong>的數字為講者轉述,未核對原論文。/ The 98% cost-saving figure for FrugalGPT is as stated on stage, not checked against the paper.</li>
+<li><strong>工作坊環境的公開版本</strong>:線上索取算力的表單與後續連結未出現在逐字稿可查證的形式。/ The form and follow-up link for virtual attendees' compute credits aren't recoverable from the transcript.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/workshop--token-efficient-openclaw.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

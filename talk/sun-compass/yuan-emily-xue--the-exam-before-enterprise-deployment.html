@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>The Exam Before Enterprise Deployment · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Today&#x27;s benchmarks measure a *ceiling* — how far models are from the top of human intelligence — and are deliberately kept from saturating; enterprises need the opposite measurement, *deployment re…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/yuan-emily-xue--the-exam-before-enterprise-deployment.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Exam Before Enterprise Deployment · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Today&#x27;s benchmarks measure a *ceiling* — how far models are from the top of human intelligence — and are deliberately kept from saturating; enterprises need the opposite measurement, *deployment re…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/yuan-emily-xue--the-exam-before-enterprise-deployment.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="yuan-emily-xue--the-exam-before-enterprise-deployment">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="The Exam Before Enterprise Deployment" data-title-zh="企業部署前的那場考試">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Agent Evaluation &amp; Benchmarks</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">The Exam Before Enterprise Deployment</span><span class="lang-zh">企業部署前的那場考試</span></h1>
+        <p class="dialog__speaker"><strong>Yuan (Emily) Xue</strong> — Head of Enterprise AI, Scale AI</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 01:58:39–02:11:10 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=7119s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:58:39</span><span class="lang-zh">從 01:58:39 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Today&#x27;s benchmarks measure a *ceiling* — how far models are from the top of human intelligence — and are deliberately kept from saturating; enterprises need the opposite measurement, *deployment readiness*: can this use case ship today, what human-oversight cost buys the 99% reliability it requires, and how does that cost fall as models improve. Reliability is a constraint, not a tradeable variable.</span><span class="lang-zh">現有 benchmark 量的是「天花板」——模型離人類智慧頂點還差多遠,而且刻意不讓自己被刷爆;企業要的卻是「部署就緒度」——這個 use case 今天能不能上線、要花多少人力監督成本才能撐到 99% 可靠度,以及隨著模型變好那筆成本怎麼降。可靠度是約束,不是可以交換的變數。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>Benchmark 開發者和企業買家對「低分」的感受完全相反</strong>:benchmark 分數低,模型開發者覺得興奮(有努力空間);企業主管看到 text-to-SQL benchmark 天花板只有 60–70% 只會困惑——「大家都說 agent 這麼聰明了,為什麼做不到 99%?」而 benchmark 之所以不讓自己飽和,是因為一旦飽和就沒人用了。</li>
+<li><strong>兩件事要分開</strong>:現有 benchmark 量的是 <strong>capability</strong>(面向模型開發者,模型互相競爭);企業採用需要的是 <strong>deployment readiness</strong>(這個 use case 能不能部署、要付出什麼才能部署)。</li>
+<li><strong>五個評估 primitive</strong>:答案可信嗎(grounding:citation precision + 證據涵蓋率/recall)、有沒有遵守內規(policy compliance)、agent 知不知道自己不知道(信心校準 + abstention)、寫入操作是否可回復(rollback policy)、以及人力監督的經濟性。</li>
+<li><strong>醫療案例最有代表性</strong>:agent 該查檢驗數值裡的 creatinine 上升來判斷急性腎損傷,結果它抄捷徑直接讀電子病歷的診斷紀錄。<strong>答案可能對,流程卻違反臨床規定</strong>——這是純看答案正確率永遠抓不到的失敗。</li>
+<li><strong>改善路徑不是把分數從 60% 推到 90%,而是經濟結構的變化</strong>:初期需要重度人力監督,隨模型變好,達成同樣可靠度所需的每任務成本下降。<strong>可靠度不能交換,能交換的是「人與 agent 怎麼協作」的政策</strong>。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>講者背景與問題設定(約 01:59–02:00)</h4>
+<p>Xue 現在在 Scale AI 負責企業內的 AI 功能,大量接觸企業客戶。加入 Scale AI 之前,她在 Google 待了 11 年,是 Gemini 團隊的核心成員;除了參與 Gemini 開發,<strong>與本場最相關的經歷是她組建團隊為 Gemini 做 cloud agent benchmark</strong>。</p>
+<p>她的前提很簡單:AI 的價值必須落地成生產力、產生真實經濟影響,而<strong>只要 AI 停在 demo 與 pilot,這件事就不會發生</strong>。所以整場演講就談一件事:從 pilot 走到 production,中間的把關決策是什麼?核心問題只有一句——<strong>「這個 agent 能不能可靠地部署到我的組織裡做有用的工作?」</strong></p>
+<h4>Benchmark 量的是天花板,企業要的是地板(約 02:00–02:02)</h4>
+<p>現在外面有數百個 benchmark。但如果你仔細看,會發現<strong>它們量的都是「天花板」</strong>:模型當下能力與人類智慧頂點之間的差距。</p>
+<p>這造成一種奇特的視角錯位:</p>
+<ul>
+<li><strong>benchmark 開發者</strong>的客戶是模型開發者。分數低,他們反而興奮——代表有 gap、有空間、有事情可做。</li>
+<li><strong>企業買家</strong>看到同一個分數,反應完全相反。</li>
+</ul>
+<p>她分享了一個 text-to-SQL 的真實案例:企業主管無法理解,既然大家都說 agent 現在這麼聰明,為什麼你的 agent 做不到 99% 可靠度?研究員於是把 text-to-SQL 的 benchmark 拿給他們看——<strong>頂尖成績也只有 60–70%</strong>。</p>
+<p>而這個天花板是刻意的:<strong>benchmark 不希望自己飽和,一旦飽和就沒人用了</strong>。但企業的現實需求恰恰是把那個數字推到 95–99%。</p>
+<p>這就是落差所在:<strong>現有 benchmark 測的是 capability,是面向開發者的競技場;企業採用需要的是 deployment readiness——這個 use case 準備好上線了嗎?要讓它上線需要付出什麼?</strong></p>
+<h4>企業買家真正會問的五個問題(約 02:02–02:03)</h4>
+<ol>
+<li><strong>今天有什麼是能上 production 的?</strong> 我手上有一串優先事項,哪些難、哪些相對已經可以部署?</li>
+<li><strong>我要怎麼量化「就緒度」?</strong> 就緒是個概念,怎麼變成數字,又怎麼信任這個數字?</li>
+<li><strong>如果有落差,怎麼補?</strong> 假設是 90%,不管怎麼量的,我不可能拿 90% 上線面對客戶,我需要 99.9%。這 10% 怎麼補?</li>
+<li><strong>人力監督政策該怎麼訂?</strong> 現實裡永遠有 human oversight,問題是「用什麼樣的監督政策」才能撐到目標可靠度。</li>
+<li><strong>成本划得來嗎?</strong> 這邊燒 token,那邊付人力,加起來我這個 AI 專案到底有沒有省到錢?</li>
+</ol>
+<p>歸納成一份 <strong>readiness profile</strong>:qualification(資格認定)、risk envelope(風險邊界)、oversight policy(監督政策)、improvement path(改善路徑)。</p>
+<h4>五個評估 primitive(約 02:04–02:07)</h4>
+<p><strong>1. 答案可信嗎?——grounding</strong></p>
+<p>沒什麼祕密,就是 grounding:答案裡的每一條資訊,<strong>citation precision</strong> 夠不夠?它有沒有 grounded 在某個來源上?反過來還有 <strong>recall</strong> 問題:證據資料庫裡該涵蓋的東西,有沒有漏掉?</p>
+<p><strong>2. 有沒有遵守內部政策?——policy compliance</strong></p>
+<p>很多時候 agent 給了正確答案,但<strong>它有沒有照我的內規做事</strong>?</p>
+<p>她舉了一個醫療客戶的具體案例:任務是為臨床安全事件做品質稽核,要準確辨識<strong>急性腎損傷</strong>。臨床規定的做法是:<strong>看檢驗數據,看 creatinine 的上升幅度</strong>。</p>
+<p>但部署後他們發現,<strong>agent 變聰明了,它抄了捷徑</strong>——它沒有去檢驗數據裡撈 creatinine,而是直接去讀電子病歷系統裡的臨床紀錄與診斷紀錄,從那裡判斷這個病人有沒有急性腎損傷。</p>
+<p><strong>它沒有遵守臨床環境指定的作業流程。</strong> 這是一個必須被處理的問題,而且只看最終答案對不對永遠測不出來。</p>
+<p><strong>3. Agent 知不知道自己不知道?</strong>(她說這是她最愛的問題)</p>
+<p>兩件相關的事:</p>
+<ul>
+<li><strong>信心校準(confidence calibration)</strong>:agent 常說「我有 60% 把握」,但它真的在 60% 的情況下答對嗎?自稱的信心必須對照現實校準。</li>
+<li><strong>更重要的是 abstention 政策</strong>:如果它不知道,我們得給它一個政策——<strong>什麼時候該停下來不給答案、該說「我需要人接手」、該把案子轉出去</strong>。</li>
+</ul>
+<p><strong>4. 寫入操作(write operations)</strong>(約 02:07)</p>
+<p>這是 agent 系統與傳統企業系統交界的地方。重點不只是你自己系統的安全與可靠——而是<strong>當 agent 的操作真的打進企業系統時</strong>:你怎麼變更狀態?<strong>這個變更可回復嗎?rollback 政策在哪裡?</strong></p>
+<p><strong>5. 人力監督的經濟性(oversight economics)</strong></p>
+<p>如果流程裡有人力監督,人 + agent 合起來,這筆帳到底划不划算。</p>
+<h4>把 primitive 收進框架:三個互動介面(約 02:07–02:09)</h4>
+<p>這是他們<strong>即將發布的 benchmark</strong>(當月推出)所採用的切分方式,依「agent 系統與外界互動的介面」來組織:</p>
+<table>
+<thead>
+<tr>
+<th>介面 Surface</th>
+<th>互動性質</th>
+<th>要驗證什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. 讀取 / 供人審閱</strong></td>
+<td>取得資訊交給人類審查</td>
+<td>答案是否可信;搭配 human review policy</td>
+</tr>
+<tr>
+<td><strong>2. 寫入企業系統</strong></td>
+<td>agent 系統變更企業系統狀態</td>
+<td>變更是否可回復、可信;是否 privacy-preserving、不外洩資訊</td>
+</tr>
+<tr>
+<td><strong>3. 開放對話</strong></td>
+<td>直接面對企業的終端客戶</td>
+<td>輸入來自開放空間的使用者,可能是惡意的或規格不清的;你要如何<strong>引導對話</strong>達成目標</td>
+</tr>
+</tbody>
+</table>
+<p>最後由一份 <strong>deployment profile</strong> 回答一整組(七個)問題。</p>
+<h4>結論:改善路徑是經濟學,不是分數(約 02:09–02:11)</h4>
+<p>她最想強調的兩點:</p>
+<p><strong>第一,企業要的不是一個分數。</strong> 企業真正想知道的是兩件事:(a) <strong>這個 use case 準備好了嗎?</strong> (b) <strong>經濟結構長什麼樣——我要付多少成本、建立什麼樣的人力監督政策,才能達到我需要的可靠度?</strong></p>
+<p><strong>第二,改善路徑不是分數的改善。</strong> 不是「我把分數從 60% 拉到 80%、90%」,而是<strong>經濟結構的改變</strong>:一開始你需要很重的人力監督;隨著模型品質提升,<strong>你為同一個任務付出的成本會持續下降</strong>。</p>
+<p>她給出全場最鋒利的一句框架:<strong>我們被可靠度約束住了,而可靠度不是可以拿來交換的東西。可以交換的是「政策」——人與 agent 要怎麼以可信的方式一起工作。</strong></p>
+<h3>金句</h3>
+<blockquote>
+<p>"When the benchmark is saturated, people don't use it anymore."(約 02:01)</p>
+</blockquote>
+<p>一句話解釋了為什麼企業永遠在公開 benchmark 上看到令人失望的天花板——那個天花板是設計出來的。</p>
+<blockquote>
+<p>"The agent has become smart. It does a shortcut."(約 02:05)</p>
+</blockquote>
+<p>急性腎損傷案例的核心:agent 的「聰明」正是它繞過臨床規定的方式。答案對,流程錯。</p>
+<blockquote>
+<p>"Does the agent know what it doesn't know?"(約 02:06)</p>
+</blockquote>
+<p>她自己說這是她最喜歡的問題:拆成信心校準與 abstention 政策兩件事。</p>
+<blockquote>
+<p>"We are constrained by reliability. Reliability is not something you can trade off. What is trade-off is what's the policy."(約 02:10)</p>
+</blockquote>
+<p>整場演講的結論句。</p>
+<blockquote>
+<p>"Don't only ask how intelligent the agent is. Ask what it's ready to do, under what constraint, what's the risk, and what's the cost."(約 02:10,最後一張投影片)</p>
+</blockquote></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>A low benchmark score means opposite things to benchmark builders and enterprise buyers.</strong> Model developers see a low score and get excited — there's a gap, there's work to do. An executive who sees that the best text-to-SQL benchmarks top out at 60–70% is simply baffled: everyone says agents are brilliant now, so why can't mine hit 99%? Benchmarks stay unsaturated on purpose, because a saturated benchmark stops being used.</li>
+<li><strong>Two different measurements.</strong> Existing benchmarks measure <strong>capability</strong> — developer-facing, models competing against each other. Enterprise adoption needs <strong>deployment readiness</strong>: can this use case ship, and what does shipping it take?</li>
+<li><strong>Five evaluation primitives</strong>: can we trust the answer (grounding — citation precision plus evidence recall), does it comply with internal policy, does the agent know what it doesn't know (confidence calibration plus abstention), are write operations recoverable (rollback policy), and does the oversight economics work.</li>
+<li><strong>The healthcare example is the sharpest one.</strong> The agent was supposed to identify acute kidney failure by reading lab measurements and checking the rise in creatinine. Instead it took a shortcut and read the diagnosis notes in the EMR. <strong>The answer may be right and the process still violates clinical policy</strong> — a failure mode that pure answer-accuracy will never surface.</li>
+<li><strong>The improvement path is economic, not a score.</strong> It isn't 60% → 80% → 90%. It's that you start with heavy human oversight and, as model quality improves, the cost of hitting the same reliability target falls. <strong>Reliability is a constraint you can't trade away; what you trade is the policy for how humans and agents work together.</strong></li>
+</ul>
+<h3>Key Points</h3>
+<h4>Background and framing (~01:59–02:00)</h4>
+<p>Xue leads AI functionality for enterprise at Scale AI and spends much of her time with enterprise customers. Before Scale she spent 11 years at Google as a core member of the Gemini team — and, most relevant to this talk, <strong>built the team that produced Gemini's cloud agent benchmark</strong>.</p>
+<p>Her premise: AI's value has to land as productivity and real economic impact, and <strong>that will not happen while AI stays in demos and pilots</strong>. So the talk is about the gating decision between pilot and production, which reduces to one question: <strong>can this agent be reliably deployed to do useful work inside our organization?</strong></p>
+<h4>Benchmarks measure the ceiling; enterprises need the floor (~02:00–02:02)</h4>
+<p>There are hundreds of benchmarks out there. Look closely and <strong>they all measure a ceiling</strong> — the gap between what a model can do now and the top of human intelligence.</p>
+<p>That creates a perspective mismatch:</p>
+<ul>
+<li><strong>Benchmark developers</strong> serve model developers as their customers. A low score is exciting: it means headroom.</li>
+<li><strong>Enterprise buyers</strong> see the identical number and react in the opposite direction.</li>
+</ul>
+<p>Her anecdote comes from a text-to-SQL use case. Executives couldn't understand why the agent wasn't at 99% reliability when everyone insists agents are so smart now. So the researchers showed them the text-to-SQL benchmarks — where the state of the art is <strong>60–70%</strong>.</p>
+<p>And that ceiling is deliberate: <strong>nobody wants their benchmark to saturate, because a saturated benchmark gets abandoned.</strong> But the enterprise need is precisely to push that number to 95–99%.</p>
+<p>Hence the gap: <strong>current benchmarks measure capability, a developer-facing competition; enterprise adoption needs deployment readiness — is this use case ready, and what will it take to get it there?</strong></p>
+<h4>The five questions enterprise buyers actually ask (~02:02–02:03)</h4>
+<ol>
+<li><strong>What is ready for production today?</strong> I have a list of priorities — which are hard, which are relatively deployable?</li>
+<li><strong>How do I measure readiness?</strong> Readiness is a concept; how do I quantify it, and how do I trust the result?</li>
+<li><strong>If there's a gap, how do I fill it?</strong> Say it's 90%, however that was measured. I cannot put 90% in front of customers; I need 99.9%. What closes the remaining slice?</li>
+<li><strong>What's the human oversight policy?</strong> There is always human oversight in reality; the question is which policy gets me to my target.</li>
+<li><strong>Does the cost work?</strong> Tokens on one side, humans on the other — is my AI initiative actually saving money?</li>
+</ol>
+<p>Together these form a <strong>readiness profile</strong>: qualification, risk envelope, oversight policy, and improvement path.</p>
+<h4>Five evaluation primitives (~02:04–02:07)</h4>
+<p><strong>1. Can we trust the answer? — grounding.</strong> No secret here: for every piece of information in the answer, what's the <strong>citation precision</strong> — is it grounded in a source? And the mirror-image <strong>recall</strong> question: does the answer cover everything the evidence base should have produced, or did it miss something?</p>
+<p><strong>2. Policy compliance.</strong> Often the agent gives a correct answer — but <strong>does it follow my internal policy?</strong></p>
+<p>Her concrete case came from a healthcare customer doing quality auditing for clinical safety events, where the task was to accurately identify <strong>acute kidney failure</strong>. Clinical policy specifies the method: <strong>look at the labs, look at the rise in creatinine.</strong></p>
+<p>What they observed in deployment was that <strong>the agent got smart and took a shortcut</strong> — instead of retrieving creatinine values from lab measurements, it read the clinical and diagnosis notes in the electronic medical record system and decided from there.</p>
+<p><strong>It did not follow the process the clinical environment specified.</strong> That's a real problem to address, and answer-level accuracy alone will never catch it.</p>
+<p><strong>3. Does the agent know what it doesn't know?</strong> (Her favorite question.) Two related pieces:</p>
+<ul>
+<li><strong>Confidence calibration</strong>: an agent will happily say it's 60% confident — but is it actually right 60% of the time? Self-claimed confidence has to be calibrated against reality.</li>
+<li><strong>More importantly, an abstention policy</strong>: when it doesn't know, it needs a rule for <strong>when to stop answering and hand off to a human.</strong></li>
+</ul>
+<p><strong>4. Write operations (~02:07).</strong> This is where the agent system meets traditional enterprise systems. The concern isn't only your own system's security and reliability — it's what happens <strong>when the agent's operations reach into the enterprise system</strong>: how do you mutate state, <strong>is it recoverable, and where is the rollback policy?</strong></p>
+<p><strong>5. Oversight economics.</strong> With humans in the loop alongside the agent, does the combined economics actually make sense?</p>
+<h4>Organizing the primitives: three interaction surfaces (~02:07–02:09)</h4>
+<p>This is the structure used in <strong>their upcoming benchmark</strong> (shipping that month), organized by the surface where the agent system meets the outside world:</p>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Nature of interaction</th>
+<th>What to verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Read / information for human review</strong></td>
+<td>Retrieve information for a human to review</td>
+<td>Is the answer trustworthy; paired with a human review policy</td>
+</tr>
+<tr>
+<td><strong>2. Write into enterprise systems</strong></td>
+<td>Agent system mutates enterprise system state</td>
+<td>Is the change recoverable and trustworthy; is it privacy-preserving and non-leaking</td>
+</tr>
+<tr>
+<td><strong>3. Open conversation</strong></td>
+<td>Facing the enterprise's end customers directly</td>
+<td>Input comes from open-space users and may be malicious or underspecified; how do you <strong>steer the conversation</strong> toward your goal</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>deployment profile</strong> then answers a full set of seven questions.</p>
+<h4>Closing: the improvement path is economics, not score (~02:09–02:11)</h4>
+<p>Two points she wanted to leave the room with.</p>
+<p><strong>First, enterprises don't want a number.</strong> They want two things: <strong>(a) is this use case ready?</strong> and <strong>(b) what does the economics look like — what cost, and what human oversight policy, buys the reliability I need?</strong></p>
+<p><strong>Second, the path to improvement is not score improvement.</strong> It isn't "I moved the score from 60% to 80% to 90%." It's <strong>an economic change</strong>: initially you need heavy human oversight, and over time, as model quality improves, <strong>the cost you pay for the same task keeps falling.</strong></p>
+<p>Her sharpest framing: <strong>we are constrained by reliability, and reliability is not something you can trade off. What you trade off is the policy — how humans and agents work together in a trustworthy way.</strong></p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"When the benchmark is saturated, people don't use it anymore." (~02:01)</p>
+</blockquote>
+<p>One line explaining why enterprises keep seeing disappointing ceilings on public benchmarks — the ceiling is by design.</p>
+<blockquote>
+<p>"The agent has become smart. It does a shortcut." (~02:05)</p>
+</blockquote>
+<p>The heart of the acute kidney failure case: the agent's cleverness is exactly how it routed around clinical policy. Right answer, wrong process.</p>
+<blockquote>
+<p>"Does the agent know what it doesn't know?" (~02:06)</p>
+</blockquote>
+<p>Her favorite question, decomposed into confidence calibration and an abstention policy.</p>
+<blockquote>
+<p>"We are constrained by reliability. Reliability is not something you can trade off. What is trade-off is what's the policy." (~02:10)</p>
+</blockquote>
+<p>The thesis sentence of the talk.</p>
+<blockquote>
+<p>"Don't only ask how intelligent the agent is. Ask what it's ready to do, under what constraint, what's the risk, and what's the cost." (~02:10, final slide)</p>
+</blockquote></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scale AI 企業部署就緒度 benchmark</td>
+<td>演講中預告、當月發布的 benchmark,以三個互動介面組織評估</td>
+<td>Upcoming enterprise deployment-readiness benchmark organized around three interaction surfaces</td>
+<td>演講時尚未發布,名稱未提 / unnamed and unreleased at talk time — see To Verify</td>
+</tr>
+<tr>
+<td>Gemini cloud agent benchmark</td>
+<td>講者在 Google 時組建團隊建立的 agent benchmark</td>
+<td>Agent benchmark her team built at Google</td>
+<td>背景經歷 / cited as background</td>
+</tr>
+<tr>
+<td>Text-to-SQL benchmarks</td>
+<td>用來說明「benchmark 天花板 60–70%」的例子</td>
+<td>Cited to illustrate the 60–70% benchmark ceiling</td>
+<td>未點名特定 benchmark(下一場 Grace Tang 提到 Spider 2)/ no specific benchmark named (Grace Tang's following talk names Spider 2)</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emily Zu</td>
+<td>Yuan (Emily) Xue</td>
+</tr>
+<tr>
+<td>skill AI</td>
+<td>Scale AI</td>
+</tr>
+<tr>
+<td>Jamnai team</td>
+<td>Gemini team</td>
+</tr>
+<tr>
+<td>cryotin</td>
+<td>creatinine</td>
+</tr>
+<tr>
+<td>acutic kidney failure</td>
+<td>acute kidney failure</td>
+</tr>
+<tr>
+<td>electronic micros system</td>
+<td>electronic medical record (EMR) system</td>
+</tr>
+<tr>
+<td>rate operations / right operations</td>
+<td>write operations</td>
+</tr>
+<tr>
+<td>upstain</td>
+<td>abstain</td>
+</tr>
+<tr>
+<td>evaluation services / vulnerability(指三個介面)</td>
+<td>evaluation surfaces</td>
+</tr>
+<tr>
+<td>cloud agent benchmark(Google 時期)</td>
+<td>見待確認 / see To Verify</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>即將發布的 Scale AI 企業 benchmark 正式名稱(演講中只說「this week / this month」推出)。/ Official name of the upcoming Scale AI enterprise benchmark (she only said it ships "this week / this month").</li>
+<li>她在 Google 建立的「cloud agent benchmark」正式名稱與是否公開。/ The formal name of the Gemini "cloud agent benchmark" she built at Google, and whether it is public.</li>
+<li>deployment profile 所回答的七個問題的完整清單(她因時間關係說「就照投影片讀」,未逐條念出)。/ The full list of the seven questions in the deployment profile — she skipped reading them aloud for time.</li>
+<li>醫療客戶案例的可引用出處(Scale Labs 有相關的 patient safety event triage benchmark 論文,但需確認是否為同一項工作)。/ A citable source for the healthcare case; Scale Labs has published work on patient safety event triage benchmarking, but whether it is the same effort needs confirming.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/yuan-emily-xue--the-exam-before-enterprise-deployment.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

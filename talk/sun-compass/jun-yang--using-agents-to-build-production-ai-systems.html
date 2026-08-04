@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Using Agents to Build Production AI Systems: Lessons, Pitfalls, and Limits · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="After putting agents into NVIDIA&#x27;s production inference and training software workflow, the bottleneck turned out not to be whether agents can write code but whether their output survives a human c…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/jun-yang--using-agents-to-build-production-ai-systems.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Using Agents to Build Production AI Systems: Lessons, Pitfalls, and Limits · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="After putting agents into NVIDIA&#x27;s production inference and training software workflow, the bottleneck turned out not to be whether agents can write code but whether their output survives a human c…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/jun-yang--using-agents-to-build-production-ai-systems.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="jun-yang--using-agents-to-build-production-ai-systems">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Using Agents to Build Production AI Systems: Lessons, Pitfalls, and Limits" data-title-zh="用 Agent 打造生產級 AI 系統:經驗、陷阱與極限">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: AI Systems</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Using Agents to Build Production AI Systems: Lessons, Pitfalls, and Limits</span><span class="lang-zh">用 Agent 打造生產級 AI 系統:經驗、陷阱與極限</span></h1>
+        <p class="dialog__speaker"><strong>Jun Yang</strong> — Senior Director of Compute Architecture, NVIDIA</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:02:45–00:13:31 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=165s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:02:45</span><span class="lang-zh">從 00:02:45 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">After putting agents into NVIDIA&#x27;s production inference and training software workflow, the bottleneck turned out not to be whether agents can write code but whether their output survives a human completeness review — only 73 of 313 agent-authored bug fixes landed on main — so the harness should stay lightweight and ride the foundation model&#x27;s evolution rather than becoming a heavy framework of its own.</span><span class="lang-zh">把 agent 放進 NVIDIA 的生產級推論/訓練軟體流程後,真正的瓶頸不是「agent 會不會寫程式」,而是「產出能不能通過人類的完整性審查」——313 個 agent 修的 bug 只有 73 個進了 main branch;因此 harness 要輕、要能隨基礎模型一起進化,而不是自己蓋一座重型框架。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>Demo 與 production 是兩件事</strong>:生產環境在意 maintainability、controllability、completeness,這些要求會直接改變你能怎麼用 agent。實測數字最誠實——bug-fixing agent 產出的 313 個修補,只有 73 個被人類接受並合進主線,超過 100 個因為「不夠完整、太 reward hacking、太表面」被打回。</li>
+<li><strong>把責任切細、把 reviewer 提前</strong>:多 agent 流程拆成 plan(plan generator + plan reviewer)與 implementation(coder + reviewer + QA),每個 sub-agent 專注、context 用得更省;光是多加一個 <strong>plan reviewer</strong>,就能在同樣品質下把迭代從 175 次降到 <strong>35 次</strong>,token 成本大幅下降。</li>
+<li><strong>不要蓋重型 harness</strong>:訓練端一開始做 deep-agent 式的重流程,後來改成「通用 coding agent + 極輕量 harness」,因為通用 coding agent 的進化會吃掉你自己造的輪子;輕量才能跟著基礎模型一起升級。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>三個推論端案例:bug fixing、model bring-up、效能最佳化(約 00:03–00:10)</h4>
+<p>實驗場域是 NVIDIA 的大模型推論框架(逐字稿聽為 "the 10M",判斷為 <strong>TensorRT-LLM</strong>,見待確認),已被大量客戶採用,也用來做 MLPerf、SemiAnalysis 等關鍵 benchmark 提交——是不折不扣的產品級軟體,對 agent 而言難度更高。</p>
+<p><strong>案例一:bug-fixing autobot(約 00:03–00:06)</strong>
+流程是「agent 階段 → 人類階段」兩段式:bug 分析 → 重現 → 確認可重現後由 agent 修 → agent review → agent 驗證 → 標記 agent 階段完成;接著人類仔細 review,確認這個修補不是 reward hacking、不是 hacky、夠完整,必要時給回饋讓 agent 繼續迭代到收斂。</p>
+<p>Dashboard 的真實數字(約 00:05:46):約 800 個 bug 中,313 個已有 agent 產出的修補;但其中<strong>只有 73 個被接受並合進 main branch</strong>,超過 100 個被人類直接拒絕。Jun Yang 把這個數字當成「production 要求與 agent 現況之間落差」的具體證據,也是團隊持續要拉高的比率。</p>
+<p><strong>案例二:新模型 bring-up(約 00:06–00:09)</strong>
+新模型幾乎每月、有時每週就出現一個,團隊做了 agent-based model bring-up 工具:使用者用 CLI 把模型定義與驗收標準寫進 task YAML,餵進 agent 流程;過程中人類可以中斷、給回饋、再觸發,把 agent 導回想要的方向。</p>
+<p>Agent 流程是典型的多 agent 分工:<strong>plan 階段</strong>有 plan generator 與 plan reviewer,<strong>implementation 階段</strong>有 coder、reviewer、QA。刻意把職責切開,是為了讓每個 sub-agent 夠專注、context 用得有效率,並透過共用檔案交換共同資訊,像一個團隊一起工作。</p>
+<p>以 Google 的 Gemma 模型為例(約 00:07:52):x 軸是迭代次數 0–175,y 軸是品質分數(越高越好)。planner 觸發執行後,coder 與 reviewer 多輪往返,review 通過就交給 QA 評測,QA 把結果送回 coder 再改,四方密集互動後才收斂。<strong>加上 plan reviewer 之後(約 00:08:47),同樣品質只要 35 次迭代</strong>——這是他們發現對 token efficiency 最有效的一招。</p>
+<p><strong>案例三:效能最佳化(約 00:09–00:10)</strong>
+Bring-up 完成後再用 agent 做效能優化。從低效能 baseline 出發,第二、三輪各完成一批優化,第四輪收斂即停止。關鍵設計是 <strong>cookbook</strong>:團隊過去累積的優化經驗被整理成結構化文件供 agent 查詢——第二輪查了 host performance 相關 cookbook,第三輪查了 CUDA graph 相關 cookbook 再套用。也有不少優化做完但<strong>因為效益太邊際而被工作流自己否決</strong>。</p>
+<h4>訓練端:從 deep agent 走向「通用 coding agent + 輕量 harness」(約 00:10–00:11)</h4>
+<p>訓練與推論有共通處但特性不同,所以用不同工作流。一開始建的是 deep-agent 式流程,後來<strong>主動退回到「在通用 coding agent 之上做極輕量 harness」</strong>——原因是通用 coding agent 自己的進化,已經接管了他們先前手工打造的東西;流程輕、可適應,才能吃到通用 agent 與基礎模型的紅利。</p>
+<p>訓練 agent 額外加了兩塊:<strong>kernel arena</strong>(重用歷史 kernel,讓生成 kernel 更容易)與<strong>學習回饋迴路</strong>(agent 對過去執行做根因分析 + 人類 review,回灌流程迭代)。也建了 evaluation toolkit,讓新增 skill 或 sub-agent 時能相對確定不會引入太多回歸——但他坦言「這還不理想,我們仍在摸索怎麼防守 agent 系統的演化」。</p>
+<p>案例是 FLUX 這個 vision transformer 模型(約 00:11:20),原本已有人類調校出的良好 baseline。Agent 嘗試了 120 次以上實驗,有些 OOM、有些跑得起來但被否決,最後留下的優化在強 baseline 上帶來約 <strong>20% 效能提升</strong>。</p>
+<h4>結論:四個教訓(約 00:11:59–00:13:20)</h4>
+<ol>
+<li><strong>Agent 的智能本質與人類不同</strong>,本質上是機率性的過程;設計任何東西時都要把這件事算進去,才能吃到優點、避開缺點。</li>
+<li><strong>不要建重型 harness</strong>,客製化工作流越輕越好,才能持續 leverage 通用 coding agent 與基礎模型的未來進化。</li>
+<li><strong>全自動 agent vs. 人 + agent 的取捨</strong>:一方面想盡量自動化,另一方面「人 + agent」在 token 效率與迭代速度上常常明顯更好。相關的是「集中化 vs. 在地化」:生產環境通常想把邏輯集中以便共用,但因為 agent 演進太快,<strong>人 + 在地客製 agent 有時比集中式 agent 更有效率</strong>——沒有 single silver bullet。</li>
+<li><strong>在 coding agent 與輕量 harness 之間取得平衡</strong>,才能快速跟上基礎模型與通用 coding agent 的新進展。</li>
+</ol>
+<h3>金句</h3>
+<blockquote>
+<p>"Among the 313 back fix from agent, only 73 of them have been accepted and landed to our main branch."(約 00:05:56)</p>
+</blockquote>
+<p>生產級軟體裡,agent 的「完成」和人類的「可接受」之間差了四倍多。</p>
+<blockquote>
+<p>"Rather we should try to make sure the customization workflow should be as lightweight as possible so we can be able to leverage the future evolution of the general coding agent and foundation model."(約 00:12:20)</p>
+</blockquote>
+<p>你造的 harness 越重,越可能在下一代通用 agent 出來時被整段作廢。</p>
+<blockquote>
+<p>"Human plus local custom agent can sometimes work more efficiently than the centralized agent."(約 00:13:03)</p>
+</blockquote>
+<p>集中化是軟體工程的直覺,但在 agent 演進速度下,這個直覺不一定成立。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Demos and production are different games.</strong> Production cares about maintainability, controllability, and completeness, and those constraints change how you can use agents at all. The honest metric: of 313 bug fixes authored by their agent, only <strong>73 were accepted and landed on main</strong> — more than 100 were rejected by humans as incomplete, too reward-hacky, or too superficial.</li>
+<li><strong>Split responsibilities, and move the reviewer earlier.</strong> Their multi-agent flow separates planning (plan generator + plan reviewer) from implementation (coder + reviewer + QA) so each sub-agent stays focused and spends context efficiently. Adding a <strong>plan reviewer</strong> alone cut convergence from 175 iterations to <strong>35</strong> at the same quality — a large token saving.</li>
+<li><strong>Don't build a heavy harness.</strong> On the training side they started with a deep-agent-style workflow and deliberately retreated to "general coding agent + very lightweight harness," because the general coding agent's own evolution kept absorbing what they had hand-built. Staying light is how you keep riding the foundation model.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Three inference-side case studies (~00:03–00:10)</h4>
+<p>The testbed is NVIDIA's large-model inference framework (heard as "the 10M" in the auto-captions; almost certainly <strong>TensorRT-LLM</strong> — see To Verify), used by many customers and behind key benchmark submissions such as MLPerf and SemiAnalysis. It is genuinely product-grade software, which raises the bar for agents considerably.</p>
+<p><strong>Bug-fixing autobot (~00:03–00:06).</strong> The workflow is two-phase. The agent phase runs bug analysis → reproduction → (once reproducible) agent fix → agent review → agent verification → mark the agent phase done. Then the human phase: a careful review to confirm the fix is not reward hacking, not hacky, and complete enough, with feedback fed back so the agent keeps iterating until it converges.</p>
+<p>The dashboard numbers (~00:05:46) are the talk's most quotable result: of roughly 800 bugs, 313 have agent-produced fixes, but only <strong>73 were accepted and merged to main</strong>, with over 100 rejected outright. Jun Yang treats this ratio as concrete evidence of the gap between production requirements and current agent capability — and as the number the team is actively trying to move.</p>
+<p><strong>Model bring-up (~00:06–00:09).</strong> New models arrive almost monthly, sometimes weekly, so they built an agent-based bring-up tool. Users declare the model definition and acceptance criteria in a task YAML via a CLI; the agent flow runs from there, and a human can interrupt mid-execution, supply feedback, and re-trigger to steer the agent back on course.</p>
+<p>The flow is a textbook multi-agent split: a <strong>plan phase</strong> with a plan generator and a plan reviewer, and an <strong>implementation phase</strong> with coder, reviewer, and QA. Responsibilities were divided on purpose so each sub-agent stays narrow, uses its context window well, and shares common state through shared files.</p>
+<p>Their Gemma example (~00:07:52) plots iterations 0–175 against a quality score. The planner kicks off execution, the coder and reviewer trade many rounds, a passing review hands off to QA for evaluation, QA sends results back to the coder, and the four-way interaction eventually converges. <strong>Adding the plan reviewer (~00:08:47) reached the same quality in just 35 iterations</strong> — their single most effective token-efficiency change.</p>
+<p><strong>Performance optimization (~00:09–00:10).</strong> After bring-up, another agent loop tunes performance. Starting from a weak baseline, iterations two and three each land a batch of optimizations and iteration four converges and stops. The interesting piece is the <strong>cookbook</strong>: the team's accumulated optimization know-how, written up in a structured form the agent can query — host-performance recipes in one iteration, CUDA graph recipes in the next. Notably, several completed optimizations were <strong>rejected by the workflow itself</strong> because the measured gain was too marginal.</p>
+<h4>Training side: from deep agents to a thin harness (~00:10–00:11)</h4>
+<p>Training shares some properties with inference but differs enough to warrant its own workflow. They began with a deep-agent-based flow and deliberately moved to a <strong>very lightweight harness on top of a general coding agent</strong>, because general coding agents had evolved to subsume what they had built. Light and adaptive is what lets them inherit improvements from general agents and foundation models for free.</p>
+<p>Two additions are specific to training: a <strong>kernel arena</strong> that reuses historical kernels to make kernel generation easier, and a <strong>learning feedback loop</strong> where the agent does root-cause analysis on past runs, a human reviews it, and the result is fed back to improve the training agent. They also built an evaluation toolkit so that adding a new skill or sub-agent doesn't silently regress the workflow — though he was candid that this "is not ideal; we are still trying to figure out the best way to defend the agent system evolution."</p>
+<p>The demonstration used FLUX, a vision transformer model (~00:11:20) that already had a strong human-tuned baseline. The agent ran over 120 experiments — some OOM'd, some ran but were rejected — and the surviving optimizations delivered roughly <strong>20% performance improvement</strong> on top of that strong baseline.</p>
+<h4>Four lessons (~00:11:59–00:13:20)</h4>
+<ol>
+<li><strong>Agent intelligence is fundamentally unlike human intelligence</strong> — it is a probabilistic process by nature, and every design decision should account for that to exploit the strengths and avoid the weaknesses.</li>
+<li><strong>Don't build a heavy harness.</strong> Keep the customization workflow as lightweight as possible so you can keep leveraging future evolution of general coding agents and foundation models.</li>
+<li><strong>Full autonomy vs. human-plus-agent is a real trade-off.</strong> You want to automate as much as possible, yet combining a human with the agent is frequently far more efficient in both token cost and iteration speed. The related tension is centralization: production instincts say centralize logic for reuse, but because agents evolve so fast, <strong>a human plus a locally customized agent sometimes beats the centralized agent</strong>. There is no single silver bullet.</li>
+<li><strong>Balance the coding agent against the lightweight harness</strong> so you can move quickly as foundation models and general coding agents improve.</li>
+</ol>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Among the 313 back fix from agent, only 73 of them have been accepted and landed to our main branch." (~00:05:56)</p>
+</blockquote>
+<p>In production software, "agent finished it" and "a human will accept it" are a factor of four apart.</p>
+<blockquote>
+<p>"Rather we should try to make sure the customization workflow should be as lightweight as possible so we can be able to leverage the future evolution of the general coding agent and foundation model." (~00:12:20)</p>
+</blockquote>
+<p>The heavier your harness, the more of it gets invalidated by the next general-purpose agent release.</p>
+<blockquote>
+<p>"Human plus local custom agent can sometimes work more efficiently than the centralized agent." (~00:13:03)</p>
+</blockquote>
+<p>Centralization is the software-engineering instinct; at current agent velocity, it doesn't always hold.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TensorRT-LLM</td>
+<td>NVIDIA 的大模型推論框架,案例中的主要實驗場域</td>
+<td>NVIDIA's large-model inference framework; the testbed for three of the four case studies</td>
+<td>逐字稿聽為 "the 10M";名稱待確認 / heard as "the 10M", name to verify</td>
+</tr>
+<tr>
+<td>MLPerf</td>
+<td>業界標準推論/訓練 benchmark,文中提到的提交對象</td>
+<td>Industry-standard inference/training benchmark suite mentioned as a submission target</td>
+<td>逐字稿 "Merve"</td>
+</tr>
+<tr>
+<td>SemiAnalysis InferenceMAX / InferenceX</td>
+<td>SemiAnalysis 的開源推論 benchmark,每日重測主流推論框架</td>
+<td>SemiAnalysis's open-source inference benchmark, re-run nightly across popular inference frameworks</td>
+<td>逐字稿 "SE analysis";已查證確為 SemiAnalysis 的 benchmark</td>
+</tr>
+<tr>
+<td>Gemma (Google)</td>
+<td>用來示範 model bring-up agent 與效能優化 agent 的模型</td>
+<td>The model used to demonstrate both the bring-up agent and the performance-optimization agent</td>
+<td>版本號待確認(聽為 "Gemma for")/ version number to verify</td>
+</tr>
+<tr>
+<td>FLUX</td>
+<td>訓練效能優化 agent 的示範對象(vision transformer)</td>
+<td>Vision transformer model used to demo the training performance agent</td>
+<td>約 20% 提升 / ~20% gain over a strong baseline</td>
+</tr>
+<tr>
+<td>CUDA graph</td>
+<td>第三輪優化中 agent 查詢的 cookbook 主題之一</td>
+<td>One of the cookbook topics the agent queried during optimization</td>
+<td>逐字稿 "ka graph"</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Junyang / Gian</td>
+<td>Jun Yang</td>
+</tr>
+<tr>
+<td>the 10M / tam</td>
+<td>TensorRT-LLM(待確認 / to verify)</td>
+</tr>
+<tr>
+<td>Merve</td>
+<td>MLPerf</td>
+</tr>
+<tr>
+<td>SE analysis / analysis</td>
+<td>SemiAnalysis</td>
+</tr>
+<tr>
+<td>back / bucks</td>
+<td>bug / bugs</td>
+</tr>
+<tr>
+<td>the 33 bugs</td>
+<td>313 bugs(與後文 "313 back fix" 一致)</td>
+</tr>
+<tr>
+<td>gamma for / JAMA for</td>
+<td>Gemma(版本待確認 / version to verify)</td>
+</tr>
+<tr>
+<td>ka graph</td>
+<td>CUDA graph</td>
+</tr>
+<tr>
+<td>pler / PL</td>
+<td>planner</td>
+</tr>
+<tr>
+<td>integation / limited phase</td>
+<td>implementation phase</td>
+</tr>
+<tr>
+<td>opation / organization / operation</td>
+<td>optimization</td>
+</tr>
+<tr>
+<td>reward hacking(讀作 "a reward hacking")</td>
+<td>reward hacking</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>推論框架名稱:逐字稿的 "the 10M" / "tam" 高度疑似 <strong>TensorRT-LLM</strong>(NVIDIA 的 LLM 推論框架,確實用於 MLPerf 與 SemiAnalysis InferenceMAX benchmark),但需看投影片確認。/ The inference framework heard as "the 10M" is very likely <strong>TensorRT-LLM</strong>; confirm from slides.</li>
+<li>Gemma 的版本號:逐字稿兩次都聽成 "for",可能是 Gemma 4,但也可能是 Gemma 3。/ Gemma version number — heard as "for" twice; could be Gemma 4 or Gemma 3.</li>
+<li>Model bring-up 的 CLI 指令名稱(逐字稿 "a model dash model dash and bring up"),疑似 <code>trtllm-...</code> 系列指令。/ Exact CLI command name for model bring-up.</li>
+<li>Sub-agent 之間共享資訊的檔案:逐字稿為 "admin files",疑似 <code>AGENTS.md</code> 之類的共用說明檔。/ The shared files sub-agents use to exchange common information — heard as "admin files", possibly <code>AGENTS.md</code>-style files.</li>
+<li>FLUX 案例中「最後保留幾個實驗」的數字:逐字稿為 "finally 200 will be kept",與前文「120 次以上實驗」不一致,數字待確認。/ The number of experiments finally kept in the FLUX case — transcript says "200," inconsistent with "more than 120 experiments."</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/jun-yang--using-agents-to-build-production-ai-systems.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

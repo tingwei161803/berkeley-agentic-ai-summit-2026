@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Scaling RL for Coding Agents - Lessons from Training SWE-1.7 · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Across four increasingly ambitious training runs — Kevin-32B, SWE-grep, SWE-1.6, SWE-1.7 — Cognition found that progress on coding agents comes not from clever new ideas but from executing simple t…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/silas-alberti--scaling-rl-for-coding-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Scaling RL for Coding Agents - Lessons from Training SWE-1.7 · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Across four increasingly ambitious training runs — Kevin-32B, SWE-grep, SWE-1.6, SWE-1.7 — Cognition found that progress on coding agents comes not from clever new ideas but from executing simple t…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/silas-alberti--scaling-rl-for-coding-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="silas-alberti--scaling-rl-for-coding-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Scaling RL for Coding Agents - Lessons from Training SWE-1.7" data-title-zh="為 coding agent 擴展 RL:訓練 SWE-1.7 的經驗">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Coding &amp; Web Agents</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Scaling RL for Coding Agents - Lessons from Training SWE-1.7</span><span class="lang-zh">為 coding agent 擴展 RL:訓練 SWE-1.7 的經驗</span></h1>
+        <p class="dialog__speaker"><strong>Silas Alberti</strong> — SVP of Research, Cognition</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 00:13:37–00:28:10 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=ZIRc3EpzQJs&amp;t=817s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:13:37</span><span class="lang-zh">從 00:13:37 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Across four increasingly ambitious training runs — Kevin-32B, SWE-grep, SWE-1.6, SWE-1.7 — Cognition found that progress on coding agents comes not from clever new ideas but from executing simple things at scale: multi-turn RL, parallel tool calls, asynchronous RL, and beating entropy collapse.</span><span class="lang-zh">Cognition 用四次規模逐步放大的 RL 訓練跑(Kevin-32B → SWE-grep → SWE-1.6 → SWE-1.7)證明,coding agent 的進步不需要花俏的新點子,而是把 multi-turn RL、parallel tool calls、asynchronous RL、對抗 entropy collapse 這些「簡單的事」在規模上確實執行到位。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>四次訓練跑的主軸是「用當下的算力與人力,挑一個剛好夠有野心的問題」</strong>:從 32 張 H200 + 幾位實習生的 Kevin-32B,一路做到跨三大洲的 SWE-1.7。</li>
+<li><strong>Multi-turn agentic RL 很早就贏過 single-turn</strong>:Kevin-32B 在 KernelBench 上用 GRPO 做多輪訓練,曲線明顯高於單輪版本。</li>
+<li><strong>訓練穩定性是可觀測的</strong>:他們發現模型 chain-of-thought 開頭「okay」的消失率(戲稱 not-okay ratio)是訓練發散的早期指標——模型愈接近崩潰,內心話愈焦躁。</li>
+<li><strong>Parallel tool calling 是延遲的關鍵</strong>:SWE-grep 訓練後一回合可同時發出約 8 個 tool call,end-to-end 延遲大幅下降,且 reward 與並行度在訓練中同步上升。</li>
+<li><strong>Async RL 不只是吞吐量優化,而是地理上的解放</strong>:把 trainer 與 rollout 分離後,SWE-1.7 得以在四個國家、三大洲的零散算力上訓練——因為 RL 只需傳輸稀疏的 weight update 與 token batch。</li>
+<li><strong>Entropy collapse 是 RL 的天花板</strong>:調好 recipe 讓 entropy 幾乎不下滑,就能繼續往上推效能——這是對「RL 已經到頂、該回頭做 pre-training」說法的直接反駁。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>起點:Kevin-32B,32 張 GPU 能做什麼(約 00:14–00:17)</h4>
+<p>團隊剛起步時只有幾位實習生和 32 張 H200,問題是「這樣的算力能做什麼真正有趣的事」。答案是挑一個<strong>夠窄、夠可驗證</strong>的題目:當時剛發表的 KernelBench——給一個 PyTorch 函式,要模型寫出能加速它的 CUDA kernel。</p>
+<p>他們實作 GRPO 並讓它跑起來,而真正想探索的是「multi-turn agentic training 長什麼樣」——這在一年多前還相當新穎。結果很漂亮:multi-turn 訓練曲線明顯高於 single-turn,而且用一個 32B 級的開源 base model 就在該 benchmark 上贏過當時的 o3。</p>
+<p><strong>「not-okay ratio」的軼事</strong>:這個 base model 有個怪癖——thinking 一律以 "okay" 開頭。訓練愈往後,它的內心獨白愈焦躁:從 "okay amigos, I need to optimize this 3D tensor matrix multiplication" 演變成 "okay holy crap I need to get this code optimized"。他們把「開頭不是 okay 的比例」拿來當不穩定指標,發現它能提早預告整個 training run 的發散。</p>
+<h4>SWE-grep:把 context retrieval 變成可驗證的 RL 問題(約 00:17–00:19)</h4>
+<p>下一步要做「產品裡真的用得上的 agent」。coding agent 最吃重的子問題之一是<strong>找到對的檔案</strong>:給一個關於 codebase 的問題(例:VS Code 是怎麼高效實作 file watching 的?),輸出相關檔案清單。</p>
+<p>好處是 reward 乾淨可驗證——直接對 ground-truth 檔案清單算 F1。他們據此訓了 agent,並自建 code search eval,在當時(Sonnet 4.5 時代)拿到該 eval 的 state of the art,最後 ship 進 Windsurf。</p>
+<p>科學上最有意思的收穫是 <strong>parallel tool calling</strong>。當時多數 base model 都是一次一個 tool call 循序執行,Anthropic 的 Sonnet 剛開始一次發 1–3 個。他們的目標是壓低 end-to-end 延遲,所以直接優化並行度——SWE-grep 有時一回合能同時發出 8 個 tool call。訓練曲線上可以看到 reward 與「每回合並行 tool call 數」同步上升。搭配 Cerebras 晶片,mini 版本跑到約每秒 3,000 tokens。</p>
+<h4>SWE-1.6:穩定性與 asynchronous RL(約 00:19–00:23)</h4>
+<p>到這階段開始做真正端到端的前沿 coding model,並用 SWE-Bench Pro 這類真實 coding eval 衡量。SWE-1.6 當時在該 benchmark 上追平 Opus 4.5。</p>
+<ul>
+<li><strong>同樣的原則仍然適用</strong>,只是資料要更多更難:內部的可驗證軟體工程任務 eval 在一次 RL 跑中從 <strong>52% 推到 68%</strong>。</li>
+<li><strong>模型會自己學會想更久</strong>:平均 thinking token 從約 4,000 起步,整個訓練跑下來大約翻倍。</li>
+<li><strong>穩定性是被逼出來的工程</strong>:典型失敗是跑到約 200 步就崩潰;診斷根因、修正後重跑,曲線幾乎沿著原路徑重走,但這次能撐過原本的崩潰點。每一次演算法改良就把 training horizon 從 200 步推到 300 步、再往後推。</li>
+<li><strong>Asynchronous RL</strong>:把 trainer 與 rollout 分離——rollout 把一批批 group 丟進 data buffer,trainer 在 buffer 夠滿時取用,做完一步訓練再把 weight update 送回 rollout。代價是 <strong>staleness</strong>:inference policy 落後 training policy 幾步。</li>
+</ul>
+<h4>SWE-1.7:entropy collapse 與跨三大洲的訓練(約 00:23–00:27)</h4>
+<p><strong>Staleness 與穩定性其實是同一件事</strong>:演算法穩定性愈好,能容忍的 staleness 就愈高;能容忍愈高的 staleness,就愈能把 inference engine 吃滿。換句話說,<strong>更好的演算法直接換來更高的算力利用率</strong>——這正是 SWE-1.7 的前提。</p>
+<p>SWE-1.7 的定位用「成本 vs 效能」的二維圖呈現:以它的尺寸級別來說表現相當突出,能和大得多的模型競爭而便宜許多。base model 是 Kimi K2.7,同尺寸級的對照組包括同樣基於 Kimi 的 Composer 2.5 與 GLM 5.2。</p>
+<ul>
+<li><strong>Entropy collapse 是主要瓶頸</strong>。當時外界不少「RL 已經到頂、勝負回到 pre-training」的說法,但他們想再推一把。RL 的養分來自 group 內的多樣性與新行為的發現,而這都可由 entropy 衡量;典型訓練跑中 entropy 一路下滑,崩塌時就撞到天花板。調整 recipe 後,他們讓 entropy 的下滑幾乎難以察覺(仍會降,但斜率平緩得多),效能因此得以繼續往上推。細節見他們的技術報告。</li>
+<li><strong>跨四國三大洲的訓練</strong>。現在要找大塊連續的訓練叢集非常難,尤其在合理的時程內(可能得提前一年下訂)。反而容易找到的是這裡一小片、那裡一小片的零散算力。最後這次訓練跑橫跨<strong>澳洲、馬來西亞、加拿大、美國</strong>。</li>
+<li><strong>這只有 async RL 能做到</strong>:訓練叢集在美國,rollout 叢集散布全球;inference 叢集把 training batch 送到訓練叢集,訓練叢集把 weight update 送回去。之所以能跨全球運作,是因為要傳的東西本來就稀疏——RL 的 weight update 稀疏,training batch 也只是 token。</li>
+</ul>
+<h3>金句</h3>
+<blockquote>
+<p>"A lot of progress in research is just executing the simple things at scale."(約 00:27)</p>
+</blockquote>
+<p>收尾時的團隊哲學:他們並不相信進步來自複雜花俏的點子。</p>
+<blockquote>
+<p>"The not-okay ratio … was an early indicator of an eventual divergence of the training run."(約 00:17)</p>
+</blockquote>
+<p>模型崩潰前,連內心獨白的語氣都先變了。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Each run was sized to the compute and team of the moment</strong>: from Kevin-32B (a few interns and 32 H200s) to SWE-1.7 spanning three continents — the skill is picking a problem that is exactly ambitious enough.</li>
+<li><strong>Multi-turn agentic RL beat single-turn early on</strong>: Kevin-32B used GRPO with multi-turn training on KernelBench and clearly outperformed the single-turn variant.</li>
+<li><strong>Training instability is observable before it happens</strong>: they tracked a "not-okay ratio" — how often the model's chain of thought stopped starting with "okay" — as an early divergence indicator, and the model's inner monologue visibly got more frantic as collapse approached.</li>
+<li><strong>Parallel tool calling is the latency lever</strong>: after RL, SWE-grep issued roughly eight tool calls per turn, and reward and parallelism climbed together through training.</li>
+<li><strong>Async RL is a geographic unlock, not just a throughput trick</strong>: separating trainer from rollouts let SWE-1.7 train on scattered compute across four countries and three continents, because only sparse weight updates and token batches cross the wire.</li>
+<li><strong>Entropy collapse is the RL ceiling</strong>: tuning the recipe so entropy barely declines is what let them keep pushing performance — a direct rebuttal of the "RL has plateaued, it's all pre-training now" narrative.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Kevin-32B: what can you do with 32 GPUs? (~00:14–00:17)</h4>
+<p>The team started as a few interns with 32 H200s, asking what could be genuinely interesting at that scale. The answer was to pick something <strong>narrow and cleanly verifiable</strong>: KernelBench had just come out — given a PyTorch function, write a CUDA kernel that speeds it up.</p>
+<p>They implemented GRPO and got it working, but the real question was what <strong>multi-turn agentic training</strong> looks like, which was still novel a year earlier. It worked: the multi-turn curve sat clearly above the single-turn one, and a 32B-class open base model beat o3 on that benchmark.</p>
+<p><strong>The "not-okay ratio" anecdote</strong>: this base model had a quirk of always opening its chain of thought with "okay." As training progressed the monologue got increasingly unhinged — from "okay amigos, I need to optimize this 3D tensor matrix multiplication" to "okay holy crap I need to get this code optimized." Measuring how often the thought <em>didn't</em> start with "okay" turned out to be an early warning of an eventual diverging run.</p>
+<h4>SWE-grep: turning context retrieval into a verifiable RL problem (~00:17–00:19)</h4>
+<p>Next they wanted an agent good enough to ship. A core sub-problem in coding agents is <strong>finding the right files</strong>: given a question about a codebase (e.g., how does VS Code efficiently implement file watching?), return the list of relevant files.</p>
+<p>The reward is clean and verifiable — F1 against the ground-truth file list. They trained an agent on it, built their own code search eval, hit state of the art on that eval in the Sonnet 4.5 era, and shipped it into Windsurf.</p>
+<p>The scientifically interesting result was <strong>parallel tool calling</strong>. Most base models at the time called tools sequentially, one at a time; Anthropic's Sonnet had just started issuing one to three at once. Because the goal was end-to-end task latency, they optimized for doing as much as possible in parallel — SWE-grep would sometimes fire eight tool calls per turn. Over the run, both reward and parallel-tool-calls-per-turn rose together. Served on Cerebras hardware, the mini variant ran at roughly 3,000 tokens per second.</p>
+<h4>SWE-1.6: stability and asynchronous RL (~00:19–00:23)</h4>
+<p>Now they moved to real frontier coding models for end-to-end tasks, measured on realistic evals like SWE-Bench Pro, where SWE-1.6 matched Opus 4.5 at the time.</p>
+<ul>
+<li><strong>The same fundamentals applied</strong>, just with more and harder data: an internal eval of verifiable software-engineering tasks went from <strong>52% to 68%</strong> over a single RL run.</li>
+<li><strong>The model learned to think longer on its own</strong>: average thinking tokens started near 4,000 and roughly doubled over the run.</li>
+<li><strong>Stability was hard-won engineering</strong>: a typical run would collapse around step 200; they'd diagnose the root cause, fix it, and restart — the curve would retrace almost exactly the same trajectory but survive past the old collapse point. Each algorithmic improvement pushed the training horizon from 200 to 300 steps and further.</li>
+<li><strong>Asynchronous RL</strong>: separate trainer from rollouts. Rollouts push batches of groups into a data buffer; the trainer drains the buffer as it fills, then sends a weight update back. The cost is <strong>staleness</strong> — how many steps the inference policy lags the training policy.</li>
+</ul>
+<h4>SWE-1.7: entropy collapse and training across three continents (~00:23–00:27)</h4>
+<p><strong>Staleness and stability turn out to be the same problem</strong>: the more stable your algorithm, the more staleness you can tolerate; the more staleness you tolerate, the more fully you can saturate your inference engines. A better algorithm buys you full compute utilization — which is what made SWE-1.7 possible.</p>
+<p>SWE-1.7 was presented on a 2D cost-versus-performance chart rather than a 1D bar chart. For its size class it lands impressively high, competing with much larger models at far lower cost. The base model was Kimi K2.7; the size-class comparisons were Composer 2.5 (also Kimi-based) and GLM 5.2.</p>
+<ul>
+<li><strong>Entropy collapse was the binding constraint.</strong> There was a lot of chatter that RL had plateaued and everything was back to pre-training, but they wanted to push further. The juice in RL comes from diversity within a group and discovery of new behaviors — both measurable as entropy. Entropy normally declines through a run until it collapses and you hit your ceiling. After recipe tuning, the decline became almost imperceptible (still declining, but on a much flatter slope), which let performance keep climbing. Details are in their technical report.</li>
+<li><strong>Training across four countries and three continents.</strong> Large contiguous training clusters are genuinely hard to get these days, especially on realistic timelines — you might have to order a year in advance. What's much easier is finding smaller slices of compute here and there. The resulting run spanned <strong>Australia, Malaysia, Canada, and the US</strong>.</li>
+<li><strong>Only async RL makes this possible</strong>: the training cluster sat in the US with rollout clusters scattered globally; inference clusters send training batches up, the trainer sends weight updates back. It works across the globe because what crosses the wire is sparse — RL weight updates are sparse and training batches are just tokens.</li>
+</ul>
+<h3>Quotes</h3>
+<blockquote>
+<p>"A lot of progress in research is just executing the simple things at scale." (~00:27)</p>
+</blockquote>
+<p>The closing philosophy: they don't believe progress requires complex or fancy ideas.</p>
+<blockquote>
+<p>"The not-okay ratio … was an early indicator of an eventual divergence of the training run." (~00:17)</p>
+</blockquote>
+<p>Before a run collapses, even the tone of the model's inner monologue shifts.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Devin</td>
+<td>Cognition 的 AI 軟體工程師產品</td>
+<td>Cognition's AI software engineer</td>
+<td>講者稱為 "the world's first AI software engineer"</td>
+</tr>
+<tr>
+<td>Windsurf</td>
+<td>Cognition 約一年前收購的 coding 產品</td>
+<td>Coding product Cognition acquired about a year ago</td>
+<td>SWE-grep 即 ship 進此產品</td>
+</tr>
+<tr>
+<td>Kevin-32B</td>
+<td>用 multi-turn RL(GRPO)訓練寫 CUDA kernel 的開源模型</td>
+<td>Open model trained with multi-turn RL (GRPO) to write CUDA kernels</td>
+<td>名稱來自 K(ernel D)evin;官方 blog 說 base 為 QwQ-32B</td>
+</tr>
+<tr>
+<td>KernelBench</td>
+<td>PyTorch → CUDA kernel 的加速 benchmark</td>
+<td>Benchmark for replacing PyTorch ops with optimized CUDA kernels</td>
+<td>Kevin-32B 的訓練與評估環境</td>
+</tr>
+<tr>
+<td>SWE-grep / SWE-grep-mini</td>
+<td>高度並行的 code search 子 agent,RL 訓練</td>
+<td>Highly parallel code-search sub-agent trained with RL</td>
+<td>部署於 Cerebras;演講稱 mini 約 3,000 tok/s</td>
+</tr>
+<tr>
+<td>SWE-1.5 / SWE-1.6 / SWE-1.7</td>
+<td>Cognition 的前沿 coding 模型系列</td>
+<td>Cognition's frontier coding model series</td>
+<td>SWE-1.7 官方 blog 載明 base 為 Kimi K2.7 Code</td>
+</tr>
+<tr>
+<td>SWE-Bench Pro</td>
+<td>真實 coding 任務 benchmark</td>
+<td>Benchmark of realistic coding tasks</td>
+<td>SWE-1.6 於此追平 Opus 4.5</td>
+</tr>
+<tr>
+<td>Cerebras</td>
+<td>提供高速推論的晶片供應商</td>
+<td>Inference hardware provider</td>
+<td>字幕誤植為 "Sirius"</td>
+</tr>
+<tr>
+<td>Kimi K2.7 / Composer 2.5 / GLM 5.2</td>
+<td>SWE-1.7 的 base model 與同尺寸級對照組</td>
+<td>SWE-1.7's base model and same-size-class comparisons</td>
+<td>Composer 2.5 亦基於 Kimi</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Selius Alberti / Silus / SAS</td>
+<td>Silas Alberti</td>
+</tr>
+<tr>
+<td>Devon</td>
+<td>Devin</td>
+</tr>
+<tr>
+<td>Kevin 32B</td>
+<td>Kevin-32B</td>
+</tr>
+<tr>
+<td>Quen 32B</td>
+<td>Qwen 系列 32B(官方 blog 為 QwQ-32B)/ Qwen-family 32B (blog says QwQ-32B)</td>
+</tr>
+<tr>
+<td>gpo</td>
+<td>GRPO</td>
+</tr>
+<tr>
+<td>Swiger app / sweet grab / we grab / sweep grab</td>
+<td>SWE-grep</td>
+</tr>
+<tr>
+<td>Sirius chips</td>
+<td>Cerebras</td>
+</tr>
+<tr>
+<td>sonet 4.5 / opus 4.5</td>
+<td>Sonnet 4.5 / Opus 4.5</td>
+</tr>
+<tr>
+<td>Sweben Pro</td>
+<td>SWE-Bench Pro</td>
+</tr>
+<tr>
+<td>Kimmy K2.7</td>
+<td>Kimi K2.7</td>
+</tr>
+<tr>
+<td>3 1.5 / SU 1.7</td>
+<td>SWE-1.5 / SWE-1.7</td>
+</tr>
+<tr>
+<td>stailness / stallness</td>
+<td>staleness</td>
+</tr>
+<tr>
+<td>soft rate</td>
+<td>solve rate</td>
+</tr>
+<tr>
+<td>internet latency</td>
+<td>end-to-end latency</td>
+</tr>
+<tr>
+<td>infrance / Inference</td>
+<td>inference</td>
+</tr>
+<tr>
+<td>comput utilization</td>
+<td>compute utilization</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Kevin-32B 的 base model:演講聽起來是 "Qwen 32B",但 Cognition 官方 blog 寫的是 <strong>QwQ-32B</strong>;需看投影片確認。/ Kevin-32B's base model: the talk sounds like "Qwen 32B" but Cognition's blog says <strong>QwQ-32B</strong>; check the slides.</li>
+<li>SWE-grep-mini 的吞吐量:演講說約 3,000 tokens/s,Cognition blog 寫 2,800+ tokens/s。/ SWE-grep-mini throughput: talk says ~3,000 tok/s, blog says 2,800+.</li>
+<li>"Composer 2.5" 與 "GLM 5.2" 的正式版本名稱與發布方,僅由字幕聽出,待投影片確認。/ Exact product names/vendors for "Composer 2.5" and "GLM 5.2" — heard from captions only.</li>
+<li>52% → 68% 為 Cognition 內部可驗證 SWE 任務 eval,非公開 benchmark,無法外部查證。/ The 52% → 68% figure is on Cognition's internal eval, not a public benchmark.</li>
+<li>演講提到的 SWE-1.7 technical report 連結待補。/ Add a link to the SWE-1.7 technical report referenced in the talk.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/silas-alberti--scaling-rl-for-coding-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

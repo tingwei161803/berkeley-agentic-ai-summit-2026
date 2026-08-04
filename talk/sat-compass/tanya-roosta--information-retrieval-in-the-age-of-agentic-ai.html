@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Information Retrieval in the Age of Agentic AI · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="The unit of work in retrieval has moved from a lookup to an ongoing conversation with the world — yet we still grade the final answer with BLEU and ROUGE. Evaluation has to move to the trace: the c…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/tanya-roosta--information-retrieval-in-the-age-of-agentic-ai.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Information Retrieval in the Age of Agentic AI · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="The unit of work in retrieval has moved from a lookup to an ongoing conversation with the world — yet we still grade the final answer with BLEU and ROUGE. Evaluation has to move to the trace: the c…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/tanya-roosta--information-retrieval-in-the-age-of-agentic-ai.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-compass" data-talk="tanya-roosta--information-retrieval-in-the-age-of-agentic-ai">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Information Retrieval in the Age of Agentic AI" data-title-zh="Agentic AI 時代的資訊檢索">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Frameworks &amp; Dev Platforms</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Information Retrieval in the Age of Agentic AI</span><span class="lang-zh">Agentic AI 時代的資訊檢索</span></h1>
+        <p class="dialog__speaker"><strong>Tanya Roosta</strong> — Director of AI, AMD; Berkeley alumna</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 00:29:58–00:37:19 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=1798s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:29:58</span><span class="lang-zh">從 00:29:58 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">The unit of work in retrieval has moved from a lookup to an ongoing conversation with the world — yet we still grade the final answer with BLEU and ROUGE. Evaluation has to move to the trace: the correctness of every hop, whether each hop was adequate, and the cost in tokens and latency.</span><span class="lang-zh">檢索的工作單位已經從「查一次」變成「和世界持續對話」——但我們的評估方式還停在拿 BLEU / ROUGE 打最終答案的分數;要跟上,就得改成評估整條 trace:每一跳的正確性、是否足以回答問題,以及 token 與延遲的成本。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>典範轉移</strong>:從傳統 IR / classic RAG 的直線流程(query → 取文件 → 排序 → rerank → 給使用者一份清單),轉向 agentic flow(planning → 判斷 query intent → 搜尋 → 蒐集 → 分析 → critique → 給出最終結果)。<strong>工作單位從 lookup 變成「與世界的持續對話」</strong>,而且動輒 20 turns 以上、變成 multi-hop。</li>
+<li><strong>令人不安的落差</strong>:互動已經是多輪、有時間性、須有證據支撐的,<strong>但評估還停在看最終答案、用 BLEU / ROUGE 打分</strong>。這對 agentic IR 根本不管用。</li>
+<li><strong>該怎麼做</strong>:改看 <strong>trace</strong>——逐跳評估正確性、每一跳是否足以回答使用者的問題,以及 token 數與 latency 這類成本指標。</li>
+<li><strong>領域走向</strong>:reasoning-aware retrieval(用 agent 的推理 trace 而非只有 query keywords)、multi-turn / hop-aware benchmark(如 <strong>MTRAG</strong>)、graph RAG、self-RAG(抑制幻覺)、adaptive RAG(依複雜度與成本路由 query),以及把 <strong>token 用量本身當成一個 IR 指標</strong>。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>從 classic RAG 到 agentic IR(約 00:32–00:34)</h4>
+<p>Roosta 用一組對照開場。<strong>傳統資訊檢索 / classic RAG</strong> 是一條直線:使用者送出 query → 搜尋引擎取回文件 → 產生排序清單 → rerank → 把清單呈現給使用者。</p>
+<p><strong>Agentic flow</strong> 則不同:agent 會做 planning、試著弄清楚這個 query 的 intent、執行搜尋、蒐集結果、分析、critique,最後才給出結論。她的總結是:<strong>工作單位已經從「查詢」變成「與世界持續進行的一場對話」</strong>。</p>
+<p>這件事最明顯地體現在 deep research agent 上。她舉的例子是一個關於膽固醇藥物的問題:agent 先理解問題意圖,然後用各種工具去蒐集網站資料、價格資訊、藥物交互作用等等,再把答案<strong>扎根在檢索到的證據上</strong>,最後呈現給使用者——省下人類自己翻文件與部落格文章的好幾個小時。她提到現在這類 agentic IR <strong>常常跑到 20 個 turn 左右,已經是 multi-hop 的東西</strong>。</p>
+<h4>落差:評估方法還停在單輪時代(約 00:34–00:35)</h4>
+<p>「但這裡有一個令人不安的落差。」我們要評估 agentic IR 時,<strong>仍然傾向只看最終答案</strong>,用 BLEU、ROUGE 這類分數判斷答案對不對。可是現在的資訊尋求是<strong>互動的、多輪的、有時間面向的、而且必須是 evidence-driven</strong>——單看最終答案根本測不準。</p>
+<p>她的處方是<strong>回到 trace</strong>:逐跳去評估每一步的正確性、每一跳是否<strong>足以</strong>回答使用者的問題,以及成本面——用了多少 token、延遲多少。</p>
+<h4>領域正在往哪走(約 00:36)</h4>
+<p>她列出幾條正在成形的方向:</p>
+<ul>
+<li><strong>Reasoning-aware retrieval</strong>:檢索訊號不再只有 query 的關鍵字,而是納入 <strong>agent 的推理 trace</strong>。</li>
+<li><strong>Multi-turn / hop-aware benchmark</strong>:如 <strong>MTRAG</strong> 這類專為多輪對話式 RAG 設計的評估集。</li>
+<li><strong>Graph RAG</strong>:讓檢索看得到實體之間的關係。</li>
+<li><strong>Self-RAG</strong>:用來削掉一部分幻覺。</li>
+<li><strong>Adaptive RAG</strong>:依 query 的複雜度與所需投入來路由。</li>
+<li><strong>把 token 用量當指標</strong>:實際計算並最佳化用掉多少 token,把它視為資訊檢索的一項評估指標。</li>
+</ul>
+<p><strong>收尾</strong>:我們尋求資訊的方式已經改變,agent 改變了我們取得資訊的方法;那麼<strong>我們評估「這些 agent 有沒有做對事、有沒有達成它設定的目標」的方式,也必須跟著改變</strong>。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The shift</strong>: from traditional IR / classic RAG as a straight line (query → fetch documents → ranked list → rerank → hand the user a list) to an agentic flow (plan → infer intent → search → gather → analyze → critique → present). <strong>The unit of work moved from a lookup to an ongoing conversation with the world</strong>, often running 20 turns and going multi-hop.</li>
+<li><strong>The uncomfortable gap</strong>: information seeking is now interactive, multi-turn, temporal, and evidence-driven, <strong>but we still grade the final answer with BLEU and ROUGE</strong>. That doesn't work for agentic IR.</li>
+<li><strong>What to do instead</strong>: evaluate the <strong>trace</strong> — the correctness of every hop, whether each hop was adequate to answer the user, and the cost in tokens and latency.</li>
+<li><strong>Where the field is heading</strong>: reasoning-aware retrieval (using the agent's reasoning traces, not just query keywords), multi-turn/hop-aware benchmarks such as <strong>MTRAG</strong>, graph RAG, self-RAG for hallucinations, adaptive RAG routing by query complexity and effort, and <strong>token consumption itself as a retrieval metric</strong>.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>From classic RAG to agentic IR (~00:32–00:34)</h4>
+<p>Roosta framed the change as two pictures. <strong>Traditional IR and classic RAG</strong> are a straight line: a query comes from the user, the search engine fetches documents, produces a ranked list, reranks it, and presents the list.</p>
+<p>The <strong>agentic flow</strong> does something else: the agent plans, works out the intent behind the query, searches, gathers results, analyzes, critiques, and only then presents a final result. Her summary: <strong>the unit of work has moved from a lookup to an ongoing conversation with the world.</strong></p>
+<p>Deep research agents are where this is most visible. Her example was a question about cholesterol medication: the agent works out the intent, uses various tools to gather websites, pricing information, drug interactions, and so on, <strong>grounds the answer in retrieved evidence</strong>, and presents it — saving hours of reading documents and blog posts. These runs now routinely stretch to around <strong>20 turns</strong>, making the whole thing multi-hop.</p>
+<h4>The gap: evaluation is still single-turn (~00:34–00:35)</h4>
+<p>"Here's the uncomfortable gap." When we evaluate agentic IR, we still <strong>look only at the final answer</strong> and score it with BLEU and ROUGE. But information seeking is now interactive and multi-turn, it has a temporal aspect, and it has to be evidence-driven. Grading the final answer alone simply doesn't work.</p>
+<p>Her prescription: look at <strong>the trace</strong>. Assess the correctness of each hop, whether each hop was <strong>adequate</strong> to answer the user's question, and the cost — number of tokens, latency, and so on.</p>
+<h4>Where the field is heading (~00:36)</h4>
+<ul>
+<li><strong>Reasoning-aware retrieval</strong> — retrieval signals drawn from the agent's reasoning traces, not just keywords from the query.</li>
+<li><strong>Multi-turn, hop-aware benchmarks</strong> such as <strong>MTRAG</strong>.</li>
+<li><strong>Graph RAG</strong>, so retrieval can see relationships between entities.</li>
+<li><strong>Self-RAG</strong>, to cut through some of the hallucinations.</li>
+<li><strong>Adaptive RAG</strong>, routing queries based on their complexity and the effort they warrant.</li>
+<li><strong>Token count as a metric</strong> — actually measuring and optimizing token usage as an information-retrieval metric in its own right.</li>
+</ul>
+<p>Her closing point: our information seeking has changed and agents have changed how we get information, so <strong>the way we assess whether these agents are doing the right thing and achieving the goal they set out for has to change too</strong>.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MTRAG</td>
+<td>多輪對話式 RAG 評估 benchmark</td>
+<td>Multi-turn conversational benchmark for evaluating RAG systems</td>
+<td>字幕作 "MTRA";IBM Research 提出(arXiv 2501.03468),110 段對話、平均 7.7 turns、四個領域</td>
+</tr>
+<tr>
+<td>Graph RAG</td>
+<td>帶入實體關係的檢索增強生成</td>
+<td>Retrieval-augmented generation over entity relationships</td>
+<td></td>
+</tr>
+<tr>
+<td>Self-RAG</td>
+<td>讓模型自我檢核以抑制幻覺的 RAG 變體</td>
+<td>RAG variant with self-reflection to reduce hallucination</td>
+<td></td>
+</tr>
+<tr>
+<td>Adaptive RAG</td>
+<td>依 query 複雜度與所需成本路由的 RAG</td>
+<td>RAG that routes queries by complexity and effort</td>
+<td></td>
+</tr>
+<tr>
+<td>BLEU / ROUGE</td>
+<td>傳統文字生成評分指標,她認為不足以評估 agentic IR</td>
+<td>Classic text-generation metrics she argues are insufficient for agentic IR</td>
+<td>字幕作 "blue and rouge"</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tanya Rusta</td>
+<td>Tanya Roosta</td>
+</tr>
+<tr>
+<td>rack / classic rack</td>
+<td>RAG / classic RAG</td>
+</tr>
+<tr>
+<td>blue and rouge</td>
+<td>BLEU and ROUGE</td>
+</tr>
+<tr>
+<td>MTRA</td>
+<td>MTRAG</td>
+</tr>
+<tr>
+<td>self rack / adaptive rack / graph rack</td>
+<td>self-RAG / adaptive RAG / graph RAG</td>
+</tr>
+<tr>
+<td>the unit of work has "used" from lookup</td>
+<td>has <em>moved</em> from lookup</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「MTRA」推定為 IBM 的 <strong>MTRAG</strong> benchmark,需以投影片確認。/ "MTRA" is read here as IBM's <strong>MTRAG</strong> benchmark — confirm against the slides.</li>
+<li>她說 agentic IR「動輒 20 turns」,未說明資料來源。/ The "potentially 20 turns" figure was given without a source.</li>
+<li>她提出的逐跳評估是否對應某個具體框架或論文,演講中未點名。/ Whether her per-hop evaluation proposal maps to a specific published framework was not stated.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/tanya-roosta--information-retrieval-in-the-age-of-agentic-ai.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

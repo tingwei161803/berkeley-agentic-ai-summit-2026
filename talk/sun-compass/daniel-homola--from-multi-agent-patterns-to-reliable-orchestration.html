@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>From Multi-Agent Patterns to Reliable Orchestration · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Handoffs, agents-as-tools, and routing all collapse into the same runtime decision — who should handle this piece of work — so reliable multi-agent systems come from making that delegation decision…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/daniel-homola--from-multi-agent-patterns-to-reliable-orchestration.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="From Multi-Agent Patterns to Reliable Orchestration · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Handoffs, agents-as-tools, and routing all collapse into the same runtime decision — who should handle this piece of work — so reliable multi-agent systems come from making that delegation decision…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/daniel-homola--from-multi-agent-patterns-to-reliable-orchestration.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="daniel-homola--from-multi-agent-patterns-to-reliable-orchestration">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="From Multi-Agent Patterns to Reliable Orchestration" data-title-zh="從多 Agent 模式到可靠的協調">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Enterprise AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">From Multi-Agent Patterns to Reliable Orchestration</span><span class="lang-zh">從多 Agent 模式到可靠的協調</span></h1>
+        <p class="dialog__speaker"><strong>Daniel Homola</strong> — Lead AI Engineer, BMW Research</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 01:14:30–01:20:35 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=4470s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:14:30</span><span class="lang-zh">從 01:14:30 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Handoffs, agents-as-tools, and routing all collapse into the same runtime decision — who should handle this piece of work — so reliable multi-agent systems come from making that delegation decision measurable, context-aware, and tolerant of the fact that there is often more than one right answer.</span><span class="lang-zh">handoff、agents-as-tools、routing 這些協調模式最後都收斂到同一個 runtime 決策——「這件事該由誰來做」;可靠的多 agent 系統來自把這個 delegation 決策做得可量測、脈絡感知,並接受它常常沒有唯一正確答案。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>模式只是接線方式,真正的問題是 delegation 決策</strong>。handoff(控制權轉移)、agents as tools(orchestrator 委派並等結果)、routing(classifier 把每一輪分派給專家)——每家企業取的名字不同,但底層都是同一個 runtime choice。</li>
+<li><strong>Agent delegation ≠ tool selection</strong>。Tool selection 通常拿單一 ground-truth label 來評;但 agent delegation 的<strong>重疊是常態</strong>(多個 agent 都能完成同一個任務),而且判準還包含成本、延遲與使用者體驗。</li>
+<li><strong>就算實作成 tool call,agent 也不是 tool</strong>:tool call 是有界的,agent delegation 是<strong>無界的</strong>——委派出去等於啟動另一個自主迴圈,它可能推理、反問、卡住、稍後恢復,或永遠不乾淨地返回。</li>
+<li><strong>因此評估不能只問「最後任務有沒有成功」</strong>:要看路徑是否合理、成本、延遲、使用者體驗;benchmark 應該允許多個可接受的正確選擇,並附帶完整 runtime context。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>用車內語音助理把問題具體化(約 01:15–01:16)</h4>
+<p>講者背景是 agent 架構(給客戶產品的系統層架構)與 <strong>GUI agent / computer use agent</strong>——像使用者一樣操作螢幕的 agent。(他提到去年在 AI Engineer 研討會有一場談 GUI agent 典範動機的演講,可供延伸。)</p>
+<p>他用<strong>車內多 agent 語音助理</strong>當作貫穿全場的例子,裡面有三個 agent:navigation agent(找路線)、car control agent(操作車窗、座椅、空調),以及 GUI agent(透過螢幕操作應用程式)。它們之上是 orchestrator,負責協調執行、有時合併結果。</p>
+<p>他的核心主張是:<strong>協調真正難的地方不是模式、不是怎麼在 agent 之間傳遞東西,而是在不斷變動的脈絡下,反覆做出可靠的 delegation 與協調決策。</strong> 常見模式看起來很多——handoff 是控制權轉移給另一個 agent;agents as tools 是 orchestrator 把工作委派給專門 agent 並等待結果;routing 是 classifier 或 router 把每一輪分派給專家——但每家企業各有各的命名,本質是同一件事:<strong>選擇</strong>。</p>
+<h4>為什麼這不是普通的 tool selection(約 01:17–01:18)</h4>
+<p>聽起來像是一般的工具選擇,但不是,原因有二:</p>
+<p><strong>一、重疊是常態,ground truth 不唯一。</strong> Tool selection 通常對著單一標準答案評分;但在 agent delegation 裡,「在這個脈絡下誰該處理這件事」常常有多個 agent 都做得到——例如 GUI agent 幾乎能覆蓋其他 agent 的範圍。而且選擇的判準還包含<strong>成本、延遲、以及你想給駕駛或乘客的使用者體驗</strong>。</p>
+<p>他的例子:使用者說「play some jazz」。如果螢幕是空的,呼叫 media API 可能最好;但如果螢幕上已經有一首歌或一份播放清單,直接點下去也是完全有效的選擇。相對地,「navigate me to Munich」就很明確屬於 navigation agent。<strong>可靠的系統不該把這種情況硬塞進單一 canonical label,而要用 runtime context 去適應。</strong></p>
+<p><strong>二、agent 的委派是無界的。</strong> 就算實作成一次 tool call,agent 也不是 tool:<strong>tool call 是有界的,agent delegation 是無界的</strong>。把工作交給另一個 agent,等於啟動一個自主迴圈——它可能推理、要求澄清、卡住、稍後恢復,或永遠不乾淨地返回。所以協調不只是「選能力」,更是在決定<strong>什麼時候放手讓另一個迴圈接管控制權是安全且有用的</strong>。</p>
+<h4>對評估與組織的意涵(約 01:19–01:20)</h4>
+<p>既然存在多條有效軌跡,benchmark 就不該只問「最終任務是否成功」,而要納入<strong>路徑是否合理、成本、延遲、想提供的使用者體驗</strong>;資料集也要帶上完整的 runtime context,指標則視情境而定(有時最佳化延遲,有時最佳化人機協作)。</p>
+<p>在企業裡怎麼落地:他建議<strong>每個擁有某個 agent 的團隊各自建自己的 benchmark</strong>,然後把多個團隊的 benchmark 組合起來,形成一個涵蓋協作與協調模式的<strong>共享 orchestration / delegation benchmark</strong>。</p>
+<p>收尾:模式只是把多 agent 系統的各部分接起來的手段。真正重要的是讓協調路徑與委派決策<strong>可量測、脈絡感知、可靠</strong>。三個要一直問下去的問題:<strong>誰來處理這件事?他們該一起走哪條路?我們怎麼知道結果是好的?</strong></p>
+<h3>金句</h3>
+<blockquote>
+<p>"A tool call is bounded and the agent delegation is unbounded. So basically delegating to an agent can start an autonomous loop."(約 01:18)</p>
+</blockquote>
+<p>這是「agent 不是 tool」最精確的一句話——差別在控制權是否會回來。</p>
+<blockquote>
+<p>"The patterns are just the means to connect the pieces of the multi-agent system. What matters is making orchestration paths and delegation decisions measurable, context-aware, and reliable."(約 01:20)</p>
+</blockquote>
+<p>整場演講的結論。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Patterns are just wiring; the real problem is the delegation decision.</strong> Handoff (control transfers to another agent), agents-as-tools (the orchestrator delegates and waits for a result), and routing (a classifier dispatches each turn to a specialist) all reduce to the same runtime choice, whatever each enterprise calls it.</li>
+<li><strong>Agent delegation is not tool selection.</strong> Tool selection is typically evaluated against one ground-truth label; in agent delegation <strong>overlap is normal</strong> — several agents can legitimately complete the same task — and the criteria include cost, latency, and the user experience you want to deliver.</li>
+<li><strong>Even implemented as a tool call, agents are not tools</strong>: a tool call is bounded, agent delegation is <strong>unbounded</strong>. Delegating starts an autonomous loop that may reason, ask for clarification, get stuck, resume later, or never return cleanly.</li>
+<li><strong>So evaluation can't just ask whether the final task succeeded</strong>: it also has to weigh whether the path was reasonable, plus cost, latency, and experience — and benchmarks should admit multiple acceptable choices with full runtime context attached.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Grounding the problem in an in-car voice assistant (~01:15–01:16)</h4>
+<p>His background is agent architecture — system-level architecture for customer-facing agentic products — and <strong>GUI agents (computer-use agents)</strong> that operate screens the way users do. (He points to a talk he gave last year at the AI Engineer conference on why an enterprise would consider GUI agents at all.)</p>
+<p>The running example is a <strong>multi-agent in-car voice assistant</strong> with three agents: a navigation agent for routing, a car control agent for windows, seats, and climate, and a GUI agent that drives applications through the screen. Above them sits an orchestrator that coordinates execution and sometimes combines results.</p>
+<p>His thesis: <strong>the hard part of orchestration is not the patterns or how you shuttle state between agents — it's making the delegation and coordination choices well, repeatedly, at runtime, under constantly changing context.</strong> The pattern zoo looks large — handoff transfers control to another agent; agents-as-tools has the orchestrator delegate to a specialist and wait; routing dispatches each turn via a classifier — and every enterprise names them differently, but underneath it's the same thing: <strong>a choice</strong>.</p>
+<h4>Why this isn't ordinary tool selection (~01:17–01:18)</h4>
+<p><strong>First, overlap is normal and ground truth isn't singular.</strong> Tool selection is usually scored against a single correct label. But for "who should handle this work in this context," multiple agents often can — the GUI agent in particular overlaps nearly everything — and the criteria extend to <strong>cost, latency, and the experience you want to give the person in the driver's or passenger's seat</strong>.</p>
+<p>His example: the user says "play some jazz." With an empty screen, the media API may be the best route; but if a song or playlist is already on screen, tapping it is an equally valid choice. Contrast that with "navigate me to Munich," which unambiguously belongs to the navigation agent. <strong>A reliable system shouldn't force these cases into one canonical label — it should use runtime context and adapt.</strong></p>
+<p><strong>Second, delegation is unbounded.</strong> Even when implemented as a tool call, agents are not tools: <strong>a tool call is bounded; agent delegation is unbounded.</strong> Delegating starts an autonomous loop that may reason, ask for clarification, get stuck, resume later, or never return cleanly. So orchestration isn't just selecting a capability — it's deciding <strong>when it's safe and useful to let another loop take over effectively unbounded control</strong>.</p>
+<h4>Consequences for evaluation and org design (~01:19–01:20)</h4>
+<p>Because multiple valid trajectories exist, a benchmark shouldn't only ask whether the final task succeeded. It has to account for <strong>whether the path was reasonable, plus cost, latency, and intended user experience</strong>; datasets need the full runtime context attached, and the metric depends on the situation — sometimes you optimize latency, sometimes human-machine collaboration.</p>
+<p>For enterprises, his suggestion is organizational: <strong>each team that owns an agent builds its own benchmark</strong>, then teams combine those benchmarks into a <strong>shared orchestration and delegation benchmark</strong> that also covers collaboration and coordination patterns.</p>
+<p>Closing: patterns are just the means of connecting pieces. What matters is making orchestration paths and delegation decisions measurable, context-aware, and reliable — so keep asking <strong>who handles this work, what path should they take together, and how do we know it was good?</strong></p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"A tool call is bounded and the agent delegation is unbounded. So basically delegating to an agent can start an autonomous loop." (~01:18)</p>
+</blockquote>
+<p>The sharpest formulation of why agents aren't tools: the question is whether control comes back.</p>
+<blockquote>
+<p>"The patterns are just the means to connect the pieces of the multi-agent system. What matters is making orchestration paths and delegation decisions measurable, context-aware, and reliable." (~01:20)</p>
+</blockquote>
+<p>The thesis of the talk in one sentence.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>車內多 agent 語音助理 / In-car multi-agent voice assistant</td>
+<td>貫穿全場的例子:navigation / car control / GUI agent + orchestrator</td>
+<td>The running example: navigation, car control, and GUI agents under an orchestrator</td>
+<td>BMW Research 情境,未點名為出貨產品 / a BMW Research scenario; not named as a shipping product</td>
+</tr>
+<tr>
+<td>講者去年在 AI Engineer 研討會的 GUI agent 演講 / His AI Engineer conference talk on GUI agents</td>
+<td>說明企業為何要考慮 computer use agent 這條路線</td>
+<td>Motivates why an enterprise would adopt the GUI/computer-use agent paradigm</td>
+<td>講題與連結待確認 / exact title and link to verify</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daniel Humla</td>
+<td>Daniel Homola</td>
+</tr>
+<tr>
+<td>aent / aentic</td>
+<td>agent / agentic</td>
+</tr>
+<tr>
+<td>rooting / rooter</td>
+<td>routing / router</td>
+</tr>
+<tr>
+<td>GU agent</td>
+<td>GUI agent</td>
+</tr>
+<tr>
+<td>engine delegation</td>
+<td>agent delegation</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>講者去年在 AI Engineer 研討會那場 GUI agent 演講的確切講題與連結。/ Exact title and link for his GUI-agent talk at last year's AI Engineer conference.</li>
+<li>車內語音助理範例是研究原型還是已出貨的 BMW 功能,逐字稿未說明。/ Whether the in-car assistant example is a research prototype or a shipped BMW feature.</li>
+<li>「每個團隊各建 benchmark 再組合成共享 benchmark」是否已在 BMW 內部實行,或僅為提議。/ Whether the per-team-benchmark composition model is already in practice at BMW or a proposal.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/daniel-homola--from-multi-agent-patterns-to-reliable-orchestration.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

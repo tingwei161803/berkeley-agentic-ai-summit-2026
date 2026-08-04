@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Building Infrastructure for the Agentic Economy · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Every assumption baked into today&#x27;s payment rails — finality, privacy, trust living at the application layer — presumes a human is one step away to govern. When one agent spawns a hundred sub-agent…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/nikhil-chandhok--building-infrastructure-for-the-agentic-economy.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Building Infrastructure for the Agentic Economy · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Every assumption baked into today&#x27;s payment rails — finality, privacy, trust living at the application layer — presumes a human is one step away to govern. When one agent spawns a hundred sub-agent…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/nikhil-chandhok--building-infrastructure-for-the-agentic-economy.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-plenary" data-talk="nikhil-chandhok--building-infrastructure-for-the-agentic-economy">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Building Infrastructure for the Agentic Economy" data-title-zh="為 Agentic 經濟打造基礎設施">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Agentic AI in Finance &amp; Legal</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Building Infrastructure for the Agentic Economy</span><span class="lang-zh">為 Agentic 經濟打造基礎設施</span></h1>
+        <p class="dialog__speaker"><strong>Nikhil Chandhok</strong> — Chief Product &amp; Technology Officer, Circle</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Plenary Stage · 02:09:38–02:17:15 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=I2PosBXwoPI&amp;t=7778s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:09:38</span><span class="lang-zh">從 02:09:38 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sun</span><span class="lang-zh">回 Plenary · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Every assumption baked into today&#x27;s payment rails — finality, privacy, trust living at the application layer — presumes a human is one step away to govern. When one agent spawns a hundred sub-agents that each need value and rules, those assumptions all break. Programmable stablecoin money is the rail that survives at agent scale.</span><span class="lang-zh">現行支付系統的每一條假設(finality、隱私、信任在應用層)都預設「人隨時在旁邊做治理」;當一個 agent 會生出 100 個 sub-agent、每個都需要價值與規則時,這些假設全部斷裂——穩定幣的可程式化貨幣是唯一能在 agent 尺度上運作的軌道。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>穩定幣不再是加密貨幣話題,是法律話題</strong>:美國通過 <strong>GENIUS Act</strong> 之後,穩定幣就是「真錢」;該法有 18 個月的規則制定期,今年底走完,<strong>明年起 Genius 正式生效</strong>,公司和個人可以像用銀行的錢一樣使用穩定幣。</li>
+<li><strong>今天大多數的 agent 討論都是向內的</strong>;USDC 的特殊之處在於它<strong>活在公開網際網路上</strong>——今天的典型用戶是全球那六十億有手機、卻沒有美元銀行軌道的人。他的賭注是:<strong>agent 也會轉向外面,成為網際網路上的 endpoint,就像網站一樣</strong>。</li>
+<li><strong>現行支付軌道在 agent 尺度上會斷</strong>,他點名三個斷裂處:(1) <strong>finality</strong>——刷卡要等發卡行清算,是機率性的;放到成千上萬 agent 身上,風險會複利。(2) <strong>隱私</strong>——公開帳本利於稽核,但錢包餘額全公開就沒法做真的經濟活動。(3) <strong>治理</strong>——每一條假設都預設「人在一步之外隨時可介入」。</li>
+<li><strong>解方是 open architecture</strong>:agent 跑在開放系統上、彼此互通,支付用任何市場上的穩定幣(不只自家的),因為 web 就是這樣長出來的——從 90 年代幾台 NNTP/FTP server 長成今天數不清的網站。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>先把背景講清楚:穩定幣現在是法定意義上的錢(約 02:09–02:11)</h4>
+<p>他一開場先解釋自己為什麼站在這裡。Circle 是穩定幣發行商;穩定幣是「世界上一種新型態的錢」,根源在加密貨幣(傳統上理解的 Bitcoin、Ethereum 那一套),但<strong>現在它是真的</strong>:美國通過了 <strong>GENIUS Act</strong>,讓任何人都可以像用錢一樣用穩定幣交易。該法有 18 個月的規則制定期,今年底跑完;<strong>明年 Genius 上線,穩定幣就是真公司、真人可以拿來做事的真錢</strong>——就像銀行裡的錢或任何其他形式的錢一樣。USDC 從這個 on-chain 生態系長出來,他預期明年起在美國具備法償地位(<strong>用語待確認,見下</strong>)。</p>
+<h4>USDC 的差異:它活在公開網際網路上(約 02:11–02:12)</h4>
+<p>他指出當天所有關於 agent 治理與安全的討論都是<strong>向內看</strong>的(inward facing)。USDC 不一樣——它是<strong>活在公開網際網路上的開放貨幣</strong>:</p>
+<ul>
+<li>美國有 3.3 億人,大多數人拿到美元銀行帳戶與美元支付方式並不困難。</li>
+<li>但全球有 80 億人,其中約 <strong>60 億人有手機、卻沒有辦法用美元交易</strong>。USDC 做的第一件事就是讓這些人開始能接觸美元。</li>
+<li>那些美元不住在銀行裡,它們住在鏈上,交易人人看得見。</li>
+</ul>
+<p>他的核心賭注:<strong>錢已經從「住在裡面」轉向外面,agent 也會</strong>——agent 會成為網際網路上的 endpoint,就像網站是 endpoint 一樣,而技術一旦到位,大家就會競相打造這些新 agent。</p>
+<p>他用 FSD(全自動駕駛)做類比:<strong>FSD 的設計前提是「道路不會改變」;但如果你其實可以重做整套交通系統、重做整個公路網呢?</strong> 這就是 Circle 思考 agent 與 USDC 時的角度。</p>
+<h4>三個會斷裂的假設(約 02:12–02:16)</h4>
+<p><strong>(1) Agent 不會 tap to pay。</strong> 你可以把信用卡交給 agent 說「去用我的卡花錢」。但想像你的 agent 生出 100 個 sub-agent——<strong>每一個都需要價值、需要治理,而且每一個動作都需要可程式化</strong>。現行支付軌道做不到這件事。他點出一個更深的觀察:現實世界裡的商務,甚至像 Android 這種成熟系統,其設計都是繞著「支付能做什麼、不能做什麼」長出來的。穩定幣給的是<strong>可程式化的貨幣</strong>——你可以附上邏輯,而且<strong>不需要 agent 有銀行帳戶、不需要它有信用卡</strong>。所以 agent 生 agent 生 agent,每一層都能有自己的鏈上錢包、自己的規則,而且所有追蹤都在公開處進行。</p>
+<p><strong>(2) Finality 是機率性的。</strong> finality 就是「我付你錢,而這筆交易已成定局」。這件事非常重要:agent 刷信用卡時,商家其實要等發卡行清算資金才拿得到錢——<strong>那不是完全的 finality</strong>。鏈上轉帳則要求錢從 wallet 1 到 wallet 2 是絕對定局的。</p>
+<blockquote>
+<p>機率性的 finality 會讓系統裡的風險複利。如果你有數以百萬計的 agent——而在網頁與網站上,agent 數量超過人類這件事今天已經是事實——你不可能承受機率性的 finality。</p>
+</blockquote>
+<p><strong>(3) 全公開的帳本擋住真實經濟活動。</strong> 目前多數區塊鏈支付發生在公開帳本上,<strong>稽核性極佳,但不利於做真的經濟價值</strong>:如果我的錢包在鏈上完全公開、你看得到我有多少餘額,我很難做真正的經濟活動,因為洩漏的資訊太多。</p>
+<p>而這三件事底下還有一條共同的假設:<strong>「信任放在應用層」在 agent 尺度上極度困難</strong>。現行支付系統裡搬動所有價值的每一條假設,都預設<strong>人在一步之外、隨時在場做治理</strong>。</p>
+<h4>解方:open architecture(約 02:16–02:17)</h4>
+<p>Circle 的答案是開放架構:</p>
+<ul>
+<li>所有 agent 跑在<strong>開放系統</strong>上,能與這些系統上的其他 agent 互動。</li>
+<li>這些互動的支付不只用自家的穩定幣,而是<strong>市場上任何可用的穩定幣</strong>。</li>
+<li><strong>open by design、也 open by necessity</strong>——因為 web 就是這樣演化的:從 90 年代初幾台 NNTP 與 FTP server,長成今天數不清的網站與網頁。</li>
+</ul>
+<p>落地產品在 <strong>agents.circle.com</strong>:有 CLI,是一個以「任務」為單位的市集,<strong>單筆付款可低到百萬分之一分錢</strong>就完成一項任務。人們正在嘗試各種任務——從「幫我跑這個推論」到「做這份研究」、「幫我寫這段程式碼」。</p>
+<blockquote>
+<p>所有這些設計都是由 agent 操作、為 agent 服務、屬於 agent 的(operated <strong>by</strong> agents, <strong>for</strong> agents, and <strong>of</strong> agents)。</p>
+</blockquote>
+<h3>金句</h3>
+<blockquote>
+<p>"Probabilistic finality essentially compounds the risk in the system."(約 02:15)</p>
+</blockquote>
+<p>在人類尺度可以忍受的機率性結算,在 agent 尺度會變成系統性風險。</p>
+<blockquote>
+<p>"Every assumption in the current payment system... assumes that the human is one step away, is always ready, is present for governance."(約 02:15)</p>
+</blockquote>
+<p>這是他整場演講的軸心:agent 經濟不是把人的支付軌道借給 agent 用,而是要重建一套不預設人在場的軌道。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Stablecoins stopped being a crypto story and became a legal one.</strong> With the <strong>GENIUS Act</strong> passed in the US, stablecoins are real money. The law runs an 18-month rulemaking period that ends at the end of this year; <strong>from next year GENIUS is live</strong>, and companies and people can transact in stablecoins the way they do with bank money.</li>
+<li><strong>Most agent discussion right now is inward-facing.</strong> USDC's distinguishing property is that it <strong>lives on the public internet</strong> — its typical user today is one of the roughly six billion people worldwide who have a phone but no dollar banking rails. Chandhok's bet: <strong>agents will turn outward too, becoming endpoints on the internet the way websites are.</strong></li>
+<li><strong>Today's payment rails break at agent scale</strong>, in three specific places: <strong>finality</strong> (a card payment clears through the issuing bank — that's probabilistic, and probabilistic finality compounds risk across millions of agents), <strong>privacy</strong> (a fully public ledger is great for auditability but leaks your balances, which makes real economic activity impractical), and <strong>governance</strong> (every assumption presumes a human is one step away and present).</li>
+<li><strong>The fix is open architecture</strong>: agents running on open systems, interacting with other agents on those systems, paying in <em>any</em> available stablecoin — open by design and open by necessity, because that's how the web itself evolved from a handful of NNTP and FTP servers.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Setting the stage: stablecoins are now legally money (~02:09–02:11)</h4>
+<p>Chandhok opened by explaining why a stablecoin issuer belongs on an agentic AI stage. Circle issues stablecoins — "a new type of money that exists in the world," rooted in crypto as traditionally understood (Bitcoin, Ethereum) but now real in a legal sense. The US passed the <strong>GENIUS Act</strong>, which made it so anybody can transact with stablecoins just like they transact with money. The law goes through <strong>18 months of rulemaking that ends at the end of this year; by next year GENIUS is live</strong> and stablecoins are money that real companies and real people can use like bank money. USDC came out of that on-chain ecosystem, and he expects it to have legal-tender standing in the US by next year (<strong>wording to verify, below</strong>).</p>
+<h4>What makes USDC different: it lives on the public internet (~02:11–02:12)</h4>
+<p>He observed that the day's discussion of agent governance and agent security had been <strong>inward-facing</strong>. USDC is the opposite — open money on the public internet:</p>
+<ul>
+<li>Of the 330 million people in the US, most can get a dollar bank account and dollar payment methods easily.</li>
+<li>Of the roughly 8 billion people worldwide, about <strong>6 billion have a phone but no real way to transact in dollars</strong>. Making that possible was USDC's first job.</li>
+<li>Those dollars don't live inside a bank. They live on chain, and the transactions are visible.</li>
+</ul>
+<p>His central bet: money has already turned outward, and <strong>agents will turn outward too</strong> — becoming endpoints on the internet much like websites are endpoints, with a race to build them once the tech is right.</p>
+<p>His analogy is FSD: <strong>self-driving was designed on the assumption that the roads won't change. What if you could redo the entire transportation system instead?</strong> That's the frame Circle applies to agents and USDC.</p>
+<h4>Three assumptions that break (~02:12–02:16)</h4>
+<p><strong>(1) Agents don't tap to pay.</strong> You can hand your agent a credit card and tell it to spend. But imagine your agent spawns a hundred sub-agents: <strong>each one needs value, each needs governance, and each of their actions needs to be programmable.</strong> Existing rails can't do that. His deeper point: much of real-world commerce — and even sophisticated systems like Android — is built around what payments can and cannot enable. Stablecoins give you <strong>programmable money</strong> you can attach logic to, <strong>without the agent needing a bank account or a credit card</strong>. So agents spawning agents spawning agents can each have an on-chain wallet with governing rules, with all the tracking done out in the open.</p>
+<p><strong>(2) Finality is probabilistic.</strong> Finality means: I have paid you, and that transaction is final. When an agent swipes a credit card, the merchant only gets the money after the issuing bank clears the funds — <strong>that is not full finality</strong>. On chain, you want absolute finality when money moves from wallet one to wallet two.</p>
+<blockquote>
+<p>Probabilistic finality essentially compounds the risk in the system. If you're imagining a future with millions and millions of agents — or more agents than humans, which is already true of web pages and websites today — you cannot have probabilistic finality.</p>
+</blockquote>
+<p><strong>(3) A fully public ledger blocks real economic activity.</strong> Most blockchain payments happen on a public ledger, which is <strong>great for auditability but bad for real economic value</strong>: if your wallet balance is fully visible on chain, you leak too much information to operate.</p>
+<p>Underneath all three sits a shared assumption — that <strong>trust can live at the application layer</strong>, which becomes extremely difficult at agent scale. Every assumption in the current payment system, the system that moves all the value, presumes <strong>the human is one step away, always ready, present for governance</strong>.</p>
+<h4>The fix: open architecture (~02:16–02:17)</h4>
+<p>Circle's answer:</p>
+<ul>
+<li>Agents run on <strong>open systems</strong> and can interact with other agents on those systems.</li>
+<li>Payments for those interactions happen not just in Circle's stablecoin but in <strong>any stablecoin available in the market</strong>.</li>
+<li><strong>Open by design and open by necessity</strong> — because that's how the web evolved, from a few NNTP and FTP servers in the early 90s to an innumerable number of websites and pages.</li>
+</ul>
+<p>The product is at <strong>agents.circle.com</strong>: there's a CLI, and it's a marketplace of task-based activity where <strong>a payment as low as a millionth of a cent</strong> can get a task done. People are trying everything from "go infer this for me" to "go do this research" to "go write this piece of code."</p>
+<blockquote>
+<p>All of this is designed to be operated <strong>by</strong> agents, <strong>for</strong> agents, and <strong>of</strong> agents.</p>
+</blockquote>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Probabilistic finality essentially compounds the risk in the system." (~02:15)</p>
+</blockquote>
+<p>What is tolerable at human scale becomes systemic risk at agent scale.</p>
+<blockquote>
+<p>"Every assumption in the current payment system... assumes that the human is one step away, is always ready, is present for governance." (~02:15)</p>
+</blockquote>
+<p>The axis of the whole talk: an agentic economy doesn't get to borrow the human payment rails — it needs rails that don't presume a human is standing by.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USDC</td>
+<td>Circle 發行的美元穩定幣,活在公開網際網路上</td>
+<td>Circle's dollar stablecoin, living on the public internet</td>
+<td>Circle 的核心產品</td>
+</tr>
+<tr>
+<td>GENIUS Act</td>
+<td>美國穩定幣立法;18 個月規則制定期於今年底結束,明年生效</td>
+<td>US stablecoin legislation; 18-month rulemaking ends this year, live next year</td>
+<td>講者稱其為穩定幣「變成真錢」的分水嶺</td>
+</tr>
+<tr>
+<td>agents.circle.com</td>
+<td>Circle 的 agent 產品入口:CLI + 任務市集,支援極小額付款</td>
+<td>Circle's agent surface: CLI plus a task marketplace with sub-cent payments</td>
+<td>字幕作 "agentscircle.com"</td>
+</tr>
+<tr>
+<td>Circle Payments Network</td>
+<td>座談中他另提到的支付網路(見 panel 筆記)</td>
+<td>Payments network he mentions in the panel session</td>
+<td>見 <code>panel--agentic-ai-in-finance-and-legal.md</code></td>
+</tr>
+<tr>
+<td>Arc</td>
+<td>Circle 正在建的區塊鏈,需要 validator 與參與者對齊誘因</td>
+<td>The blockchain Circle is building; needs validators and aligned participants</td>
+<td>同上,座談中提及</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nikquille Chanduk / Nquille / to Keel / Nichol / Nikl</td>
+<td>Nikhil Chandhok</td>
+</tr>
+<tr>
+<td>genius act</td>
+<td>GENIUS Act</td>
+</tr>
+<tr>
+<td>agentscircle.com</td>
+<td>agents.circle.com</td>
+</tr>
+<tr>
+<td>N&amp;TP</td>
+<td>NNTP</td>
+</tr>
+<tr>
+<td>payment rates</td>
+<td>payment rails</td>
+</tr>
+<tr>
+<td>FSD(未展開)</td>
+<td>Full Self-Driving</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>講者說 USDC「hopefully by next year 成為 legal tender in the United States」——GENIUS Act 規範的是支付型穩定幣的發行與監理,「legal tender(法償)」是講者的口語用法,正式法律地位待查證。/ The speaker said USDC will "hopefully by next year" be legal tender in the US; GENIUS regulates payment stablecoin issuance and supervision, and "legal tender" appears to be colloquial. Verify the formal status.</li>
+<li>「as of June last year」與 GENIUS Act 實際簽署時間的對應待核。/ Cross-check "as of June last year" against the GENIUS Act's actual signing date.</li>
+<li>「payments as low as a millionth of a cent」為口述數字;Circle 官方 nanopayments 文件的最小單位需比對。/ Verify the "millionth of a cent" figure against Circle's published nanopayments minimum.</li>
+<li>「6 billion of 8 billion people have a phone」為口述估計,未附出處。/ The "6 of 8 billion have a phone" figure is as spoken, with no source given.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-plenary/nikhil-chandhok--building-infrastructure-for-the-agentic-economy.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

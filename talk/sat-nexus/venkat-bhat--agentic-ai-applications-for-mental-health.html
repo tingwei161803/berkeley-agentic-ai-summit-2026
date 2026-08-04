@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Agentic AI Applications for Mental Health: From Chatbots to Clinical Orchestration · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="A psychiatrist and clinical trialist&#x27;s position — a multi-agent system that performs well in simulation is only step one; what mental health actually lacks is randomized controlled trials, and worl…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/venkat-bhat--agentic-ai-applications-for-mental-health.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Agentic AI Applications for Mental Health: From Chatbots to Clinical Orchestration · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="A psychiatrist and clinical trialist&#x27;s position — a multi-agent system that performs well in simulation is only step one; what mental health actually lacks is randomized controlled trials, and worl…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/venkat-bhat--agentic-ai-applications-for-mental-health.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="venkat-bhat--agentic-ai-applications-for-mental-health">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Agentic AI Applications for Mental Health: From Chatbots to Clinical Orchestration" data-title-zh="心理健康的 Agentic AI 應用:從聊天機器人到臨床流程協作">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Agentic AI in Finance &amp; Healthcare</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Agentic AI Applications for Mental Health: From Chatbots to Clinical Orchestration</span><span class="lang-zh">心理健康的 Agentic AI 應用:從聊天機器人到臨床流程協作</span></h1>
+        <p class="dialog__speaker"><strong>Venkat Bhat</strong> — Associate Professor; Director, AI for Mental Health (AI-M) Program, University of Toronto</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 02:08:05–02:23:23 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=ZIRc3EpzQJs&amp;t=7685s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:08:05</span><span class="lang-zh">從 02:08:05 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">A psychiatrist and clinical trialist&#x27;s position — a multi-agent system that performs well in simulation is only step one; what mental health actually lacks is randomized controlled trials, and worldwide there is still only about one (going on two) RCT of a generative-AI-based tool.</span><span class="lang-zh">一位精神科醫師兼臨床試驗研究者的立場——在模擬環境裡表現良好的 multi-agent 系統只是第一步,心理健康領域真正缺的是隨機對照試驗;全世界用生成式 AI 工具做的 RCT 到現在只有一到兩個。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>他的研究流程是三段式</strong>:選定一個可能可自動化的臨床工作流程 → 建 single/multi-agent 系統,並用「bot 扮演使用者」在 sandbox 模擬驗證 → <strong>接著跑兩到三年的臨床試驗</strong>。第三段才是他和多數 AI 演講者最大的差別。</li>
+<li><strong>成果橫跨四個領域</strong>:臨床照護(自動產生 PHQ/GAD-7 等量表、multi-agent 做 DSM 診斷式訪談)、醫學教育(加速住院醫師取得臨床能力)、研究(systematic review 與 meta-analysis 的局部自動化)、品質改善(從虛擬看診的多模態資料估計醫病關係)。</li>
+<li><strong>兩個負面但重要的發現</strong>:(1) 逼 agent 執行 motivational interviewing 時,<strong>複雜度超過某個水準後 agent 就失守,連 guardrail 都守不住</strong>;(2) 高 / 低安全 guardrail 對「agent 被使用者如何感知」有顯著影響。而全世界生成式 AI 工具的 RCT 只有一到兩個——證據嚴重不足。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>立場與方法論:我是臨床試驗研究者(約 02:08–02:11)</h4>
+<p>講者自我定位很明確:他是<strong>精神科醫師與 clinician scientist</strong>,任職於多倫多大學,主持 <strong>AI for Mental Health (AI-M) Program</strong>;同時是 <strong>Temerty Centre for AI Research and Education in Medicine(T-CAIREM)</strong> 底下的全國心理健康 community of practice lead——該中心串連了加拿大各大學,他負責的是心理健康這一塊。</p>
+<p>他進入這個領域的動機是:AI 的許多進展本來就是從人腦運作方式來的——<strong>deep learning 對應皮質(cortical)表徵,reinforcement learning 對應皮質下(subcortical)</strong>。他約三分之一的研究是在<strong>反向工程這些系統</strong>(可解釋性方向,當天沒講);另外三分之二是<strong>心理健康臨床工作流程的自動化</strong>,也就是這場演講的主題。</p>
+<p>他的標準流程是:</p>
+<ol>
+<li>找出一個有機會自動化的臨床工作流程。</li>
+<li>開發自動化系統(single agent 或 multi-agent),用<strong>一個 bot 扮演終端使用者</strong>,在 sandbox 環境做模擬,證明它可行。</li>
+<li><strong>跑臨床試驗</strong>——這是他強調與當天多數講者最大的不同。他在憂鬱症、PTSD、焦慮症(含預防端),近期也在心理健康與阿茲海默症領域主持試驗。</li>
+</ol>
+<p>他跑試驗的理由很實際:某個工作流程上 agent 「不劣於人類」還不夠。還有變革管理、服務流程重新設計等一整套生態系變動要發生,所以他們用 mixed methods 去看「就算它有效,要真的被採用還需要什麼」,並把<strong>成本效益</strong>納入評估。</p>
+<h4>三四年前的那張基石投影片(約 02:12)</h4>
+<p>大約三四年前,當自主性等級開始往上走,他的團隊就在想:這對心理健康的臨床照護意味著什麼?於是提出了 <strong>collaborative / assistive / semi-autonomous agents</strong> 的分類,並在 human-in-the-loop 框架下界定人的角色。這張圖是整場演講反覆回扣的座標系。</p>
+<p>他也點出現實:<strong>AI scribe 是臨床人員唯一普遍認得、而且已在使用的生成式 AI 應用</strong>;其他每一類都還需要相當多證據。</p>
+<h4>四個領域的實作(約 02:13–02:20)</h4>
+<p><strong>臨床照護</strong>——把他自己的門診從初診 intake 到出院整條流程用 agent 自動化,每一段都已發表,現正往臨床試驗推進。兩個具體例子:</p>
+<ul>
+<li><strong>Measurement-based care</strong>:心理健康缺少「糖尿病的血糖、高血壓的血壓」這種客觀量測。臨床上用的是 <strong>PHQ</strong>、<strong>GAD-7</strong> 這類量表,但<strong>過去二十多年一直很難讓這些量表被確實填寫</strong>。他們的做法是:拿非結構化資料(可以想成 ambient scribe 的輸出)自動生成量表分數,並在臨床人員沒有收集到相關資訊時主動提示。這套目前正透過醫院端的 <strong>Epic</strong> 進入試驗。</li>
+<li><strong>多 agent 診斷式訪談</strong>:把操作化的 DSM(即 <strong>SCID</strong> 這套工具)拆成 multi-agent——一個 agent 負責問診、另一個負責監督(<strong>在該模組完成前不允許進入下一個模組</strong>)、遵循 SCID 內部的 skip logic,再加一個 orchestrator / diagnoser。用 bot 扮演帶有各種複雜 DSM 診斷的病人測試,表現良好,現已進入臨床試驗。試驗<strong>刻意定位在輕到中度症狀</strong>——他們清楚重度精神病、重度憂鬱或阿茲海默症患者無法使用這類工具。</li>
+</ul>
+<p><strong>醫學教育</strong>——他直接承認 deskilling(能力退化)是<strong>正當的擔憂</strong>,需要用別的方式處理。他們選的切角相反:訓練一位臨床醫師要 <strong>10 年</strong>(4 年醫學院 + 4 到 6 年住院醫師訓練),<strong>能不能用 agentic AI 加速能力(competency)的取得?</strong> 做法是依加拿大與美國各自的專科委員會標準,拆解出住院醫師結訓前應具備的能力,再建一個 multi-agent 系統:一個 bot 扮病人、一個 bot 扮臨床醫師、一個 bot 扮想練習訪談技巧的住院醫師——因為住院醫師學會臨床訪談(臨床醫師的核心技能)的方式,就是反覆做、報告給主治、拿回饋。他們正與<strong>七個規模最大的臨床訓練專案</strong>合作部署:一組照現行方式訓練,另一組加上這套系統,看能力取得是否能從五年縮到三、四年。另有一個變體是幫住院醫師學習心理治療的基本原則,如 <strong>CBT</strong> 與 <strong>motivational interviewing</strong>。</p>
+<p>他對此保持懷疑:「我是從臨床試驗的懷疑角度來的——這些東西大多不會照我們想的方式運作,但<strong>少數真的成立的,會有變革性的影響</strong>。」</p>
+<p><strong>研究</strong>——他做了 5 到 10 年的 systematic review 與 meta-analysis,判斷「再過幾年我就不會自己做了,我們會有 <strong>living systematic reviews and meta-analyses</strong>」。策略不是端到端自動化,而是<strong>鎖定 pipeline 中的特定環節</strong>。動機很具體:研究助理光是比對文獻抽取的錯誤就要花數小時甚至數週。量化端有一篇論文,質性端(thematic analysis)也做了對照——比較傳統質性分析得到的主題與生成式 AI 得到的主題。<strong>底線仍是 human-in-the-loop</strong>。同樣的思路也用在 <strong>EEG 分析</strong>的資料處理上。</p>
+<p><strong>品質改善</strong>——疫情期間臨床人員轉為虛擬看診,他們想知道:虛擬情境下的醫病關係本質是什麼?做法是多模態:用多種資料流與非結構化資料去產生 <strong>Working Alliance Inventory</strong>——這是醫病關係品質的代理指標。這項工作也正在逐步進入臨床試驗。</p>
+<h4>兩個限制性發現,與證據的匱乏(約 02:20–02:22)</h4>
+<ul>
+<li><strong>複雜度上限</strong>:他們研究 agent 直接提供治療的各個環節時,強迫 agent 執行 <strong>motivational interviewing</strong>,結果發現<strong>複雜度超過某個水準之後,agent 就做不到了,而且會失去它的 guardrails</strong>。</li>
+<li><strong>Guardrail 影響感知</strong>:比較低安全 guardrail 與高安全 guardrail 的設定,結果顯示 <strong>guardrail 強度對「agent 被如何感知」有顯著影響</strong>。</li>
+<li><strong>證據面</strong>:他掃了全世界在這個領域的進展,結論是——儘管這些 agent 的可能性被講得很大,<strong>用生成式 AI 工具做的隨機對照試驗目前只有一個,加上去年那個 bot 才要變成兩個</strong>。他的收尾就是這句:臨床試驗有迫切且關鍵的需求,而這正是他團隊大量投入的方向。</li>
+</ul>
+<h3>金句</h3>
+<blockquote>
+<p>"It's not enough if at that particular workflow the agent is non-inferior to the human doing the task. There are a lot of other ecosystem changes."(約 02:13)</p>
+</blockquote>
+<p>「不劣於人類」只是入場券,不是採用的理由。</p>
+<blockquote>
+<p>"Most of these things are not going to work — at least in the way we think it would work — but the few things which would work will have a transformative effect."(約 02:17)</p>
+</blockquote>
+<p>一個臨床試驗研究者對 agentic AI 的期望值設定。</p>
+<blockquote>
+<p>"In spite of all the possibilities for what these agents could do, there's only one randomized control trial — now coming to two."(約 02:21)</p>
+</blockquote>
+<p>演講的落點:能力的敘事遠遠跑在證據之前。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>His pipeline has three stages</strong>: pick a clinical workflow that might be automatable → build a single- or multi-agent system and validate it in a sandbox with a <strong>bot playing the end user</strong> → then <strong>run a two-to-three-year clinical trial</strong>. That third stage is what separates him from most AI speakers.</li>
+<li><strong>Work spans four domains</strong>: clinical care (auto-generating PHQ/GAD-7 scales; a multi-agent DSM diagnostic interview), medical education (accelerating residents' competency attainment), research (partial automation of systematic reviews and meta-analyses), and quality improvement (estimating the therapeutic alliance from multimodal virtual-visit data).</li>
+<li><strong>Two negative-but-important findings</strong>: (1) when forced to deliver motivational interviewing, agents <strong>fail past a certain complexity threshold and lose their guardrails</strong>; (2) low vs. high safety guardrails significantly change how the agent is <em>perceived</em>. And worldwide there is still only about one RCT (going on two) of a generative-AI-based tool — the evidence base is thin.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Where he stands: a clinical trialist first (~02:08–02:11)</h4>
+<p>Bhat introduced himself as a <strong>psychiatrist and clinician scientist</strong> at the University of Toronto who leads the <strong>AI for Mental Health (AI-M) Program</strong>, and who serves as national mental-health community-of-practice lead within the <strong>Temerty Centre for AI Research and Education in Medicine (T-CAIREM)</strong> — a centre that brings universities across Canada together, with mental health as his slice of it.</p>
+<p>His entry point into the field was that much of AI's development traces back to how the brain works: <strong>deep learning maps to cortical representation, reinforcement learning to subcortical</strong>. About a third of his program reverse-engineers these systems (interpretability work, not covered in this talk); the other two-thirds automates clinical workflows in mental health.</p>
+<p>The standard paradigm: identify a workflow that might be automatable, build the automation (single agent or multi-agent), show in a sandboxed simulation — with a bot playing the end user — that it works, and then run clinical trials. He runs trials across depression, PTSD, anxiety (including on the prevention side), and more recently mental health and Alzheimer's.</p>
+<p>His reason for insisting on trials is practical: it isn't enough for the agent to be <strong>non-inferior</strong> to a human on that workflow. Change management, service redesign, and other ecosystem changes have to happen too, so his group uses mixed methods to ask what adoption would actually require even for an efficacious tool — and folds in <strong>cost-benefit</strong>, which he called a critical factor.</p>
+<h4>The cornerstone slide from three or four years ago (~02:12)</h4>
+<p>As autonomy levels started climbing three or four years ago, his group asked what that would mean for clinical care in mental health, and landed on a taxonomy of <strong>collaborative, assistive, and semi-autonomous agents</strong> inside a human-in-the-loop model, with the human's role defined per tier. He returned to this slide repeatedly as the organizing frame.</p>
+<p>His reality check: <strong>the AI scribe is the one generative-AI application clinicians identify with and actually use</strong>. Everything else in the taxonomy still needs a lot of evidence.</p>
+<h4>Four domains of implementation (~02:13–02:20)</h4>
+<p><strong>Clinical care.</strong> They automated his own clinic end to end — from intake through discharge — with agents at each stage, each published, each now moving toward trials. Two examples:</p>
+<ul>
+<li><strong>Measurement-based care.</strong> Mental health lacks the equivalent of blood sugar for diabetes or blood pressure for hypertension; clinicians use scales like the <strong>PHQ</strong> or <strong>GAD-7</strong>, and for over two decades it has been genuinely hard to get them completed. Their system takes unstructured data (think of the output of an ambient scribe) and generates the scales, and prompts clinicians when the underlying information hasn't been collected. This is moving into trials through <strong>Epic</strong> at their hospital sites.</li>
+<li><strong>Multi-agent diagnostic interviewing.</strong> They took the operationalized DSM — the <strong>SCID</strong> instrument — and built a multi-agent system around it: one agent asks the questions, another oversees and <strong>won't let the interview advance to the next module</strong> prematurely, the system follows the SCID's skip logic, and an orchestrator/diagnoser sits on top. With a bot playing patients carrying all kinds of complicated DSM diagnoses, it performed well; it is now in clinical trials, <strong>deliberately positioned for mild-to-moderate symptoms</strong> — someone with severe psychosis, severe depression, or Alzheimer's is not going to be able to use it.</li>
+</ul>
+<p><strong>Education.</strong> He granted that <strong>deskilling is a legitimate concern</strong> that needs addressing in its own right, then framed the opposite question: training a clinician takes <strong>10 years</strong> (four of medical school, four to six of residency) — can agentic AI accelerate the attainment of competencies? They decomposed the competencies residents are expected to reach by end of training, per the respective Canadian and US boards, then built a multi-agent system: a bot as the patient, a bot as the clinician, and a bot as the resident practicing interviewing — because clinical interviewing, the core skill, is learned by doing it repeatedly, presenting, and getting feedback. They are working with <strong>seven of the largest clinical training programs</strong> to deploy it in a two-arm design: current training vs. current training augmented, testing whether competencies can be reached in three or four years instead of five. A variant helps residents learn the basic principles of psychotherapy — <strong>CBT</strong> and <strong>motivational interviewing</strong> — by interviewing a simulated patient within that framework.</p>
+<p>He stayed skeptical throughout: most of these things will not work the way we think they will, but the few that do will be transformative.</p>
+<p><strong>Research.</strong> After 5–10 years of doing systematic reviews and meta-analyses, he expects to stop doing them himself within a couple of years, replaced by <strong>living systematic reviews and meta-analyses</strong>. The approach is not end-to-end automation but <strong>specific points inside the pipeline</strong> — motivated by research assistants spending hours or weeks reconciling extraction errors across publications. They published on the quantitative side and repeated the exercise on the qualitative side (thematic analysis), comparing themes from conventional qualitative analysis against generative-AI-derived themes. The bottom line remains <strong>human-in-the-loop</strong>. The same idea is applied to data processing for <strong>EEG analysis</strong>.</p>
+<p><strong>Quality improvement.</strong> During the pandemic clinicians moved to virtual assessments, and his group wanted to characterize the patient–physician relationship in that setting. The approach was multimodal: several data streams and unstructured data feeding a prediction of the <strong>Working Alliance Inventory</strong>, the standard proxy for relationship quality. That work is gradually moving into clinical trials.</p>
+<h4>Two limiting findings, and the missing evidence (~02:20–02:22)</h4>
+<ul>
+<li><strong>A complexity ceiling.</strong> Studying whether agents can deliver therapy components, they forced an agent to conduct motivational interviewing and found that <strong>past a certain level of complexity it cannot perform the task and loses its guardrails</strong>.</li>
+<li><strong>Guardrails shape perception.</strong> Comparing low-safety against high-safety guardrail conditions showed that guardrail strength has a <strong>significant effect on how the agent is perceived</strong>.</li>
+<li><strong>The evidence gap.</strong> Surveying what the world is doing in this space, he closed on the point that despite everything these agents could in principle do, <strong>there is only one randomized controlled trial — now becoming two, with the bot from last year — of generative-AI-based tools</strong>. Clinical trials are the critical need, and that is where his team invests.</li>
+</ul>
+<h3>Quotes</h3>
+<blockquote>
+<p>"It's not enough if at that particular workflow the agent is non-inferior to the human doing the task. There are a lot of other ecosystem changes." (~02:13)</p>
+</blockquote>
+<p>Non-inferiority is the entry ticket, not the adoption case.</p>
+<blockquote>
+<p>"Most of these things are not going to work — at least in the way we think it would work — but the few things which would work will have a transformative effect." (~02:17)</p>
+</blockquote>
+<p>A clinical trialist's prior on agentic AI.</p>
+<blockquote>
+<p>"In spite of all the possibilities for what these agents could do, there's only one randomized control trial — now coming to two." (~02:21)</p>
+</blockquote>
+<p>The talk's landing point: the capability narrative is far ahead of the evidence.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI for Mental Health (AI-M) Program</td>
+<td>講者在多倫多大學主持的計畫,聚焦心理健康臨床工作流程自動化</td>
+<td>Bhat's program at the University of Toronto, focused on automating mental-health clinical workflows</td>
+<td><a href="https://ai.psychiatry.utoronto.ca/">https://ai.psychiatry.utoronto.ca/</a></td>
+</tr>
+<tr>
+<td>T-CAIREM</td>
+<td>Temerty Centre for AI Research and Education in Medicine,串連加拿大各大學;講者為全國心理健康 community of practice lead</td>
+<td>Temerty Centre for AI Research and Education in Medicine at U of T; Bhat leads the national mental-health community of practice</td>
+<td>字幕誤聽為 "temporary center" / heard as "temporary center"</td>
+</tr>
+<tr>
+<td>PHQ / GAD-7</td>
+<td>憂鬱與焦慮的標準自評量表;團隊從非結構化資料自動生成分數</td>
+<td>Standard depression and anxiety rating scales; the team auto-generates scores from unstructured data</td>
+<td>正推進 Epic 內的臨床試驗 / moving into trials through Epic</td>
+</tr>
+<tr>
+<td>SCID(operationalized DSM)</td>
+<td>DSM 診斷訪談工具;拆成問診 agent + 監督 agent + orchestrator/diagnoser 的 multi-agent 系統</td>
+<td>The structured DSM diagnostic interview instrument, rebuilt as a multi-agent system (interviewer + overseer + orchestrator/diagnoser)</td>
+<td>字幕記為 "the skid";已進入試驗,定位輕到中度症狀 / in trials, scoped to mild-to-moderate</td>
+</tr>
+<tr>
+<td>Working Alliance Inventory</td>
+<td>醫病關係品質的標準代理指標;團隊用多模態資料流估計</td>
+<td>Standard proxy for the therapeutic alliance; estimated from multimodal data streams</td>
+<td>虛擬看診品質改善研究 / virtual-visit quality-improvement study</td>
+</tr>
+<tr>
+<td>Living systematic reviews &amp; meta-analyses</td>
+<td>局部自動化的證據合成,非端到端;量化與質性(thematic analysis)兩端都做過</td>
+<td>Partially automated evidence synthesis (not end-to-end), on both quantitative and qualitative (thematic analysis) sides</td>
+<td>仍為 human-in-the-loop / still human-in-the-loop</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vin Katpot</td>
+<td>Venkat Bhat</td>
+</tr>
+<tr>
+<td>temporary center for AI in medicine</td>
+<td>Temerty Centre for AI Research and Education in Medicine (T-CAIREM)</td>
+</tr>
+<tr>
+<td>the skid / this kit</td>
+<td>the SCID (Structured Clinical Interview for DSM)</td>
+</tr>
+<tr>
+<td>GAD 7</td>
+<td>GAD-7</td>
+</tr>
+<tr>
+<td>multi- aent / aentic</td>
+<td>multi-agent / agentic</td>
+</tr>
+<tr>
+<td>deskkilling</td>
+<td>deskilling</td>
+</tr>
+<tr>
+<td>efiral(?)</td>
+<td>逐字稿雜訊,無對應詞 / transcript noise</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「there's only one randomized control trial, now coming to two, with the bot last year」——這個「the bot」指的是哪一個生成式 AI 治療聊天機器人的 RCT,名稱與出處待查證。/ Which generative-AI therapy chatbot RCT "the bot" refers to.</li>
+<li>七個參與部署的臨床訓練專案名單未在演講中列出。/ The seven clinical training programs deploying the education system were not named.</li>
+<li>演講提到的多篇論文(intake agents、SCID multi-agent、motivational interviewing 複雜度上限、guardrail 感知研究)均未給出標題,需另行對照 AI-M Program 出版清單。/ None of the cited papers were named on the transcript; cross-check against the AI-M Program publication list.</li>
+<li>心理治療訓練 multi-agent 系統與診斷訪談系統是否為同一套系統的變體,講者敘述略過細節。/ Whether the psychotherapy-training system is a variant of the diagnostic-interview system.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/venkat-bhat--agentic-ai-applications-for-mental-health.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

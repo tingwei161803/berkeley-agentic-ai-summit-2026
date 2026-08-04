@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>A Society of Agents: Trust at Machine Speed, from Bits to Atoms · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="ARIA&#x27;s £50M Scaling Trust programme funds the research and infrastructure that lets agents with *different owners* coordinate securely at machine speed without intermediaries — and insists the stac…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/alex-obadia--a-society-of-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="A Society of Agents: Trust at Machine Speed, from Bits to Atoms · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="ARIA&#x27;s £50M Scaling Trust programme funds the research and infrastructure that lets agents with *different owners* coordinate securely at machine speed without intermediaries — and insists the stac…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/alex-obadia--a-society-of-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="alex-obadia--a-society-of-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="A Society of Agents: Trust at Machine Speed, from Bits to Atoms" data-title-zh="Agent 的社會:從位元到原子,以機器速度建立信任">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: AI Safety</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">A Society of Agents: Trust at Machine Speed, from Bits to Atoms</span><span class="lang-zh">Agent 的社會:從位元到原子,以機器速度建立信任</span></h1>
+        <p class="dialog__speaker"><strong>Alex Obadia</strong> — Programme Director, Advanced Research &amp; Invention Agency (ARIA)</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:34:57–00:45:11 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=l8GS08n-25Q&amp;t=2097s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:34:57</span><span class="lang-zh">從 00:34:57 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">ARIA&#x27;s £50M Scaling Trust programme funds the research and infrastructure that lets agents with *different owners* coordinate securely at machine speed without intermediaries — and insists the stack be an open-source public good, because monoculture would leave humanity less resilient to shocks and erode our agency over time.</span><span class="lang-zh">英國 ARIA 用 £50M 的 Scaling Trust 計畫,押注在「不同主人的 agent 如何在對抗環境下、以機器速度、無需中介地互相協調」——並且刻意把這套基礎設施做成開源公共財,因為他們認為技術單一化(monoculture)會讓人類整體對衝擊更脆弱。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>ARIA 是什麼</strong>:英國版 DARPA,「差別是我們沒有那個 D」——不碰國防,其他都做。成立三年、約 16 個計畫,每個約 £50–70M,涵蓋製造、更好的晶片、從免疫系統不同部位切入的疫苗、神經科技等。</li>
+<li><strong>Scaling Trust 要解的問題</strong>:資助能讓 agent <strong>協調</strong>的研究與基礎設施。協調具體指三件事:<strong>找到交易或互動的對手方、進行複雜的協商、以及執行協議</strong>。前提設定是<strong>對抗性的 multi-agent / multi-principal 環境</strong>——不是單一擁有者底下的多 agent,而是<strong>不同擁有者、代表不同主體</strong>的 agent 互動。</li>
+<li><strong>關鍵設計立場</strong>:要<strong>程式化</strong>(因為要跑在機器速度上,所以規模化時不放人在迴圈裡)、要<strong>人人可用</strong>、要<strong>沒有中介</strong>(明確的目標是限制基礎設施裡的系統性咽喉點),而且要<strong>橫跨數位與實體世界</strong>(agent 也可以是具身的)。技術上押注 programmable cryptography 與安全硬體的近期進展。</li>
+<li><strong>Agent 能做人做不到的事</strong>:兩個 agent 可以靠安全硬體進入一個「房間」,互相揭露資訊,並<strong>承諾若交易不成就從記憶中刪除該資訊</strong>——人類只能用 NDA 近似,agent 可以程式化地做到。</li>
+<li><strong>為什麼堅持開源與 plurality</strong>:避免滑向 monoculture。理由不是「多元本身好」,而是<strong>單一化會讓人類在文化與技術上都對衝擊更不具韌性,並隨時間侵蝕我們的能動性</strong>。</li>
+<li><strong>計畫三塊</strong>:協調堆疊(數位 + 實體,已資助包含 Berkeley 在內的首批團隊)、支撐堆疊的<strong>基礎理論</strong>(自主協定生成、formal AI security、把密碼學根信任搬到實體世界)、以及一個<strong>開放給大眾的大型測試場</strong>,做成競賽,紅隊也互相競爭。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>ARIA 與 Scaling Trust 的框架(約 00:35–00:37)</h4>
+<p>ARIA(Advanced Research + Invention Agency)是英國的 R&amp;D 資助機構,資助全球的 R&amp;D 登月計畫。對照 DARPA 最好懂,不同在於:</p>
+<blockquote>
+<p>The difference with DARPA is we don't have the D. So we don't do anything defence related, but we do everything else.</p>
+</blockquote>
+<p>特徵:以影響力為導向、高風險胃納、每個計畫追一個雄心目標,單一計畫規模約 £50–70M。成立三年,目前約 16 個計畫,橫跨製造、晶片、疫苗(從免疫系統的不同部位切入)、神經科技等領域。Obadia 是 Programme Director,負責其中的 <strong>Scaling Trust</strong>。</p>
+<p>他也直說這場演講的目的有兩層:告訴大家 ARIA 正在資助什麼、以及<strong>想聽聽現場對這個 thesis 的意見</strong>(他在 Q&amp;A 前明講「如果有任何質疑,我很樂意聽」)。</p>
+<p>Scaling Trust 目前是<strong>£50M、為期三年</strong>的計畫。要資助的是讓 agent 能協調的研究與基礎設施,而「協調」被拆成三個具體能力:</p>
+<ol>
+<li>agent 能不能<strong>找到</strong>需要交易、或非交易目的互動的<strong>對手方</strong>?</li>
+<li>能不能進行<strong>足夠複雜的協商</strong>?</li>
+<li>能不能<strong>執行協議</strong>?</li>
+</ol>
+<p>而<strong>「安全地」做這些事</strong>之所以重要,是因為他們設定的場景是<strong>對抗性環境下的 multi-agent、multi-principal 系統</strong>——這裡他劃了一條清楚的界線:<strong>不是單一擁有者底下的多 agent 系統</strong>,而是不同擁有者、代表不同主體(principal)的 agent 彼此互動。所以其中一些 agent 可能是敵對的,可能存在<strong>資訊不對稱</strong>,可能目標不同。</p>
+<h4>四個設計約束(約 00:38–00:39)</h4>
+<ul>
+<li><strong>程式化(programmatically)</strong>:因為希望這件事在<strong>機器速度</strong>上運作,所以規模化之後<strong>不會、也不打算把人放在迴圈裡</strong>。</li>
+<li><strong>人人可用、沒有中介</strong>:他說這其實是一個關於<strong>未來系統拓樸</strong>的主張——<strong>要限制這套基礎設施裡存在的系統性咽喉點(systemic choke points)</strong>。</li>
+<li><strong>橫跨數位與實體</strong>:他們把 agent 也視為可具身的,所以基礎設施必須延伸到實體世界,讓包含實體元素的互動也能安全進行。</li>
+<li><strong>技術賭注</strong>:密碼學與安全硬體的新進展,特別是被稱為 <strong>programmable cryptography</strong> 的趨勢,加上安全硬體與技術堆疊其他部分的最新發展。他明說這些進展<strong>鬆動了前一場演講(Gondara)提到的那些張力</strong>——至少 trade-off 空間變了,我們可以落在空間中不同的點上。</li>
+</ul>
+<h4>為什麼值得做:新市場,以及只有 agent 做得到的事(約 00:39–00:40)</h4>
+<p>他先承認現狀:<strong>今天的 agent 堆疊還不夠成熟,把 agent 放出去替我們做事非常困難</strong>,而且前面幾場已經看過各種攻擊的分類法。</p>
+<p>但他對兩件事很興奮:</p>
+<p><strong>(1) 新市場。</strong> 類比是密碼學在現代數位社會的落地——<strong>它間接讓電子商務這類東西得以存在</strong>,我們今天的數位社會就站在那些建構元件之上。如果協調基礎設施能延伸到實體世界,可能會長出延伸到實體世界的新市場。</p>
+<p><strong>(2) agent 獨有的能力。</strong> 他給的例子非常具體:</p>
+<blockquote>
+<p>兩個 agent 可以靠安全硬體進入一個所謂的「房間」。它們可以彼此揭露資訊,並且<strong>承諾:如果這筆交易沒談成,就把資訊從記憶裡刪掉</strong>。這是我們人類只能用 NDA 之類的東西去<em>近似</em>的事,但 agent 可以<strong>程式化地</strong>做到。</p>
+</blockquote>
+<h4>開源、plurality,與對 monoculture 的警戒(約 00:40–00:41)</h4>
+<p>價值上的堅持有三:<strong>開源、對所有人開放、沒有中介</strong>。目標是讓<strong>多個模型、多種心智能夠共存</strong>——這個概念一般被放在 <strong>pluralism / plurality</strong> 的脈絡下討論。</p>
+<p>他要避免的是<strong>滑向 monoculture</strong>:所有人都用同一套堆疊,而且<strong>我們的偏好也間接被塑造成同一個樣子,社會的多樣性因此減少</strong>。他特別強調這個論證不是「為了多元而多元」:</p>
+<blockquote>
+<p>我們認為那會讓我們作為人類,在<strong>文化上與技術上都更不具備抵禦衝擊的韌性</strong>,而且<strong>隨著時間侵蝕我們的能動性</strong>。</p>
+</blockquote>
+<p>正因如此,他們認為這套東西<strong>應該以公共財的形式被建造</strong>,而這也是 ARIA 願意用 grant 而非其他形式資助的理由。</p>
+<h4>計畫的三層結構(約 00:41–00:44)</h4>
+<p><strong>第一層:協調堆疊(coordination stack)。</strong> 分數位與實體兩側,已經資助了第一批團隊:</p>
+<ul>
+<li>數位側,<strong>包含 Berkeley 的團隊</strong>,研究方向如:agent 如何<strong>推理安全性</strong>、如何<strong>自主生成協定</strong>、如何與複雜的安全系統互動,以及 agent 如何進行<strong>複雜的協商推理</strong>。</li>
+<li>實體側,例如<strong>更容易被 agent 互動、且具防篡改性的新型感測器</strong>——而且已經有人在嘗試破解它們。</li>
+</ul>
+<p><strong>第二層:支撐堆疊的基礎理論。</strong> 他的判斷很直接:</p>
+<blockquote>
+<p>我們看到的很多研究,如果你是從理論計算機科學和資安這些領域出身,會覺得<strong>非常經驗性</strong>。</p>
+</blockquote>
+<p>所以他們要確保那個(可能是由經驗性方式收斂出來的)堆疊,<strong>底下有理論支撐</strong>——把既有的形式化安全思維應用到 AI 這個目前抗拒被完全形式化的新領域。他點名了幾個興奮的方向:<strong>autonomous protocol generation、formal AI security、以及把密碼學概念搬到實體世界</strong>(他提到量子密碼學與 physically unclonable function 這類把信任根從傳統密碼學換到實體世界的嘗試)。</p>
+<p><strong>第三層:開放的大型測試場。</strong> 即使有了堆疊、也有理論保證「沒有一個逼近中的不可能性結果、我們不是在完全的黑暗中工作」,<strong>這仍然需要被測試</strong>——因為這終究是 multi-agent、multi-principal 系統,堆疊必須被壓力測試。</p>
+<ul>
+<li><strong>任何人都可以提交自己的 agent</strong>;可以測他們的堆疊,也可以<strong>帶自己的堆疊</strong>來。</li>
+<li><strong>做成競賽</strong>:參賽者競爭勝出,而<strong>紅隊也在競爭誰是最好的紅隊</strong>。</li>
+<li>要量測的是:<strong>在對抗壓力下,安全 agentic 協調的 state of the art 到哪裡</strong>。</li>
+<li>同時要看<strong>會湧現出什麼</strong>:「我們人類可以決定需要什麼樣的堆疊,但正如我們多次看到的,湧現行為有時會揭露 agent 獨有的新能力」——所以測試場本身與任務都必須<strong>夠開放式(open-ended)</strong>。</li>
+<li>對這條 AI safety 軌道最相關的一點:<strong>理解存在哪些失效模式</strong>。很多這類行為會是 out of distribution,而理解失效模式有助於釐清<strong>需要什麼樣的安全要求,也許還有監管</strong>。</li>
+</ul>
+<p>最後的計畫近況:已經資助了一些團隊,並正與 <strong>Google DeepMind、Cooperative AI Foundation、Schmidt Sciences</strong> 合作一個<strong>於 8 月 8 日截止</strong>的徵案,資助標的包含他提到的沙盒與測試場等。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"The difference with DARPA is we don't have the D."(約 00:36)</p>
+</blockquote>
+<p>一句話講完 ARIA 的定位。</p>
+<blockquote>
+<p>"We don't care about the single owner multi-agent systems. This is about different owner, different agents that are representing different principals."(約 00:37)</p>
+</blockquote>
+<p>整個計畫最關鍵的問題設定:真正困難的是「不同主人的 agent」。</p>
+<blockquote>
+<p>"Two agents can enter a quote-unquote room using secure hardware … they can commit to deleting the information from their memory if the deal doesn't go through. These are things that as humans we can only approximate with, for example, NDAs."(約 00:40)</p>
+</blockquote>
+<p>不是「agent 做得比人快」,而是「agent 做得到人做不到的事」。</p>
+<blockquote>
+<p>"We want to avoid a slide towards monoculture … it makes us as humanity less resilient to shocks both culturally and technologically, and erodes our agency over time."(約 00:41)</p>
+</blockquote>
+<p>把 plurality 從價值觀主張轉成韌性論證。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>What ARIA is</strong>: the UK's DARPA equivalent — "the difference with DARPA is we don't have the D," so no defence work, everything else. Three years old, around 16 programmes at roughly £50–70M each, across manufacturing, better chips, vaccines targeting different parts of the immune system, and neurotechnologies.</li>
+<li><strong>What Scaling Trust funds</strong>: research and infrastructure that lets agents <strong>coordinate</strong>, meaning three concrete capabilities — find counterparties to trade or interact with, negotiate in sophisticated ways, and enforce agreements. The setting is deliberately <strong>adversarial multi-agent, multi-principal</strong>: not many agents under one owner, but agents with <em>different</em> owners representing <em>different</em> principals.</li>
+<li><strong>The design constraints</strong>: programmatic (it must run at machine speed, so no humans in the loop at scale), available to everyone, <strong>without intermediaries</strong> — an explicit claim about system topology, aimed at limiting systemic choke points — and spanning digital <em>and</em> physical, since agents can be embodied. The technical bet is on programmable cryptography and recent advances in secure hardware.</li>
+<li><strong>What only agents can do</strong>: two agents can enter a "room" backed by secure hardware, disclose information to one another, and <strong>commit to deleting it from memory if the deal falls through</strong> — something humans can only approximate with NDAs.</li>
+<li><strong>Why open source and plurality</strong>: to avoid sliding into monoculture. The argument isn't diversity for its own sake — monoculture makes humanity <strong>less resilient to shocks, culturally and technologically, and erodes our agency over time</strong>.</li>
+<li><strong>Three programme layers</strong>: the coordination stack (digital and physical, with first teams already funded including at Berkeley), the fundamental theory underpinning it, and a large <strong>public test bed run as a competition</strong>, red teams included.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>ARIA and the shape of Scaling Trust (~00:35–00:37)</h4>
+<p>ARIA — the Advanced Research + Invention Agency — is a UK R&amp;D funding agency that funds R&amp;D moonshots worldwide. The DARPA comparison is the fastest way in, with one difference:</p>
+<blockquote>
+<p>The difference with DARPA is we don't have the D. So we don't do anything defence related, but we do everything else.</p>
+</blockquote>
+<p>Impact-focused, high risk appetite, focused programmes chasing an ambitious goal, each around £50–70M. Three years old, roughly 16 programmes so far, spanning manufacturing, better chips, vaccines built on different parts of the immune system, and neurotechnologies. Obadia is the Programme Director for <strong>Scaling Trust</strong>.</p>
+<p>He was explicit that the talk had two purposes: describe what ARIA is funding and already funds, and <strong>get the room's opinion on the current thesis</strong> — he offered before Q&amp;A that he was happy to hear any scepticism.</p>
+<p>Scaling Trust is currently a <strong>£50M, three-year programme</strong>. It funds the research and infrastructure that lets agents coordinate, where coordination decomposes into three capabilities:</p>
+<ol>
+<li>Can agents <strong>find the counterparties</strong> they need to trade or otherwise interact with?</li>
+<li>Can they <strong>negotiate in sophisticated ways</strong>?</li>
+<li>Can they <strong>enforce agreements</strong>?</li>
+</ol>
+<p>Doing this <em>securely</em> matters because the setting is <strong>multi-agent, multi-principal systems under adversarial conditions</strong> — and here he drew a firm boundary: <strong>not single-owner multi-agent systems</strong>, but agents with different owners representing different principals. Some of those agents may be adversarial; there may be information asymmetry; goals may differ.</p>
+<h4>Four design constraints (~00:38–00:39)</h4>
+<ul>
+<li><strong>Programmatic.</strong> Because this has to move at <strong>machine speed</strong>, they explicitly do not want humans in the loop at scale.</li>
+<li><strong>Available to everyone, without intermediaries.</strong> He framed this as a claim about the <strong>topology of the future system</strong>: limit the systemic choke points that exist in the infrastructure.</li>
+<li><strong>Digital and physical.</strong> Agents can be embodied, so the infrastructure must extend into the physical world and support secure interactions that include physical elements.</li>
+<li><strong>The technical bet</strong>: new developments in cryptography and secure hardware — particularly the trend dubbed <strong>programmable cryptography</strong> — which he argued <strong>break some of the tensions raised in the previous talk</strong> (Gondara's), or at least shift the trade-off space so different points in it become reachable.</li>
+</ul>
+<h4>Why it's worth doing: new markets, and agent-only capabilities (~00:39–00:40)</h4>
+<p>He conceded the state of play first: <strong>today's agent stack is not mature, and it is very hard to send agents off to do things for us</strong>; earlier talks had already walked through taxonomies of potential attacks.</p>
+<p>Two things excite him:</p>
+<p><strong>New markets.</strong> The analogy is cryptography in modern digital society — it indirectly <strong>enabled things like e-commerce to exist</strong>, and today's digital society stands on those building blocks. Extend coordination infrastructure into the physical world and new markets that reach into physical space become plausible.</p>
+<p><strong>Things agents can do that humans cannot.</strong> His example was concrete:</p>
+<blockquote>
+<p>Two agents can enter a quote-unquote room using secure hardware. They can disclose information to one another and <strong>commit to deleting the information from their memory if the deal doesn't go through</strong>. These are things that as humans we can only approximate with, for example, NDAs — that with agents we can do programmatically.</p>
+</blockquote>
+<h4>Open source, plurality, and the case against monoculture (~00:40–00:41)</h4>
+<p>Three commitments: <strong>open source, open to all, no intermediaries</strong>. The aim is a system where <strong>many models and many minds can coexist</strong> — the concept people usually discuss under <strong>pluralism or plurality</strong>.</p>
+<p>What he wants to avoid is a <strong>slide towards monoculture</strong>, where everyone runs the same stack and, indirectly, <strong>our preferences get shaped the same way and society loses diversity</strong>. He was careful that this is not an aesthetic preference:</p>
+<blockquote>
+<p>We think it makes us as humanity <strong>less resilient to shocks, both culturally and technologically</strong>, and <strong>erodes our agency over time</strong>.</p>
+</blockquote>
+<p>That is why they believe this should be built as a <strong>public good</strong>, and why ARIA is glad to fund it through grants.</p>
+<h4>The programme's three layers (~00:41–00:44)</h4>
+<p><strong>Layer 1: the coordination stack.</strong> Digital and physical, with a first set of teams already funded:</p>
+<ul>
+<li>On the digital side, <strong>including teams at Berkeley</strong>, working on how agents <strong>reason about security</strong>, <strong>autonomously generate protocols</strong>, interact with sophisticated security systems, and reason about <strong>negotiation</strong> in sophisticated ways.</li>
+<li>On the physical side, for example <strong>new sensors that are easier for agents to interact with and tamper-resistant</strong> — and people are already trying to break them.</li>
+</ul>
+<p><strong>Layer 2: the theory that underpins the stack.</strong> His diagnosis was direct:</p>
+<blockquote>
+<p>A lot of the research that we see feels very empirical to us, at least if you come from theoretical computer science and these fields of security.</p>
+</blockquote>
+<p>So they want the stack — which may well be arrived at empirically — to have <strong>theory underneath it</strong>: applying formal security thinking to a field of AI that currently resists being fully formalized. The directions he named: <strong>autonomous protocol generation</strong>, <strong>formal AI security</strong>, and <strong>carrying cryptographic concepts into the physical world</strong> (he pointed at quantum cryptography and physically unclonable functions as attempts to swap the roots of trust used in traditional cryptography into physical substrates).</p>
+<p><strong>Layer 3: a massive public test bed.</strong> Even with a stack and with theory assuring you that "there's no looming impossibility result and we're not working completely in the dark," <strong>it still has to be tested</strong>, because this is ultimately a multi-agent, multi-principal system and the stack needs stress.</p>
+<ul>
+<li><strong>Anyone can submit their agents.</strong> They can test the funded stack, or <strong>bring their own</strong>.</li>
+<li><strong>Run as a competition</strong>: teams compete to win, and <strong>red teams compete to be the best red teams</strong>.</li>
+<li>What it measures: <strong>the state of the art in secure agentic coordination under adversarial pressure</strong>.</li>
+<li>What else it looks for: <strong>what emerges</strong>. "We as humans can decide what stack is needed, but as we've seen many times, emergent behaviours sometimes reveal new things that agents can uniquely do" — so both the test bed and its tasks must be <strong>open-ended enough</strong>.</li>
+<li>Most relevant to this safety track: <strong>understanding what failure modes exist</strong>. Much of this behaviour will be out of distribution, and understanding the failure modes informs <strong>what safety requirements — and perhaps regulation — are needed</strong>.</li>
+</ul>
+<p>Programme status: several teams funded, and a call in partnership with <strong>Google DeepMind, the Cooperative AI Foundation, and Schmidt Sciences</strong> <strong>closing on 8 August</strong>, funding among other things the sandboxes and test beds described.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"The difference with DARPA is we don't have the D." (~00:36)</p>
+</blockquote>
+<p>ARIA's positioning in one line.</p>
+<blockquote>
+<p>"We don't care about the single owner multi-agent systems. This is about different owner, different agents that are representing different principals." (~00:37)</p>
+</blockquote>
+<p>The programme's defining problem framing: the hard case is agents with different masters.</p>
+<blockquote>
+<p>"Two agents can enter a quote-unquote room using secure hardware … they can commit to deleting the information from their memory if the deal doesn't go through. These are things that as humans we can only approximate with, for example, NDAs." (~00:40)</p>
+</blockquote>
+<p>Not "agents do it faster than humans" but "agents do what humans cannot."</p>
+<blockquote>
+<p>"We want to avoid a slide towards monoculture … it makes us as humanity less resilient to shocks both culturally and technologically, and erodes our agency over time." (~00:41)</p>
+</blockquote>
+<p>Plurality reframed from a values claim into a resilience argument.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARIA (Advanced Research + Invention Agency)</td>
+<td>英國 R&amp;D 資助機構,資助全球登月型研究;約 16 個計畫,每個 £50–70M</td>
+<td>UK R&amp;D funding agency backing moonshots worldwide; ~16 programmes at £50–70M each</td>
+<td>成立三年;不做國防 / three years old, no defence work</td>
+</tr>
+<tr>
+<td>Scaling Trust</td>
+<td>£50M、三年期計畫,資助 agent 安全協調的研究與基礎設施</td>
+<td>£50M three-year programme funding research and infrastructure for secure agent coordination</td>
+<td>官網另有 Scaling Trust Arena(競賽平台)之名,演講中未點名</td>
+</tr>
+<tr>
+<td>開放測試場 / open test bed</td>
+<td>開放公眾提交 agent 的大型競賽式測試場,紅隊同場競技</td>
+<td>Public competition-style test bed; anyone can submit agents, red teams compete too</td>
+<td>演講中稱 "a massive test bed that is open to the public"</td>
+</tr>
+<tr>
+<td>Programmable cryptography</td>
+<td>講者押注的密碼學趨勢,與安全硬體共同鬆動安全 / 自主的 trade-off</td>
+<td>The cryptography trend he's betting on, which with secure hardware shifts the security/autonomy trade-off</td>
+<td>明確回應前一場 Gondara 提到的性質衝突</td>
+</tr>
+<tr>
+<td>Physically unclonable functions</td>
+<td>把信任根從傳統密碼學搬到實體世界的方向之一</td>
+<td>One route to swapping cryptographic roots of trust into physical substrates</td>
+<td>與量子密碼學並列提及</td>
+</tr>
+<tr>
+<td>合作徵案 / joint call</td>
+<td>與 Google DeepMind、Cooperative AI Foundation、Schmidt Sciences 合作,8 月 8 日截止</td>
+<td>Joint call with Google DeepMind, Cooperative AI Foundation, Schmidt Sciences; closes 8 August</td>
+<td>資助沙盒與測試場等</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alex Oadia</td>
+<td>Alex Obadia</td>
+</tr>
+<tr>
+<td>Arya</td>
+<td>ARIA</td>
+</tr>
+<tr>
+<td>Deep Mind</td>
+<td>Google DeepMind</td>
+</tr>
+<tr>
+<td>"50 million pound … so about $7 million"</td>
+<td>£50M 約合 $67M(字幕金額錯誤)/ caption figure is wrong</td>
+</tr>
+<tr>
+<td>texonomy</td>
+<td>taxonomy</td>
+</tr>
+<tr>
+<td>erodess</td>
+<td>erodes</td>
+</tr>
+<tr>
+<td>physically inclinable functions</td>
+<td>physically unclonable functions</td>
+</tr>
+<tr>
+<td>multi- aent</td>
+<td>multi-agent</td>
+</tr>
+<tr>
+<td>principles(指 multi-principal 那段)</td>
+<td>principals</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>£50M 的美元換算</strong>:講者說「50 million pound, so about $7 million」——£50M 約合 $67M,字幕或口誤其一;金額以 £50M 為準。/ £50M ≈ $67M, not $7M; take the sterling figure as authoritative.</li>
+<li><strong>測試場的正式名稱</strong>:演講中只稱 "a massive test bed";ARIA 官方資料另有 Scaling Trust Arena 的名稱,但講者未在台上使用,故不併入內文。/ He only said "test bed"; ARIA materials refer to a Scaling Trust Arena, but he did not use the name on stage.</li>
+<li><strong>已獲資助的 Berkeley 團隊名稱與 PI</strong>:講者只說 "some teams at Berkeley",未點名。/ He said "some teams at Berkeley" without naming them.</li>
+<li><strong>ARIA 計畫總數</strong>:講者說 "about 16 programmes so far",為口頭近似值。/ "About 16" was a spoken approximation.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/alex-obadia--a-society-of-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Trustworthy Agents in the Real World: Physical Autonomy Lessons for the Agentic AI Era · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Waymo *is* an agentic AI company — its agents just happen to be big hunks of metal on four wheels — and the potholes robotics hit over twenty years (each &quot;nine&quot; of reliability costs a system redesi…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/vincent-vanhoucke--trustworthy-agents-in-the-real-world.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Trustworthy Agents in the Real World: Physical Autonomy Lessons for the Agentic AI Era · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Waymo *is* an agentic AI company — its agents just happen to be big hunks of metal on four wheels — and the potholes robotics hit over twenty years (each &quot;nine&quot; of reliability costs a system redesi…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/vincent-vanhoucke--trustworthy-agents-in-the-real-world.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-atlas" data-talk="vincent-vanhoucke--trustworthy-agents-in-the-real-world">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Trustworthy Agents in the Real World: Physical Autonomy Lessons for the Agentic AI Era" data-title-zh="真實世界中值得信任的 Agent:物理自主性給 Agentic AI 時代的教訓">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--keynote"><span class="lang-en">Keynote</span><span class="lang-zh">主題演講</span></span>
+          <span class="dialog__session">Session 2: Robotics &amp; World Models</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Trustworthy Agents in the Real World: Physical Autonomy Lessons for the Agentic AI Era</span><span class="lang-zh">真實世界中值得信任的 Agent:物理自主性給 Agentic AI 時代的教訓</span></h1>
+        <p class="dialog__speaker"><strong>Vincent Vanhoucke</strong> — Distinguished Engineer, Waymo</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 00:29:06–00:43:45 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=psPzCQbjCCo&amp;t=1746s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:29:06</span><span class="lang-zh">從 00:29:06 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Waymo *is* an agentic AI company — its agents just happen to be big hunks of metal on four wheels — and the potholes robotics hit over twenty years (each &quot;nine&quot; of reliability costs a system redesign, Level 3 is the worst place to be, step-wise optimization always drifts) are now hitting agentic AI verbatim; the shared answer is that you need a world model first.</span><span class="lang-zh">Waymo 就是一家 agentic AI 公司,只是它的 agent 是四個輪子的金屬塊;而機器人領域二十年來踩過的坑——可靠度的「九」要靠重新設計系統換來、Level 3 是最難受的位置、逐步最佳化必然漂移——現在正一模一樣地打在 agentic AI 身上,而共同的解方是你得先有一個世界模型。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>Waymo 是一家 agentic AI 公司</strong>:數千個 agent 在真實世界執行超長 horizon 的任務直到完成,服務<strong>付費</strong>客戶,完全自主,目前在 11 個城市。目標是「成為世界上最值得信任的駕駛」。</li>
+<li><strong>信任不只等於安全</strong>:一致性、可重複性、可預測性——這些正好也是我們信任 agent 的因素。</li>
+<li><strong>可靠度是一場「九的遊戲」</strong>:從 99% 走到 99.9% 再到 99.999%,<strong>每多一個九通常要換一個不同的解法</strong>,不是把模型調好一點就能換來,而是要為那個可靠度等級<strong>重新設計整個系統</strong>。</li>
+<li><strong>Level 3 是個怪物</strong>:人機交替負責的混合狀態對認知負荷、安全與生產力都很糟;而且 <strong>Level 2 和 Level 4 是完全不同的物種</strong>,你不可能從 L2「逐步升級」到 L4——這在 coding agent 上完全重演。</li>
+<li><strong>逐步最佳化會漂移(dagger problem)</strong>:多步系統若只最小化每一步的誤差,誤差會高度相關,最後系統跑到完全不對的地方。這正是要做長 horizon 規劃與 RL 的理由。</li>
+<li><strong>Waymo World Model</strong>:以 Google DeepMind 的 <strong>Genie 3</strong> 為底座,適配到 Waymo 的相機與光達,做到 realism、controllability、generalization 三件事,支撐長 horizon 的閉環評估與模擬。</li>
+<li><strong>對虛擬 agent 開發者的一問</strong>:「<strong>你的世界模型是什麼?</strong>」你有沒有對自己環境的高保真模擬?那是長 horizon 規劃與韌性的關鍵。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>Waymo 就是 agentic AI(約 00:29–00:31)</h4>
+<p>開場他就把定位講清楚:「我想這群人不需要我介紹 Waymo,但如果你不知道——<strong>Waymo 是一家 agentic AI 公司</strong>,只是我們的 agent 是又大又漂亮的金屬塊,有四個輪子,在你家附近開來開去。」</p>
+<p>現況:<strong>數千個 agent</strong> 在真實世界運作,執行<strong>非常長 horizon 的任務直到完成</strong>,服務<strong>真實的付費客戶</strong>,完全自主。目前 11 個城市,計畫擴張到更多美國城市與海外。</p>
+<p>目標是「autonomy at scale」與「成為世界上最值得信任的駕駛」。他特別強調 <strong>trust 不只是安全</strong>:還包括一致性、可重複性、可預測性——「而這些正好是我們信任 agentic agent 的同一批因素。」</p>
+<p>他也給出這場演講的整體立場:<strong>physical AI 和 agentic AI 之間有大量可對應之處</strong>。「如果我跟做機器人的朋友聊,他們看今天 agentic AI 的世界會會心一笑,因為我們過去 20 年在機器人裡遇到的所有難題,在 agentic AI 裡全部再現一次。」核心都是同一件事:<strong>怎麼做出一個既有足夠 affordance 去做有趣的事、又能被信任、能在真實世界穩定一致地演進的系統。</strong></p>
+<h4>鏡頭一:工業自動化——「九的遊戲」(約 00:32–00:33)</h4>
+<p>工業自動化的本質,是把一堆「大多時候能work、但偶爾會失敗」的零件串成產線,並讓整體達到極高的可靠度、安全性、自主性,而且要撐住很長的時間尺度與規模。</p>
+<p>他只挑一個教訓講:<strong>這一切是一場「九的遊戲」(a game of nines)</strong>。</p>
+<blockquote>
+<p>在某個規模下,99% 的可重複性你可以將就;一旦放大,你就需要 99.9%、99.999%,以此類推。<strong>而每多一個九,通常意味著你需要一個不同的解法。</strong></p>
+</blockquote>
+<p>關鍵在於:<strong>你多賺到的那一個九,不是靠把系統改好一點、換個更好的模型、把錯誤率壓低一點換來的;你必須為你要的那個可靠度等級重新設計你的系統。</strong></p>
+<h4>鏡頭二:自主性等級——Level 3 是個怪物(約 00:33–00:35)</h4>
+<p>自駕有 L0–L5 五個等級,從無自動化、駕駛輔助,一路到 Waymo 所在的 <strong>L4 高度自動化</strong>。他指出 coding agent / AI agent 有完全一樣的分級光譜:從你自己手寫每一行程式,到「直接 YOLO,讓 agent 全部寫」。</p>
+<p>兩個從自駕搬過來的教訓:</p>
+<ol>
+<li><strong>Level 3 是個怪物,而且待起來很不舒服</strong>——對認知負荷很糟、對安全很糟、對生產力很糟。「當大家從 code completion 走向 agent 時,我們在 agentic AI 裡也看到同一件事:有時候人在負責、有時候 agent 在負責,<strong>這兩者之間的介面非常難受。</strong>」</li>
+<li><strong>L2 和 L4 是完全不同的物種</strong>:設計決策不同、做法不同,<strong>你沒辦法從 L2 一路「畢業」到 L4,你得徹底重新思考整個系統。</strong> 同理,今天的 agentic 系統並不是舊的 code completion 系統的加強版。</li>
+</ol>
+<h4>鏡頭三:動態系統——長 horizon 需要不同的獎勵(約 00:35–00:37)</h4>
+<p>控制理論在機器人領域研究的是非線性動態系統,而 <strong>agentic 系統本質上是極度非線性的動態系統</strong>。他認為那套數學未必能直接搬,但<strong>概念與思考方式</strong>——observability、controllability、stability、realizability(最後這個是「你到底做不做得到這個任務」)——高度相關。</p>
+<p>這裡的教訓是:<strong>如果你要最佳化閉環行為(也就是長 horizon),你需要的獎勵系統跟最佳化開環時完全不同。</strong></p>
+<p>在機器人領域這叫 <strong>dagger problem</strong>(其他領域另有名字):多步系統若只想最小化每一步的誤差,最後可能<strong>犯下高度相關的錯誤</strong>,系統跑到跟你想去的地方完全不同的位置。「<strong>一次最佳化一步,一直都行不通。</strong>」這正是要做長 horizon 規劃、要做 reinforcement learning、要用不同目標函數看待長 horizon 任務的理由。</p>
+<p>他們的解法是:<strong>仍然一次最佳化一步,但同時去「想像未來」</strong>——把長 horizon 攤開,夢出「如果我採取這個行動,長期會長成什麼樣」。<strong>這就是 world model 進場的地方。</strong></p>
+<h4>Waymo World Model:realism、controllability、generalization(約 00:37–00:43)</h4>
+<p>Waymo 做了自己的世界模型,名字叫 <strong>Waymo World Model</strong>——「我們非常有創意」(全場笑)。它讓他們能在<strong>閉環</strong>中、以很好的保真度評估與模擬更長 horizon 的系統行為。</p>
+<p><strong>1. Realism(真實性)</strong>
+起點是一個很好的影片生成模型——Google DeepMind 的 <strong>Genie 3</strong>。「它有某種物理概念,但它是<strong>所有</strong>的物理概念:它能處理 Minecraft 的物理,也能處理真實世界的物理。」但 Waymo 要的是<strong>真實世界的物理,不是電玩物理</strong>;視覺也要真實世界的視覺,不是電玩視覺。所以他們把模型 fine-tune 並適配到 Waymo 的使用情境:接上 Waymo 車上的<strong>所有相機</strong>,並把<strong>光達(lidar)的生成能力嫁接</strong>到模型上。他展示了一段 <strong>30 秒、完全由世界模型想像出來</strong>的場景 rollout。</p>
+<p><strong>2. Controllability(可控性)</strong>
+「你要能想像<strong>反事實</strong>事件,要能夢出『如果我採取任意一個行動,會發生什麼』。」所以不必照著真實世界實際發生的走:本來右轉,可以改成左轉或直行,而模型仍然算出高保真度的畫面。控制的層次有三種:</p>
+<ul>
+<li><strong>語言控制</strong>:同一個場景改成早上/晚上、改天氣(多雲、起霧)、改物件外觀與整體環境條件。</li>
+<li><strong>細粒度控制</strong>:把某台車從一個車道移到另一個車道,看會發生什麼——模型可以被<strong>所有車輛、所有行人、所有車道幾何</strong>條件化。</li>
+<li>(加上行駛動作本身的控制。)</li>
+</ul>
+<p><strong>3. Generalization(泛化)</strong>
+「如果我們只能模擬今天在真實世界看得到的資料,那有點用,但<strong>世界模型真正發光的時刻,是你能外插到你從未觀察過、甚至永遠不想觀察到的情境。</strong>」</p>
+<p>他用大象講了一個很好的例子:Waymo 從沒在路上遇過大象。</p>
+<ul>
+<li>什麼都不做、只用 Waymo 資料訓練 → 你要大象,模型<strong>完全給不出大象</strong>。</li>
+<li>稍微調整以提升泛化與世界知識 → 它會<strong>非常努力想給你大象,然後以很好笑的方式失敗</strong>:你會拿到一台「長得像大象的卡車」,因為它很懂卡車,又對大象的外觀有點概念,但兩者兜不起來。</li>
+<li>做對了 → 路上出現一頭貨真價實的大象,而且<strong>光達從沒看過大象,卻能生成非常合理的光達點雲</strong>。</li>
+</ul>
+<p>其他外插情境:開過一場大火(從沒經歷過,但並非完全不可能)、金門大橋下雪、有人穿著萬聖節裝扮走過——最後這個其實非常寫實:「每年萬聖節我們都會看到穿著裝扮、有時還處於各種醉態的人在路上走。」</p>
+<p>而這正是為什麼語意理解攸關安全:系統必須認出<strong>「你在路上看到的這個東西其實是一個人,而且是非常脆弱的用路人」</strong>,而不是「一團在街上移動的隨機色塊」。「<strong>相當大一部分的安全性,其實來自我們理解場景的語意</strong>,而我們得有辦法驗證這一點。」</p>
+<h4>結尾:對虛擬 agent 開發者的提問(約 00:43)</h4>
+<p>「physical AI 是把 agentic AI 推到下一個前沿。機器人、自動化、自主性領域有大量教訓可以套用到非物理的 agent 上。」</p>
+<p>然後是給全場的那一問:</p>
+<blockquote>
+<p>「我想問在座做 virtual agent 的各位:<strong>你的世界模型是什麼?</strong> 你對你的環境有沒有一個非常好的高保真模擬?因為那是你能做長 horizon 規劃、能把韌性與長程自主性建進系統裡的關鍵。」</p>
+</blockquote>
+<h3>金句</h3>
+<blockquote>
+<p>"Waymo is an agentic AI company — except our agents are, you know, big beautiful hunks of metal that have four wheels and are driving around in your neighborhood."(約 00:29)</p>
+</blockquote>
+<p>整場的定位句,也是他後面所有類比的授權書。</p>
+<blockquote>
+<p>"Every nine that you earn is not earned by just improving your system a little bit, getting a better model or reducing the error rate. You have to redesign your system for the level of reliability that you want."(約 00:33)</p>
+</blockquote>
+<p>對「再調一調模型就能上線」最直接的反駁。</p>
+<blockquote>
+<p>"Level three is a weird beast. Level three is not a very pleasant place to be. It's very bad for cognitive load. It's very bad for safety. It's very bad for productivity."(約 00:34)</p>
+</blockquote>
+<p>半自動的交接介面在自駕與 coding agent 上是同一種痛。</p>
+<blockquote>
+<p>"I want to ask the audience that is working on virtual agents: what is your world model?"(約 00:43)</p>
+</blockquote>
+<p>整場演講收在這一問。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Waymo is an agentic AI company.</strong> Thousands of agents run very long-horizon tasks to completion in the real world for real paying customers, fully autonomously, across 11 cities. The goal: autonomy at scale, and becoming "the world's most trusted driver."</li>
+<li><strong>Trust is more than safety</strong> — it's consistency, repeatability, predictability, which are exactly the factors behind trusting any agent.</li>
+<li><strong>Reliability is a game of nines.</strong> Going 99% → 99.9% → 99.999% typically demands a <em>different solution each time</em>: you don't buy a nine by improving the system a bit or swapping in a better model, you buy it by redesigning the system for that reliability level.</li>
+<li><strong>Level 3 is a weird beast.</strong> Mixed human/agent authority is bad for cognitive load, safety, and productivity — and <strong>L2 and L4 are different species</strong>; you cannot graduate from one to the other. Both lessons replay exactly in coding agents.</li>
+<li><strong>Step-wise optimization drifts (the DAgger problem).</strong> Minimizing per-step error in a multi-step system produces correlated errors and lands you somewhere else entirely. Hence long-horizon planning, RL, and different objective functions.</li>
+<li><strong>Waymo World Model</strong>, built on Google DeepMind's <strong>Genie 3</strong> and adapted to Waymo's cameras and lidar, delivers realism, controllability, and generalization for closed-loop long-horizon evaluation.</li>
+<li><strong>The closing question to virtual-agent builders</strong>: <em>what is your world model?</em></li>
+</ul>
+<h3>Key Points</h3>
+<h4>Waymo as an agentic AI company (~00:29–00:31)</h4>
+<p>He opens by claiming the frame outright: "Waymo is an agentic AI company — except our agents are big beautiful hunks of metal that have four wheels and are driving around in your neighborhood." Thousands of agents, very long-horizon tasks run to completion, real paying customers, fully autonomous, 11 cities today with plans for many more in the US and abroad.</p>
+<p>The mission is autonomy at scale and being the world's most trusted driver — and he insists <strong>trust is not just safety</strong>: consistency, repeatability, predictability, "a lot of the same factors in the trust that we place in agentic agents in general."</p>
+<p>His overall thesis: physical AI and agentic AI rhyme heavily. "If I talk to my roboticist friends and they look at what's happening in agentic AI today, they look at it with a smile, because all of the hard problems we've been experiencing for the past 20 years in robotics are exemplified in agentic AI." The shared problem: <strong>build a system with enough affordances to do interesting things in the real world that you can also trust, and that evolves in the real world safely, stably, and consistently.</strong></p>
+<h4>Lens 1 — Industrial automation: the game of nines (~00:32–00:33)</h4>
+<p>Industrial automation is the art of stringing components that mostly work but occasionally fail into a line that delivers very high reliability, safety, and autonomy over long horizons at scale. His one lesson from it: <strong>it's all a game of nines.</strong> At small scale 99% repeatability is survivable; at scale you need 99.9%, then 99.999%. <strong>Every nine typically requires a different solution</strong> — and the crucial part: you don't earn a nine by improving the system a little or reducing the error rate. <em>You redesign the system for the reliability level you want.</em></p>
+<h4>Lens 2 — Levels of autonomy: L3 is a weird beast (~00:33–00:35)</h4>
+<p>Driving has five levels, from no automation through driver assistance up to Waymo's <strong>L4</strong>. Coding agents have the same gradation, from hand-writing every line to "you just YOLO it and let the agent write everything."</p>
+<p>Two transferred lessons:</p>
+<ol>
+<li><strong>Level 3 is a weird beast and an unpleasant place to be</strong> — bad for cognitive load, safety, and productivity. The same showed up in agentic AI when people moved from code completion to agents: "sometimes the human is in charge, sometimes the agent is in charge, and <strong>this interface between the two is very uncomfortable.</strong>"</li>
+<li><strong>L2 and L4 are different beasts.</strong> Different design decisions, different approaches; you cannot incrementally graduate from L2 to L4 — you have to rethink the system dramatically. Likewise, today's agentic systems are not a scaled-up version of the code-completion systems you used to use.</li>
+</ol>
+<h4>Lens 3 — Dynamical systems: closed loop needs a different reward (~00:35–00:37)</h4>
+<p>Agentic systems are, in his framing, extremely nonlinear dynamical systems. The math from control theory may not transfer directly, but the concepts do: observability, controllability, stability, and realizability — the last being "can you actually do the task."</p>
+<p>The lesson: <strong>optimizing for closed-loop behavior (long horizon) requires a very different reward than optimizing open-loop.</strong> In robotics this is the <strong>DAgger problem</strong>: minimize error at every step of a multi-step system and you end up making highly correlated errors, so the system lands somewhere completely different from where you wanted it. "Optimizing one step at a time hasn't really worked." That's the reason for long-horizon planning, for RL, and for treating long-horizon tasks with different objective functions.</p>
+<p>Their approach: still optimize one step at a time, but <strong>imagine the future</strong> — dream up what the long horizon would look like under a specific action. <strong>That is where world models enter.</strong></p>
+<h4>The Waymo World Model (~00:37–00:43)</h4>
+<p>Waymo built its own — named, with self-deprecating flourish, the <strong>Waymo World Model</strong> ("we're very, very creative"). It enables closed-loop evaluation and simulation of longer-horizon behavior at high fidelity.</p>
+<p><strong>Realism.</strong> They started from a strong video generative model, Google DeepMind's <strong>Genie 3</strong>, which "has some notion of physics, but it's got <em>all</em> the notions of physics — it can handle Minecraft physics as well as real-world physics." Waymo wants real-world physics and real-world visuals only, so they fine-tuned and adapted the model to Waymo's use cases: all the cameras on the car, plus <strong>lidar generative capabilities grafted on</strong>. He showed a <strong>30-second fully imagined rollout</strong>.</p>
+<p><strong>Controllability.</strong> "You want to be able to imagine counterfactual events — dream up what is possible if you take any action." Instead of turning right, turn left or go straight, and still get high-fidelity rendering. Control operates through language (same scene in the morning or at night, cloudy or foggy, changed appearance), through driving actions, and at fine grain — conditioning the whole model on every car, pedestrian, and piece of lane geometry, so you can ask what happens if a car moves one lane over.</p>
+<p><strong>Generalization.</strong> "If we only simulate the kind of data we see in the real world today, it has some usefulness — but a world model really shines when you extrapolate to scenarios you've never observed, or potentially never want to observe."</p>
+<p>The elephant example is the clearest version of this. Waymo has never seen an elephant on the road, so: train naively on Waymo data and you get <strong>no elephant at all</strong>; tweak for generalization and world knowledge and it <strong>tries very hard and fails in funny ways</strong> — a truck that looks like an elephant, because it knows trucks well and has some notion of elephant appearance but can't reconcile them; do it right and you get a full elephant on the road, with <strong>the lidar rendering it plausibly despite never having seen one.</strong></p>
+<p>Other extrapolations: driving through a raging fire (never experienced, not implausible), snow on the Golden Gate Bridge, and someone in costume walking past — which is very realistic, since "every Halloween we will see people in costume walking around in various stages of inebriation."</p>
+<p>That last one carries the safety point: the system must register that <strong>the thing on the road is a human being, a very vulnerable person</strong> — not "a random moving blob." "A very significant amount of safety derives from us understanding the semantics of the scene, and we need to be able to validate that."</p>
+<h4>Closing (~00:43)</h4>
+<p>"Physical AI is agentic AI taken to the next frontier. Lots of lessons from robotics, from automation, from autonomy can be applied to non-physical agents as well." Then the question he leaves with the room: <strong>what is your world model?</strong> Do you have a high-fidelity simulation of your environment — because that is the key to long-horizon planning and to building resilience and long-range autonomy into your system.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Waymo is an agentic AI company — except our agents are, you know, big beautiful hunks of metal that have four wheels and are driving around in your neighborhood." (~00:29)</p>
+</blockquote>
+<p>The framing that licenses every analogy in the rest of the talk.</p>
+<blockquote>
+<p>"Every nine that you earn is not earned by just improving your system a little bit, getting a better model or reducing the error rate. You have to redesign your system for the level of reliability that you want." (~00:33)</p>
+</blockquote>
+<p>The sharpest rebuttal to "we'll just tune the model a bit more before shipping."</p>
+<blockquote>
+<p>"Level three is a weird beast. Level three is not a very pleasant place to be. It's very bad for cognitive load. It's very bad for safety. It's very bad for productivity." (~00:34)</p>
+</blockquote>
+<p>The half-automated handoff hurts identically in driving and in coding agents.</p>
+<blockquote>
+<p>"I want to ask the audience that is working on virtual agents: what is your world model?" (~00:43)</p>
+</blockquote>
+<p>The talk ends on this question rather than a conclusion.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Waymo World Model</td>
+<td>Waymo 的生成式世界模型,支撐長 horizon 閉環模擬與評估,可生成相機與光達輸出</td>
+<td>Waymo's generative world model for closed-loop long-horizon simulation and evaluation, generating both camera and lidar</td>
+<td>2026 年 2 月發表 / announced Feb 2026 — <a href="https://waymo.com/blog/2026/02/the-waymo-world-model-a-new-frontier-for-autonomous-driving-simulation/">waymo.com/blog</a></td>
+</tr>
+<tr>
+<td>Genie 3</td>
+<td>Google DeepMind 的通用世界模型,Waymo World Model 的底座</td>
+<td>Google DeepMind's general-purpose world model; the base for the Waymo World Model</td>
+<td>2025 年 8 月發表 / introduced Aug 2025</td>
+</tr>
+<tr>
+<td>DAgger problem</td>
+<td>多步系統只最小化每步誤差會產生相關誤差與漂移</td>
+<td>Minimizing per-step error in multi-step systems yields correlated errors and drift</td>
+<td>機器人領域用語,他明說其他領域另有名字 / robotics terminology; he notes other fields name it differently</td>
+</tr>
+<tr>
+<td>SAE Levels of Autonomy (L0–L5)</td>
+<td>自駕分級,Waymo 位於 L4;他用來類比 coding agent 的自主光譜</td>
+<td>Driving autonomy levels; Waymo operates at L4, used as an analogy for the coding-agent autonomy spectrum</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vincent Vanoke / Van Hooke</td>
+<td>Vincent Vanhoucke</td>
+</tr>
+<tr>
+<td>Whimo / Whimo car</td>
+<td>Waymo</td>
+</tr>
+<tr>
+<td>Gen3</td>
+<td>Genie 3</td>
+</tr>
+<tr>
+<td>LAR</td>
+<td>lidar</td>
+</tr>
+<tr>
+<td>aentic AI / genetic systems</td>
+<td>agentic AI / agentic systems</td>
+</tr>
+<tr>
+<td>dagger problem</td>
+<td>DAgger problem</td>
+</tr>
+<tr>
+<td>code compression systems</td>
+<td>code completion systems</td>
+</tr>
+<tr>
+<td>deres from</td>
+<td>derives from</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「11 個城市」是演講當下的營運城市數,官方數字可能已更動,引用時建議標註時間點。/ The "11 cities" figure is as of the talk; the official count may have changed — cite with a date.</li>
+<li>他提到的 Genie 3 相關細節(例如 Waymo 對光達生成的後訓練方式)講中只帶過「grafted lidar generative capabilities onto the model」,實作細節未展開。/ He only said lidar generation was "grafted onto the model"; the post-training details were not covered.</li>
+<li>他提到 Google 早年的桌球機器人影片「Vincent 也參與其中」(由 Peter Stone 在前一場提及),該工作的正式名稱未在台上點名。/ The early Google table-tennis robot work he was part of (referenced by Peter Stone in the prior talk) was never named on stage.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/vincent-vanhoucke--trustworthy-agents-in-the-real-world.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

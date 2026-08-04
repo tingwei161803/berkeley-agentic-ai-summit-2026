@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>World Models for Physical AI Simulation · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="The bottleneck in robotics isn&#x27;t the policy, it&#x27;s simulation — real robots run at physical time, while generative world models can *imagine* unlimited long-tail scenarios on GPUs faster than real t…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/sanja-fidler--world-models-for-physical-ai-simulation.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="World Models for Physical AI Simulation · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="The bottleneck in robotics isn&#x27;t the policy, it&#x27;s simulation — real robots run at physical time, while generative world models can *imagine* unlimited long-tail scenarios on GPUs faster than real t…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/sanja-fidler--world-models-for-physical-ai-simulation.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-atlas" data-talk="sanja-fidler--world-models-for-physical-ai-simulation">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="World Models for Physical AI Simulation" data-title-zh="用於 Physical AI 模擬的世界模型">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--keynote"><span class="lang-en">Keynote</span><span class="lang-zh">主題演講</span></span>
+          <span class="dialog__session">Session 1: Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">World Models for Physical AI Simulation</span><span class="lang-zh">用於 Physical AI 模擬的世界模型</span></h1>
+        <p class="dialog__speaker"><strong>Sanja Fidler</strong> — Associate Professor, University of Toronto; Former VP of AI Research, Nvidia</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 00:17:49–00:32:35 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=WeriQic-QW0&amp;t=1069s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:17:49</span><span class="lang-zh">從 00:17:49 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">The bottleneck in robotics isn&#x27;t the policy, it&#x27;s simulation — real robots run at physical time, while generative world models can *imagine* unlimited long-tail scenarios on GPUs faster than real time; in one year this went from &quot;5 seconds of video per 5 minutes of GPU time&quot; to real-time interactive, and now runs on a consumer GPU.</span><span class="lang-zh">機器人開發的瓶頸不是模型而是模擬——真實機器人只能以物理時間跑,而生成式世界模型能在 GPU 上以超即時速度「想像」出無限多的長尾場景;過去一年這項技術從「5 秒影片要跑 5 分鐘」變成「即時互動」,現在連消費級顯示卡都跑得動。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>開場說明</strong>:她昨天才宣布離開 Nvidia,現在的身分是 University of Toronto 的「平民」(civilian);Nvidia 大方讓她把投影片帶走,所以講的仍是 Nvidia 的工作。</li>
+<li><strong>這場不談 agentic AI,談 world models</strong>——她認為這是六年來最讓她興奮的技術,而且「已經在轉角了」。</li>
+<li><strong>模擬是機器人學的基礎建設</strong>:LLM 評估只要 sample 一段文字;機器人評估必須把 policy 部署到真實機器人上閉環跑。真機受限於<strong>物理時間</strong>且要買很多台;虛擬機器人只受限於<strong>計算時間</strong>,而計算會越來越快,擴張只需加 GPU。</li>
+<li><strong>模擬技術的三代</strong>:(1) 圖學+美術手工建模——測 SF 某條街要一兩個月的美術工時;(2) 2020 年起的 NeRF / Gaussian splatting——從真實錄影直接重建成模擬環境,內容問題被解決,Nvidia 曾靠此<strong>每天跑 200 萬次自駕模擬</strong>;(3) 生成式 world models——純資料驅動,可以「幻想」出從沒錄到的長尾場景。</li>
+<li><strong>她定義的 world model 是「互動式」的</strong>:不是 text-in / 5 秒影片 out,而是有人或機器人軟體在迴圈裡,每一格畫面都由模型即時生成。這就是 <strong>OmniDreams</strong>,而且它跑即時。</li>
+<li><strong>一年的進展曲線</strong>:2025 年 3 月,5 秒片段要 5 分鐘 GPU 時間;2026 年 3 月,即時互動;兩個月後的 CVPR(6 月),已經能在 RTX 5090 這種消費級卡上跑——「等於一個可以裝進背包的遊戲引擎」。</li>
+<li><strong>最讓她興奮的結果</strong>:把<strong>生產環境的 driving policy</strong> 直接插進這個生成世界裡開,policy 把模擬世界跟真實世界搞混了——這代表畫質已經達到「可用」的門檻。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>從 ChatGPT 到 agentic AI 再到 physical AI(約 00:18–00:19)</h4>
+<p>她把 AI 的演進切成三段:2022 年 ChatGPT 讓全世界第一次真正認識 AI(「連我媽都知道 ChatGPT」);現在是 agentic AI 的時代,人人都在用 agent(「我無法想像沒有 agent 的生活」);下一個斷點是 <strong>physical AI</strong>——智慧下放到邊緣、進到各行各業的機器人裡,可能發生在未來十年甚至更久,取決於你要的是哪種機器人。</p>
+<p>她在 Nvidia 的團隊聚焦在其中一種機器人:<strong>自駕車</strong>,今天就用它當例子;但通用機器人才是當下最熱、最被期待「一台做很多事」的方向。</p>
+<h4>機器人軟體的世代演進(約 00:20)</h4>
+<p>以車為例:非常簡單的視覺 → 手寫規則 → 每個環節(感知、預測、規劃)都用機器學習 → 最近的 end-to-end 系統(sensor 進、規劃軌跡出)→ 正在來的新世代:<strong>利用大規模預訓練的 foundation model</strong>,帶著「世界如何運作」的龐大知識與各種真實世界難以蒐集的 corner case,而且會推理。「大家真的認為 foundation model 是解決最後一哩 corner case 的 game changer。」</p>
+<h4>為什麼模擬是機器人的基礎建設(約 00:21–00:23)</h4>
+<ul>
+<li><strong>LLM 的開發迴圈</strong>:訓練很多模型,要評估好壞就 sample 一段文字來看,必要時還找人互動評估對話。</li>
+<li><strong>機器人的開發迴圈</strong>:軟體(機器人的大腦)必須部署到真實機器人上<strong>閉環</strong>執行任務,再由人觀察表現。(她用網路上抓的 Skild AI pick-and-place 影片示範。)</li>
+<li><strong>替代方案</strong>:讓虛擬機器人在雲端的 digital twin 裡做同樣的 pick-and-place,一樣能得到「哪個 policy 比較好」的良好訊號,而且可以更可規模化地訓練。</li>
+<li><strong>關鍵論點</strong>:真機路線的上限是<strong>物理時間</strong>——現實世界沒辦法跑得比物理時間快,要測很多場景就得買很多台機器人;雲端路線的上限是<strong>計算時間</strong>——電腦越來越快,可以跑得比真實時間更快,而且是靠跨 GPU 擴張而不是靠買機器人。「所以這是一條可規模化得多、多、多的 pipeline。」</li>
+<li>結論:「我真的不認為沒有非常非常好的模擬,你能發展出機器人學。」</li>
+</ul>
+<h4>模擬的三個世代(約 00:23–00:25)</h4>
+<ol>
+<li><strong>圖學時代</strong>:美術師手刻 3D asset、寫行為模型、寫 ray tracing 方程式。能用,但極度耗時——「如果我想在舊金山某條街測我的車,那就是一到兩個月的美術工時去做那個 digital twin。」</li>
+<li><strong>NeRF / Gaussian splatting(2020 年左右)</strong>:完全改變賽局。可以從真實機器人的錄影直接得到模擬環境(雖然受限於重建、只能重現錄到的東西)。<strong>內容問題被解決了</strong>:真實錄影 → 模擬環境 → 部署新版軟體 → 跑新的閉環 rollout。做法是重建表面(供碰撞偵測)+ splats(空間中的外觀 blob,決定不同視角怎麼 render)。<strong>在 Nvidia,他們靠這套每天跑 200 萬次自駕軟體模擬。</strong></li>
+<li><strong>生成式 world models</strong>:重建法受限於「你錄到了什麼」,但機器人的難題正好在長尾——那些極難見到、卻必須測試與訓練的情況。所以重點是<strong>想像</strong>這些困難案例。World model 是純資料驅動的 AI,沒有人在手工做內容,上限只剩資料;於是你可以幻想新場景、寫出任何你想像得到的困難 edge case。</li>
+</ol>
+<h4>生成式 world model 能做什麼(約 00:26)</h4>
+<ul>
+<li><strong>極端場景生成</strong>:惡劣天候、完整生成的車禍場景(「那支影片裡沒有人受傷,那是完全生成的事故」)——正是你想拿來測軟體的情況。</li>
+<li><strong>改變視角 ≈ 改變 embodiment</strong>:從低底盤跑車換到卡車視角,可以跨不同車型測試,「超級重要」。</li>
+<li><strong>編輯</strong>:生成模型很容易做、重建法很難做的事——直接下 text prompt 就能用各種方式改寫場景。</li>
+</ul>
+<h4>她心中的 world model:互動式(約 00:26–00:27)</h4>
+<p>「我今天講的 world model 有一個特定架構,而且它是<strong>互動式</strong>的。不是輸入文字、輸出五秒影片;而是迴圈裡有一個使用者或一套機器人軟體。」</p>
+<p>第一個使用者是她「最喜歡的人」——模型一做出來,她就跑去對方辦公室,讓他拿真的方向盤試開。那個 demo 裡,人在開車,而<strong>你看到的每一格畫面都是 world model 完全生成的</strong>。這個模型叫 <strong>OmniDreams</strong>,而且附帶紅利:<strong>它跑即時</strong>。</p>
+<p>「模擬一定要即時嗎?不一定。它只需要有非常高的 throughput——但即時是很棒的紅利。」</p>
+<h4>怎麼做出來的(約 00:27–00:29)</h4>
+<p>四個步驟:</p>
+<ol>
+<li><strong>Base model</strong>:一個預訓練的影片生成模型(通常是 diffusion),吃幾張雜訊 frame、denoise 成幾秒影片——<strong>雙向 attention</strong>。預訓練資料是大量公開網路資料。</li>
+<li><strong>Domain post-training</strong>:轉進特定機器人領域(例如 AV),而且不只是「路上發生的事」,是<strong>機器人捕捉到的路上發生的事</strong>——通常不只一台相機,而是多台。</li>
+<li><strong>改架構讓它互動</strong>:改成 <strong>causal</strong> 架構,一格一格生成而不是一次一小段影片,並把 action 放進迴圈。</li>
+<li><strong>效率</strong>:diffusion 通常要很多步,太慢;把它蒸餾成極少步的模型,再用書上所有技巧做即時實作——這就是 <strong>FlashDreams</strong>,已經釋出,而且可以掛在不同架構的 world model 上。</li>
+</ol>
+<p>Demo:有人在開車,右邊是實際被操作的方向盤,而每一格畫面都不是真實世界,全是生成的。物理只有很簡單的地面物理——確保車一直貼在地面、能開過減速丘;但沒有對路面以外更複雜的場景做碰撞偵測,所以「你可以直接開進一間餐廳,沒問題」。</p>
+<h4>技術演進速度:一年的曲線(約 00:30)</h4>
+<ul>
+<li><strong>2025 年 3 月</strong>:生成 5 秒片段要大約 5 分鐘 GPU 時間。「顯然不實用。」</li>
+<li><strong>2026 年 3 月</strong>:快轉一年,<strong>即時互動</strong>。</li>
+<li><strong>2026 年 6 月(CVPR)</strong>:再兩個月,他們讓它跑在 <strong>RTX 5090</strong> 這種消費級 GPU 上。「基本上就是一個可以裝進背包的遊戲引擎。」</li>
+</ul>
+<p>「這就是我說『已經在轉角了』的意思。」</p>
+<h4>結果與那個「最讓我興奮」的時刻(約 00:30–00:32)</h4>
+<ul>
+<li>只給一段 text prompt 或一張 first frame,就能得到複雜得多的目標場景。「圖學引擎做不到,現象太多太雜;重建法也很難生成出來。」</li>
+<li><strong>多感測器</strong>:必須同時生成機器人身上的多個感測器輸出。</li>
+<li><strong>編輯同一個環境</strong>:改天候、改光照條件;畫面裡那條綠色軌跡,是<strong>機器人 policy 在這個生成世界裡開出來的</strong>。</li>
+<li><strong>關鍵時刻</strong>:「我對這個結果超級興奮,因為我們把<strong>生產環境的 policy</strong> 插進去,它就在這個世界裡開起來了。它把這個模擬世界跟真實世界搞混了——那基本上代表你的品質門檻已經到了你真正需要的水準。」</li>
+<li><strong>長尾的證明</strong>:她請團隊生成一些酷例子——「Nvidia 從來沒有在路上拍到過大象,但我們可以生成它」,這正好證明了長尾那一點。</li>
+<li><strong>結尾 demo</strong>:左邊是真人在開,每一格都是生成的;右邊那個轉動的方向盤,是<strong>機器人軟體</strong>在操作,在這個三相機的 world model 裡開車。</li>
+</ul>
+<h3>金句</h3>
+<blockquote>
+<p>"I actually no longer [work at] Nvidia. I just announced it yesterday. … Today I'm a civilian [at] University of Toronto and I'll let you speculate about my next steps."(約 00:18)</p>
+</blockquote>
+<p>演講第一句話就是新聞。</p>
+<blockquote>
+<p>"In the real world we cannot run faster than the physical time. … On the other hand we're bounded by compute time — computers are getting better and better, we can actually run faster than real time, and we just scale across GPUs instead of robots."(約 00:22)</p>
+</blockquote>
+<p>整場的核心論證:機器人的規模化路徑必須離開物理時間。</p>
+<blockquote>
+<p>"It's confusing this simulated world with the real world, which basically means that your quality bar is at the level that you actually need."(約 00:31)</p>
+</blockquote>
+<p>判斷模擬「夠不夠好」的最務實標準:生產環境的 policy 分不出差別。</p>
+<blockquote>
+<p>"Even though Nvidia has never captured an elephant on the road, we can actually generate it."(約 00:31)</p>
+</blockquote>
+<p>長尾問題的一句話說明。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Opening news</strong>: she announced her departure from Nvidia the day before; she's now "a civilian at University of Toronto" and invited the room to speculate about her next steps. Nvidia let her keep most of the deck, so the work shown is Nvidia's.</li>
+<li><strong>Not a talk about agentic AI</strong> — about world models, the technology she's found most exciting for six years and which is now "around the corner."</li>
+<li><strong>Simulation is robotics' foundational infrastructure.</strong> Evaluating an LLM means sampling text; evaluating a robot means deploying the policy on hardware in closed loop. Real robots are bounded by <em>physical time</em> and require buying more robots; virtual robots are bounded by <em>compute time</em>, which keeps getting cheaper and scales across GPUs.</li>
+<li><strong>Three generations of simulation</strong>: (1) handcrafted graphics — one to two months of artist time to build a digital twin of a single San Francisco street; (2) NeRF and Gaussian splatting from ~2020 — real capture straight to simulation environment, which solved the content problem and let Nvidia run <strong>two million autonomous-driving simulations per day</strong>; (3) generative world models — purely data-driven, able to hallucinate the long tail nobody ever recorded.</li>
+<li><strong>Her definition of a world model is interactive</strong>: not text in, five seconds of video out, but a human or a robotic policy in the loop with every single frame generated live. That system is <strong>OmniDreams</strong>, and it runs in real time.</li>
+<li><strong>The one-year curve</strong>: March 2025, five seconds of video per five minutes of GPU time; March 2026, real-time interactive; two months later at CVPR, running on an RTX 5090 — "literally a game engine you can have in a backpack."</li>
+<li><strong>Her favorite result</strong>: dropping the <strong>production driving policy</strong> into the generated world and having it drive — the policy confuses the simulated world with the real one, which is exactly the quality bar you need.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>From ChatGPT to agentic AI to physical AI (~00:18–00:19)</h4>
+<p>Three eras: ChatGPT in 2022, when AI reached the masses for the first time ("my mom knew about ChatGPT"); today's agentic AI, which she can no longer imagine working without; and the next break point, <strong>physical AI</strong>, where intelligence moves to the edge and into robots across industries — perhaps a decade out, depending on which robot you're waiting for. Her group at Nvidia focused on one particular robot, the autonomous vehicle, which serves as the running example; general-purpose robotics is the hot upcoming field.</p>
+<h4>Generations of robot software (~00:20)</h4>
+<p>For a car: simple vision → hardcoded driving rules → machine learning at every stage (perception, prediction, planning) → recent end-to-end systems that map sensor data to a planned trajectory → and the emerging generation built on large pre-trained foundation models, which carry vast knowledge of how the world works, cover corner cases that are nearly impossible to collect in the real world, and can reason. The field genuinely believes foundation models are the game changer for that last mile of corner cases.</p>
+<h4>Why simulation is the infrastructure (~00:21–00:23)</h4>
+<p>The LLM development loop is cheap: train models, sample text, evaluate, sometimes with a human in the loop for conversation. The robotics loop is not: the robot's brain must be deployed on real hardware in closed loop and observed (she showed a Skild AI pick-and-place clip pulled from the internet). The alternative is a virtual robot in a cloud digital twin doing the same pick-and-place — which gives a genuinely useful signal about which policy is better, and scales training far more cheaply.</p>
+<p>The argument that carries the talk: real-world development is bounded by physical time, and there's no running faster than physics, so scaling scenario coverage means buying more robots. Cloud development is bounded by compute time — and compute keeps getting faster than real time, and scales across GPUs instead of robots. "So it's a much, much, much more scalable pipeline." Her conclusion: you cannot develop robotics without really, really good simulation.</p>
+<h4>Three generations of simulation (~00:23–00:25)</h4>
+<ol>
+<li><strong>Graphics</strong>: artists carved out 3D assets, wrote behavior models, wrote the ray-tracing equations. It worked, but testing a car on a specific San Francisco street cost one to two months of artist time to build that digital twin.</li>
+<li><strong>NeRF and Gaussian splatting (~2020)</strong>: a complete game changer, because you could go from a real-world recording captured on a robot straight to a simulation environment — with the restriction that reconstruction only gives you what was actually observed. Pipeline: capture → surface reconstruction for collision checking → splats (little appearance blobs in space) telling you how to render new viewpoints. At Nvidia, this powered <strong>two million autonomous-driving simulations per day</strong>.</li>
+<li><strong>Generative world models</strong>: reconstruction is bounded by what you recorded, and robotics lives in the long tail — the stuff that's so hard to see and that you most need to test and train on. So it's all about <em>imagining</em> the hard cases. World models are purely data-driven AI, no human crafting content, so the only limit is data.</li>
+</ol>
+<h4>What generative world models buy you (~00:26)</h4>
+<ul>
+<li><strong>Hard scenarios on demand</strong>: rough weather, a fully generated collision ("no one got hurt in that video — it was a completely generated accident"), exactly the cases you want to test software against.</li>
+<li><strong>Viewpoint changes ≈ embodiment changes</strong>: going from a low sports car to a truck, which matters enormously for testing across vehicles.</li>
+<li><strong>Editing</strong>: trivial with generative models and much harder with reconstruction — a text prompt is enough to rewrite the scenario.</li>
+</ul>
+<h4>The specific architecture: interactive (~00:26–00:27)</h4>
+<p>"There's a specific architecture I have in mind when I talk about world models today, and it's interactive." Not text in, five seconds of video out — there is a user or a robotic policy in the loop.</p>
+<p>Her first user was "my favorite human": as soon as the model was working, she walked into their office and had them try it with a real steering wheel. A human drives, and every single frame is generated by the world model. That model is <strong>OmniDreams</strong>, and the bonus is that it runs real time. "Does simulation need to run real time? Not necessarily — it just needs really high throughput. But real time is a great bonus."</p>
+<h4>How it's built (~00:27–00:29)</h4>
+<ol>
+<li><strong>Base model</strong>: a pre-trained video generation model, typically diffusion — noisy frames denoised into a few seconds of video, with bidirectional attention, pre-trained on vast publicly available internet data.</li>
+<li><strong>Domain post-training</strong>: adapt to a specific robotic domain such as AV — and not just "stuff that happens on the road" but stuff <em>as captured by a robot</em>, which usually means many cameras rather than one.</li>
+<li><strong>Make it interactive</strong>: switch to a <strong>causal</strong> architecture that generates frame by frame with actions in the loop, rather than short video snippets at a time.</li>
+<li><strong>Make it efficient</strong>: distill the many-step diffusion model down to a few steps, then apply every trick in the book for a real-time implementation. That stack is <strong>FlashDreams</strong>, which has been released and can be plugged into different world-model architectures.</li>
+</ol>
+<p>In the demo, physics is deliberately minimal — ground physics only, so the car stays on the ground and rides over speed bumps, but there's no collision checking beyond the road surface, so "you can actually go through a restaurant, no problem."</p>
+<h4>The one-year trajectory (~00:30)</h4>
+<p>March 2025: five-second clips at roughly five minutes of GPU time each — clearly impractical. March 2026: real-time interactive. June 2026 at CVPR, two months later: running on an <strong>RTX 5090</strong>, a consumer-grade GPU — "literally a game engine that you can have in a backpack." That slope is why she says the technology is around the corner.</p>
+<h4>Results, and the moment she cared about most (~00:30–00:32)</h4>
+<p>From a text prompt or a single first frame you get scenes far more complex than a graphics engine could produce — too many simultaneous phenomena — and that reconstruction techniques struggle to generate too. The model produces the <strong>multiple sensor streams</strong> a real robot carries. Editing the same environment changes weather and lighting, and the little green trajectory on screen is the <strong>robot's own policy driving through the generated world</strong>.</p>
+<p>That was her favorite result: they plugged in the <strong>production policy</strong> and it drove. "It's confusing this simulated world with the real world, which basically means that your quality bar is at the level that you actually need." And on the long tail: "Even though Nvidia has never captured an elephant on the road, we can actually generate it." The closing demo showed a person driving on the left while on the right the <em>robotic software</em> turns the wheel, driving inside a three-camera world model — every frame generated, all in real time.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"I actually no longer [work at] Nvidia. I just announced it yesterday. … Today I'm a civilian [at] University of Toronto and I'll let you speculate about my next steps." (~00:18)</p>
+</blockquote>
+<p>The talk opened with news.</p>
+<blockquote>
+<p>"In the real world we cannot run faster than the physical time. … On the other hand we're bounded by compute time — computers are getting better and better, we can actually run faster than real time, and we just scale across GPUs instead of robots." (~00:22)</p>
+</blockquote>
+<p>The core argument: robotics scales only by leaving physical time behind.</p>
+<blockquote>
+<p>"It's confusing this simulated world with the real world, which basically means that your quality bar is at the level that you actually need." (~00:31)</p>
+</blockquote>
+<p>The most practical test of whether a simulator is good enough: the production policy can't tell.</p>
+<blockquote>
+<p>"Even though Nvidia has never captured an elephant on the road, we can actually generate it." (~00:31)</p>
+</blockquote>
+<p>The long-tail problem in one sentence.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OmniDreams</td>
+<td>Nvidia 的即時互動式生成世界模型,用於自駕閉環模擬</td>
+<td>Nvidia's real-time interactive generative world model for closed-loop AV simulation</td>
+<td>arXiv 2606.03159;已開源(github.com/nv-tlabs/omni-dreams);外部資料顯示其 base model 為 Cosmos diffusion,並在 21k 小時駕駛資料上做 mid/post-training</td>
+</tr>
+<tr>
+<td>FlashDreams</td>
+<td>互動式自迴歸影片 / world model 的高效能推論與服務函式庫</td>
+<td>High-performance inference &amp; serving library for interactive autoregressive video and world models</td>
+<td>github.com/NVIDIA/flashdreams;可掛在不同 world model 架構上</td>
+</tr>
+<tr>
+<td>NeRF / Gaussian splatting</td>
+<td>2020 年起讓「真實錄影 → 模擬環境」成為可能的重建技術</td>
+<td>Reconstruction techniques that turned real capture into simulation environments from ~2020</td>
+<td>Nvidia 靠此每天跑 200 萬次自駕模擬</td>
+</tr>
+<tr>
+<td>Skild AI</td>
+<td>講者引用的真實機器人 pick-and-place 示範影片來源</td>
+<td>Source of the real-robot pick-and-place clip she showed</td>
+<td>逐字稿聽成 "Skilled AI",拼法待確認</td>
+</tr>
+<tr>
+<td>RTX 5090</td>
+<td>消費級 GPU,CVPR(2026/6)時 world model 已能在其上執行</td>
+<td>Consumer-grade GPU running the world model as of CVPR (June 2026)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sonia Diddler / Sonia</td>
+<td>Sanja Fidler</td>
+</tr>
+<tr>
+<td>invidia / Invidia</td>
+<td>Nvidia</td>
+</tr>
+<tr>
+<td>Chad GPT</td>
+<td>ChatGPT</td>
+</tr>
+<tr>
+<td>nerf agotion splats</td>
+<td>NeRF / Gaussian splats</td>
+</tr>
+<tr>
+<td>unifor splat</td>
+<td>(uniform) splats</td>
+</tr>
+<tr>
+<td>omnidreams</td>
+<td>OmniDreams</td>
+</tr>
+<tr>
+<td>flash dreams</td>
+<td>FlashDreams</td>
+</tr>
+<tr>
+<td>birectional</td>
+<td>bidirectional</td>
+</tr>
+<tr>
+<td>den noiseise / dnoising</td>
+<td>denoise / denoising</td>
+</tr>
+<tr>
+<td>gamecher</td>
+<td>game changer</td>
+</tr>
+<tr>
+<td>an navie / a navy</td>
+<td>AV(autonomous vehicle)</td>
+</tr>
+<tr>
+<td>reconstruction tag / construction tech</td>
+<td>reconstruction tech</td>
+</tr>
+<tr>
+<td>posturing</td>
+<td>post-training</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「my favorite human」是誰:她說模型一做好就去對方辦公室、用真方向盤試開,字幕在此漏字("my favorite human at was actually our first user"),推測是 Nvidia 內部的人,但<strong>未確認</strong>。/ Who "my favorite human" is — the caption drops the name; likely someone at Nvidia, unconfirmed.</li>
+<li>"Skilled AI" 的正確公司名(推測為 Skild AI,做通用機器人 foundation model),需看投影片確認。/ Correct spelling of the robotics company (likely Skild AI) — check the slide.</li>
+<li>「每天 200 萬次模擬」的年份與範圍(是重建式模擬時代的數字,對應約 2024–2025)。/ The year/scope of the "two million simulations per day" figure — it belongs to the reconstruction era.</li>
+<li>OmniDreams 的 base model 在演講中只說是「a pre-trained video generation model」,未點名 Cosmos;表中的 Cosmos 資訊來自論文而非演講。/ She didn't name Cosmos on stage; that attribution comes from the paper, not the talk.</li>
+<li>「5 秒片段 / 5 分鐘 GPU 時間」的 GPU 型號與 batch 條件未說明。/ The GPU model and batching behind the "5 seconds per 5 minutes" figure were not stated.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/sanja-fidler--world-models-for-physical-ai-simulation.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

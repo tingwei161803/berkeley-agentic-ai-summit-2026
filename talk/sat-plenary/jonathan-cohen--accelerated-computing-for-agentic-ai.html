@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Accelerated Computing for Agentic AI · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="An agent is a probabilistic LLM wrapped in deterministic computer science — and the wrapper (harness, tools, policy enforcement, sandboxes, heterogeneous hardware) is what determines how the system…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/jonathan-cohen--accelerated-computing-for-agentic-ai.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Accelerated Computing for Agentic AI · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="An agent is a probabilistic LLM wrapped in deterministic computer science — and the wrapper (harness, tools, policy enforcement, sandboxes, heterogeneous hardware) is what determines how the system…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/jonathan-cohen--accelerated-computing-for-agentic-ai.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="jonathan-cohen--accelerated-computing-for-agentic-ai">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Accelerated Computing for Agentic AI" data-title-zh="為 Agentic AI 而生的加速運算">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: Agentic AI Infrastructure &amp; Platform</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Accelerated Computing for Agentic AI</span><span class="lang-zh">為 Agentic AI 而生的加速運算</span></h1>
+        <p class="dialog__speaker"><strong>Jonathan Cohen</strong> — VP of Applied Research, Nvidia; Academy Scientific and Technical Award Winner</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 01:13:40–01:23:10 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=gKdeLQd_LIQ&amp;t=4420s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:13:40</span><span class="lang-zh">從 01:13:40 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">An agent is a probabilistic LLM wrapped in deterministic computer science — and the wrapper (harness, tools, policy enforcement, sandboxes, heterogeneous hardware) is what determines how the system actually performs, which is what NVIDIA&#x27;s NeMo Agent Toolkit and NOOA harness set out to engineer.</span><span class="lang-zh">agent 就是「機率性的 LLM」外面包上「確定性的電腦科學」——而包住它的那一層(harness、工具、政策、沙箱、異質硬體)決定了系統實際的表現,NVIDIA 用 NeMo Agent Toolkit 與 NOOA harness 把這層工程化。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>Agent = LLM + 電腦科學</strong>。LLM 是我們目前唯一能解開某些數十年懸而未決問題的方法,但它是機率性、非確定性的;軟體則相反——確定、可檢視狀態、可下斷言。<strong>agent 就是把兩者結合起來</strong>:拿機率模型的智慧,包上資料結構、演算法與幾十年累積的可靠軟體工程。</li>
+<li><strong>底層平台在硬體與軟體兩層都是異質的</strong>:部分工具跑 GPU、部分跑 CPU;複雜的儲存階層、agent 與 sub-agent 之間有 scope 的資料傳遞、越來越複雜的通訊模式、沙箱與 secure enclave;再加上大模型、小模型、微調模型與外部 API 上的專有模型混用。NVIDIA 的答案是 <strong>NVIDIA / NeMo Agent Toolkit</strong>。</li>
+<li><strong>Harness 和模型一樣重要</strong>。他的團隊做的 <strong>NOOA(NVIDIA Object-Oriented Agents)</strong> 把 agent 就寫成一個 Python 物件:方法內容寫成 <code>...</code>(ellipsis)就等於告訴 LLM「這塊你來填」,於是 agent 能寫出方法、呼叫自己寫的方法、修改自己的方法,並把需要記住的東西直接存成物件狀態;資訊用<strong>傳參考</strong>而不是壓成字串塞進 context。結果:同樣分數只用一半 token,CyberGym 上取得數一數二的成績,harness 帶來的提升相當顯著。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>Agent 的來歷與定義:LLM 加上電腦科學(約 01:13–01:17)</h4>
+<ul>
+<li>ChatGPT 開啟現代 AI 時代時,大家想像的是「人對 LLM 說話」,模型也許能碰某個資料庫——本質是 chat。</li>
+<li>今天想的是完整的自主系統:許多模型(開放權重與專有混用)、工具、基礎設施、記憶系統、context 管理、生 sub-agent 的能力、資安基礎設施;而發起互動的<strong>可能是人,也可能不是人</strong>。</li>
+<li>所以什麼是 agent?<strong>agent 不只是一個 LLM,而是被「基礎設施」包住的 LLM</strong>——這裡的基礎設施指的是讓 LLM 真的能做事的軟體:在 API 之間 marshalling 資料、型別檢查、規則式的政策強制執行。「而我們用來包住 LLM、把它變成 agent 的這一整套東西,另一個名字叫做<strong>電腦科學</strong>。」</li>
+<li>為什麼這是個好主意:LLM 極其強大,是我們<strong>唯一</strong>知道能解開一大類數十年未解問題的方法;但它們是機率性、非確定性的,這恰好是軟體的反面——軟體大致上是確定的,可以理解、可以檢視狀態、可以下斷言。</li>
+<li>於是 agent 是兩者的結合:取用機器學習模型的智慧,包上確定性、資料結構與演算法的力量,以及我們花幾十年學會的「怎麼把軟體做得可靠」。</li>
+<li>(他開場時投影片也載入了舊版本,現場笑場——延續了 Dawn Song 稍早的插曲。)</li>
+</ul>
+<h4>異質平台與 NVIDIA Agent Toolkit(約 01:17–01:20、01:22)</h4>
+<p>典型 agent 的組成:管理送進 LLM 的 prompt 的機制、讓 LLM 存取工具並檢查權限的基礎設施——而這些現在跑在越來越複雜的硬體基質上:</p>
+<ul>
+<li>部分軟體跑在 GPU 等加速運算基礎設施,部分跑在 CPU;儲存階層很複雜。</li>
+<li>有 agent 與 sub-agent;有需要在系統之間傳遞的 <strong>scoped 資料</strong>;通訊模式越來越複雜;沙箱、secure enclave 等等。</li>
+<li><strong>平台在硬體與軟體兩層都是異質的</strong>,更別提模型的組合:大模型、小模型、你自己微調並特化過的模型、外部 API 上的通用專有模型。</li>
+</ul>
+<p>NVIDIA 把這一整套叫做 <strong>NVIDIA Agent Toolkit</strong>,包含:</p>
+<ul>
+<li><strong>部署</strong>:從 Kubernetes 到託管基礎設施、computer-use agents。</li>
+<li><strong>加速工具(CUDA-X)</strong>:例如計算流體力學、解微分方程、DNA 定序儀資料的次級分析——都是有加速解法的電腦科學任務,現在被 agentic 化成 agent 可呼叫的工具。</li>
+<li><strong>開放權重模型</strong>:Nemotron(通用模型家族)、機器人與 physical AI 的領域模型、BioNeMo(生物預測模型)。</li>
+<li><strong>執行與治理</strong>:能部署與執行各種模型的基礎設施;把系統包起來、確保 AI 不做你不想要的事的沙箱環境;以及<strong>盡可能高效地跑完這一切</strong>。</li>
+<li><strong>知識回流</strong>:捕捉流進流出系統的知識,拿來 post-train 出在你關心的任務上特化的模型。他把「離線改進 AI 的能力(例如用 RL 做 post-training)」也算進基礎設施本身——常見用法是把小模型特化到某任務上,做得和大得多的通用模型一樣好。</li>
+<li><strong>其他元件</strong>:NIM 與 Dynamo(部署)、NeMo Relay(捕捉 trace)、Switchyard(routing 演算法)、<strong>blueprints</strong>(開源參考實作,示範怎麼把這些拼起來解特定任務,例如建一個 OpenClaw、或 AIQ 這類研究助理 agent)、<strong>OpenShell</strong>(執行期防火牆,控制 agent 與外界之間的存取)。這些已被許多合作夥伴部署採用。</li>
+</ul>
+<h4>Harness 很重要:NOOA(約 01:20–01:22)</h4>
+<ul>
+<li>他特別想談 agentic 系統與 LLM 之間的<strong>介面</strong>,也就是大家說的 <strong>agent harness</strong>。「The harness really matters.」LLM 封裝了大量智慧,但 harness 決定你能取出多少。</li>
+<li>他的團隊近期做的是 <strong>NOOA(NVIDIA Object-Oriented Agents)</strong>,GitHub 上有(演講中掃 QR code)。核心想法非常簡單:<strong>agent 就是一個 Python 物件</strong>。</li>
+<li>你用 Python 寫 agent;方法的內容寫成特殊的 <strong>ellipsis(<code>...</code>)語法</strong>,等於對 LLM 說「這塊由你填程式碼」。</li>
+<li>於是 agent 能<strong>自己修改自己</strong>:呼叫它寫出來的方法、修改自己的方法;判斷「這是我需要記住的資訊」就直接存成 Python 物件的狀態;把某個計畫或解題方式編碼成一個方法,之後再呼叫。</li>
+<li>另一個關鍵想法:<strong>傳參考而不是傳字串</strong>——因為全都是 Python 物件,不必把資訊壓縮成字串塞進超長 context。</li>
+<li>結果(細節見 tech report):相對於單純用 LLM、甚至相對於其他 agent harness 都有顯著提升;例如<strong>同樣分數只用一半 token</strong>,以及 <strong>CyberGym 上數一數二的成績</strong>——harness 帶來的提升在這個案例上很可觀。</li>
+</ul>
+<h3>金句</h3>
+<blockquote>
+<p>"Another word for all of this stuff that we surround our large language model with that makes it into an agent is computer science."(約 01:15)</p>
+</blockquote>
+<p>整場演講的定義句。</p>
+<blockquote>
+<p>"They're the only method we know of to solve all sorts of problems that were previously unsolved … But at the same time they're probabilistic and they're non-deterministic. This is precisely the opposite of software."(約 01:15–01:16)</p>
+</blockquote>
+<p>為什麼 agent 必須是「機率 + 確定」的混血。</p>
+<blockquote>
+<p>"Agentic AI workloads are significantly more complicated, heterogeneous, and expensive computationally than anything we've ever seen before."(panel 中補充,約 01:41)</p>
+</blockquote>
+<p>同一位講者在稍後 panel 上對硬體含意的總結。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>An agent is an LLM plus computer science.</strong> LLMs are the only known method for solving whole classes of long-unsolved problems, but they are probabilistic and non-deterministic — precisely the opposite of software, which is deterministic, inspectable, and assertable. An agent marries the two.</li>
+<li><strong>The platform underneath is heterogeneous at both hardware and software levels</strong>: some tools run on GPUs, some on CPUs; storage hierarchies are deep; agents spawn sub-agents with scoped data; communication patterns keep getting more complex; sandboxes and secure enclaves surround everything — plus a mix of large, small, fine-tuned, and externally-hosted proprietary models. NVIDIA's answer is the <strong>NVIDIA / NeMo Agent Toolkit</strong>.</li>
+<li><strong>The harness matters as much as the model.</strong> His group's <strong>NOOA (NVIDIA Object-Oriented Agents)</strong> makes an agent a plain Python object: a method body written as <code>...</code> tells the LLM to fill it in, so the agent writes its own methods, calls them, modifies them, and keeps what it needs as object state. Information is passed <strong>by reference</strong> rather than compacted into strings in a giant context. Results: the same score at half the tokens, and among the strongest CyberGym scores — a significant lift from the harness alone.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Where agents came from, and what one is (~01:13–01:17)</h4>
+<ul>
+<li>When ChatGPT kicked off the modern AI era, these systems were things a human talked to — an LLM, maybe with access to a database. Fundamentally, chat.</li>
+<li>Today the picture is a complete autonomous system: many models (open-weight and proprietary), tools, infrastructure, memory systems, context management, the ability to spawn sub-agents, and security infrastructure — kicked off by a request that may or may not come from a human.</li>
+<li>So what is an agent? <strong>Not just an LLM, but an LLM surrounded by what he calls infrastructure</strong> — the software that lets the LLM actually do things: marshalling data between APIs, type checking, rule-based enforcement of policies. "Another word for all of this stuff … is computer science."</li>
+<li>Why that's a good idea: LLMs are incredibly powerful and are the only method we know of for solving all sorts of previously unsolved problems. But they are probabilistic and non-deterministic, the opposite of software, which we can understand, inspect, and make assertions about. An agent takes the intelligence from the probabilistic model and surrounds it with determinism, data structures, algorithms, and decades of learning about how to make software reliable.</li>
+<li>(His deck also loaded an out-of-date version on stage, which got a laugh — the morning's running joke, started by Dawn Song.)</li>
+</ul>
+<h4>A heterogeneous platform and the NVIDIA Agent Toolkit (~01:17–01:20, 01:22)</h4>
+<p>A typical agent has a way of managing the prompts fed to the LLM and infrastructure that lets the LLM reach tools and check permissions. All of it now runs on an increasingly complicated hardware substrate: some software on accelerated computing infrastructure like GPUs, some on CPUs, with deep storage hierarchies, agents and sub-agents, scoped data passed between systems, increasingly complex communication patterns, sandboxes, and secure enclaves. The platform is <strong>heterogeneous at both hardware and software levels</strong> — not to mention the collection of models: large, small, fine-tuned and specialized, and general-purpose proprietary models hosted externally on an API.</p>
+<p>NVIDIA's version of this platform is the <strong>NVIDIA Agent Toolkit</strong>:</p>
+<ul>
+<li><strong>Deployment</strong>: Kubernetes through hosted infrastructure, plus computer-use agents.</li>
+<li><strong>Accelerated tools (CUDA-X)</strong>: computational fluid dynamics, differential equation solvers, secondary analysis of DNA sequences from sequencing instruments — computer-science tasks with accelerated solutions, now exposed agentically so an agent can call them.</li>
+<li><strong>Open-weight models</strong>: Nemotron (the general-purpose family), domain models for robotics and physical AI, and BioNeMo (predictive models for biology).</li>
+<li><strong>Runtime and governance</strong>: the ability to deploy and run all of these models, sandbox environments that surround the system to ensure the AI isn't doing something you didn't want, and running all of it efficiently.</li>
+<li><strong>Knowledge capture</strong>: capture what flows in and out of the system and use it to post-train a model specialized for the task you care about. He counts this offline improvement loop — often RL post-training that makes a small model as good at a specific task as a much larger general model — as part of the infrastructure itself.</li>
+<li><strong>Other components</strong>: NIM and Dynamo for deployment, NeMo Relay for trace capture, Switchyard for routing, <strong>blueprints</strong> (open-source reference implementations showing how to pull the pieces together for a specific task, such as building an OpenClaw or AIQ, a research assistant agent), and <strong>OpenShell</strong>, essentially a firewall controlling access between an agent and the outside world. Much of this is deployed and adopted by NVIDIA partners.</li>
+</ul>
+<h4>The harness matters: NOOA (~01:20–01:22)</h4>
+<ul>
+<li>The interface between the agentic system and the LLM — the <strong>agent harness</strong> — is where he wanted to spend time. The LLM encapsulates a lot of intelligence; the harness determines how much of it you get.</li>
+<li>His group's recent work is <strong>NOOA (NVIDIA Object-Oriented Agents)</strong>, on GitHub (a QR code on the slide). The idea is simple: <strong>an agent is just a Python object.</strong></li>
+<li>You write the agent in Python, and a method body written with the special <strong>ellipsis (<code>...</code>)</strong> syntax tells the LLM "fill this block in with code."</li>
+<li>The agent can therefore <strong>modify itself</strong>: call methods it has written, rewrite its own methods, decide that a piece of information is worth storing and hold it as state on the object, and encode a plan or a solved approach as a method to call later.</li>
+<li>Another important idea: <strong>pass by reference instead of by string.</strong> Because everything is a Python object, you don't compact information into strings stuffed into a very large context.</li>
+<li>Results (details in the tech report): significant lift over a bare LLM and over other agent harnesses — for example the <strong>same score using half the tokens</strong>, and <strong>among the strongest CyberGym scores</strong>, where the harness contributed a substantial share of the result.</li>
+</ul>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Another word for all of this stuff that we surround our large language model with that makes it into an agent is computer science." (~01:15)</p>
+</blockquote>
+<p>The talk's definitional line.</p>
+<blockquote>
+<p>"They're the only method we know of to solve all sorts of problems that were previously unsolved … But at the same time they're probabilistic and they're non-deterministic. This is precisely the opposite of software." (~01:15–01:16)</p>
+</blockquote>
+<p>Why an agent has to be a probabilistic/deterministic hybrid.</p>
+<blockquote>
+<p>"Agentic AI workloads are significantly more complicated, heterogeneous, and expensive computationally than anything we've ever seen before." (from the panel, ~01:41)</p>
+</blockquote>
+<p>His own summary of the hardware consequence, delivered shortly afterwards.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVIDIA Agent Toolkit</td>
+<td>NVIDIA 的 agentic 平台總稱:部署、加速工具、模型、追蹤、routing、blueprints、執行期治理</td>
+<td>NVIDIA's agentic platform: deployment, accelerated tools, models, tracing, routing, blueprints, runtime governance</td>
+<td>官方名稱為 NVIDIA NeMo Agent Toolkit / officially the NVIDIA NeMo Agent Toolkit</td>
+</tr>
+<tr>
+<td>NOOA(NVIDIA Object-Oriented Agents)</td>
+<td>把 agent 寫成 Python 物件的 harness;<code>...</code> 方法體交由 LLM 填寫,支援自我修改與傳參考</td>
+<td>Agent harness where an agent is a Python object; a <code>...</code> method body is completed by an LLM loop; supports self-modification and pass-by-reference</td>
+<td><a href="https://github.com/NVIDIA-NeMo/labs-OO-Agents">https://github.com/NVIDIA-NeMo/labs-OO-Agents</a></td>
+</tr>
+<tr>
+<td>Nemotron</td>
+<td>NVIDIA 的開放權重通用模型家族</td>
+<td>NVIDIA's open-weight general-purpose model family</td>
+<td>主持人提到 Nemotron-based 系統近期在 IMO 拿到等同金牌的分數 / a Nemotron-based system reportedly scored at gold-medal level at the IMO</td>
+</tr>
+<tr>
+<td>BioNeMo</td>
+<td>生物領域的預測模型</td>
+<td>Predictive models for biology</td>
+<td>逐字稿聽成 "biono"</td>
+</tr>
+<tr>
+<td>CUDA-X</td>
+<td>加速工具集(CFD、微分方程、DNA 定序次級分析等),已 agentic 化</td>
+<td>Accelerated tool collection (CFD, differential equations, DNA secondary analysis), exposed agentically</td>
+<td></td>
+</tr>
+<tr>
+<td>NIM / Dynamo</td>
+<td>模型部署技術</td>
+<td>Model deployment technology</td>
+<td></td>
+</tr>
+<tr>
+<td>NeMo Relay</td>
+<td>捕捉 trace 的整合層</td>
+<td>Integration layer for capturing traces</td>
+<td></td>
+</tr>
+<tr>
+<td>Switchyard</td>
+<td>LLM 流量的 routing 演算法 / proxy</td>
+<td>Routing algorithms / proxy for LLM traffic</td>
+<td><a href="https://github.com/NVIDIA-NeMo/Switchyard">https://github.com/NVIDIA-NeMo/Switchyard</a></td>
+</tr>
+<tr>
+<td>OpenShell</td>
+<td>執行期防火牆,控制 agent 與外界的存取</td>
+<td>Runtime firewall controlling access between agent and the outside world</td>
+<td></td>
+</tr>
+<tr>
+<td>Blueprints</td>
+<td>開源參考實作(例:建 OpenClaw、AIQ 研究助理 agent)</td>
+<td>Open-source reference implementations (e.g., building an OpenClaw, or AIQ, a research assistant agent)</td>
+<td>AIQ 的正式名稱待確認 / official name of AIQ to verify</td>
+</tr>
+<tr>
+<td>CyberGym</td>
+<td>Berkeley RDI 的資安 benchmark,被用來展示 harness 效果</td>
+<td>Berkeley RDI's cyber benchmark, used to demonstrate the harness's lift</td>
+<td>同日 Dawn Song 開場亦提及 / also cited in Dawn Song's opening</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>John Cohen</td>
+<td>Jonathan Cohen</td>
+</tr>
+<tr>
+<td>Invidia</td>
+<td>NVIDIA</td>
+</tr>
+<tr>
+<td>neatron / neotron</td>
+<td>Nemotron</td>
+</tr>
+<tr>
+<td>biono</td>
+<td>BioNeMo</td>
+</tr>
+<tr>
+<td>NIMS</td>
+<td>NIM</td>
+</tr>
+<tr>
+<td>Nemo relay / switchyard</td>
+<td>NeMo Relay / Switchyard</td>
+</tr>
+<tr>
+<td>open claw</td>
+<td>OpenClaw</td>
+</tr>
+<tr>
+<td>chat GBT</td>
+<td>ChatGPT</td>
+</tr>
+<tr>
+<td>cyber gym</td>
+<td>CyberGym</td>
+</tr>
+<tr>
+<td>sub aents</td>
+<td>sub-agents</td>
+</tr>
+<tr>
+<td>ellipsus notation</td>
+<td>ellipsis (<code>...</code>) notation</td>
+</tr>
+<tr>
+<td>post-rain</td>
+<td>post-train</td>
+</tr>
+<tr>
+<td>Nemo object-oriented agents</td>
+<td>NVIDIA Object-Oriented Agents (NOOA)</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「AIQ」的正式名稱與定位(可能是 NVIDIA 的 AI-Q research assistant blueprint;NeMo Agent Toolkit 前身亦曾稱 AgentIQ/AIQ,兩者需區分)。/ Official name and scope of "AIQ" (possibly NVIDIA's AI-Q research assistant blueprint; the NeMo Agent Toolkit was also formerly called AgentIQ/AIQ — these need disambiguating).</li>
+<li>NOOA 在 CyberGym 上的實際分數與「同分一半 token」的具體對照組,演講未給數字,需查 tech report。/ NOOA's actual CyberGym score and the exact baseline for the "half the tokens" claim — no numbers were given; check the tech report.</li>
+<li>主持人介紹提到的「Nemotron-based 系統在 IMO 取得金牌等同分數」的正式公告。/ Official announcement for the Nemotron-based IMO gold-medal-equivalent result mentioned in the introduction.</li>
+<li>他所說 blueprints 中「building an open claw」指的是 NemoClaw 還是通用的 OpenClaw 參考實作。/ Whether "building an open claw" refers to NemoClaw specifically or a generic OpenClaw reference implementation.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/jonathan-cohen--accelerated-computing-for-agentic-ai.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

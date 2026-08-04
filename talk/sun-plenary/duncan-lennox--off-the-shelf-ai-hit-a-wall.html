@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Off-the-Shelf AI Hit a Wall. Here&#x27;s What HubSpot Did to Solve It. · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Three years ago HubSpot found off-the-shelf co-pilots couldn&#x27;t hold up at their scale, so they built their own harness and backfilled their own context into it — engineering adoption went 80% → 100…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/duncan-lennox--off-the-shelf-ai-hit-a-wall.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Off-the-Shelf AI Hit a Wall. Here&#x27;s What HubSpot Did to Solve It. · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Three years ago HubSpot found off-the-shelf co-pilots couldn&#x27;t hold up at their scale, so they built their own harness and backfilled their own context into it — engineering adoption went 80% → 100…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/duncan-lennox--off-the-shelf-ai-hit-a-wall.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-plenary" data-talk="duncan-lennox--off-the-shelf-ai-hit-a-wall">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Off-the-Shelf AI Hit a Wall. Here&#x27;s What HubSpot Did to Solve It." data-title-zh="現成的 AI 撞牆了:HubSpot 怎麼解">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: Enterprise AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Off-the-Shelf AI Hit a Wall. Here&#x27;s What HubSpot Did to Solve It.</span><span class="lang-zh">現成的 AI 撞牆了:HubSpot 怎麼解</span></h1>
+        <p class="dialog__speaker"><strong>Duncan Lennox</strong> — Chief Product &amp; Technology Officer, HubSpot</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Plenary Stage · 00:50:54–01:04:30 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=UdS3iisKhCk&amp;t=3054s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:50:54</span><span class="lang-zh">從 00:50:54 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sun</span><span class="lang-zh">回 Plenary · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Three years ago HubSpot found off-the-shelf co-pilots couldn&#x27;t hold up at their scale, so they built their own harness and backfilled their own context into it — engineering adoption went 80% → 100%, velocity gains 51% → 60%, and reliability went *up*, not down; the unexpected part was that everything they learned about building *with* AI turned into what they needed to build *for* customers.</span><span class="lang-zh">HubSpot 三年前發現現成的 co-pilot 撐不住自家規模,於是自建 harness、把公司自己的 context 灌進去,結果工程團隊的 AI 採用率從 80% 走到 100%、速度提升 51%→60%、可靠度不降反升;更意外的是,這些「怎麼用 AI 做東西」的教訓,幾乎原封不動變成了「該替客戶做什麼東西」。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>三個教訓</strong>:(1) 有彈性的基礎設施(自建 harness、可換模型的抽象層);(2) 完整且可信的 context;(3) 到客戶所在的地方去(meet customers where they are)。</li>
+<li><strong>不強迫,用數據說服</strong>:他們沒有規定工程師必須用 AI。最大的阻力是工程師擔心可靠度受損——所以他們拿數據證明可靠度<strong>維持中性</strong>,後來甚至<strong>上升</strong>。</li>
+<li><strong>模型選擇不是二選一,而是三維權衡</strong>:quality、latency、cost,<strong>且是這個優先順序</strong>。因為每一項 go-to-market 任務對這三者的價值主張都不同——大宗低風險任務可以先做成本優化,高風險任務(例如會直接接觸「客戶的客戶」的動作)則不能妥協。</li>
+<li><strong>context 的難點不是塞不塞得下</strong>:不只是 context window 上限或 context drift,更是一個 <strong>overfitting 問題</strong>——丟太多、品質差、對當下任務不夠具體的 context,結果反而更爛。</li>
+<li><strong>共用平台會複利</strong>:「任何人建的每一個 agent,都會讓所有 agent 更好」,因為它同時貢獻了 context 與平台能力本身。</li>
+<li><strong>放棄把客戶鎖在自家 UI</strong>:深度整合進 Claude、Gemini、ChatGPT,讓客戶在他們原本工作的地方就能用到 HubSpot 的 agent 平台與 context;自家 web / mobile UI 與 Breeze assistant 維持完整功能對等。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>背景與問題(約 00:52–00:53)</h4>
+<p>HubSpot 上個月剛過 20 週年,做的是 go-to-market 平台——服務中小企業與部分大型企業的行銷、業務、客服團隊。今天有超過 <strong>300,000 家企業</strong>、約 <strong>140 個國家</strong>、橫跨數十個產業在用,所以他們看得到各種規模與地區公司的實況。</p>
+<p>客戶現在問的問題,關鍵在多出來的那個副詞:「我到底要怎麼<strong>真的</strong>用 AI 轉型?」——不是跑試點、不是玩玩,而是為公司<strong>大規模交付真實價值</strong>。他們三年多的結論是:<strong>工具與工具鏈只是起點,不夠;怎麼做才是差別所在。</strong></p>
+<p>而且有個意外收穫:他們一開始問的是「怎麼用 AI 換一種方式做開發」,結果這些教訓大量適用於「該替客戶做什麼、怎麼在客戶的旅程上接住他們」。</p>
+<h4>教訓一:有彈性的基礎設施(約 00:53–00:59)</h4>
+<p><strong>撞牆點</strong>:2023 年左右他們從 code assist 往早期 co-pilot 走,但<strong>現成系統撐不住他們的規模</strong>——當時每天約 <strong>100 萬次 build</strong>、超過 <strong>10,000 個微服務</strong>(現在更多)。問題核心是:模型很懂一般的 coding 問題,但<strong>不懂他們的業務與工作方式</strong>。選擇是等工具廠商追上,或自己下去解——他們選了後者。</p>
+<p>做法:</p>
+<ul>
+<li>在 MCP 非常早期就建了一批 <strong>MCP 整合</strong>,把環境知識直接帶進 co-pilot。</li>
+<li>很早就建了現在會叫做 <strong>agent execution platform / agent harness</strong> 的東西:容器化架構,能輕鬆開出 sandbox 讓測試迴圈<strong>全自動跑、不需人介入</strong>,對工程師來說很輕量,對可靠度與資安來說也安全。</li>
+<li><strong>不強制使用 AI</strong>。他們想讓工程師自己被說服。最大的阻力是可靠度——平台對 go-to-market 團隊與客戶是 mission-critical,工程師擔心生成的程式碼會拖垮它。於是他們<strong>拿數據說話</strong>:早期使用區域的資料顯示可靠度<strong>維持中性</strong>;而今天,可靠度其實是<strong>上升</strong>的。</li>
+<li>成果(三年前):約 <strong>80% 採用率</strong>、整體生產力與速度提升約 <strong>51%</strong>。他特別說明這是<strong>複合指標</strong>,刻意不只看 PR 數或程式碼行數,以免過度轉向單一指標。</li>
+</ul>
+<p><strong>外推到客戶端的教訓</strong>:不能依賴單一廠商或單一模型家族。模型不只一直在進步(有點像賽馬),更重要的是它們<strong>在不同領域是參差的(jagged)</strong>;套到 go-to-market 這種很具體的領域,不同模型、不同尺寸、不同廠商各有勝場,<strong>right tool for the right job</strong>。</p>
+<p>所以他們很早就需要能跑 eval、對模型與尺寸做 A/B test 的能力。而判準不是單純的「品質」或「eval 分數」,而是 <strong>quality、latency、cost 三者的組合,而且是這個優先順序</strong>。因為他們替數百種 go-to-market 任務建 agent,每一種任務對這三者的價值主張都不同:有些是低風險的大宗流程,品質門檻仍高但成本優化很早就很重要;有些則是高風險——特別是 HubSpot 平台要去跟<strong>客戶的客戶</strong>互動的時候。</p>
+<p>於是他們建了<strong>抽象層</strong>(今天會叫它 agent harness),2026 年的版本比 2023 年成熟得多。它讓他們在底層直接換模型、跑 eval、做回歸測試與比較;而且刻意設計成<strong>讓 feature team 完全不必碰底下的管線</strong>——團隊自己建 eval、對多個模型跑、換進換出而不出現回歸,全程不需要理解底層。</p>
+<p><strong>收斂成一句話:共用地基要先做,不要最後做。</strong> 精實或求快的直覺會讓人「一套 stack 打天下」,但他們的經驗相反:<strong>前期花在 harness 上的力氣,換來的是對自己命運的掌控權</strong>——能做 eval、能換模型、能改 agentic loop 的跑法。而且今天做這件事容易多了,市面上有很多好方案(他點名 Fireworks)。</p>
+<h4>教訓二:完整且可信的 context(約 00:59–01:02)</h4>
+<p>當他們從 co-pilot 走到<strong>自主的 coding agent</strong>,agent 需要理解 codebase、慣例與整個環境;而他們有十年份的自建工具鏈。這裡<strong>連 MCP 都不夠</strong>——要讓 coding agent 理解 build chain 的一切,他們投入大量心力在<strong>回填 context</strong>,這才是從前沿模型身上多榨出效能的關鍵。</p>
+<p><strong>context 很難,而且難在意想不到的地方</strong>:不只是撞到 context window 上限或處理 context drift,更是一個 <strong>overfitting 問題</strong>——如果你只是丟一大堆 context,而品質不好、對當下任務不夠具體,結果反而更差。把這件事做對,本身就是一項值得養成的技能與平台能力。</p>
+<ul>
+<li><strong>內部成果</strong>(2025 年初):<strong>96% 的工程師在用 AI</strong>,速度提升 <strong>60%</strong>。</li>
+<li><strong>客戶端</strong>:go-to-market 旅程上有大量不同任務與 agent(prospecting agent、customer support agent⋯),<strong>在對的時間給對的 context</strong> 能顯著改善品質、效能與成本。最具體的例子:一個「demo 後續追蹤信」的 agent,<strong>六個月內</strong>從「業務約三分之二的時候需要改寫(調整語氣或修正錯誤)」變成「約三分之二的時候直接原封不動寄出」。</li>
+</ul>
+<p>他的總結:<strong>AI 懂世界懂得很多,但你需要一個懂你的世界的平台。</strong> 而那些資料,大多只存在你公司內部,不在外面的世界裡,因此也不在模型裡。</p>
+<h4>教訓三:到客戶所在的地方去(約 01:02–01:04)</h4>
+<p><strong>對內</strong>:共用工具、共用原語、建在共用平台上。「<strong>任何人建的每一個 agent,都會讓所有 agent 更好</strong>」,因為它同時貢獻了整體 context 與 agent 平台本身。成果:</p>
+<ul>
+<li><strong>100% 的工程師</strong>用 agentic coding 開發</li>
+<li>程式碼行數 <strong>+73%</strong></li>
+<li>PR 首次回饋時間 <strong>-90%</strong></li>
+<li>速度上升的同時,<strong>品質與可靠度也在上升</strong></li>
+</ul>
+<p><strong>對外</strong>:身為 SaaS 廠商,歷史上你會想著「怎麼把客戶留在我的 UI 裡」——<strong>他們完全放掉了這件事</strong>。真正要交付的價值是「讓我們建立的智慧,在客戶工作的任何地方都不可或缺」。所以他們<strong>深度整合進 Claude、Gemini 與 ChatGPT</strong>,讓客戶在那些地方就能拿到 HubSpot agent 平台的完整能力與 context。當然很多客戶仍選擇用 web / mobile UI 或自家的 <strong>Breeze assistant</strong>——這幾條路線維持<strong>完整的功能對等</strong>。</p>
+<p><strong>結語</strong>:地基沒打好,曲線會 plateau;地基一旦到位,就會出現<strong>複利式的威力</strong>,不只改變團隊怎麼做東西,也放大了能交付給客戶的價值。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"AI knows a lot about the world, but you need a platform that knows your world."(約 01:01)</p>
+</blockquote>
+<p>整場最凝練的一句——context engineering 的商業版本。</p>
+<blockquote>
+<p>"Do that first, not last."(約 00:58)</p>
+</blockquote>
+<p>指共用地基(harness、eval、抽象層)。他明說這與「先求 MVP、單一 stack 打天下」的直覺相反。</p>
+<blockquote>
+<p>"Every agent anybody builds makes all agents better."(約 01:02)</p>
+</blockquote>
+<p>共用平台的複利效果:每個 agent 都同時貢獻 context 與平台能力。</p>
+<blockquote>
+<p>"It's not a matter of just hitting a context window limit or dealing with context drift. It's also the fact that there's effectively an overfitting problem."(約 01:00)</p>
+</blockquote>
+<p>對 context engineering 難點最精準的診斷:多不等於好。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Three lessons</strong>: (1) flexible infrastructure — build your own harness and a model-swappable abstraction layer; (2) comprehensive and trustworthy context; (3) meet customers where they are.</li>
+<li><strong>They never mandated AI — they brought data.</strong> The biggest blocker was engineers worrying that generated code would hurt reliability, so they showed the data: reliability stayed neutral, and today it's actually <em>improving</em>.</li>
+<li><strong>Model choice is a three-way tradeoff, in priority order: quality, latency, cost.</strong> Every one of the hundreds of go-to-market tasks they build agents for has a different value proposition across those three — bulk low-stakes work makes cost optimization matter early; high-stakes work (especially anything touching a customer's customer) does not.</li>
+<li><strong>The hard part of context isn't capacity.</strong> Beyond context-window limits and context drift there's an <strong>overfitting problem</strong>: dumping in a lot of context that isn't high quality or specific enough to the task at hand makes results worse.</li>
+<li><strong>A shared platform compounds</strong>: "every agent anybody builds makes all agents better," because each one contributes both to overall context and to the platform itself.</li>
+<li><strong>They gave up on keeping customers inside their own UI</strong>, integrating deeply into Claude, Gemini and ChatGPT so customers get the full agent platform and context wherever they already work — with full parity against the web/mobile UIs and their own Breeze assistant.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Context and the question customers actually ask (~00:52–00:53)</h4>
+<p>HubSpot just turned 20 last month. They build a go-to-market platform for largely small and medium-sized businesses plus enterprises — software for marketing, sales and service teams across the full go-to-market journey. Over <strong>300,000 businesses</strong> in about <strong>140 countries</strong> across dozens of industries depend on it, which gives them a wide view of what's actually happening at different scales and in different regions.</p>
+<p>The question they hear is defined by one inserted word: "How do I <strong>actually</strong> transform with AI?" Not run pilots, not play around — deliver real value at scale. Three-plus years in, their finding is that <strong>the tools and tool chains are just a starting point; how you approach it makes the difference.</strong></p>
+<p>And the unexpected part: they started by asking how to <em>build differently with</em> AI, and most of those learnings turned out to apply to what they needed to <em>build for</em> customers.</p>
+<h4>Lesson 1: flexible infrastructure (~00:53–00:59)</h4>
+<p><strong>Where they hit the wall.</strong> Around 2023 they moved past code assist into early co-pilots — and off-the-shelf systems couldn't work at their scale: roughly <strong>a million builds a day</strong> across <strong>10,000+ microservices</strong> at the time (more now). The core issue was that models understood coding problems generally but didn't understand enough about their business and how they work. They could wait for the tooling companies to catch up, or dive in themselves. They chose to dive in.</p>
+<p>What they built:</p>
+<ul>
+<li>A set of <strong>MCP integrations</strong> in the very early days of MCP, bringing knowledge of their environment directly into the co-pilots.</li>
+<li>What they'd now call an <strong>agent execution platform / agent harness</strong>: a containerized approach making it easy to spin up sandboxes where test loops run <strong>entirely automated, without human intervention</strong> — lightweight for engineers, and safe from both a reliability and a security standpoint.</li>
+<li><strong>No mandate.</strong> They deliberately didn't require engineers to use AI; they wanted engineers to see how different and powerful the experience is and adopt it themselves. The big blocker turned out to be reliability concerns — the platform is mission-critical for go-to-market teams and customers, and engineers feared regression. So they <strong>brought data</strong>, showing from the early adoption areas that reliability stayed neutral. Today, reliability is actually <em>increasing</em> as a result of how they code.</li>
+<li>Result three years ago: about <strong>80% adoption</strong> across thousands of engineers, and roughly a <strong>51% improvement</strong> in productivity and velocity — deliberately a <strong>composite metric</strong>, because they don't want to over-rotate on any single one like PRs or lines of code.</li>
+</ul>
+<p><strong>What generalized to customers</strong>: you can't depend on a single vendor or model family. Models keep improving — it's a bit of a horse race — but more importantly they're <strong>jagged across different areas</strong>. Applied to something as specific as go-to-market, different models, sizes and vendors win in different places: right tool for the right job.</p>
+<p>So they were early to needing evals and A/B tests across models and sizes — and the criterion isn't simply "quality" or an eval score, but a mix of <strong>quality, latency and cost, in that order of priority</strong>. Each of the hundreds of go-to-market tasks they build agents for weighs those three differently: some are low-stakes bulk processes where the quality bar is still high but cost optimization matters very early; others are high-stakes, particularly when the HubSpot platform is about to do something that interacts with <strong>one of their customers' customers</strong>.</p>
+<p>Hence the <strong>abstraction layer</strong> — today they'd call it an agent harness, far more sophisticated in 2026 than in 2023. It lets them swap models under the hood, run evals, and do regression tests and comparisons. Crucially it was built so <strong>feature teams never touch the plumbing</strong>: they create their evals, run them against a variety of models, and swap models in and out without regressions, with no involvement in any of the underlying machinery.</p>
+<p><strong>The takeaway: do the shared foundation first, not last.</strong> When you're trying to move fast or reach MVP, there's a temptation to use a single stack for everything. Their experience runs counter to that — the energy invested up front in harnesses buys <strong>much more control over your own destiny</strong>: the ability to run evals, swap models, and change how an agentic loop runs. It's also far easier to do today; he names Fireworks as one of the companies doing great work here.</p>
+<h4>Lesson 2: comprehensive and trustworthy context (~00:59–01:02)</h4>
+<p>Moving from co-pilots to <strong>autonomous coding agents</strong>, the agents needed to understand the codebase, the conventions and the environment — against a decade of homegrown tooling. Here they had to <strong>get beyond even MCP</strong>, letting coding agents understand everything about how the build chain worked. Most of the effort spent extracting more effectiveness from even frontier models went into <strong>backfilling that context</strong>.</p>
+<p><strong>And getting context right is hard.</strong> It's not just hitting a context-window limit or dealing with context drift; there's effectively an <strong>overfitting problem</strong> — throw in too much context whose quality and task-specificity aren't good and you get poor results. Getting that right turned out to be a skill worth building and a genuinely valuable platform capability.</p>
+<ul>
+<li><strong>Internally</strong> (early 2025): <strong>96% of engineers using AI</strong>, at a <strong>60% improvement</strong> in velocity.</li>
+<li><strong>For customers</strong>: across the go-to-market journey there are many different agents — prospecting, customer support and more — and <strong>delivering the right context at the right time</strong> drives significantly better quality, performance and cost. The sharpest example: an agent that drafts the follow-up outreach email after a sales demo went, in about <strong>six months</strong>, from a rep needing to edit it about two-thirds of the time to a rep sending it unedited about two-thirds of the time.</li>
+</ul>
+<p>His summary: <strong>AI knows a lot about the world, but you need a platform that knows your world</strong> — and most of that data exists only inside your business, not out in the world and therefore not in the models.</p>
+<h4>Lesson 3: meet customers where they are (~01:02–01:04)</h4>
+<p><strong>Internally</strong>, this meant shared tools, shared primitives, one shared platform: "<strong>every agent anybody builds makes all agents better</strong>," because each one contributes both to overall context and to the agent platform itself. Results:</p>
+<ul>
+<li><strong>100% of engineers</strong> using agentic coding to build at HubSpot</li>
+<li><strong>+73%</strong> lines of code</li>
+<li><strong>−90%</strong> time to first feedback on PRs</li>
+<li>velocity rising while quality — and reliability — rose too</li>
+</ul>
+<p><strong>Externally</strong>, as a SaaS vendor you'd historically think about how to keep customers inside your own UI. <strong>They let go of that entirely.</strong> The value to deliver was making the intelligence they build indispensable wherever customers work — so they integrate deeply into <strong>Claude, Gemini and ChatGPT</strong>, putting the full power of their agent platform and context right where the customer already is. Many customers still choose the web or mobile UIs, or their own <strong>Breeze assistant</strong>, and they maintain full parity across all of them.</p>
+<p><strong>Closing</strong>: without the foundational pieces, things plateau. Once they're in place you get compound interest — value that shows up both in how the teams build and in what they can deliver to customers.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"AI knows a lot about the world, but you need a platform that knows your world." (~01:01)</p>
+</blockquote>
+<p>The most compressed line of the talk — context engineering stated as a business proposition.</p>
+<blockquote>
+<p>"Do that first, not last." (~00:58)</p>
+</blockquote>
+<p>On the shared foundation (harness, evals, abstraction layer). He's explicit that this cuts against the lean/MVP instinct to use one stack for everything.</p>
+<blockquote>
+<p>"Every agent anybody builds makes all agents better." (~01:02)</p>
+</blockquote>
+<p>Why the shared platform compounds: each agent contributes context <em>and</em> platform capability.</p>
+<blockquote>
+<p>"It's not a matter of just hitting a context window limit or dealing with context drift. It's also the fact that there's effectively an overfitting problem." (~01:00)</p>
+</blockquote>
+<p>The most precise diagnosis of why context engineering is hard: more is not better.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HubSpot</td>
+<td>go-to-market 平台,300,000+ 企業客戶、約 140 國,2026 年 7 月屆滿 20 週年</td>
+<td>Go-to-market platform, 300,000+ businesses in ~140 countries; 20th anniversary in July 2026</td>
+<td></td>
+</tr>
+<tr>
+<td>Breeze</td>
+<td>HubSpot 自家的 AI assistant</td>
+<td>HubSpot's own AI assistant</td>
+<td>與 Claude / Gemini / ChatGPT 整合維持功能對等 / full parity with the Claude / Gemini / ChatGPT integrations</td>
+</tr>
+<tr>
+<td>Agent harness(自建)</td>
+<td>讓底層可換模型、跑 eval 與回歸測試的抽象層,feature team 不需碰管線</td>
+<td>In-house abstraction layer for swapping models, running evals and regression tests without feature teams touching plumbing</td>
+<td>2023 年就有雛形,2026 年版本成熟許多 / first built in 2023, far more sophisticated by 2026</td>
+</tr>
+<tr>
+<td>MCP</td>
+<td>早期用來把自家工具鏈知識帶進 co-pilot</td>
+<td>Used early to bring their tool-chain knowledge into co-pilots</td>
+<td>後來發現「連 MCP 都不夠」/ they later had to get beyond even MCP</td>
+</tr>
+<tr>
+<td>Fireworks</td>
+<td>他點名在 agent 基礎設施領域做得很好的公司</td>
+<td>Named as doing great work in the agent-infrastructure space</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trustworthy worthy</td>
+<td>trustworthy</td>
+</tr>
+<tr>
+<td>spin spin up</td>
+<td>spin up</td>
+</tr>
+<tr>
+<td>gotom market / go to market</td>
+<td>go-to-market</td>
+</tr>
+<tr>
+<td>chatgpt</td>
+<td>ChatGPT</td>
+</tr>
+<tr>
+<td>breeze assistant</td>
+<td>Breeze assistant</td>
+</tr>
+<tr>
+<td>eval(單複數混用)</td>
+<td>evals</td>
+</tr>
+<tr>
+<td>gro</td>
+<td>grok(理解,動詞)</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「約 80% 採用率 / 51% 速度提升」「96% / 60%」「100% / +73% lines of code / −90% time to first feedback」等數字,均為講者口述,未見投影片來源,建議對照影片畫面確認。/ All adoption and velocity figures are spoken numbers; cross-check against the slides on video.</li>
+<li>「一天約一百萬次 build、超過 10,000 個微服務」為 2023 年當時的數字,現值講者僅說「更多」。/ The million-builds-a-day and 10,000-microservices figures are from 2023; he only says the current numbers are higher.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-plenary/duncan-lennox--off-the-shelf-ai-hit-a-wall.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

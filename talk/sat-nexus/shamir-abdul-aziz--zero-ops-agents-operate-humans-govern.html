@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Zero Ops - Agents Operate, Humans Govern · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Zero Ops isn&#x27;t about removing humans from operations — it&#x27;s about removing operations from humans. Models are swappable; your context, governance, and tools are not. And only auditable, roll-back-a…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/shamir-abdul-aziz--zero-ops-agents-operate-humans-govern.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Zero Ops - Agents Operate, Humans Govern · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Zero Ops isn&#x27;t about removing humans from operations — it&#x27;s about removing operations from humans. Models are swappable; your context, governance, and tools are not. And only auditable, roll-back-a…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/shamir-abdul-aziz--zero-ops-agents-operate-humans-govern.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="shamir-abdul-aziz--zero-ops-agents-operate-humans-govern">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Zero Ops - Agents Operate, Humans Govern" data-title-zh="Zero Ops:agent 執行,人類治理">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Coding &amp; Web Agents</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Zero Ops - Agents Operate, Humans Govern</span><span class="lang-zh">Zero Ops:agent 執行,人類治理</span></h1>
+        <p class="dialog__speaker"><strong>Shamir Abdul Aziz</strong> — Principal Product Manager, Microsoft</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 00:40:43–00:46:03 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=ZIRc3EpzQJs&amp;t=2443s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:40:43</span><span class="lang-zh">從 00:40:43 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Zero Ops isn&#x27;t about removing humans from operations — it&#x27;s about removing operations from humans. Models are swappable; your context, governance, and tools are not. And only auditable, roll-back-able, evidence-backed governance gets enterprises to deploy agents at scale.</span><span class="lang-zh">Zero Ops 不是把人從維運中移除,而是把維運從人身上移除——模型是可換的,但你的 context、治理與工具不是,而唯有可稽核、可回滾、可用證據佐證的治理,才能讓企業真的敢把 agent 放到規模上跑。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>口號翻轉</strong>:數十年來是人在操作軟體系統(dashboard、metrics、alert、automation,近期加上 Copilot),但主體仍是人;Zero Ops 要把主體換成 agent,人退到治理位。</li>
+<li><strong>一句定義</strong>:Zero Ops 不是 removing humans from operations,而是 <strong>removing the operations from humans</strong>。</li>
+<li><strong>護城河不是模型</strong>:模型可換、且每天在變好;不可換的是你的 source code、production telemetry、institutional knowledge,以及你給系統的 skills 與 tools。</li>
+<li><strong>成熟度是 crawl / walk / run / fly</strong>,而 fly 不只是「agent 會執行」,而是 agent 執行完自己驗證結果,再把<strong>結果</strong>交給人類覆核——這就是 outcome-based engineering:人審的是結果,不是每一個 diff。</li>
+<li><strong>規模數字</strong>:Microsoft 內部以 Azure SRE Agent 部署超過 5,000 個 agent,處理 150 萬件 incident,其中約 22 萬件完全自動化。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>五分鐘的自我示範(約 00:41)</h4>
+<p>他開場就說:「顯然在 agentic AI 裡,壓縮是一門真功夫」——他要用五分鐘把 Microsoft 過去兩年建 agent、跑 agent 的所有心得講完,並承諾守住五分鐘。(最後也真的做到了。)</p>
+<p>要翻轉的現況是:數十年來我們建 dashboard、metrics、alert、automation,最近再加上 Copilot 幫忙做事——但<strong>操作者始終是人</strong>。Zero Ops 講的就是怎麼把這個關係翻過來。</p>
+<h4>一頁投影片的四個結論(約 00:42)</h4>
+<ol>
+<li><strong>Zero Ops 的定義</strong>:不是把人從維運中移除,而是把維運從人身上移除。人被「升級」去做更有影響力的事——創新、治理。</li>
+<li><strong>模型可換,context / governance / tools 不可換</strong>。模型每天都在變好,所以不要把資源押在模型上,押在後三者。</li>
+<li><strong>光靠模型給不了你可用的 agent</strong>:你得能治理它、控制它,並給它正確的 context。企業喜歡拿到的智能,但<strong>如果他們無法控制這份智能,你就贏不到他們的信任</strong>。</li>
+<li><strong>信任要有可驗證的指標</strong>:你必須能驗證 agent 做了什麼、產出的結果是什麼。</li>
+</ol>
+<h4>Crawl / walk / run / fly:什麼叫「fly」(約 00:43–00:44)</h4>
+<p>Zero Ops 是一個目的地,路上有階段。關鍵在於最後一階的 <strong>fly 不等於「agent 會執行動作」</strong>,而是「你允許 agent 去做某件事、它自己驗證結果、再把結果交給人類驗證」。</p>
+<p>他給的例子很具體:某個 API 因為效能變慢而出現 regression。</p>
+<ul>
+<li><strong>只是及格</strong>:agent 開一個 PR。開 PR 很容易。</li>
+<li><strong>這才是 fly</strong>:agent 開了 PR,<strong>還把 PR 部署到測試環境、驗證 regression 確實消失、效能回到正常</strong>,然後才把這整份結果交出來。</li>
+</ul>
+<p>這就是他說的 <strong>outcome-based engineering</strong>——人類不再逐行審 diff,而是審<strong>結果</strong>。</p>
+<h4>Context 是一切,治理是門票(約 00:44–00:45)</h4>
+<ul>
+<li><strong>模型不是你的護城河</strong>。你的護城河是:source code、production telemetry、institutional knowledge,以及你提供給系統的 skills 與 tools。把這些準備好,agent 才能真的自動化並完成工作。</li>
+<li><strong>企業要能信任 agent,需要五件事</strong>:audit(稽核)、control(控制)、evaluate(評估)、roll back with confidence(有信心地回滾)、<strong>prove with evidence</strong>(用證據證明 agent 做的事是對的)。沒有這些,企業不會放行。</li>
+<li>還需要 <strong>permissions</strong> 與 metrics:metrics 用來驗證結果,permissions 是企業願意規模化部署 agent 的前提。</li>
+</ul>
+<h4>規模驗證:Azure SRE Agent(約 00:45–00:46)</h4>
+<p>他強調這些能力<strong>不需要從零自建</strong>——前面講的全部都已內建在產品裡。Microsoft 內部的實績:</p>
+<ul>
+<li>部署超過 <strong>5,000 個 agent</strong>(企業層級),使用者包含 Microsoft 內部一些最大的工程團隊。</li>
+<li>處理 <strong>150 萬件 incident</strong>。</li>
+<li>其中約 <strong>22 萬件 incident 完全自動化</strong>。</li>
+</ul>
+<p>結論公式:<strong>context + governance + metrics 三者到位,才算真正達成 Zero Ops</strong>。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"This is not about removing humans from operations. It's about removing the operations from humans."(約 00:42)</p>
+</blockquote>
+<p>整場五分鐘的核心定義。</p>
+<blockquote>
+<p>"Enterprises love the intelligence they get out of it. But if they cannot control the intelligence, then you're not going to earn their trust."(約 00:42)</p>
+</blockquote>
+<p>企業採用的瓶頸從來不是模型能力,而是可控性。</p>
+<blockquote>
+<p>"Humans are not reviewing every diff, they're reviewing the outcome."(約 00:44)</p>
+</blockquote>
+<p>outcome-based engineering 的一句話定義。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The inversion</strong>: for decades humans have operated software systems — dashboards, metrics, alerts, automation, and lately Copilot — but the operator was always a human. Zero Ops makes the agent the operator and moves humans to governance.</li>
+<li><strong>The definition</strong>: Zero Ops is not removing humans from operations; it's <strong>removing the operations from humans</strong>.</li>
+<li><strong>The moat isn't the model</strong>: models are swappable and improve daily. What isn't swappable is your source code, production telemetry, institutional knowledge, and the skills and tools you hand the system.</li>
+<li><strong>Maturity is crawl / walk / run / fly</strong>, and "fly" isn't merely execution — the agent acts, validates its own outcome, and hands the <em>outcome</em> to humans for review. That's outcome-based engineering: humans review outcomes, not every diff.</li>
+<li><strong>Scale evidence</strong>: Microsoft has deployed 5,000+ agents internally on Azure SRE Agent, processing 1.5 million incidents, roughly 220,000 of them fully automated.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>A five-minute talk about compression (~00:41)</h4>
+<p>He opened by noting that "in agentic AI, compression is a thing" — he had five minutes to distill two years of building and running agents at Microsoft, and he intended to honor them. (He did.)</p>
+<p>The status quo he wants to flip: for decades we've built dashboards, metrics, alerts, and automation, and more recently used Copilot to get work done — but <strong>the operator has always been a human</strong>.</p>
+<h4>Four conclusions on a single slide (~00:42)</h4>
+<ol>
+<li><strong>What Zero Ops means</strong>: not removing humans from operations, but removing operations from humans — bumping humans up to higher-impact work like innovation and governance.</li>
+<li><strong>Models are swappable; context, governance, and tools are not.</strong> Models get better every day, so invest in the parts that don't turn over.</li>
+<li><strong>Models alone can't give you a useful agent.</strong> You need to govern it, control it, and feed it the right context. Enterprises love the intelligence they get — but <strong>if they can't control that intelligence, you won't earn their trust</strong>.</li>
+<li><strong>Trust requires verifiable metrics</strong> that let you validate what the agent did and what outcomes it produced.</li>
+</ol>
+<h4>Crawl, walk, run, fly — and what "fly" actually means (~00:43–00:44)</h4>
+<p>Zero Ops is a destination with a journey attached, and the last stage is the interesting one. "Fly" is <strong>not</strong> just the agent doing something — it's the agent doing something, validating the outcome itself, and providing that outcome for humans to validate.</p>
+<p>His example: an API has a performance regression.</p>
+<ul>
+<li><strong>Table stakes</strong>: the agent opens a PR. Opening a PR is easy.</li>
+<li><strong>Fly</strong>: the agent opens the PR, <strong>deploys it to a test environment, validates that the regression is gone and performance is back to normal</strong>, and only then hands the result over.</li>
+</ul>
+<p>That's <strong>outcome-based engineering</strong> — humans aren't reviewing every diff, they're reviewing the outcome.</p>
+<h4>Context is everything; governance is the entry ticket (~00:44–00:45)</h4>
+<ul>
+<li><strong>The model is not the moat.</strong> The moat is your source code, your production telemetry, your institutional knowledge, and the skills and tools you provide to the system. With those in place, agents can genuinely automate work end to end.</li>
+<li><strong>To trust agents, an enterprise needs five things</strong>: to audit, control, evaluate, roll back with confidence, and <strong>prove with evidence</strong> that what the agent did was the right thing. Without these, enterprises simply won't go ahead.</li>
+<li><strong>Permissions and metrics</strong> round it out: metrics validate the outcome, and without a permissions story enterprises won't deploy agents at scale.</li>
+</ul>
+<h4>Proof at scale: Azure SRE Agent (~00:45–00:46)</h4>
+<p>He stressed that none of this has to be built from the ground up — everything he described is baked into the product. Microsoft's internal numbers:</p>
+<ul>
+<li><strong>5,000+ agents</strong> deployed at enterprise level, used by some of the largest engineering teams at Microsoft.</li>
+<li><strong>1.5 million incidents</strong> processed.</li>
+<li>Roughly <strong>220,000 incidents</strong> fully automated.</li>
+</ul>
+<p>The closing formula: when context, governance, and metrics come together, that's when you achieve Zero Ops.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"This is not about removing humans from operations. It's about removing the operations from humans." (~00:42)</p>
+</blockquote>
+<p>The core definition of the whole five minutes.</p>
+<blockquote>
+<p>"Enterprises love the intelligence they get out of it. But if they cannot control the intelligence, then you're not going to earn their trust." (~00:42)</p>
+</blockquote>
+<p>The adoption bottleneck was never model capability — it's controllability.</p>
+<blockquote>
+<p>"Humans are not reviewing every diff, they're reviewing the outcome." (~00:44)</p>
+</blockquote>
+<p>Outcome-based engineering in one line.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Azure SRE Agent</td>
+<td>Microsoft 的 SRE agent 產品,內建 context / governance / metrics 能力</td>
+<td>Microsoft's SRE agent product with context, governance, and metrics built in</td>
+<td>演講中的規模案例:5,000+ agents、150 萬 incident、22 萬自動化</td>
+</tr>
+<tr>
+<td>Copilot</td>
+<td>他用來對比的「人仍是操作者」階段</td>
+<td>Cited as the stage where humans are still the operator</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Azure S sur agent</td>
+<td>Azure SRE Agent</td>
+</tr>
+<tr>
+<td>C-pilot</td>
+<td>Copilot</td>
+</tr>
+<tr>
+<td>I've been interested with five minutes</td>
+<td>I've been entrusted with five minutes(語意推定 / inferred)</td>
+</tr>
+<tr>
+<td>aentic AI</td>
+<td>agentic AI</td>
+</tr>
+<tr>
+<td>1.5 millions incidents</td>
+<td>1.5 million incidents</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>5,000+ agents / 150 萬 incident / 約 22 萬件自動化——皆為投影片上的 Microsoft 內部數字,未見公開出處。/ The 5,000+ agents, 1.5M incidents, and ~220K automated figures come from his slide (Microsoft internal); no public source located.</li>
+<li>「crawl / walk / run / fly」四階段是否為 Microsoft 官方對外的成熟度模型名稱,待查。/ Whether "crawl / walk / run / fly" is a published Microsoft maturity model or his own framing.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/shamir-abdul-aziz--zero-ops-agents-operate-humans-govern.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

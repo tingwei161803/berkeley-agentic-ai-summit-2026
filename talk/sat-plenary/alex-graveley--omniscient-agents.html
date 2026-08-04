@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Omniscient Agents · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Agents still need a human in the loop because of how little they can see; ingest everything a business produces and give them control over live systems, and their scope climbs from writing PRs to d…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/alex-graveley--omniscient-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Omniscient Agents · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Agents still need a human in the loop because of how little they can see; ingest everything a business produces and give them control over live systems, and their scope climbs from writing PRs to d…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/alex-graveley--omniscient-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="alex-graveley--omniscient-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Omniscient Agents" data-title-zh="全知 agent">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Future of Software Engineering</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Omniscient Agents</span><span class="lang-zh">全知 agent</span></h1>
+        <p class="dialog__speaker"><strong>Alex Graveley</strong> — Co-Founder of FlyingObject.ai; Co-creator GitHub Copilot &amp; Perplexity Computer</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 03:05:55–03:15:15 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=gKdeLQd_LIQ&amp;t=11155s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 03:05:55</span><span class="lang-zh">從 03:05:55 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Agents still need a human in the loop because of how little they can see; ingest everything a business produces and give them control over live systems, and their scope climbs from writing PRs to deciding what product should exist in the first place.</span><span class="lang-zh">agent 之所以還需要人在迴圈裡,是因為它看得到的東西太少;把整間公司發生的事全部收進來、再給它操作真實系統的權限,agent 的 scope 就能從「寫 PR」一路爬到「自己決定該做什麼產品」。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>今天的 agent 是一堆 primitive 的堆疊</strong>——執行層、資產產出、orchestration(sub-agent、skills、memories、排程、loop)、live data。你從零做 agent 就得把每一個都自己實作一遍。</li>
+<li><strong>真正的瓶頸是「你的注意力」</strong>。agent 不太知道該做什麼、對「下一步」的建議常常很糟,所以人必須在迴圈裡指揮;而這條信任階梯已經爬了很久:<strong>tools → commits → 單一 PR → 多個 PR(loop)→ features → projects → 整個產品</strong>。</li>
+<li><strong>推動 scope 上升的是兩條軸:insight(能取得什麼資料、以什麼形式)與 control(能對資料與線上系統做什麼)。</strong> 方向是<strong>從「看見程式碼」走到「看見整間公司」</strong>。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>問題設定:agent 被它看得到的東西限制住了(約 03:07)</h4>
+<p>他先自我介紹:GitHub Copilot 與 Perplexity Computer 的主導者,剛創辦新公司 FlyingObject 來做這場演講的主題。</p>
+<p><strong>「傳統上,agent 一直被它能看見與能存取的東西所限制。而我們認為,正是這一點使得『人必須在迴圈裡』成為必要。」</strong> 他要的是<strong>讓人更少地待在迴圈裡,或至少能把迴圈裡不同的部分外包給 agent。</strong></p>
+<h4>今天的 agent 是一堆 primitive(約 03:07–03:09)</h4>
+<p>如果你要從零做一個 agent,下面每一項都得自己實作:</p>
+<ul>
+<li><strong>執行層(execution layer)</strong>:跑在本機或 sandbox 裡,附帶一堆操作檔案、執行指令、跑 CLI 的能力。</li>
+<li><strong>資產產出(asset creation)</strong>:文件、網站,而 <strong>PR 也是一種資產形式</strong>——大家正在努力讓 agent 把這件事做好。</li>
+<li><strong>Orchestration primitives</strong>(他說細節不重要,重要的是它們各自解決什麼):</li>
+<li><strong>sub-agent</strong>:有跟 parent 不同的 context,這件事本身有用。</li>
+<li><strong>skills</strong>:填補權重沒有以你想要的方式表達出來的那些空缺。</li>
+<li><strong>memories</strong>:讓 agent 能從過去學習。</li>
+<li><strong>排程任務(scheduled tasks)</strong>:需要重複發生、或按時間表跑的事。</li>
+<li><strong>loops</strong>:目標導向的執行——<strong>個別任務壓縮成一個 loop,而 loop 在目標達成前不會結束。</strong></li>
+<li><strong>Live data</strong>:web search、browser control、computer control、MCP、API,諸如此類。</li>
+</ul>
+<p><strong>「這就是 agent 今天的位置。」</strong></p>
+<h4>瓶頸是你的注意力(約 03:09–03:10)</h4>
+<p>這些東西的共同點是:<strong>你仍然在控制這些 agent</strong>。agent 不太知道該做什麼,<strong>它對「下一步做什麼」的建議常常很糟</strong>,所以人必須在迴圈裡指揮。</p>
+<p><strong>結果是:瓶頸變成你——一個「使用 agent 的工程師」——的注意力。</strong> 你在管理 loop、同時跑一堆平行的東西、判斷哪些出錯了哪些順利;你大致知道發生什麼事,你可以停掉、可以 fork、可以重啟。</p>
+<h4>信任階梯:我們一直在往上爬(約 03:10–03:11)</h4>
+<p>他指出<strong>今天做這件事的方式,跟一年前已經很不一樣了——agent 自我導向的方式變了</strong>。我們其實一直在<strong>往上爬一座複雜度階梯</strong>:</p>
+<ol>
+<li><strong>只有 tools</strong>:我們信任 agent 呼叫正確的工具。</li>
+<li><strong>commits</strong>:開始信任 agent 做 commit。</li>
+<li><strong>整個 PR</strong>:開始信任 agent 產出完整的 PR。</li>
+<li><strong>多個 PR</strong>(現在的位置):信任 agent 為了達成 loop 型的目標而連續產出多個 PR。</li>
+<li><strong>features</strong>(他認為的下一級):一個 feature 可能包含<strong>跑實驗、看即時資料、檢查 exception、檢查使用者情緒、把接觸到這個功能的人分群</strong>,以檢驗它是否影響你的主要目標——例如留存率或營收。</li>
+<li><strong>projects</strong>:一組能服務產品中某個需求的 features 集合。</li>
+<li><strong>whole products</strong>(頂端):<strong>你對一個自我導向的 agent 用很高階的方式描述你要做的產品,它就去做出來、部署、迭代,自己搞清楚需要哪些 feature(也許是別處根本不存在的),試幾種不同做法,以這種方式自我導向。</strong></li>
+</ol>
+<h4>兩條軸:insight 與 control(約 03:12–03:13)</h4>
+<p><strong>每往上爬一級,都需要新一輪的模型迭代、或大得多的 agent harness 複雜度。</strong> 那要怎麼讓 scope 持續上升?他認為共通點是兩條軸:</p>
+<ul>
+<li><strong>Insight</strong>:<strong>agent 能取得什麼資料,以及以什麼形式取得</strong>,好讓它能從中導出洞見。</li>
+<li><strong>Control</strong>:<strong>它對那些資料與線上系統動手的能力。</strong></li>
+</ul>
+<p>方向因此是<strong>從「看見程式碼」走到「看見整間公司」</strong>。這樣才能開始搞清楚:<strong>真正的商業目標是什麼?為了達成這些目標,應該存在哪些產品、哪些功能?</strong> 他強調<strong>現在這件事完全靠人去想、去猜——而他們要的是讓 AI 有能力做這件事。</strong></p>
+<p>而產品開發週期的另一半同樣需要 control:<strong>跑實驗、部署變更、監控線上系統、視需要擴展這些系統。</strong> 兩條軸加起來,就是 agent 的 scope 正在成長的方向。</p>
+<p>(他在此處說了一句 "sorry I'm out of time",最後兩節講得較快。)</p>
+<h4>開放問題(約 03:13–03:14)</h4>
+<ul>
+<li><strong>處理大量資料</strong>:一般而言你會想<strong>把一間公司內部發生的所有事都 ingest 並索引起來</strong>。</li>
+<li><strong>壓縮知識</strong>:把那些知識<strong>壓縮成 agent 真的能用的形式</strong>。</li>
+<li><strong>Triggers</strong>:要有觸發機制。</li>
+<li><strong>Agent 之間互相感知與協調</strong>:如果你要<strong>同時跑大量實驗、而且可能沒有人在迴圈裡</strong>,agent 必須彼此知道對方存在並有效協調。</li>
+<li><strong>最難的一點:有時候你根本不知道自己在優化什麼目標函數。</strong></li>
+</ul>
+<h4>收尾(約 03:14–03:15)</h4>
+<p><strong>「我們想做的是把整個系統圈起來、捕捉一切;把 macro context 交給 agent,讓它們能在完整的覺知下運作;再給它們正確的 primitive,讓它們能部署變更、監控那些變更、並擴展那些變更,以達成商業目標。」</strong> 他承認<strong>這會是一個往上爬複雜度堆疊的過程</strong>,但他認為那就是方向。想試早期版本可以上 FlyingObject 的候補名單,或在 Twitter 上找他。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Traditionally agents have been sort of limited by what they can see and access. And we think that this necessitates having a human in the loop."(約 03:07)</p>
+</blockquote>
+<p>整場的因果假設:人在迴圈裡是「視野不足」的症狀,不是原因。</p>
+<blockquote>
+<p>"Today's agents are a pile of primitives."(約 03:07)</p>
+</blockquote>
+<p>從零做 agent 的現況:每一塊都得自己補。</p>
+<blockquote>
+<p>"The bottleneck becomes your attention as an agent-using engineer."(約 03:09)</p>
+</blockquote>
+<p>跟同場 Ryan Lopopolo 的「三種稀缺資源」直接呼應。</p>
+<blockquote>
+<p>"We started with just tools. … Where we are now is trusting the agent to make multiple PRs."(約 03:10)</p>
+</blockquote>
+<p>自主度的實際計量單位是「你願意信任的 artifact 大小」。</p>
+<blockquote>
+<p>"The axes that drive scope are insight and control."(約 03:12)</p>
+</blockquote>
+<p>他對「怎麼把 agent 的 scope 往上推」的核心答案。</p>
+<blockquote>
+<p>"We're moving from seeing the code to seeing the entire business."(約 03:12)</p>
+</blockquote>
+<p>「Omniscient」的具體定義。</p>
+<blockquote>
+<p>"Sometimes you don't even know the objective function you're optimizing."(約 03:14)</p>
+</blockquote>
+<p>自我導向 agent 最難的一個開放問題。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Today's agents are a pile of primitives</strong> — execution layer, asset creation, orchestration (sub-agents, skills, memories, scheduling, loops), and live data. Build one from scratch and you implement every single one yourself.</li>
+<li><strong>The real bottleneck is your attention.</strong> Agents don't quite know what to do and their suggestions for what's next are often bad, so a human stays in the loop directing them. The trust ladder has been climbing for a while: <strong>tools → commits → a single PR → multiple PRs (loops) → features → projects → whole products.</strong></li>
+<li><strong>Two axes drive scope: insight (what data the agent can access, and in what form) and control (what it can do to that data and to live systems).</strong> The direction of travel is <strong>from seeing the code to seeing the entire business.</strong></li>
+</ul>
+<h3>Key Points</h3>
+<h4>The framing: agents are limited by what they can see (~03:07)</h4>
+<p>He introduced himself as lead on GitHub Copilot and Perplexity Computer, having just started FlyingObject to work on exactly this topic.</p>
+<p><strong>"Traditionally agents have been sort of limited by what they can see and access. And we think that this necessitates having a human in the loop."</strong> The goal is to <strong>get the human less into the loop, or at least able to farm off different pieces of their loop to agents.</strong></p>
+<h4>Today's agents are a pile of primitives (~03:07–03:09)</h4>
+<p>Build an agent from scratch and you have to implement all of these yourself:</p>
+<ul>
+<li><strong>Execution layer</strong> — running locally or in a sandbox, with commands for manipulating files, running commands, and running CLIs.</li>
+<li><strong>Asset creation</strong> — documents, websites, and <strong>PRs as another form of asset</strong> that everyone is working to make agents good at.</li>
+<li><strong>Orchestration primitives</strong> (he noted the details matter less than what each one does):</li>
+<li><strong>Sub-agents</strong> with different context from the parent.</li>
+<li><strong>Skills</strong> to fill gaps the weights don't express the way you want.</li>
+<li><strong>Memories</strong> so the agent can learn from the past.</li>
+<li><strong>Scheduled tasks</strong> for things that recur or run on a schedule.</li>
+<li><strong>Loops</strong> — goal-directed running, where <strong>individual tasks compress into a loop that doesn't end until the goal is achieved.</strong></li>
+<li><strong>Live data</strong> — web search, browser control, computer control, MCPs, APIs, all of it.</li>
+</ul>
+<p><strong>"This is where agents are today."</strong></p>
+<h4>The bottleneck is your attention (~03:09–03:10)</h4>
+<p>What's common across all of it is that <strong>you're still controlling these agents.</strong> The agent doesn't quite know what to do, <strong>its suggestions for what to do next are often bad</strong>, so a human directs.</p>
+<p><strong>The result: the bottleneck becomes your attention as an agent-using engineer.</strong> You're managing loops, running things in parallel, tracking what's going wrong and what's going well. You have a sense of what's happening; you can stop things, fork things, restart things.</p>
+<h4>The trust ladder we keep climbing (~03:10–03:11)</h4>
+<p>He noted <strong>the way we do this today is quite different from a year ago — the way agents self-direct has changed.</strong> We've been <strong>walking up a complexity hierarchy</strong>:</p>
+<ol>
+<li><strong>Just tools</strong> — we trusted the agent to call the right tool.</li>
+<li><strong>Commits</strong> — we started trusting the agent to make commits.</li>
+<li><strong>Entire PRs.</strong></li>
+<li><strong>Multiple PRs</strong> — where we are now, trusting the agent to produce several PRs to accomplish looped goals.</li>
+<li><strong>Features</strong> — his next rung. A feature might involve <strong>running an experiment, looking at live data, checking for exceptions, checking user sentiment, and segmenting who's exposed to the feature</strong> to see whether it moves your primary objectives, like retention or revenue.</li>
+<li><strong>Projects</strong> — collections of features serving a need in your product.</li>
+<li><strong>Whole products</strong> — at the top, <strong>you describe at a very high level the product you want to a self-directed agent, and it goes and makes it, deploys it, iterates on it, figures out which features it needs (maybe ones that don't exist anywhere else), tries a few different things, and self-directs that way.</strong></li>
+</ol>
+<h4>Two axes: insight and control (~03:12–03:13)</h4>
+<p><strong>Each level up required either new model iterations or much more agent harness complexity.</strong> So how do you enable increasing scope? He argues it comes down to two axes:</p>
+<ul>
+<li><strong>Insight</strong> — <strong>what data the agent has access to and in what form</strong>, so it can derive insights.</li>
+<li><strong>Control</strong> — <strong>its ability to operate on that data and on live systems.</strong></li>
+</ul>
+<p>Which means <strong>moving from seeing the code to seeing the entire business.</strong> Only then can you start to work out <strong>what the actual business objectives are, and which products or features should exist to accomplish them.</strong> Right now, <strong>that's up to people to figure out and take guesses at — and what they want is for AI to be able to do it.</strong></p>
+<p>The other half of the product development cycle needs control just as much: <strong>running experiments, deploying changes, monitoring live systems, and scaling them as needed.</strong> Together, those are the two axes along which agent scope grows.</p>
+<p>(He noted "sorry, I'm out of time" here and moved quickly through the last two sections.)</p>
+<h4>Open problems (~03:13–03:14)</h4>
+<ul>
+<li><strong>Processing lots of data</strong> — generally you want to <strong>ingest and index everything that happens inside a business.</strong></li>
+<li><strong>Compression</strong> — turn that knowledge into <strong>something usable by your agent.</strong></li>
+<li><strong>Triggers.</strong></li>
+<li><strong>Agents aware of each other</strong> — if you're running lots of experiments simultaneously, <strong>potentially with no human in the loop</strong>, agents need to know about each other and coordinate effectively.</li>
+<li><strong>The hardest one: sometimes you don't even know the objective function you're optimizing.</strong></li>
+</ul>
+<h4>Closing (~03:14–03:15)</h4>
+<p><strong>"What we want to do is enclose the entire system, capture everything. Give the macro context to agents so that they can operate with full awareness, and give the right primitives to those agents so they can deploy changes, monitor those changes, and scale those changes to accomplish those business goals."</strong> He acknowledged <strong>it will be a process as we walk up this complexity stack</strong>, but that's the direction he thinks we're headed. Early versions are behind a FlyingObject waitlist; otherwise he's on Twitter and would love to talk.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Traditionally agents have been sort of limited by what they can see and access. And we think that this necessitates having a human in the loop." (~03:07)</p>
+</blockquote>
+<p>The causal premise of the whole talk: humans in the loop are a symptom of limited visibility, not a cause.</p>
+<blockquote>
+<p>"Today's agents are a pile of primitives." (~03:07)</p>
+</blockquote>
+<p>The state of building an agent from scratch: every piece is yours to supply.</p>
+<blockquote>
+<p>"The bottleneck becomes your attention as an agent-using engineer." (~03:09)</p>
+</blockquote>
+<p>Directly echoes Ryan Lopopolo's three scarce resources from earlier in the same session.</p>
+<blockquote>
+<p>"We started with just tools. … Where we are now is trusting the agent to make multiple PRs." (~03:10)</p>
+</blockquote>
+<p>Autonomy measured in the size of artifact you're willing to trust.</p>
+<blockquote>
+<p>"The axes that drive scope are insight and control." (~03:12)</p>
+</blockquote>
+<p>His core answer for how to push agent scope upward.</p>
+<blockquote>
+<p>"We're moving from seeing the code to seeing the entire business." (~03:12)</p>
+</blockquote>
+<p>What "omniscient" actually means here.</p>
+<blockquote>
+<p>"Sometimes you don't even know the objective function you're optimizing." (~03:14)</p>
+</blockquote>
+<p>The hardest open problem for self-directed agents.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FlyingObject</td>
+<td>他新創的公司,主題就是這場演講講的 omniscient agents;早期版本開放候補名單</td>
+<td>His new company, built around the omniscient-agents thesis; early versions behind a waitlist</td>
+<td>官網議程作 FlyingObject.ai;他口頭說 "Flying Object",主持人說 "Flying Objects" / agenda says FlyingObject.ai; he said "Flying Object" onstage, the host said "Flying Objects"</td>
+</tr>
+<tr>
+<td>GitHub Copilot</td>
+<td>他共同創造的產品;主持人稱其為最早把 AI coding 帶進 production 的 agent 之一</td>
+<td>Co-created; the host called it one of the first agents to take AI coding into production</td>
+<td>主持人介紹內容 / from the host's introduction</td>
+</tr>
+<tr>
+<td>Perplexity Computer</td>
+<td>他參與的 Perplexity computer 產品</td>
+<td>The Perplexity computer product he worked on</td>
+<td>官網議程列為 co-creator / listed as co-creator on the agenda</td>
+</tr>
+<tr>
+<td>Agent primitives(執行層、sub-agent、skills、memories、scheduled tasks、loops、live data)</td>
+<td>他盤點的「今天做 agent 必須自己實作的一整組零件」</td>
+<td>His inventory of what you must implement yourself to build an agent today</td>
+<td>他強調細節不重要,重要的是各自解決什麼 / he stressed the details matter less than the function</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alex Gravely</td>
+<td>Alex Graveley</td>
+</tr>
+<tr>
+<td>Flying Objects</td>
+<td>FlyingObject(官網議程作 FlyingObject.ai)/ FlyingObject (FlyingObject.ai per the agenda)</td>
+</tr>
+<tr>
+<td>omnicient</td>
+<td>omniscient</td>
+</tr>
+<tr>
+<td>MCPS</td>
+<td>MCPs</td>
+</tr>
+<tr>
+<td>sub aents</td>
+<td>sub-agents</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>演講中未提及 FlyingObject 的產品名稱或候補名單網址(只說 "there's a wait list on flying object")。/ No product name or waitlist URL was given onstage — only "there's a waitlist on FlyingObject."</li>
+<li>他口中的「omniscient agents 是一個新品類」是否已有對外發表的定義文件或部落格。/ Whether there is a published write-up defining "omniscient agents" as a category.</li>
+<li>他對「一年前的自我導向方式不同」所指的具體時間點與產品世代未說明。/ He didn't specify which product generation he meant by "the way we did it maybe a year ago."</li>
+<li>他在時間不足下略過的內容(約 03:12 起說 "sorry I'm out of time"),投影片上可能還有未被口述的細節。/ He ran out of time around 03:12; slides may contain material he skipped.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/alex-graveley--omniscient-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

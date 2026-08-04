@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Semantic Alignment Models for Math and Software Engineering · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="For autoformalization — a cross-modal task where semantic content must be preserved exactly — the win isn&#x27;t scale but training the property of semantic alignment directly into the embedding space: …" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/vijay-ganesh--semantic-alignment-models-for-math-and-software-engineering.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Semantic Alignment Models for Math and Software Engineering · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="For autoformalization — a cross-modal task where semantic content must be preserved exactly — the win isn&#x27;t scale but training the property of semantic alignment directly into the embedding space: …" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/vijay-ganesh--semantic-alignment-models-for-math-and-software-engineering.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-atlas" data-talk="vijay-ganesh--semantic-alignment-models-for-math-and-software-engineering">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Semantic Alignment Models for Math and Software Engineering" data-title-zh="數學與軟體工程中的語意對齊模型">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: AI for Math</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Semantic Alignment Models for Math and Software Engineering</span><span class="lang-zh">數學與軟體工程中的語意對齊模型</span></h1>
+        <p class="dialog__speaker"><strong>Vijay Ganesh</strong> — Professor, Georgia Institute of Technology</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Atlas Stage · 01:17:49–01:24:17 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=-7AJJLwYW1Q&amp;t=4669s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:17:49</span><span class="lang-zh">從 01:17:49 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sun</span><span class="lang-zh">回 Atlas · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">For autoformalization — a cross-modal task where semantic content must be preserved exactly — the win isn&#x27;t scale but training the property of semantic alignment directly into the embedding space: objects with the same semantic content sit close together, different ones far apart. That recipe produced a model 1000× smaller than frontier models that beat them on every benchmark tested.</span><span class="lang-zh">在 autoformalization 這種「跨模態但語意必須相等」的任務上,與其把模型做大,不如把 semantic alignment 這個性質直接訓進 embedding 空間——語意相同的物件靠近、不同的遠離——他們用這招做出比前沿模型小 1000 倍卻在所有測試 benchmark 上更強的模型。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>問題:autoformalization</strong>——把自然語言數學(英文、法文…)翻譯成形式語言數學(Lean 或其他定理證明語言)。動機是人寫的證明常常<strong>不完整</strong>(缺步驟,而數學家自己可能沒察覺),更糟的是有時<strong>根本是錯的</strong>;翻成形式語言後就能用 Lean 定理證明器實際檢查定理是否真的被證明了。</li>
+<li><strong>目標設定很銳利</strong>:做一個比前沿模型<strong>至少小 1000 倍</strong>的模型,而且在 autoformalization 這<strong>單一任務</strong>上要贏過最大的前沿模型。</li>
+<li><strong>關鍵性質:semantic alignment</strong>——同一個物件用不同模態表示、語意內容相同時,要在模型的 embedding 空間中<strong>靠近</strong>;語意內容不同就要<strong>遠離</strong>。訓練配方叫 <strong>semantic contrastive learning</strong>;帶來的直接好處是<strong>檢索(retrieval)階段效率大幅提升</strong>。</li>
+<li><strong>不只數學</strong>:同樣的性質適用於程式語言間的翻譯、規格 → 電路、以及連結不同數學領域的定義以發現新關係——而且可以用小模型做到。</li>
+<li><strong>正在做的延伸</strong>:COBOL → Python 的遺留程式碼翻譯。因為<strong>輸入程式本身就是規格</strong>,不需要另外寫 spec;他們用 <strong>LLM 驅動的符號執行(symbolic execution)</strong> 從輸入程式生成測試集,再用它驗證輸出程式與輸入是否語意等價。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>什麼是 autoformalization,以及為什麼需要它(約 01:18–01:19)</h4>
+<p>他自我介紹:Georgia Tech 計算機科學教授,研究領域涵蓋<strong>形式化方法</strong>與<strong>數學、物理、程式的 neuro-symbolic AI</strong>。他明確說明自己的題目和前兩位講者不同。</p>
+<p><strong>Autoformalization = 把自然語言數學翻譯成形式語言數學。</strong> 自然語言數學指用英文、法文等語言寫的數學;形式語言指 <strong>Lean</strong> 或其他定理證明語言。</p>
+<p>為什麼要翻?因為自然語言數學有兩個問題:</p>
+<ol>
+<li><strong>人寫的證明常常不完整</strong>——缺了步驟,而且<strong>寫的數學家自己可能不知道</strong>。</li>
+<li>更糟的是,<strong>有時候證明根本是錯的</strong>。</li>
+</ol>
+<p>翻成形式語言之後,就可以把 <strong>Lean 定理證明器</strong>開下去,實際檢查那個定理到底有沒有被證明。</p>
+<h4>什麼叫「等價」(約 01:19–01:20)</h4>
+<p>他們要造的是一個盒子:輸入自然語言數學,輸出<strong>等價</strong>的形式語言數學。這裡的等價指的是 <strong>semantic equivalence(語意等價)</strong>:輸入的畢氏定理的語意內容,必須和輸出的 Lean 程式的語意內容相同——它必須在講直角三角形,而且那個關係必須一樣。</p>
+<p><strong>任務設定</strong>:做出這樣一個盒子,而且要比前沿模型<strong>至少小 1000 倍,甚至更小</strong>;問題是——<strong>要怎麼訓練這樣一個模型,讓它在 autoformalization 這一個任務上贏過外面最大的前沿模型?</strong></p>
+<h4>Semantic alignment 與 semantic contrastive learning(約 01:20–01:22)</h4>
+<p>他提出的性質叫 <strong>semantic alignment</strong>。這個概念本身不新,很多場景都有人談過,但<strong>在數學裡它有特定意義</strong>:</p>
+<blockquote>
+<p>兩個物件以<strong>不同模態</strong>表示,若它們的<strong>語意內容相同</strong>,就要在模型的 embedding 空間中<strong>彼此靠近</strong>;若語意內容不同,就要<strong>彼此遠離</strong>。</p>
+</blockquote>
+<p>把這個性質灌進模型之後,模型在 autoformalization 上就有效得多——他特別點名<strong>在檢索(retrieval)的時候效率高出很多</strong>。</p>
+<p>這個性質的價值不限於「自然語言數學 → 形式語言數學」,還包括:
+- 程式語言之間的<strong>程式碼翻譯</strong>
+- <strong>規格 → 電路</strong>
+- <strong>連結不同數學領域的定義</strong>,看出跨領域定義之間的關係,從而發現新數學</p>
+<p>而且——這是他反覆強調的重點——<strong>用非常小的模型就能做到,不必有前沿模型的存取權</strong>。</p>
+<p>訓練配方叫 <strong>semantic contrastive learning</strong>:把上述性質灌進模型(語意相同 → embedding 靠近)。結果是在<strong>他們測試的所有 benchmark 上都比前沿模型強得多</strong>。</p>
+<h4>延伸到程式碼翻譯(約 01:22–01:23)</h4>
+<p>他們正把這個想法帶到程式碼翻譯:建一個工具,把 <strong>COBOL 這類遺留語言的程式翻成 Python</strong>,並在輸入程式上部署驗證工具與自動化測試工具。</p>
+<p>這裡有個很漂亮的設計論點:<strong>在這個情境下不需要規格,因為輸入程式本身就是規格</strong>。他們用 <strong>LLM 驅動的符號執行</strong>從輸入程式生成一組測試集,有了測試集之後就能拿去跑輸出程式,檢查輸入輸出兩個程式是否<strong>語意等價</strong>。他也直言這件事有很強的商業誘因。</p>
+<h4>結論(約 01:23–01:24)</h4>
+<p>他的總結:在任何<strong>你能取得形式化物件</strong>的場景中——做形式物件之間的翻譯、或把非形式物件翻成另一個模態的形式物件——<strong>把 semantic alignment 這個性質灌進模型,是打造一個能 scale 的系統的好方法</strong>;而且模型規模可以小很多,卻仍能擴展到非常大的程式碼庫。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Often human-written proofs are incomplete, meaning they are missing steps, and the human mathematicians may not be aware of that. Worse, sometimes the proofs are incorrect."(約 01:19)</p>
+</blockquote>
+<p>autoformalization 的真正動機不是形式主義潔癖,而是人類證明本來就會出錯。</p>
+<blockquote>
+<p>"If two objects which are represented in different modalities have the same semantic content, then we want them to be close by in the embedding space of the model."(約 01:21)</p>
+</blockquote>
+<p>一句話定義 semantic alignment。</p>
+<blockquote>
+<p>"In this setting, we don't need specifications because the input program is the specification."(約 01:23)</p>
+</blockquote>
+<p>程式碼翻譯之所以比一般形式化容易的關鍵洞見。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The problem: autoformalization</strong> — translating natural language math (English, French, …) into formal language math (Lean or another theorem-proving language). The motivation is that human-written proofs are often incomplete, with missing steps the mathematicians may not be aware of, and sometimes outright incorrect. Once formalized, you can run the Lean theorem prover and check whether the theorem was actually proven.</li>
+<li><strong>A sharp target</strong>: build a box at least <strong>1000× smaller</strong> than frontier models that nevertheless <strong>outperforms the largest frontier models</strong> on this one task.</li>
+<li><strong>The key property is semantic alignment</strong>: two objects represented in different modalities with the same semantic content should be close in the model's embedding space; different semantic content should be far apart. The training recipe is <strong>semantic contrastive learning</strong>, and the concrete payoff is far more effective retrieval.</li>
+<li><strong>It generalizes</strong>: code translation between languages, specification → circuit, and connecting definitions across areas of math to surface relationships and discover new math — all with small models, no frontier access required.</li>
+<li><strong>Current extension</strong>: COBOL → Python legacy code translation. No specification is needed because <strong>the input program is the specification</strong>; they use <strong>LLM-driven symbolic execution</strong> to generate a test suite from the input, then run it against the output to check semantic equivalence.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>What autoformalization is and why it matters (~01:18–01:19)</h4>
+<p>He introduces himself as a professor of computer science at Georgia Tech working broadly in formal methods and neuro-symbolic AI for mathematics, physics, and code, and notes his problem differs from those of the previous two speakers.</p>
+<p>Autoformalization means translating natural language math — math written in English, French, and so on — into formal language math, meaning Lean or another theorem-proving language.</p>
+<p>Why bother? Because human-written proofs are often incomplete, missing steps that the human mathematicians may not be aware of; and worse, sometimes the proofs are incorrect. Translating into formal language lets you deploy the Lean theorem prover and check whether the theorem was indeed proven.</p>
+<h4>What "equivalent" means (~01:19–01:20)</h4>
+<p>The goal is a box that takes natural language math in and produces equivalent formal language math out, where equivalence means <strong>semantic equivalence</strong>: the semantic content of, say, the Pythagorean theorem going in must be the same as the semantic content of the Lean coming out — it has to talk about right-angle triangles, and the relationship must be the same.</p>
+<p>The task they set themselves: build that box at least 1000× smaller than frontier models, maybe smaller still, and train it so it <strong>outperforms the largest frontier models on this one task of autoformalization</strong>.</p>
+<h4>Semantic alignment and semantic contrastive learning (~01:20–01:22)</h4>
+<p>The property he proposes is <strong>semantic alignment</strong>. The concept isn't new in general — people have discussed it in many settings — but in mathematics it takes a particular meaning: if two objects represented in different modalities have the same semantic content, they should be <strong>close by in the model's embedding space</strong>; if their semantic content differs, they should be <strong>far apart</strong>.</p>
+<p>Imbuing the model with this property makes it much more effective at autoformalization, and specifically far more effective at retrieval time.</p>
+<p>The value isn't confined to natural-to-formal math translation. It also covers code translation from one language to another, going from a specification to a circuit, and connecting definitions from different areas of math — seeing relationships between definitions across areas and thereby discovering new math — all doable with very small-scale models, without frontier model access.</p>
+<p>They trained their models using a recipe they call <strong>semantic contrastive learning</strong>, imbuing the model with the property. The result was a far more powerful model than frontier models on all the benchmarks they tested.</p>
+<h4>Extending to code translation (~01:22–01:23)</h4>
+<p>They're now taking the idea into code translation: a tool that takes programs in legacy languages like COBOL and translates them into Python, deploying verification tools and automated testing tools on the input program.</p>
+<p>The neat design argument: in this setting you don't need a specification, because <strong>the input program is the specification</strong>. They use LLM-driven symbolic execution to generate a test suite from the input program, then run that suite against the output to check whether the input and output programs are semantically equivalent. He notes the strong business case for code translation.</p>
+<h4>Takeaway (~01:23–01:24)</h4>
+<p>In settings where you have access to formal objects — translating between formal objects, or from an informal object into a formal object in another modality — imbuing the model with the property of semantic alignment is a good way to build a system that scales: much smaller in size, yet still able to scale to very large codebases.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Often human-written proofs are incomplete, meaning they are missing steps, and the human mathematicians may not be aware of that. Worse, sometimes the proofs are incorrect." (~01:19)</p>
+</blockquote>
+<p>The real motivation for autoformalization isn't formalist purity — it's that human proofs contain errors.</p>
+<blockquote>
+<p>"If two objects which are represented in different modalities have the same semantic content, then we want them to be close by in the embedding space of the model." (~01:21)</p>
+</blockquote>
+<p>Semantic alignment in one sentence.</p>
+<blockquote>
+<p>"In this setting, we don't need specifications because the input program is the specification." (~01:23)</p>
+</blockquote>
+<p>Why code translation is an easier formalization target than math.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autoformalization</td>
+<td>自然語言數學 → 形式語言數學的翻譯任務</td>
+<td>Translating natural language math into formal language math</td>
+<td>本場的核心問題 / the talk's central problem</td>
+</tr>
+<tr>
+<td>Lean</td>
+<td>定理證明語言與證明器,用於驗證翻譯結果</td>
+<td>Theorem-proving language and prover used to check the translation</td>
+<td>也提及「其他定理證明語言」/ he also allows for other theorem-proving languages</td>
+</tr>
+<tr>
+<td>Semantic alignment</td>
+<td>語意相同的跨模態物件在 embedding 空間靠近的性質</td>
+<td>The property that cross-modal objects with identical semantics sit close in embedding space</td>
+<td>概念本身不新,但在數學中有特定意義 / not a new concept generally, but specific here</td>
+</tr>
+<tr>
+<td>Semantic contrastive learning</td>
+<td>把 semantic alignment 灌進模型的訓練配方</td>
+<td>The training recipe that imbues the model with semantic alignment</td>
+<td>產出模型比前沿模型小 1000 倍以上 / yields a model 1000×+ smaller than frontier models</td>
+</tr>
+<tr>
+<td>COBOL → Python 翻譯工具</td>
+<td>遺留程式碼翻譯,搭配驗證與自動測試</td>
+<td>Legacy code translation with verification and automated testing</td>
+<td>用 LLM 驅動符號執行生成測試集 / test suite generated by LLM-driven symbolic execution</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VJ</td>
+<td>Vijay Ganesh</td>
+</tr>
+<tr>
+<td>the the model with the property</td>
+<td>imbuing the model with the property(字幕重複)/ transcript stutter</td>
+</tr>
+<tr>
+<td>odd formalization</td>
+<td>autoformalization</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>模型/系統的正式名稱:整場都以「our model」稱呼,未給名稱。/ The model or system has no name in the talk — it's only "our model".</li>
+<li>「在所有測試 benchmark 上都贏過前沿模型」的 benchmark 名稱與數字皆未提及。/ Neither the benchmark names nor the numbers behind "outperforms frontier models on all benchmarks tested" were given.</li>
+<li>「至少小 1000 倍」的比較基準(參數量?推論成本?)未說明。/ What the 1000× smaller comparison is measured in — parameters, inference cost, or something else.</li>
+<li>論文出處未提及,需另行查找 Georgia Tech / Vijay Ganesh 團隊的相關發表。/ No paper was cited; the corresponding publication needs to be located separately.</li>
+<li>COBOL → Python 工具是否已公開或商業化,講者僅說「有很強的商業誘因」。/ Whether the COBOL → Python tool is public or commercial; he only said there's a strong business case.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-atlas/vijay-ganesh--semantic-alignment-models-for-math-and-software-engineering.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

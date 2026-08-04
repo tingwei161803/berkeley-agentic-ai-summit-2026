@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Harness Engineering: How to Build Software When Humans Steer and Agents Execute · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Models are far more capable than they are able to side-effect into the world — the gap is context, tools, and trust, not intelligence; harness engineering means redirecting human effort from writin…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/ryan-lopopolo--harness-engineering.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Harness Engineering: How to Build Software When Humans Steer and Agents Execute · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Models are far more capable than they are able to side-effect into the world — the gap is context, tools, and trust, not intelligence; harness engineering means redirecting human effort from writin…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/ryan-lopopolo--harness-engineering.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="ryan-lopopolo--harness-engineering">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Harness Engineering: How to Build Software When Humans Steer and Agents Execute" data-title-zh="Harness Engineering:當人類掌舵、agent 執行時,軟體該怎麼蓋">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Future of Software Engineering</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Harness Engineering: How to Build Software When Humans Steer and Agents Execute</span><span class="lang-zh">Harness Engineering:當人類掌舵、agent 執行時,軟體該怎麼蓋</span></h1>
+        <p class="dialog__speaker"><strong>Ryan Lopopolo</strong> — Principal Engineer, Agentic Google Cloud Platform; Previously Led Dark Factory at OpenAI</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 02:47:51–02:56:55 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=gKdeLQd_LIQ&amp;t=10071s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:47:51</span><span class="lang-zh">從 02:47:51 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Models are far more capable than they are able to side-effect into the world — the gap is context, tools, and trust, not intelligence; harness engineering means redirecting human effort from writing code to encoding the hidden standards into the agent&#x27;s environment, and it turns out to follow the same principles as running a good organization.</span><span class="lang-zh">模型的能力遠超過它今天能對世界造成的影響(capability overhang),差距不在智力而在 context、工具與信任;harness engineering 就是把人力從「寫程式」轉去「把隱藏的判斷標準寫進 agent 的環境」,而這件事的原則跟怎麼帶好一個組織幾乎一樣。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>Capability overhang</strong>:即使模型與 harness 都固定不動,模型的智力仍遠超過它能實際「作用於世界」的程度。缺的不是聰明,是<strong>它不知道對操作者而言什麼叫「局部與全域的好」</strong>,也沒有足夠 context 去取得完整自主權。</li>
+<li><strong>他從 2025 年 6 月起就沒寫過任何程式碼,他的團隊也一樣——寫程式是「不被允許的活動」</strong>。人唯一被允許做的事,是讓 agent 去做他們工作中該做的部分。</li>
+<li><strong>實作變便宜之後,稀缺的是三樣東西:人的時間、模型的 context window、以及雙方的注意力</strong>。所以要「無情地追蹤自己的時間」,找出你反覆在做的事,然後想辦法讓自己不必再做——這個自我改善迴圈就是 agent 自主度的成長曲線。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>開場更正與 capability overhang(約 02:49–02:50)</h4>
+<p>主持人介紹他為 OpenAI 技術人員、Dark Factory 專案負責人;他上台第一句就更正:<strong>「兩週前起我在 Google。」</strong>(並聲明以下是個人觀點,不代表 Google。)</p>
+<p>他先定義 harness engineering:<strong>即使把模型與包裹它的 harness 都固定住,我們今天仍處在 capability overhang——模型的能力與智力,遠遠超過它們有辦法對世界產生作用(side effect into the world)的程度。</strong> 原因不是模型不夠聰明,而是:</p>
+<ul>
+<li><strong>它們不知道對操作者而言,「局部的好」和「全域的好」長什麼樣。</strong></li>
+<li>它們沒有足夠的 context,無法在被部署的組織裡取得完整自主權。</li>
+</ul>
+<p>因此人類的角色是<strong>把 agent 牽引進真實世界的管家</strong>:給它工具、context、guard rail、教練式回饋,以及信任,好讓它做完我們要它做的那份工作的全貌。</p>
+<h4>一年多前的賭注:禁止人類寫程式(約 02:50–02:52)</h4>
+<p>他站上這個講台的理由是一個一年多前的判斷:<strong>最早那批 reasoning model 就已經有能力做完他的全職工作。</strong> 他用行動下注——<strong>2025 年 6 月起他不再做自己的工作,從此沒寫過任何程式碼,他團隊裡的任何人也沒有;那是不被允許的活動。人被允許做的唯一一件事,就是讓 agent 去做他們工作中需要被做掉的部分。</strong></p>
+<p>2025 年六七月的模型弱得多,這個命題困難得多——<strong>當時他沒辦法讓模型讀 Slack 並代他回應 page</strong>,工具使用、能力與複雜編排的水準都還不到。做法是<strong>往下鑽:把任務 double click、double click、再 double click,直到觸底碰到一件模型做得到的事</strong>;再沿著堆疊往回組裝這些能力時,<strong>你就永久地為「agent 可靠且安全地作用於世界的能力」累積了價值</strong>。而當一群人以這種方式協作在同一個 agent 上,<strong>你會拿到每個人身上最好的那一部分</strong>。</p>
+<p>這就是他說「軟體的建造方式已經改變」的實質意涵:<strong>你可以拿任何能力等級的 agent,透過寫程式來解決它執行方式上的問題——因為程式碼現在是免費的</strong>,模型在產出程式碼這件事上能力尖峰極高。</p>
+<p>但在實作變得豐沛的世界裡,仍有幾塊稀缺區需要持續投資,才能讓 agent 在長時間尺度上保持連貫。<strong>「即使模型已經這麼先進,你今天說『幫我做一門十億美元的生意』,另一端也不會出現一個連貫的東西。它們甚至還在跟販賣機搏鬥。」</strong> 人的專業就是用來<strong>約束我們允許機器進入的潛在空間與物理空間範圍</strong>,確保長期持續往正確方向前進。他把這個問題一般化成:<strong>要怎麼持續演化一個 artifact——不管它是 codebase、一份 Word 文件,還是一整個 Confluence 規模的組織知識 wiki?</strong></p>
+<h4>三種近期稀缺資源(約 02:53–02:55)</h4>
+<ol>
+<li><strong>人的時間</strong>。這其實是我們至今建構組織方式的地基:你看到 platform team 或 central dashboard,本質上都是<strong>把稀缺的人力集中起來,產出高槓桿、能賦能整個組織的東西</strong>。同樣的約束在 agent 世界依然成立。
+   - 他反覆講的一句實務原則:<strong>人(或團隊)在跟 agent 互動時,必須無情地追蹤自己的時間,辨識出自己實際上都在做什麼</strong>——是在跟 agent 一來一回擬計畫?是在 review code?是在退回 slop?<strong>辨識出來,然後想辦法讓自己不必再做那件事。</strong>
+   - <strong>這個自然的自我改善迴圈,就是 agent 自主度的成長機制</strong>,允許越來越複雜、越來越自主、越來越平行的工作。</li>
+<li><strong>模型的 context window</strong>。這是組出一個模型時的地基性限制。<strong>context window 會變大、auto compaction 會變好,但「單一 trajectory 在長程工作上的連貫性」始終是你必須放在心上的東西。</strong></li>
+<li><strong>注意力(人的與模型的)</strong>。兩邊都會被約束,這是世界的必然事實。<strong>所以「任務與工作要怎麼結構化」必須考慮人與模型能否聚焦、避免注意力被許多互相競爭的關注點打散。</strong></li>
+</ol>
+<p>他給了一個很具體的個人啟發式:<strong>「如果我發現我需要介入超過三次,那我大概要倒楣了。」</strong> 有時他仍會刻意讓自己倒楣一次,目的是<strong>看出 agent 究竟漏掉了什麼</strong>,然後把那件事<strong>反向傳播回他為 agent 布置的環境</strong>,讓下次 reroll 這個任務時,agent 能在需要的當下就拉到正確的 context,不必分散注意力。</p>
+<h4>Harness engineering 就是 onboarding(約 02:56)</h4>
+<p>他把整場收在一個類比上:<strong>談怎麼蓋出好的平行自主 agent 系統,我們一直繞回怎麼蓋出好組織,因為兩者的原則高度重疊。</strong></p>
+<p>想想 onboarding 是什麼:<strong>你雇用的是一般能力很強的人,但他們不會知道在你這個脈絡下「好」長什麼樣子。</strong></p>
+<p>所以——<strong>把那些構成「在你這裡算是好工作」的非功能性需求(non-functional requirements)整套顯性化出來,就是 harness engineering 的核心;而在背景中、以及透過工具來策展 context 以約束 agent 的工作方式,就是追求一個結構良好的 agent harness 的意義。</strong></p>
+<h3>金句</h3>
+<blockquote>
+<p>"The models are far more capable and far more intelligent than they are able to side effect into the world today."(約 02:49)</p>
+</blockquote>
+<p>Capability overhang 的定義:瓶頸在「作用於世界的能力」,不在智力。</p>
+<blockquote>
+<p>"I haven't written any code since then, and neither has anyone on my teams. It's just not a permitted activity."(約 02:50)</p>
+</blockquote>
+<p>他不是在建議,是在報告一個已經跑了一年多的政策。</p>
+<blockquote>
+<p>"Code is free to produce now."(約 02:52)</p>
+</blockquote>
+<p>這是他所有其他主張的前提。</p>
+<blockquote>
+<p>"You can say 'make me a billion dollar business' and you will not end up with something coherent at the other end. They are still struggling to operate vending machines."(約 02:52)</p>
+</blockquote>
+<p>對長程連貫性的誠實定位——同時說明為何人的約束仍然必要。</p>
+<blockquote>
+<p>"They must be incredibly ruthless by tracking their time … identify what they are doing and then figure out ways to make it so they don't do that."(約 02:53)</p>
+</blockquote>
+<p>harness engineering 最可操作的一條規則。</p>
+<blockquote>
+<p>"If I find I need to intervene more than three times with an agent, I'm probably going to have a bad time."(約 02:55)</p>
+</blockquote>
+<p>一個好用的停損訊號:超過三次介入,問題出在環境不是這一次的 prompt。</p>
+<blockquote>
+<p>"You're hiring generally capable humans, but they don't necessarily know what good looks like for you in this context."(約 02:56)</p>
+</blockquote>
+<p>agent harness 與員工 onboarding 是同一個問題。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Capability overhang</strong>: even holding the model and its containing harness constant, models are far more capable than they are able to side-effect into the world. What's missing isn't intelligence — it's that <strong>they don't know what local and global good looks like to their operators</strong>, and lack the context for full autonomy inside the organizations they're deployed in.</li>
+<li><strong>He hasn't written code since June 2025, and neither has anyone on his teams — writing code is "not a permitted activity."</strong> The only thing humans are permitted to do is get the agent to do the parts of their job that need doing.</li>
+<li><strong>Once implementation is abundant, three things stay scarce: human time, the model's context window, and attention on both sides.</strong> So track your own time ruthlessly, identify what you keep doing, and engineer your way out of doing it — that self-improvement loop <em>is</em> how agent autonomy grows.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>An opening correction, and the capability overhang (~02:49–02:50)</h4>
+<p>The host introduced him as a member of technical staff at OpenAI leading a project called Dark Factory. His first line onstage was a correction: <strong>"as of two weeks ago I am at Google"</strong> — with a disclaimer that the talk was his own view, not Google's.</p>
+<p>He then defined harness engineering: <strong>even keeping the model and its containing harness constant, we are in a capability overhang — the models are far more capable and far more intelligent than they are able to side-effect into the world today.</strong> The gap isn't intelligence:</p>
+<ul>
+<li><strong>They don't know what local and global good looks like to their operators.</strong></li>
+<li>They don't have the context to have full autonomy within the organizations where they're deployed.</li>
+</ul>
+<p>So the human role is stewardship — <strong>giving agents the tools, context, guardrails, coaching, and trust necessary to fulfill the fullness of the job we want them to do.</strong></p>
+<h4>The bet: humans aren't allowed to write code (~02:50–02:52)</h4>
+<p>His reason for being onstage is a call he made more than a year ago: <strong>the earliest reasoning models were already capable of doing his full job.</strong> He put money where his mouth was — <strong>as of June 2025 he stopped doing his job, hasn't written any code since, and neither has anyone on his teams. It's simply not a permitted activity. The only thing humans are permitted to do is get the agent to do the parts of their job that need doing.</strong></p>
+<p>In June/July 2025 the models were much weaker and the proposition much harder — <strong>he couldn't get a model to read Slack and respond to pages on his behalf</strong>; tool use, capability, and complex orchestration weren't there. The method was to drill down: <strong>double-click into the task, and double-click, and double-click, until you bottom out on something the model can do.</strong> Reassembling those capabilities back up the stack <strong>permanently accrues value to the agent's ability to reliably and safely side-effect into the world.</strong> And when teams of people collaborate on a single agent this way, <strong>you get the best parts of everyone.</strong></p>
+<p>That's what he means when he says the way we build software has changed: <strong>you can take an agent at any capability level and solve problems with how it executes by writing code — because code is free to produce now.</strong> Models spike very highly at producing it.</p>
+<p>But in a world where implementation is abundant, a few scarce areas still need investment so the agent coheres over long timelines. <strong>"It is not the case today, even with models as advanced as they are, that you can say 'make me a billion dollar business' and end up with something coherent at the other end. They are still struggling to operate vending machines."</strong> Human expertise exists to <strong>constrain the regions of latent and physical space we permit the machine to enter</strong>, keeping the system tracking in the right direction over time. He generalizes the problem as: <strong>what does it mean to continuously evolve an artifact — a codebase, a Word document, or a Confluence-sized wiki of an organization's knowledge?</strong></p>
+<h4>Three near-term scarce resources (~02:53–02:55)</h4>
+<ol>
+<li><strong>Human time.</strong> This is foundational to how we've built organizations so far: platform teams and central dashboards exist to <strong>concentrate a scarce pool of human labor into high-leverage things that empower an organization.</strong> The same constraint holds with agents.
+   - His most quotable operating rule: <strong>humans interacting with agents must be incredibly ruthless about tracking their time and identifying what they find themselves doing</strong> — going back and forth one-on-one to put a plan together, reviewing code, rejecting slop — <strong>and then figure out ways to stop doing it.</strong>
+   - <strong>That self-improvement loop is what increases the autonomy of the agent side of the system</strong>, permitting more complex, more autonomous, and more parallel work over time.</li>
+<li><strong>Model context window.</strong> A foundational limitation of what it means to put a model together. <strong>Context windows may grow and auto-compaction may improve, but coherence over long-horizon work within a single trajectory remains something you have to keep in mind.</strong></li>
+<li><strong>Attention — human and model.</strong> Both will be constrained; that's a necessary fact of the world. <strong>So the way we structure tasks and work has to account for humans and models being able to focus rather than scattering attention across many competing concerns.</strong></li>
+</ol>
+<p>A concrete heuristic: <strong>"if I find I need to intervene more than three times with an agent, I'm probably going to have a bad time."</strong> Sometimes he'll deliberately go through the bad time anyway — to learn <strong>where the agent failed to account for what he needed</strong> — and then <strong>back-propagate that into the environment he provisions for the agent</strong>, so the next time he rerolls the task it pulls the right bits of context exactly when needed instead of scattering its attention.</p>
+<h4>Harness engineering is onboarding (~02:56)</h4>
+<p>He closed on the analogy the whole talk keeps returning to: <strong>discussions of good parallel autonomous agentic systems keep landing back on how to build good organizations, because the principles for empowering humans in a complex organization apply to empowering agents.</strong></p>
+<p>Think about onboarding: <strong>you're hiring generally capable humans, but they don't necessarily know what good looks like for you in this context.</strong></p>
+<p>So — <strong>surfacing the collections of non-functional requirements that go into making good local work for you is the name of the game of harness engineering; and curating context, in the background and via tools, to constrain how the agent works is what chasing a well-constructed agent harness means.</strong></p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"The models are far more capable and far more intelligent than they are able to side effect into the world today." (~02:49)</p>
+</blockquote>
+<p>The definition of capability overhang: the bottleneck is side-effecting into the world, not intelligence.</p>
+<blockquote>
+<p>"I haven't written any code since then, and neither has anyone on my teams. It's just not a permitted activity." (~02:50)</p>
+</blockquote>
+<p>Not a recommendation — a report on a policy that's been running for over a year.</p>
+<blockquote>
+<p>"Code is free to produce now." (~02:52)</p>
+</blockquote>
+<p>The premise underneath everything else he argues.</p>
+<blockquote>
+<p>"You can say 'make me a billion dollar business' and you will not end up with something coherent at the other end. They are still struggling to operate vending machines." (~02:52)</p>
+</blockquote>
+<p>An honest calibration on long-horizon coherence, and why human constraint is still load-bearing.</p>
+<blockquote>
+<p>"They must be incredibly ruthless by tracking their time … identify what they are doing and then figure out ways to make it so they don't do that." (~02:53)</p>
+</blockquote>
+<p>The most actionable rule in harness engineering.</p>
+<blockquote>
+<p>"If I find I need to intervene more than three times with an agent, I'm probably going to have a bad time." (~02:55)</p>
+</blockquote>
+<p>A useful stop signal: past three interventions, the problem is the environment, not this prompt.</p>
+<blockquote>
+<p>"You're hiring generally capable humans, but they don't necessarily know what good looks like for you in this context." (~02:56)</p>
+</blockquote>
+<p>Agent harnesses and employee onboarding are the same problem.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Harness engineering</td>
+<td>他提出的框架:人類透過目標、約束與回饋掌舵,agent 執行</td>
+<td>His framing: humans steer via goals, constraints, and feedback while agents execute</td>
+<td>主持人介紹稱他是 OpenAI 這套思路的作者 / the host credited him as the author of OpenAI's thinking on it</td>
+</tr>
+<tr>
+<td>Dark Factory</td>
+<td>他在 OpenAI 主持的專案(現已離職至 Google)</td>
+<td>The project he led at OpenAI (he has since moved to Google)</td>
+<td>演講中未展開內容 / not elaborated on in the talk</td>
+</tr>
+<tr>
+<td>ChatGPT code interpreter / record / connectors</td>
+<td>他在 OpenAI 帶過工程的職場產品</td>
+<td>Workplace products he led engineering on at OpenAI</td>
+<td>主持人介紹內容 / from the host's introduction</td>
+</tr>
+<tr>
+<td>Capability overhang</td>
+<td>模型能力遠超過它能對世界產生作用的程度</td>
+<td>Models being far more capable than they can side-effect into the world</td>
+<td>整場的核心概念 / the talk's central concept</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ryan Leopollo</td>
+<td>Ryan Lopopolo</td>
+</tr>
+<tr>
+<td>Chad GPT</td>
+<td>ChatGPT</td>
+</tr>
+<tr>
+<td>acrudeed</td>
+<td>accrued</td>
+</tr>
+<tr>
+<td>cohhere</td>
+<td>cohere</td>
+</tr>
+<tr>
+<td>a confluent sized wiki</td>
+<td>a Confluence-sized wiki</td>
+</tr>
+<tr>
+<td>Soy here</td>
+<td>(語意不明的口頭插入)/ (unclear verbal aside)</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>職稱衝突</strong>:主持人介紹他為 OpenAI 技術人員兼 Dark Factory 負責人,他上台自述「兩週前起在 Google」;官網議程作「Principal Engineer, Agentic Google Cloud Platform; Previously Led Dark Factory at OpenAI」。本筆記採官網議程。/ The host introduced him as at OpenAI; he corrected onstage that he had joined Google two weeks earlier. The official agenda title (used here) reflects the Google role.</li>
+<li>「They are still struggling to operate vending machines」是否在影射某個具體 benchmark 或實驗(如長程 agent 的販賣機經營評測),演講中未指名。/ Whether the vending-machine remark references a specific benchmark or experiment — he didn't name one.</li>
+<li>Dark Factory 專案的公開資料與範圍:演講中僅由主持人帶過,未說明內容。/ Public details and scope of the Dark Factory project — only mentioned in the introduction, never described.</li>
+<li>他提到的「OpenAI's thinking on harness engineering」是否有公開文件可引用。/ Whether OpenAI's published writing on harness engineering exists as a citable document.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/ryan-lopopolo--harness-engineering.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

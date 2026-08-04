@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ScarfBench: Can Agents Migrate Enterprise Java? · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Enterprise Java behavior largely lives in framework proxies, reflection, and interceptors rather than in the source, so there is no one-to-one equivalence between frameworks. The result: coding age…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/rahul-krishna--scarfbench-can-agents-migrate-enterprise-java.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="ScarfBench: Can Agents Migrate Enterprise Java? · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Enterprise Java behavior largely lives in framework proxies, reflection, and interceptors rather than in the source, so there is no one-to-one equivalence between frameworks. The result: coding age…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/rahul-krishna--scarfbench-can-agents-migrate-enterprise-java.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="rahul-krishna--scarfbench-can-agents-migrate-enterprise-java">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="ScarfBench: Can Agents Migrate Enterprise Java?" data-title-zh="ScarfBench:Agent 能搬得動企業級 Java 嗎?">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Agent Evaluation &amp; Benchmarks</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">ScarfBench: Can Agents Migrate Enterprise Java?</span><span class="lang-zh">ScarfBench:Agent 能搬得動企業級 Java 嗎?</span></h1>
+        <p class="dialog__speaker"><strong>Rahul Krishna</strong> — Senior Research Scientist, IBM Software Innovation Labs</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 02:34:28–02:43:39 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=9268s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:34:28</span><span class="lang-zh">從 02:34:28 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Enterprise Java behavior largely lives in framework proxies, reflection, and interceptors rather than in the source, so there is no one-to-one equivalence between frameworks. The result: coding agents are very good at producing migrations that compile and deploy, yet only 2–14% actually preserve the source application&#x27;s behavior — compilation is a deceptive signal.</span><span class="lang-zh">企業 Java 應用的行為大半藏在框架的 proxy、reflection 與 interceptor 裡,原始碼根本看不到,所以框架之間沒有一對一對應;結果是 coding agent 很擅長讓遷移後的程式編譯過、部署起來,但只有 2–14% 的遷移真正保住了原本的行為——「編得過」是個會騙人的訊號。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>應用活得比框架久</strong>:企業 Java 應用累積了數十年的 institutional knowledge——商業規則、資料語意、workflow、整合。遷移必須<strong>換掉底層技術棧,同時保住應用行為</strong>,而後者才是難的部分。</li>
+<li><strong>難在框架把行為藏起來了</strong>:Java 框架用 proxy、reflection、interceptor 把 runtime 行為包在 API 後面,<strong>程式碼本身根本沒有記錄這些</strong>。所以 Spring 與 Jakarta 之間<strong>不存在一對一對應</strong>;遷移後看起來 build 得過、跑得動,卻可能藏著<strong>只在部署時才浮現的 silent failure</strong>。</li>
+<li><strong>ScarfBench = Self-Contained Application Refactoring Benchmark</strong>,由 IBM 的領域專家<strong>手工</strong>把每個應用跨 Spring / Quarkus / Jakarta 轉寫,並為每個應用<strong>手寫行為測試</strong>——從 curl 煙霧測試到 Playwright 的瀏覽器點擊驗證。</li>
+<li><strong>最關鍵的結果</strong>:agent 讓程式編譯與部署成功的能力很強,但<strong>遷移後只有 2–14% 行為完全一致</strong>。<strong>compilation 是個 weak signal</strong>,它給了「agent 很會遷移」的假象。</li>
+<li><strong>遷移方向是不對稱的</strong>:Spring→Quarkus 與 Jakarta→Spring 是完全不同的難題;資料強烈顯示<strong>有些框架特別難遷入,有些特別難遷出</strong>。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>為什麼企業 Java 遷移值得做,也值得測(約 02:36–02:37)</h4>
+<p>Rahul Krishna 是 IBM Research 的資深研究科學家。(這場開頭投影片出了問題,他中途改用自己的筆電接續,約 02:35–02:36 有一段空白。)</p>
+<p>用 Java 寫的企業應用至今仍然關鍵。這些 legacy 應用當初寫在某個框架上,而<strong>應用本身往往活得比框架還久</strong>。現代化之所以重要,是因為新框架帶來<strong>受支援的 runtime、更好的安全性、更好的部署形態</strong>等等。</p>
+<p>但真正的關鍵洞見在於:<strong>部署中的應用裡沉澱了數十年的 institutional knowledge</strong>——商業規則、資料語意、workflow、整合關係。因此:<strong>遷移必須替換底層技術棧,同時保住應用的行為。</strong></p>
+<h4>為什麼這件事很難:行為不在程式碼裡(約 02:37)</h4>
+<p>Legacy Java 應用所依賴的框架,<strong>用 API 把 runtime 行為藏了起來</strong>——各種 proxy、reflection、interceptor。<strong>程式碼本身並沒有捕捉到這些行為,是框架自己在處理。</strong></p>
+<p>後果是:<strong>Spring 寫的應用與 Jakarta 寫的應用之間,並不存在一對一的等價關係。</strong> 當你遷移這些應用,它看起來 build 得正確、跑得正確,<strong>但可能存在只有在部署時才會顯現的 silent failure</strong>。</p>
+<h4>典型企業 Java 應用的結構(約 02:38–02:39)</h4>
+<p>大型應用通常分層,每層處理一個特定關注點:<strong>presentation layer</strong>(透過瀏覽器或手機呈現)一路往下到 <strong>data access layer</strong>(資料庫讀寫),再加上把它們串起來的 <strong>cross-cutting concern</strong>(組態、安全性等)。</p>
+<p>難點在於:大量行為與商業邏輯<strong>藏在框架與其 API 之後</strong>,而每個框架都有自己的怪癖——dependency injection、annotation 等等,決定了商業邏輯以什麼形式被嵌入。<strong>你去程式碼裡翻,可能一個都找不到。</strong></p>
+<p>而且雖然這些層在「關注點」上是分開的,<strong>部署後的應用是所有層同時互相交互</strong>——這才是問題真正棘手的原因。</p>
+<h4>ScarfBench 的設計(約 02:39–02:40)</h4>
+<p><strong>ScarfBench = Self-Contained Application Refactoring Benchmark</strong>,目標有兩個:</p>
+<ol>
+<li>檢驗 <strong>agent 在跨框架遷移與現代化應用上到底有多有效</strong>。</li>
+<li>在這個過程中透過<strong>理解 agent 的 trajectory</strong>,建立一份「field manual」——關於如何為一般性的現代化任務打造 agentic 解決方案。</li>
+</ol>
+<p>benchmark 分兩組:</p>
+<ul>
+<li><strong>Focused applications</strong>:針對<strong>單一層</strong>的自足應用。</li>
+<li><strong>Whole applications</strong>:把各層組合成一個<strong>完整的商業 use case</strong>。</li>
+</ul>
+<p>IBM 的做法是:讓大量<strong>領域專家(SME)手工</strong>把每個應用跨 <strong>Spring、Quarkus、Jakarta</strong> 轉寫。表格每一列是一個應用,而<strong>一個遷移單位就是「某個應用從某框架到另一框架」</strong>。</p>
+<p>這樣設計同樣有兩個目的:</p>
+<ol>
+<li><strong>每種遷移都有自己的怪癖,而且是不對稱的</strong>——Spring→Quarkus 和 Jakarta→Spring 是非常不同的兩件事。</li>
+<li><strong>看 agent 處理各個獨立層的能耐</strong>——agent 可能很擅長轉換 presentation layer,卻在 integration 或 dependency injection 層上卡住。</li>
+</ol>
+<p>Whole application 的部分,同一個應用同時收錄 <strong>monolith</strong> 與等價的 <strong>microservice</strong> 部署兩種形態,一樣由 SME 手工跨所有框架轉寫。</p>
+<p>規模(講者現場口述):約 <strong>38 個應用</strong>,展開成 <strong>114 個變體</strong>,directed transformation 合計約 <strong>228 個</strong>。(論文公布的數字略有不同,見「待確認」。)</p>
+<h4>真正的分野:手寫的行為測試(約 02:41–02:42)</h4>
+<p>他強調 benchmark 的關鍵差異在於 <strong>handwritten test cases</strong>。在遷移每個應用時,開發者為「這個應用部署後應該表現出的行為」撰寫測試。範圍涵蓋:</p>
+<ul>
+<li><strong>HTTP 檢查</strong>:例如一個 curl 煙霧測試,確認目標框架下部署的應用開放了相同的 HTTP / HTTPS 埠——本質是 health check。</li>
+<li><strong>煙霧測試也涵蓋</strong>:messaging 是否正常、資料庫的 update / commit / rollback 行為是否符合預期。</li>
+<li><strong>JSP 頁面層級</strong>:確認部署後的應用瀏覽器點擊動作正確、資料正確傳遞。</li>
+<li><strong>Playwright 測試</strong>:對於有瀏覽器端點的應用,確保<strong>遷移後應用上的使用者操作與來源應用看起來完全一致</strong>。</li>
+</ul>
+<h4>結果:編譯得過,行為卻沒保住(約 02:42–02:43)</h4>
+<p>他們評估了大量 coding agent(更多結果、失敗模式的分類與 agent 建構建議都在論文裡)。現場的重點結論:</p>
+<blockquote>
+<p><strong>Agent 非常擅長把應用遷移到「能編譯、能部署」的狀態,但在「保住目標應用的行為」上並不好。</strong></p>
+</blockquote>
+<p>具體數字:<strong>遷移後只有 2–14% 的案例行為與來源應用完全一致。</strong></p>
+<p>他點出的方法論教訓:<strong>compilation 本身是一個 weak signal</strong>——它給了我們「agent 很會遷移」的錯誤指示,但行為根本沒被保住。</p>
+<p>此外,資料流向也強烈顯示:<strong>有些框架特別難「遷入」,有些框架特別難「遷出」</strong>。agent 從一個應用遷到另一個應用的過程中,存在內在的複雜度與不對稱性。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"The applications themselves often outlive the frameworks."(約 02:36)</p>
+</blockquote>
+<p>企業現代化問題的一句話定義。</p>
+<blockquote>
+<p>"If we go hunting for it in the code, we may not find any of these."(約 02:38)</p>
+</blockquote>
+<p>商業邏輯藏在框架的 annotation 與 dependency injection 裡——這正是純看程式碼的 agent 會失手的地方。</p>
+<blockquote>
+<p>"Compilation itself was a weak signal … that gave us a false indication that the agents are really good at migration, but the behavior was not preserved."(約 02:42)</p>
+</blockquote>
+<p>整場最重要的方法論警告。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Applications outlive frameworks.</strong> Enterprise Java apps accumulate decades of institutional knowledge — business rules, data semantics, workflows, integrations. Migration has to <strong>replace the underlying stack while preserving behavior</strong>, and the second half is the hard part.</li>
+<li><strong>The difficulty is that the framework hides the behavior.</strong> Java frameworks bury runtime behavior behind their APIs using proxies, reflection, and interceptors, and <strong>the code itself doesn't capture any of it</strong>. So there is <strong>no one-to-one equivalence</strong> between Spring and Jakarta; a migrated app can build and run fine while hiding <strong>silent failures that only surface at deployment.</strong></li>
+<li><strong>ScarfBench = Self-Contained Application Refactoring Benchmark</strong>, built by having IBM subject-matter experts <strong>manually</strong> port every application across Spring, Quarkus, and Jakarta, with <strong>hand-written behavioral tests</strong> for each — from curl smoke tests to Playwright browser-interaction checks.</li>
+<li><strong>The headline result</strong>: agents are strong at producing migrations that compile and deploy, but <strong>only 2–14% of migrations preserved behavior exactly</strong>. <strong>Compilation is a weak signal</strong> that creates a false impression of competence.</li>
+<li><strong>Migration direction is asymmetric</strong>: Spring→Quarkus is a very different problem from Jakarta→Spring, and the data strongly suggests <strong>some frameworks are hard to migrate <em>to</em> and others hard to migrate <em>from</em>.</strong></li>
+</ul>
+<h3>Key Points</h3>
+<h4>Why enterprise Java migration is worth benchmarking (~02:36–02:37)</h4>
+<p>Krishna is a senior research scientist at IBM Research. (The talk opened with a slide failure; he switched to his own laptop mid-talk, leaving a gap around 02:35–02:36.)</p>
+<p>Enterprise applications written in Java remain critical. These legacy applications were written against some framework, and <strong>the applications themselves often outlive the frameworks.</strong> Modernization matters because newer frameworks bring <strong>supported runtimes, better security, and better deployment modalities</strong>, among other things.</p>
+<p>But the real insight is what's sitting inside a deployed application: <strong>institutional knowledge embedded over several decades</strong> — business rules, data semantics, workflows, integrations. So <strong>migration must replace the underlying technology stack while preserving application behavior.</strong></p>
+<h4>Why it's hard: the behavior isn't in the code (~02:37)</h4>
+<p>The Java frameworks these legacy applications are written against <strong>hide runtime behaviors behind their APIs</strong> — proxies, reflection, interceptors. <strong>The code doesn't capture any of this; the framework handles it.</strong></p>
+<p>The consequence: <strong>there is no one-to-one equivalence between an application written in Spring and one written in Jakarta.</strong> When you migrate, it may look like the app builds and runs correctly, <strong>but there may be silent failures that only show up at deployment time.</strong></p>
+<h4>The anatomy of a typical enterprise Java application (~02:38–02:39)</h4>
+<p>Large applications are organized in tiers, each addressing a specific concern: the <strong>presentation layer</strong> (serving a browser or phone app) down through the <strong>data access layer</strong> (database reads and writes), plus a <strong>cross-cutting concern</strong> tying everything together with configuration, security, and so on.</p>
+<p>The difficulty is that much of the behavior and business logic is <strong>hidden behind the framework and its APIs</strong>, and each framework has its own idiosyncrasies — dependency injection, annotations — that dictate how business logic gets embedded. <strong>Go hunting for it in the code and you may find none of it.</strong></p>
+<p>And although the layers are separate in terms of concerns, <strong>a deployed application has all of them interacting with one another, often at the same time</strong> — which is what makes the problem genuinely challenging.</p>
+<h4>The design of ScarfBench (~02:39–02:40)</h4>
+<p><strong>ScarfBench</strong> stands for <strong>Self-Contained Application Refactoring Benchmark</strong>, with a twofold objective:</p>
+<ol>
+<li>Measure <strong>how effective agents actually are at migrating and modernizing applications</strong> from one framework to another.</li>
+<li>Along the way, by <strong>understanding agent trajectories</strong>, build a "field manual" for constructing agentic solutions for general modernization.</li>
+</ol>
+<p>Two groups:</p>
+<ul>
+<li><strong>Focused applications</strong>: self-contained apps for a <strong>single layer</strong>.</li>
+<li><strong>Whole applications</strong>: those layers assembled into a <strong>cohesive business use case</strong>.</li>
+</ul>
+<p>IBM's method was to have a large number of <strong>subject-matter experts manually convert</strong> each application across <strong>Spring, Quarkus, and Jakarta</strong>. Each row is an application, and <strong>a unit of migration is any app going from one framework to another.</strong></p>
+<p>This design also serves two purposes:</p>
+<ol>
+<li><strong>Every migration has its own idiosyncrasies, and they are asymmetric</strong> — Spring→Quarkus is very different from Jakarta→Spring.</li>
+<li><strong>It exposes how agents handle independent layers</strong> — an agent may be excellent at converting the presentation layer while struggling with integration or dependency injection.</li>
+</ol>
+<p>The whole-application group captures each app both as a <strong>monolith</strong> and as an equivalent <strong>microservice</strong> deployment, again manually converted by SMEs across all frameworks.</p>
+<p>Scale, as spoken on stage: roughly <strong>38 applications</strong> individually, expanding to <strong>114 variations</strong>, with directed transformations totaling about <strong>228</strong>. (The published paper's figures differ slightly — see To Verify.)</p>
+<h4>The real differentiator: hand-written behavioral tests (~02:41–02:42)</h4>
+<p>The key distinction he emphasized is the <strong>handwritten test cases</strong>. As each application was migrated, developers wrote tests for the behaviors expected once it's deployed, spanning:</p>
+<ul>
+<li><strong>HTTP checks</strong> — a curl smoke test confirming the app deployed in the target framework exposes the same HTTP and HTTPS ports; essentially a health check.</li>
+<li><strong>Smoke tests also cover</strong> whether messaging works correctly and whether database updates, commits, and rollbacks behave as expected.</li>
+<li><strong>JSP-page-level checks</strong> verifying browser click actions and correct data propagation in the deployed application.</li>
+<li><strong>Playwright tests</strong> for apps with a browser endpoint, ensuring <strong>user actions on the migrated application look identical to the source app.</strong></li>
+</ul>
+<h4>Results: it compiles, but the behavior is gone (~02:42–02:43)</h4>
+<p>They evaluated a large number of coding agents; more results, failure-mode taxonomies, and guidance on building better agents are in the paper. The stage highlight:</p>
+<blockquote>
+<p><strong>Agents are highly effective at migrating applications to the point where they compile and deploy — and not good at maintaining behavior in the target application.</strong></p>
+</blockquote>
+<p>The number: after migration, <strong>only 2–14% of migrations had exactly the same behavior as the source application.</strong></p>
+<p>The methodological lesson he drew: <strong>compilation itself was a weak signal</strong>, giving a false indication that agents are good at migration when behavior was not in fact preserved.</p>
+<p>The flows also strongly suggest that <strong>some frameworks are really hard to migrate <em>to<em> and some are really hard to migrate </em>from</em></strong> — an inherent complexity and asymmetry in how agents move applications between frameworks.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"The applications themselves often outlive the frameworks." (~02:36)</p>
+</blockquote>
+<p>A one-line definition of the enterprise modernization problem.</p>
+<blockquote>
+<p>"If we go hunting for it in the code, we may not find any of these." (~02:38)</p>
+</blockquote>
+<p>Business logic lives in the framework's annotations and dependency injection — exactly where a source-reading agent will miss it.</p>
+<blockquote>
+<p>"Compilation itself was a weak signal … that gave us a false indication that the agents are really good at migration, but the behavior was not preserved." (~02:42)</p>
+</blockquote>
+<p>The most important methodological warning in the talk.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ScarfBench</td>
+<td>企業 Java 跨框架遷移 benchmark,SME 手工轉寫 + 手寫行為測試</td>
+<td>Enterprise Java cross-framework migration benchmark; SME-authored ports plus hand-written behavioral tests</td>
+<td>IBM Research 開源,含公開 leaderboard(scarfbench.info、GitHub scarfbench/benchmark)/ open-sourced by IBM Research with a public leaderboard</td>
+</tr>
+<tr>
+<td>ScarfBench 論文 / paper</td>
+<td>含完整結果、失敗模式分類與 agent 建構建議</td>
+<td>Full results, failure-mode taxonomy, and guidance on building better agents</td>
+<td>arXiv:2605.06754 "ScarfBench: A Benchmark for Cross-Framework Application Migration in Enterprise Java"</td>
+</tr>
+<tr>
+<td>Spring / Quarkus / Jakarta EE</td>
+<td>benchmark 涵蓋的三個 Java 框架</td>
+<td>The three Java frameworks the benchmark spans</td>
+<td></td>
+</tr>
+<tr>
+<td>Playwright</td>
+<td>用於驗證瀏覽器端行為一致性的測試工具</td>
+<td>Used to verify browser-side behavioral equivalence</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scarfbench</td>
+<td>ScarfBench</td>
+</tr>
+<tr>
+<td>jakata / jakarta</td>
+<td>Jakarta (EE)</td>
+</tr>
+<tr>
+<td>applica agents</td>
+<td>coding agents</td>
+</tr>
+<tr>
+<td>playright</td>
+<td>Playwright</td>
+</tr>
+<tr>
+<td>GSP pages</td>
+<td>JSP pages</td>
+</tr>
+<tr>
+<td>microser</td>
+<td>microservice</td>
+</tr>
+<tr>
+<td>behav / behavi</td>
+<td>behavior</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>規模數字有出入:講者口述約 38 應用 / 114 變體 / 228 directed transformations,而公開資料為 34 個 application family / 102 個框架變體 / 204 個 directed migration。以哪一組為準需核對論文與投影片。/ Scale figures conflict: he said ~38 apps, 114 variants, 228 directed transformations, while published materials give 34 application families, 102 framework variants, and 204 directed migrations. Needs checking against the paper and slides.</li>
+<li>行為保真率:講者說「2–14%」,IBM 公開說明為「最強的 agent 也低於 10%」,兩者範圍與統計口徑需釐清。/ Behavioral fidelity: he said 2–14%; IBM's public materials say even the strongest agents are below 10%. The ranges and how they're computed need reconciling.</li>
+<li>演講中未點名所評估的 coding agent 清單。/ The list of coding agents evaluated was not named on stage.</li>
+<li>ScarfBench 縮寫的正式展開方式(講者念作 Self-Contained Application Refactoring Benchmark)。/ The official expansion of the acronym as printed (he pronounced it Self-Contained Application Refactoring Benchmark).</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/rahul-krishna--scarfbench-can-agents-migrate-enterprise-java.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

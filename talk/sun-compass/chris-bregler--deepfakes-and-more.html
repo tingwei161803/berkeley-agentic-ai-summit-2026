@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Deepfakes and More: How Agents with New Tools Can Mitigate and Provide More Context · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="The real information battle isn&#x27;t &quot;is this pixel fake&quot; — in over half the harmful cases the pixels are untouched and the lie lives in the context; so Google is shifting from deepfake detectors to c…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/chris-bregler--deepfakes-and-more.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Deepfakes and More: How Agents with New Tools Can Mitigate and Provide More Context · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="The real information battle isn&#x27;t &quot;is this pixel fake&quot; — in over half the harmful cases the pixels are untouched and the lie lives in the context; so Google is shifting from deepfake detectors to c…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/chris-bregler--deepfakes-and-more.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="chris-bregler--deepfakes-and-more">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Deepfakes and More: How Agents with New Tools Can Mitigate and Provide More Context" data-title-zh="Deepfake 與更多:Agent 如何用新工具緩解問題並提供脈絡">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--keynote"><span class="lang-en">Keynote</span><span class="lang-zh">主題演講</span></span>
+          <span class="dialog__session">Session 1: AI Safety</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Deepfakes and More: How Agents with New Tools Can Mitigate and Provide More Context</span><span class="lang-zh">Deepfake 與更多:Agent 如何用新工具緩解問題並提供脈絡</span></h1>
+        <p class="dialog__speaker"><strong>Chris Bregler</strong> — Senior Director / Distinguished Scientist, Google DeepMind; Academy Scientific and Technical Award Winner</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:00:00–00:15:55 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=l8GS08n-25Q&amp;t=0s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:00:00</span><span class="lang-zh">從 00:00:00 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">The real information battle isn&#x27;t &quot;is this pixel fake&quot; — in over half the harmful cases the pixels are untouched and the lie lives in the context; so Google is shifting from deepfake detectors to context-investigating agents (Backstory), and argues the root causes are social-scientific, not purely technical.</span><span class="lang-zh">真正的資訊戰場不在「這張圖是不是 AI 生的」——超過一半的問題案例像素完全沒被動過,騙人的是脈絡;所以 Google 把重心從 deepfake detector 移到「查脈絡的 agent」(Backstory),並主張根因其實是社會科學問題,不是純技術問題。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><blockquote>
+<p>註:直播畫面在講者開場約一分鐘後才切入,本篇筆記自 00:00:00 開始,講題的自我介紹前段未入鏡。</p>
+</blockquote>
+<h3>TL;DR</h3>
+<ul>
+<li><strong>趨勢被誤讀了</strong>:deepfake 自 2018 起確實成長,但 Google 追蹤的問題影像中,<strong>約一半的案例像素完全沒有被修改</strong>——造假的是脈絡(cheapfake / out-of-context),對這類內容跑 deepfake detector 會忠實地回答「這是真的」,完全無用。</li>
+<li><strong>問題該換一個</strong>:不要問「這是真的還是假的」,要問「<strong>這可信嗎?脈絡是什麼?</strong>」。</li>
+<li><strong>偵測是軍備競賽,但沒輸</strong>:標準做法(蒐集 Stable Diffusion 等生成圖 + 真圖訓練判別器)必須不斷追新模型;Google 另有一條路線,反推 prompting 與 noise map,對新模型較具不變性。八年前資安理論界預測社群「六個月內會輸掉這場軍備競賽」,八年後還沒發生。</li>
+<li><strong>兩種 provenance 並行</strong>:inferred provenance(反向圖片搜尋、全網索引,Google 15 年前就做了)與 asserted provenance(C2PA 密碼學帳本、SynthID 隱形浮水印)。後者正在起飛但覆蓋率仍小,所以兩者都需要。</li>
+<li><strong>Agent 是把這些訊號縫起來的方式</strong>:<strong>Backstory</strong> 幾年前開始開發,去年夏天釋出 v1,近期釋出 v2——它不只跑生成偵測,而是把來源、歷史、上下文全部查一遍,把記者原本要花數小時到數天的調查壓縮到幾秒。</li>
+<li><strong>根因是社會科學</strong>:Bregler 明確說「根因不只是技術問題」,並指向 UC Berkeley 的社會學傳統(Arlie Hochschild 的 deep story 研究)與 AI 輔助的 reframing / bridging / deliberation(Habermas Machine、Polis),目標是「holistically 改善社會健康」而不只是即時擋下一則違規內容。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>Google 的定位:資訊品質 + AI 安全前沿(約 00:00–00:02)</h4>
+<p>Google 1999 年成立時的使命——「整理全世界的資訊,讓所有人都能取用」——今天依然有效,但現在有兩條線:<strong>原本的資訊品質</strong>(讓網路上最準確、最可信的資訊浮上來),以及<strong>新的 AI 安全前沿</strong>。</p>
+<p>一份 Reuters 的研究顯示:<strong>即使你追求準確、追求品質,大眾對線上媒體的信任仍持續下滑</strong>。各國差異很大——芬蘭信任度最高,Google 所在的位置在中間。Bregler 提到他聽說芬蘭從幼稚園就開始做資訊素養教育,而其他地方的人沒那麼有批判性。</p>
+<p>Google 的做法是三個支柱,其中最基礎的是<strong>媒體素養(media literacy)</strong>:過去十年產品上那些小小的「三個點」按鈕,以及現在 AI Mode 裡的「了解更多」,核心理念是——<strong>Google 不仲裁真相(we don't arbitrate the truth),而是把最強的工具交給使用者自己判斷</strong>。</p>
+<h4>數據:deepfake 不是最大的問題(約 00:02–00:03、00:07–00:09)</h4>
+<p>Bregler 引用 Nick Dufour 與同事發表的追蹤研究。Google 與合作夥伴長期追蹤被使用者認為有問題的視覺與文字資訊:</p>
+<ul>
+<li>deepfake 自 2018 年爆紅,但一直到近期實際佔比都不高;圖上藍線是 deepfake,黃線與紅線是<strong>非 deepfake</strong>,而後者才是量體。</li>
+<li>例子:伊朗方面用 Photoshop 把假飛彈合成進真飛彈照片裡——這是十年前就有的手法,不需要 GenAI。</li>
+<li><strong>當同一張圖 scale 到 100% 來看,GenAI 仍然只是一小塊。真正最大的問題是:一半的案例像素完全沒有被修改。</strong></li>
+</ul>
+<p>三個他現場示範的案例:</p>
+<ol>
+<li>一段爆炸影片被宣稱發生在伊朗、或發生在加薩——實際上是 <strong>2020 年某港口化肥倉庫的意外爆炸</strong>。跑 deepfake detector 會說「這是真的」,因為它真的是真的。</li>
+<li>「俄羅斯戰機飛越基輔」——實際上是十年前莫斯科閱兵的畫面。</li>
+<li>淹水街道上的鯊魚:他開玩笑說「只要你看到鯊魚或海豚,大概根本不用 deepfake detector,那八成是假的」;實際上鯊魚是南非海岸一位鯊魚研究者約二十年前拍的真照片,街景則是另一個地方,兩張被疊在一起。</li>
+</ol>
+<p>這些正是調查記者要花數小時甚至數天寫深度文章才能拆解的東西,<strong>在規模上做這件事非常難</strong>。</p>
+<h4>偵測研究:如何跳出軍備競賽(約 00:04–00:07)</h4>
+<p>標準 deepfake 偵測流程是:蒐集大量生成圖(Stable Diffusion 等)與大量真圖,訓練一個判別器/agent。問題是下週出一個新的 GenAI 模型,明年出一萬個,你就得建立一條不斷更新的 workflow——這是純粹的軍備競賽。</p>
+<p>Bregler 的團隊也做「<strong>如何待在軍備競賽之外</strong>」的研究,例如<strong>反向工程 prompting 與 noise map</strong>,目標是對未見過的新模型(zero-day)更具不變性。</p>
+<blockquote>
+<p>八年前資安理論界就預測「我們社群會在六個月內輸掉這場軍備競賽」——八年過去了,還在等。工具箱仍然很大。</p>
+</blockquote>
+<p>實務上:<strong>大量內部偵測器與訊號刻意不公開</strong>,以免給對手資訊;但 Google 與 YouTube 的所有介面背後都有這些偵測器。另外幾項:</p>
+<ul>
+<li><strong>身分保護服務</strong>:創作者或一般使用者若擔心被 deepfake,現在有服務會主動告警「我們認為有人剛剛 deepfake 了你」。</li>
+<li><strong>選舉政策</strong>:Google 是最早針對選舉廣告中使用 GenAI 訂定政策的平台。</li>
+<li><strong>偵測 API</strong>:在 I/O 上與 Cloud 團隊合作推出,目前幾乎所有公司都在測試,可申請成為 trusted partner 使用 Google 的內部偵測器。</li>
+</ul>
+<p>他順帶點出一個學術界的錯位:<strong>deepfake detection 競賽非常熱門,大量博士生把所有時間投進去,但戰場其實在別處。</strong></p>
+<h4>兩種 provenance(約 00:09–00:10)</h4>
+<ul>
+<li><strong>Inferred provenance(推斷式)</strong>:從內容本身回推來源與脈絡。Google 15 年前就發明了反向圖片搜尋,並索引整個網路。使用者收到朋友傳來的「UFO 照片」,圈選後丟給 Google,回應不是「這是假的」,而是「這張圖在別的地方被標記為一朵雲」。</li>
+<li><strong>Asserted provenance(宣稱式)</strong>:近三年 Google 主導並與其他負責任的業者合作,包括 <strong>C2PA 標準</strong>(Adobe、Microsoft 等業界共同採用)與 <strong>SynthID 隱形浮水印</strong>。Google 的手機拍照時會用密碼學帳本標記「這是一張真實影像」;若之後修掉反光,C2PA 會透明地附註「這是在真實影像上疊加的 GenAI 功能」。</li>
+</ul>
+<p>Asserted provenance 正在起飛,但<strong>覆蓋率還小</strong>,所以不依賴 provenance 的偵測器仍然必要。這是一個很大的混合體——<strong>你還是得到處看,才能知道到底發生了什麼事</strong>。這正是 agent 的切入點。</p>
+<h4>Backstory:把所有訊號交給 agent(約 00:10–00:12)</h4>
+<p>Google 幾年前開始建這個 agent,<strong>去年夏天釋出 v1,近期釋出 v2</strong>,它會把所有來源、所有訊號一起拉進來。</p>
+<p>示範案例:社群媒體上有人宣稱「這些加州學生去春假旅遊並汙染了那座湖」。Backstory 不會只跑一個生成偵測器(那不夠),它會去查:學生真的有去那座湖春假嗎?有。他們有汙染湖嗎?沒有。</p>
+<p>回到鯊魚那張圖:GenAI detector 會說「不是 GenAI」;Backstory 會告訴你這是一隻真鯊魚,約二十年前由南非海岸的一位鯊魚研究者拍攝,而那條街不在邁阿密颶風現場,兩者是疊上去的。</p>
+<blockquote>
+<p>GenAI(偵測)在這上面沒用,但它會給你完整的脈絡,你和 agent 一起可以在幾秒內完成調查,而不是花上幾小時或幾天。</p>
+</blockquote>
+<p>現場呼籲:掃 QR code 上網站<strong>註冊成為 trusted tester</strong>;另外 Google 在全球辦資訊素養活動示範怎麼用。評估報告即將發表——他開玩笑說「我當然不會告訴你另外那些模型是誰,當然我們是最好的」。</p>
+<h4>Agent 安全與 Google 的流程(約 00:13)</h4>
+<p>呼應 Dawn Song 當天早上的 keynote,Google 對 agentic 流程有既定的工作流:<strong>針對 agent 的特定產品政策 → 上線前測試 → 為安全而工程設計 → 持續監控 → 對外合作</strong>。</p>
+<p>整體姿態可以這樣分:媒體素養(非常前瞻)、負責任生成(非常前瞻)、AI 安全(非常前瞻)、事後政策執法(反應式)。他形容反應式工作「像在急診室或當消防員,你只是在滅症狀」,所以團隊同時很用力地處理<strong>根因</strong>。</p>
+<h4>根因是社會科學,不是純技術(約 00:14–00:15)</h4>
+<p>這是他特別想在 Berkeley 講的一點:</p>
+<blockquote>
+<p>根因不只是技術問題,也不只是「偵測這是壞的、那是好的」。根因是社會科學。</p>
+</blockquote>
+<p>他提到近期在 UC Berkeley 與 Raka Ray、Caitlin Rosenthal 等教授合辦的 workshop,並說自己是 Berkeley 社會學家 <strong>Arlie Hochschild</strong> 的粉絲——她從 Berkeley 到路易斯安那州 Lake Charles 做田野,研究當地人對世界、對現實、對「美國夢」的不同理解,以及為什麼他們沒能實現西岸這裡定義的美國夢,寫成了 <strong>deep story</strong> 的研究。</p>
+<p>前瞻方向:<strong>社會科學 × AI</strong>。Google 已經發表論文也有系統在跑——如果 AI <strong>reframing、bridging、deliberation</strong> 對你有意義,那就是他說的東西(他點名 <strong>Habermas Machine</strong> 與 <strong>Polis</strong>)。目標是:</p>
+<blockquote>
+<p>我們想要 holistically 改善社會的健康,而不只是防止此時此刻的某一則政策違規。</p>
+</blockquote>
+<p>最後他點名在場的團隊成員(Reena Jana,負責 trust &amp; safety 的安全工作流;Amnes Sud,前述反推 prompting/noise map 論文的作者之一),表示團隊在這條安全軌道上投入很深。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"We don't arbitrate the truth."(約 00:02)</p>
+</blockquote>
+<p>Google 的自我定位:不當真相仲裁者,而是把最強的判讀工具交給使用者。</p>
+<blockquote>
+<p>"Half of the cases are where the pixels are not modified at all. You're not lying with the pixels. You're lying with the context. And your deepfake detectors are completely useless."(約 00:08)</p>
+</blockquote>
+<p>整場演講的核心數據與核心反轉。</p>
+<blockquote>
+<p>"It's not — you should ask 'is this fake or real?' You should actually ask 'is this trusted? What's the context?'"(約 00:07)</p>
+</blockquote>
+<p>問題換了,工具就得換:從 detector 換成 investigating agent。</p>
+<blockquote>
+<p>"Security theoreticians eight years ago already predicted we as a community will lose the arms race in six months. I'm still waiting for that. It's eight years later."(約 00:06)</p>
+</blockquote>
+<p>對「偵測必敗論」的溫和反駁。</p>
+<blockquote>
+<p>"The root causes is not a technical problem alone … the root causes is social science."(約 00:14)</p>
+</blockquote>
+<p>給 Berkeley 聽眾的收尾:資訊生態的真正修復需要社會科學一起上桌。</p></section>
+        <section class="lang-en"><blockquote>
+<p>Note: the livestream joins roughly a minute into the talk; these notes start at 00:00:00 and the opening self-introduction is off-camera.</p>
+</blockquote>
+<h3>TL;DR</h3>
+<ul>
+<li><strong>The trend line is widely misread.</strong> Deepfakes have grown since 2018, but across the problematic imagery Google tracks, <strong>roughly half the cases involve pixels that were never touched</strong> — the lie is in the context (cheapfakes, out-of-context reuse). Run a deepfake detector on those and it will faithfully answer "real," which is worse than useless.</li>
+<li><strong>Change the question.</strong> Not "is this fake or real" but "<strong>is this trusted, and what's the context?</strong>"</li>
+<li><strong>Detection is an arms race, but not a lost one.</strong> The standard recipe (train a discriminator on Stable Diffusion output plus real images) demands a treadmill of retraining as new generators ship. Bregler's group also researches how to <em>stay out</em> of the race — e.g., reverse-engineering prompting and noise maps for zero-day invariance. Security theorists predicted eight years ago that the community would lose the race within six months; eight years on, he's still waiting.</li>
+<li><strong>Two kinds of provenance, both needed.</strong> Inferred provenance (reverse image search over a full web index, which Google shipped 15 years ago) and asserted provenance (C2PA cryptographic ledgers, SynthID invisible watermarks). Asserted provenance is taking off but still covers a small slice, so detection that doesn't depend on provenance remains essential.</li>
+<li><strong>Agents are how you stitch the signals together.</strong> <strong>Backstory</strong> — started a few years ago, v1 released last summer, v2 just released — pulls every source and signal to answer the context question, compressing an investigation that would take a journalist hours or days into seconds.</li>
+<li><strong>The root causes are social-scientific.</strong> Bregler pointed at Berkeley's own sociology tradition (Arlie Hochschild's <em>deep story</em> fieldwork) and at AI-assisted reframing, bridging, and deliberation (the Habermas Machine, Polis), with the goal of improving societal health holistically rather than blocking one policy violation this hour.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Google's position: information quality plus the AI safety frontier (~00:00–00:02)</h4>
+<p>Google's 1999 mission — organize the world's information and make it accessible to everyone — still holds, but it now runs on two tracks: the original <strong>information quality</strong> problem (surface the most accurate, trusted information on the web) and the new <strong>AI safety frontier</strong>.</p>
+<p>A Reuters study he cited makes the uncomfortable point that <strong>trust in online media keeps declining even when you are accurate and even when you strive for quality</strong>. It varies sharply by country — Finland tops the trust ranking; Google's own position sits in the middle. He noted hearing that Finland teaches information literacy starting in kindergarten, while elsewhere audiences are simply less critical.</p>
+<p>Google's answer rests on three pillars, the most foundational being <strong>media literacy</strong>: the little three-dot "about this" affordances shipped across products over the last decade, and now the "know more" surfaces inside AI Mode. The governing principle: <strong>"We don't arbitrate the truth."</strong> Give society the most powerful tools and let it form its own view.</p>
+<h4>The data: deepfakes are not the biggest problem (~00:02–00:03, 00:07–00:09)</h4>
+<p>Drawing on tracking work published by Nick Dufour and colleagues, who monitor visual and textual content that users flag as problematic:</p>
+<ul>
+<li>Deepfakes became culturally huge from 2018, but actual volume stayed modest until recently. On the chart, the blue curve is deepfakes; the yellow and red curves — the <strong>non</strong>-deepfakes — carry the mass.</li>
+<li>Example: Iranian outlets Photoshopping a fake missile in among real ones, a technique that predates GenAI by a decade.</li>
+<li><strong>Rescaled to 100%, GenAI is still a small fraction. The dominant category is content where the pixels were never modified at all.</strong></li>
+</ul>
+<p>Three live examples:</p>
+<ol>
+<li>An explosion video claimed to be from Iran, or from Gaza — actually a <strong>2020 accident at a port fertilizer depot</strong>. Run a deepfake detector and it reports "real," because it <em>is</em> real.</li>
+<li>"Russian aircraft over Kyiv" — actually a Moscow military parade ten years earlier.</li>
+<li>A shark on a flooded street. His aside: "Whenever you see a dolphin or shark, you probably don't even need a deepfake detector — it's most likely fake." In fact the shark is a genuine photo taken by a shark researcher off the South African coast roughly twenty years ago, and the street is somewhere else entirely; the two were composited.</li>
+</ol>
+<p>Unpicking each of these is what a well-trained investigative journalist spends hours or days doing. <strong>Doing it at scale is the hard part.</strong></p>
+<h4>Detection research: escaping the arms race (~00:04–00:07)</h4>
+<p>The standard workflow — collect a pile of generated images and a pile of real ones, train a discriminator — breaks the moment a new generator ships next week, and ten thousand ship next year. That is a pure treadmill.</p>
+<p>His group also researches <strong>how to stay outside the arms race</strong>, for instance by reverse-engineering the prompting and noise maps behind generated images, aiming for invariance to models nobody has seen yet (a "zero-day" property).</p>
+<blockquote>
+<p>Security theoreticians predicted eight years ago that the community would lose this arms race within six months. Eight years later, the toolbox is still deep.</p>
+</blockquote>
+<p>Operationally, <strong>many internal detectors and signals are deliberately unpublished</strong> so adversaries learn less, but every Google and YouTube surface has them running. Three further items:</p>
+<ul>
+<li><strong>Identity protection</strong>: creators and everyday users worried about being deepfaked can now get an alert — "we think somebody just deepfaked you."</li>
+<li><strong>Election policy</strong>: Google was first to set policy for GenAI use in election advertising.</li>
+<li><strong>A detection API</strong>, announced at I/O with the Cloud team; nearly every company is trialling it, and you can apply for trusted-partner access to Google's internal detectors.</li>
+</ul>
+<p>He flagged an academic misallocation along the way: <strong>deepfake-detection competitions absorb enormous PhD-student effort, but the battle is somewhere else.</strong></p>
+<h4>Two kinds of provenance (~00:09–00:10)</h4>
+<ul>
+<li><strong>Inferred provenance</strong>: work backwards from the content to its origin and context. Google invented reverse image search 15 years ago and indexes the whole web. A friend sends you a "UFO" photo; you circle it, send it to Google, and the answer isn't "fake" or "real" — it's "this was also labeled as a cloud."</li>
+<li><strong>Asserted provenance</strong>: over the last three years Google has led and partnered on <strong>C2PA</strong> (with Adobe, Microsoft, and the rest of the industry) and <strong>SynthID</strong> invisible watermarking. Google phones stamp captured images through a crypto ledger as real; touch up a glare afterwards and C2PA transparently records that a GenAI feature was applied on top of a real image.</li>
+</ul>
+<p>Asserted provenance is lifting off, but <strong>coverage is still the smaller part</strong>, so provenance-independent detectors remain necessary. It is a big mix — <strong>you still have to look everywhere to know what's really going on.</strong> Which is where agents come in.</p>
+<h4>Backstory: handing every signal to an agent (~00:10–00:12)</h4>
+<p>Google started building this agent a few years ago, <strong>released v1 last summer, and just released v2</strong>. It ingests all sources and all signals.</p>
+<p>Demo: a social post claiming Californian students went on spring break and polluted a lake. Backstory doesn't just run a generative detector — that isn't enough. It checks whether the students actually went to that lake (yes) and whether they polluted it (no).</p>
+<p>Back to the shark: a GenAI detector says "not GenAI." Backstory says this is a real shark, photographed off the South African coast about twenty years ago by a shark researcher, and the street isn't Miami during a hurricane — the two images were overlaid.</p>
+<blockquote>
+<p>Generative detection does nothing here, but the agent gives you the whole context, and together with it you can investigate in seconds instead of hours or days.</p>
+</blockquote>
+<p>He invited the room to snapshot the slide and <strong>sign up as a trusted tester</strong>, mentioned worldwide information-literacy events demonstrating the tool, and teased forthcoming evaluations — "I'm not telling you what the other models are; of course we're the best."</p>
+<h4>Agent safety and Google's process (~00:13)</h4>
+<p>Echoing Dawn Song's keynote that morning, Google runs a defined workflow for agentic flows: <strong>agent-specific product policies → pre-launch testing → engineering for safety → continuous monitoring → external partnerships.</strong></p>
+<p>Mapping the overall posture: media literacy (highly proactive), responsible generation (highly proactive), AI safety (highly proactive), after-the-fact policy enforcement (reactive). He described reactive work as feeling like an emergency room or firefighting — you're treating symptoms — which is why the team also doubles down on <strong>root causes</strong>.</p>
+<h4>Root causes are social science, not just technology (~00:14–00:15)</h4>
+<p>The point he most wanted to make at Berkeley:</p>
+<blockquote>
+<p>The root causes are not a technical problem alone, and it isn't just detecting "this is bad, this is good." The root causes are social science.</p>
+</blockquote>
+<p>He cited a recent workshop held at UC Berkeley with Raka Ray, Caitlin Rosenthal, and other faculty, and named himself a fan of Berkeley sociologist <strong>Arlie Hochschild</strong>, who went from Berkeley down to Lake Charles, Louisiana to study a community with a different view of the world, of reality, and of what the American Dream is — and why people there don't achieve the version of it defined on the West Coast. That fieldwork produced her work on <strong>deep stories</strong>.</p>
+<p>The forward-looking opportunity is <strong>social science × AI</strong>. Google has published papers and has systems running: if AI <strong>reframing, bridging, and deliberation</strong> mean something to you, that's the space — he named the <strong>Habermas Machine</strong> and <strong>Polis</strong>. The goal:</p>
+<blockquote>
+<p>We want to improve holistically the health of the society, not just prevent some policy violation right now this hour.</p>
+</blockquote>
+<p>He closed by pointing out team members in the room (Reena Jana, who leads the safety workflow from trust and safety; Amnes Sud, a co-author on the prompting/noise-map work), noting how heavily the team is invested in this safety track.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"We don't arbitrate the truth." (~00:02)</p>
+</blockquote>
+<p>Google's self-positioning: not the referee of truth, but the supplier of the strongest tools for the public to judge.</p>
+<blockquote>
+<p>"Half of the cases are where the pixels are not modified at all. You're not lying with the pixels. You're lying with the context. And your deepfake detectors are completely useless." (~00:08)</p>
+</blockquote>
+<p>The talk's central datum and central reversal.</p>
+<blockquote>
+<p>"You should actually ask: is this trusted? What's the context?" (~00:07)</p>
+</blockquote>
+<p>Change the question and the tooling has to change with it — from detector to investigating agent.</p>
+<blockquote>
+<p>"Security theoreticians eight years ago already predicted we as a community will lose the arms race in six months. I'm still waiting for that. It's eight years later." (~00:06)</p>
+</blockquote>
+<p>A gentle rebuttal to detection defeatism.</p>
+<blockquote>
+<p>"The root causes is not a technical problem alone … the root causes is social science." (~00:14)</p>
+</blockquote>
+<p>The closing appeal to a Berkeley audience: fixing the information ecosystem needs social science at the table.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backstory</td>
+<td>Google 的影像脈絡調查 agent,彙整來源、歷史與訊號回答「這可信嗎」</td>
+<td>Google's image-context investigation agent; aggregates sources, history, and signals to answer "is this trusted"</td>
+<td>v1 去年夏天釋出、v2 近期釋出;可申請 trusted tester / v1 last summer, v2 just released; trusted-tester signup</td>
+</tr>
+<tr>
+<td>C2PA</td>
+<td>跨業界的內容來源與真偽宣告標準(密碼學帳本)</td>
+<td>Cross-industry content provenance standard backed by a cryptographic ledger</td>
+<td>Adobe、Microsoft 等共同採用;Google 手機拍照即帶標記</td>
+</tr>
+<tr>
+<td>SynthID</td>
+<td>Google 的隱形浮水印技術</td>
+<td>Google's invisible watermarking for generated media</td>
+<td>與 C2PA 互補的 asserted provenance 手段</td>
+</tr>
+<tr>
+<td>反向圖片搜尋 / Reverse image search</td>
+<td>inferred provenance 的基礎,Google 15 年前發明</td>
+<td>Foundation of inferred provenance; invented by Google 15 years ago</td>
+<td>不判定真假,而是回報「這張圖還被標記成什麼」</td>
+</tr>
+<tr>
+<td>Habermas Machine</td>
+<td>AI 輔助審議 / 尋找共識的系統</td>
+<td>AI-assisted deliberation system for finding common ground</td>
+<td>講者點名為「社會科學 × AI」方向的代表</td>
+</tr>
+<tr>
+<td>Polis (pol.is)</td>
+<td>開源的大規模意見蒐集與共識發現平台</td>
+<td>Open-source platform for large-scale opinion gathering and consensus finding</td>
+<td>講者與 Habermas Machine 並列提及</td>
+</tr>
+<tr>
+<td>Google 偵測 API / detection API</td>
+<td>與 Cloud 團隊在 I/O 推出,開放申請 trusted partner</td>
+<td>Launched with the Cloud team at I/O; trusted-partner applications open</td>
+<td>背後是不公開的內部偵測器</td>
+</tr>
+<tr>
+<td>身分保護告警 / identity protection alerts</td>
+<td>主動通知使用者「你可能被 deepfake 了」</td>
+<td>Proactively alerts users that they may have been deepfaked</td>
+<td>對創作者與一般使用者開放</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nick Duour / Nick Dufour</td>
+<td>Nick Dufour</td>
+</tr>
+<tr>
+<td>Sinsky (deep fake)</td>
+<td>Zelensky(澤倫斯基)</td>
+</tr>
+<tr>
+<td>Keefe</td>
+<td>Kyiv(基輔)</td>
+</tr>
+<tr>
+<td>Chennai(伊朗那段)</td>
+<td>GenAI</td>
+</tr>
+<tr>
+<td>Genai / geni / geny</td>
+<td>GenAI</td>
+</tr>
+<tr>
+<td>assertive providence / prevalence</td>
+<td>asserted provenance</td>
+</tr>
+<tr>
+<td>in inferred provenence</td>
+<td>inferred provenance</td>
+</tr>
+<tr>
+<td>synth ID</td>
+<td>SynthID</td>
+</tr>
+<tr>
+<td>Arley Hookshield</td>
+<td>Arlie Hochschild</td>
+</tr>
+<tr>
+<td>Rockar Ray</td>
+<td>Raka Ray(UC Berkeley,待確認拼法)</td>
+</tr>
+<tr>
+<td>Caitlyn Rosenthal</td>
+<td>Caitlin Rosenthal(UC Berkeley)</td>
+</tr>
+<tr>
+<td>Habamas machine</td>
+<td>Habermas Machine</td>
+</tr>
+<tr>
+<td>polace</td>
+<td>Polis (pol.is)</td>
+</tr>
+<tr>
+<td>Reena Janna</td>
+<td>Reena Jana(待確認)</td>
+</tr>
+<tr>
+<td>backstory</td>
+<td>Backstory(產品名)</td>
+</tr>
+<tr>
+<td>futurep proof zero day</td>
+<td>future-proof / zero-day</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>2020 港口化肥倉庫爆炸</strong>:講者只說「a fertilizer depot in a port in 2020 blew up by accident」,未點名地點。時空條件與 2020 年貝魯特港硝酸銨爆炸相符,但講者本人沒說,不硬填。/ He never named the port; the description matches the 2020 Beirut ammonium-nitrate explosion but he did not say so.</li>
+<li><strong>Reuters 研究的正式名稱與年份</strong>:應為 Reuters Institute Digital News Report 系列,但講者未指明版本。/ Likely the Reuters Institute Digital News Report, edition unspecified.</li>
+<li><strong>Nick Dufour 等人的 prevalence 論文正式標題</strong>:未在演講中念出。/ Exact title of the Dufour et al. prevalence paper was not stated.</li>
+<li><strong>"Amnes Sud"</strong> — 現場點名的共同作者姓名拼法無法從字幕確定。/ Name of the co-author present in the room could not be resolved from the auto-captions.</li>
+<li><strong>"Reena Janna"</strong> — 應為 Google 的 Reena Jana,但未查得其現職為 trust &amp; safety safety-workflow lead 的公開佐證。/ Almost certainly Reena Jana at Google, but her stated role could not be independently confirmed.</li>
+<li><strong>Backstory v2 的釋出日期與功能差異</strong>:講者只說「just released version two」。/ Release date and v1→v2 delta not stated.</li>
+<li><strong>反推 prompting / noise map 的論文標題</strong>:現場僅口頭描述。/ Title of the prompt/noise-map reverse-engineering paper was not given.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/chris-bregler--deepfakes-and-more.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

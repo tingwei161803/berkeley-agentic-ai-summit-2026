@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Earning Autonomy: Governance as Code for the Agentic Enterprise · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Enterprises never grant a newcomer full authority on day one — interns and traders climb a ladder of earned authority — yet agents typically receive full authority the moment they&#x27;re deployed. That…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/eric-aldana--earning-autonomy-governance-as-code.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Earning Autonomy: Governance as Code for the Agentic Enterprise · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Enterprises never grant a newcomer full authority on day one — interns and traders climb a ladder of earned authority — yet agents typically receive full authority the moment they&#x27;re deployed. That…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/eric-aldana--earning-autonomy-governance-as-code.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="eric-aldana--earning-autonomy-governance-as-code">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Earning Autonomy: Governance as Code for the Agentic Enterprise" data-title-zh="掙來的自主權:為 Agentic 企業打造 Governance as Code">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: AI Safety</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Earning Autonomy: Governance as Code for the Agentic Enterprise</span><span class="lang-zh">掙來的自主權:為 Agentic 企業打造 Governance as Code</span></h1>
+        <p class="dialog__speaker"><strong>Eric Aldana</strong> — Head of Product, Credo AI(代 Navrina Singh 上台 / standing in for Navrina Singh, CEO &amp; Founder, Credo AI)</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:56:24–01:02:20 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=l8GS08n-25Q&amp;t=3384s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:56:24</span><span class="lang-zh">從 00:56:24 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Enterprises never grant a newcomer full authority on day one — interns and traders climb a ladder of earned authority — yet agents typically receive full authority the moment they&#x27;re deployed. That&#x27;s a design error, and the fix is compiling the governance plan directly into the agent&#x27;s harness.</span><span class="lang-zh">企業從來不會讓一個新人第一天就擁有全部權限——實習工程師與交易員都是沿著「掙來的授權階梯」往上爬;但 agent 幾乎在部署當下就拿到全部權限,這是一個設計錯誤,而修法是把治理計畫直接編譯進 agent 的 harness。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>安全與治理是同一份工作</strong>:在不同圈子裡它們常被當成兩個學科,但核心任務相同——<strong>確保 AI 系統的行動符合其背後的人的意圖</strong>。而在大型企業裡,「意圖」從來不是一個人的決定,它是<strong>工程師、業務負責人、法遵與法務、把要求寫進採購合約的客戶、以及訂出有真實罰則的標準的監管與稽核方之間的協調問題</strong>。治理就是這些意圖被調和並被強制落到系統行為上的過程。</li>
+<li><strong>失落的階梯</strong>:企業讓人自主決策的權限是<strong>掙來的</strong>——實習工程師從有限的 production 權限開始,交易員要掙來自己的投資額度。這些階梯是企業花了多年試錯建起來的,<strong>但對 agent 而言這個階梯基本上還不存在</strong>。</li>
+<li><strong>can / may / act 三層心智模型</strong>:<strong>can</strong>(capability,模型與其工具技術上做得到什麼,靠 benchmark 衡量)、<strong>may</strong>(authority,在此時此地、以它能取用的資料與工具,它被<strong>允許</strong>做什麼——可界定範圍、可撤銷)、<strong>act</strong>(autonomy,它<strong>不需要等人</strong>就能行使的那部分授權)。</li>
+<li><strong>現有工具都只覆蓋 can</strong>:security 問的是「攻擊者能不能讓 agent 做壞事」,observability 問的是「它有沒有把工作做好」——兩者都在 can 這一層,<strong>沒有人在處理 may</strong>。</li>
+<li><strong>落點是 agent 的 harness</strong>:不是 evaluation harness,而是<strong>治理用的 harness</strong>——把治理計畫編成<strong>版本化、可設定的程式碼</strong>,以 skills、hooks、guidance、managed settings 的形式<strong>直接裝在 agent 執行的地方</strong>,而不是放在 MCP、API gateway 或 proxy 上。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>Credo AI 的視角:治理是誰的問題(約 00:56–00:58)</h4>
+<p>Credo AI 是 AI 治理平台,服務對象是<strong>大型企業與政府機關裡對 AI 負責的人</strong>——他強調這不只是建構 AI 的人,更是那些<strong>必須決定哪些 AI 系統夠安全、夠可信,可以建、可以買、可以在組織內部署</strong>的人。</p>
+<p>在 AI safety 這條軌道上,他先做了一個接合:</p>
+<blockquote>
+<p>看你混哪個圈子、用哪一本術語解碼環,safety 和 governance 常被當成分開的學科。但在核心上,我認為<strong>它們做的是同一份工作</strong>——確保 AI 系統的行動方式符合其背後那些人的意圖。</p>
+</blockquote>
+<p>而在大型企業裡,「意圖」本身就是一個<strong>協調問題</strong>,至少牽涉五方:</p>
+<ul>
+<li><strong>工程師</strong>——建這個系統的人</li>
+<li><strong>業務負責人</strong>——定義要解決什麼問題</li>
+<li><strong>法遵與法務</strong>——決定組織可以接受哪些行動</li>
+<li><strong>客戶</strong>——現在會把要求直接寫進採購合約</li>
+<li><strong>監管者與稽核者</strong>——寫出帶有真實罰則的標準</li>
+</ul>
+<blockquote>
+<p>所以<strong>治理,就是組織裡這些不同意圖被調和、然後被強制落實到 AI 系統實際行為上的方式</strong>。</p>
+</blockquote>
+<h4>缺失的那把梯子(約 00:58–00:59)</h4>
+<p>他的核心比喻:大型企業讓一個人在有後果的決策上自主行動時,<strong>那份權限是透過某種結構掙來的</strong>。</p>
+<ul>
+<li>每個實習工程師都<strong>從有限的 production 存取權開始</strong>,隨著資歷上升才逐步取得更多。</li>
+<li>投資公司的每個交易員,都必須<strong>掙來自己能投資多少的額度</strong>。</li>
+</ul>
+<p>這些<strong>掙來的授權階梯(ladders of earned authority)</strong>,是組織花了多年試錯才建立起來的。而:</p>
+<blockquote>
+<p>對 agent 來說,這個階梯<strong>在很大程度上還不存在</strong>。<strong>許多 agent 在部署的那一刻就拿到了完整權限——而這是一個設計錯誤</strong>,也是我今天想談的東西。</p>
+</blockquote>
+<p>一句話結論:</p>
+<blockquote>
+<p><strong>Capability 可能來自模型,但 autonomy 必須從企業那裡掙得。</strong></p>
+</blockquote>
+<h4>use case 這個治理單位被 agent 溶解了(約 00:59)</h4>
+<p>Credo AI 六年來出貨 AI 治理流程與工具,<strong>治理的單位一直是 use case</strong>——一個 AI 工具,加上它被部署進去的脈絡。例如「一個回答員工公司政策問題的 chatbot」:你可以在它周圍畫出一條非常清楚的邊界。</p>
+<p><strong>但 agent 把這條邊界溶解了。</strong></p>
+<blockquote>
+<p>對一個<strong>能自己規劃步驟</strong>的 agent 來說,什麼叫做一個 use case?它該有哪些 connector 的存取權?哪些資料來源?</p>
+</blockquote>
+<p>而<strong>當 use case 本身模糊掉,你用來治理它的參數也會跟著模糊掉</strong>。這個壓力逼出了新的心智模型。</p>
+<h4>can / may / act(約 00:59–01:00)</h4>
+<ul>
+<li><strong>can — capability</strong>:這個模型與它的工具<strong>技術上做得到</strong>什麼。<strong>Capability 是被 benchmark 出來的。</strong></li>
+<li><strong>may — authority</strong>:這個 agent 在<strong>此時此地</strong>、以它能取用的資料與工具,<strong>被允許</strong>做什麼。<strong>Authority 是被界定範圍、且可撤銷的(scoped and revocable)。</strong></li>
+<li><strong>act — autonomy</strong>:它<strong>不需要等一個人</strong>就能行使的那部分授權。</li>
+</ul>
+<p>在這個框架下,他下了那句關鍵論斷:</p>
+<blockquote>
+<p>Autonomy <strong>不只是模型的屬性</strong>。它是一種<strong>企業層級的許可,透過證據掙來</strong>。</p>
+</blockquote>
+<p>接著是這套框架真正的診斷價值——<strong>現有的工具堆疊全都停在 can 這一層</strong>:</p>
+<ul>
+<li><strong>Security</strong> 問的是:攻擊者能不能讓這個 agent 做壞事?</li>
+<li><strong>Observability</strong> 問的是:它有沒有把自己的工作做好?</li>
+</ul>
+<blockquote>
+<p>這些系統都是必要的,但<strong>它們講的都是 can 那一層</strong>——agent 能做什麼、做得好不好。<strong>它們沒有一個真正在處理 may。</strong></p>
+</blockquote>
+<h4>治理系統要做的三件事,以及落點:agent 的 harness(約 01:00–01:02)</h4>
+<p>一套 AI / agentic 治理系統要能:</p>
+<ol>
+<li><strong>Compose(組合)</strong>:吃進 AI 系統與其所在組織的完整脈絡,<strong>產出一份治理計畫</strong>——有哪些風險、要套哪些控制。</li>
+<li><strong>Conduct(執行)</strong>:把計畫實際跑起來,無論是透過 <strong>evaluation</strong> 還是 <strong>guardrail</strong>。</li>
+<li><strong>Enforce / 留存證據</strong>:把所有這些檢查<strong>留下紀錄</strong>。</li>
+</ol>
+<p>而 Credo AI 正在思考的落地方式,是<strong>直接透過 agent 的 harness</strong>——也就是<strong>坐在 agent 與它能碰到的系統之間的那段 runtime 程式碼</strong>。他特別澄清:</p>
+<blockquote>
+<p>這不是 evaluation harness,而是一個<strong>治理用的 harness(a governing one)</strong>。</p>
+</blockquote>
+<p>做法是把 compose 出來的治理計畫,<strong>嵌進一組版本化、可設定的程式碼</strong>,由 harness 強制執行。形式上是 <strong>skills、hooks、guidance、managed settings</strong>,而且<strong>直接安裝在 agent 執行的地方——不是 MCP、也不是 API gateway 或 proxy</strong>。</p>
+<p>他用一個<strong>被治理的 Claude Code session</strong> 當例子:</p>
+<ul>
+<li>agent 想讀取一個<strong>已核准的 repo</strong> → 系統<strong>放行</strong>。</li>
+<li>agent 想打開一個 <strong>credential store</strong> → <strong>設定直接擋下</strong>。</li>
+<li>出現一個<strong>風險超過門檻的相依套件</strong> → <strong>升級給 code owner 處理</strong>。</li>
+</ul>
+<p>而每一道檢查最終<strong>都必須被浮現出來</strong>,這也是透過同一份設定達成的。</p>
+<p>收尾回到那把梯子:</p>
+<blockquote>
+<p>我們說 agent 沒有的那把「掙得自主權」的梯子——<strong>這就是它</strong>。一個讓<strong>企業能集體決定 agent 可以做什麼、在 agent 行動的地方強制執行這些決定、並且保留證據</strong>的系統。</p>
+</blockquote>
+<h3>金句</h3>
+<blockquote>
+<p>"Capability might come from the model, but autonomy must be earned from the enterprise."(約 00:58)</p>
+</blockquote>
+<p>整場的主軸句,也是講題的展開。</p>
+<blockquote>
+<p>"Many agents receive full authority the moment they're deployed, and that is a design error."(約 00:58)</p>
+</blockquote>
+<p>把「權限給太多」從營運疏失重新定性為<strong>設計錯誤</strong>。</p>
+<blockquote>
+<p>"None of them are really addressing the <em>may</em> piece."(約 01:00)</p>
+</blockquote>
+<p>security 與 observability 的共同盲區診斷。</p>
+<blockquote>
+<p>"A system where the enterprise can collectively decide what the agents can do, enforce those decisions where the agents act, and keep the proof."(約 01:02)</p>
+</blockquote>
+<p>Governance as code 的一句話規格。</p></section>
+        <section class="lang-en"><blockquote>
+<p><strong>Speaker substitution</strong>: the agenda lists Credo AI founder and CEO <strong>Navrina Singh</strong>; she couldn't attend, so Head of Product <strong>Eric Aldana</strong> delivered the talk ("the first thing you should know about me is I am not Navrina Singh"). These notes record the speaker who actually presented.</p>
+</blockquote>
+<h3>TL;DR</h3>
+<ul>
+<li><strong>Safety and governance are the same job.</strong> Different circles treat them as separate disciplines, but both exist to make sure AI systems act the way the people behind them intend. In a large enterprise, intent is never one person's decision — it's a <strong>coordination problem</strong> across engineers, business owners, compliance and legal, customers writing requirements into procurement contracts, and regulators and auditors writing standards with real penalties.</li>
+<li><strong>The missing ladder.</strong> Enterprises grant autonomy on consequential decisions only through <strong>earned authority</strong>: intern engineers start with limited production access, traders earn their investment limits. Organizations built these ladders over years of trial and error — <strong>and for agents that ladder largely doesn't exist yet.</strong></li>
+<li><strong>The can / may / act model.</strong> <strong>Can</strong> is capability — what a model and its tools are technically able to do, established by benchmarks. <strong>May</strong> is authority — what the agent is permitted to do here and now with the data and tools it has, scoped and revocable. <strong>Act</strong> is autonomy — the authority it can exercise without waiting for a person.</li>
+<li><strong>Today's tooling only covers "can".</strong> Security asks whether an attacker can make an agent do something bad; observability asks whether it's doing its job well. Both live in the <em>can</em> layer. <strong>Nothing addresses <em>may</em>.</strong></li>
+<li><strong>The insertion point is the agent's harness</strong> — not an evaluation harness but a <strong>governing</strong> one: the governance plan compiled into versioned, configurable code as skills, hooks, guidance, and managed settings, <strong>installed directly where the agent runs</strong>, not in an MCP server, API gateway, or proxy.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Credo AI's vantage point: whose problem governance is (~00:56–00:58)</h4>
+<p>Credo AI is an AI governance platform whose users are <strong>the people at large enterprises and government agencies who are accountable for AI</strong> — not just those who build it, but those who have to decide which AI systems are safe and trustworthy to <strong>build, buy, and deploy</strong> across their organizations.</p>
+<p>Opening on an AI safety track, he made a joining move:</p>
+<blockquote>
+<p>Depending on what circles you run in and what jargon decoder ring you're using, safety and governance are often treated as separate disciplines. But at their core, I'd argue <strong>they share the same job</strong> — making sure AI systems act in a way that the people behind them intend.</p>
+</blockquote>
+<p>And in a large enterprise, intent itself is a <strong>coordination problem</strong> across at least five parties:</p>
+<ul>
+<li><strong>Engineers</strong> building the system</li>
+<li><strong>Business owners</strong> defining the problem being solved</li>
+<li><strong>Compliance and legal</strong> deciding what actions the organization is okay with</li>
+<li><strong>Customers</strong>, who now write requirements into procurement contracts</li>
+<li><strong>Regulators and auditors</strong>, writing standards that carry real penalties</li>
+</ul>
+<blockquote>
+<p>So governance is how all of these different intentions get reconciled and then enforced into how an AI system actually behaves.</p>
+</blockquote>
+<h4>The ladder that doesn't exist yet (~00:58–00:59)</h4>
+<p>His central analogy: when a large enterprise lets a human act autonomously on consequential decisions, <strong>that authority was earned through some structure.</strong></p>
+<ul>
+<li>Every intern engineer <strong>starts with limited production access</strong> and earns more as they rise.</li>
+<li>Every trader at an investment firm has to <strong>earn their limits</strong> on what they can invest.</li>
+</ul>
+<p>These <strong>ladders of earned authority</strong> were built over years of organizational trial and error. And:</p>
+<blockquote>
+<p>For agents, that ladder largely <strong>doesn't exist yet</strong>. Many agents <strong>receive full authority the moment they're deployed, and that is a design error</strong> — which is what I want to address today.</p>
+</blockquote>
+<p>Compressed to a line:</p>
+<blockquote>
+<p><strong>Capability might come from the model, but autonomy must be earned from the enterprise.</strong></p>
+</blockquote>
+<h4>Agents dissolved the use case as a unit of governance (~00:59)</h4>
+<p>Across six years of shipping AI governance processes and tools, <strong>the unit of governance was the use case</strong> — an AI tool plus the context it's deployed in. A chatbot that answers employees' questions about company policy, say: you can draw a very clear boundary around that.</p>
+<p><strong>Agents dissolve the boundary.</strong></p>
+<blockquote>
+<p>What <em>is</em> a use case for an agent that can <strong>plan its own steps</strong>? What connectors should it have access to? What data sources?</p>
+</blockquote>
+<p>And <strong>when the use case blurs, the parameters you use to govern it blur too.</strong> That pressure produced the new mental model.</p>
+<h4>Can / may / act (~00:59–01:00)</h4>
+<ul>
+<li><strong>Can — capability</strong>: what a model and its tools are <strong>technically able</strong> to do. <strong>Capability is benchmarked.</strong></li>
+<li><strong>May — authority</strong>: what the agent is <strong>permitted</strong> to do <strong>here and now</strong>, with the data and tools it has access to. <strong>Authority is scoped and revocable.</strong></li>
+<li><strong>Act — autonomy</strong>: the authority it can exercise <strong>without having to wait for a person</strong>.</li>
+</ul>
+<p>Within that framing came the load-bearing claim:</p>
+<blockquote>
+<p>Autonomy is <strong>not just a model property</strong>. It is an <strong>enterprise permission earned through evidence</strong>.</p>
+</blockquote>
+<p>And then the framework's real diagnostic payoff — <strong>the existing tooling stack all stops at <em>can</em></strong>:</p>
+<ul>
+<li><strong>Security</strong> asks whether an attacker can make an agent do something bad.</li>
+<li><strong>Observability</strong> asks whether it can do its job well.</li>
+</ul>
+<blockquote>
+<p>These systems are essential, but <strong>they all speak to that <em>can</em> layer</strong> — what the agent is able to do and whether it's doing it well. <strong>None of them are really addressing the <em>may</em> piece.</strong></p>
+</blockquote>
+<h4>Three jobs for a governance system, landing in the harness (~01:00–01:02)</h4>
+<p>An AI and agentic governance system needs to do three things:</p>
+<ol>
+<li><strong>Compose</strong> — take the full context of the AI system and its organization and <strong>create a governance plan</strong>: which risks apply and which controls need to be applied.</li>
+<li><strong>Conduct</strong> — execute that plan, whether through <strong>evaluations</strong> or <strong>guardrails</strong>.</li>
+<li><strong>Enforce and keep the record</strong> of all those checks.</li>
+</ol>
+<p>The way Credo AI is thinking about landing this is <strong>directly through the agent's harness</strong> — the actual runtime code that sits between the agent and the systems it can touch. He was explicit about the distinction:</p>
+<blockquote>
+<p>This isn't an evaluation harness — instead it's a <strong>governing</strong> one.</p>
+</blockquote>
+<p>Take the composed governance plan and embed it into a <strong>versioned, configurable set of code that a harness can enforce</strong>: <strong>skills, hooks, guidance, managed settings</strong>, installed <strong>directly where the agent runs — not something like an MCP or an API gateway or proxy.</strong></p>
+<p>His worked example is a <strong>governed Claude Code session</strong>:</p>
+<ul>
+<li>The agent tries to read an <strong>approved repo</strong> → the system <strong>allows</strong> it.</li>
+<li>It tries to open a <strong>credential store</strong> → the <strong>configuration blocks</strong> it.</li>
+<li>A <strong>dependency above a risk threshold</strong> appears → this gets <strong>escalated to the code owner</strong>.</li>
+</ul>
+<p>And every one of these checks <strong>needs to be surfaced</strong>, which the same configuration handles.</p>
+<p>The close returns to the ladder:</p>
+<blockquote>
+<p>This ladder for earning autonomy that we said didn't exist for agents — <strong>this is it.</strong> A system where the <strong>enterprise can collectively decide what the agents can do, enforce those decisions where the agents act, and keep the proof.</strong></p>
+</blockquote>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Capability might come from the model, but autonomy must be earned from the enterprise." (~00:58)</p>
+</blockquote>
+<p>The spine of the talk, and the unpacking of its title.</p>
+<blockquote>
+<p>"Many agents receive full authority the moment they're deployed, and that is a design error." (~00:58)</p>
+</blockquote>
+<p>Reclassifies over-permissioning from an operational slip to a <strong>design</strong> error.</p>
+<blockquote>
+<p>"None of them are really addressing the <em>may</em> piece." (~01:00)</p>
+</blockquote>
+<p>The shared blind spot of security and observability tooling.</p>
+<blockquote>
+<p>"A system where the enterprise can collectively decide what the agents can do, enforce those decisions where the agents act, and keep the proof." (~01:02)</p>
+</blockquote>
+<p>Governance-as-code, specified in one sentence.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Credo AI</td>
+<td>AI 治理平台,服務大型企業與政府機關中對 AI 負責的角色</td>
+<td>AI governance platform for those accountable for AI in large enterprises and government agencies</td>
+<td>講者稱已出貨 AI 治理流程與工具約六年</td>
+</tr>
+<tr>
+<td>can / may / act</td>
+<td>治理 agent 的三層心智模型:capability / authority / autonomy</td>
+<td>Three-layer mental model for governing agents: capability, authority, autonomy</td>
+<td>講者提出的核心框架</td>
+</tr>
+<tr>
+<td>compose / conduct / enforce</td>
+<td>治理系統要做的三件事:產出治理計畫、執行、留存證據</td>
+<td>The three jobs of a governance system: produce a plan, execute it, keep the record</td>
+<td>逐字稿在此處破碎,第三項名稱待確認</td>
+</tr>
+<tr>
+<td>Governing harness</td>
+<td>把治理計畫編成版本化程式碼,以 skills / hooks / guidance / managed settings 裝在 agent 執行處</td>
+<td>Governance plan compiled into versioned code as skills, hooks, guidance, and managed settings at the agent's runtime</td>
+<td>明確排除 MCP、API gateway、proxy 作為落點</td>
+</tr>
+<tr>
+<td>被治理的 Claude Code session</td>
+<td>示範案例:核准 repo 放行、credential store 阻擋、高風險相依升級給 code owner</td>
+<td>Worked example: approved repo allowed, credential store blocked, risky dependency escalated to the code owner</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Credto Aai / Credo AAI / CTOAI</td>
+<td>Credo AI</td>
+</tr>
+<tr>
+<td>Nina Singh / Deina</td>
+<td>Navrina Singh</td>
+</tr>
+<tr>
+<td>governis code</td>
+<td>governance as code</td>
+</tr>
+<tr>
+<td>cloud code session</td>
+<td>Claude Code session</td>
+</tr>
+<tr>
+<td>credential score</td>
+<td>credential store</td>
+</tr>
+<tr>
+<td>business owner ers</td>
+<td>business owners</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>治理系統三件事的第三項名稱</strong>:逐字稿在此嚴重破碎(「keep a record of all of those different enforce」),compose 與 conduct 明確,第三項推測為 enforce,需核對投影片。/ The captions break down here; compose and conduct are clear, the third is inferred as "enforce" and needs the slides.</li>
+<li><strong>「skills、hooks、guidance、managed settings」</strong>:這些名稱與 Claude Code 的既有機制高度吻合,但講者是否指 Credo AI 自有的抽象層、還是直接沿用 harness 原生機制,台上未說明。/ These names map closely onto existing Claude Code mechanisms; whether he meant Credo AI's own abstraction or the harness's native primitives was not stated.</li>
+<li><strong>產品名稱</strong>:講者全程未點名任何 Credo AI 產品或功能的正式名稱,只描述方法。/ No Credo AI product or feature name was given on stage.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/eric-aldana--earning-autonomy-governance-as-code.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

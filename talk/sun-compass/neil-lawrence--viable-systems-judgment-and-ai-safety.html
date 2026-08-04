@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Viable Systems, Judgment, and AI Safety · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Computers do accounting extremely well and accountability not at all — they can&#x27;t be jailed, embarrassed, or fired. Separate the accounts from the accountability and you strand a human who doesn&#x27;t …" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/neil-lawrence--viable-systems-judgment-and-ai-safety.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Viable Systems, Judgment, and AI Safety · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Computers do accounting extremely well and accountability not at all — they can&#x27;t be jailed, embarrassed, or fired. Separate the accounts from the accountability and you strand a human who doesn&#x27;t …" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/neil-lawrence--viable-systems-judgment-and-ai-safety.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="neil-lawrence--viable-systems-judgment-and-ai-safety">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Viable Systems, Judgment, and AI Safety" data-title-zh="可存續的系統、判斷力,與 AI 安全">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: AI Safety</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Viable Systems, Judgment, and AI Safety</span><span class="lang-zh">可存續的系統、判斷力,與 AI 安全</span></h1>
+        <p class="dialog__speaker"><strong>Neil Lawrence</strong> — Chief Scientist and Co-founder, Trent AI</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:45:19–00:50:09 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=l8GS08n-25Q&amp;t=2719s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:45:19</span><span class="lang-zh">從 00:45:19 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Computers do accounting extremely well and accountability not at all — they can&#x27;t be jailed, embarrassed, or fired. Separate the accounts from the accountability and you strand a human who doesn&#x27;t understand the accounts but still has to sign them off, which is exactly where agentic AI is stalling in enterprises.</span><span class="lang-zh">電腦很會做帳(accounting),但完全不會負責(accountability)——它關不進監獄、不會難堪、不會丟工作;把「帳」和「責任」分開,你就把人推進一個「看不懂帳卻要簽字」的位置,而這正是 agentic AI 在企業現場真正卡住的地方。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>現場的 AI safety 其實是問責問題</strong>:不是 Lovedeep 講的那種「可稽核」意義上的 accountability,而是<strong>有人要站出來說「這是我簽的,我負責」</strong>。而且這個壓力不只來自 EU AI Act,更來自<strong>不願拿自己事業去賭一個他們看不懂的 agent 的企業客戶</strong>。</li>
+<li><strong>Good Regulator Theorem 是雙向的</strong>:1970 年 Conant 與 Ashby 的定理說,<strong>要委派權力,你必須擁有被委派對象的良好模型</strong>;反過來也一樣,<strong>被委派者也必須擁有委派者的良好模型</strong>,才知道什麼時候該把問題浮上來。若你把權力委派給一個大到你根本不理解它會怎麼解題的模型,你就完了。</li>
+<li><strong>Agentic debt</strong>:把這種「沒有判斷力的權力下放」寫進公司的工作流系統,就是在<strong>囤積下游的麻煩</strong>——你不再理解自己的系統怎麼運作。Trent 的做法是反過來:<strong>不取代工程師,而是支援那些真正要負責的資安工程師</strong>。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>Accounting 不等於 Accountability(約 00:46–00:47)</h4>
+<p>Lawrence 一開場先鋪了 Trent AI 橫跨美歐的定位(他自己在紐澤西出生、住在英國),然後直接切進他在客戶端看到的真相:<strong>AI safety 在地面上長什麼樣子?它是一個問責問題。</strong></p>
+<blockquote>
+<p>Accounting is in the numbers. Accountability is in the human authority and the judgment.</p>
+</blockquote>
+<p>而問題在於:</p>
+<blockquote>
+<p>電腦把 accounting 做得非常好,但它們<strong>不會 accountability</strong>。它們<strong>不是社會意義上可問責的</strong>:它們<strong>不能被送進監獄、不會難堪、不會丟掉工作</strong>。而我們的社會完全建立在那種形式的問責之上。</p>
+</blockquote>
+<p>由此推出他認為最關鍵的一道裂縫:</p>
+<blockquote>
+<p>如果你把<strong>人類的帳(accounts)</strong>和<strong>問責(accountability)</strong>分開,你就把人放進一個<strong>看不懂帳、卻要為問責站台</strong>的處境。<strong>這就是我們必須橋接的鴻溝。</strong></p>
+</blockquote>
+<p>他也點出這個壓力的來源比法規更廣:「不只來自 EU AI Act,更是來自客戶,來自企業客戶——那些不願意拿自己的生意去賭一個他們不理解的 AI agent 的人。」而且他對未來的判斷相當篤定:「我不知道十年後的世界會是什麼樣子,但我可以告訴你什麼<strong>不會</strong>消失」——問責不會消失。</p>
+<h4>Good Regulator Theorem:委派權力的前提(約 00:47–00:48)</h4>
+<p>現況等於<strong>在沒有判斷力的情況下下放權力(devolve authority without judgment)</strong>。他搬出 1970 年 Roger Conant 與 Ross Ashby 的 <strong>Good Regulator Theorem</strong> 來說明為什麼這行不通:</p>
+<blockquote>
+<p>如果我要委派權力,<strong>我必須擁有那個被委派對象的良好模型</strong>。</p>
+</blockquote>
+<p>他的例子:如果我叫實習生去幫我泡咖啡,我必須有把握這位實習生會用合理的方式做這件事——<strong>他不會跑去駭進 NSA 來取得最佳咖啡配方,他就只是去泡一杯咖啡。</strong></p>
+<p>而且定理是<strong>雙向</strong>的:<strong>被委派者也必須擁有委派者的良好模型</strong>,這樣他才知道<strong>什麼時候該把問題浮上來</strong>——「咖啡機沒咖啡了,我不知道怎麼處理」之類的。</p>
+<p>放到 agentic AI:</p>
+<blockquote>
+<p>如果你把權力委派給一個大到、龐雜到你根本不理解它會怎麼解決這個問題的模型,<strong>你就完了(you're stuffed)。</strong></p>
+</blockquote>
+<p>他強調這不是理論擔憂,而是他們實際看到的問題:<strong>你不能用那種方式委派權力。</strong></p>
+<h4>Agentic debt,以及 Trent 的做法(約 00:48–00:50)</h4>
+<p>避開這個處境的理由是它會製造 <strong>agentic debt</strong>:</p>
+<blockquote>
+<p>如果你把這個東西寫進公司的工作流系統裡,你就是在<strong>囤積下游的麻煩</strong>。你不再理解自己的系統是怎麼運作的。</p>
+</blockquote>
+<p>Trent 的切入點是資安——他們創立時就判斷這會是這個問題的<strong>第一戰線</strong>。而他們進到企業後聽到的話很一致:</p>
+<blockquote>
+<p>我們不要你替我們做資安。我們要你<strong>支援我們的資安工程師</strong>做他們的工作,因為他們正在被淹沒。</p>
+</blockquote>
+<p>(他順帶舉了 Apple 關掉 bug bounty 制度作為工程師負荷的例證。)關鍵是:<strong>那些資安工程師,才是在企業裡真正負責的人。</strong></p>
+<p>所以他劃出一條清楚的界線:</p>
+<ul>
+<li><strong>可以做的</strong>:用 agentic AI 系統去<strong>支援</strong>資安工程師。</li>
+<li><strong>絕對不能做的</strong>:走進去說「這是一套你沒看過、也不理解的系統,現在請你簽字負責、承擔部署責任」——<strong>那是徹底的災難。</strong></li>
+</ul>
+<p>最後他把開場那個「歐洲 vs 美國」的對比收回來:要橋接「everything everywhere all at once」與「not here, not now」這兩個世界,方法是<strong>跟客戶對話</strong>;而他看到 agentic AI 現在最大的問題之一,就是<strong>這種對話遠遠不夠</strong>。</p>
+<blockquote>
+<p>所以當我們部署的時候,要記得:<strong>accountability is king。</strong></p>
+</blockquote>
+<h3>金句</h3>
+<blockquote>
+<p>"Accounting is in the numbers. Accountability is in the human authority and the judgment."(約 00:46)</p>
+</blockquote>
+<p>他自己在用的那句座右銘,也是整場的軸。</p>
+<blockquote>
+<p>"They are not socially accountable. They can't be sent to jail. They can't be embarrassed. They can't lose their job. And our society is entirely based on that form of accountability."(約 00:47)</p>
+</blockquote>
+<p>為什麼「讓 AI 負責」在字面上就不成立。</p>
+<blockquote>
+<p>"If you're delegating authority to a model that is so large and so big that you don't understand how it's going to solve the problem, you're stuffed."(約 00:48)</p>
+</blockquote>
+<p>Good Regulator Theorem 用在前沿模型上的直接推論。</p>
+<blockquote>
+<p>"Accountability is king."(約 00:50)</p>
+</blockquote>
+<p>全場最後一句。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>On the ground, AI safety is an accountability problem</strong> — not accountability in the auditability sense Lovedeep Gondara used, but in the sense that <strong>a person has to stand up and say "I'm signing that off, that's my responsibility."</strong> The pressure isn't only the EU AI Act; it comes from enterprise customers unwilling to risk their business on agents they don't understand.</li>
+<li><strong>The Good Regulator Theorem cuts both ways.</strong> Conant and Ashby (1970): to delegate authority you must hold <strong>a good model of the entity you're delegating to</strong> — and the delegate must hold a good model of the delegator, so they know when to surface problems. Delegate to a model so large you don't understand how it will solve the problem and, in his words, you're stuffed.</li>
+<li><strong>Agentic debt</strong>: wire judgment-free delegation into company workflow systems and you are <strong>storing up downstream trouble</strong> — you no longer understand how your own systems operate. Trent's answer is to invert it: don't replace engineers, <strong>support the security engineers who actually carry the accountability</strong>.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Accounting is not accountability (~00:46–00:47)</h4>
+<p>After setting up Trent AI as a company straddling the US and Europe (he was born in New Jersey and lives in the UK), Lawrence went straight at what he sees in customer engagements: <strong>what does AI safety look like on the ground? It's an accountability problem.</strong></p>
+<blockquote>
+<p>Accounting is in the numbers. Accountability is in the human authority and the judgment.</p>
+</blockquote>
+<p>And the trouble is:</p>
+<blockquote>
+<p>Computers do accounting very, very well, but they don't do accountability well. They are <strong>not socially accountable</strong>. They <strong>can't be sent to jail. They can't be embarrassed. They can't lose their job.</strong> And our society is entirely based on that form of accountability.</p>
+</blockquote>
+<p>Which produces the gap he cares about:</p>
+<blockquote>
+<p>If you separate the human accounts from the accountability, you put the human in a situation where <strong>they don't understand the accounts and they can't stand up for the accountability</strong>. And that's the gap we've got to bridge.</p>
+</blockquote>
+<p>He was equally clear that this pressure is broader than regulation: it isn't just the EU AI Act, "that's coming from customers, from enterprise customers, people who are not willing to risk their business on the back of AI agents they don't understand." And on the ten-year horizon: "I don't know what the world's going to be like in 10 years' time … but I can tell you what's <em>not</em> going away."</p>
+<h4>The Good Regulator Theorem: the precondition for delegating (~00:47–00:48)</h4>
+<p>The status quo amounts to <strong>devolving authority without judgment</strong>. He reached for Roger Conant and Ross Ashby's 1970 <strong>Good Regulator Theorem</strong> to explain why that fails:</p>
+<blockquote>
+<p>If I'm going to delegate authority, <strong>I have to have a good model of the entity I'm delegating authority to.</strong></p>
+</blockquote>
+<p>His illustration: if I tell an intern to make me coffee, I need a good sense that they'll do it sensibly — <strong>that they won't go away and hack the NSA to get the optimal coffee recipe, they'll just make me a coffee.</strong></p>
+<p>And it runs in both directions: <strong>the delegate must have a good model of who's delegating to them</strong>, so they know when to surface a problem — the machine's run out of coffee, I don't know how to deal with that.</p>
+<p>Applied to agentic AI:</p>
+<blockquote>
+<p>If you're delegating authority to a model that is so large and so big that you don't understand how it's going to solve the problem, <strong>you're stuffed.</strong></p>
+</blockquote>
+<p>Not a theoretical worry, he stressed, but what they genuinely see arising: <strong>you cannot delegate authority that way.</strong></p>
+<h4>Agentic debt, and what Trent actually builds (~00:48–00:50)</h4>
+<p>The reason to avoid that situation is that it creates <strong>agentic debt</strong>:</p>
+<blockquote>
+<p>If you build that into your workflow systems in companies, <strong>you are storing up downstream trouble.</strong> You don't understand how your own systems are operating.</p>
+</blockquote>
+<p>Trent's entry point is cybersecurity — when they set up, their first read was that this would be the <strong>first front</strong> of the problem. What they hear inside companies is consistent:</p>
+<blockquote>
+<p>We don't want you to do our cybersecurity for us. We want you to <strong>support our security engineers</strong> in doing their job, because they're becoming overwhelmed.</p>
+</blockquote>
+<p>(He offered Apple switching off its bug bounty system as evidence of that overload.) The point being: <strong>those security engineers are the people who are accountable within the business.</strong></p>
+<p>So the line he draws is sharp:</p>
+<ul>
+<li><strong>What you can do</strong>: use agentic AI systems to <em>support</em> security engineers.</li>
+<li><strong>What you absolutely cannot do</strong>: walk in and say "here's a system you don't understand and have never seen before, and you now have to sign it off and take responsibility for deploying it." <strong>That's absolutely disastrous.</strong></li>
+</ul>
+<p>He closed by returning to the Europe/US contrast he opened with: the way to bridge "everything everywhere all at once" and "not here, not now" is <strong>by talking to customers</strong> — and one of the challenges he sees in agentic AI is that <strong>there isn't enough of that.</strong></p>
+<blockquote>
+<p>So when we deploy, we have to remember: <strong>accountability is king.</strong></p>
+</blockquote>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Accounting is in the numbers. Accountability is in the human authority and the judgment." (~00:46)</p>
+</blockquote>
+<p>The line he says he sticks with, and the axis of the talk.</p>
+<blockquote>
+<p>"They are not socially accountable. They can't be sent to jail. They can't be embarrassed. They can't lose their job. And our society is entirely based on that form of accountability." (~00:47)</p>
+</blockquote>
+<p>Why "let the AI be accountable" fails at the level of definition.</p>
+<blockquote>
+<p>"If you're delegating authority to a model that is so large and so big that you don't understand how it's going to solve the problem, you're stuffed." (~00:48)</p>
+</blockquote>
+<p>The Good Regulator Theorem, applied directly to frontier models.</p>
+<blockquote>
+<p>"Accountability is king." (~00:50)</p>
+</blockquote>
+<p>The last line of the talk.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Good Regulator Theorem</td>
+<td>Conant 與 Ashby 1970 年的定理:要調節/委派一個系統,必須擁有該系統的良好模型</td>
+<td>Conant &amp; Ashby (1970): to regulate or delegate to a system you must hold a good model of it</td>
+<td>講者強調它是<strong>雙向</strong>的,委派方與被委派方都需要</td>
+</tr>
+<tr>
+<td>Agentic debt</td>
+<td>講者提出的概念:把「無判斷力的權力下放」寫進工作流,等於囤積下游技術債</td>
+<td>His coinage: wiring judgment-free delegation into workflows stores up downstream debt</td>
+<td>對照 technical debt</td>
+</tr>
+<tr>
+<td>Trent AI</td>
+<td>講者共同創辦的公司,以資安為第一戰線,支援(而非取代)資安工程師</td>
+<td>His company; cybersecurity as the first front, supporting rather than replacing security engineers</td>
+<td>議程職稱為 Chief Scientist and Co-founder</td>
+</tr>
+<tr>
+<td>EU AI Act</td>
+<td>問責壓力的來源之一,但講者強調客戶壓力更大</td>
+<td>One source of accountability pressure — though he stressed customer pressure matters more</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trend AI / Tren</td>
+<td>Trent AI</td>
+</tr>
+<tr>
+<td>Love Deep</td>
+<td>Lovedeep (Gondara)</td>
+</tr>
+<tr>
+<td>George uh Roger Conant</td>
+<td>Roger C. Conant</td>
+</tr>
+<tr>
+<td>Ross Ashby</td>
+<td>W. Ross Ashby</td>
+</tr>
+<tr>
+<td>Aentic AI / a Gentic AI</td>
+<td>agentic AI</td>
+</tr>
+<tr>
+<td>EUAI act</td>
+<td>EU AI Act</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>「Apple 關掉 bug bounty 制度」</strong>:講者以此作為資安工程師負荷過重的例證,但這項說法未在本次筆記中查證,建議核實。/ He cited Apple switching off its bug bounty system as evidence of engineer overload; this claim was not independently verified here.</li>
+<li><strong>開場的歐美對比</strong>:自動字幕把 "everything everywhere and all at once" 與 "something somewhere but not right now" 的歸屬弄混,無法確定哪句對應美國、哪句對應歐洲(依語意最可能是美國 = everything everywhere all at once,歐洲 = not here, not now)。/ The captions garble which side of the Atlantic each phrase belongs to.</li>
+<li><strong>「viable systems」</strong>:講題出現的 viable systems(可能指 Stafford Beer 的 Viable System Model)在這段逐字稿中未被明確展開。/ The "viable systems" of the title — possibly Stafford Beer's Viable System Model — was not explicitly developed in the delivered talk.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/neil-lawrence--viable-systems-judgment-and-ai-safety.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

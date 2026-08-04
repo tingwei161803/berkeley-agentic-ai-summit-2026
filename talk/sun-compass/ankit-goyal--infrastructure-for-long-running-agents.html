@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Infrastructure for Long-Running Agents · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="LinkedIn treats an agent as just another job on its ML platform, but because agent-written code is untrusted and agents launch hundreds of jobs in minutes, the infrastructure had to be rethought al…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/ankit-goyal--infrastructure-for-long-running-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Infrastructure for Long-Running Agents · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="LinkedIn treats an agent as just another job on its ML platform, but because agent-written code is untrusted and agents launch hundreds of jobs in minutes, the infrastructure had to be rethought al…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/ankit-goyal--infrastructure-for-long-running-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="ankit-goyal--infrastructure-for-long-running-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Infrastructure for Long-Running Agents" data-title-zh="長時間執行 Agent 的基礎設施">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Enterprise AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Infrastructure for Long-Running Agents</span><span class="lang-zh">長時間執行 Agent 的基礎設施</span></h1>
+        <p class="dialog__speaker"><strong>Ankit Goyal</strong> — Principal Staff Software Engineer, LinkedIn</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 01:08:37–01:14:30 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=4117s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:08:37</span><span class="lang-zh">從 01:08:37 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">LinkedIn treats an agent as just another job on its ML platform, but because agent-written code is untrusted and agents launch hundreds of jobs in minutes, the infrastructure had to be rethought along three axes — UX, compute, and trust — and experiment volume doubled in six months.</span><span class="lang-zh">LinkedIn 把 agent 當成「跟其他任務一樣的一種任務」放進 ML 平台,但因為 agent 產生的程式碼不可信、且會在幾分鐘內丟出上百個 job,平台在 UX、compute、trust 三個面向都被迫重新設計——結果是六個月內實驗量成長 100%。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>三個已在生產環境創造價值的 agent</strong>:把 400+ 個 TensorFlow 模型遷移到 PyTorch 的 model generation agent、掃描叢集低使用率作業並自動最佳化的 performance optimization agent,以及工程師只要定義目標就會自主做架構搜尋與超參數調校的 autonomous research agent。</li>
+<li><strong>Agent 進來之後,基礎設施的三個位移</strong>:UX(重點從「好用的抽象」轉向「設計 agentic workflow 與護欄」,因為程式碼已由 LLM 產生)、compute(從少量長跑 job 變成短時間內上百個 job,幾分鐘的排程延遲不再能被攤平)、trust(人寫的程式碼預設可信,agent 寫的不行)。</li>
+<li><strong>對抗長程漂移的做法是 harness-as-code</strong>:每個階段用程式碼定義各自的職責,<strong>scorer 與 evaluator 也一律寫成程式碼</strong>,避免 agent reward hacking 或偏離路徑;再加上 checkpoint / restore 讓 agent 自行從失敗中復原。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>生產中的三個 agent 與它們共用的生命週期(約 01:09–01:10)</h4>
+<p>LinkedIn AI Platforms 團隊目前有三類已產出實質商業價值的 agent:</p>
+<ol>
+<li><strong>Model generation agent</strong>:LinkedIn 生產環境跑著 400+ 個以 TensorFlow 撰寫的模型,團隊要把它們遷移到 PyTorch。難的地方不是翻譯程式碼,而是<strong>確保新模型的表現不低於既有模型</strong>——那些線上模型往往是工程師花數月甚至數年人工調校出來的。</li>
+<li><strong>Performance optimization agent</strong>:在叢集裡巡找低使用率的作業,做 profiling 與 benchmarking,搭配團隊多年累積的知識庫做最佳化,再對各團隊發出 review request。</li>
+<li><strong>Autonomous research agent</strong>:建立在前兩者之上;工程師只需定義目標,agent 就自主執行架構掃描或超參數調校來最佳化該目標。</li>
+</ol>
+<p>三者共用同一套生命週期:工程師寫下目標 → agent 形成假設 → 生成程式碼 → 在 GPU 上執行 → 評估結果 → 回頭迭代。<strong>這個迴圈會連續自主跑上數小時甚至數天,期間沒有人介入。</strong></p>
+<h4>三個基礎設施位移:UX、compute、trust(約 01:10–01:12)</h4>
+<ul>
+<li><strong>UX</strong>:過去平台的重心是提供豐富抽象,讓工程師好寫 ML pipeline、訓練迴圈與資料存取。這些仍然重要,但那些程式碼<strong>今天是 LLM 寫的</strong>;使用者的注意力已經轉移到「怎麼組 agentic workflow」與「怎麼設護欄讓 agent 不偏離原本任務」。</li>
+<li><strong>Compute</strong>:工程師過去只會啟動有限數量的長跑 job,幾分鐘的排程延遲可以被整段訓練時間攤平。<strong>Agent 卻能在極短時間內丟出上百個 job</strong>,長度從幾分鐘到數天不等。</li>
+<li><strong>Trust</strong>:人類工程師寫的程式碼本質上是被信任的;<strong>agent 生成的程式碼必須在高度受限的環境中執行</strong>。</li>
+</ul>
+<h4>平台設計:agent 就是一種任務,只是不可信(約 01:12–01:13)</h4>
+<p>在 LinkedIn 的基礎設施裡,<strong>agent 就是一個普通任務</strong>——使用者撰寫 agent 的方式與撰寫 PyTorch / TensorFlow job 相同。差別只有一點:agent 的程式碼不可信,所以它跑在高度受限的環境裡——<strong>沒有 egress、拿不到憑證</strong>,所有通訊都經由 proxy、並以該 agent 自己的身分進行。</p>
+<p>針對長程執行的漂移問題,他們採用 <strong>harness-as-code</strong>:自然語言 prompt 在長時間執行下表現不佳,所以每個階段都用程式碼定義、各有明確職責;更關鍵的是 <strong>scorer 與 evaluator 也定義在程式碼裡</strong>,避免 agent reward hacking 或偏離路徑。周邊還有一整套任務與 memory 管理生態(同型 / 異型 agent 之間如何交換學到的東西),以及 human-in-the-loop 互動用的通知機制。因為 agent 會跑很久,他們也做了<strong>穩健的 checkpoint 與 restore</strong>,讓 agent 能自主從失敗中復原,不需人介入。</p>
+<p>上百個 job 同時湧入也壓垮了原本充滿抽象層的 control plane——抽象的成本在 agent 規模下會累加。於是他們自建了一套 control plane,<strong>維持一池溫熱的 GPU pod</strong> 以提供極低延遲的 job 啟動;同樣地,這池 pod 也是高度受限的:無 egress、資料唯讀、以非特權模式執行。</p>
+<h4>成效與下一步(約 01:13–01:14)</h4>
+<ul>
+<li>叢集中的<strong>實驗數量在過去 6 個月成長 100%</strong>。</li>
+<li>持續投資 evaluation,好讓實驗真的能轉成生產價值。</li>
+<li>正在投入<strong>專用任務的 SLM(小型語言模型)</strong>,以及 <strong>GPU 共享技術</strong>——GPU 越做越大,但不是所有任務都大到能吃滿一顆 GPU。</li>
+</ul>
+<p>結語:agent 的意義是「take more shots at the goal」——射門次數越多,模型改進越多,最終轉化成更好的會員體驗與商業價值。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"The agent code is untrusted. So it runs in a highly restricted environment like no egress, no access to credentials, and all the communication goes via our proxies using the agent's own identity."(約 01:12)</p>
+</blockquote>
+<p>「Agent 就是普通任務」這句話唯一的例外,就是信任邊界。</p>
+<blockquote>
+<p>"The goal with agents for us is to take more shots at the goal."(約 01:14)</p>
+</blockquote>
+<p>不是取代工程師,而是把實驗吞吐量拉高一個量級。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Three agents already delivering production value</strong>: a model generation agent migrating 400+ production TensorFlow models to PyTorch; a performance optimization agent that hunts low-utilization jobs in the cluster and optimizes them; and an autonomous research agent where an engineer defines an objective and the agent runs architecture sweeps and hyperparameter tuning on its own.</li>
+<li><strong>Agents forced three infrastructure shifts</strong>: UX (from rich authoring abstractions toward designing agentic workflows and guardrails, since the code itself is now LLM-written), compute (from a handful of long-running jobs to hundreds launched within minutes, where scheduling latency no longer amortizes), and trust (human code is trusted by default; agent code is not).</li>
+<li><strong>Harness-as-code is their answer to long-horizon drift</strong>: every stage is defined in code with its own responsibilities, and crucially <strong>the scorers and evaluators are code too</strong>, so agents can't reward-hack or wander off — backed by checkpoint/restore so agents recover from failures without a human.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Three production agents and their shared lifecycle (~01:09–01:10)</h4>
+<p>LinkedIn's AI Platforms team runs three classes of agent that have already delivered significant business value:</p>
+<ol>
+<li><strong>Model generation.</strong> LinkedIn runs 400+ production models written in TensorFlow and wants them on PyTorch. The hard part isn't translation — it's <strong>guaranteeing the generated models perform on par with or better than what's deployed</strong>, given those deployed models were hand-tuned by engineers over months or years.</li>
+<li><strong>Performance optimization.</strong> An agent that scans the cluster for low-utilization jobs, profiles and benchmarks them, optimizes them against a knowledge base the team accumulated over years, and files review requests to the owning teams.</li>
+<li><strong>Autonomous research.</strong> Built on top of the other two: an engineer defines an objective, and the agent autonomously runs architecture sweeps or hyperparameter tuning against it.</li>
+</ol>
+<p>All three share a lifecycle: engineer states an objective → agent forms a hypothesis → generates code → runs it on GPUs → evaluates the outcome → iterates. <strong>This loop runs continuously and autonomously for hours or even days with no human intervention.</strong></p>
+<h4>Three shifts: UX, compute, trust (~01:10–01:12)</h4>
+<ul>
+<li><strong>UX.</strong> The platform historically invested in rich abstractions so engineers could write ML pipelines, training loops, and data access easily. Those still matter, but <strong>that code is now written by an LLM</strong>; users' attention has shifted to composing agentic workflows and setting guardrails so agents don't deviate from the original task.</li>
+<li><strong>Compute.</strong> Engineers used to launch a limited number of long-running jobs, where a couple of minutes of scheduling delay amortized over the training run. <strong>Agents launch hundreds of jobs in a very short window</strong>, ranging from minutes to days in length.</li>
+<li><strong>Trust.</strong> Code written by human engineers is inherently trusted; <strong>agent-generated code needs a very constrained environment</strong>.</li>
+</ul>
+<h4>The platform: an agent is just a job — an untrusted one (~01:12–01:13)</h4>
+<p>In their infrastructure, <strong>an agent is just like any other task</strong> — users write agents the same way they'd write a PyTorch or TensorFlow job. The one difference is trust: agent code runs in a highly restricted environment with <strong>no egress and no access to credentials</strong>, with all communication routed through proxies under the agent's own identity.</p>
+<p>Against long-horizon drift they use a <strong>harness-as-code</strong> approach: natural-language prompts don't hold up when agents run for long periods, so each stage is defined in code with its own responsibilities — and more importantly, <strong>the scorers and evaluators are defined in code as well</strong>, so agents can't reward-hack or diverge from the intended path. Around that sits an ecosystem for task and memory management (how agents share learnings with other agents of the same or different type) plus notifications for human-in-the-loop interactions. Because these agents run for a long time, they also built robust <strong>checkpointing and restore</strong> so agents autonomously recover from failures.</p>
+<p>The volume of jobs also became a bottleneck in the control plane, which had been designed with a lot of abstraction — and abstraction costs add up once agents start launching many jobs. So they built a custom control plane maintaining a <strong>warm pool of GPU pods</strong> for very low-latency job launches. That pool is equally locked down: no egress, read-only data access, running fully unprivileged.</p>
+<h4>Impact and what's next (~01:13–01:14)</h4>
+<ul>
+<li><strong>The number of experiments in the cluster grew 100% over the last six months.</strong></li>
+<li>Continued investment in evaluation, so that experiments translate into real production value.</li>
+<li>Ongoing work on <strong>SLMs for specialized tasks</strong> and <strong>GPU sharing techniques</strong>, since GPUs keep getting bigger while not every task is big enough to saturate one.</li>
+</ul>
+<p>His closing frame: agents let you "take more shots at the goal" — more shots means more model improvements, which means better member experience and business value.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"The agent code is untrusted. So it runs in a highly restricted environment like no egress, no access to credentials, and all the communication goes via our proxies using the agent's own identity." (~01:12)</p>
+</blockquote>
+<p>The one place where "an agent is just another job" stops being true: the trust boundary.</p>
+<blockquote>
+<p>"The goal with agents for us is to take more shots at the goal." (~01:14)</p>
+</blockquote>
+<p>Not replacing engineers — raising experiment throughput by an order of magnitude.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LinkedIn AI Platforms</td>
+<td>講者所屬團隊,負責承載這些 agent 的 ML 基礎設施</td>
+<td>The speaker's team; owns the ML infrastructure hosting these agents</td>
+<td>內部平台,無公開名稱 / internal platform, no public name given</td>
+</tr>
+<tr>
+<td>Harness-as-code</td>
+<td>用程式碼定義 agent 各階段與 scorer / evaluator 的做法</td>
+<td>Defining each agent stage — and the scorers/evaluators — in code rather than prompts</td>
+<td>講者描述的做法,非產品名 / a described practice, not a product name</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anka Goyle</td>
+<td>Ankit Goyal</td>
+</tr>
+<tr>
+<td>ser requests</td>
+<td>review requests(依語境 / from context)</td>
+</tr>
+<tr>
+<td>longunning</td>
+<td>long-running</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>自訂 control plane 與 warm GPU pod 機制是否有對外公開的名稱或工程部落格文章。/ Whether the custom control plane / warm GPU pod design has a public name or engineering blog post.</li>
+<li>「實驗數量成長 100%」的基準線與計數方式(是 job 數還是 experiment 數)未說明。/ The baseline and counting method behind the "100% growth in experiments" figure.</li>
+<li>400+ TensorFlow 模型遷移到 PyTorch 的專案完成進度未提及。/ How far along the TensorFlow-to-PyTorch migration actually is.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/ankit-goyal--infrastructure-for-long-running-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

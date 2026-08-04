@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Superintelligence for Scientific Discovery: Multi-Agent Swarms and Large Reasoning Models · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Real discovery isn&#x27;t extending an existing paradigm — it&#x27;s rewriting the grammar we use to describe the world, so Buehler builds agent systems designed to falsify themselves: a builder proposes an …" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/markus-buehler--superintelligence-for-scientific-discovery.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Superintelligence for Scientific Discovery: Multi-Agent Swarms and Large Reasoning Models · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Real discovery isn&#x27;t extending an existing paradigm — it&#x27;s rewriting the grammar we use to describe the world, so Buehler builds agent systems designed to falsify themselves: a builder proposes an …" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/markus-buehler--superintelligence-for-scientific-discovery.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="markus-buehler--superintelligence-for-scientific-discovery">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Superintelligence for Scientific Discovery: Multi-Agent Swarms and Large Reasoning Models" data-title-zh="為科學發現而生的超級智慧:多智能體群集與大型推理模型">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--keynote"><span class="lang-en">Keynote</span><span class="lang-zh">主題演講</span></span>
+          <span class="dialog__session">Session 1: AI for Science</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Superintelligence for Scientific Discovery: Multi-Agent Swarms and Large Reasoning Models</span><span class="lang-zh">為科學發現而生的超級智慧:多智能體群集與大型推理模型</span></h1>
+        <p class="dialog__speaker"><strong>Markus J. Buehler</strong> — Professor, MIT; Founder &amp; CTO, Unreasonable Labs</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 00:06:22–00:21:35 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=LB7IkZhEYic&amp;t=382s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:06:22</span><span class="lang-zh">從 00:06:22 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Real discovery isn&#x27;t extending an existing paradigm — it&#x27;s rewriting the grammar we use to describe the world, so Buehler builds agent systems designed to falsify themselves: a builder proposes an externalized world model, a breaker hunts for evidence that breaks it, and decentralized swarms push outside nature&#x27;s distribution and pick their own problems.</span><span class="lang-zh">真正的科學發現不是把既有典範再往外推一格,而是「改寫我們描述世界的文法」——所以 Buehler 的 agent 系統刻意設計成會自我推翻:builder 建世界模型、breaker 去蒐證打破它,再讓去中心化的 agent swarm 跳出自然分佈,自己決定哪裡值得研究。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>發現 = 打破世界模型</strong>。他要的不是「延伸既有典範或換個題目重用一次」,而是讓 AI 提出一套全新的世界描述語言;這意味著 AI 必須能說服他:某個他深信的東西是錯的。</li>
+<li><strong>三個時代</strong>:10–30 年前的簡單機器學習迴歸 → 近幾年的生成式 AI(從既有分佈取樣) → 現在的<strong>發現時代</strong>——模型不只產生新想法,還自己產生訓練資料、測試、驗證。他用爵士樂團比喻:一邊解問題一邊寫樂譜。</li>
+<li><strong>SPARKS</strong>:他們做的開放式發現 AI scientist(仍在 peer review,預計投 Science Advances),不是給定目標去最佳化,而是對「我們什麼都不知道」的空間去發現 scaling law 與原理。</li>
+<li><strong>builder–breaker 架構</strong>(arXiv 上有後續論文):builder agent 建立外部化的世界模型,breaker agent 從實驗與文獻蒐集新證據去打破它;再用 MDL(最小描述長度)當簡潔性的 gate,就能長出漂亮、可解釋的理論——例如一條預測蛋白質 B-factor 的簡單 scaling 理論。</li>
+<li><strong>Swarms 是下一步</strong>:不預先定義 agent 是什麼、該怎麼行動,讓它們自己發現;而且 swarm 不住在一個實驗室或一台電腦裡,而是分散在世界各地。用在蛋白質設計上,swarm 能跑出自然演化分佈之外的「尖刺」,而擴散模型只會在自然分佈內取樣。</li>
+<li><strong>可追溯性即未來的科學出版</strong>:人類寫論文只挑三個成功的實驗;在 agent 世界裡,每一次失敗的嘗試都被完整記錄,後來的 agent 可以直接踩在上面繼續。</li>
+<li><strong>人類不是被取代,是變成 swarm 的一個節點</strong>:提供可製造性、倫理、IP、以及最關鍵的「問題選擇直覺」——那是幾乎沒有論文在寫的東西。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>兩個方向:用 agent 做科學,也從生物學學怎麼做 agent(約 00:07)</h4>
+<p>他把工作分成互為表裡的兩條線:一邊是把 agentic 系統用在工程與科學(尤其材料與生物)的應用上;另一邊反過來,從生物學裡學設計原則來建更好的 agentic 系統——<strong>swarm 就是這樣來的</strong>。細胞、生態系、文明都是自組裝的,他認為 agent 系統該長成那個樣子。</p>
+<h4>為什麼要「打破世界」(約 00:08)</h4>
+<p>他反覆用 "breaking the world" 這個說法。科學發現的定義就是提出一個看起來瘋狂的想法,然後去驗證它、證明它——所以你必須把自己相信為真的東西放上檯面。這件事在科學裡特別難,因為科學問題是開放式的、不容易驗證,不像數學和 coding 有清楚的 verifier。</p>
+<h4>從迴歸模型到發現時代(約 00:09)</h4>
+<p>社群的軌跡:簡單 ML 迴歸 → 生成式 AI(學資料、從既有 landscape 取樣) → 發現時代。發現時代的模型會<strong>自己生成新的訓練資料並驗證它</strong>。他自己的視角很有說服力:他來自 Caltech Bill Goddard 的訓練,一輩子在寫材料系統的第一原理模型,而現在「這些系統自己在寫模型、編譯模型、執行模型」。</p>
+<p>他們的 graph-native reasoning models 就是為此服務的基礎技術:把實驗與生物學那種複雜、雜訊多、資料不完整的世界,映射成<strong>可執行、可編譯、可驗證也可證偽的程式</strong>。agentic 系統的好處是可以把物理直接放進資料的檢索與生成迴圈裡。</p>
+<h4>SPARKS 與 builder–breaker:讓系統自己推翻自己(約 00:11–00:13)</h4>
+<ul>
+<li><strong>SPARKS</strong>:他們最早的開放式發現系統之一,刻意不設定目標——「不是設計一個我們已知目標的東西,而是設計我們一無所知的東西」。它能自己發現 scaling law 與原理。論文還卡在 peer review(他吐槽期刊對這個領域太慢),預計刊在 Science Advances。</li>
+<li><strong>builder–breaker model</strong>(後續論文,他建議直接看 arXiv 版):對抗式的一組 agent。builder 提出想法、建立<strong>外部化的世界模型</strong>,同時懲罰複雜度、最大化覆蓋率——目標是「用盡可能對的方式解釋世界」;breaker 則從實驗與文獻裡蒐集新資料、新證據,專門去打破那個世界模型。</li>
+<li>加上 <strong>MDL(最小描述長度)當 gate</strong> 之後,系統會傾向產出簡潔漂亮的理論概念。他把這個定位成「open-ended 版的 auto research」。</li>
+<li>成果:在蛋白質科學上,agent 不斷蒐集實驗證據去打破世界模型,資料越變越複雜、builder 的工作越來越重,最後 builder 端出一條<strong>預測蛋白質 B-factor 的簡單、可解釋的 scaling 理論</strong>。</li>
+</ul>
+<h4>Swarms:去中心化、跳出自然分佈(約 00:13–00:15)</h4>
+<p>這部分是他學生 Fiona Wang 的工作(當天在會場有 poster)。核心是<strong>去中心化的集體 agent</strong>:不描述 agent 是什麼、該怎麼行為,讓它們自己發現。而且 swarm「不只住在一個實驗室或一台電腦裡,它們住在世界各地」——願景是完全去中心化、自主演化的 agent 群。</p>
+<p>用在蛋白質設計上的結果很直觀:自然演化只產生某一類蛋白質,標準擴散模型也只會從那個分佈裡取樣(投影片上的那個圓);而 swarm 能跑到圓的外面去,長出那些「尖刺」,也就是自然沒做過的設計。</p>
+<h4>ScienceClaw Infinite:數百個 agent 與可追溯的科學紀錄(約 00:14–00:17)</h4>
+<ul>
+<li>系統叫 <strong>ScienceClaw ∞(Infinite)</strong>。名字有兩層來源:一是受幾個月前那波 <strong>OpenClaw</strong> 風潮啟發;二是 <strong>MIT 的 Infinite Corridor</strong>——那條所有人都會經過的走廊,數學家撞見生物學家撞見哲學家,聊著聊著就冒出新研究點子。agent 就住在那裡解問題。</li>
+<li>規模是數百個具備不同 skill 與 tool、且 skill 會演化的 agent。</li>
+<li>真實成果之一:<strong>metamaterial resonator 設計</strong>。agent 找出設計空間頂端一塊「還沒有任何 resonator 被找到」的區域,再想辦法把它設計出來——<strong>它不只設計了東西,還自己判斷出哪裡最值得研究</strong>。</li>
+<li>系統完全去中心化且<strong>完全可追溯</strong>:數百次 agent 互動都看得到。他由此推導出對科學出版的看法:人類寫 Nature 論文會挑三個成功的實驗;但 agent 做的實驗大多會失敗、走進死路,而<strong>每一次都被完整記錄下來,未來的 agent 可以直接接續</strong>。他認為這才是科學出版的未來。</li>
+<li>收尾的自我定位是「<strong>world building machine</strong>」:一般人理解的 AI 是一部巨大的字典或圖書館;他們要的是能自己寫圖書館、自己寫書、自己寫論文,而且那些論文會挑戰我們相信為真的事。</li>
+</ul>
+<h4>Q&amp;A:可製造性,以及人類在 swarm 裡的位置(約 00:17–00:21)</h4>
+<p><strong>可製造性怎麼進來?</strong> 在 resonator 那個例子裡,可製造性本來就是約束條件之一。更新的一篇論文直接串接 CAD 程式(他們用 Grasshopper),可以從設計直接產出 <strong>G-code</strong> 機器碼——一方面理論上驗證可製造性,另一方面可以直接送去機台再把資料收回來。他更長線的想法是<strong>去中心化的能力交換</strong>:自己的實驗室有 3D 印表機和蛋白質合成設備,但一定缺別的能力;ScienceClaw Infinite 的用意就是讓「我的 agent 跟你實驗室的 agent 對話」,實際把東西做出來並回傳回饋。他說這在技術上已經很接近,剩下的是規模與資源。</p>
+<p><strong>人類研究者跟 agent 的關係是什麼?</strong> 他的答案是「什麼都可以」,光譜兩端都成立:你可以給定問題(「給我一個能結合這個受體的 peptide」,論文裡有一堆這種例子),也可以完全開放(resonator 和 SPARKS 的蛋白質 scaling 都是這種:「這裡有一堆工具,你可以自己做新的,去找出有意思、而且要夠深刻的東西」),然後由 agent 告訴人類該做什麼。</p>
+<p>而在 agent 工作的過程中,<strong>人類會變成這個生態系的一員</strong>:你可以就是那些 agent 之一,去 review 它們的工作,提供可製造性、倫理、經濟等各種約束。他舉了業界合作的實例——「設計很棒,但我們不用這個材料」或「這個化學品公司沒有 IP」,回饋就這樣餵回 swarm。他特別強調人類的<strong>問題選擇直覺</strong>:身為 PI 或學生,你去開會、你有直覺知道哪些題目真正令人興奮,「可是幾乎沒有論文在談這個,因為我們論文裡不談 problem selection」——而那正是人類最該拿來引導 swarm 的東西。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"…changing the grammar and how we describe the world, fundamentally breaking what we call the world model."(約 00:08:27)</p>
+</blockquote>
+<p>他對「真發現」的定義:不是在既有語言裡多說一句話,而是改寫語言本身。</p>
+<blockquote>
+<p>"Really sort of writing the musical score while we're solving a problem."(約 00:09:04)</p>
+</blockquote>
+<p>爵士樂團的比喻——發現時代的模型不是照譜演奏,是邊解題邊寫譜。</p>
+<blockquote>
+<p>"…every experiment ever done by any agent is completely traceable and stored so a future agent can use the earlier results to build on. And I think that's the future of scientific publishing."(約 00:16:31)</p>
+</blockquote>
+<p>人類論文只留下成功的三個實驗;agent 科學留下全部,包括失敗。</p>
+<blockquote>
+<p>"We want to build an AI that can write its own library and write its own books and its own papers that hopefully challenge what we believe to be true."(約 00:17:10)</p>
+</blockquote>
+<p>不是查得更快的圖書館,是會反駁你的作者。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Discovery means breaking the world model.</strong> Buehler isn't after systems that extend a known paradigm or re-apply it elsewhere — he wants AI that proposes a genuinely new language for describing the world, which means it has to be able to convince him that something he believes is wrong.</li>
+<li><strong>Three eras</strong>: simple ML regression (10–30 years ago) → generative AI sampling an existing landscape → today's <strong>discovery era</strong>, where models generate new ideas <em>and</em> new training data, then test and validate them. His analogy: a jazz ensemble writing the score while playing.</li>
+<li><strong>SPARKS</strong>, their open-ended discovery AI scientist, is built for problems where the goal isn't known in advance; it discovers scaling laws and principles on its own. Still in peer review, expected in <em>Science Advances</em>.</li>
+<li><strong>The builder–breaker architecture</strong> (follow-up papers on arXiv): a builder agent proposes ideas and constructs an externalized world model while penalizing complexity and maximizing coverage; a breaker agent hunts experiment and literature for evidence that breaks it. Add MDL as a simplicity gate and clean interpretable theory falls out — e.g. a simple scaling law predicting protein B-factors.</li>
+<li><strong>Swarms are the next step</strong>: don't specify what the agents are or how they should behave — let them discover it. And the swarm doesn't live in one lab or one machine; it lives all over the world. Applied to protein design, the swarm reaches <em>outside</em> nature's distribution, producing spikes that standard diffusion models (which sample within it) never reach.</li>
+<li><strong>Full traceability is the future of scientific publishing.</strong> A human paper reports the three experiments that worked; in an agent ecosystem every dead end is recorded, so a future agent can build directly on earlier failures.</li>
+<li><strong>Humans become nodes in the swarm</strong>, not bystanders: supplying manufacturability constraints, ethics, IP limits, and above all the <em>problem-selection intuition</em> that almost never makes it into papers.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Two directions at once: agents for science, biology for agents (~00:07)</h4>
+<p>Buehler runs the arrow both ways. One direction applies agentic systems to engineering and science — especially materials and biology. The other takes design principles <em>from</em> biology to build better agentic systems, which is where swarms come from. Cells, ecosystems, civilizations are all self-assembled; he thinks agent systems should be too.</p>
+<h4>Why you have to break the world (~00:08)</h4>
+<p>"Breaking the world" is his recurring phrase. Scientific discovery means proposing something that sounds crazy and then validating it — which requires putting your own beliefs on the table. That's hard in science specifically because the problems are open-ended and not easily verifiable, unlike math and code where a verifier exists.</p>
+<h4>From regression to the discovery era (~00:09)</h4>
+<p>The field's trajectory: simple ML regression, then generative AI that learns from data and samples an existing landscape, then discovery. Discovery-era systems generate their own training data and validate it. His personal framing lands the point: he was trained under Bill Goddard at Caltech writing first-principles models of materials systems, and now "these systems are writing their own models, compiling them, running them."</p>
+<p>Their graph-native reasoning models are the enabling substrate: map the complexity, noise, and incompleteness of experiment and biology into <strong>real programs you can execute, compile, verify, and falsify</strong>. The advantage of agentic systems is that physics can sit inside the retrieval and generation loop rather than outside it.</p>
+<h4>SPARKS and builder–breaker: systems designed to refute themselves (~00:11–00:13)</h4>
+<ul>
+<li><strong>SPARKS</strong> is among the first AI scientists proposed for genuinely open-ended work — "not designing something where we know the goal, but something we don't know anything about." It discovers scaling laws and principles. The paper is still in peer review (he grumbled that journals are far too slow for this field), headed for <em>Science Advances</em>.</li>
+<li>The <strong>builder–breaker model</strong> (follow-up work; he recommends the arXiv version over the journal one) is adversarial. The builder proposes ideas and builds an <strong>externalized world model</strong> of any form, penalizing complexity and maximizing coverage — explaining the world as correctly and as compactly as possible. The breaker attacks that model by collecting new data and evidence from experiments and literature.</li>
+<li>Adding <strong>MDL as a gate for simplicity</strong> pushes the system toward elegant theoretical concepts. He frames it as auto-research, but in the open-ended space of scientific discovery.</li>
+<li>Result in protein science: as agents gathered experimental evidence to break the world model, the data got progressively harder for the builder to explain — and the builder eventually produced a <strong>simple, interpretable scaling theory for protein B-factors</strong>.</li>
+</ul>
+<h4>Swarms: decentralized, and outside the natural distribution (~00:13–00:15)</h4>
+<p>This is work by his student Fiona Wang, who had a poster at the summit. The idea is <strong>decentralized collective agents</strong>: don't describe what the agents are or how they should behave; let them figure it out. And the swarms don't live in one lab or one computer — they live all around the world. The vision is fully decentralized, self-autonomous, evolving agents.</p>
+<p>The protein-design result makes the point visually. Evolution produced one class of proteins; a standard diffusion model samples inside that distribution (the circle on his slide). The swarm goes outside it, producing spikes — designs nature never made.</p>
+<h4>ScienceClaw Infinite: hundreds of agents and a fully traceable record (~00:14–00:17)</h4>
+<ul>
+<li>The system is <strong>ScienceClaw ∞ (Infinite)</strong>. Two naming sources: the <strong>OpenClaw</strong> movement from a few months earlier, and <strong>MIT's Infinite Corridor</strong> — the hallway everyone walks through, where a mathematician bumps into a biologist bumps into a philosopher and a research idea falls out. The agents live there.</li>
+<li>Hundreds of agents with distinct, evolving skills and tools.</li>
+<li>Real result: <strong>metamaterial resonators</strong>. The agents identified a region at the top of the design space where no resonator had been found, then worked out how to design one — so they didn't just produce a design, they decided <em>where the most impactful research could be done</em>.</li>
+<li>The system is decentralized and <strong>completely traceable</strong> — you can follow all several hundred agent interactions. From this he draws a claim about publishing: a human writing for <em>Nature</em> selects the three experiments that worked, whereas most agent experiments go nowhere and <strong>every single one is stored and traceable so a future agent can build on it</strong>. That, he argues, is the future of scientific publishing.</li>
+<li>His closing framing is the <strong>world-building machine</strong>: the popular picture of AI is a gigantic dictionary or library; he wants AI that writes its own library, its own books, its own papers — papers that challenge what we believe to be true.</li>
+</ul>
+<h4>Q&amp;A: manufacturability, and where humans sit in the swarm (~00:17–00:21)</h4>
+<p><strong>How does manufacturability enter?</strong> In the resonator work it was already one of the constraints. A more recent paper wires the system directly into a CAD program (Grasshopper, in their case) so a design can emit <strong>G-code</strong> — giving a theoretical manufacturability check and, in principle, letting them send the job straight to a machine and pull data back. The longer view is decentralized capability exchange: his lab has 3D printers and protein synthesis, but never everything. ScienceClaw Infinite is meant to let his agents talk to <em>your</em> lab's agents, actually build things, and return feedback. He believes this is close — mostly a matter of scale and resources now.</p>
+<p><strong>What's the relationship between human researchers and agents?</strong> "It can be anything." At one end you supply the question ("give me a peptide that binds this receptor" — the paper has many such examples). At the other, it's fully open-ended: the resonator work and the SPARKS protein-scaling work both amounted to "here's a set of tools, you can make your own, go find something interesting — and it should be something profound," with the agents telling the humans what to do.</p>
+<p>Once agents are working, <strong>humans join the ecosystem</strong> rather than supervising it: you can be one of the agents, reviewing work and contributing constraints on manufacturability, ethics, or economics. He cited industry collaborations directly — "great, three designs, however we don't work with this material," or a chemical the company has no IP for — feedback that goes straight back into the swarm. He put particular weight on <strong>problem selection</strong>: a PI or student develops intuition at conferences about which topics are genuinely exciting, "and there are very few papers that talk about this, because we're not really talking about problem selection in papers." That intuition is what humans should be steering the swarm with.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"…changing the grammar and how we describe the world, fundamentally breaking what we call the world model." (~00:08:27)</p>
+</blockquote>
+<p>His definition of real discovery: not another sentence in the existing language, but a rewrite of the language.</p>
+<blockquote>
+<p>"Really sort of writing the musical score while we're solving a problem." (~00:09:04)</p>
+</blockquote>
+<p>The jazz-ensemble framing of the discovery era — not performing a score, composing it mid-performance.</p>
+<blockquote>
+<p>"…every experiment ever done by any agent is completely traceable and stored so a future agent can use the earlier results to build on. And I think that's the future of scientific publishing." (~00:16:31)</p>
+</blockquote>
+<p>Human papers keep the three experiments that worked; agent science keeps all of them, failures included.</p>
+<blockquote>
+<p>"We want to build an AI that can write its own library and write its own books and its own papers that hopefully challenge what we believe to be true." (~00:17:10)</p>
+</blockquote>
+<p>Not a library you search faster — an author that argues back.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPARKS</td>
+<td>開放式科學發現的多智能體 AI scientist,自行發現 scaling law 與原理</td>
+<td>Multi-agent AI scientist for open-ended discovery; finds scaling laws and principles on its own</td>
+<td>仍在 peer review,預計刊於 Science Advances / in peer review, expected in <em>Science Advances</em></td>
+</tr>
+<tr>
+<td>Builder–Breaker model</td>
+<td>對抗式 agent:builder 建外部化世界模型,breaker 蒐證推翻;以 MDL 為簡潔性 gate</td>
+<td>Adversarial pair: builder constructs an externalized world model, breaker gathers evidence to break it; MDL as a simplicity gate</td>
+<td>建議看 arXiv 版本(期刊版較慢)/ arXiv is the version to read</td>
+</tr>
+<tr>
+<td>ScienceClaw ∞ (Infinite)</td>
+<td>數百個具演化 skill 的去中心化科學 agent 群集,完全可追溯</td>
+<td>Decentralized swarm of hundreds of science agents with evolving skills; fully traceable</td>
+<td>命名取自 OpenClaw 風潮 + MIT Infinite Corridor / named after the OpenClaw movement and MIT's Infinite Corridor</td>
+</tr>
+<tr>
+<td>Graph-native reasoning models</td>
+<td>把雜訊多、不完整的科學資料映射成可執行、可驗證/證偽的程式</td>
+<td>Map noisy, incomplete scientific data into executable, verifiable, falsifiable programs</td>
+<td>Buehler 團隊長期主線 / a long-running line of his group's work</td>
+</tr>
+<tr>
+<td>Grasshopper / CAD → G-code</td>
+<td>從 agent 設計直接產出機器碼,檢查並執行可製造性</td>
+<td>Emit machine code straight from an agent's design to check and execute manufacturability</td>
+<td>在較新的論文中示範 / demonstrated in a more recent paper</td>
+</tr>
+<tr>
+<td>Fiona Wang(學生 / student)</td>
+<td>去中心化集體 agent(swarm)工作的主要作者,當天有 poster</td>
+<td>Lead on the decentralized collective-agent (swarm) work; presented a poster at the summit</td>
+<td>MIT</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mark Spieler</td>
+<td>Markus J. Buehler</td>
+</tr>
+<tr>
+<td>agendic / authentic (AI)</td>
+<td>agentic (AI)</td>
+</tr>
+<tr>
+<td>Bill Gddard</td>
+<td>Bill Goddard(Caltech)</td>
+</tr>
+<tr>
+<td>sparks</td>
+<td>SPARKS</td>
+</tr>
+<tr>
+<td>scienceclaw plus infinite / science claw</td>
+<td>ScienceClaw ∞ (Infinite)</td>
+</tr>
+<tr>
+<td>open claw / claw movement</td>
+<td>OpenClaw</td>
+</tr>
+<tr>
+<td>B factor</td>
+<td>B-factor(蛋白質溫度因子 / protein temperature factor)</td>
+</tr>
+<tr>
+<td>Fiona Wang(字幕正確)</td>
+<td>Fiona Wang</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>字幕說 SPARKS 的工作是「back in 2004」,但下一句又說仍在 peer review、即將刊出——極可能是 2024 的誤聽,但未親自確認。/ Transcript says the SPARKS work is from "2004" while also saying it's still in peer review; almost certainly a mis-hearing of 2024, but unverified.</li>
+<li>能源應用的材料名稱,字幕作 "parap guide materials",無法辨識(可能是 paraelectric / waveguide 之類),需看投影片。/ The energy-application material class, heard as "parap guide materials", is unidentifiable from audio — needs the slides.</li>
+<li>ScienceClaw ∞ 的正式拼寫、是否已有公開論文或 repo,未能查證。/ Official spelling of ScienceClaw ∞ and whether a public paper or repo exists — not verified.</li>
+<li>Builder–Breaker 論文的正式標題與 arXiv 編號未查到。/ Formal title and arXiv ID of the builder–breaker paper not located.</li>
+<li>metamaterial resonator 論文的出處與該「設計空間頂端未被探索區域」的具體定義。/ Source for the metamaterial resonator result and what the unexplored top-of-design-space region concretely means.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/markus-buehler--superintelligence-for-scientific-discovery.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

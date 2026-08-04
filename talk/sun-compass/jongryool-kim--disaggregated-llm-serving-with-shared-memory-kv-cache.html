@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Disaggregated LLM Serving with Shared Memory KV Cache at Rack-Scale · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Put a physically disaggregated memory pool in the middle of the rack so multiple nodes see the *same* address space, and the KV cache no longer has to be shuttled between nodes over RDMA — prefill …" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/jongryool-kim--disaggregated-llm-serving-with-shared-memory-kv-cache.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Disaggregated LLM Serving with Shared Memory KV Cache at Rack-Scale · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Put a physically disaggregated memory pool in the middle of the rack so multiple nodes see the *same* address space, and the KV cache no longer has to be shuttled between nodes over RDMA — prefill …" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/jongryool-kim--disaggregated-llm-serving-with-shared-memory-kv-cache.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="jongryool-kim--disaggregated-llm-serving-with-shared-memory-kv-cache">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Disaggregated LLM Serving with Shared Memory KV Cache at Rack-Scale" data-title-zh="以機櫃級共享記憶體 KV Cache 實現分離式 LLM 服務">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: AI Systems</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Disaggregated LLM Serving with Shared Memory KV Cache at Rack-Scale</span><span class="lang-zh">以機櫃級共享記憶體 KV Cache 實現分離式 LLM 服務</span></h1>
+        <p class="dialog__speaker"><strong>Jongryool Kim</strong> — Senior Director / Head of AI System Infra., SK hynix</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:36:59–00:41:48 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=2219s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:36:59</span><span class="lang-zh">從 00:36:59 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Put a physically disaggregated memory pool in the middle of the rack so multiple nodes see the *same* address space, and the KV cache no longer has to be shuttled between nodes over RDMA — prefill writes once, decode reads directly, the old KV cache stays in the pool for the next request&#x27;s reuse, and GPU HBM is freed immediately while PCIe contention disappears.</span><span class="lang-zh">把一台實體上獨立的記憶體池放進機櫃中央,讓多個節點看到同一段位址空間,KV cache 就不必再靠 RDMA 在節點間搬來搬去——prefill 寫一次、decode 直接讀,舊的 KV cache 順便留在池裡供下次重用,同時立刻釋放 GPU HBM 並消除 PCIe 爭用。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>兩種模式,他們押注在後者</strong>:這個實體分離的記憶體池支援 (1) <strong>memory pooling</strong>——每個節點動態配置額外記憶體,但區域彼此隔離;(2) <strong>sharing mode</strong>——多個節點看到同一段記憶體位址空間、能存取同一份資料。SK hynix 感興趣的是 sharing。</li>
+<li><strong>比 RDMA 更快</strong>:一般節點間搬資料會從 TCP/IP 升級到 RDMA,但<strong>基於共享池記憶體的資料共享比 RDMA 更快</strong>。加上 KV cache 一存進池裡就能<strong>立刻釋放 GPU HBM</strong>——prefill 側或 decode 側就算 OOM,prefill 仍能繼續。</li>
+<li><strong>三重收益</strong>:更快的節點間資料移動、即時釋放 HBM、以及<strong>消除 KV cache 存取在 GPU 側與網路側 PCIe 頻寬上的爭用</strong>。套用到 agentic AI 服務(需要重用大量 KV cache)後,對比 Mooncake 的 KV cache 方案已看到效能提升——但他強調這是非常初步的數字。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>架構:什麼是「實體分離」的記憶體池(約 00:36:59–00:38:50)</h4>
+<p>Jongryool Kim 是 SK hynix 的 senior director。他要談的是一種新的記憶體形態:<strong>實體上與伺服器分離的池化記憶體(physically disaggregated pool memory)</strong>。</p>
+<p>架構圖上是多台伺服器節點,加上一個獨立的記憶體池機箱,<strong>多台伺服器可以同時使用這個記憶體池</strong>,有兩種模式:</p>
+<ol>
+<li><strong>Memory pooling</strong>:每個節點可以動態配置額外記憶體,但<strong>各節點的記憶體區域彼此隔離</strong>。</li>
+<li><strong>Sharing mode</strong>:多個節點<strong>看到同一段記憶體位址空間</strong>,因此每個節點都能存取同一份資料。</li>
+</ol>
+<p>他明說:「我們對 sharing 這個特性非常有興趣。」——這正是整場演講的技術支點。</p>
+<p>他們很快就把這個記憶體池整合進 LLM 服務系統,並在去年多場活動上成功部署與展示。示範架構是四台伺服器跑各種 LLM 服務元件,<strong>機櫃中央放一台 Niagara</strong>(約 00:38:45)——那就是真正的實體池化記憶體。</p>
+<h4>KV cache 怎麼流動,以及為什麼會變快(約 00:38:50–00:40:50)</h4>
+<p>示範場景是用記憶體池來<strong>傳輸 KV cache</strong>:</p>
+<ul>
+<li>先做 <strong>prefill</strong>;prefill 完成後必須把 KV cache 送到 <strong>decode</strong> 側。透過兩次記憶體操作(<strong>store 與 load</strong>),KV cache 就送到了 decode 節點。</li>
+<li>關鍵在於:<strong>舊的 KV cache 會留在記憶體池裡</strong>,所以下一個請求可以直接重用,<strong>不需要任何額外的儲存操作</strong>。</li>
+</ul>
+<p>結果是相對於全部重新計算(recompute),以及相對於 NIXL 與 in-server DRAM 為基礎的 KV cache 儲存方案,系統效能都有提升。</p>
+<p>但他更在意的是「<strong>為什麼</strong>會有這個好處」,他給了三個理由:</p>
+<ol>
+<li><strong>更快的節點間資料移動</strong>。一般不會用 TCP/IP,而會用 <strong>RDMA</strong>——RDMA 很快,但<strong>基於池化記憶體的資料共享比 RDMA 更快</strong>(約 00:39:59),所以 LLM 服務系統的效能得以提升。</li>
+<li><strong>可以立刻釋放 GPU HBM</strong>(約 00:40:11)。把 KV cache 卸載到池化記憶體之後,HBM 馬上就能還回去。實務意義是:就算 decode 側或 prefill 側發生 out-of-memory,<strong>prefill 仍然可以繼續做</strong>,因為那份 KV cache 已經上傳到池裡了。</li>
+<li><strong>消除爭用</strong>。為了儲存與重用 KV cache,GPU 側與網路側的 PCIe 頻寬都會出現大量爭用;用池化記憶體做資料共享傳輸,就能<strong>把這類額外爭用移除</strong>。</li>
+</ol>
+<h4>套用到 agentic AI 服務,以及接下來要做什麼(約 00:40:50–00:41:48)</h4>
+<p>Agentic AI 服務的特性是<strong>必須重用大量 KV cache</strong>,所以他們把這套池化記憶體環境套用到 agentic AI 服務系統上,對比 <strong>Mooncake</strong> 的 KV cache 方案量到了效能提升(約 00:41:11)。他自己主動加註:這是<strong>非常初期的效能數字</strong>。</p>
+<p>接下來(約 00:41:20):今年年底前,他正與<strong>約 25 個合作方</strong>協作,準備<strong>五套以上的系統 PoC</strong>,包括 <strong>multimodal serving</strong> 與 <strong>runtime memory management</strong>;目標是用池化記憶體打造真正上線的系統,面向 HPC 等級的國家級系統。</p>
+<p>結語:「讓我們看看池化記憶體會怎麼改變 AI 系統。」</p>
+<h3>金句</h3>
+<blockquote>
+<p>"This pooled memory based data sharing is faster than RDMA."(約 00:39:59)</p>
+</blockquote>
+<p>這是整套架構的核心賣點——不是「另一種搬資料的方式」,而是比目前最快的搬法更快。</p>
+<blockquote>
+<p>"We can release the GPU HBM immediately by offloading the key cache to the pool memory."(約 00:40:11)</p>
+</blockquote>
+<p>KV cache 從「佔住 HBM 的負擔」變成「放在池裡的共用資產」。</p>
+<blockquote>
+<p>"Let's see how the pooled memory can change the AI system."(約 00:41:45)</p>
+</blockquote>
+<p>演講的收尾,也是這條技術路線目前的狀態:方向明確,證據還在累積。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Two modes, and they're betting on the second.</strong> The physically disaggregated pool supports (1) <strong>memory pooling</strong>, where each node dynamically allocates extra memory but regions stay isolated between nodes, and (2) <strong>sharing mode</strong>, where multiple nodes see the same memory address space and can access the same data. Sharing is what SK hynix cares about.</li>
+<li><strong>Faster than RDMA.</strong> The usual upgrade path for inter-node data movement is TCP/IP → RDMA, but <strong>pooled-memory-based data sharing is faster than RDMA</strong>. And once the KV cache lands in the pool, <strong>GPU HBM is released immediately</strong> — even if the prefill or decode side hits OOM, prefill can keep going.</li>
+<li><strong>Three compounding benefits</strong>: faster inter-node movement, immediate HBM release, and <strong>elimination of PCIe bandwidth contention</strong> on both the GPU and network side when storing and reusing KV cache. Applied to agentic AI serving — which must reuse large amounts of KV cache — they measured improvement over a Mooncake-based KV cache, with the caveat that these are very early numbers.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The architecture: what "physically disaggregated" means here (~00:36:59–00:38:50)</h4>
+<p>Jongryool Kim is a senior director at SK hynix, and his subject is a new memory form factor: <strong>physically disaggregated pooled memory</strong> — a memory box that sits apart from the servers themselves.</p>
+<p>In the diagram: several server nodes plus a separate memory-pool box that <strong>multiple servers use simultaneously</strong>, in one of two modes:</p>
+<ol>
+<li><strong>Memory pooling</strong> — each node dynamically allocates additional memory, but each node's region is <strong>isolated from the others</strong>.</li>
+<li><strong>Sharing mode</strong> — multiple nodes <strong>see the same memory address space</strong>, so every node can access the same data.</li>
+</ol>
+<p>"We are very interested in this sharing feature," he said plainly — and that's the technical pivot for the whole talk.</p>
+<p>They integrated the pool into an LLM serving system quickly and demonstrated the deployment at several events last year. The demo has four servers running LLM serving components, with a <strong>Niagara box in the middle of the rack</strong> (~00:38:45) as the actual physical pooled memory.</p>
+<h4>How the KV cache flows, and why it gets faster (~00:38:50–00:40:50)</h4>
+<p>The demo scenario uses the pool to <strong>transfer the KV cache</strong>:</p>
+<ul>
+<li>Run <strong>prefill</strong> first; once prefill completes, the KV cache must be delivered to the <strong>decode</strong> side. Two memory operations — a <strong>store</strong> and a <strong>load</strong> — deliver it to the decode node.</li>
+<li>The important part: <strong>the old KV cache stays in the memory pool</strong>, so the next request can reuse it directly with <strong>no additional store operation at all</strong>.</li>
+</ul>
+<p>The result is a performance improvement over full recomputation, and over NIXL and in-server DRAM-based KV cache storage.</p>
+<p>But he was more interested in <strong>why</strong> the benefit exists, and gave three reasons:</p>
+<ol>
+<li><strong>Faster inter-node data movement.</strong> People generally use <strong>RDMA</strong> rather than TCP/IP, and RDMA is fast — but <strong>pooled-memory-based data sharing is faster than RDMA</strong> (~00:39:59), which is where the serving-system speedup comes from.</li>
+<li><strong>GPU HBM can be released immediately</strong> (~00:40:11) once the KV cache is offloaded to the pool. The practical consequence: even if the decode side or the prefill side runs out of memory, <strong>prefill can continue</strong>, because that KV cache is already uploaded to the pool.</li>
+<li><strong>Contention disappears.</strong> Storing and reusing the KV cache creates heavy contention on PCIe bandwidth on both the GPU side and the network side; routing the transfer through pooled-memory data sharing <strong>removes that additional contention</strong>.</li>
+</ol>
+<h4>Applying it to agentic AI serving, and what's next (~00:40:50–00:41:48)</h4>
+<p>Agentic AI serving is characterized by having to reuse a <strong>large amount of KV cache</strong>, so they applied the pooled-memory environment to an agentic AI serving system and measured improvement against a <strong>Mooncake</strong> KV cache (~00:41:11). He volunteered the caveat himself: these are very initial performance numbers.</p>
+<p>Looking ahead (~00:41:20): by the end of this year, working with roughly <strong>25 collaboration parties</strong>, they are preparing <strong>five more system PoCs</strong>, including <strong>multimodal serving</strong> and <strong>runtime memory management</strong>, aiming to build a real system with pooled memory for HPC-class national systems.</p>
+<p>His closing line: "Let's see how the pooled memory can change the AI system."</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"This pooled memory based data sharing is faster than RDMA." (~00:39:59)</p>
+</blockquote>
+<p>The core claim: not an alternative way to move data, but a faster one than today's fastest.</p>
+<blockquote>
+<p>"We can release the GPU HBM immediately by offloading the key cache to the pool memory." (~00:40:11)</p>
+</blockquote>
+<p>The KV cache stops being an HBM tax and becomes a shared asset sitting in the pool.</p>
+<blockquote>
+<p>"Let's see how the pooled memory can change the AI system." (~00:41:45)</p>
+</blockquote>
+<p>The talk's closing line, and a fair summary of where the approach stands: direction clear, evidence still accumulating.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Niagara (SK hynix)</td>
+<td>放在機櫃中央的實體池化記憶體裝置,支援 pooling 與 sharing 兩種模式</td>
+<td>SK hynix's physical pooled-memory box placed mid-rack, supporting both pooling and sharing modes</td>
+<td>已查證:SK hynix 的 CXL 分離式記憶體原型(多埠、支援 memory pooling / sharing);演講未明說 CXL</td>
+</tr>
+<tr>
+<td>Mooncake</td>
+<td>對照組:以 KV cache 為中心的分離式服務架構與其快取層</td>
+<td>Comparison baseline: KVCache-centric disaggregated serving architecture and its cache layer</td>
+<td>逐字稿 "moonake"</td>
+</tr>
+<tr>
+<td>NIXL</td>
+<td>對照組之一,推論資料傳輸函式庫</td>
+<td>One of the comparison baselines; an inference data-transfer library</td>
+<td>逐字稿 "nxl";名稱待確認 / to verify</td>
+</tr>
+<tr>
+<td>TraCT</td>
+<td>與本講題幾乎同名的論文:<em>Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale</em></td>
+<td>Paper with nearly the same title: <em>Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale</em></td>
+<td>arXiv 2512.18194;演講中未提及名稱,關聯性待確認 / not named on stage, relationship to verify</td>
+</tr>
+<tr>
+<td>RDMA</td>
+<td>目前節點間資料搬移的主流做法,作為效能對照基準</td>
+<td>The prevailing approach to inter-node data movement, used as the performance reference point</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jang R Kim / Junior Kim</td>
+<td>Jongryool Kim</td>
+</tr>
+<tr>
+<td>skinex / SKH Highix</td>
+<td>SK hynix</td>
+</tr>
+<tr>
+<td>Rexcale</td>
+<td>rack-scale</td>
+</tr>
+<tr>
+<td>disegregated / disagregated</td>
+<td>disaggregated</td>
+</tr>
+<tr>
+<td>prepare / prefare</td>
+<td>prefill</td>
+</tr>
+<tr>
+<td>keeper cache / cuber cache / key cache</td>
+<td>KV cache</td>
+</tr>
+<tr>
+<td>GPU HPM</td>
+<td>GPU HBM</td>
+</tr>
+<tr>
+<td>realm serving / random serving</td>
+<td>LLM serving</td>
+</tr>
+<tr>
+<td>moonake</td>
+<td>Mooncake</td>
+</tr>
+<tr>
+<td>nxl</td>
+<td>NIXL(待確認 / to verify)</td>
+</tr>
+<tr>
+<td>niagara</td>
+<td>Niagara</td>
+</tr>
+<tr>
+<td>five more system PC</td>
+<td>five more system PoCs</td>
+</tr>
+<tr>
+<td>multimord serving</td>
+<td>multimodal serving</td>
+</tr>
+<tr>
+<td>relate the GPU HPM</td>
+<td>release the GPU HBM</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>逐字稿的 "nxl and nm cache is in server DM based cable cash stoing" 判讀為「NIXL 與 in-server DRAM based KV cache storing」,但 "nm cache" 也可能是另一個專案名,需看投影片。/ The comparison baselines heard as "nxl and nm cache" — read as NIXL and in-server DRAM-based KV cache storage, but "nm cache" could be another project name.</li>
+<li>講者自述「I also working for the SRC as a cell」——SRC 疑為 Semiconductor Research Corporation,職稱不明。/ He said he also works for "the SRC" in an unclear role; possibly Semiconductor Research Corporation.</li>
+<li>最後提到的國家級系統:逐字稿為 "for the HPC US-based national system",究竟是美國或韓國的國家級系統待確認。/ The national-scale system mentioned at the end — whether US or Korean is unclear from the transcript.</li>
+<li>對比 Mooncake 的效能提升幅度未在逐字稿中出現具體數字。/ No concrete numbers for the improvement over Mooncake appear in the transcript.</li>
+<li>Niagara 是 CXL 裝置,但演講逐字稿中未出現 "CXL" 一詞;此資訊來自外部查證。/ Niagara is a CXL device, but "CXL" never appears in the transcript; that detail comes from external verification.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/jongryool-kim--disaggregated-llm-serving-with-shared-memory-kv-cache.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

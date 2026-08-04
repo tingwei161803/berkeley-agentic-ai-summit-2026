@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>The Eureka Machine: Recursive Superintelligence for Science · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="If the ultimate invention is the one that automates all future inventions, the road there runs through AI automating AI research first — and their recursive-self-improvement system has already beat…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/richard-socher--the-eureka-machine-recursive-superintelligence-for-science.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Eureka Machine: Recursive Superintelligence for Science · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="If the ultimate invention is the one that automates all future inventions, the road there runs through AI automating AI research first — and their recursive-self-improvement system has already beat…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/richard-socher--the-eureka-machine-recursive-superintelligence-for-science.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-plenary" data-talk="richard-socher--the-eureka-machine-recursive-superintelligence-for-science">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="The Eureka Machine: Recursive Superintelligence for Science" data-title-zh="Eureka Machine:為科學而生的遞迴超智慧">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Frontier Research</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">The Eureka Machine: Recursive Superintelligence for Science</span><span class="lang-zh">Eureka Machine:為科學而生的遞迴超智慧</span></h1>
+        <p class="dialog__speaker"><strong>Richard Socher</strong> — Founder/CEO, Recursive Superintelligence</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Plenary Stage · 00:08:22–00:21:39 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=I2PosBXwoPI&amp;t=502s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:08:22</span><span class="lang-zh">從 00:08:22 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sun</span><span class="lang-zh">回 Plenary · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">If the ultimate invention is the one that automates all future inventions, the road there runs through AI automating AI research first — and their recursive-self-improvement system has already beaten years of community effort on three public benchmarks.</span><span class="lang-zh">把「自動化所有未來發明」當成終極發明,而通往那裡的路徑是先讓 AI 自動化 AI 研究本身——他們的 RSI 系統已經在三個公開 benchmark 上超越了社群多年的累積成果。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>「Eureka Machine」是他個人版本的「登陸火星」</strong>:一台自動化人類所有未來發明的機器。要造出它,路上必得先做出 <strong>recursive self-improving superintelligence(RSI)</strong>。</li>
+<li><strong>Eureka Machine 有四根支柱</strong>:LLM 承載的現有人類知識 → 科學量測資料 → 模擬 → 實體實驗室自動化;四根支柱之上跑一個「相當於 5,000 個 PhD」的 agent swarm。</li>
+<li><strong>從「AI 的科學」開刀</strong>:自動化科學,最該先自動化的就是 AI 研究本身。今年才變得可能,因為 <strong>AI 就是程式碼,而 AI 已經會寫程式</strong>,而且能撐的時間跨度越來越長。</li>
+<li><strong>不是紙上談兵</strong>:他們的 RSI 系統在 nanochat、nanoGPT speedrun、NVIDIA 的 <strong>SOL-ExecBench</strong> 三個 benchmark 上,都超越了成千上萬人(與他們的 agent)多年累積的成果——而且產出的是<strong>真發明</strong>(例如把 hash table 塞進 transformer、新的 momentum 形式),不是調超參數。</li>
+<li><strong>我們離智慧的上限「天文級地遠」</strong>:AI = 預測(數學上等價於壓縮)× 行動 × 目標;光以最單純的視覺智慧為例,上限是數以兆計的感測器、從量子不確定性到重力波的全頻譜——所以「AI 走不了多遠」的說法完全站不住腳。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>為什麼是現在:技術是唯一的永續成長來源(約 00:09–00:13)</h4>
+<p>他從 <strong>open-ended evolution(開放式演化)</strong> 講起,說這是 AI 社群至今仍相對低估的一個過程:生物演化花了十億年以上才「發明出眼睛」,技術演化把時間壓縮到數千年,而 AI 現在把週期壓到以週計。</p>
+<p>他引 Marc Andreessen 的說法主張<strong>技術是唯一永續的成長來源</strong>,並更進一步:<strong>沒有任何「物質性」問題是更多技術解不掉的</strong>(心理與政治問題另當別論)。所以在他看來,不加速反而才是更大的危險——那等於讓更少的人得以繁盛。</p>
+<p>金句式的自我定位:<strong>我們這代人太晚出生,趕不上探索地球;太早出生,趕不上探索星辰;但正好趕上打造超智慧。</strong> 而且這次的跳躍會比過去快得多:1903 年還沒有人類實現持續動力飛行,60 年後人類登月;而現在的加速技術主要在軟體裡,只會更快。</p>
+<p>推論鏈很簡單:<strong>更多科學 → 更多技術 → 更多成長 → 更多人類繁盛</strong>。所以第一號目標就是加速科學發現。他花了很久思考這件事,寫成一本九月出版的書《The Eureka Machine》。</p>
+<h4>Eureka Machine 的四根支柱與 agent swarm(約 00:13–00:16)</h4>
+<ol>
+<li><strong>現有的人類知識</strong>——今天主要由 LLM 承載。他直接回應了版權爭議:當這些模型開源之後,它們就像網際網路一樣,越來越成為全人類的資源。</li>
+<li><strong>科學量測資料</strong>——人類感官很有限,感知智慧的上限遠高於此,而打開上限的方式就是科學儀器的量測。</li>
+<li><strong>模擬</strong>——「<strong>任何你能模擬、能驗證的東西,AI 終究會解掉</strong>」。他說自己從來不特別驚訝 AI 能打贏西洋棋和圍棋,因為那能模擬、能驗證,於是能生出無限訓練資料。</li>
+<li><strong>實體實驗室自動化</strong>——還是有些東西模擬不了,那就得做機器人流程自動化、真的把實驗室自動化起來。</li>
+</ol>
+<p>四根支柱之上是 <strong>agent swarm</strong>;理想上在你叫它去做實體實驗之前,它就已經具備「約 5,000 個不同 PhD」的等價能力。</p>
+<p>而 Recursive 的做法是:<strong>要自動化科學,沒有比「AI 這門科學」更該先下手的對象</strong>。做法上是讓 AI 對自己的缺陷建立某種自我覺察——涵蓋從 pre-training 到 harness 的整條鏈路。他強調這在今年才變得獨特可行:<strong>AI 就是程式碼,而 AI 已經會寫程式</strong>,加上能處理的時間跨度越拉越長,才真的能讓 AI 對自己動工。</p>
+<h4>Auto research 的實測:三個 benchmark 上超越多年累積(約 00:16–00:19)</h4>
+<p>他先把概念切乾淨:<strong>讓一個 AI 去改進「另一個」系統,那叫 auto research,不是真正的 recursive self-improvement</strong>——但它是很有用的里程碑與踏腳石。</p>
+<p>科學(以及 AI 研究)的流程可拆成三步:<strong>ideation → implementation → validation</strong>。實作端現在越來越強,驗證仍然很花時間,真正的問題是「你能想出多少真正新穎的點子」。</p>
+<p>他們把 RSI 系統丟到三個已經被成千上萬人(常常還帶著自己的 agent 與好奇心)反覆刷過的 benchmark 上:</p>
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>內容</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>nanochat</strong></td>
+<td>很受歡迎的 auto research benchmark</td>
+<td>不到兩天就把 bits-per-byte 明顯壓下來</td>
+</tr>
+<tr>
+<td><strong>nanoGPT speedrun</strong></td>
+<td>追求越來越快的訓練演算法</td>
+<td>超越既有紀錄</td>
+</tr>
+<tr>
+<td><strong>SOL-ExecBench</strong></td>
+<td>NVIDIA 的 benchmark,評估 CUDA kernel(GPU 與 AI 程式碼之間的介面)</td>
+<td>有顯著跳躍</td>
+</tr>
+</tbody>
+</table>
+<p>他特別強調<strong>這不是調參</strong>:系統做出了真正有用的發明,例如<strong>把 hash table 併進 transformer</strong>、<strong>想出新的 momentum 形式</strong>。而且這件事有直接經濟意義——kernel 效率決定 foundation model 的 <strong>intelligence per dollar</strong>;在動輒數十億美元的資料中心上多榨出 5–10% 效率,對公司來說是很可觀的結果。</p>
+<h4>智慧的上限:我們還在起跑線(約 00:19–00:21)</h4>
+<p>他說自己試著給 AI 一個完整定義但找不到好的,最後歸結為三個主成分:<strong>prediction(數學上等價於 compression)× actions × goals</strong>,並由此展開他所謂的「十種智慧空間」。</p>
+<p>以最單純的<strong>視覺智慧</strong>為例來標定我們的位置:電腦視覺至今大致停在人眼的電磁頻譜範圍,但人眼其實不怎麼樣(螳螂蝦的眼睛更厲害)。真正的上限是——不必是雙眼視覺,可以是數百萬、數兆個感測器;考慮這些感測器彼此還能與一個中央智慧通訊的光錐半徑;向下看到量子層級的不確定性,向上看到重力波,再把這一切融合、疊上更多層次的物件抽象。</p>
+<p>結論:<strong>在許多智慧空間裡,我們距離上限「天文級地遠」</strong>——所以這仍然是極令人興奮、極值得投入的研究領域。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Our generation was too late to explore the earth, too early to explore the stars, but we're right on time to build superintelligence."(約 00:12)</p>
+</blockquote>
+<p>太晚探索地球,太早探索星辰,正好趕上造超智慧。</p>
+<blockquote>
+<p>"Everything you can simulate, anything you can essentially verify, AI will obviously solve."(約 00:14)</p>
+</blockquote>
+<p>這句話同時解釋了為什麼棋類早就被攻破,以及為什麼「可模擬 / 可驗證」是他四根支柱裡的關鍵一根。</p>
+<blockquote>
+<p>"It's not just like tuning hyperparameters — it makes some truly useful inventions, like incorporating hash tables into transformers."(約 00:18)</p>
+</blockquote>
+<p>auto research 已經不只是搜參數空間。</p>
+<blockquote>
+<p>"We're literally astronomically far away from the upper bounds across many of the different spaces of intelligence."(約 00:21)</p>
+</blockquote>
+<p>對「AI 快到頂了」的直接反駁。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The "Eureka Machine" is his personal version of going to Mars</strong>: the ultimate invention — a machine that automates all of humanity's future inventions. Getting there requires building recursive self-improving superintelligence (RSI) along the way.</li>
+<li><strong>Four pillars</strong>: existing human knowledge (now carried by LLMs) → scientific measurement data → simulation → automated physical labs. On top of them runs an agent swarm with the equivalent of ~5,000 PhDs.</li>
+<li><strong>Start with the science of AI itself.</strong> This became uniquely possible this year because AI <em>is</em> code and AI can now write code — over increasingly long time horizons.</li>
+<li><strong>Receipts, not slideware</strong>: their RSI system beat years of accumulated community work on nanochat, the nanoGPT speedrun, and NVIDIA's <strong>SOL-ExecBench</strong> — and produced genuine inventions (hash tables inside transformers, new forms of momentum), not hyperparameter sweeps.</li>
+<li><strong>We are astronomically far from the upper bounds of intelligence.</strong> AI decomposes into prediction (mathematically equivalent to compression) × actions × goals; even the simplest case, visual intelligence, has an upper bound of trillions of sensors spanning quantum uncertainty to gravitational waves.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Why now: technology as the only perpetual source of growth (~00:09–00:13)</h4>
+<p>He opens on <strong>open-ended evolution</strong>, a process he thinks the broader AI community still underexplores. Biological evolution took over a billion years to invent the eye; technological evolution compressed the cycle to millennia; AI now runs it in weeks.</p>
+<p>Citing Marc Andreessen, he argues technology is the only perpetual source of growth — and goes further: <strong>there are no material problems that cannot be solved with more technology</strong> (psychological and political problems being a different beast). On that view, <em>not</em> accelerating is the bigger danger, because it means fewer people get to flourish.</p>
+<p>His framing line: our generation was too late to explore the earth, too early to explore the stars, but right on time to build superintelligence. And this jump will be faster than previous ones — in 1903 no human had achieved sustained powered flight, and 60 years later we landed on the moon; today the accelerating technology lives in software, so it compounds faster still.</p>
+<p>The chain is simple: more science → more technology → more growth → more human flourishing. Hence goal number one is accelerating scientific discovery — the subject of his book, <em>The Eureka Machine</em>, out in September.</p>
+<h4>The four pillars and the agent swarm (~00:13–00:16)</h4>
+<ol>
+<li><strong>Existing public knowledge</strong>, now largely encoded in LLMs. He addresses the copyright discomfort head-on: once these models are open source, they become a resource for humanity in the way the internet did.</li>
+<li><strong>Scientific measurement data</strong>, because human senses are severely limited and the ceiling on perceptual intelligence is unlocked by instruments, not eyes.</li>
+<li><strong>Simulation</strong> — "everything you can simulate, anything you can essentially verify, AI will obviously solve." He was never surprised that chess and Go fell: simulate, verify, generate unlimited training data.</li>
+<li><strong>Robotic process automation of physical labs</strong>, for everything that can't yet be simulated.</li>
+</ol>
+<p>Above the pillars sits an <strong>agent swarm</strong> that ideally carries the equivalent of ~5,000 distinct PhDs before you ever ask it to run a physical experiment.</p>
+<p>Recursive's angle: if you're automating science, the best science to start with is the science of AI itself. That means letting the system build a form of self-awareness about its own shortcomings across the whole pipeline, from pre-training through harnesses.</p>
+<h4>Auto research, measured: three benchmarks (~00:16–00:19)</h4>
+<p>He draws a clean line first: <strong>asking one AI to improve some other system is auto research, not true recursive self-improvement</strong> — but it's a useful milestone on the way.</p>
+<p>Science, and AI research, is three steps: ideation, implementation, validation. Implementation keeps improving, validation still costs time, and the live question is how many genuinely novel ideas the system can generate.</p>
+<p>They pointed their RSI system at three benchmarks thousands of people had already worked on, often with their own agents:</p>
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>What it measures</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>nanochat</strong></td>
+<td>Popular auto-research benchmark</td>
+<td>Bits-per-byte reduced significantly in under two days</td>
+</tr>
+<tr>
+<td><strong>nanoGPT speedrun</strong></td>
+<td>Ever-faster training algorithms</td>
+<td>Beat prior records</td>
+</tr>
+<tr>
+<td><strong>SOL-ExecBench</strong></td>
+<td>NVIDIA benchmark for CUDA kernels — the interface between GPUs and AI code</td>
+<td>Significant jump</td>
+</tr>
+</tbody>
+</table>
+<p>The point he stresses: this is not hyperparameter tuning. The system produced real inventions — incorporating hash tables into transformers, novel forms of momentum. And it matters commercially: kernel efficiency drives <strong>intelligence per dollar</strong>, and squeezing 5–10% more out of a multi-billion-dollar data center is a very significant end result.</p>
+<h4>The ceiling: we've barely started (~00:19–00:21)</h4>
+<p>He tried to define AI properly, found no good definition, and settled on three principal components: <strong>prediction (mathematically equivalent to compression) × actions × goals</strong>, from which he derives ten "spaces of intelligence."</p>
+<p>Take the simplest one, visual intelligence. Computer vision still mostly lives inside the electromagnetic band of the human eye — and human eyes aren't that good (mantis shrimp have better ones). The actual upper bound isn't binocular vision at all: millions or trillions of sensors, spread as far apart as the light cone still permits them to talk to one central intelligence, seeing down to quantum uncertainty and up to gravitational waves, then fusing all of it across many more layers of object abstraction.</p>
+<p>So when people say AI won't go much further: we are literally astronomically far from the upper bounds in many spaces of intelligence — which is exactly what makes the area worth researching.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Our generation was too late to explore the earth, too early to explore the stars, but we're right on time to build superintelligence." (~00:12)</p>
+<p>"Everything you can simulate, anything you can essentially verify, AI will obviously solve." (~00:14)</p>
+</blockquote>
+<p>Why board games fell early, and why "simulatable / verifiable" is the load-bearing pillar.</p>
+<blockquote>
+<p>"It's not just like tuning hyperparameters — it makes some truly useful inventions, like incorporating hash tables into transformers." (~00:18)</p>
+<p>"We're literally astronomically far away from the upper bounds across many of the different spaces of intelligence." (~00:21)</p>
+</blockquote>
+<p>A direct rebuttal to the "AI is plateauing" story.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recursive (Recursive Superintelligence)</td>
+<td>他的新公司,目標是自動化科學,並從 AI 自身的科學開始</td>
+<td>His new company: automate science, starting with the science of AI itself</td>
+<td>主持人介紹時提到募資 $650M / moderator cited a $650M raise</td>
+</tr>
+<tr>
+<td>The Eureka Machine（書 / book）</td>
+<td>九月出版,論述 AI 如何解鎖科學發現的新時代</td>
+<td>Book out in September on AI unlocking a new era of scientific discovery</td>
+<td>全名 <em>The Eureka Machine: Why AI Is the Key to Unlocking a New Era of Scientific Discoveries</em></td>
+</tr>
+<tr>
+<td>nanochat</td>
+<td>受歡迎的 auto research benchmark,他們兩天內顯著壓低 bits-per-byte</td>
+<td>Popular auto-research benchmark; bits-per-byte cut significantly in under two days</td>
+<td></td>
+</tr>
+<tr>
+<td>nanoGPT speedrun</td>
+<td>追求更快訓練演算法的 speedrun benchmark</td>
+<td>Speedrun benchmark for faster training algorithms</td>
+<td></td>
+</tr>
+<tr>
+<td>SOL-ExecBench</td>
+<td>NVIDIA 的 CUDA kernel benchmark,以硬體 Speed-of-Light 上限為標尺</td>
+<td>NVIDIA's CUDA-kernel benchmark, scored against hardware speed-of-light bounds</td>
+<td>github.com/NVIDIA/SOL-ExecBench</td>
+</tr>
+<tr>
+<td>MetaMind / You.com</td>
+<td>他先前創辦的兩家公司(主持人介紹)</td>
+<td>His two earlier companies (from the moderator's intro)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Richard so / Soccer</td>
+<td>Richard Socher</td>
+</tr>
+<tr>
+<td>recursive super intelligence（公司名）</td>
+<td>Recursive / Recursive Superintelligence</td>
+</tr>
+<tr>
+<td>Metammind</td>
+<td>MetaMind</td>
+</tr>
+<tr>
+<td>Mark Andre</td>
+<td>Marc Andreessen</td>
+</tr>
+<tr>
+<td>neonets / recursive neonets</td>
+<td>recursive neural nets</td>
+</tr>
+<tr>
+<td>soul execbench</td>
+<td>SOL-ExecBench</td>
+</tr>
+<tr>
+<td>NanoGPD speedrun</td>
+<td>nanoGPT speedrun</td>
+</tr>
+<tr>
+<td>nano chat</td>
+<td>nanochat</td>
+</tr>
+<tr>
+<td>"AI is code and AI can't code"</td>
+<td>"AI is code and AI <em>can</em> code"</td>
+</tr>
+<tr>
+<td>ideulate</td>
+<td>ideate</td>
+</tr>
+<tr>
+<td>LMS / LM</td>
+<td>LLMs / LLM</td>
+</tr>
+<tr>
+<td>scurves</td>
+<td>S-curves</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Recursive 的 <strong>$650M</strong> 募資數字出自主持人 Igor Babuschkin 的介紹,講者本人未提;正式數字待查。/ The $650M raise came from the moderator's intro, not the speaker; confirm the official figure.</li>
+<li><strong>nanoGPT speedrun</strong> 是否即社群常稱的 <code>modded-nanogpt</code> speedrun,講者未指明版本。/ Whether this is the community's <code>modded-nanogpt</code> speedrun — the speaker didn't specify.</li>
+<li>三個 benchmark 的<strong>具體改善幅度</strong>講者未給數字(只說 "significantly" / "significant jump"),需看投影片。/ No numbers given for the improvements; check the slides.</li>
+<li>「十種智慧空間(10 different spaces of intelligence)」的完整清單只在投影片上,逐字稿未列。/ The full list of the ten spaces of intelligence is only on the slide.</li>
+<li>「把 hash table 併進 transformer」的具體做法與是否有公開發表,待查。/ What "incorporating hash tables into transformers" concretely means, and whether it's published.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-plenary/richard-socher--the-eureka-machine-recursive-superintelligence-for-science.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

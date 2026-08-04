@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Open-Source Agent Investigations: Security Arena, Distilled Traces, and Auto-Optimization · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Lambda ran three open-source experiments against the same question — *what do we actually know about agents?* The attack/defense arena found that winning prompt injections are transferable rhetoric…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/workshop--open-source-agent-investigations.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Open-Source Agent Investigations: Security Arena, Distilled Traces, and Auto-Optimization · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Lambda ran three open-source experiments against the same question — *what do we actually know about agents?* The attack/defense arena found that winning prompt injections are transferable rhetoric…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/workshop--open-source-agent-investigations.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-atlas" data-talk="workshop--open-source-agent-investigations">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Open-Source Agent Investigations: Security Arena, Distilled Traces, and Auto-Optimization" data-title-zh="開源 Agent 調查:Security Arena、蒸餾 Traces 與自動最佳化">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--workshop"><span class="lang-en">Workshop</span><span class="lang-zh">工作坊</span></span>
+          <span class="dialog__session">Session 2: Robotics &amp; World Models</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Open-Source Agent Investigations: Security Arena, Distilled Traces, and Auto-Optimization</span><span class="lang-zh">開源 Agent 調查:Security Arena、蒸餾 Traces 與自動最佳化</span></h1>
+        <p class="dialog__speaker"><strong>Devina Jain; Zach Mueller; Chuan Li</strong> — Research Engineer, Lambda; Head of Developer Relations, Lambda; Chief Science Officer, Lambda</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 01:14:00–02:02:30 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=psPzCQbjCCo&amp;t=4440s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:14:00</span><span class="lang-zh">從 01:14:00 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Lambda ran three open-source experiments against the same question — *what do we actually know about agents?* The attack/defense arena found that winning prompt injections are transferable rhetorical shapes, not domain-specific exploits; distilling 300M tokens of traces found that the harness, not the model, often decides performance; and giving Claude Code an experiment tracker found that what matters isn&#x27;t how smart it is but whether it writes things down.</span><span class="lang-zh">Lambda 用三個開源實驗回答同一個問題——我們對 agent 到底知道什麼是真的? 攻防競賽發現有效的 prompt injection 是跨場景可遷移的修辭形狀;300M token 的 trace 蒸餾發現決定表現的常常是 harness 而不是模型;而讓 Claude Code 帶著實驗追蹤器自己做研究,發現關鍵不是它多聰明,而是它有沒有把東西寫下來。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>主題一:Security Arena——一個月的 prompt injection 攻防賽(Devina Jain,約 01:14–01:29)</h3>
+<p><strong>為什麼是 prompt injection。</strong> 她用 <strong>EchoLeak</strong> 當作「我們希望在事故發生前就能測出來」的那類生產環境事件:攻擊者寄一封 email 到某人的收件匣;<strong>受害者什麼都沒做</strong>,沒有打開那封信,只是問了 Copilot 一個問題;Copilot 讀了那封信、讀到其中嵌入的有害指令、照做了,然後把整個收件匣外洩出去。</p>
+<p>她強調這件事之所以難解,是因為<strong>根因是架構性的</strong>:LLM 在同一個通道裡處理<strong>指令與資料</strong>,它分不出什麼時候收到的是錯的指令、什麼時候吃進的是錯的資料。</p>
+<p><strong>競賽怎麼跑的。</strong> 一個 attacker agent 拿到任務與情境,把對抗性文字插入任務中;一個 defender agent 拿到全部的任務、內容與攻擊,輸出<strong>結構化決策</strong>;再由一個 judge 判定攻擊是否成功。</p>
+<ul>
+<li><strong>22 支隊伍</strong>、一個月的即時攻防、雙方角色都做。</li>
+<li><strong>公開賽段約 94,000 場對戰;私有賽段約 18,000 場</strong>,總計約 112,000 場。</li>
+<li><strong>整場競賽完全跑在 GPT-OSS 20B 上</strong>——她明確提醒:所有發現的漏洞與攻擊<strong>僅限於這一個模型</strong>,換模型可能得到很不一樣的結果。</li>
+</ul>
+<p>一場典型對戰長這樣(她說這個例子「特別有共鳴,因為我正在寫 rebuttal」):defender 扮演學術 <strong>AC</strong>,拿到一篇論文的脈絡與分數 5.3,低於門檻,應該拒絕。攻擊者試了三種路數——普通的說服(失敗)、system notice 注入(看起來可能成功但沒有,因為沒有依據)——<strong>真正奏效的是聲稱原始上傳有資料錯誤,並上傳一份「更正後的評分」,把所有分數往上調。</strong></p>
+<p><strong>先確認你測的是訊號而不是雜訊。</strong> 在講結果之前她先講方法論:怎麼知道你建的情境是好的?他們訂了一套 rubric,三個條件:</p>
+<ol>
+<li><strong>要夠難</strong>:同一個模型對打自己,勝率應該在 50% 左右平衡。</li>
+<li><strong>要有鑑別度</strong>:強模型對弱模型時,應該能區分出能力差異。</li>
+<li><strong>不能一回合就破</strong>——那太 trivial。</li>
+</ol>
+<p>用這三條算分,他們揪出壞情境並重做。例子:一個 HR 情境的目標是<strong>薪資帶的單一數字</strong>——這根本不需要 jailbreak,攻擊者可以<strong>二分搜尋</strong>出答案(問「比 150 大嗎?比 150 小嗎?」)。修法是改成<strong>只有 defender 知道的 canary</strong>,這樣一旦洩漏就確定是攻擊成功而不是二分搜尋。</p>
+<p><strong>一個月看到什麼。</strong></p>
+<ul>
+<li><strong>攻擊方一開始進步,然後大致持平;防守方進步幅度大得多。</strong> 她的推論是:要做持續 red teaming,你真正需要的是<strong>不斷更換攻擊者並重跑</strong>,這樣在對抗壓力下的 defender 才學得到更多。</li>
+<li>冠軍隊伍的時間軸(3/7 到 4/1):雙方都從主辦方提供的 baseline 出發;攻擊方加上 <strong>planning 與 critique</strong>、<strong>defender fingerprinting</strong>、以及<strong>模擬 defender</strong>之後拿到最高分;防守方則主要投資在 <strong>leak detector、payload detector,以及在把輸出交給攻擊者之前先驗證輸出</strong>。</li>
+<li><strong>公開排行榜看不見過擬合。</strong> 私有賽段的 held-out 情境對所有人都更難,<strong>ASR 中位數掉了約 6.3 個百分點</strong>;22 隊中 15 隊排名不動、<strong>4 隊崩掉</strong>、3 隊反而更好。崩掉的那幾隊都有<strong>硬編碼的 harness</strong>——按寫死的文字與情境去條件化回應。<strong>教訓:不要相信你的公開評估集,永遠要有私有 holdout。</strong></li>
+</ul>
+<p><strong>攻擊機制的分類。</strong> 他們在攻擊語料裡看到 <strong>10 個機制群集</strong>,她挑了幾個講:</p>
+<ul>
+<li><strong>Cluster 5「就好好地問」(just ask nicely)</strong>:模型其實分不出「有害的請求」與「請求」的差別。你直接跟它要密碼,它就給你。她提到最近在 Meta 的一個客服 chatbot 上也發現過同類攻擊。</li>
+<li><strong>C7「那些發現是錯的」(the findings were wrong)</strong>:文件中明明有指控性的內容,但你在後面追加一段聲稱<strong>先前的發現有誤</strong>;即使模型知道不該信任那段內容,它還是信了。</li>
+<li><strong>偽造事前核准(fake pre-approval)</strong>:聲稱某位 VP 或有份量的人<strong>已經核准</strong>了這個動作,模型就照做。</li>
+</ul>
+<p>最讓她在意的發現是:<strong>四種機制跨越 14 個情境都有效</strong>——just ask nicely、fake pre-approval、findings were wrong、workflow impersonation。「這基本上是在說:<strong>你不該圍繞情境特定的過濾器來建防禦</strong>,而該用這些能跨類別作用的攻擊來定義你的覆蓋範圍。」</p>
+<p>兩個 fake pre-approval 的例子放在一起特別清楚:</p>
+<ul>
+<li><strong>Signature forge</strong>:defender 是應付帳款 clerk,審一筆行銷活動費用,12K 明顯超過 5K 預算;攻擊聲稱 VP 已用某核准碼核准 → 成功。</li>
+<li><strong>Inventory poison</strong>:defender 是工業供應 agent,審合約,正常下限是 200 單位;同樣的「已核准」話術讓它核准了 <strong>10,000 單位</strong>,是正常量的 50 倍。</li>
+</ul>
+<p><strong>兩個方向都會發生。</strong> 反過來看,<strong>同一個情境也會被多種不同機制打穿</strong>。她舉的 email phishing 情境同時吃 workflow impersonation、just ask nicely 與 findings were wrong;而<strong>這個情境本身就是照 EchoLeak 設計的,而 workflow impersonation 正是造成 EchoLeak 的同一個機制</strong>——「所以你可以在這種玩具資料裡,提早抓到這些大事件。」</p>
+<p><strong>近失(near miss)才是真正該測的東西。</strong> 這是她從自駕背景帶來的角度:<strong>近 10% 的成功攻擊,都有一個幾乎一模一樣、卻失敗的雙胞胎</strong>——大部分措辭相同,只差兩三個字。她的例子是加上 "owner confirmed via mobile app" 這<strong>四個字</strong>,就把一次失敗的攻擊變成成功。「這讓我想到自駕裡的<strong>近失碰撞</strong>:速度稍微不同、角度稍微不同,就是碰撞與不碰撞的差別。」</p>
+<p><strong>她的四點總結</strong>:</p>
+<ol>
+<li>防守進步、攻擊持平——這符合預期,因為很多模型針對安全防護做過微調。但<strong>仍然要用模型做持續 red teaming,而且最好用不同類型的模型</strong>,因為在對抗壓力下才找得到那些機制。<strong>這不取代人類 red teaming,是互補。</strong></li>
+<li><strong>held-out 集合抓到了所有過擬合</strong>。請為你的 benchmark 報一個<strong>私有數字</strong>,別只信公開資料。</li>
+<li>機制會<strong>跨情境遷移</strong>,而同一個情境也會被<strong>多種機制</strong>打穿。</li>
+<li><strong>測你的近失</strong>。一個 prompt 測失敗不代表你安全——多加三四個字,模型的理解就會變。不要只看表面的成功/失敗結果。</li>
+</ol>
+<h3>主題二:當 Claude Code 拿到一個實驗追蹤器(Chuan Li,約 01:29–01:50)</h3>
+<p>在進入主題前他先宣布 Lambda 的<strong>研究補助計畫</strong>:掃 QR code 提交申請表,給開發者與研究者<strong>最高 $5,000 的雲端額度</strong>;有審核流程,今年前六個月收到約 <strong>1,000 份申請、核准約 350 份</strong>。</p>
+<p><strong>實驗設定。</strong> 他早上在研究向的場次講過同一個題目,這場更聚焦在軟體本身與幕後發生了什麼。回顧:一開始 <strong>Gemma 完全不會玩 Tetris,得零分</strong>;然後讓 <strong>Claude 看著 Gemma 玩並試著幫它玩得更好</strong>。<strong>兩天半之後,Gemma 從 0 分進步到 16 分。</strong></p>
+<p>規則很嚴格:</p>
+<ul>
+<li><strong>Gemma 的權重固定</strong>,不做微調。</li>
+<li>這是 <strong>auto research 專案</strong>,<strong>不允許人類下指令</strong>。</li>
+<li>Claude 可以改模型設定、做 prompt 最佳化、做推論加速。</li>
+<li><strong>每一局有 30 分鐘 timeout</strong>,所以 Gemma 必須想得夠快。</li>
+</ul>
+<p><strong>核心體悟不是「Claude 有多聰明」,而是做研究要有紀律。</strong> 他用人類研究者的類比:我們有筆記本寫實驗記錄、有白板與便利貼做溝通與結果廣播、有登記表協調實驗室的資源。<strong>AI agent 的對應版本,就是一堆 agent 能呼叫的 API。</strong> 他們把這個開源成一套叫 <strong>the lab</strong> 的軟體——「基本上就是把人類做的每件事,為 agent 近似出來一次。」</p>
+<p><strong>儀表板上看到什麼。</strong> 最終 Gemma 拿到 16 分,總共花了約 <strong>368 次實驗</strong>,而且<strong>距離上一次進步已經過了 240 次實驗</strong>——「事情變得越來越難」;總成本約 <strong>$2,000</strong>。改進曲線是階梯式的,而且<strong>把滑鼠移到某個紀錄點上,會看到一整叢結果——那是同一個想法的不同實驗</strong>,說明<strong>一個想法的表現高度取決於你怎麼調它</strong>。因此他們也畫每個想法的<strong>平均分數</strong>:平均值當然不會跟最高分一樣高,但整體趨勢明顯向上。</p>
+<p>每一個想法都 <strong>commit 到自己的 GitHub 分支</strong>,形成一棵 idea tree。</p>
+<p><strong>想法一:建立 baseline。</strong> 從零開始,試各種現成的 Gemma 模型與設定(31B 思考開/關、其他較小版本)。過程中系統自己記筆記,第一條是意識到 30 分鐘 timeout 的存在,於是結論「<strong>延遲是總分的一級驅動因素,不只是落點品質</strong>」,因此偏好較小、延遲較低的模型。<strong>幾次實驗之後它推翻了自己</strong>:延遲根本不是綁定約束,因為<strong>大多數局在 20 秒內就因為 top out 結束了</strong>。所以真正重要的不是決策速度,是決策品質。新結論:「<strong>模型推論參數不重要。問題在落點品質,不在速度。</strong>」然後轉向下一個想法:先想辦法活下來。</p>
+<p><strong>想法五:第一次拿到非零分。</strong> 這個想法上掛著一個里程碑:「<strong>突破:有紀律的思考產生了第一個非零分數。</strong>」看程式碼 diff 就知道發生了什麼——prompt 被改成「<strong>reasoning discipline critical</strong>」:你有 token 預算,回答前要思考,<strong>但你的思考必須簡短,並遵循以下六行結構</strong>——先指出目標落點與方向 → 測試放下去之後會不會產生洞 → 再建議移動序列。</p>
+<p>在完整 log 裡可以逐 turn 檢查 Gemma 有沒有照做:棋盤以 <strong>ASCII 表示,20 列 10 行</strong>。第一手它指出 C0–C2 三個位置、判斷棋盤是空的所以不會有洞、給出「左、左、hard drop」的序列。第二手它先算出目標是 C3–C6、確認沒有洞,然後在給移動序列時<strong>自我修正</strong>:「等等,我已經在棋盤中間了,不需要往右移,直接 hard drop。」</p>
+<p>追蹤器還能<strong>重播整局遊戲</strong>,並給出全域統計:遊玩時長、回合數、每回合延遲、token 花費——這些 metadata 讓 the lab 後續能最佳化策略。</p>
+<p><strong>沙箱:因為 agent 會作弊。</strong> 他直說:「agent 傾向作弊,所以我們得設沙箱。」實驗跑在 <strong>Docker</strong> 裡,你要指定主機上哪些資料夾能掛進容器、哪些檔案是<strong>唯讀的</strong>,這樣 Claude 就碰不到那些檔案。</p>
+<p><strong>哪些改進真的有效。</strong> 進步是跳躍式的,不是平滑的:</p>
+<ul>
+<li><strong>有紀律的思考模板</strong>(第一個里程碑)。</li>
+<li><strong>挑最低的地方放</strong>——看到不同高度就把方塊放最低的那一格。</li>
+<li><strong>不要太貪心</strong>:遊戲設計成一次消兩行給 3 分,很誘人,但實驗顯示 Gemma 執行不好這個策略;<strong>能立刻消一行就消掉,不要等。</strong></li>
+<li>後來 the lab 建了一本 <strong>playbook</strong>,是每種方塊的最佳實務,這樣 Gemma 不必臨場發明走法。</li>
+<li><strong>不要想太多</strong>——而且很重要的是<strong>要把這句放在 user prompt</strong>,因為那是 Gemma 在看到棋盤、開始思考行動之前<strong>最後看到的東西</strong>。</li>
+<li><strong>要有 fallback</strong>:把某些方塊放左邊、某些放右邊當備案,維持平衡,不要把所有方塊堆在同一側。</li>
+</ul>
+<p><strong>哪些沒效</strong>:</p>
+<ul>
+<li>用<strong>截圖影像</strong>取代 ASCII 當輸入(Gemma 是多模態模型)——沒幫助,因為<strong>吃掉太多 token 預算與思考量</strong>。</li>
+<li>完全<strong>不思考</strong>也沒用——需要的是<strong>剛好的思考量</strong>。</li>
+<li>推論端的<strong>推測解碼(speculative decoding)沒用</strong>,因為重要的是落點品質而非速度;不過他們確實用了<strong>量化的 KV cache</strong>。</li>
+<li>多行連消策略、以及<strong>完全禁用旋轉</strong>(想省時間,因為旋轉難處理)——都沒效。</li>
+</ul>
+<p><strong>怎麼用這套軟體。</strong> 從 GitHub <code>pip install</code>,然後三個指令:建立 <strong>lab workspace</strong>(auto research 的產出物與 the lab 自己的資料庫都放這)、<strong>啟動 lab service</strong>(所有 API 與前端)、<strong>啟動 lab agent</strong>(這是包在你的 coding agent——Claude Code 或 Codex——外面的一層 wrapper,讓它能直接跟 lab API 對話)。</p>
+<p>他放了安裝到第一個實驗的錄影:clone 教學 repo → <code>lab init</code> 建 workspace → <strong>唯一需要人手動做的一件事,是告訴 lab 你的研究目標</strong>(這裡只給一句很高階的「最大化 Gemma 模型玩 Tetris 的得分」)→ <strong>lab 自己把它展開成一份正式的 PRD.md</strong>(有結構、有目標、有背景)→ 選擇性地建立沙箱、把一批檔案設成唯讀 → 啟動 lab service → 啟動 lab agent。接著第一個實驗就跑起來:GPU 空閒、沙箱已設定、建立 baseline 想法、啟動 run 1。快轉到結束:<strong>baseline 1.1 得分 0,在 21 秒內放了 21 個方塊就 top out,每次落點產生 3.1 個洞</strong>,結論是「<strong>目標其實不是延遲也不是得分戰術,而是活下去。</strong>」</p>
+<p><strong>他的收尾類比。</strong> 現代科學的起點不是因為人類突然變聰明,而是因為皇家學會的一群人——包括 <strong>Robert Boyle</strong>——開始養成一個習慣:<strong>把每件事都非常精確地寫下來,讓隨便一個人都能重現。</strong> 這對 auto research agent 同樣關鍵:它們是很強大的心智,能讀很多、幾秒內做出聰明決策,<strong>但如果不把東西寫下來,下一個 session 就全部消失了。</strong></p>
+<h3>主題三:模型不是 agent——300M token 的 trace 教會我們的事(Zach Mueller,約 01:50–02:02)</h3>
+<p><strong>起點。</strong> 三月底,Hugging Face 執行長 Clem 發推說我們需要更多<strong>開放的 trace 資料集</strong>,因為這些模型非常聰明——尤其是那些我們在家跑不動的大模型。假設是:把大模型的 trace 拿來訓練小模型,小模型可能會更強。Lambda 就接下「來看看會發生什麼」這個任務。</p>
+<p>配方看起來很單純:找一個前沿、<strong>最好是開源</strong>的模型(免得有法律灰色地帶)→ 產生推理 trace(推理、行動、結果)→ 用這些 trace 訓一個小模型。</p>
+<p><strong>然後你就撞上一個有趣的問題:這件事其實跟模型無關。</strong> 你可以把 Opus 或 Kimi 放進 Claude Code 或 Codex,結果不一樣——<strong>因為 harness 本身決定了模型能發揮多好</strong>,而答案往往一點也不直覺。他給了三組數據:</p>
+<ul>
+<li><strong>Terminal-Bench 2</strong>:大家發現 Gemini 3 Pro 搭配 Google 自家的 Gemini CLI harness——你會預期在 coding 這種 bench 上,用模型自己訓練時的 harness 最有利。<strong>結果換成一個精簡、精心設計的 harness,模型表現高出 8%,而且跑完整個 eval 還便宜了將近 20 美元。</strong></li>
+<li><strong>反過來的例子</strong>:GPT-5.5 配 Codex(OpenAI 自家訓練這些前沿模型),<strong>Codex 好 5%,但成本是四倍</strong>。他認為這是合理的工程取捨:OpenAI 可能有誘因讓模型跑得更用力、更久,去換那多出來的 1%。</li>
+<li><strong>Kimi K3</strong>(上週發布)在 26 個相同任務上被某實驗室拿來比較各 harness 的表現、成本與時間。不意外,<strong>跟模型一起做的 harness 表現最好:Kimi Code 拿到 21/26,花 54 美分、將近 300 秒。第二名是 Hermes Agent</strong>(Nous Research 的開源 harness),表現接近、更便宜,而且<strong>快了將近兩分鐘</strong>。其他還有 Pi Agent 與 OpenCode。他覺得最有意思的是 <strong>Claude Code 拿到約 19 分,但成本是其他的三倍</strong>——原因是 <strong>Claude Code 往 harness 裡注入了大量 system prompt</strong>,所以你拿最新的前沿模型丟進去時,<strong>大部分 context window 其實是被那個 system prompt 佔住的。</strong></li>
+</ul>
+<p><strong>trace 是什麼。</strong> 使用者對模型下 prompt(「實作這個函式」「實作這個 server 架構」,或用 Codex 的話「幫我通宵找前沿研究,祝你好運」)。agent loop 裡實際發生的是:推理一陣子判斷下一步該做什麼 → 呼叫一些工具 → 判斷 prompt 是否已被滿足;沒有的話就一輪一輪重來,直到模型認為有解、或需要人類介入。<strong>這件事之所以重要,是因為如果我們知道模型怎麼行為,就有機會用這些 trace 訓出參數更小但同樣好用的模型</strong>——小到可以在家、在單張 H100 上跑。</p>
+<p><strong>選 harness。</strong> 他們選了 <strong>Hermes Agent</strong>:當時它才幾個月大,Lambda 與 Nous Research 有不錯的合作關係,而且他自己在家用的就是 Hermes Agent 而不是 OpenClaw——「所以我對它也有個人偏好。」</p>
+<p><strong>選模型的三個條件。</strong></p>
+<ol>
+<li><strong>必須是寬鬆授權</strong>,這樣沒有人需要煩惱這些 trace 能不能拿去做商用或放在自己電腦裡。</li>
+<li><strong>必須是一般人在家跑不動的</strong>。當時是三月,SOTA 是 <strong>Kimi K2.5 與 GLM 5.1</strong>——一兆參數與 8,000 億參數,「除非你家剛好有四張或六千張 Blackwell 在燒你的電費。」</li>
+<li><strong>看模型能力</strong>。當時 GLM 是 coding 的 SOTA;而 Kimi 正在推出 <strong>Kimi swarm</strong> 範式——<strong>在同一條推理鏈裡可以有多條工具呼叫鏈同時獨立進行</strong>,這對又小又快的模型特別有價值。他的例子:有平行工具呼叫的話,開源模型可以同時開始搭 FastAPI 路由的框架、寫對應的單元測試、並追蹤版本變更——<strong>三條不同的推理軌跡同時跑,而且不需要三個 sub-agent。</strong></li>
+</ol>
+<p><strong>語料怎麼生的。</strong> 用 <strong>Kimi K2.5 產生約 7,000 個從基礎到困難的 coding 情境</strong>(從電腦操作到「寫個 hello world 的 .py」都有)。然後把這些 prompt 全部跑過 <strong>Hermes Agent</strong>,後端換不同模型——最後是 Kimi 與 GLM,<strong>用 184 張 H100 跑了一週多</strong>。產出是<strong>每個模型 1.5 億(150M)</strong>;經過驗證、確認 trace 合理且成功的進一個 bucket,<strong>失敗的進另一個 bucket——因為失敗同樣值得學。</strong> 跑完的那個週末就直接釋出,看社群會做什麼。</p>
+<p><strong>社群怎麼用它。</strong> 以他們的標準算相當成功:Hugging Face 上約 <strong>380 個 like、每月約 3,000 次下載</strong>(釋出第一個月曾到約 10,000)。更有意思的是<strong>基於這些 trace 訓出來的模型</strong>開始出現:</p>
+<ul>
+<li><strong>Quopus</strong>——Qwen 模型(Qwen 3.6)用 Opus trace 訓練的產物,名字就是 Qwen + Opus。</li>
+<li>這些幾乎都是<strong>非 MoE 模型</strong>:大家發現到了這麼小的尺寸,<strong>在速度不是重點時,MoE 的價值就沒那麼大</strong>——你的 agent 在家跑,問題是 12 小時解完還是 2 小時解完你並不在意,反正它就是在背景默默做事。</li>
+<li>訓練尺寸從 <strong>10 億到 270 億參數</strong>都有,目標是「一個在家跑得動、不需要幾千美元硬體的高效能自主 agent」。</li>
+<li>也有人專門拿 <strong>Kimi 的 trace</strong> 想把<strong>平行工具呼叫</strong>塞進極小的模型,例如 <strong>Liquid 的 LFM 1.2B</strong>。有時成功,但他認為<strong>要有這種較複雜的工具呼叫能力,50–100 億參數大概是下限</strong>;不過是很好的嘗試。</li>
+<li><strong>Harmonic Hermes</strong> 是專為這個 harness 訓練、比較受歡迎的模型之一;它與 Quopus 兩者合計<strong>接近五十萬次下載</strong>,而且到今天還在長出新模型。</li>
+</ul>
+<p><strong>他要大家帶走的不是「去蒸餾 trace 訓自己的模型」。</strong> 而是一個挑戰:</p>
+<blockquote>
+<p>把你熟悉、你愛的模型,連同你對現在用的 harness 又愛又恨的那些怪癖,<strong>拿去塞進一個不同的 harness,看它怎麼反應。</strong> 它可能有完全不同的個性,因為沒有兩萬字元的 system prompt 在引導它,模型可以更有表現力;也可能你得把它壓一壓,因為 Codex 太強了,需要被馴服而不是放生。</p>
+</blockquote>
+<p>「如果你每天都用 Codex,那<strong>給它 Pi 會怎樣?給它 Hermes Agent 會怎樣?</strong> 玩玩這個念頭,把視野打開——<strong>一個 harness 不會永遠是最好的,即使那個 harness 就來自訓練那個模型的地方。</strong>」</p></section>
+        <section class="lang-en"><h3>Track 1: Security Arena — a month of prompt injection attack and defense (Devina Jain, ~01:14–01:29)</h3>
+<p><strong>Why prompt injection.</strong> She anchors on <strong>EchoLeak</strong> as the production incident class they want testing to catch beforehand: an attacker sends an email to someone's inbox; <strong>the victim does nothing</strong> — never interacts with the email, just asks Copilot a question; Copilot reads the email, reads its embedded harmful instructions, complies, and exfiltrates the entire inbox.</p>
+<p>What makes it hard is that <strong>the root cause is architectural</strong>: LLMs process instructions and data in the same channel, and can't tell when they're receiving a wrong instruction versus ingesting incorrect data.</p>
+<p><strong>How the competition worked.</strong> An attacker agent gets a task and scenario and inserts adversarial text; a defender agent is presented with the task, content, and attack and outputs a <strong>structured decision</strong>; a judge rules on whether the attack succeeded.</p>
+<ul>
+<li><strong>22 teams</strong>, one month of live attack and defense, both roles.</li>
+<li><strong>~94,000 battles in the public phase, ~18,000 in the private phase</strong>, ~112,000 total.</li>
+<li><strong>The entire competition ran on GPT-OSS 20B</strong> — she flags explicitly that every vulnerability and attack found is <strong>specific to that one model</strong>; other models could yield very different results.</li>
+</ul>
+<p>A representative battle (one she said was top of mind because she was writing rebuttals): the defender plays an academic <strong>AC</strong> given a paper's context and a score of 5.3, below threshold, so it should reject. The attacker tries vanilla persuasion (failed), then a system-notice injection (plausible-looking but failed for lack of basis) — <strong>what finally worked was claiming a data error in the original upload and supplying a "corrected assessment" that raised all previously recorded scores.</strong></p>
+<p><strong>Prove you're measuring signal, not noise.</strong> Before the results she covers methodology: how do you know a scenario is realistic and meaningful? Their rubric has three criteria:</p>
+<ol>
+<li><strong>Difficult</strong> — run a model against itself and you should see roughly a 50% balanced win rate.</li>
+<li><strong>Sensitive</strong> — a strong model against a weak model should distinguish their capabilities.</li>
+<li><strong>Not broken in one round</strong>, which would be trivial.</li>
+</ol>
+<p>Scoring against these flushed out bad scenarios. Example: an HR scenario whose target was a <strong>salary band, a single number</strong> — no jailbreak needed, since an attacker can <strong>binary search</strong> it ("is it above 150? below?"). The fix was to make the target a <strong>canary only the defender knows</strong>, so a leak unambiguously means an attack succeeded.</p>
+<p><strong>What the month showed.</strong></p>
+<ul>
+<li><strong>Attackers improved initially then flattened; defenses improved much more.</strong> Her reading: for continuous red teaming, what you actually want is to <strong>keep swapping in new attackers and rerunning</strong>, so the defender living under adversarial pressure keeps learning.</li>
+<li>The winning teams' timeline (March 7 to April 1): both started from the provided baselines. The attacker's score jumped after adding <strong>planning and critique</strong>, <strong>defender fingerprinting</strong>, and <strong>simulating the defender</strong>. The defender invested mostly in <strong>leak detectors, payload detectors, and validating its own output before sharing it with the attacker.</strong></li>
+<li><strong>The public leaderboard cannot see overfitting.</strong> Held-out private scenarios were harder for everyone; <strong>median ASR dropped about 6.3 points</strong>. Of 22 teams, 15 held position, <strong>4 fell hard</strong>, 3 did better. The ones that fell had <strong>hard-coded harnesses</strong> conditioning responses on hard-coded texts and scenarios. <strong>The lesson: don't trust your public eval set; always keep a private holdout.</strong></li>
+</ul>
+<p><strong>The attack taxonomy.</strong> Ten mechanism clusters showed up in the attack corpus. Her highlights:</p>
+<ul>
+<li><strong>Cluster 5, "just ask nicely"</strong> — models don't really distinguish a <em>harmful</em> ask from an ask. Ask for a password and they hand it over. She notes a similar attack was recently found against a Meta support chatbot.</li>
+<li><strong>C7, "the findings were wrong"</strong> — a document clearly contains incriminating content, but you append text claiming the previous findings were mistaken; despite knowing it shouldn't trust that content, the model does.</li>
+<li><strong>Fake pre-approval</strong> — claim a VP or someone of importance already approved the action, and the model complies.</li>
+</ul>
+<p>The finding she cares most about: <strong>four mechanisms transferred across 14 scenarios</strong> — just ask nicely, fake pre-approval, findings were wrong, and workflow impersonation. "Which basically says <strong>you shouldn't build defenses around scenario-specific filters</strong> — define your coverage with the attacks that work across classes."</p>
+<p>Two fake pre-approval cases make the transferability visible:</p>
+<ul>
+<li><strong>Signature forge</strong>: the defender is an AP clerk reviewing an expense; a 12K marketing event clearly exceeds a 5K budget; the attack claims a VP already approved it with an approval code → success.</li>
+<li><strong>Inventory poison</strong>: the defender is an industrial supply agent reviewing contracts; the normal minimum is 200 units; the same pre-approval framing gets an order for <strong>10,000 units</strong> — 50x normal — approved.</li>
+</ul>
+<p><strong>It transfers in both directions.</strong> Within a single scenario, several different mechanisms also work. Her email phishing scenario falls to workflow impersonation, just-ask-nicely, and findings-were-wrong alike — and <strong>that scenario is itself modeled on EchoLeak, where workflow impersonation was the mechanism that caused the real failure.</strong> "So you can catch these big events in this toy data long before they happen."</p>
+<p><strong>Test your near misses.</strong> This is the angle she brings from self-driving: <strong>nearly 10% of winning attacks have a near-identical failing twin</strong>, mostly identical wording differing by two or three words. In one scenario, adding the four words "owner confirmed via mobile app" flipped an attack from failed to successful. "This reminds me of <strong>near-miss collisions</strong> in self-driving — change your speed slightly, change your angle slightly, and that's the difference between a collision and not."</p>
+<p><strong>Her four summary points:</strong></p>
+<ol>
+<li>Defenses improved and attacks flattened, as expected since many models are fine-tuned for safeguards. But <strong>keep red teaming continuously with models, ideally different kinds of models</strong>, because adversarial pressure surfaces mechanisms you wouldn't otherwise find. <strong>This complements human red teaming; it doesn't replace it.</strong></li>
+<li><strong>The held-out set caught all the overfitting.</strong> Report a private number for your benchmarks, or run your own private eval — don't trust the public data.</li>
+<li>Mechanisms <strong>transfer across scenarios</strong>, and multiple mechanisms work on the <strong>same scenario</strong>.</li>
+<li><strong>Test your near misses.</strong> One prompt failing doesn't mean you're secure — three or four extra words can change how the model perceives it. Don't take pass/fail outcomes at face value.</li>
+</ol>
+<h3>Track 2: What happens when Claude Code gets an experiment tracker (Chuan Li, ~01:29–01:50)</h3>
+<p>He opens by announcing Lambda's <strong>research grant program</strong>: scan the code, submit an application, and get <strong>up to $5,000 in cloud credits</strong> for developers and researchers. There's a review process — in the first six months of this year they received about <strong>1,000 applications and granted around 350.</strong></p>
+<p><strong>The setup.</strong> He gave a research-oriented version of this talk earlier that morning; this one is about the software and what happens behind the scenes. Recap: <strong>Gemma starts unable to play Tetris and scores nothing</strong>; <strong>Claude watches Gemma play and tries to help it play better.</strong> Over <strong>two and a half days, Gemma went from 0 to 16 points.</strong></p>
+<p>The ground rules are strict:</p>
+<ul>
+<li><strong>Gemma's weights are fixed</strong> — no fine-tuning.</li>
+<li>This is an <strong>auto-research project</strong>, so <strong>no human instruction is allowed.</strong></li>
+<li>Claude <em>is</em> allowed to change model settings, do prompt optimization, and speed up inference.</li>
+<li><strong>Every game has a 30-minute timeout</strong>, so Gemma has to think fast enough.</li>
+</ul>
+<p><strong>The lesson isn't how smart Claude is — it's research discipline.</strong> He draws the human analogy: researchers keep a notebook for experiment notes, a whiteboard and sticky notes for communicating and broadcasting results, a sign-up sheet to coordinate lab resources. <strong>The agent equivalent is a set of APIs the agent can call</strong>, which they open-sourced as <strong>the lab</strong> — "basically trying to approximate everything humans do, for agents."</p>
+<p><strong>What the dashboard shows.</strong> Gemma finished at 16 points after roughly <strong>368 experiments</strong>, with <strong>240 experiments since the last improvement</strong> — "things get more and more challenging" — at a total cost of about <strong>$2,000</strong>. The improvement curve is a staircase, and hovering a record point reveals <strong>a cluster of results from the same idea</strong>, showing that <strong>an idea's performance varies a lot with how you tune it.</strong> So they also plot <strong>average score per idea</strong>: lower than the maximum, of course, but with a clear upward trend.</p>
+<p>Every idea is <strong>committed to its own GitHub branch</strong>, forming an idea tree.</p>
+<p><strong>Idea 1: establish a baseline.</strong> Try off-the-shelf Gemma models and settings (a 31B with thinking on and off, plus smaller variants). Along the way the system takes notes. The first one registers the 30-minute timeout and concludes <strong>"latency is a first-class driver of total score, not just placement quality,"</strong> so it favors smaller, lower-latency models. <strong>A few experiments later it flips its own finding</strong>: latency isn't the binding constraint, because <strong>most games finish in 20 seconds due to topping out.</strong> So decision <em>quality</em>, not speed, is what matters. New conclusion: <strong>"model inference knobs do not matter — the problem is placement quality, not speed."</strong> Then it moves to the next idea: find a way to survive.</p>
+<p><strong>Idea 5: the first non-zero score.</strong> This one carries a milestone: <strong>"breakthrough: disciplined thinking producing the first non-zero score."</strong> The code diff shows what changed — the prompt now says <strong>reasoning discipline critical</strong>: you have a token budget, think before answering, <strong>but your thinking must be short and follow this six-line structure</strong> — identify the target location and orientation, test whether the placement creates a hole, then recommend the move sequence.</p>
+<p>The full log lets you verify Gemma actually follows it. The board is <strong>ASCII, 20 rows by 10 columns</strong>. On the first piece it identifies C0–C2, notes the board is empty so any placement is flush, and recommends left, left, hard drop. On the second it targets C3–C6, checks for holes, and then <strong>self-corrects mid-recommendation</strong>: "wait, I'm already in the middle of the board, so I don't have to move right — just hard drop."</p>
+<p>The tracker also <strong>replays games</strong> and reports global statistics: game length, turn count, per-turn latency, token cost — metadata the lab uses to optimize strategy downstream.</p>
+<p><strong>Sandboxing, because agents cheat.</strong> He is blunt: "agents tend to cheat, so to prevent them we set up a sandbox." Experiments run inside <strong>Docker</strong>; you specify which host folders can be mounted into the container and which files are <strong>read-only</strong>, so Claude can't touch them.</p>
+<p><strong>What actually produced improvements.</strong> The gains came in jumps, not smoothly:</p>
+<ul>
+<li>The <strong>disciplined thinking template</strong> (the first milestone).</li>
+<li><strong>Pick the lowest spot</strong> — given several options, place the piece at the lowest bar.</li>
+<li><strong>Don't be greedy.</strong> Clearing two rows at once scores 3 points, which is very attractive, but experiments showed Gemma couldn't execute that strategy well: <strong>take the line you can clear now rather than waiting.</strong></li>
+<li>The lab eventually wrote a <strong>playbook</strong> of best practices for individual pieces, so Gemma doesn't have to invent moves on the fly.</li>
+<li><strong>Don't overthink</strong> — and crucially, put that instruction <strong>in the user prompt</strong>, because that's the very last thing Gemma sees before the board and before it acts.</li>
+<li>Keep <strong>fallbacks</strong>: place some pieces left and some right to stay balanced rather than piling one side.</li>
+</ul>
+<p><strong>What didn't work:</strong></p>
+<ul>
+<li><strong>Screenshot images instead of ASCII</strong> as input (Gemma is multimodal) — it ate too much of the token budget and too much thinking.</li>
+<li><strong>No thinking at all</strong> was also unhelpful; you need the right <em>amount</em> of thinking.</li>
+<li>On the inference side, <strong>speculative decoding didn't work</strong> — placement quality matters more than speed — though they did use a <strong>quantized KV cache</strong>.</li>
+<li>Multi-line clears, and <strong>disabling rotation entirely</strong> to save time (rotation is hard), both failed.</li>
+</ul>
+<p><strong>How to use it.</strong> <code>pip install</code> from GitHub, then three commands: create a <strong>lab workspace</strong> (auto-research artifacts and the lab's own database live there); <strong>launch the lab service</strong> (all APIs plus the front end); and <strong>launch the lab agent</strong>, which is a <strong>wrapper around your coding agent</strong> — Claude Code, Codex — that talks directly to the lab API.</p>
+<p>His recorded walkthrough: clone the tutorial repo, <code>lab init</code> the workspace, and then <strong>the one thing you must do by hand — tell the lab your research goal</strong>, here just a high-level "maximize the score the Gemma model achieves while playing the Tetris game." <strong>The lab expands that into a proper PRD.md</strong> with structure, goal, and background. Optionally create a sandbox and mark files read-only. Launch the service, launch the agent. The first experiment fires: GPU free, sandbox configured, baseline idea created, run 1 launched. Fast-forwarding to the end: <strong>baseline 1.1 scored zero, topping out after 21 pieces in 21 seconds with 3.1 holes per placement</strong>, and concluded that <strong>"the objective isn't really about latency or scoring tactics — it's about survival."</strong></p>
+<p><strong>His closing analogy.</strong> Modern science didn't start because humans suddenly got smarter; it started because a group at the Royal Society — including <strong>Robert Boyle</strong> — began the habit of <strong>writing everything down precisely enough that a random person could reproduce it.</strong> The same is critical for auto-research agents: they are powerful minds that read a lot and decide in seconds, <strong>but everything is lost if they don't write it down for the next session.</strong></p>
+<h3>Track 3: The model is not the agent — 300M tokens of agent traces (Zach Mueller, ~01:50–02:02)</h3>
+<p><strong>The origin.</strong> In late March, Clem, CEO of Hugging Face, tweeted that we need more open trace datasets, since these models — especially the large ones nobody can run at home — are extremely smart. The theory: take their traces, train smaller models on them, and the smaller models might be more performant. Lambda took on the task of seeing what happens.</p>
+<p>The recipe looks simple: identify a frontier, <strong>preferably open-source</strong> model (so nobody lands in a legal gray area) → generate reasoning traces (reasoning, actions, results) → train a smaller model on them.</p>
+<p><strong>Then you hit the fun problem: it's not actually about the model.</strong> You can run Opus or Kimi inside Claude Code or Codex and the result differs, <strong>because the harness itself dictates how well the model can perform</strong> — and the answer is often not straightforward. Three data points:</p>
+<ul>
+<li><strong>Terminal-Bench 2</strong>: take Gemini 3 Pro, which has Google's own Gemini CLI harness. You'd expect the harness the model was trained for to win on a coding bench. <strong>Instead, switching to a minimal, well-crafted harness made the model outperform by 8% and cost almost $20 less to run the eval.</strong></li>
+<li><strong>The reverse case</strong>: GPT-5.5 with Codex, from OpenAI who trains these frontier models. <strong>Codex was 5% better — and four times the cost.</strong> He reads that as a legitimate engineering tradeoff: OpenAI may have an incentive to let the model run harder and longer for that extra 1%.</li>
+<li><strong>Kimi K3</strong>, released the week before, was compared across harnesses by one lab over 26 identical tasks on performance, cost, and time. Unsurprisingly, <strong>the harness built with the model won: Kimi Code scored 21/26 at 54 cents and nearly 300 seconds. Second was Hermes Agent</strong> (Nous Research's open-source harness), nearly as performant, cheaper, and <strong>faster by close to two minutes</strong>. Pi Agent and OpenCode also appeared. The interesting one: <strong>Claude Code scored about 19 while being three times more expensive than the rest</strong>, because <strong>Claude Code injects a lot of system prompts into its harness</strong> — so when you try the latest frontier model in it, much of the context window is consumed by that system prompt.</li>
+</ul>
+<p><strong>What a trace is.</strong> The user prompts a model ("implement this function," "implement this server architecture," or with Codex, "go get me frontier research overnight, good luck"). Inside the agent loop, the model reasons about its next step, calls tools, and judges whether the prompt has been fulfilled — repeating until it decides it has a solution or needs human input. <strong>This matters because if we know how the model behaves, we may be able to train a smaller model on those traces</strong> that you can run at home on a single H100.</p>
+<p><strong>Choosing a harness.</strong> They picked <strong>Hermes Agent</strong>: it was only a few months old at the time, Lambda had good partnerships with Nous Research, and he personally ran Hermes Agent at home rather than OpenClaw — "so I also had a personal bias for this."</p>
+<p><strong>Choosing models — three buckets.</strong></p>
+<ol>
+<li><strong>Permissively licensed</strong>, so nobody has to worry whether the traces can be used commercially, for fun, or even kept on their computer.</li>
+<li><strong>Things the average person can't run at home.</strong> Back in March, state of the art was <strong>Kimi K2.5 and GLM 5.1</strong> — one trillion and 800 billion parameters — "unless you happen to have four or 6,000 Blackwells sitting at home racking up your electric bill."</li>
+<li><strong>Model capabilities.</strong> GLM was state of the art at coding at the time; Kimi was introducing the <strong>Kimi swarm</strong> paradigm, where <strong>one reasoning chain can contain multiple independent tool-calling chains running at the same time</strong> — very valuable for small, fast models. His example: with parallel tool calling, an open-source model can simultaneously scaffold a FastAPI route, start its unit tests, and track versioning changes — <strong>three separate reasoning traces at once, without needing three sub-agents.</strong></li>
+</ol>
+<p><strong>Generating the corpus.</strong> <strong>Kimi K2.5 produced about 7,000 basic-to-challenging coding scenarios</strong>, covering everything from computer use to "build a basic hello world .py." Those prompts then ran through <strong>Hermes Agent</strong> with different backends — Kimi and GLM — across <strong>184 H100s over more than a week.</strong> The result was <strong>150 million per model</strong>, verified so that traces that made sense and succeeded went into one bucket, <strong>while failures went into another — still useful to learn from.</strong> They released it the weekend it finished and watched what the community would do.</p>
+<p><strong>What the community did.</strong> Successful by their book: roughly <strong>380 likes on Hugging Face and ~3,000 monthly downloads</strong> (peaking near 10,000 in the first month). More interesting was the wave of models trained on the traces:</p>
+<ul>
+<li><strong>Quopus</strong> — a Qwen model (Qwen 3.6) trained on Opus traces, hence the portmanteau.</li>
+<li>These were almost all <strong>non-MoE models</strong>: at that small a size, people found <strong>MoE matters less when speed isn't a factor</strong> — your agent runs at home and you don't care whether the problem takes 12 hours or two, since it's just passively doing its thing.</li>
+<li>Sizes ranged from <strong>1B to 27B parameters</strong>, aiming at a performant autonomous agent at home without thousands of dollars of hardware.</li>
+<li>Some took <strong>the Kimi traces specifically</strong> to push <strong>parallel tool calling</strong> into extremely small models like <strong>Liquid's LFM 1.2B</strong>. Sometimes it worked; he still thinks <strong>5–10B is the minimum</strong> for these more complex tool-calling capabilities, but it was a good effort.</li>
+<li><strong>Harmonic Hermes</strong> became one of the more popular Hermes-specific models; together with Quopus, the two accumulated <strong>nearly half a million downloads</strong>, and new models are still appearing.</li>
+</ul>
+<p><strong>His actual ask isn't "go distill traces."</strong> It's a challenge:</p>
+<blockquote>
+<p>Take the models you know and love, and the quirks you love and hate about the harnesses you use, and <strong>shove those models into a different harness and see how they react.</strong> The model may have an entirely different personality without a 20,000-character system prompt guiding it, and be more expressive — or you may need to tone it down, because Codex is so strong it needs to be wrangled rather than let loose.</p>
+</blockquote>
+<p>"If I use Codex every single day — <strong>what happens if I give it Pi? What happens if I give it Hermes Agent?</strong> Play with that idea, and widen your scope: <strong>maybe one harness isn't always perfect, even if that harness comes from the place where the model was trained.</strong>"</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Security Arena</td>
+<td>Lambda × Berkeley RDI 的一個月 prompt injection 攻防競賽,22 隊、約 112K 場對戰</td>
+<td>One-month prompt injection attack/defense competition (Lambda × Berkeley RDI), 22 teams, ~112K battles</td>
+<td>全程跑在 GPT-OSS 20B 上 / ran entirely on GPT-OSS 20B — <a href="https://lambda.ai/blog/prompt-injection-doesnt-care-what-your-agent-does-for-a-living">lambda.ai/blog</a></td>
+</tr>
+<tr>
+<td>EchoLeak</td>
+<td>零點擊 email 提示注入事故,Copilot 讀信後外洩整個收件匣</td>
+<td>Zero-click email prompt injection: Copilot reads the email and exfiltrates the whole inbox</td>
+<td>競賽中 email phishing 情境的原型 / the model for the arena's email phishing scenario</td>
+</tr>
+<tr>
+<td>the lab</td>
+<td>Lambda 開源的 auto-research 實驗追蹤器,提供 agent 可呼叫的 API 與前端</td>
+<td>Lambda's open-source auto-research experiment tracker: agent-callable APIs plus a front end</td>
+<td><code>pip install</code> from GitHub;wrapper 包住 Claude Code / Codex — <a href="https://lambda.ai/blog/what-happens-when-claude-code-gets-an-experiment-tracker">lambda.ai/blog</a></td>
+</tr>
+<tr>
+<td>hermes-agent-reasoning-traces</td>
+<td>Lambda 釋出的開源 agent trace 資料集,由 Kimi 與 GLM 在 Hermes Agent 中產生</td>
+<td>Lambda's open agent trace dataset, generated by Kimi and GLM running in Hermes Agent</td>
+<td><a href="https://huggingface.co/datasets/lambda/hermes-agent-reasoning-traces">huggingface.co/datasets/lambda/hermes-agent-reasoning-traces</a></td>
+</tr>
+<tr>
+<td>Hermes Agent</td>
+<td>Nous Research 的開源 agent harness,本次 trace 生成所用</td>
+<td>Nous Research's open-source agent harness, used for trace generation</td>
+<td>也在 Kimi K3 harness 比較中排名第二 / also second in the Kimi K3 harness comparison</td>
+</tr>
+<tr>
+<td>Quopus</td>
+<td>社群用 Opus trace 訓練的 Qwen 3.6 模型</td>
+<td>Community Qwen 3.6 models trained on Opus traces</td>
+<td>與 Harmonic Hermes 合計近 50 萬次下載 / ~500k downloads combined with Harmonic Hermes</td>
+</tr>
+<tr>
+<td>Harmonic Hermes</td>
+<td>專為 Hermes harness 訓練、較受歡迎的社群模型</td>
+<td>A popular community model trained specifically for the Hermes harness</td>
+<td></td>
+</tr>
+<tr>
+<td>Lambda Research Grant</td>
+<td>對開發者與研究者提供最高 $5,000 雲端額度</td>
+<td>Up to $5,000 in cloud credits for developers and researchers</td>
+<td>今年前六個月約 1,000 份申請、350 份核准 / ~1,000 applications, ~350 granted in H1</td>
+</tr>
+<tr>
+<td>Terminal-Bench 2</td>
+<td>harness 比較所用的終端 agent benchmark</td>
+<td>The terminal-agent benchmark used in the harness comparison</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Davina / Dina</td>
+<td>Devina Jain</td>
+</tr>
+<tr>
+<td>Tuan</td>
+<td>Chuan Li</td>
+</tr>
+<tr>
+<td>echolak / emailish</td>
+<td>EchoLeak / email phish</td>
+</tr>
+<tr>
+<td>GPTOSS 20B</td>
+<td>GPT-OSS 20B</td>
+</tr>
+<tr>
+<td>Kimmy K2.5 / Kimk 2.5 / Kimmy K3</td>
+<td>Kimi K2.5 / Kimi K3</td>
+</tr>
+<tr>
+<td>GPD 5.5</td>
+<td>GPT-5.5</td>
+</tr>
+<tr>
+<td>codeex</td>
+<td>Codex</td>
+</tr>
+<tr>
+<td>news research</td>
+<td>Nous Research</td>
+</tr>
+<tr>
+<td>Quus / Quopus</td>
+<td>Quopus(Qwen × Opus)</td>
+</tr>
+<tr>
+<td>Robert Boyer</td>
+<td>Robert Boyle</td>
+</tr>
+<tr>
+<td>cloth / cloud (code)</td>
+<td>Claude (Code)</td>
+</tr>
+<tr>
+<td>ask key / ASKI code</td>
+<td>ASCII</td>
+</tr>
+<tr>
+<td>pip install(字幕作 "pin install")</td>
+<td>pip install</td>
+</tr>
+<tr>
+<td>jamma / gema</td>
+<td>Gemma</td>
+</tr>
+<tr>
+<td>right teaming</td>
+<td>red teaming</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>trace 數量的單位</strong>:Zach 說「150 million traces from each model」,講題卻是「300 million tokens」,而 Lambda 官方 blog 寫的是 <strong>450M tool-calling tokens</strong>(每個模型約 150M tokens)。「trace」應為口誤,正確單位與總量需以資料集卡片為準。/ He said "150 million traces from each model" while the talk title says 300M <em>tokens</em>, and Lambda's blog says <strong>450M tool-calling tokens</strong>. "Traces" is likely a slip; defer to the dataset card.</li>
+<li><strong>GLM 版本</strong>:台上說 GLM 5.1,Lambda blog 在不同段落分別提到 GLM-5.1 與 GLM-5.6,需確認資料集實際使用的版本。/ He said GLM 5.1; Lambda's blog mentions both GLM-5.1 and GLM-5.6 — confirm which version the dataset used.</li>
+<li><strong>Gemma 版本</strong>:Chuan Li 只說 "Gemma"(提到 31B thinking 變體),Lambda blog 的 CVPR 2026 demo 寫的是 <strong>Gemma 4</strong>;是否同一次實驗待確認。/ He said only "Gemma" (mentioning a 31B thinking variant); Lambda's blog describes the CVPR 2026 demo as <strong>Gemma 4</strong> — whether it's the same run is unconfirmed.</li>
+<li><strong>Pi Agent</strong>:harness 比較中提到的開源 harness,拼法與專案來源未確認。/ The open-source harness named in the K3 comparison — spelling and provenance unverified.</li>
+<li><strong>競賽規模數字</strong>:她說 22 隊、約 112K 場;Lambda blog 提到 1,890 個 agent、65 個評估回合、103,000+ 場對戰,兩組數字的統計口徑不同。/ She cited 22 teams and ~112K battles; Lambda's blog cites 1,890 agents, 65 evaluation rounds, and 103,000+ battles — different accounting.</li>
+<li>Meta 客服 chatbot 上發現「just ask nicely」同類攻擊的公開出處。/ A citation for the "just ask nicely" attack found on a Meta support chatbot.</li>
+<li>冠軍隊伍名稱台上未點名。/ The winning team names were never stated on stage.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/workshop--open-source-agent-investigations.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

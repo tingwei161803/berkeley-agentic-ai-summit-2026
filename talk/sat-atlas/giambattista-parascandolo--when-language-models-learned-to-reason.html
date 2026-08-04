@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>When Language Models Learned to Reason · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="He dug out the actual four-to-five-year-old internal slides from OpenAI&#x27;s earliest discussions of reasoning — back when giving a model more time produced the identical answer — and showed the humbl…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/giambattista-parascandolo--when-language-models-learned-to-reason.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="When Language Models Learned to Reason · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="He dug out the actual four-to-five-year-old internal slides from OpenAI&#x27;s earliest discussions of reasoning — back when giving a model more time produced the identical answer — and showed the humbl…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/giambattista-parascandolo--when-language-models-learned-to-reason.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-atlas" data-talk="giambattista-parascandolo--when-language-models-learned-to-reason">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="When Language Models Learned to Reason" data-title-zh="當語言模型學會推理的那一刻">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">When Language Models Learned to Reason</span><span class="lang-zh">當語言模型學會推理的那一刻</span></h1>
+        <p class="dialog__speaker"><strong>Giambattista Parascandolo</strong> — Research Fellow, OpenAI</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 00:32:38–00:41:12 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=WeriQic-QW0&amp;t=1958s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:32:38</span><span class="lang-zh">從 00:32:38 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">He dug out the actual four-to-five-year-old internal slides from OpenAI&#x27;s earliest discussions of reasoning — back when giving a model more time produced the identical answer — and showed the humble evidence that convinced the team to scale it up: some ugly slides about counting bags of potatoes.</span><span class="lang-zh">他拿出四、五年前 OpenAI 內部最早討論 reasoning 的原始投影片,展示當年那個「模型多想一會兒也給不出更好答案」的世界,以及讓團隊決定放手擴張的第一批證據——原來是幾張數馬鈴薯袋子的醜投影片。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>這場演講全部用四到五年前的原始內部投影片</strong>——「有句話說,沒有什麼比昨天的報紙更不新鮮」,而這些投影片又老又醜,因為當初根本不是為了公開報告做的。他形容這是一趟「時光旅行」,去看看當年做 reasoning 是什麼感覺。</li>
+<li><strong>核心圖像:把「難度」的二維輪盤加上第三個軸——thinking time。</strong> Pre-training 只讓已解問題的圓圈從中心往外緩慢擴張,永遠碰不到最難的問題;reasoning 是問「能不能讓這個圓柱體隨時間往外長」。</li>
+<li><strong>決定性的早期證據</strong>:只是在 prompt 裡不斷加上「一步步想、把過程寫出來、確認沒有錯」,模型輸出的文字長度就變長,而<strong>準確率隨著輸出長度上升</strong>。這條曲線就是後來一切的起點。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>為什麼要看老投影片(約 00:33)</h4>
+<p>「這些投影片有五年了,每一張都是四到五年前的。」他要展示的是 OpenAI 內部<strong>最早期</strong>談 reasoning 的簡報,「這不是在談未來」。投影片很醜,因為它們從來就不是為了這種場合準備的,只是很久以前給團隊看的東西——「把它當成某種時光旅行,看看那時候做 reasoning 是什麼樣子」。</p>
+<h4>什麼是 reasoning:那個轉三維的輪盤(約 00:34–00:36)</h4>
+<p>當年他們的思考方式是這樣的:</p>
+<ul>
+<li>想像一個彩色輪盤,代表所有問題的空間。<strong>角度代表主題</strong>(AI、數學、物理、生物…),<strong>離圓心的距離代表難度</strong>。</li>
+<li>當時他們在 pre-train GPT-2、3、4,能解的問題圈子就從中心往外擴張,把各主題都覆蓋一點點,並隨著規模成長解出稍微難一點的問題。</li>
+<li><strong>關鍵疑問是:那些真正困難的問題,什麼時候才會被解開?</strong> 他舉 Andrew Wiles 為例:證出費馬最後定理的人想了七年——但他不是同時解決所有問題,他是花七年解<strong>一個</strong>問題,而大多數困難問題都是這種形狀。所以「單純把模型 pre-train 得更博學」這條路,看起來不太可能把圓圈擴張到覆蓋所有最難的問題。</li>
+<li><strong>那人類怎麼做?我們會思考、會推理。能不能給模型同樣的能力?</strong></li>
+<li>於是投影片做了一個花招:把輪盤傾倒、推到畫面一側,騰出<strong>第三個軸:thinking time</strong>。問題就變成——「怎麼讓這些圓柱體隨著時間往外長?」</li>
+<li><strong>今天聽起來也許可笑,但當年確實如此</strong>:你給模型更多時間,它會給你一模一樣的答案,因為幾毫秒就吐完了,它不知道拿多出來的時間做什麼。</li>
+<li>還有個現實限制:Andrew Wiles 想了七年,而當時模型的 context 只有幾千、也許 8,000 個 token——「8,000 個 token 你能做什麼?頂多幾秒鐘的 reasoning。」就算真的讓它會推理,這怎麼可能發生?</li>
+</ul>
+<h4>第一批證據:如果我們就直接叫它想一想呢?(約 00:37–00:40)</h4>
+<p>另一個當年沒有答案的問題是:<strong>reasoning 的載體(substrate)是什麼?</strong> 花掉 test-time compute 的方式有很多種,例如用 recurrent network 在內部多跑幾步。結果<strong>文字</strong>的效果非常好。</p>
+<p>他接著展示自己加入 OpenAI 後第一個專案的探索——<strong>在模型從未被訓練去思考的情況下,單純要求它思考會發生什麼</strong>。這是給團隊信心去擴張規模的其中一塊拼圖。</p>
+<p>三個例子(「以今天的標準很蠢,但正好看出短短時間內我們走了多遠」):</p>
+<ol>
+<li><strong>馬鈴薯</strong>:問 GPT-3 有 29 袋馬鈴薯再加 17 袋之類的題目,模型回答「46 公斤馬鈴薯」——完全錯。加上「先想一想再回答」,模型不會立刻給答案,而是先吐一段文字,然後<strong>至少有時候</strong>會答對——相較於原本的「從不」。</li>
+<li><strong>樂器</strong>:「我有一支單簧管、一台鋼琴、一隻狗,我有幾件樂器?」模型說 1,錯。拆解成一步步後,模型推理出「狗不是樂器、單簧管是樂器、但鋼琴不是」——<strong>還是 1</strong>。於是再加上「也請一步步拆解」讓它想得更久一點,才終於答對。</li>
+<li><strong>數東西</strong>:一張椅子、一台音箱、一個烤箱…模型說 20,正解是 14。當年可以直接查模型輸出「14」的機率——<strong>2%</strong>,基本上等於永遠不會。加上「一步步拆解」後,模型逐項數出一長串,答案就變好了。</li>
+</ol>
+<h4>把直覺變成量化曲線(約 00:39–00:40)</h4>
+<p>他展示了最早的兩張量化圖:</p>
+<ul>
+<li><strong>第一張</strong>:不斷疊加 prompt 指令(「一步步想」→「拆解開來」→「我真的要你把所有工作都做完、把過程全寫出來、確認沒有錯誤」),模型從幾乎解不出題,變成能解越來越多題。</li>
+<li><strong>第二張(他說順序放錯了,應該跟前一張一起看)</strong>:模型生成解法的<strong>平均長度</strong>。一開始只叫它解題幾乎什麼都不輸出;隨著指令疊加——還得用「First,」開頭這種小技巧,免得模型又想直接給答案,而是進入「接下來會是一長串待辦事項」的模式——「有了第一點,就一定會有第二、第三點,那就多輸出一些文字吧」。</li>
+<li><strong>結論</strong>:模型輸出的文字量增加,準確率就跟著上升。</li>
+</ul>
+<p>「從那之後很多人做了這個方向,我們做了一個大專案,然後還有很多元件現在還不能談。但就是這樣——非常卑微的開端,眾多開端之一。我覺得在這一堆談未來的演講之中,讓大家看看這個,可能挺有意思的。」</p>
+<h3>金句</h3>
+<blockquote>
+<p>"There's this saying that there's nothing more stale than yesterday's newspaper. Well, these slides are five years old."(約 00:33)</p>
+</blockquote>
+<p>開場白,也是整場的框架:刻意反其道而行,講最不新鮮的東西。</p>
+<blockquote>
+<p>"There was a time where you would give a model more time to think and it would give you the exact same answer, because after a few milliseconds you would get the answer and it would not know what to do with the extra time."(約 00:36)</p>
+</blockquote>
+<p>一句話標記了那條分水嶺——今天聽起來荒謬,但這就是起點。</p>
+<blockquote>
+<p>"Very humble beginnings — one of many. I thought it was interesting maybe for you guys to see this in the midst of these talks about the future."(約 00:41)</p>
+</blockquote></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The entire talk runs on four-to-five-year-old internal slides.</strong> "There's this saying that there's nothing more stale than yesterday's newspaper" — and these are ugly, because they were never meant to be presented anywhere. He framed it as time travel: what it felt like to work on reasoning back then.</li>
+<li><strong>The central picture: add a third axis — thinking time — to a two-dimensional wheel of problems.</strong> Pre-training only pushes the solved-problem circle outward from the center and never reaches the hardest problems; reasoning asks whether that cylinder can grow <em>over time</em> instead.</li>
+<li><strong>The evidence that justified scaling it up</strong> was embarrassingly simple: stack prompt instructions telling the model to think step by step and show its work, watch the output get longer, and watch accuracy rise <em>with</em> output length. That curve started everything.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Why old slides (~00:33)</h4>
+<p>These are the earliest internal presentations OpenAI had when it started work on reasoning — explicitly not a talk about the future. The slides are ugly because they were team-internal artifacts from a long time ago. Think of it as time travel to see what working on reasoning used to look like.</p>
+<h4>What reasoning is: the wheel that tilts into 3D (~00:34–00:36)</h4>
+<p>The framing at the time: picture a colorful wheel covering the space of all problems, where the <strong>angle</strong> is the subject (AI, math, physics, biology) and the <strong>radial distance</strong> is difficulty. As they pre-trained GPT-2, 3, and 4, the circle of solvable problems expanded outward from the middle, covering every subject a little and solving slightly harder problems as scale grew.</p>
+<p>The nagging question was when the genuinely hard problems would fall. His example: Andrew Wiles thought about Fermat's Last Theorem for seven years — and crucially, he wasn't solving everything at once; seven years bought him <em>one</em> problem, and most hard problems have that shape. Something about "just pre-train models to be better at general knowledge" seemed unlikely to ever expand the circle to cover the hardest problems.</p>
+<p>So: what do humans do? We think. We reason. Can we give models the same capability? The slide then does something fancy — tilt the wheel into 3D, push it to the side of the screen, and open up a third axis that didn't exist before: <strong>thinking time</strong>. The question becomes how to grow those cylinders outward given more time.</p>
+<p>Two things about that era are worth remembering. First, "it might look a bit ridiculous today, but there was a time where you would give a model more time to think and it would give you the exact same answer" — the answer arrived after a few milliseconds and the model had no idea what to do with the extra time. Second, the practical ceiling: Wiles thought for seven years, and the models had a context of a few thousand tokens, maybe 8,000. What can you do with 8,000 tokens? At most a few seconds of reasoning. Even granting that they'd learn to reason, how was this ever supposed to happen?</p>
+<h4>The first evidence: what if we just ask them to think? (~00:37–00:40)</h4>
+<p>Another open question was what substrate reasoning would use. There are many ways to spend test-time compute — a recurrent network taking many internal steps, for instance. Text turned out to work really well.</p>
+<p>He then showed his first project after joining OpenAI: a small exploration of what models could do when simply <em>asked</em> to think, despite never having been trained to. It was one of the pieces that gave the team confidence to scale things up.</p>
+<p>Three examples, silly by today's standards but useful for measuring the distance traveled:</p>
+<ol>
+<li><strong>Potatoes.</strong> Ask GPT-3 about 29 bags of potatoes plus 17 more, and the model answers "46 kilos of potatoes" — plainly wrong. Add "let's think about it before getting the answer," and instead of an immediate answer you get some extra text first, and then, at least <em>sometimes</em>, the right answer — compared to never.</li>
+<li><strong>Instruments.</strong> "I have a clarinet, a piano, a dog. How many musical instruments do I have?" The model says one. Break it down step by step and the model reasons that a dog isn't an instrument, a clarinet is — but a piano isn't. Still one. Only after adding another instruction to break it down further does it get there.</li>
+<li><strong>Counting.</strong> A chair, an amp, an oven, and a long list of things: the model says 20, the answer is 14. Back then you could check the model's probability of outputting 14 — it was <strong>2%</strong>, essentially never. Add "let's think about it, break it down step by step," and you get a long enumeration and a better answer.</li>
+</ol>
+<h4>Turning intuition into a curve (~00:39–00:40)</h4>
+<p>Two plots, the earliest quantitative evidence. The first: keep stacking prompt instructions — think step by step, break it down, "I really want you to do all the work and show all your work and make sure there are no mistakes" — and a model that could barely solve problems solves more and more.</p>
+<p>The second (which he noted should have appeared alongside the first): the <strong>average length of generated solutions</strong>. Asked plainly to solve, the model produced almost nothing. As instructions accumulated — including the trick of forcing the output to start with "First," so the model wouldn't immediately blurt an answer but instead adopt the mindset that a long list was coming ("if there's a first, there must be a second and a third, so let's output a lot of text") — length grew. And as the amount of text the model output increased, its accuracy went up.</p>
+<p>"Since then lots of other people worked on this, we did a big project, and then lots of other components we can't talk about yet. But — very humble beginnings, one of many."</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"There's this saying that there's nothing more stale than yesterday's newspaper. Well, these slides are five years old." (~00:33)</p>
+</blockquote>
+<p>The opening line and the frame for the whole talk.</p>
+<blockquote>
+<p>"There was a time where you would give a model more time to think and it would give you the exact same answer, because after a few milliseconds you would get the answer and it would not know what to do with the extra time." (~00:36)</p>
+</blockquote>
+<p>One sentence that marks the dividing line — absurd today, and exactly where this started.</p>
+<blockquote>
+<p>"Very humble beginnings — one of many. I thought it was interesting maybe for you guys to see this in the midst of these talks about the future." (~00:41)</p>
+</blockquote></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Andrew Wiles / Fermat's Last Theorem</td>
+<td>用來說明「困難問題的形狀」:七年只解一題</td>
+<td>Used to illustrate the shape of hard problems: seven years buys you one</td>
+<td>字幕誤植為 "Andrea Wilds" / "Andrew Wild"</td>
+</tr>
+<tr>
+<td>GPT-2 / GPT-3 / GPT-4</td>
+<td>當年 pre-training 擴張「可解問題圈」的世代</td>
+<td>The pre-training generations expanding the circle of solvable problems</td>
+<td>GPT-3 是三個 prompt 範例的實驗對象</td>
+</tr>
+<tr>
+<td>"Let's think step by step"</td>
+<td>早期靠 prompt 誘發推理的作法;他展示的是 OpenAI 內部平行的探索</td>
+<td>The early prompt-elicited reasoning trick; he showed OpenAI's internal parallel exploration</td>
+<td>他未點名任何外部論文 / he cited no external paper by name</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gian Batista Parisand Doyo</td>
+<td>Giambattista Parascandolo(現場暱稱 GB)</td>
+</tr>
+<tr>
+<td>Andrea Wilds / Andrew Wild</td>
+<td>Andrew Wiles</td>
+</tr>
+<tr>
+<td>for mass theorem</td>
+<td>Fermat's Last Theorem</td>
+</tr>
+<tr>
+<td>Malo said one</td>
+<td>the model said one</td>
+</tr>
+<tr>
+<td>a client is</td>
+<td>a clarinet is</td>
+</tr>
+<tr>
+<td>finalizer</td>
+<td>final answer</td>
+</tr>
+<tr>
+<td>recurring network</td>
+<td>recurrent network</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>三個 prompt 範例的確切題目文字(馬鈴薯袋數、物品清單)由自動字幕還原,數字可能有誤;「29 袋 + 17 袋 → 46 公斤」與「答案 14 / 模型答 20 / 機率 2%」需對照投影片。/ Exact wording and numbers of the three prompt examples come from auto-captions; verify against the slides.</li>
+<li>「a big project」指的是哪個專案他未點名(語境上指向 OpenAI 的 reasoning 模型系列),不做推測。/ He didn't name "the big project"; not guessing.</li>
+<li>投影片上兩張量化圖的 benchmark 與 y 軸定義未說明。/ The benchmark and y-axis definition of the two quantitative plots were not stated.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/giambattista-parascandolo--when-language-models-learned-to-reason.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

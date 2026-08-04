@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>From Assistants to AI Employees: Designing Agents That Own a Role, Not a Task · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Assistants are reactive, stateless, and leave governance to the user; Ema&#x27;s argument is to design agents as &quot;AI employees&quot; — triggered by events and schedules, acting on real systems under scoped p…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/workshop--from-assistants-to-ai-employees.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="From Assistants to AI Employees: Designing Agents That Own a Role, Not a Task · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Assistants are reactive, stateless, and leave governance to the user; Ema&#x27;s argument is to design agents as &quot;AI employees&quot; — triggered by events and schedules, acting on real systems under scoped p…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/workshop--from-assistants-to-ai-employees.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-atlas" data-talk="workshop--from-assistants-to-ai-employees">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="From Assistants to AI Employees: Designing Agents That Own a Role, Not a Task" data-title-zh="從助理到 AI 員工:設計「擁有一個角色」而非「擁有一項任務」的 Agent">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--workshop"><span class="lang-en">Workshop</span><span class="lang-zh">工作坊</span></span>
+          <span class="dialog__session">Session 1: Enterprise AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">From Assistants to AI Employees: Designing Agents That Own a Role, Not a Task</span><span class="lang-zh">從助理到 AI 員工:設計「擁有一個角色」而非「擁有一項任務」的 Agent</span></h1>
+        <p class="dialog__speaker"><strong>Anushka Pathak, Soham Shah, Eric Victorson</strong> — Product Manager / ML Engineer / Software Engineer, Ema</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Atlas Stage · 01:12:57–02:12:36 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=LGW_6P1CMC8&amp;t=4377s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:12:57</span><span class="lang-zh">從 01:12:57 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sun</span><span class="lang-zh">回 Atlas · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Assistants are reactive, stateless, and leave governance to the user; Ema&#x27;s argument is to design agents as &quot;AI employees&quot; — triggered by events and schedules, acting on real systems under scoped permissions, holding state across days and systems, with governance built in — and the real blocker in deployment is never whether the agent can do the whole job, it&#x27;s the humans collaborating with it.</span><span class="lang-zh">Assistant 是被動、無狀態、由使用者自己扛治理責任的;Ema 主張把 agent 設計成「AI 員工」——由事件與排程主動觸發、以受限權限直接改寫真實系統狀態、跨天跨系統保有記憶、治理內建——而落地時的瓶頸從來不是 agent 能不能做完整份工作,是與它協作的人類。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>主題一:assistant 與 AI employee 的四個分野(約 01:20–01:24)</h3>
+<p>她先承認「AI employee」這個詞對某些人有點挑釁——為什麼要把它們放進像人類員工一樣的角色?她的回答是,Ema 在 2023 年就創了這個詞,並把以下四點當作<strong>第一性原則</strong>來設計:</p>
+<table>
+<thead>
+<tr>
+<th>面向</th>
+<th>Assistant</th>
+<th>AI Employee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>觸發方式</td>
+<td><strong>被動</strong>。需要人類觸發,還要人類自己搞清楚它能做什麼、極限在哪、怎麼跟它協作</td>
+<td><strong>主動</strong>。由事件、系統變更或排程觸發</td>
+</tr>
+<tr>
+<td>行動能力</td>
+<td>多半只<strong>建議與草擬</strong>;不碰你碰的系統,也沒有同等存取權——你不會給它初階員工或實習生等級的信任</td>
+<td>直接<strong>在真實系統上動作</strong>,但帶著受限的權限</td>
+</tr>
+<tr>
+<td>狀態</td>
+<td><strong>無狀態</strong>。你做完一步,把 artifact 貼到 Slack / Teams,再到會議裡來回——<strong>扛狀態的人是你</strong>,不是它</td>
+<td>跨步驟、跨系統、跨使用者、跨天,持有<strong>持久狀態</strong>;長工期任務可以「六個月後回來問我」</td>
+</tr>
+<tr>
+<td>治理</td>
+<td>使用者自己扛。你可能裝了公司不允許的 MCP、裝了有資安問題的 skill——出事是使用者的責任</td>
+<td><strong>內建</strong>。由資安長設定,系統會在你要越界時擋下你,你甚至不需要知道哪些不被允許</td>
+</tr>
+</tbody>
+</table>
+<p>她補了一個很生活化的觀察:「我們大概都替自己的 AI 道過歉——『抱歉那是 AI 弄錯的,我應該檢查得更仔細』。」</p>
+<p><strong>一個反直覺的數字</strong>:在 Ema 上,builder 建出來的 AI 員工是 <strong>50% 對話式 / 50% API 觸發</strong>,建置比例剛好一半一半;但<strong>超過 90% 的實際呼叫來自自動觸發</strong>。她的類比是:你不會每次都去戳實習生叫他做事,過一陣子他就自己在做了。</p>
+<h3>主題二:平台架構(約 01:25–01:29)</h3>
+<p>由下而上:</p>
+<ul>
+<li><strong>部署層</strong>:multi-cloud 與 on-prem(Azure、GCP 等),支援資料落地(data residency)。</li>
+<li><strong>LLM 層 — EmaFusion</strong>:她說企業客戶「完全不想碰模型排行榜」,不想每週去判斷哪個模型這週在我的任務上比較好。EmaFusion 承擔選模的責任,依照該 AI 員工正在執行的任務,承諾在<strong>最低成本與延遲下拿到最好的準確度</strong>。</li>
+<li><strong>Builder 平台</strong>:大量<strong>預訓練的領域專用 agent</strong>(例:資料萃取 agent——從 500 頁、內含矛盾與重複的文件中萃取出去重且準確的結構化資料);<strong>生成式 workflow 引擎</strong>,讓 AI 步驟與<strong>確定性步驟</strong>混用(例如開通新系統存取權這種流程你會希望它是確定性的);而 <strong>Ema Autopilot</strong> 會直接幫你生成那些確定性步驟,你只要檢查輸出——<strong>不需要寫程式</strong>。</li>
+<li><strong>整合層</strong>:支援 MCP,但她特別說明 <strong>Ema 在 MCP 出現之前就自己做了一套 tool protocol</strong>,更快、更受限、也更好設定,所以兩者都給 builder 選。多數人因為 MCP 現成而從它開始,但你也可以直接帶任何 API 進來——REST、SFTP、SOAP 都行。</li>
+<li><strong>治理層</strong>:內建。互動介面可以是 dashboard、chat、API、語音,甚至 generative UI。</li>
+<li><strong>預設套件</strong>:針對 employee experience、sales、customer support 等場景預先組好的 AI 員工套件。</li>
+</ul>
+<p><strong>客戶與規模</strong>:2023 年創立,服務 Fortune 2000 客戶,主要自動化 HR、IT、財務等角色;數千個 AI 員工在生產環境運行,數百位外部 builder 在上面開發。<strong>100% 的 AI 員工都會改寫真實系統的狀態</strong>——他們基本沒有「幫我擬一封信然後我自己複製貼上」這種用例。許多公司把 Ema 當<strong>單一操作面板(single pane of glass)</strong>,不用開十個分頁;而那個面板可以就是 Slack 或 Teams,因為它是員工,你在哪就在哪跟它講話。</p>
+<p><strong>具名案例</strong>:Wipro(全球 24 萬名員工,用於員工體驗問答)、Artico(美國頂尖高階獵才公司之一,<strong>time-to-hire 縮短 67%</strong>)、Prime Therapeutics(醫療,背景處理數以千計的 prior authorization)、Hospital for Special Surgery(紐約,病患預約排程)。</p>
+<h3>主題三:建一個 AI 員工的建議流程(約 01:32–01:37)</h3>
+<p>Ema 有三種 builder:自家 builder 團隊(尤其服務極不技術的客戶,如醫療客戶)、合作夥伴(Wipro、KPMG 等訓練出來的 builder),以及<strong>客戶自己用 Autopilot 建</strong>。三種情況他們都建議走同一套 scoping:</p>
+<ol>
+<li><strong>探索與界定</strong>:這個角色實際上需要什麼?把工作<strong>拆解成任務</strong>,再逐一判斷哪些用 AI 做、哪些用確定性流程做、哪些<strong>還是留給人類</strong>。她特別點名一個常見失敗:拿到用例卻<strong>沒有真實的測試資料集</strong>,結果 builder 一邊做一邊自己編測試資料,而他其實不懂那個業務流程。<strong>一定要拿到過去的實際案例。</strong></li>
+<li><strong>整合</strong>:生產用例<strong>一律優先直接用 API</strong>;要用 MCP 也行,但會稍慢、吃掉更多 context,因此也更貴;兩者都沒有的系統才退到 <strong>browser use</strong>;再加上 retrieval 補 context。然後把工作<strong>拆成較小的 agent</strong>,好評估、好維護,也才能把維護責任分派給公司裡不同團隊。</li>
+<li><strong>Human-in-the-loop 檢查點</strong>:在受監管產業比較單純,因為有些決策 AI 就是不能做(<strong>臨床決策、下單這類金融市場決策</strong>)。但即使在其他場景,也要找出<strong>人類判斷是關鍵</strong>的位置——例如招募,「你絕對不會想讓 agent 端到端把人招完」。她給了一條很實用的設計原則:<strong>把人類的邊界放在最後那個「改變狀態」的 act 步驟,不要放在 think 步驟</strong>——讓 AI 員工把所有事情都做到人類必須動手的那一刻為止,人類看著它的筆記再決定要不要執行。</li>
+<li><strong>訓練 agent 主動求助</strong>:讓它在自己困惑時主動發出 human-in-the-loop 請求。</li>
+</ol>
+<h3>主題四:現場 demo(約 01:37–01:47)</h3>
+<p>她原本要帶大家建三個 AI 員工:<strong>sourcing</strong>(用 Apollo 搜尋真實候選人)、<strong>screening</strong>(示範 human-in-the-loop:入選之後要先有人類核可才發出),以及一個 <strong>orchestrator</strong>——因為「如果你有 100 個 AI 員工,你不會希望人類得記住哪個員工做什麼、該去找誰。<strong>沒有人想在腦袋裡處理 routing。</strong>」招募人員只跟這一個 orchestrator 對話。</p>
+<p>Demo 中值得記下的幾點:</p>
+<ul>
+<li>她把整段需求貼進 <strong>Ema Autopilot</strong>,批准計畫後,它就自己去建整合、建 AI 員工、產生測試用 CV 與職缺描述,並自行建立 eval 資料集。Autopilot 本身是一個 harness,握有橫跨 Ema 產品基礎設施(治理層、builder 層、UI 層)的數百個工具,也支援自帶工具與 skills——所以 KPMG 這類公司會把自己數十年的財務知識帶進來,agentic 平台的知識則由 Ema 提供。</li>
+<li><strong>失敗會被學起來</strong>:自我修正的結果會先為該使用者保留,再擴散到整間公司。她說這對留存率影響很大,尤其是自帶工具的情況——「四五個人用過之後,接下來一百個人就會很順」。</li>
+<li><strong>API key 是刻意做不到的事</strong>:你<strong>無法</strong>把 API key 貼給 Autopilot 讓它去接。他們在來源端就做 PII 與敏感資料<strong>混淆(obfuscation)</strong>,你一貼進聊天就被混淆掉,下游系統拿到的是混淆後的值。她刻意對比:「不像很多 harness,你把 API key 貼進去它就真的能端到端跑起來。」</li>
+<li>三種 AI 員工形態:chat、<strong>dashboard</strong>(可由 app、API 或排程觸發——就是那 90% 呼叫的來源)、以及 orchestrator。Demo 中的 screening 員工正<strong>停在人類審核的狀態</strong>,審完才會往下跑出 fit score 與信件。</li>
+</ul>
+<h3>主題五:Q&amp;A(約 01:48–02:12)</h3>
+<p>這場問答的密度高於前面的簡報,以下依主題整理。</p>
+<p><strong>定價(約 01:48、02:10)</strong> — 使用量與<strong>成效</strong>併用。多數 AI 員工是<strong>賣成效</strong>:每一份 sales proposal、每一張客服工單、每一則員工體驗詢問。<strong>與 token 數無關,不是成本加成定價</strong>,而是「這份工作你本來要付一個人多少錢、我們讓他快多少」。所以不同工作的單價差很多,計費指標可高度客製,與客戶一起訂。另一種是純使用量:客戶買一百萬點數,自己愛建什麼建什麼。</p>
+<p><strong>ROI 怎麼量(約 01:50)</strong> — 成本中心的用例很直接:人時減少、原本做這件事的人投入減少。生產力型的用例則從<strong>預測</strong>開始:她舉 2024 年的例子,當時預測一年內會快 15%,結果做了研究後發現<strong>兩個月內就快了 3 倍</strong>,而且對象是在該職位資歷十年的人。另外要看產出面——同樣人數要能多做 20% 的 sales proposal。</p>
+<p><strong>流程會變,怎麼跟上(約 01:51)</strong> — 分兩種:
+- <strong>可預期的大改動</strong>:例如 prior authorization 的臨床政策每年更新、有明確發布日。這類基本自助——找 Autopilot 談,Ema 有<strong>版本控制</strong>,跑完 eval 再推出去。
+- <strong>無法預期的真實世界漂移</strong>:例如客戶最近兩週開始問新類型的問題。Ema 會<strong>掃過 audit log</strong> 找出改善機會,Autopilot 提出建議修改,並附上<strong>證明有改善、且不會讓既有用例退步的 eval 資料</strong>,最後由人類簽核部署。兩者都是自動化流程。</p>
+<p><strong>能不能進 Zoom / Teams 會議即時互動(約 01:53)</strong> — <strong>還沒做過即時通話</strong>。他們做的是<strong>會後</strong>用逐字稿處理;這個用例目前還沒有客戶提出。</p>
+<p><strong>控制的顆粒度 / 每個 agent 的 reward function(約 01:53–01:55)</strong> — 她認同「人們想要控制到最細的一步」,而這正是<strong>為什麼要有多個 AI 員工、而不是一個包辦全企業的通用 agent</strong>。每個 AI 員工通常由不同的人負責,角色也分開(builder、admin、reviewer、onboarder),權限反映在系統裡。Eval 可以跑在<strong>AI 員工層級</strong>;不需要技術背景,你的控制手段就是把用例講清楚——業務使用者可以很不技術地做(「把去年的工單拿來,我要求在這些工單上至少達到這個表現」),技術型使用者則可以自己帶 eval bed。而在 AI 員工<strong>內部</strong>,有些是自由形式、沒有 workflow,有些切成較小的 block,<strong>同一套 eval 可以跑在 block 層級</strong>——例如只量測、只改善「這個 AI 員工跟 Apollo 這一層」的準確度。</p>
+<p><strong>能不能接進 Slack / Teams(約 01:55)</strong> — 可以,而且很多人就是這樣用。Wipro 用 Teams,也有客戶用 SDK 做成內部網站上的浮動圖示。三者都是 channel;現在<strong>非技術人員也能自己設定,大約十分鐘</strong>。</p>
+<p><strong>為什麼是 multi-cloud(約 01:56)</strong> — 因為金融、醫療這類敏感客戶要求<strong>on-prem</strong>,要部署在他們原本就在的地方,而且要<strong>air-gapped</strong>——Ema 不能對外連任何系統,包括網路與任何外部 API。客戶可能在 GCP 也可能在 Azure,所以他們<strong>從第一天就是 multi-cloud</strong>。也有數十家客戶用 SaaS,那些客戶「就像自己開通 Notion 一樣」不在意部署形態。</p>
+<p><strong>agent 能不能替使用者強制執行資料的 RBAC(約 01:57)</strong> — 可以。整合有兩種連線型態:<strong>shared service auth</strong>(誰問都一樣的存取權),以及多數用例應該採用的 <strong>user-level auth</strong>——你第一次問到需要呼叫某系統(例如 ServiceNow)的問題時,它會要你先登入,之後所有答案都用<strong>你的</strong>憑證取得。這不只限制你能拿到什麼資訊,還讓<strong>下游系統本身也留下 audit log</strong>:某某人要求了這項資訊,因此該資訊經由 Ema agent 提供給她。</p>
+<p><strong>規模上限與工期(約 01:58)</strong> — 單一租戶、單一客戶部署裡她親眼看過 <strong>300、400 個</strong> AI 員工。但她強調<strong>把它們拆開是符合各方利益的</strong>——回到「誰維護、誰負責它持續正常運作並跟上流程」的問題。拆開換來更好的治理與管理。工期方面,有些 workflow <strong>跑好幾天</strong>,例如一筆新供應商採購可能有十道核可——但<strong>卡住的是等人類核可,agent 本身很快</strong>;其他用例則快得多。(成本數字她表示不便透露。)</p>
+<p><strong>怎麼讓 AI 員工「主動」(約 02:00)</strong> — 她現場開了一個測試租戶示範,同時強調「其實沒人在看這些畫面,大家都只跟 Autopilot 講話,這就像在看程式碼」。支援的觸發包括:<strong>webhook</strong>、讓 AI 員工<strong>輪詢</strong>你的系統、直接接系統並設條件(「Salesforce 有新 lead 進來時,去判斷他是不是好人選」)、<strong>監看收件匣</strong>、<strong>排程</strong>(「每天早上寄一封做 X 的信給我」)。設定方式就是寫一句話。</p>
+<p><strong>重複性高的任務會不會一直燒 token,有沒有預建的程式碼 recipe(約 02:01)</strong> — 有,程式碼可以直接作為 workflow 的一部分。但她給的建議路徑更有意思:<strong>不要花幾個月去預先設計</strong>。你可以從一個<strong>空的租戶、零個 AI 員工</strong>開始,每件事都先跟 Autopilot 做;當它發現什麼是重複的,就開始<strong>把那些東西固化下來</strong>——依據真實使用與回饋,建出 agentic 的 AI 員工,或<strong>直接寫成程式碼並維護它</strong>。</p>
+<p><strong>這到底是「整個業務流程外包」還是「任務級自動化」(約 02:02)</strong> — 提問者指出定位講的是 AI 員工(暗示整個流程被外包),但舉的例子多半偏任務。她的回答:<strong>每一個合約與專案的終局都是角色導向的</strong>——最後會收斂成一個你可以對話的介面、或一個自動化,能跨所有任務把整份工作做完。但<strong>採用會慢一點</strong>:你可以建出端到端的 AI 員工,<strong>而阻礙永遠是與它協作的人類</strong>。所以實務上是一個任務一個任務上線——先 sourcing,再篩 CV,再排面試,再到錄取後的 onboarding、offer letter——讓招募團隊慢慢暖身、學會怎麼跟 AI agent 協作。<strong>從一個任務開始,再擴張到那個角色的全貌。</strong></p>
+<p><strong>人與 AI 員工的比例(約 02:04)</strong> — 在 Ema 上建 AI 員工又便宜又容易,而且<strong>只有在真的產生價值時才計費</strong>,所以很多人會建一堆自動化。但因為 Ema 只服務超大型公司,比例通常是:<strong>200 人的招募團隊,大概只需要 20 個 AI 員工</strong>——<strong>每個 AI 員工的使用強度極高,一天數千次呼叫</strong>。她強調他們<strong>不以 agent 數量為優化目標</strong>。</p>
+<p><strong>拿下 GM 或美國銀行這種大案子之後,實務上怎麼跑(約 02:05)</strong> — 由 Ema 或合作夥伴中那位「agentic 轉型專家」負責讓 AI 員工首次上線並運作良好。這是一個<strong>深度探索</strong>流程:不只跟採購方與團隊主管開 workshop,而是<strong>坐進房間裡、跟著實際做這份工作的人 shadow 數小時甚至數天</strong>,並翻閱他們過去一年的所有工作案例,然後才寫出定義。<strong>流程一旦定義清楚,剩下的就不多了——丟進 Ema Autopilot,幾小時就建好也測好。</strong> 她的結論很值得記:「<strong>你不需要懂 Ema 才能在 Ema 上做出有影響力的東西。你需要的是非常懂那個業務流程。</strong>」也因為如此,很多客戶接著就想自己來:「反正你也是丟進 Autopilot,那我自己來就好,我才是這個招募流程的專家。」</p>
+<p><strong>員工的抗拒怎麼處理(約 02:06)</strong> — 她認為這種抗拒在<strong>兩三年前常見得多</strong>——當時的反應是「為什麼要我評估 AI 的樣本,這不是會影響我自己的飯碗嗎?」。最近兩年變化很大:大家意識到<strong>要保持在職位與產業的頂端就得更快、且具備 AI 能力</strong>,採用 AI 反而讓自己更不可取代、把工作做得更好。現在他們看到的是<strong>熱情</strong>——人們想成為訓練它的那個人、想理解它怎麼運作。她把這稱為 <strong>citizen developers 的崛起</strong>:一輩子沒寫過一行程式,卻真心想把 AI 帶進自己的工作。</p>
+<p><strong>skills 和 AI employee 差在哪(約 02:11,最後一題)</strong> — <strong>skill 是威力較小的 AI 員工版本</strong>,平台上也支援。skill 的好處是他們有一個<strong>模板市集</strong>,方便把東西分享給公司內對的人(AI 員工也適用)。但 AI 員工複雜得多:<strong>有自己的記憶、有確定性與 agentic 混合的步驟、而且針對該用例被嚴格評估</strong>。真正要把東西上線的人通常想要完整的那些頁籤——多少人用過、哪裡出錯、哪裡可以改善、我要自動改善的協助。所以<strong>雖然 skills 存在,多數人還是直接用 AI 員工</strong>。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"You have to be a little scared — you have to govern everything yourself. … And I think we've all apologized for our AI's errors at times."(約 01:21)</p>
+</blockquote>
+<p>Assistant 模式下,治理責任其實落在使用者身上——這是 AI employee 這個設計的出發點。</p>
+<blockquote>
+<p>"You put a human boundary at the final act step where you're changing the state, and you don't do it at the think step."(約 01:36)</p>
+</blockquote>
+<p>整場最實用的一條 human-in-the-loop 設計原則。</p>
+<blockquote>
+<p>"You don't have to know about Ema to launch impactful stuff in Ema. You have to know a lot about the business process. That's the expertise you need."(約 02:06)</p>
+</blockquote>
+<p>她對「導入的瓶頸在哪」的完整回答。</p>
+<blockquote>
+<p>"You can build an AI employee that does everything end to end, but the blocker is always the humans that are collaborating with that AI employee."(約 02:03)</p>
+</blockquote>
+<p>也是整場最誠實的一句:限制不在 agent 的能力,在組織的節奏。</p></section>
+        <section class="lang-en"><h3>Theme 1: Four things that separate assistants from AI employees (~01:20–01:24)</h3>
+<p>She opens by acknowledging that "AI employee" can be a provoking term — why put these things into roles like human employees? Ema coined it back in 2023 and designed against these four first principles:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Assistant</th>
+<th>AI Employee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Triggering</td>
+<td><strong>Reactive</strong>. Needs a human to trigger it, and needs the human to work out what it can do, where its limits are, and how to work with it</td>
+<td><strong>Proactive</strong>. Triggered by events, system changes, or schedules</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>Mostly <strong>suggests and drafts</strong>; often doesn't touch the same systems you do and doesn't have the same access — you wouldn't trust it in the seat you'd trust a junior employee or intern with</td>
+<td><strong>Acts on real systems</strong> directly, under scoped permissions</td>
+</tr>
+<tr>
+<td>State</td>
+<td><strong>Stateless</strong>. You finish a step, share an artifact into Slack or Teams, go back and forth in meetings — <strong>you</strong> are the one holding state, not the assistant</td>
+<td>Holds <strong>persistent state</strong> across steps, systems, users, and days; "come back and ask me about this in 6 months" should work</td>
+</tr>
+<tr>
+<td>Governance</td>
+<td>Yours to carry. You might install an MCP your company doesn't allow, or a skill with security issues — accountability sits with the user</td>
+<td><strong>Built in</strong>. Your chief security officer sets it up and the system stops you before you breach something — you shouldn't even need to know what isn't allowed</td>
+</tr>
+</tbody>
+</table>
+<p>Her aside lands well: "I think we've all apologized for our AI's errors at times — I'm sorry, that was an AI error, I should have checked that better."</p>
+<p><strong>One counter-intuitive statistic</strong>: on Ema, builders build roughly <strong>50% conversational and 50% API-triggered</strong> AI employees — an even split by construction. But <strong>more than 90% of actual invocations are automated</strong>. Her analogy: you don't ping a junior employee or intern every time; after a point they're just doing things, getting progressively more autonomous.</p>
+<h3>Theme 2: Platform architecture (~01:25–01:29)</h3>
+<p>Bottom to top:</p>
+<ul>
+<li><strong>Deployment</strong>: multi-cloud and on-prem (Azure, GCP, and others), with data residency.</li>
+<li><strong>LLM layer — EmaFusion</strong>: none of their enterprise customers want to deal with model leaderboards or re-decide weekly which model is doing well on a task they care about. EmaFusion takes ownership of keeping the latest models available and, depending on the task the AI employee is performing, promises the <strong>best accuracy at the lowest cost and latency</strong>.</li>
+<li><strong>Builder platform</strong>: a library of <strong>pre-trained domain-specific agents</strong> — for instance a data-extraction agent for pulling deduplicated, accurate structured data out of a 500-page document containing contradictions and duplications. A <strong>generative workflow engine</strong> lets you compose those agents alongside <strong>deterministic steps</strong>, because sometimes you don't want AI (granting someone access to a new system should follow a fixed sequence). And <strong>Ema Autopilot</strong> generates those deterministic steps for you — you just check the outputs, so <strong>no coding required</strong>.</li>
+<li><strong>Integration layer</strong>: MCP is supported, but she notes Ema <strong>built its own tool protocol before MCP existed</strong> — faster, more constrained, simpler to set up — so builders get the choice. Most start with MCP because it's already there, but you can bring any API: REST, SFTP, SOAP, whatever.</li>
+<li><strong>Governance</strong>: built in. Interaction happens through dashboards, chat, APIs, voice, or generative UI.</li>
+<li><strong>Pre-configured suites</strong> across all these layers for employee experience, sales, and customer support.</li>
+</ul>
+<p><strong>Customers and scale</strong>: founded 2023, serving Fortune 2000 clients, mostly automating HR, IT, and finance roles end-to-end. Thousands of AI employees in production and hundreds of external builders. <strong>100% of their AI employees change state in real systems</strong> — they essentially don't have "draft me an email and I'll copy it over myself" use cases. Many companies use Ema as a <strong>single pane of glass</strong> rather than opening ten tabs, and that pane can be Slack or Teams, because it's an employee and you talk to it where you already are.</p>
+<p><strong>Named cases</strong>: Wipro (live with 240,000 employees globally for employee-experience questions), Artico (a top US executive search firm; <strong>67% reduction in time-to-hire</strong>), Prime Therapeutics (healthcare; thousands of prior authorizations processed in the background), and Hospital for Special Surgery in NYC (patient appointment scheduling).</p>
+<h3>Theme 3: Their recommended process for building an AI employee (~01:32–01:37)</h3>
+<p>Ema has three kinds of builders: their own builder team (especially for very non-technical clients like healthcare), partners such as Wipro and KPMG whose builders are trained on Ema and take use cases to market, and customers building for themselves with Autopilot. All three are advised to run the same scoping:</p>
+<ol>
+<li><strong>Discover and scope.</strong> What does the role actually require? Decompose the job into tasks and decide which to do with AI, which deterministically, and which to <strong>keep with a human</strong>. She calls out a recurring failure: getting a use case <strong>without an actual test dataset</strong>, so the builder invents test data as they go — while not understanding the business process. Get past examples.</li>
+<li><strong>Integrations.</strong> For production use cases they always recommend <strong>using the APIs directly</strong>. MCPs work but are slower and consume more context, hence more expensive. Systems with neither fall back to <strong>browser use</strong>, plus retrieval to improve context. Then break the work into <strong>smaller agents</strong> so they're easier to evaluate and maintain, and so maintenance can be delegated to different teams.</li>
+<li><strong>Human-in-the-loop checkpoints.</strong> Easier in regulated industries, because some decisions AI simply cannot make — <strong>clinical decisions, or financial market decisions like placing an order</strong>. But even elsewhere, find where human judgment is key: in recruiting, "you do not want agents to be recruiting end to end." Her design rule is the sharpest thing in this section: <strong>put the human boundary at the final act step where state changes, not at the think step</strong> — let the AI employee do everything up to the point where a human has to act, so they can read its notes and decide.</li>
+<li><strong>Train the agent to ask.</strong> Teach it to proactively raise human-in-the-loop requests when it's confused.</li>
+</ol>
+<h3>Theme 4: The live demo (~01:37–01:47)</h3>
+<p>The plan was three AI employees: <strong>sourcing</strong> (searching real candidates via Apollo), <strong>screening</strong> (to demonstrate human-in-the-loop — after shortlisting someone, a human approves before anything is sent), and an <strong>orchestrator</strong>, because "if you have 100 AI employees, you don't want humans remembering what each one does or whom to go talk to. <strong>Nobody wants to deal with routing in their heads.</strong>" A recruiter or hiring manager talks to one point of contact.</p>
+<p>Worth recording from the demo:</p>
+<ul>
+<li>She pasted the whole requirement into <strong>Ema Autopilot</strong>, approved the plan, and it built the integration, the AI employees, generated test CVs and job descriptions, and produced an eval dataset on its own. Autopilot is a harness with hundreds of tools spanning Ema's product infrastructure — governance, builder, and UI layers — and it accepts your own tools and skills, which is how a firm like KPMG brings decades of finance knowledge while the agentic platform knowledge comes from Ema.</li>
+<li><strong>Failures get learned.</strong> Self-correction is retained first for that user and then across the whole company. She says this noticeably improves stickiness over a few months, especially with customer-supplied tools: agents may not know how to use them at first, but "four or five people use it, and for the next hundred people it's going to work well."</li>
+<li><strong>Pasting an API key is deliberately impossible.</strong> You cannot hand Autopilot a key and have it wire things up. They do <strong>PII and sensitive-data obfuscation at source</strong> — the moment you put it in the chat it's obfuscated, and that's what flows downstream. She contrasts this explicitly with "a lot of other harnesses where people just paste API keys and that actually works end to end."</li>
+<li>Three shapes of AI employee: chat; <strong>dashboard</strong> employees invokable via apps, APIs, or schedules (the source of that 90% of invocations); and the orchestrator. The screening employee in the demo sat <strong>paused for human review</strong>, releasing fit scores and the drafted email only after sign-off.</li>
+</ul>
+<h3>Theme 5: Q&amp;A (~01:48–02:12)</h3>
+<p>The Q&amp;A was denser than the presentation. By topic:</p>
+<p><strong>Pricing (~01:48, ~02:10).</strong> Usage- and <strong>outcome</strong>-based. For many AI employees they're selling outcomes: per sales proposal, per customer support ticket, per employee-experience query. It <strong>does not depend on tokens and isn't cost-based pricing</strong> — it's about what you would pay a person in that job and how much faster you're making them, so different jobs cost very differently. Billing metrics are highly configurable and instrumented in tandem with the customer. The alternative is straight usage: someone buys a million credits and builds whatever they want.</p>
+<p><strong>Measuring ROI (~01:50).</strong> For cost-center use cases it's straightforward — fewer hours and less involvement from the humans who used to do the task. For productivity cases they start with a prediction: in 2024 the prediction was 15% faster over the course of the year; studies a couple of months in found people were <strong>3x faster</strong>, even those tenured ten years in the role. You also look at the outcome — 20% more sales proposals with the same headcount.</p>
+<p><strong>Processes that change over time (~01:51).</strong> Two kinds. <strong>Predictable large changes</strong> — prior-authorization clinical policies change annually with a publish date — are fairly self-serve: talk to Autopilot, use Ema's versioning, run your evals, push. <strong>Unpredictable real-world drift</strong> — customers started asking new kinds of questions in the last couple of weeks — is caught by Ema scanning <strong>audit logs</strong> to identify improvement opportunities; Autopilot recommends changes <strong>with eval data showing it's actually better and won't regress past use cases</strong>, and a human signs off on deployment. Both are automated processes.</p>
+<p><strong>Live Zoom/Teams call integration (~01:53).</strong> They <strong>haven't done live call tracking</strong>. They process transcripts right after the call; the use case hasn't come up for them yet.</p>
+<p><strong>Granularity of control / reward functions per agent (~01:53–01:55).</strong> She agrees people want control at the most granular step, and says that's precisely <strong>why you have AI employees rather than one universal agent doing everything</strong>. Each AI employee usually has a different person managing and training it, with distinct roles — builder, admin, reviewer, onboarder — and those permissions are reflected in the system. Evals run at the <strong>AI-employee level</strong>, and you don't have to be technical: your control surface is specifying the use case. Business users do this non-technically ("here are last year's tickets, I want at least this performance across them"); technical users bring eval beds. Within an AI employee, some are free-form with no workflow, while others break into smaller blocks — and <strong>the same evals can run at block level</strong>, e.g. measuring and improving only how well the AI employee works with Apollo.</p>
+<p><strong>Slack / Teams (~01:55).</strong> Yes, and it's how many customers use them. Wipro uses Teams; another customer embeds an SDK as a floating icon on an internal website. All three are channels, and <strong>non-technical people can now set this up in about ten minutes</strong>.</p>
+<p><strong>Why multi-cloud (~01:56).</strong> Sensitive finance and healthcare customers want <strong>on-prem</strong>, deployed where they already are, and <strong>air-gapped</strong> — Ema cannot talk to any system including the web or any external API. Customers sit on GCP or Azure, so they were <strong>multi-cloud from day one</strong>. Dozens of customers are on SaaS and genuinely don't care: "it's like setting up Notion for yourself."</p>
+<p><strong>Enforcing data RBAC for the asking employee (~01:57).</strong> Yes. Integrations support two connection types: <strong>shared service auth</strong>, where access is identical regardless of who asks; and <strong>user-level auth</strong>, which most use cases should use. The first time you ask something requiring a call into, say, ServiceNow, it asks you to log in, and from then on answers come back under <strong>your</strong> credentials. That restricts what information you get <em>and</em> leaves an <strong>audit log in the downstream system</strong>: this person requested this information, and it was served to them via an Ema agent.</p>
+<p><strong>Largest scale and workflow duration (~01:58).</strong> She has personally seen <strong>300–400</strong> AI employees in a single tenant in a single customer deployment. But she stresses it's in people's interest to break them up — back to who maintains this, who's responsible for it staying up to date and following the process. Breaking them apart buys better governance and management. Some workflows run <strong>multiple days</strong>: a new vendor procurement might carry ten approvals — but <strong>the agent is quick; you're stuck waiting on the humans doing the approvals</strong>. Other use cases are much faster. (She declined to share cost figures.)</p>
+<p><strong>How do you make an AI employee proactive (~02:00).</strong> She opened a test tenant to show it, while noting "nobody actually looks at these screens — you just talk to Autopilot; this is like looking at the code." Supported triggers: <strong>webhooks</strong>, having AI employees <strong>poll</strong> your systems, connecting directly to systems with conditions ("when there's a new lead added to Salesforce, go figure out if they're a good candidate for us"), <strong>monitoring inboxes</strong>, and <strong>schedules</strong> ("every morning I want an email that does X"). Setting each up is as simple as sending a sentence.</p>
+<p><strong>Repetitive work and pre-built code recipes (~02:01).</strong> Yes — code can be represented as part of workflows. But her recommended path is more interesting: <strong>don't spend months setting this up</strong>. Start with an empty tenant and zero AI employees, working with Autopilot for every task; as it figures out what's repetitive, it <strong>starts codifying</strong> — building agentic AI employees or writing and maintaining straight code, based on real usage and feedback.</p>
+<p><strong>Task automation or true business-process outsourcing (~02:02).</strong> The questioner noted the positioning implies whole-process outsourcing while the examples look task-oriented. Her answer: <strong>the end state for every contract and project is role-focused</strong> — it lands on a single interface you can talk to, or a single automation, that does the entire job across all the tasks. But <strong>adoption starts slower</strong>: you <em>can</em> build an AI employee that does everything end to end, and <strong>the blocker is always the humans collaborating with it</strong>. So in practice they launch task by task — sourcing, then screening CVs, then scheduling interviews, then onboarding the candidates you liked and managing the offer letter — which helps the recruiting team warm up and learn to work with AI agents. Start with a task, expand to the full gamut of the role.</p>
+<p><strong>Human-to-AI-employee ratio (~02:04).</strong> Creating AI employees on Ema is easy and cheap, and <strong>you're only charged when you're actually getting value</strong>, so people create plenty of automations. But Ema works only with very large companies, so the ratio skews: a <strong>200-person recruiting team might need about 20 AI employees</strong>, with very high usage each — thousands of invocations per day. They <strong>don't optimize for number of agents</strong>.</p>
+<p><strong>How a big GM- or Bank-of-America-scale deal actually runs (~02:05).</strong> Either someone at Ema or a partner acts as the agentic transformation expert responsible for the AI employees working well and launching the first time. That's a deep discovery process: not just workshops with the buyer and team lead, but <strong>sitting in the room with the person doing the job and shadowing them for hours and days</strong>, plus reviewing all their past work examples from the last year, before writing the definition. <strong>Once the process is well defined, there isn't much left — throw it into Ema Autopilot and in a few hours it's built and tested.</strong> Her conclusion is the line worth keeping: "<strong>You don't have to know about Ema to launch impactful stuff in Ema. You have to know a lot about the business process. That's the expertise you need.</strong>" Which is also why many customers then want to build themselves: if you're just going to put it in Autopilot, I can do that — I'm the expert on this recruiting process.</p>
+<p><strong>Employee resistance (~02:06).</strong> She says that resistance was much more common two or three years ago — "why do you want me to evaluate AI samples when this will probably affect my own role?" That has changed a lot in the last couple of years: everyone has realized you need to be faster and AI-equipped to stay at the top of your job and your industry, and that adopting AI makes you more valuable and better at the work. Now they see excitement — people want to be the ones training it and to understand how it works. She calls this the <strong>rise of citizen developers</strong>: people who have never written a line of code and want to bring AI into their jobs.</p>
+<p><strong>Skills versus AI employees (~02:11, final question).</strong> A skill is <strong>a less powerful version of an AI employee</strong>, and the platform supports them. Their benefit is a strong <strong>template marketplace</strong> making it easy to share things with the right people inside your own company — which works for AI employees too. But AI employees are much more complex: they have <strong>their own memory</strong>, mix deterministic and agentic steps, and are <strong>evaluated very specifically for their use case</strong>. Most people taking something live want all those tabs — how many people used it, where it went wrong, where it can improve, automated improvement help. So although skills exist, <strong>most people prefer using AI employees directly</strong>.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"You have to be a little scared — you have to govern everything yourself. … And I think we've all apologized for our AI's errors at times." (~01:21)</p>
+</blockquote>
+<p>Under the assistant model, governance accountability quietly lands on the user — the starting point for the whole AI-employee design.</p>
+<blockquote>
+<p>"You put a human boundary at the final act step where you're changing the state, and you don't do it at the think step." (~01:36)</p>
+</blockquote>
+<p>The most portable human-in-the-loop design rule in the session.</p>
+<blockquote>
+<p>"You don't have to know about Ema to launch impactful stuff in Ema. You have to know a lot about the business process. That's the expertise you need." (~02:06)</p>
+</blockquote>
+<p>Her complete answer to where the deployment bottleneck sits.</p>
+<blockquote>
+<p>"You can build an AI employee that does everything end to end, but the blocker is always the humans that are collaborating with that AI employee." (~02:03)</p>
+</blockquote>
+<p>The most candid line of the session: the constraint isn't agent capability, it's organizational pace.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ema</td>
+<td>2023 年創立於 Mountain View 的企業 AI 員工平台,服務 Fortune 2000</td>
+<td>Enterprise AI-employee platform founded 2023 in Mountain View, serving Fortune 2000 clients</td>
+<td>官方拼法為 Ema(字幕作 "Emma")</td>
+</tr>
+<tr>
+<td>EmaFusion</td>
+<td>模型融合層,依任務自動選模,承諾最低成本延遲下的最佳準確度</td>
+<td>Model-fusion layer that routes per task for best accuracy at lowest cost and latency</td>
+<td>讓客戶不必追模型排行榜</td>
+</tr>
+<tr>
+<td>Ema Autopilot</td>
+<td>會建置、管理、除錯、測試、維護其他 AI 員工的 AI 員工;自然語言即可建置</td>
+<td>An AI employee that builds, manages, debugs, tests, and maintains the other AI employees</td>
+<td>demo 主軸 / the demo's centerpiece</td>
+</tr>
+<tr>
+<td>Ema 自有 tool protocol</td>
+<td>早於 MCP 開發,更快、更受限、更易設定;與 MCP 並存供選擇</td>
+<td>Built before MCP; faster, more constrained, simpler to set up; offered alongside MCP</td>
+<td></td>
+</tr>
+<tr>
+<td>Apollo</td>
+<td>Workshop 中用來做候選人 sourcing 的外部資料來源</td>
+<td>External people-data source used for candidate sourcing in the workshop</td>
+<td>apollo.io;現場提供共用測試 API key</td>
+</tr>
+<tr>
+<td>Wipro</td>
+<td>全球 24 萬名員工上線,用於員工體驗;同時也是 Ema 的 builder 夥伴</td>
+<td>Live with 240,000 employees for employee experience; also a builder partner</td>
+<td>字幕作 "Vipro"</td>
+</tr>
+<tr>
+<td>Artico Search</td>
+<td>美國頂尖高階獵才公司,time-to-hire 縮短 67%</td>
+<td>Top US executive search firm; 67% reduction in time-to-hire</td>
+<td>官方案例另記 30% 成本下降</td>
+</tr>
+<tr>
+<td>Prime Therapeutics</td>
+<td>醫療客戶,背景批次處理 prior authorization</td>
+<td>Healthcare customer; prior-authorization processing in the background</td>
+<td></td>
+</tr>
+<tr>
+<td>Hospital for Special Surgery (HSS)</td>
+<td>紐約醫院,病患預約排程</td>
+<td>NYC hospital; patient appointment scheduling</td>
+<td>字幕作 "hospital of special surgery"</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emma / MMA / MI / MR / M / MI agent</td>
+<td>Ema / Ema agent</td>
+</tr>
+<tr>
+<td>Emma Fusion</td>
+<td>EmaFusion</td>
+</tr>
+<tr>
+<td>Emma Autopilot / Ma Autopilot</td>
+<td>Ema Autopilot</td>
+</tr>
+<tr>
+<td>Aneska / Anushka</td>
+<td>Anushka Pathak</td>
+</tr>
+<tr>
+<td>Vipro</td>
+<td>Wipro</td>
+</tr>
+<tr>
+<td>Artico</td>
+<td>Artico Search</td>
+</tr>
+<tr>
+<td>hospital of special surgery</td>
+<td>Hospital for Special Surgery (HSS)</td>
+</tr>
+<tr>
+<td>app.mr.ai</td>
+<td>app.ema.ai</td>
+</tr>
+<tr>
+<td>Zelerback Hall / Zelerbach Mezzanine</td>
+<td>Zellerbach Hall / Zellerbach Mezzanine</td>
+</tr>
+<tr>
+<td>obiscation / offiscated</td>
+<td>obfuscation / obfuscated</td>
+</tr>
+<tr>
+<td>SAS deployment</td>
+<td>SaaS deployment</td>
+</tr>
+<tr>
+<td>ourback</td>
+<td>RBAC</td>
+</tr>
+<tr>
+<td>service o / user level o</td>
+<td>service auth / user-level auth</td>
+</tr>
+<tr>
+<td>EI employees</td>
+<td>AI employees</td>
+</tr>
+<tr>
+<td>eva / evas</td>
+<td>evals</td>
+</tr>
+<tr>
+<td>Ghat(客戶名)</td>
+<td>待確認 / to verify</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>講者提到預設套件「come pre-built with like 500,000 AI employees」——這個數字在脈絡下明顯異常(可能是 500 或 50,000,或是口誤),需看投影片確認。/ The "500,000 AI employees" figure for pre-configured suites is implausible in context; needs slide confirmation.</li>
+<li>她提到的 assistant 使用情境「things like claude co-work」——正確產品名稱待確認。/ The product heard as "claude co-work" needs its correct name confirmed.</li>
+<li>使用 SDK 浮動圖示的客戶名稱(字幕聽作 "Ghat")。/ The customer name heard as "Ghat" that embeds Ema as a floating SDK icon.</li>
+<li>議程列名的 Soham Shah 與 Eric Victorson 在錄影中未上台講述(Eric 開場時尚未到場),僅 Anushka Pathak 主講;若需個別歸屬需另行查證。/ Soham Shah and Eric Victorson never presented on the recording (Eric hadn't arrived at the start); only Anushka Pathak spoke.</li>
+<li>「我們在 MCP 出現前就做了自己的 tool protocol」——該協定未公開命名。/ Ema's pre-MCP tool protocol was not named.</li>
+<li>Ema 免費 self-serve 試用「本月底開放」的確切日期與現況。/ The exact date and current status of the free self-serve trial she said would open at the end of the month.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-atlas/workshop--from-assistants-to-ai-employees.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

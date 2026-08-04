@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Safety and Security of Agentic AI · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Safety and security have traditionally been assessed in isolation, but agentic AI in cyber-physical systems expands the attack surface into training pipelines *and* the physical world; modeling bot…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/john-a-mcdermid--safety-and-security-of-agentic-ai.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Safety and Security of Agentic AI · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Safety and security have traditionally been assessed in isolation, but agentic AI in cyber-physical systems expands the attack surface into training pipelines *and* the physical world; modeling bot…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/john-a-mcdermid--safety-and-security-of-agentic-ai.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="john-a-mcdermid--safety-and-security-of-agentic-ai">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Safety and Security of Agentic AI" data-title-zh="Agentic AI 的安全與資安">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Secure Agentic AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Safety and Security of Agentic AI</span><span class="lang-zh">Agentic AI 的安全與資安</span></h1>
+        <p class="dialog__speaker"><strong>John A McDermid</strong> — Director, Centre for Assuring Autonomy, Institute for Safe Autonomy, University of York</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 03:25:50–03:37:55 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=ZIRc3EpzQJs&amp;t=12350s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 03:25:50</span><span class="lang-zh">從 03:25:50 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Safety and security have traditionally been assessed in isolation, but agentic AI in cyber-physical systems expands the attack surface into training pipelines *and* the physical world; modeling both in a structural causal world model reveals that two attacks that are individually survivable become lethal when their time ordering changes.</span><span class="lang-zh">在 cyber-physical 系統裡,safety 與 security 傳統上被分開評估,但 agentic AI 讓攻擊面同時擴張到訓練管線與物理環境;用 structural causal world model 把兩者接起來後會發現——單獨都安全的兩個攻擊,只要改變發生順序就能組合成致命結果。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>Safety ≠ Security,但不能再分開做</strong>:講者做了 40 年軟體密集系統的 safety(定義是「對人、環境的物理傷害」),他的訊息很直接——資安圈與安全圈必須坐下來談,否則會部署出在物理世界造成災難的系統。</li>
+<li><strong>AI 把攻擊面往兩個方向撐開</strong>:一邊是訓練管線、prompt、context 等傳統 IT 面向;另一邊是<strong>物理環境本身</strong>——貼紙貼在停止標誌上就能讓感知模型讀成「速限 45 mph」(實驗室 93%、真實世界 83%)。</li>
+<li><strong>SCWM(structural causal world model)</strong>:四層結構——ontology(世界中重要的事物,如浪高)→ 不確定性建模 → 不確定性邊界 → 底層可用形式化方法驗證演算法行為。攻擊被建模成<strong>對因果圖的 intervention</strong>,再沿圖傳播到 safety metric。</li>
+<li><strong>複合攻擊案例(無人水面載具)</strong>:對遠端操控中心做 DoS(數位)+ 用 UAV 在攝影機前擋一張圖(物理)。<strong>兩者單獨發生都安全</strong>,合起來就是一艘自主航行、卻看不見前方油輪的船。</li>
+<li><strong>最反直覺的發現</strong>:safety 與 security 都不太處理<strong>事件的時間順序</strong>,但時序本身就能繞過防禦——你可能把單一 agent 做安全了,改變事件順序卻能瓦解整個 agentic ecosystem 的安全性。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>背景:York 的 Centre for Assuring Autonomy(約 03:26–03:27)</h4>
+<p>講者做軟體密集系統的 safety 大約 40 年,這裡的 safety 指的是<strong>對人與環境的物理傷害</strong>;過去九到十年主持自主系統保證(assurance of autonomous systems)的研究計畫,近年逐步涵蓋 AI 乃至 agentic AI——儘管 agentic AI 目前在安全關鍵系統中部署還不多。</p>
+<p>中心規模已接近 100 人(faculty、研究員與博士生),領域橫跨海事、自動駕駛與 AI 在醫療照護的應用。這場演講以<strong>海事</strong>為例,因為它最能呈現問題的本質。(插曲:投影片的逐步動畫沒有正常運作,他大半場是「繞著投影片講」。)</p>
+<h4>為什麼要把 safety 與 security 一起做(約 03:28–03:29)</h4>
+<p>傳統上 safety 與 security 是<strong>各自獨立評估</strong>的。但在 cyber-physical 系統裡,網路攻擊會<strong>級聯</strong>穿過技術系統、穿過感知系統,最後造成不安全的結果——safety 圈稱之為 hazard(威脅到人員或設備物理安全的狀態)。</p>
+<p>導入 AI 之後,safety 與 security 的問題<strong>同時</strong>被改寫:攻擊面大幅擴張,除了作業系統之外還多了訓練管線;而如果系統有物理實體,<strong>物理環境本身也是威脅面的一部分</strong>。</p>
+<p>他借用了別人的一個經典例子(明確聲明不是他們的研究):有人訓練一個 AI 演算法去找感知系統的弱點,然後印出貼紙貼在停止標誌上,讓感知邏輯判定那是「速限 45 mph」的標誌——實驗室準確率 93%,真實世界 83%。</p>
+<h4>SCWM:把 security 綁進因果世界模型(約 03:29–03:30、03:33–03:35)</h4>
+<p>Safety 的基礎是<strong>因果模型</strong>。他的團隊因此建構世界模型來表示這些因果結構,稱為 <strong>structural causal world models(SCWM)</strong>。他特別區分:AI 圈很關注「自動學出世界模型」,而 SCWM 是<strong>我們自己明確描述</strong>的,並且把 security 綁進這個結構裡。</p>
+<p>SCWM 有四層:</p>
+<ol>
+<li><strong>Ontology</strong>:描述在這個工作場景中重要的世界事物。例如「浪高」——因為波浪施加在船體上的力會改變其操縱性。</li>
+<li><strong>不確定性建模</strong>:同一件事在特定情境下無法精確計算,例如你算不出浪與船體交互作用的確切波形,因此海況如何影響船的運動存在不確定性。</li>
+<li><strong>不確定性邊界</strong>:上述不確定性被映射成一組 bound。</li>
+<li><strong>底層驗證</strong>:喜歡形式化方法的人可以在這層驗證演算法行為——「我可以設定不確定性的邊界,並在這些已知邊界內安全運作」。</li>
+</ol>
+<p>安全事件如何進入這個模型:<strong>把攻擊視為對因果依賴圖的 intervention</strong>。實際上你會建出所有相關因素的因果依賴圖(他在投影片上只 highlight 四個節點),security 事件擾動這些關係,再沿著圖傳播到最終的 safety metric 偏差。</p>
+<p>本例關心的 metric 是 <strong>closest point of approach(最近會遇距離)</strong> 與 <strong>time to closest approach(抵達最近會遇點的時間)</strong>。距離越小越危險;時間則取決於船有多大、多靈活——船越笨重,你就得越早預測到最近會遇點,才有足夠時間操舵。</p>
+<h4>案例:無人水面載具的複合攻擊(約 03:30–03:33)</h4>
+<p>情境(他強調是與真實系統高度相似的代表性模擬,不是真實系統本身):一艘 unmanned surface vessel,依 IMO(International Maritime Organization)定義屬於 <strong>degree three 自主等級</strong>——大致上遠端操控,但必要時可在無遠端介入下自主運作。</p>
+<p>他們建了模擬:感知用 <strong>YOLO</strong> 物件偵測器,加上一個他們稱為 <strong>dropout protection module(DPM)</strong> 的模組——當船失去與遠端操控中心的通訊(例如遭到 jamming)時,就回退到完全自主功能。另外還有 <strong>AIS</strong>(向其他船舶廣播自身位置的系統),它是可以被 spoof 的。</p>
+<p><strong>複合攻擊</strong>由兩部分組成:</p>
+<ol>
+<li><strong>數位攻擊</strong>:對遠端操控中心發動 DoS,使其無法再控制該船。直接效果是船上的 DPM 接手,自主續行原本協議好的航路。</li>
+<li><strong>物理攻擊</strong>:放飛一架 UAV,在船載攝影機前擺一張影像,使系統要嘛完全偵測不到來船,要嘛把它誤判成需要<strong>不同</strong>閃避動作的其他東西。</li>
+</ol>
+<p>關鍵在於:</p>
+<ul>
+<li>只發生 (1) → 安全。船回退到 DPM,繼續安全航行。</li>
+<li>只發生 (2) → 安全。遠端操作員有資料回傳,會發現異常並採取適當行動。</li>
+<li><strong>(1)+(2) 同時發生 → 不安全狀態</strong>。船在自主航行,卻不知道前方有油輪、不會採取閃避動作,於是進入碰撞航線。</li>
+</ul>
+<p>他用一張圖展示兩個初始攻擊如何沿系統傳播:攻擊會降低對他船位置的估計品質,在影像攻擊的情況下甚至直接改變船的「信念」(前方到底有什麼),最後表現為 closest point of approach 與 time to closest approach 這兩個 safety metric 的劣化。</p>
+<h4>結論:新的分析方法,以及被忽略的時序(約 03:36–03:37)</h4>
+<p>總結三點:</p>
+<ol>
+<li><strong>AI 在 cyber-physical 系統中帶來新挑戰</strong>:攻擊面大幅擴張,包含訓練資料、prompt、context(若用 LLM)等。</li>
+<li><strong>物理攻擊面同樣真實</strong>:spoofing 影像是最明顯的一種,但同樣的手法可以在其他電磁頻域進行。</li>
+<li><strong>時序是盲點</strong>:safety 領域(以及某種程度上 security 領域)通常不太處理<strong>事件的時間順序</strong>;而他們做這個分析正是要顯示,<strong>時序可以繞過防禦</strong>——「我可能已經讓某個 agent 安全了,但只要改變事件的時間順序,我就能瓦解整個 agentic 生態系的 safety 與 security。」</li>
+</ol>
+<p>因此需要新的、<strong>整合 safety 與 security</strong> 的分析方法。SCWM 是其中一種可能途徑,他們目前正把世界模型延伸到涵蓋<strong>agent 與人類之間的共享理解</strong>(在有對話式介面的場合)。</p>
+<p>他給資安聽眾的臨別訊息:如果你做 security,請來找我們做 safety 的人聊——這兩件事的交界處有新的挑戰,不一起看,我們就會部署出進入物理世界後產生極不樂見後果的系統。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"I may have might have made one agent secure but actually by changing the time ordering of events I can actually undermine the safety and security of the agentic ecosystem."(約 03:36:58)</p>
+</blockquote>
+<p>單點安全不等於系統安全,而時序是最容易被漏掉的那一維。</p>
+<blockquote>
+<p>"If you work on security, please come and talk to we guys who do safety — there's new challenges that arise at the interaction of those two issues."(約 03:37:20)</p>
+</blockquote>
+<p>整場演講的核心呼籲。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Safety and security are different disciplines that can no longer be practiced apart.</strong> After 40 years on the safety of software-intensive systems — safety meaning physical harm to people and the environment — his message to a security audience was blunt: come talk to us, or we will field systems with very undesirable physical consequences.</li>
+<li><strong>AI stretches the attack surface in two directions</strong>: the familiar IT side (training pipelines, prompts, context) and the <strong>physical environment itself</strong> — stickers on a stop sign made a perception system read "45 mph speed limit" with 93% accuracy in the lab and 83% in the real world.</li>
+<li><strong>Structural causal world models (SCWM)</strong> have four layers: an ontology of what matters in the world (e.g. wave height), an uncertainty model, uncertainty bounds, and a bottom layer where algorithm behavior can be formally verified within those bounds. Attacks are modeled as <strong>interventions on the causal graph</strong> and propagated to a safety metric.</li>
+<li><strong>Compound attack on an unmanned surface vessel</strong>: DoS the remote operating center (digital) <em>and</em> fly a UAV holding an image in front of the cameras (physical). <strong>Either one alone is safe.</strong> Together you get a vessel navigating autonomously while blind to an approaching tanker.</li>
+<li><strong>The counterintuitive finding</strong>: neither safety nor security engineering pays much attention to the <strong>time ordering of events</strong>, yet ordering alone can defeat defenses — you can secure an individual agent and still undermine the whole agentic ecosystem by resequencing.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Background: the Centre for Assuring Autonomy at York (~03:26–03:27)</h4>
+<p>Roughly 40 years on the safety of software-intensive systems, where safety means physical harm to people and the environment; the last nine or ten running a programme on the assurance of autonomous systems, progressively extending to AI and now agentic AI — even though agentic AI isn't deployed much in safety-critical systems yet.</p>
+<p>The centre is approaching 100 people across faculty, researchers and PhD students, working in maritime, autonomous driving, and AI in healthcare. This talk used maritime as the illustrative domain because it exposes the nature of the problem well. (A running aside: the slide build-up didn't work, so he talked around the deck.)</p>
+<h4>Why safety and security have to be analyzed together (~03:28–03:29)</h4>
+<p>Traditionally these are assessed independently, in isolation. But in cyber-physical systems, cyber attacks <strong>cascade</strong> through the technical system and through perception systems into unsafe effects — hazards, in safety terminology: states that threaten the physical safety of equipment or personnel.</p>
+<p>Introducing AI changes both sides substantially. The attack surface grows to include training pipelines as well as the operating system; and once the system is physical, the physical environment is part of the threat surface too.</p>
+<p>The illustration he borrowed (explicitly not his group's work): researchers trained an AI algorithm to find weaknesses in a perception system, then printed stickers to put on a stop sign so the perception logic classified it as a 45 mph speed limit — 93% accuracy in the lab, 83% in the real world.</p>
+<h4>SCWM: binding security into a causal world model (~03:29–03:30, 03:33–03:35)</h4>
+<p>Safety rests on models of cause and effect, so his group builds world models that represent those causal structures — <strong>structural causal world models (SCWM)</strong>. He drew a deliberate contrast with the AI community's interest in <em>automatically learned</em> world models: these are described explicitly, and security is bound into the structure.</p>
+<p>Four layers:</p>
+<ol>
+<li><strong>Ontology</strong> — the things in the world that matter for this operation. Wave height, for instance, because the force of waves on a vessel alters its maneuverability.</li>
+<li><strong>Uncertainty</strong> — you can't compute exactly how wave patterns interact with the hull, so sea state's effect on vessel motion carries uncertainty.</li>
+<li><strong>Bounds on uncertainty</strong> — that uncertainty is mapped into bounds.</li>
+<li><strong>Verification</strong> — for those who like formal methods, you can verify algorithm behavior at this level: set bounds on the uncertainty and show safe operation within the known bounds.</li>
+</ol>
+<p>Security enters as <strong>interventions on the causal dependency graph</strong>. In practice you build the graph over everything that matters in the situation (his slide highlighted four nodes); security events perturb those relationships, and the effect propagates from attack to an ultimate deviation in a safety metric.</p>
+<p>Here the metrics are <strong>closest point of approach</strong> and <strong>time to closest approach</strong>. The smaller the distance, the more likely a collision; and time matters especially for large, less maneuverable vessels, which need the prediction much further out to have room to act.</p>
+<h4>Case study: a compound attack on an unmanned surface vessel (~03:30–03:33)</h4>
+<p>The setup — representative of, though not identical to, a real system they've worked on: an unmanned surface vessel at what the IMO (International Maritime Organization) calls <strong>degree three autonomy</strong>, largely remotely operated but able to run autonomously without remote interaction if needed.</p>
+<p>Their simulation uses a <strong>YOLO</strong> object detector plus a <strong>dropout protection module (DPM)</strong> that falls back to fully autonomous operation if the vessel loses communication with the remote operating center — which can happen for many reasons, jamming among them. <strong>AIS</strong>, which broadcasts your position to other vessels, is spoofable, and there are plenty of other concerns besides.</p>
+<p>The compound attack:</p>
+<ol>
+<li><strong>Classical digital attack</strong> — a denial of service against the remote operating center, so it can no longer control the vessel. Immediate effect: the DPM kicks in and the vessel continues autonomously along the agreed path.</li>
+<li><strong>Physical attack</strong> — fly a UAV and hold an image in front of the cameras, so the approaching tanker is either not detected at all or classified as something completely different requiring a different evasive maneuver.</li>
+</ol>
+<p>The point is the composition:</p>
+<ul>
+<li>Attack 1 alone: safe. Fall back to the DPM; the vessel operates safely.</li>
+<li>Attack 2 alone: safe. Remote operators get a data feed, notice, and take appropriate action.</li>
+<li><strong>Both together: an unsafe state.</strong> The vessel maneuvers autonomously without knowing a tanker is in front of it, takes no evading action, and ends up on a collision course.</li>
+</ul>
+<p>His propagation graph traced how the two initial attacks move through the system: degrading the position estimate of the other vessel, and in the image-attack case changing the vessel's beliefs about what is actually ahead — surfacing as degradation in closest point of approach and time to closest approach.</p>
+<h4>Conclusions, and the blind spot nobody models (~03:36–03:37)</h4>
+<p>Three summary points:</p>
+<ol>
+<li><strong>AI in cyber-physical systems introduces new challenges</strong> — a much expanded attack surface including training data, prompts, and context where LLMs are involved.</li>
+<li><strong>The physical attack surface is real</strong> — spoofing images is the obvious case, but the same can be done in other electromagnetic domains.</li>
+<li><strong>Time ordering is the blind spot.</strong> Safety engineering, and to an extent security engineering, tends not to worry about the temporal order of events. Part of why they ran this analysis was to show that ordering can overcome defenses: one agent may be secure, yet resequencing events undermines the safety and security of the agentic ecosystem.</li>
+</ol>
+<p>The conclusion is that new analysis approaches integrating safety and security are needed. SCWM is one possible route, currently being extended so the world model also captures shared understanding between agents and humans where dialogue interfaces exist.</p>
+<p>His closing appeal to a security audience: if you work on security, come and talk to the safety people — new challenges arise at the interaction of the two, and if we don't look at them together we will deploy systems with very undesirable effects once they reach the physical domain.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"I may have might have made one agent secure but actually by changing the time ordering of events I can actually undermine the safety and security of the agentic ecosystem." (~03:36:58)</p>
+</blockquote>
+<p>Per-component security doesn't compose, and ordering is the dimension most often left out of the model.</p>
+<blockquote>
+<p>"If you work on security, please come and talk to we guys who do safety — there's new challenges that arise at the interaction of those two issues." (~03:37:20)</p>
+</blockquote>
+<p>The talk's central appeal.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Centre for Assuring Autonomy (CfAA), University of York</td>
+<td>自主系統保證研究中心,近 100 人,涵蓋海事、自駕、醫療</td>
+<td>Assurance research centre for autonomous systems, ~100 people, maritime / automotive / healthcare</td>
+<td>講者為 Director</td>
+</tr>
+<tr>
+<td>Structural Causal World Models (SCWM)</td>
+<td>四層因果世界模型,將 security 攻擊建模為對因果圖的 intervention</td>
+<td>Four-layer causal world model; security attacks modeled as interventions on the causal graph</td>
+<td>對應論文 "Structural Causal World Models for Safety Assurance of AI-based Autonomy"(2026)/ see the 2026 paper of the same name</td>
+</tr>
+<tr>
+<td>Dropout Protection Module (DPM)</td>
+<td>模擬船失去與遠端操控中心通訊時,回退到完全自主運作的模組</td>
+<td>Module that falls back to fully autonomous operation when comms to the remote operating center drop</td>
+<td>他們模擬系統中的元件 / component of their simulation</td>
+</tr>
+<tr>
+<td>YOLO</td>
+<td>模擬中使用的物件偵測器</td>
+<td>Object detector used in the simulation</td>
+<td></td>
+</tr>
+<tr>
+<td>AIS (Automatic Identification System)</td>
+<td>船舶向他船廣播位置的系統,可被 spoof</td>
+<td>Vessel position broadcast system; spoofable</td>
+<td></td>
+</tr>
+<tr>
+<td>IMO degree three autonomy</td>
+<td>講者定義為「大致遠端操控,必要時可無遠端介入自主運作」</td>
+<td>Speaker's gloss: largely remotely operated, able to operate autonomously without remote interaction if necessary</td>
+<td>IMO MASS 官方分級用語需另行核對(見待確認)/ cross-check against official IMO MASS wording (see To Verify)</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>John McDermad / McDermott</td>
+<td>John A McDermid</td>
+</tr>
+<tr>
+<td>center of assuring autonomy</td>
+<td>Centre for Assuring Autonomy</td>
+</tr>
+<tr>
+<td>SCWM(字幕作 "structure causal world models")</td>
+<td>structural causal world models</td>
+</tr>
+<tr>
+<td>Gentic AI / aentic</td>
+<td>agentic AI</td>
+</tr>
+<tr>
+<td>mclassified</td>
+<td>misclassified</td>
+</tr>
+<tr>
+<td>Swifting images</td>
+<td>spoofing images</td>
+</tr>
+<tr>
+<td>submarine security thread models(主持人語)</td>
+<td>maritime security threat models</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>停止標誌貼紙攻擊的 93%(lab)/ 83%(real world)數字與原始論文出處未指名,建議核對。/ The 93% lab / 83% real-world figures for the stop-sign sticker attack were given without a citation.</li>
+<li>IMO 對 MASS(Maritime Autonomous Surface Ships)degree three 的官方定義用語,與講者口述的描述是否一致,需比對 IMO 文件。/ Whether the speaker's gloss of "degree three autonomy" matches IMO's official MASS degree definitions.</li>
+<li>他提到正在延伸 SCWM 以納入「agent 與人類的共享理解」,此延伸工作是否已有公開論文。/ Whether the SCWM extension covering shared human–agent understanding has been published.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/john-a-mcdermid--safety-and-security-of-agentic-ai.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

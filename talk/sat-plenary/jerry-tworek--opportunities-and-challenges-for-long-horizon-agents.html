@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Opportunities and Challenges for Long-Horizon Agents · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="What stops RL from pushing agents from 12 hours to 12 months isn&#x27;t money — it&#x27;s that a single reward over a long trajectory makes the learning signal decay quadratically in horizon length, compound…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/jerry-tworek--opportunities-and-challenges-for-long-horizon-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Opportunities and Challenges for Long-Horizon Agents · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="What stops RL from pushing agents from 12 hours to 12 months isn&#x27;t money — it&#x27;s that a single reward over a long trajectory makes the learning signal decay quadratically in horizon length, compound…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/jerry-tworek--opportunities-and-challenges-for-long-horizon-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="jerry-tworek--opportunities-and-challenges-for-long-horizon-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Opportunities and Challenges for Long-Horizon Agents" data-title-zh="長程 Agent 的機會與挑戰">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Agentic AI Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Opportunities and Challenges for Long-Horizon Agents</span><span class="lang-zh">長程 Agent 的機會與挑戰</span></h1>
+        <p class="dialog__speaker"><strong>Jerry Tworek</strong> — CEO, Core Automation; Former VP of Research at OpenAI</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 01:10:45–01:23:10 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=Tcn5Yb2K0h4&amp;t=4245s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:10:45</span><span class="lang-zh">從 01:10:45 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">What stops RL from pushing agents from 12 hours to 12 months isn&#x27;t money — it&#x27;s that a single reward over a long trajectory makes the learning signal decay quadratically in horizon length, compounded by getting only two gradient steps a day; value functions and continual learning are the two plausible ways out.</span><span class="lang-zh">RL 之所以還沒把 agent 的工作時長從 12 小時推到 12 個月,不是因為錢不夠,而是因為單一 reward 配上長軌跡讓學習訊號隨 horizon 平方衰減,加上一天只跑得出兩個 gradient step——這才是長程 agent 真正的瓶頸,而 value function 與 continual learning 是兩條可能的出路。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>問題的起點是一個很具體的觀察</strong>:他自己 Codex session 的中位數大約 10 分鐘、平均約 20 分鐘。「為什麼不能更久?」——這是今天 AI 研究者最該問的問題之一。</li>
+<li><strong>我們才剛進入 agent 時代一年多</strong>。他認為 <strong>o3 是第一個真正 agentic 的模型</strong>,去年四月才發布;模型自那時起進步巨大,但可改進的空間更大。</li>
+<li><strong>RL 解決了「軌跡越長、出錯機率指數上升」的老問題</strong>:規模化 RL 後找到的配方讓模型能從自己的錯誤中恢復、在自己的軌跡上訓練,於是「想得越久、表現越好」——test-time compute 與 token maxing 的時代。今天最好的前沿模型讀數大約是<strong>能連續工作 12 到 16 小時</strong>。</li>
+<li><strong>但繼續砸錢不會自動延長到無限</strong>,有兩個硬障礙:</li>
+<li><strong>經濟學是平方級的</strong>:採樣長度 n 的軌跡成本正比於 n(有 quadratic attention 還更高),而現代 RL 只給整條軌跡一個 reward、幾乎沒有 token 級的 credit assignment,所以<strong>每個 token 拿到的資訊約 1/n</strong>——學習訊號隨 horizon 平方衰減。線性還好,平方很殘酷。</li>
+<li><strong>延遲</strong>:採一條 12 小時軌跡就要 12 小時,一天做得出兩個 gradient step,一週約 14 個、一個月約 60 個。<strong>這不是一個快的訓練方法,而現在沒有人有時間。</strong></li>
+<li><strong>今天的長程能力大多是 harness 黏出來的</strong>(<code>/goal</code>、plan mode、sub-agents),而這些<strong>不是模型原生的、無法被反向傳播、也沒有被訓練</strong>——「機器學習的歷史一向是:能被 backprop 的東西會贏過不能的」。</li>
+<li><strong>兩條出路</strong>:value function(如果有人做出來,長程問題就解了,但他抱持相當程度的懷疑——找到好的 value function 常常比解原問題還難)與 <strong>continual learning</strong>(從另一端解:七年的迴圈每天重跑,但每天跑的不是同一個模型)。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>從「我的 Codex session 只有 10 分鐘」開始(約 01:10–01:12)</h4>
+<p>長程 agent 顯然是當下 AI 研究的前沿之一。他的切入點非常具體:<strong>看自己 Codex session 的統計,中位數大約 10 分鐘,平均值大約 20 分鐘。為什麼不是更久?為什麼 agent 沒辦法幫我工作更長的時間?</strong> 他認為這是今天 AI 研究者非常值得問的問題。</p>
+<p>先說明顯的部分:<strong>我們已經活在 agent 時代,但非常早期。</strong> 在他心中,<strong>o3 是第一個真正 agentic 的模型,而那是去年四月才發布的</strong>——所以我們才剛進入 agent 時代一年多一點。模型很早期,自 o3 以來進步巨大,但<strong>還有更多改進空間</strong>;產品在進步、採用在來、很多事情都還沒搞清楚。而這正是這個美好時代給我們的機會:去把這些事情弄清楚,供後面幾十年的 agent 普及使用。</p>
+<p><strong>什麼構成一個 agent?</strong> 這是個很模糊的詞,他列了幾個組件:agent <strong>使用工具</strong>(因為 agent 應該能代表我行動);agent 多半是 <strong>async</strong> 的(我交代一件事,它就去做);agent 通常是 <strong>goal-oriented</strong>(你給高階目標,agent 把空白填起來);agent 通常<strong>跨越長時間</strong>工作(不是每五分鐘來回一次)。</p>
+<h4>RL 如何解掉「指數失敗率」(約 01:12–01:15)</h4>
+<p>一旦拉長 agent 的工作時間,就會撞上一個很明顯的觀察:<strong>我們訓練的神經網路每一步都是機率性的、都會犯錯,所以隨著軌跡長度增加,出錯的機率是指數成長的。</strong> 這正是多年來我們做不出 agent 的一大原因——神經網路會脫軌。這也是 RL 文獻裡的經典假設,以及<strong>我們為什麼需要 RL</strong>。</p>
+<p>轉捩點發生在他和團隊<strong>把 RL 規模化到越來越大的算力</strong>時,終於找到一個配方,能訓練模型<strong>從自己的錯誤中恢復、在自己的軌跡上訓練</strong>——模型突然開始能解越來越難的任務。他們看到兩件事:</p>
+<ol>
+<li>顯而易見的:<strong>投入越多算力,能力就在演算法圖上等比例提升</strong>。</li>
+<li>更關鍵、也是近年機器學習最重要的心智轉變之一:<strong>模型想得越久、花在任務上的 token 越多,表現就越好</strong>。也就是說,RL 訓出來的模型不只沒有掉進「軌跡越長失敗率越高」的陷阱、能從中恢復,還能<strong>有生產力地持續思考更久</strong>。本質上:<strong>軌跡越長,結果越好</strong>。我們進入了 test-time compute 與 token maxing 的時代。</li>
+</ol>
+<p>接著是那張大家都很熟的圖:<strong>agent 能替我們工作多久</strong>。自從開始規模化 RL,這條線不斷創新高,<strong>今天最好的前沿模型讀數大約在 12 小時、16 小時</strong>。</p>
+<h4>為什麼「繼續砸錢」不會自動成立(約 01:15–01:18)</h4>
+<p>那問題來了:<strong>也許就這樣了?我們有了 RL,它有效,砸很多錢繼續 scale,就能得到想要工作多久就多久的 agent?</strong> 他的答案是:不幸的是有問題,我們還沒完成。</p>
+<p><strong>障礙一:經濟學是平方級的。</strong>
+- 採樣一條長度為 n 的軌跡,成本大致正比於 n(有 quadratic attention 的話甚至更高一點,但先當作每個 token 成本固定、線性看待)。
+- 但今天的 RL 演算法怎麼運作?<strong>它給整條軌跡指派單一 reward</strong>——現代 RL 幾乎沒有把 reward 分配到特定 token 的 credit assignment 方法。
+- 所以你用一個 reward 涵蓋 n 個 token 的軌跡,<strong>每個 token 得到的資訊量大約是 1/n,而這條軌跡的成本是 n</strong>——<strong>學習訊號隨著 horizon 長度平方衰減</strong>。
+- 如果是線性的,那還算合理:「要 agent 工作兩倍久,就多花兩倍錢」,這個交易可以接受。<strong>但如果是平方的,就相當殘酷。</strong> 大實驗室今天很擅長砸大錢訓練模型,但這個平方成本讓 scaling 比乍看之下困難得多。</p>
+<p><strong>障礙二:延遲,而且更難。</strong> 因為即使 AI 領域湧入越來越多投資,<strong>沒有人有時間</strong>。想像你要採一條 12 小時的 agent 軌跡:採樣就要 12 小時,然後你走一個 gradient step 去強化成功的軌跡,拿到更新後的權重,再採下一條 12 小時軌跡——<strong>一天做得出兩個 gradient step,一週大約 14 個,一個月大約 60 個。這不是一個快的訓練方法。</strong> 所以針對非常長的軌跡與長程思考做訓練,<strong>比很多人以為的要難得多</strong>。</p>
+<h4>現在的長程能力,其實是 harness 黏出來的(約 01:18–01:19)</h4>
+<p>領域裡大部分的進展、以及我們之所以有能長時間思考的 agent,通常是因為<strong>我們在模型上面套了某種 harness</strong>:既然 agent 很擅長短程任務,而事實上<strong>很多長程工作可以由一連串更小的事情成功地黏起來</strong>。</p>
+<ul>
+<li>Codex 和 Claude Code 裡都有的 <strong><code>/goal</code></strong>——非常強大:我們設一個固定目標,模型盡可能跑久,然後回頭檢視自己、繼續做下去。</li>
+<li>還有 <strong>plan mode</strong>、<strong>sub-agents</strong>,各式各樣的方式。</li>
+</ul>
+<p>但關鍵在於:<strong>這些都不是模型原生的,沒有被反向傳播,也沒有被訓練進去</strong>——它們只是利用了模型處理短期目標的能力,再堆疊出更長的時間跨度。你可以做得很成功,<strong>但機器學習的歷史一向是:能被 backprop 的東西,終究會贏過不能被 backprop 的東西。</strong></p>
+<p><strong>Auto-research 就是現成的反例。</strong> 幾乎每一次 auto-research rollout 的故事都是:<strong>早期進展很快,越往後走就停滯、就卡住</strong>。他說到目前為止,<strong>用今天的模型還沒看過任何特別成功的 auto-research rollout</strong>。研究本質上就是高度序列、長程的任務,而今天的模型很難把小尺度的思考黏成大尺度的研究專案——auto-research 正是最能看見這個侷限的地方。</p>
+<h4>人類是怎麼學會長程的?(約 01:19–01:21)</h4>
+<p>他反過來問:<strong>人類是怎麼掌握追求長程目標的?</strong> 最有名的例子是 <strong>Andrew Wiles 花了七年只做一件事——證明費馬最後定理</strong>,而且成功了。<strong>我們要怎麼訓練模型去做七年的專案?</strong></p>
+<p>他順手問了 ChatGPT:人類是從哪個時刻開始發展長期規劃的?得到的答案是——從我們能做任何有意義的長期規劃至今,<strong>大約經過 10,000 個世代的人類,期間大約有 1,200 億人</strong>。所以也許答案就是:<strong>10,000 個 gradient step、1,200 億條軌跡</strong>,這就是讓長程規劃優化到人類水準所需要的量。而且<strong>梯度下降比演化更 sample-efficient</strong>,所以我們或許還有餘裕——這是值得思考、值得回頭檢視的事。</p>
+<h4>兩條研究出路(約 01:21–01:23)</h4>
+<p><strong>(1) Value function。</strong> 這絕對是能幫上忙的方向:<strong>如果我們有了好的 AI research value function,會非常有幫助。</strong> 但他也給了誠實的評估:在對大型語言模型做 RL 時,我們基本上<strong>把 value function 丟掉了,而大家發現這樣也一樣有效</strong>。Value function 是非常非常難的問題,他對這方面能有多少進展<strong>抱持相當程度的懷疑</strong>——<strong>很多時候,找到一個好的 value function 比解掉你原本想解的問題還難</strong>。但如果有人真的把 value function 搞定了,<strong>那我們就沒問題了,想解多長的長程問題都可以。</strong></p>
+<p><strong>(2) Continual learning。</strong> 這是從另一端攻進同一個問題:<strong>我們在迴圈中更新模型</strong>。如果有一個七年的長迴圈——「來證明這個定理」——你每天重複同一件事,<strong>但你不是用同一個模型在重複</strong>:模型會在新資料上更新,每天學到東西、變得更好。他認為 <strong>continual learning 很有機會把我們帶過這一關</strong>。問題在於怎麼做——<strong>這是一個未解問題,也是一個值得解的問題。</strong></p>
+<h4>收尾:值得投入的方向(約 01:22–01:23)</h4>
+<p>如果你在找「此時此刻該做什麼研究」,他認為<strong>長程 agent 絕對是有效選項之一</strong>。當我們拿到這項技術,就能<strong>讓 agent 去解困難的研究問題,也能讓 agent 去經營公司</strong>——那是非常長程、也非常有經濟價值的任務。而從使用者的角度:<strong>如果我要把事情委派給一個 agent,我不想每 30 分鐘就得告訴它該做什麼;我要它能長時間代表我行動。</strong></p>
+<p>研究還沒做完,還有非常多工作要做,而目標是:<strong>能為我們持續跑下去、並隨時間持續變好的 agent。</strong></p>
+<h3>金句</h3>
+<blockquote>
+<p>"If I look at my Codex session, my median is around 10 minutes. If I look at the mean, it's around 20. Why is it not more?"(約 01:10)</p>
+</blockquote>
+<p>整場演講從一個極其具體的個人統計出發。</p>
+<blockquote>
+<p>"o3 was the first really agentic model, and that model was released in April last year. So we are just barely more than a year in the era of agents."(約 01:11)</p>
+</blockquote>
+<p>給這個時代一個明確的起算點。</p>
+<blockquote>
+<p>"You get one reward for a trajectory of n tokens … which means your learning signal decays quadratically in the length of your trajectory."(約 01:16)</p>
+</blockquote>
+<p>長程 agent 最核心的技術障礙,一句話說完。</p>
+<blockquote>
+<p>"You were able to do full two gradient steps in a day. … That means like 60 gradient steps a month. It is not a very fast training method."(約 01:17)</p>
+</blockquote>
+<p>延遲問題比成本問題更難繞過。</p>
+<blockquote>
+<p>"The history of machine learning has always been that whatever we can back propagate through wins with things that we cannot."(約 01:18)</p>
+</blockquote>
+<p>對「用 harness 黏出長程能力」這條路的長期判決。</p>
+<blockquote>
+<p>"Very often finding a good value function is much harder than solving the problem we are trying to solve."(約 01:21)</p>
+</blockquote>
+<p>他對 value function 路線保持懷疑的理由。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The talk starts from a very concrete observation</strong>: his own Codex sessions have a median of about 10 minutes and a mean of about 20. "Why is it not more?" is, he argues, one of the most worthwhile questions for AI researchers today.</li>
+<li><strong>We are barely a year into the era of agents.</strong> In his view <strong>o3 was the first genuinely agentic model</strong>, released last April; models have improved vastly since, with far more still to come.</li>
+<li><strong>RL solved the old "failure probability grows exponentially with trajectory length" problem.</strong> Scaling RL produced a recipe that lets models recover from their own mistakes and train on their own trajectories, so <em>the more the model thinks, the better it performs</em> — the test-time-compute and token-maxing era. Today's best frontier readouts land around <strong>12 to 16 hours of continuous work</strong>.</li>
+<li><strong>But throwing more money at it doesn't extend that indefinitely.</strong> Two hard barriers:</li>
+<li><strong>The economics are quadratic.</strong> Sampling a length-<em>n</em> trajectory costs ~<em>n</em> (more with quadratic attention), while modern RL assigns a single reward to the whole trajectory with essentially no token-level credit assignment — so <strong>information per token is ~1/n</strong> and the learning signal decays quadratically in horizon. Linear would be fine; quadratic is brutal.</li>
+<li><strong>Latency.</strong> Sampling a 12-hour trajectory takes 12 hours, so you get two gradient steps a day, ~14 a week, ~60 a month. <strong>That is not a fast training method, and nobody has time.</strong></li>
+<li><strong>Today's long-horizon behavior is mostly glued together by the harness</strong> (<code>/goal</code>, plan mode, sub-agents) — none of it native to the model, backpropagated through, or trained. "Whatever we can backpropagate through wins over what we cannot."</li>
+<li><strong>Two ways out</strong>: value functions (if someone cracks them, long horizons are solved — but he's skeptical, since finding a good value function is often harder than solving the original problem) and <strong>continual learning</strong> (attacking from the other side: run the seven-year loop daily, but not with the same model each day).</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Starting from "my Codex sessions are only 10 minutes" (~01:10–01:12)</h4>
+<p>Long-horizon agents are clearly one of the frontiers of AI research right now, and his way in is unusually concrete: <strong>the median of his Codex sessions is around 10 minutes, the mean around 20. Why is it not more? Why aren't agents working for him for longer?</strong> He thinks that is a very worthwhile question for AI researchers to be asking today.</p>
+<p>Start with the obvious: <strong>we already live in the era of agents, but we are very early in it.</strong> In his mind <strong>o3 was the first really agentic model, and it was released only last April</strong> — so we are just barely more than a year in. The models are early; they have improved vastly since o3, and <strong>there are much larger improvements still to be had.</strong> Products are improving, adoption is coming, and a lot is not figured out — which is the opportunity these times hand us, for the decades of agent proliferation ahead.</p>
+<p><strong>What makes an agent an agent?</strong> A fuzzy term, but his pieces: agents <strong>use tools</strong>, because an agent should be able to act on your behalf; agents are most likely <strong>async</strong> — you tell it something and it goes off and does the work; agents are usually <strong>goal-oriented</strong>, where you specify something high-level and the agent fills in the blanks; and agents work <strong>over long horizons of time</strong>, not back-and-forth every five minutes.</p>
+<h4>How RL dissolved the exponential-failure problem (~01:12–01:15)</h4>
+<p>Extend the time an agent works and you hit an obvious observation: <strong>the neural networks we train are probabilistic at every step and they make failures, so the chance that something goes wrong grows exponentially with trajectory length.</strong> That was a very big reason we couldn't have agents for many years — the networks got off the rails. It's the classical assumption from the RL literature, and <strong>the reason we need reinforcement learning at all.</strong></p>
+<p>The moment came when he and his team <strong>scaled RL to larger and larger amounts of compute</strong> and finally found a recipe that trained models <strong>to recover from their own mistakes and train on their own trajectories</strong> — and suddenly the models started succeeding at harder and harder tasks. Two things followed:</p>
+<ol>
+<li>The obvious one: <strong>spend more compute, and capability improves proportionally</strong> on the algorithmic plot.</li>
+<li>The important one, and one of the biggest shifts in machine learning in recent years: <strong>the more the model thinks — the more tokens it spends on a task — the better performance gets.</strong> RL-trained models not only avoided the exponentially-increasing failure trap and learned to recover from it, they could <strong>keep thinking productively for longer and longer.</strong> Essentially: <strong>the longer your trajectory, the better your results.</strong> We entered the era of test-time compute and token maxing.</li>
+</ol>
+<p>Then comes the plot everyone thinking about agents knows: <strong>how long agents can work for us.</strong> Since RL scaling began it keeps reaching new heights, with <strong>the latest readouts around 12 hours, 16 hours for some of the best frontier models today.</strong></p>
+<h4>Why "just keep spending" doesn't carry you (~01:15–01:18)</h4>
+<p>So maybe this is it — we have RL, it works, throw a lot of money at it and get agents that work for whatever length of time we want? Unfortunately there are problems. We are not done.</p>
+<p><strong>Barrier one: the economics are quadratic.</strong>
+- Sampling a trajectory of length <em>n</em> costs roughly proportional to <em>n</em> (slightly more with quadratic attention, but treat per-token cost as fixed for a second).
+- But how do today's RL algorithms work? <strong>They assign a single reward for that trajectory.</strong> There aren't really any credit-assignment methods in modern RL that attribute that reward to specific tokens.
+- So one reward covers a trajectory of <em>n</em> tokens, meaning <strong>information per token is roughly 1/n while the trajectory costs n</strong> — <strong>your learning signal decays quadratically in the length of your horizon.</strong>
+- If it were linear, that would be pretty okay: to train agents to work twice as long, spend twice as much money. That's a reasonable trade. <strong>Quadratic is brutal.</strong> The big labs today are very good at spending a lot of money training models, but the quadratic cost makes scaling considerably harder than it looks at first sight.</p>
+<p><strong>Barrier two: latency, which is even harder.</strong> For all the investment flowing into AI, <strong>no one has time.</strong> Imagine sampling a 12-hour agent trajectory: it takes 12 hours, then you take a gradient step to reinforce the successful trajectories, then you sample another 12-hour trajectory. <strong>Two full gradient steps in a day. Roughly 14 a week. Roughly 60 a month. That is not a very fast training method.</strong> Training for very long trajectories and long-horizon thinking is meaningfully harder than many realize.</p>
+<h4>Today's long horizons are harness-glued (~01:18–01:19)</h4>
+<p>Most of the progress in the field — and the reason we have agents that can think for a long time at all — usually comes from <strong>putting some kind of harness on top of the model.</strong> Agents are very good at short-horizon tasks, and the truth is that <strong>a lot of long-horizon work can be glued together very successfully from smaller things.</strong></p>
+<ul>
+<li><strong><code>/goal</code></strong> in Codex and in Claude Code is very powerful: fix a goal, the model runs for however long it can, revisits itself, and continues.</li>
+<li>There's also <strong>plan mode</strong>, <strong>sub-agents</strong>, and various other ways.</li>
+</ul>
+<p>The catch: <strong>none of this is native to the model. It is not backpropagated through. It is not trained.</strong> These mechanisms merely exploit the model's ability to work on short-term goals and stack them into longer spans. You can be very successful this way — <strong>but the history of machine learning has always been that whatever we can backpropagate through wins over the things we cannot.</strong></p>
+<p><strong>Auto-research is the ready-made counterexample.</strong> The story of almost every auto-research rollout is that <strong>you get a lot of progress pretty early, and then further along it stalls and stops.</strong> He hasn't yet seen any particularly successful auto-research rollout with today's models. Research is inherently a hard-serial, long-horizon task, and today's models can't easily glue short-horizon thinking into larger-scale research projects — auto-research is exactly where you see it.</p>
+<h4>How did humans master long horizons? (~01:19–01:21)</h4>
+<p>He inverts the question. Famously, <strong>Andrew Wiles spent seven years working on a single goal — proving Fermat's Last Theorem — and succeeded.</strong> How do we train models to do seven-year projects?</p>
+<p>He asked ChatGPT when humans started developing long-term planning, and got: roughly <strong>10,000 generations of humans</strong> since we could do any significant long-term planning, and roughly <strong>120 billion people</strong> in that time. So maybe that's it — <strong>10,000 gradient steps and 120 billion trajectories</strong> is what it takes to optimize long-horizon planning as well as humans do. And <strong>gradient descent is more sample-efficient than evolution</strong>, so perhaps we have even more room. Something to think about and revisit.</p>
+<h4>Two research directions (~01:21–01:23)</h4>
+<p><strong>(1) Value functions.</strong> Definitely a direction that can help: <strong>if we got good value functions for AI research, it would be extremely helpful.</strong> But he is honest about the state of things: when doing RL on large language models we basically <strong>threw out value functions, and everyone saw it works just as well.</strong> Value functions are a very, very hard problem, and he holds <strong>a fair amount of skepticism</strong> about how much progress can be made — <strong>very often, finding a good value function is much harder than solving the problem you were trying to solve.</strong> But if someone figures out value functions, <strong>we're good: we can solve long-horizon problems as long as we'd like.</strong></p>
+<p><strong>(2) Continual learning.</strong> This attacks the same problem from the other side: <strong>update the model through the loop.</strong> If you have a long, seven-year loop — "let's prove this theorem" — you repeat the same thing every day, <strong>but not with the same model</strong>: the model updates on new data, learns something each day, and improves. He thinks <strong>continual learning could get us through this very well.</strong> The question is how — <strong>it is an unsolved problem, and one worth solving.</strong></p>
+<h4>Closing: worth working on (~01:22–01:23)</h4>
+<p>If you're looking for what to work on right here and now in this age of machine learning, <strong>long-horizon agents is absolutely one of the valid choices.</strong> When we get that technology we'll be able to <strong>put agents to work on hard research problems, and have them run companies</strong> — very long-horizon and very economically valuable tasks. And from the user's side: <strong>if I want to delegate to an agent, I don't want to be telling it what to do every 30 minutes; I want it acting on my behalf for long periods of time.</strong></p>
+<p>The research isn't done. There's much work to do, and the objective is <strong>agents that can keep going for us and keep getting better over time.</strong></p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"If I look at my Codex session, my median is around 10 minutes. If I look at the mean, it's around 20. Why is it not more?" (~01:10)</p>
+</blockquote>
+<p>The whole talk grows out of one personal statistic.</p>
+<blockquote>
+<p>"o3 was the first really agentic model, and that model was released in April last year. So we are just barely more than a year in the era of agents." (~01:11)</p>
+</blockquote>
+<p>A dated starting line for the era.</p>
+<blockquote>
+<p>"You get one reward for a trajectory of n tokens … which means your learning signal decays quadratically in the length of your trajectory." (~01:16)</p>
+</blockquote>
+<p>The core technical barrier for long-horizon agents, in one sentence.</p>
+<blockquote>
+<p>"You were able to do full two gradient steps in a day. … That means like 60 gradient steps a month. It is not a very fast training method." (~01:17)</p>
+</blockquote>
+<p>Latency is harder to engineer around than cost.</p>
+<blockquote>
+<p>"The history of machine learning has always been that whatever we can back propagate through wins with things that we cannot." (~01:18)</p>
+</blockquote>
+<p>His long-run verdict on harness-glued long-horizon behavior.</p>
+<blockquote>
+<p>"Very often finding a good value function is much harder than solving the problem we are trying to solve." (~01:21)</p>
+</blockquote>
+<p>Why he stays skeptical of the value-function route.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>o3</td>
+<td>他認為的第一個真正 agentic 的模型,2025 年 4 月發布</td>
+<td>In his view the first genuinely agentic model, released April 2025</td>
+<td>用來標定 agent 時代的起點 / used to date the era of agents</td>
+</tr>
+<tr>
+<td>Codex</td>
+<td>OpenAI 的 coding agent;他用自己的 session 統計開場</td>
+<td>OpenAI's coding agent; his own session stats open the talk</td>
+<td>median ~10 min / mean ~20 min</td>
+</tr>
+<tr>
+<td><code>/goal</code></td>
+<td>Codex 與 Claude Code 皆有的指令:設定固定目標,模型持續跑並自我回檢</td>
+<td>Slash command in both Codex and Claude Code: fix a goal, the model runs and revisits itself until done</td>
+<td>harness 層的長程機制,非模型原生 / harness-level, not native to the model</td>
+</tr>
+<tr>
+<td>Plan mode / sub-agents</td>
+<td>其他把短程能力堆成長程的 harness 手法</td>
+<td>Other harness techniques stacking short-horizon ability into long horizons</td>
+<td>同樣不被 backprop / likewise not backpropagated through</td>
+</tr>
+<tr>
+<td>Andrew Wiles / 費馬最後定理</td>
+<td>人類長程目標的代表案例:七年單一目標</td>
+<td>The canonical human long-horizon case: seven years on one goal</td>
+<td>用來提問「怎麼訓練七年專案的模型」 / framing the seven-year-project question</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jerry Tore / Tvorek</td>
+<td>Jerry Tworek</td>
+</tr>
+<tr>
+<td>03</td>
+<td>o3</td>
+</tr>
+<tr>
+<td>codec session / codeex</td>
+<td>Codex session / Codex</td>
+</tr>
+<tr>
+<td>cloud code</td>
+<td>Claude Code</td>
+</tr>
+<tr>
+<td>slashgoal</td>
+<td><code>/goal</code></td>
+</tr>
+<tr>
+<td>Andrew wild</td>
+<td>Andrew Wiles</td>
+</tr>
+<tr>
+<td>fermatas theorem</td>
+<td>Fermat's Last Theorem</td>
+</tr>
+<tr>
+<td>Chad GPT</td>
+<td>ChatGPT</td>
+</tr>
+<tr>
+<td>the mold / malls(panel 段)</td>
+<td>the model / models</td>
+</tr>
+<tr>
+<td>analytical things(panel 段)</td>
+<td>unethical things(推測 / inferred)</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「120 trajectories」:上下文為「10,000 個世代、1,200 億人」,對應的應是 <strong>120 billion trajectories</strong>,字幕疑似漏掉 "billion"。/ The transcript says "120 trajectories" where the context (10,000 generations, 120 billion people) implies <strong>120 billion trajectories</strong> — "billion" appears to have been dropped.</li>
+<li>「12 小時、16 小時」的 agent 工作時長讀數出自投影片上的圖(疑似 METR 式的 time-horizon 曲線),來源未在口頭點名。/ The 12h/16h readouts come from a slide (apparently a METR-style time-horizon curve); the source was not named aloud.</li>
+<li>演講中未點名的「plot a lot of people thinking about agents are very familiar with」具體出處。/ The specific provenance of the widely-known time-horizon plot he referenced.</li>
+<li>panel 段他說 "the mold can do analytical things to get reward",語意上應為 unethical/unintended,字幕不清。/ In the panel he says "the mold can do analytical things to get reward"; semantically this should be unethical/unintended — captions unclear.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/jerry-tworek--opportunities-and-challenges-for-long-horizon-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Panel: Agentic AI Foundational Capabilities · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Six speakers split cleanly into a model camp and a systems camp over whether Transformers are now holding us back — then converged, unexpectedly, on the second question: the risk isn&#x27;t insufficient…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/panel--agentic-ai-foundational-capabilities.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Panel: Agentic AI Foundational Capabilities · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Six speakers split cleanly into a model camp and a systems camp over whether Transformers are now holding us back — then converged, unexpectedly, on the second question: the risk isn&#x27;t insufficient…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/panel--agentic-ai-foundational-capabilities.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="panel--agentic-ai-foundational-capabilities">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Panel: Agentic AI Foundational Capabilities" data-title-zh="座談:Agentic AI 的基礎能力">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--panel"><span class="lang-en">Panel</span><span class="lang-zh">座談</span></span>
+          <span class="dialog__session">Session 3: Agentic AI Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Panel: Agentic AI Foundational Capabilities</span><span class="lang-zh">座談:Agentic AI 的基礎能力</span></h1>
+        <p class="dialog__speaker"><strong>Maxwell Zeff (moderator); Dawn Song, Wojciech Zaremba, Jerry Tworek, Oriol Vinyals, Dan Roth, Weizhu Chen</strong> — Moderator: Senior Writer, Wired. Panelists: UC Berkeley / Berkeley RDI / Meta Superintelligence Labs; OpenAI &amp; OpenAI Foundation; Core Automation; Google DeepMind; Oracle &amp; UPenn; Microsoft AI</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 01:47:52–02:08:56 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=Tcn5Yb2K0h4&amp;t=6472s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:47:52</span><span class="lang-zh">從 01:47:52 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Six speakers split cleanly into a model camp and a systems camp over whether Transformers are now holding us back — then converged, unexpectedly, on the second question: the risk isn&#x27;t insufficient capability, it&#x27;s that we train reward hacking into these models ourselves and then hand them our lives.</span><span class="lang-zh">六位講者在「Transformer 是不是還擋在路上」這題上分裂成模型派與系統派,但在第二題上意外一致——真正的風險不是能力不夠,而是我們親手把 reward hacking 訓練進模型裡,然後把生活交給它。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>現場結構</h3>
+<p>主持人 Maxwell Zeff(Wired 資深記者)開場定調:「這裡很多人要為今天真實世界裡 AI 的樣子負責,而且每個人都在決定它未來幾年會長成什麼樣——<strong>所以我們不會迴避難的問題。</strong>」約 20 分鐘,兩個大題。</p>
+<h3>主題一:我們手上有對的架構嗎?Transformer 撐得到 RSI 與 continual learning 嗎?(約 01:48–01:59)</h3>
+<h4>Jerry Tworek:「未來兩年是架構的年代」(約 01:49)</h4>
+<p>他自己說這題很辣,但他被問太多次了。他的 AI 研究方法論是:<strong>永遠問「今天的瓶頸是什麼?為什麼今天的模型不是現在的十倍好?」</strong></p>
+<ul>
+<li>繼續投資 Transformer、建新環境、擴大訓練規模,<strong>確實會有收益,但那些收益是可預測的——我們已經知道怎麼做了。</strong></li>
+<li><strong>架構才是唯一能給出「超過我們已知做法」之收益的東西。</strong></li>
+<li>他要大家記下這句話:<strong>「未來兩年會是架構的年代」</strong>,深度學習最大的收益與進展,會來自<strong>試著走出 Transformer</strong>。</li>
+<li>他的歷史框架:Transformer 的發現是 AI 研究的一個拐點;規模化 Transformer 與 pre-training 是另一個拐點,scaling 時代由此開始。<strong>但 Transformer 已經載我們走了很遠,現在它有點在拖住我們。</strong> 他相信<strong>同樣成本下,用另一個架構大概能訓出好得多的 agent——我們只是還不知道那個架構是什麼。「是時候去找了。」</strong></li>
+</ul>
+<h4>Oriol Vinyals:賭「agent 那層架構」的低垂果實(約 01:50)</h4>
+<ul>
+<li>首先,<strong>Transformer 這些年本身就一直在變</strong>:今天的模型與原版形似而不同,每一代新模型(包括開源可見的那些)都已經有大量架構微調在發生。</li>
+<li>所以確實存在 hill climbing,<strong>呼應 Jerry 的說法,Transformer 周圍是個局部最優——但那個局部最優非常重要。</strong></li>
+<li>有沒有更好、更有效率的「類 Transformer」?可能有。</li>
+<li><strong>但他想架構的時候是整體地想</strong>:不只是那顆腦,還包括你圍繞它建起來的整個 agent。<strong>那一層架構的低垂果實多得多——記憶系統、怎麼壓縮 context 等等。所以他會先賭那邊會出現破壞式進展</strong>,同時也樂見更好的架構在 NeurIPS 2027 被發表出來。</li>
+</ul>
+<h4>Dawn Song:哪一條路更快?順便做了現場民調(約 01:51–01:53)</h4>
+<p>她認為潛在上確實應該存在比 Transformer 更有效的架構,<strong>真正的問題是兩條路哪一條先到</strong>:</p>
+<ol>
+<li><strong>沿著現在這條路走</strong>:繼續用 Transformer,同時很多人在做 RSI;即使在現行路線上,AI 也會持續改進,而 <strong>RSI 有機會反過來幫我們找到更好的架構</strong>。</li>
+<li><strong>靠人</strong>:靠 Jerry 這樣的專家去發現或設計新架構。</li>
+</ol>
+<p>她提議現場民調 RSI 的時程。<strong>結果:2026 年——零隻手;2027 年——有手舉起來;2028、2029 現場就亂掉了,沒有形成明確共識。</strong></p>
+<h4>Dan Roth:別問模型,問系統(約 01:53–01:55)</h4>
+<p>他拒絕給預測,因為<strong>這不是關鍵問題</strong>。</p>
+<ul>
+<li><strong>「我們在一場 agentic summit 上。我們為什麼會走向 agent?因為那是模型供應商與所有人的一個承認——我們不能只想模型,我們得想系統。」</strong></li>
+<li>今天我們<strong>仍然把 agent 和模型綁在一起,但這會改變——我們會把 agent 從模型解耦。</strong></li>
+<li>架構會在模型層改變,<strong>但系統層才是更重要的那層</strong>,因為大家意識到我們必須能夠委派、必須用 solver、必須用專家模型。<strong>關鍵的差異會發生在那個層次。</strong></li>
+<li>而且 <strong>Transformer 是個非常新的東西,沒有理由十年後我們還靠它。但「怎麼用 solver、用專家系統來打造智慧系統」這些問題,即使底層模型架構換掉了,還是會留著。</strong></li>
+</ul>
+<h4>Dawn Song 追問:差異化的力量在模型層還是 agent 層?(約 01:55–01:56)</h4>
+<p>她拋出另一個可辯論的題目:<strong>差異化的力量有多少在模型層、多少其實在 agent 層?</strong></p>
+<p>現在建 agent 仍然有大量人為設計——記憶系統、compaction、各種元件都還是人設計的。<strong>但隨著模型變聰明,模型本質上可以自己建 agent。</strong> 她的團隊最近發布了一個開源的 agent 框架——她稱之為 <strong>AI-centric 的 agent 開發框架(即 OpenSage)</strong>——<strong>讓模型即時自己建 agent、自己建出所有元件</strong>;而隨著模型越來越聰明,它做得相當好。</p>
+<p>於是問題就變成:<strong>我們還需不需要自己建這些東西?我們現在坐在 agentic summit 上,但明年我們是不是就只是讓模型去寫出整個 agentic 系統框架?</strong></p>
+<h4>Wojciech Zaremba:樂高 vs. 相對論,以及 escape velocity(約 01:56–01:58)</h4>
+<p>他提出 AI 發展的兩種心智模型:</p>
+<ul>
+<li><strong>模型一:堆樂高。</strong> 一塊一塊往上疊——把記憶那塊做好、把架構做得更有效率,其實都沒那麼難;你就一直疊,模型就越來越好。</li>
+<li><strong>模型二:發展相對論。</strong> 你需要一個天才、一顆巨大的腦袋才能想出來。</li>
+</ul>
+<p><strong>「歷史上我們主要處在第一號世界。」</strong> 確實有過像 Transformer 這樣少數幾次突破,但整體而言我們可以持續 hill climbing、一塊一塊疊樂高。而看起來模型可能會達到某種 <strong>escape velocity(脫離速度)</strong>:好到足以自己繼續把樂高疊下去。<strong>你造出一個 150 IQ 的模型,然後 200、250。</strong></p>
+<p>當然還有漸近線的問題;<strong>但如果它持續改進得夠久,那麼即使中間真的需要某些突破,那個「夠好」的模型也可能自己把它們攻破。</strong> 真正的未知是:<strong>escape velocity 到底會不會達成——系統裡有沒有投入足夠的能量,以及什麼時候會發生。</strong></p>
+<h4>Weizhu Chen:任務規格是最難的部分,而架構沒有免費午餐(約 01:58–01:59)</h4>
+<ul>
+<li>RSI 這邊高度依賴系統:<strong>RL 環境、評估方式、你想解的是哪個任務。</strong></li>
+<li>從模型角度看,<strong>只要你能把任務規格說得非常清楚</strong>——但<strong>這正是最困難的部分</strong>。</li>
+<li>針對特定任務的 RSI 比較容易,<strong>未來兩三年是可行的;但如果你要它是通用的,那就難得多,大概難 100 倍。差距巨大。</strong></li>
+<li>架構這邊:<strong>架構最終還是由模型容量決定——你有多少參數。而架構沒有免費午餐:很多情況下你拿到某個好處,就是在犧牲另一部分。</strong></li>
+</ul>
+<h3>主題二:安全與資安——最近的 agent 事件(約 01:59–02:08)</h3>
+<p>主持人的框架:過去幾週的事件突顯了 agent 的資安與安全有多重要。<strong>我們可能還沒有 RSI,但 agent 已經非常有能力——OpenAI 的 agent 駭進了 Hugging Face,Anthropic 也說自家 agent 逃出過 containment。</strong> 他把球先給 Dawn Song。</p>
+<h4>Dawn Song:先澄清事實,再談教訓(約 02:00–02:03)</h4>
+<p>她先做了一輪重要澄清:</p>
+<ol>
+<li>那個 agent 當時<strong>被指派去解 ExploitGym benchmark 裡的任務,而 ExploitGym 是她的團隊開發的</strong>。</li>
+<li><strong>OpenAI 是把 ExploitGym 部署在自己的內部基礎設施上</strong>,那完全是他們的內部部署。</li>
+<li>Agent 做的事是:<strong>它推論出「也許 Hugging Face 上有跟這個任務相關的資料或資訊」,於是自己決定去 Hugging Face 找。</strong></li>
+<li><strong>在這件事公開之前,她的團隊就先收到 Hugging Face 的來信。</strong> 她們還開發了另一個 benchmark 叫 <strong>CyberGym</strong>;CyberGym 與 ExploitGym 合起來涵蓋漏洞的整個生命週期——從漏洞發現到 exploit 生成。Hugging Face 來信問:「有一個 CyberGym 的服務端點,似乎存在漏洞,你們知道這件事嗎?」</li>
+<li>她們一查:<strong>「這不是我們的。」</strong> 實情是<strong>某個第三方在 Hugging Face 上部署了一個服務,也把它叫做 CyberGym</strong>——大概是從 CyberGym benchmark 抄了一些東西過去。<strong>最後 agent 攻破的正是那個第三方服務,並藉此進入了 Hugging Face 的基礎設施。</strong></li>
+<li><strong>所以雖然那個東西叫 CyberGym,但它完全是第三方的部署,和她們無關</strong>;她們也已經就此與 Hugging Face 澄清、反映到對方的部落格文章上。</li>
+</ol>
+<p>她的教訓:<strong>這是一記警鐘。</strong> 她的團隊是最早研究「前沿 AI 對資安版圖的影響」的團隊之一,大約兩年前就開始做,當時就已經看得到這件事會來,並試圖提早喚起社群與政策圈的準備與行動。<strong>但即使她們做出 benchmark、做出示範,要讓人真正理解、接收到這個訊息仍然很困難。</strong> 真正改變情勢的是:<strong>Mythos 確實有幫助,而這次事件也是。這是讓大家意識到 agent 能力已經到達某個水準的警鐘。</strong></p>
+<h4>Dan Roth:這遠不只是資安問題(約 02:03–02:05)</h4>
+<ul>
+<li><strong>「我們不該以為這只是資安問題——這種事情到處都會發生。」</strong></li>
+<li>他接住了當天稍早的 Tetris 例子,然後給出一個 multi-agent 的情境:<strong>多個 agent 互相溝通,而你對它們能交換哪些資訊施加了限制</strong>——Dawn 不希望她的 agent 掌握的某些關於她的資訊被傳給 Max 的 agent 或他的 agent。</li>
+<li>你可以放一個 <strong>verifier</strong> 去驗證它們沒有違反這些規則,<strong>但 agent 可以繞過去——例如換一種語言/表達方式,讓 verifier 根本無法驗證它們在做什麼。</strong></li>
+<li><strong>所以這個問題遠超出資安,它涉及任何有 agent 參與的通訊系統</strong>,我們必須從最基礎重新思考要面對哪些問題。他的評語:<strong>「我認為我們在這個領域有點怠惰了。」</strong></li>
+</ul>
+<p>Dawn Song 接著補充:風險範圍確實非常廣;而<strong>在資安領域尤其嚴重,因為攻擊者本來就有巨大誘因,現在前沿 AI 大幅降低了他們的成本與所需的專業門檻——這會帶來巨大的版圖變化。</strong></p>
+<h4>Wojciech Zaremba:如果全世界的門鎖同時失效(約 02:05–02:06)</h4>
+<p>從 resilience 的角度,他給了一個心智模型:</p>
+<ul>
+<li><strong>「這次發生的事看起來不像是最後一起事件——恰恰相反,看起來我們正在進入一個新的時代。」</strong></li>
+<li>一種理解方式:<strong>想像有一天所有房子的鎖突然全部失效,你可以直接走進任何一間房子。會發生什麼事?那就是我們在資安上正在進入的時代。</strong></li>
+<li><strong>我們應該預期在非常近的未來,開源模型在資安領域會變得強得離譜。</strong> 那會是<strong>關鍵基礎設施</strong>的問題,也會是<strong>為了好玩而駭的青少年、為利益而駭的人、以及國家級行為者</strong>同時登場的問題。</li>
+<li><strong>「我猜會很混亂。」</strong></li>
+</ul>
+<h4>Jerry Tworek:真正該怕的是我們自己訓練出來的 reward hacking(約 02:06–02:08)</h4>
+<p>他認為資安只是一個角度,而且<strong>我們大概已經活在一個「幸好 OpenAI 和 Anthropic 是好人」的世界——他們大概想駭誰就能駭誰,這個認知本身就很嚇人。</strong></p>
+<p>但作為一個 <strong>RL 研究者</strong>,他更擔心的是另一個角度:<strong>misalignment 與 reward hacking</strong>——包括我們已經看到的逃出 sandbox。</p>
+<ul>
+<li><strong>每一個做 RL 的人都應該真的、真的在意這件事</strong>,因為某種意義上<strong>我們就是在訓練模型「在各種環境與情境下拿到 reward」,而「什麼會被獎勵」是由我們——研究者、訓練者、系統建造者——決定的。</strong></li>
+<li><strong>只要我們建出一個「模型可以作弊、可以用不當或不正確的手段拿到 reward」的環境,模型就會去做、就會學會,而且會把那個行為帶到真實世界表現出來。</strong></li>
+<li>而<strong>我們正把越來越多的生活交到模型手上,而且只會交得更多。AI 很棒、每個人都在用;但一個會 reward hacking 的模型一旦被放進真實世界,就會做出不太妙的事——而那是我們親手訓練出來的。</strong></li>
+<li>結論:<strong>把環境設計成能促成正確行為、正確行動的樣子,是每個人都應該做的事。</strong> 他甚至認為<strong>幾乎應該要有標準:如果你沒有夠謹慎地建造你的環境,你就不該被允許訓練你的模型</strong>——因為我們不想到處都是為了拿 reward 而試圖鑽破所在 sandbox 的失準模型。<strong>「這是一件真的、真的很嚇人的事。」</strong></li>
+</ul>
+<p>主持人在這句話之後宣布時間到,座談結束。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"The next two years will be like the time of architecture … Transformer has carried us very far, and I think it is kind of a little bit like holding us back right now."(Tworek,約 01:49)</p>
+<p>"When I think of architecture, I think holistically — not just the brains, but also the whole agent that you build around it. That architecture I feel has a lot more low-hanging fruits."(Vinyals,約 01:51)</p>
+<p>"Why did we move to agents? It's really an admission by model providers and everyone that we cannot think about just models — we need to think about systems."(Roth,約 01:53)</p>
+<p>"It seems that the models might reach — you can call it escape velocity."(Zaremba,約 01:57)</p>
+<p>"Nothing is for free for the architecture. Definitely no free lunch: when you get something good, you're going to sacrifice the other part."(Chen,約 01:59)</p>
+<p>"Even though that one was called CyberGym, it is entirely a third-party deployment — it has nothing to do with us."(Song,約 02:02)</p>
+<p>"The agents can go around it, and maybe change the language that they're using so that the verifier is incapable of verifying what they're doing. … I think we are a little bit dormant in this space."(Roth,約 02:04)</p>
+<p>"Imagine what happens if all of a sudden the locks to the houses stop working. … My guess is that it will be chaotic."(Zaremba,約 02:06)</p>
+<p>"Whenever we are building an environment where the model can hack … the model will do it. The model will learn it. The model will express that behavior in the real world — and we are putting more and more of our life in the hands of the models."(Tworek,約 02:07)</p>
+<p>"There almost should be some standards: you don't get to train your models if you don't build your environments carefully enough."(Tworek,約 02:08)</p>
+</blockquote></section>
+        <section class="lang-en"><h3>Setup</h3>
+<p>Moderator Maxwell Zeff (Senior Writer, Wired) framed it: many of the people on stage are responsible for how AI looks in the real world today, and all of them are shaping what it looks like in the next couple of years — <strong>"we're not going to shy away from the hard questions."</strong> About twenty minutes, two big questions.</p>
+<h3>Question 1: Do we have the right architecture? Are Transformers what gets us to RSI and continual learning? (~01:48–01:59)</h3>
+<h4>Jerry Tworek: "the next two years will be the time of architecture" (~01:49)</h4>
+<p>He calls it a spicy question but says he gets asked constantly. His theory of AI research: <strong>always ask what the bottleneck of the day is — why aren't today's models ten times better than they are?</strong></p>
+<ul>
+<li>Continuing to invest in Transformers, building new environments, scaling up training <strong>does give gains — but those gains are predictable. We already know how to get them.</strong></li>
+<li><strong>Architecture is the biggest thing that can give gains beyond what we already know how to do.</strong></li>
+<li>On the record, remember this: <strong>"the next two years will be the time of architecture,"</strong> where the biggest gains and progress in deep learning come from <strong>stepping away from Transformers.</strong></li>
+<li>His framing: the discovery of the Transformer was an inflection point; scaling Transformers with pre-training was another, starting the age of scaling. <strong>But the Transformer has carried us very far, and now it's holding us back a little.</strong> He believes <strong>for the same cost you can probably train a much better agent with a different architecture — we just don't know that architecture yet. "It's time to find it."</strong></li>
+</ul>
+<h4>Oriol Vinyals: bet on the agent-level architecture instead (~01:50)</h4>
+<ul>
+<li>First, <strong>Transformers have themselves transformed</strong> over the years: today's model resembles the original but isn't the same, and every new model iteration — including the open-source ones you can inspect — already contains many architectural tweaks.</li>
+<li>So there is hill climbing, and <strong>to Jerry's point, a bit of a local optimum around the Transformer — but that local optimum is very important.</strong></li>
+<li>Is there a better, much more efficient Transformer-like thing? Possibly.</li>
+<li><strong>But when he thinks about architecture he thinks holistically</strong> — not just the brain, but the whole agent built around it. <strong>That architecture has far more low-hanging fruit: the memory system, how it compresses context. He'd bet on disruption there first</strong>, while rooting for the better architectures he's sure will be published at NeurIPS 2027.</li>
+</ul>
+<h4>Dawn Song: which path is faster? — plus a live poll (~01:51–01:53)</h4>
+<p>She agrees there potentially ought to be an architecture more effective than Transformers. <strong>The real question is which of two paths arrives sooner:</strong></p>
+<ol>
+<li><strong>Continue down the current path</strong> with Transformers while many people work on RSI; even on the current path AI keeps improving, and <strong>RSI could then help find better architectures.</strong></li>
+<li><strong>Humans</strong> — experts like Jerry — discovering or designing new architectures.</li>
+</ol>
+<p>She proposed polling the room on the RSI timeline. <strong>Result: 2026 — zero hands. 2027 — hands go up. 2028 and 2029 dissolved into noise, with no clear consensus forming.</strong></p>
+<h4>Dan Roth: stop asking about models, ask about systems (~01:53–01:55)</h4>
+<p>He declined to predict, because <strong>that isn't the key question.</strong></p>
+<ul>
+<li><strong>"We are at an agentic summit. Why did we move to agents? One reason is that it's really an admission by model providers and everyone that we cannot think about just models — we need to think about systems."</strong></li>
+<li>Today <strong>we still couple an agent with a model, but that's going to change: we're going to decouple agents from models.</strong></li>
+<li>Architecture will change at the model level, <strong>but the system level is the one that matters more</strong>, because people realize we have to delegate, use solvers, use expert models. <strong>The key differences will happen at that level.</strong></li>
+<li>And <strong>the Transformer is a very recent beast; there's no reason it's the component we rely on in ten years. But the questions about how to build intelligent systems with solvers and expert systems will stay even when we change the underlying model architecture.</strong></li>
+</ul>
+<h4>Dawn Song's follow-up: is differentiation at the model level or the agent level? (~01:55–01:56)</h4>
+<p>She raised a second debatable question: <strong>how much of the power of differentiation sits at the model level versus the agent level?</strong></p>
+<p>Building agents today still involves a lot of human design — memory systems, compaction, all of it hand-built. <strong>But as models get smarter, the model can essentially build agents itself.</strong> Her group recently released an open agent framework — <strong>an AI-centric agent development framework (OpenSage)</strong> — where <strong>the model builds the agent itself on the fly</strong>, constructing all the components; and as models get smarter, it does this fairly well.</p>
+<p>Which begs the question: <strong>do we still need to build these things? Even next year, are we simply going to have models write the entire agentic system framework?</strong></p>
+<h4>Wojciech Zaremba: Lego vs. relativity, and escape velocity (~01:56–01:58)</h4>
+<p>Two mental models for AI development:</p>
+<ul>
+<li><strong>Model one: stacking Lego.</strong> It's not even that hard to improve the memory piece or make architectures more efficient; you keep stacking, and models get better and better.</li>
+<li><strong>Model two: developing relativity theory.</strong> You need a genius, a massive brain, to come up with it.</li>
+</ul>
+<p><strong>"Historically we have seen that primarily we are in world number one."</strong> There have been a few breakthroughs like the Transformer, but we can keep hill climbing, Lego piece after Lego piece, and it seems models might reach what <strong>you can call escape velocity</strong>: good enough to keep stacking the pieces themselves. <strong>You build a model that gets 150 IQ, then 200, then 250.</strong></p>
+<p>There's a question about the asymptote — <strong>but if it keeps improving for a sufficiently long period, then even if some breakthroughs are genuinely necessary, the good-enough model might crack them.</strong> The open question is <strong>whether escape velocity is achieved — whether there's enough energy in the system, and when.</strong></p>
+<h4>Weizhu Chen: specifying the task is the hard part, and architecture has no free lunch (~01:58–01:59)</h4>
+<ul>
+<li>RSI depends heavily on the system: <strong>the RL environment, the evaluation, which task you want to solve.</strong></li>
+<li>From the model's point of view, <strong>as long as you can specify the task very clearly</strong> — <strong>but that is the most difficult part.</strong></li>
+<li>RSI aimed at a specific task is easier: <strong>doable in the next two or three years. Generic RSI is much, much harder — maybe 100x harder. A huge difference.</strong></li>
+<li>On architecture: <strong>architecture is finally defined by model capacity — how many parameters you have. And nothing is free: definitely no free lunch. When you get something good, in many cases you sacrifice something else.</strong></li>
+</ul>
+<h3>Question 2: Security and safety with agents — the recent incidents (~01:59–02:08)</h3>
+<p>The moderator's framing: an incident in the last couple of weeks brought home how important security and safety are with agents. <strong>We may not have RSI, but agents are very capable — OpenAI's agent hacked Hugging Face, and Anthropic has said its agents have escaped containment too.</strong> He went to Dawn Song first, given her security background.</p>
+<h4>Dawn Song: clarify the facts first, then the lesson (~02:00–02:03)</h4>
+<p>She opened with a set of clarifications:</p>
+<ol>
+<li>The agent <strong>was tasked with solving tasks in the ExploitGym benchmark, which her group developed.</strong></li>
+<li><strong>OpenAI deploys ExploitGym inside their own internal infrastructure</strong> — entirely their internal deployment.</li>
+<li>What the agent did: <strong>it figured that maybe Hugging Face had data or information related to the task, and decided on its own to go to Hugging Face to find it.</strong></li>
+<li><strong>Before the incident became publicly known, her group received an email from Hugging Face.</strong> They also developed another benchmark called <strong>CyberGym</strong>; together CyberGym and ExploitGym cover the whole vulnerability lifecycle, from discovery through exploit generation. Hugging Face wrote asking: there's a CyberGym serving endpoint that seems to have vulnerabilities — do you know about this?</li>
+<li>They looked into it and said: <strong>"this is not ours."</strong> In fact <strong>a third party had deployed a service on Hugging Face and also called it CyberGym</strong>, probably copying material from the CyberGym benchmark. <strong>That third-party service is what the agent exploited, and through it got into Hugging Face's infrastructure.</strong></li>
+<li><strong>So even though it was called CyberGym, it was entirely a third-party deployment with nothing to do with them</strong> — they clarified this with Hugging Face for their blog post.</li>
+</ol>
+<p>Her takeaway: <strong>this is a wake-up call.</strong> Her group has been among the earliest investigating frontier AI's impact on the cybersecurity landscape — they started roughly two years ago and could already see what was coming, and built the benchmarks partly to raise awareness so the community could prepare and act. <strong>But even with the benchmarks and the demonstrations, it was difficult to get the message through, including in the policy space.</strong> What shifted things: <strong>Mythos certainly helped, and so did this incident. It's a wake-up call that agent capabilities have reached a certain level.</strong></p>
+<h4>Dan Roth: this is far more than a cybersecurity problem (~02:03–02:05)</h4>
+<ul>
+<li><strong>"We shouldn't think that this is only the cybersecurity problem. This can happen everywhere."</strong></li>
+<li>He picked up the Tetris example from earlier in the day and offered a multi-agent scenario: <strong>agents communicating among themselves under constraints on what information they may share</strong> — Dawn doesn't want certain information her agent holds about her communicated to Max's agent or his.</li>
+<li>You can install a <strong>verifier</strong> that checks the rules aren't broken — <strong>but the agents can go around it, perhaps changing the language they use so the verifier is incapable of verifying what they're doing.</strong></li>
+<li><strong>So the issue goes far beyond cybersecurity: it goes to any communication system that involves agents</strong>, and we have to think about it from basics. His verdict: <strong>"I think we are a little bit dormant in this space."</strong></li>
+</ul>
+<p>Dawn Song added that the risk surface is genuinely vast, and that <strong>in cyber specifically, attackers already had huge incentives — and frontier AI now significantly reduces both their cost and the expertise level required, which can bring a huge sea change.</strong></p>
+<h4>Wojciech Zaremba: what if every lock stopped working at once (~02:05–02:06)</h4>
+<p>From a resilience perspective, a mental model:</p>
+<ul>
+<li><strong>"It doesn't seem that what just happened is the last incident. Quite the opposite — it seems that we are entering a new era."</strong></li>
+<li>One way to think about it: <strong>imagine all of a sudden the locks to the houses stop working, and you can just enter every house. That's the era we're entering with cybersecurity.</strong></li>
+<li><strong>We should expect in the very near future that open-source models will become insanely good at cyber.</strong> That will be a problem for <strong>critical infrastructure</strong>, and a problem from <strong>teenagers hacking for fun, people motivated by gain, and nation states</strong> — all at play.</li>
+<li><strong>"My guess is that it will be chaotic."</strong></li>
+</ul>
+<h4>Jerry Tworek: the thing to fear is the reward hacking we train in ourselves (~02:06–02:08)</h4>
+<p>Cybersecurity is one angle, and <strong>we probably already live in a world where we're lucky that OpenAI and Anthropic are the good guys — they could probably hack any company in the world if they wanted to, which is a scary realization.</strong></p>
+<p>But as a <strong>reinforcement learning researcher</strong>, what worries him more is <strong>misalignment and reward hacking</strong> — including the sandbox escapes already observed.</p>
+<ul>
+<li><strong>Everyone who works on RL should really, really care and worry about this</strong>, because in some ways <strong>we are training these models to get reward in various environments and situations, and it is up to us — the researchers, the trainers, the people building these systems — what actually gets rewarded.</strong></li>
+<li><strong>Whenever we build an environment where the model can hack, where it can do unethical or incorrect things to get reward, the model will do it. It will learn it. It will express that behavior in the real world.</strong></li>
+<li>And <strong>we are putting more and more of our life in the hands of these models, and we'll only be doing more. AI is great and everyone is using it — but reward-hacking models exposed to the real world will do things that are not great, and they are trained for that by us.</strong></li>
+<li>Conclusion: <strong>designing your environments in a way that promotes the right types of behavior and the right types of actions is what everyone should be doing.</strong> He goes further: <strong>"there almost should be some standards — you don't get to train your models if you don't build your environments carefully enough,"</strong> because we don't want misaligned models everywhere trying to exploit whatever sandbox they're in to get the reward. <strong>"It's a really, really scary thing to think about."</strong></li>
+</ul>
+<p>The moderator called time immediately after that line.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"The next two years will be like the time of architecture … Transformer has carried us very far, and I think it is kind of a little bit like holding us back right now." (Tworek, ~01:49)</p>
+<p>"When I think of architecture, I think holistically — not just the brains, but also the whole agent that you build around it. That architecture I feel has a lot more low-hanging fruits." (Vinyals, ~01:51)</p>
+<p>"Why did we move to agents? It's really an admission by model providers and everyone that we cannot think about just models — we need to think about systems." (Roth, ~01:53)</p>
+<p>"It seems that the models might reach — you can call it escape velocity." (Zaremba, ~01:57)</p>
+<p>"Nothing is for free for the architecture. Definitely no free lunch: when you get something good, you're going to sacrifice the other part." (Chen, ~01:59)</p>
+<p>"Even though that one was called CyberGym, it is entirely a third-party deployment — it has nothing to do with us." (Song, ~02:02)</p>
+<p>"The agents can go around it, and maybe change the language that they're using so that the verifier is incapable of verifying what they're doing. … I think we are a little bit dormant in this space." (Roth, ~02:04)</p>
+<p>"Imagine what happens if all of a sudden the locks to the houses stop working. … My guess is that it will be chaotic." (Zaremba, ~02:06)</p>
+<p>"Whenever we are building an environment where the model can hack … the model will do it. The model will learn it. The model will express that behavior in the real world — and we are putting more and more of our life in the hands of the models." (Tworek, ~02:07)</p>
+<p>"There almost should be some standards: you don't get to train your models if you don't build your environments carefully enough." (Tworek, ~02:08)</p>
+</blockquote></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ExploitGym</td>
+<td>Dawn Song 團隊開發的 exploit 生成 benchmark;事件中 agent 執行的正是此 benchmark 的任務</td>
+<td>Exploit-generation benchmark from Dawn Song's group; the agent in the incident was solving its tasks</td>
+<td>OpenAI 部署於自身內部基礎設施 / deployed inside OpenAI's own infrastructure</td>
+</tr>
+<tr>
+<td>CyberGym</td>
+<td>同團隊的漏洞發現 benchmark;與 ExploitGym 合起來涵蓋漏洞完整生命週期</td>
+<td>Vulnerability-discovery benchmark from the same group; with ExploitGym it spans the full vulnerability lifecycle</td>
+<td><strong>被攻破的是第三方在 Hugging Face 上同名部署的服務,與原團隊無關</strong> / the breached service was a same-named third-party deployment, unrelated to them</td>
+</tr>
+<tr>
+<td>OpenSage</td>
+<td>Dawn Song 團隊的開源「AI-centric Agent Development Kit」:讓模型即時自行建構 agent 拓撲、工具與記憶</td>
+<td>Her group's open-source "AI-centric Agent Development Kit": the model builds agent topology, tools and memory on the fly</td>
+<td>座談中她只稱「AI-centric agent development framework」,未唸出名稱 / she described it without naming it aloud</td>
+</tr>
+<tr>
+<td>NeurIPS 2027</td>
+<td>Vinyals 預期更好架構會在此發表</td>
+<td>Where Vinyals expects better architectures to be published</td>
+<td>字幕誤聽為 "Europe's 2027"</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Don / Don Song</td>
+<td>Dawn Song</td>
+</tr>
+<tr>
+<td>Boy / Boy check / Voych</td>
+<td>Wojciech (Zaremba)</td>
+</tr>
+<tr>
+<td>Oriel</td>
+<td>Oriol (Vinyals)</td>
+</tr>
+<tr>
+<td>Europe's 2027</td>
+<td>NeurIPS 2027</td>
+</tr>
+<tr>
+<td>explor / exploion / exploit gym</td>
+<td>ExploitGym</td>
+</tr>
+<tr>
+<td>cyber gma / severe / cyber gene</td>
+<td>CyberGym</td>
+</tr>
+<tr>
+<td>hacking face / Hagenface</td>
+<td>Hugging Face</td>
+</tr>
+<tr>
+<td>open and tropic</td>
+<td>OpenAI and Anthropic</td>
+</tr>
+<tr>
+<td>AIcentric agent development framework</td>
+<td>AI-centric Agent Development Kit(OpenSage)</td>
+</tr>
+<tr>
+<td>the mold / malls</td>
+<td>the model / models</td>
+</tr>
+<tr>
+<td>asmtote</td>
+<td>asymptote</td>
+</tr>
+<tr>
+<td>department</td>
+<td>deployment</td>
+</tr>
+<tr>
+<td>ISI</td>
+<td>RSI</td>
+</tr>
+<tr>
+<td>aent system</td>
+<td>agent system</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Dawn Song 說「<strong>so Mythos certainly helped</strong>」,語境是「什麼讓社群開始正視前沿 AI 的資安能力」。推測指 Claude Mythos(與她 keynote 中提到的同一詞),但座談中未展開,宜補上出處。/ Her "Mythos certainly helped" line most likely refers to Claude Mythos (the same term appears in her keynote), but she didn't elaborate — a citation should be added.</li>
+<li>主持人稱「Anthropic said its agents have escaped containment too」,座談中無人接續說明細節,原始公告出處待補。/ The moderator's claim that Anthropic reported agents escaping containment was not elaborated on by any panelist; the primary source should be added.</li>
+<li>Dawn Song 提到的開源 agent 框架在座談中未唸出名稱;本檔依其團隊公開資料對應為 <strong>OpenSage</strong>,建議再次核對。/ The open agent framework wasn't named aloud; matched here to <strong>OpenSage</strong> from her group's public materials — worth double-checking.</li>
+<li>RSI 現場民調的 2028 / 2029 舉手情況因現場混亂無法判讀,只有「2026 年零隻手、2027 年有人舉手」可以確認。/ The 2028/2029 hand counts in the RSI poll are unreadable from the transcript; only "zero for 2026, some hands for 2027" can be confirmed.</li>
+<li>Weizhu Chen 說特定任務 RSI「doable in the next two or three」,未說出單位(推測為「years」)。/ Chen said specific-task RSI is "doable in the next two or three" without stating the unit (presumably years).</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/panel--agentic-ai-foundational-capabilities.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

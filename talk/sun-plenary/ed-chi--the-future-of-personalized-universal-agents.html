@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>The Future of Personalized Universal Agents · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Framing three decades as &quot;only three ideas per era that really mattered&quot; — indexing, vector space models, deep learning; then sequential transduction, chain of thought, post-training — he argues th…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/ed-chi--the-future-of-personalized-universal-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Future of Personalized Universal Agents · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Framing three decades as &quot;only three ideas per era that really mattered&quot; — indexing, vector space models, deep learning; then sequential transduction, chain of thought, post-training — he argues th…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/ed-chi--the-future-of-personalized-universal-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-plenary" data-talk="ed-chi--the-future-of-personalized-universal-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="The Future of Personalized Universal Agents" data-title-zh="個人化通用 Agent 的未來">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Frontier Research</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">The Future of Personalized Universal Agents</span><span class="lang-zh">個人化通用 Agent 的未來</span></h1>
+        <p class="dialog__speaker"><strong>Ed Chi</strong> — VP of Research, Google DeepMind</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Plenary Stage · 00:21:39–00:33:17 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=I2PosBXwoPI&amp;t=1299s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:21:39</span><span class="lang-zh">從 00:21:39 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sun</span><span class="lang-zh">回 Plenary · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Framing three decades as &quot;only three ideas per era that really mattered&quot; — indexing, vector space models, deep learning; then sequential transduction, chain of thought, post-training — he argues the next decade moves from ranking to personalized reasoning, and that training must shift from bottom-up RL toward top-down teaching, the way we teach children.</span><span class="lang-zh">他用「每十年只有三個真正重要的想法」這個框架回顧三十年——索引、向量空間、深度學習;sequential transduction、chain of thought、post-training——並主張下一個十年的主軸是從排序走向個人化推理,而訓練方式必須從 bottom-up 的 RL 轉向 top-down 的「像教小孩一樣教機器」。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>開場自白</strong>:他自認是個「學得很慢的人」,也有 impostor syndrome;發表了 200 多篇論文,真正引以為傲的大概只有 10 篇。他要講的是<strong>回頭看,每個時代真正重要的只有三個想法</strong>。</li>
+<li><strong>第一個二十年(資訊檢索)</strong>:索引(圖書館是人類第一個偉大發明)、向量空間模型、深度神經網路。<strong>搜尋與推薦的本質是排序</strong>;next token prediction 說穿了也是排序。</li>
+<li><strong>他親口承認的重大失誤</strong>:1992 年他的博士指導教授 John Riedl 提議把向量空間模型從 document–term 矩陣搬到 user–item 矩陣——也就是推薦系統的誕生——<strong>而他告訴老師這是個笨點子</strong>。</li>
+<li><strong>2015–2025 三個想法</strong>:sequential transduction(Transformer 論文摘要第一句的那個詞)、以 chain of thought 完成的 <strong>next idea prediction</strong>、post-training。他說<strong>我們當初該把它們叫做 large reasoning models 而不是 large language models</strong>。</li>
+<li><strong>他對現在的批評</strong>:業界的 bottom-up processing(尤其是 RL)太多了。<strong>教小孩答錯時不能只是打他,要給解釋</strong>——chain of thought 正是這個想法,而蒸餾之所以可行也全靠這些 reasoning traces。</li>
+<li><strong>下一個十年</strong>:從排序與推薦,走向真正能推理你的品味的個人助理。他自己在 Google 現在的主軸只有 reasoning 與 planning。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>框架:每個時代只有三個想法(約 00:22–00:26)</h4>
+<p>他以「我學得很慢」開場,說身為科學家真正在乎的從來不是寫下一篇論文,而是下一個大想法是什麼——而他花了很久才看清哪些想法真的重要。</p>
+<p><strong>第一個二十年,三個來自資訊檢索的想法:</strong></p>
+<ol>
+<li><strong>索引(indexing)</strong>——他認為人類第一個偉大發明是圖書館,而圖書館建立在索引之上。90 年代這件事變成用 MapReduce 蓋大型搜尋引擎。</li>
+<li><strong>向量空間模型</strong>——word2vec 幾年前拿下十年 test-of-time 獎,核心正是用神經網路在向量空間裡計算詞與詞的關係,讓機器真正理解語義。</li>
+<li><strong>深度神經網路</strong>(2010–2015)。</li>
+</ol>
+<p>中間插進他的自白:<strong>1992 年,他的博士指導教授 John Riedl 問「如果我們把向量空間模型套到 user–item 矩陣、而不是 document–term 矩陣呢?」——這就是推薦系統的誕生,而他當場說那是個笨點子。</strong></p>
+<p>他把這三個想法收束成一句話:<strong>有了超級電腦之後,我們把一件事做得好太多了,那就是排序。</strong> 搜尋、推薦、整個網際網路生態,底層都是排序與 ranking;而<strong>next token prediction 本質上也只是排序</strong>——排出你下一個最可能說出口的字。</p>
+<p>他也拿算力當對照:1992 年他當研究生時用的是超級電腦,而他口袋裡的手機現在有 1,690 GFLOPS,「幾乎是一千倍的算力……我們每個人口袋裡都揣著一千台超級電腦」。</p>
+<h4>2015–2025:transduction、chain of thought、post-training(約 00:26–00:31)</h4>
+<p>他放出 Transformer 論文那張人人都看過的圖,問全場:<strong>你們真的讀過那篇論文嗎?</strong> 然後唸出摘要第一句——"The dominant sequence transduction models are based upon complex recurrent neural networks that include an encoder and decoder"——並坦承自己第一次讀完全不懂,現場也有至少一半的人舉手說到現在還不懂。</p>
+<p>他花了一段解釋 <strong>transduction</strong>:那是「把一種能量波轉換成另一種能量波」。<strong>你此刻就正在經歷 transduction</strong>——他身上的麥克風把聲波轉成電波,場邊的喇叭把電波轉回聲波,而你的耳朵本身就是一個 transducer,鼓膜震動接上神經元把資訊送進大腦。所以 2014 年前後真正的大想法是:<strong>把 sequential transduction 和神經網路結合起來</strong>,而這不是憑空發生的,它建立在「我們的大腦怎麼運作」的認知理解之上。這個新的通用計算模型因此能吃多模態資料、能同時理解各種語言。</p>
+<p><strong>第二個想法來自一個很基本的問題</strong>:他和 Denny Zhou 在 Google Brain 問「我們能不能用教小孩的方式教機器?」——當時我們把一件事做錯了:<strong>小孩答錯的時候,希望你不是直接打他;但我們當時就是這樣訓練機器的。</strong> 於是他們想:也許該給機器一個「為什麼你錯了」的解釋。這就是 <strong>chain of thought</strong>,也就是 <strong>top-down processing</strong>。</p>
+<p>他對現況的批評直接接在後面:<strong>現在業界(尤其是 RL)的 bottom-up processing 太多了</strong>,我們應該更像教小孩那樣給解釋。他還補了一個常被忽略的推論:<strong>我們之所以能把一個模型蒸餾進另一個模型,靠的就是 chain of thought 產生的 reasoning traces。</strong> 從 next token prediction 走到 <strong>next idea prediction</strong>,就是整個 reasoning 領域的起點。</p>
+<p><strong>回頭看,我們當初該叫它們 large reasoning models,而不是 large language models</strong>——因為我們真正在乎的是推理能力。</p>
+<p>第三個想法是 <strong>post-training</strong>(他把細節留給同場其他講者)。</p>
+<h4>2025–2035:從排序走向個人化推理(約 00:31–00:33)</h4>
+<p>他先把算力那條線接回來:一顆最新世代的 TPU 晶片,算力已經是他開場展示的那台 Cray Y-MP 的天文數字倍(具體倍率與世代見「待確認」)——「這個放口袋裡是真的會燒穿的」。</p>
+<p>然後放了一段 demo 影片:使用者拿著朋友送的一疊書,問助理「你會怎麼形容她的閱讀品味?」助理答出「歷史、傳記,可能還帶點政治或社會評論」;再問「哪一本她會最喜歡?」助理挑了 <em>Half of a Yellow Sun</em>,理由是它在歷史脈絡裡探討複雜的社會與政治議題,呼應她對「能看見重要時代切面」的敘事的興趣。</p>
+<p>他的評語就是那句:<strong>這已經不只是排序與 ranking 了,對吧?個人助理正在往這個方向走。</strong></p>
+<p>最後他指著去年在同一個舞台放過的那張投影片說:<strong>當時就已經有這些想法了,現在人人都在談 agent。下一個十年的想法其實已經在發生</strong>——Richard 剛剛談的自我改進、其他講者談的多模態、工具使用、多步複雜推理。而他自己現在在 Google 的主要工作就只聚焦在 <strong>reasoning 與 planning</strong>,因為未來在那裡。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"In 1992, my PhD adviser John Riedl came to me and said, 'What if we use those vector space models and applied them to user–item matrices instead of document–term matrices?' … and I told him it was a dumb idea."(約 00:24)</p>
+</blockquote>
+<p>推薦系統誕生的那一刻,他投了反對票。</p>
+<blockquote>
+<p>"What is sequential transduction? What the f does that even mean?"(約 00:27)</p>
+</blockquote>
+<p>他問全場有沒有真的讀過 Transformer 論文,一半的人到現在還不懂那句摘要。</p>
+<blockquote>
+<p>"When you teach your kids, I hope every time they get it wrong, you don't just hit them. But that was the way that we were teaching our machines."(約 00:29)</p>
+</blockquote>
+<p>chain of thought 的出發點。</p>
+<blockquote>
+<p>"In retrospect I wish we had not called it large language models; rather we should have been calling them large reasoning models."(約 00:30)</p>
+<p>"Now that is not just sorting and ranking anymore, is it? That is where personal assistance is going."(約 00:32)</p>
+</blockquote>
+<p>三十年的排序史,在這支 demo 影片這裡轉彎。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>He opens by calling himself a slow learner</strong> with impostor syndrome: 200+ papers published, maybe 10 he's proud of. The talk is a retrospective on the handful of ideas per era that actually mattered.</li>
+<li><strong>First two decades (information retrieval)</strong>: indexing (the library as humanity's first great invention), vector space models, deep neural networks. Search and recommendation are fundamentally <strong>sorting</strong> — and so is next-token prediction.</li>
+<li><strong>His confession</strong>: in 1992 his PhD advisor John Riedl proposed applying vector space models to user–item matrices instead of document–term matrices — the birth of recommender systems — and Ed told him it was a dumb idea.</li>
+<li><strong>2015–2025, three ideas</strong>: sequential transduction (the phrase opening the Transformer abstract), <strong>next-idea prediction</strong> via chain of thought, and post-training. In hindsight, he says, we should have called them large <em>reasoning</em> models.</li>
+<li><strong>His critique of the field</strong>: too much bottom-up processing, especially RL. You don't just hit a kid when they get it wrong — you explain. Chain of thought <em>is</em> that explanation, and distillation only works because of the reasoning traces it produces.</li>
+<li><strong>Next decade</strong>: from ranking to assistants that actually reason about your taste. His own work at Google is now narrowed to reasoning and planning.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The frame: three ideas per era (~00:22–00:26)</h4>
+<p>As a scientist, he says, what he cared about was never the next paper but the next big idea — and it took him a long time to see which ideas mattered.</p>
+<p><strong>Three ideas from information retrieval, spanning his first two decades:</strong></p>
+<ol>
+<li><strong>Indexing.</strong> The library is, in his opinion, humankind's first great invention, and it is built on indexing. In the 90s that became MapReduce and web-scale search engines.</li>
+<li><strong>Vector space models.</strong> word2vec took the ten-year test-of-time award a few years ago; its core idea was using neural networks to compute relationships between words so machines could grasp semantics.</li>
+<li><strong>Deep neural networks</strong> (2010–2015).</li>
+</ol>
+<p>Wedged in between is the confession about John Riedl and user–item matrices.</p>
+<p>The unifying claim: once supercomputers arrived, the one thing we got dramatically better at was <strong>sorting</strong>. Search, recommendation, the whole internet ecosystem run on sorting and ranking — and next-token prediction is sorting too, ranking the most likely next word.</p>
+<p>He anchors the compute arc with a comparison: the supercomputer he used as a 1992 grad student versus the 1,690 GFLOPS phone in his pocket — nearly a thousand times more compute. "We're all walking around with like a thousand supercomputers in our pocket."</p>
+<h4>2015–2025: transduction, chain of thought, post-training (~00:26–00:31)</h4>
+<p>He puts up the Transformer architecture figure everyone has seen and asks: <strong>have you actually read the paper?</strong> Then reads the first sentence of the abstract aloud, admits he had no idea what it meant the first time, and gets at least half the room to raise their hands admitting the same.</p>
+<p>His unpacking of <strong>transduction</strong>: the conversion of one energy wave into another. You are experiencing it right now — his microphone turns sound into electrical waves, the hall's speakers turn them back into sound, and your ear is itself a transducer whose membrane vibrates into neurons that carry information into your brain. So the big idea around 2014 was marrying sequential transduction with neural networks — and crucially, it wasn't invented in the ether, it rested on a cognitive understanding of how our brains communicate. The resulting universal computational model can absorb multimodal data and handle many languages at once.</p>
+<p><strong>The second idea came from a plain question</strong> he and Denny Zhou asked at Google Brain: can we teach machines the way we teach our children? One thing was clearly wrong. When your kid gets something wrong, you (hopefully) don't just hit them — but that's exactly how we were training machines. Give them an explanation instead. That became <strong>chain of thought</strong>, i.e. <strong>top-down processing</strong>.</p>
+<p>His critique follows immediately: the industry does far too much bottom-up processing, particularly with RL. And a consequence people underrate — <strong>distillation works because of the chain-of-thought reasoning traces</strong>. Moving from next-token prediction to <strong>next-idea prediction</strong> is what started the whole reasoning field.</p>
+<p>Hence: in retrospect we should have said large <em>reasoning</em> models, because reasoning is what we actually care about.</p>
+<p>Third idea: <strong>post-training</strong>, which he leaves to the other speakers on the stage.</p>
+<h4>2025–2035: from ranking to personalized reasoning (~00:31–00:33)</h4>
+<p>Picking the compute thread back up: a single latest-generation TPU chip now dwarfs the Cray Y-MP from the start of his talk by an astronomical factor (exact multiplier and chip generation flagged under To Verify) — "that's definitely going to burn a hole in your pocket."</p>
+<p>Then a short demo video. A user holds up a stack of books a friend has been reading and asks how to describe her taste; the assistant answers "a mix of history, biography, and perhaps a touch of political or social commentary." Asked which one she'd like most, it picks <em>Half of a Yellow Sun</em> for its exploration of complex social and political issues in a historical setting, aligning with her interest in narratives about significant periods.</p>
+<p>His line: that is not just sorting and ranking anymore — that's where personal assistants are going.</p>
+<p>He closes on the slide he showed on this same stage a year ago: the ideas were already there, and now everybody is talking about agents. The next decade's ideas are already happening — self-improvement (as Richard just covered), multimodality, tool use, multi-step complex reasoning. His own work at Google is now focused purely on <strong>reasoning and planning</strong>, because that's where the future is.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"In 1992, my PhD adviser John Riedl came to me and said, 'What if we use those vector space models and applied them to user–item matrices instead of document–term matrices?' … and I told him it was a dumb idea." (~00:24)</p>
+</blockquote>
+<p>He voted against recommender systems at the moment of their birth.</p>
+<blockquote>
+<p>"What is sequential transduction? What the f does that even mean?" (~00:27)</p>
+<p>"When you teach your kids, I hope every time they get it wrong, you don't just hit them. But that was the way that we were teaching our machines." (~00:29)</p>
+</blockquote>
+<p>The origin of chain of thought, in one image.</p>
+<blockquote>
+<p>"In retrospect I wish we had not called it large language models; rather we should have been calling them large reasoning models." (~00:30)</p>
+<p>"Now that is not just sorting and ranking anymore, is it? That is where personal assistance is going." (~00:32)</p>
+</blockquote>
+<p>Thirty years of sorting, turning a corner on one demo video.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>word2vec</td>
+<td>向量空間模型的代表作,幾年前獲十年 test-of-time 獎</td>
+<td>Vector space model landmark; won a ten-year test-of-time award</td>
+<td></td>
+</tr>
+<tr>
+<td>Chain of Thought prompting</td>
+<td>他與 Denny Zhou 等人的工作,把 next token prediction 推向 next idea prediction</td>
+<td>His work with Denny Zhou and others; moved the field from next-token to next-idea prediction</td>
+<td>起源故事見同場 panel(約 01:12–01:14)/ origin story told in the panel (~01:12–01:14)</td>
+</tr>
+<tr>
+<td>"Attention Is All You Need"</td>
+<td>他現場逐句拆解摘要第一句的 "sequence transduction"</td>
+<td>He reads and unpacks "sequence transduction" from the abstract's first sentence</td>
+<td></td>
+</tr>
+<tr>
+<td>Cray Y-MP</td>
+<td>他 1992 年當研究生時用的超級電腦,全場算力對照的基準</td>
+<td>The supercomputer he used as a 1992 grad student; the baseline for his compute comparisons</td>
+<td>panel 中他給的數字是 2.6 GFLOPS / he cites 2.6 GFLOPS in the panel</td>
+</tr>
+<tr>
+<td><em>Half of a Yellow Sun</em></td>
+<td>demo 影片中助理推薦的書</td>
+<td>The book the assistant recommends in the demo video</td>
+<td>Chimamanda Ngozi Adichie 著</td>
+</tr>
+<tr>
+<td>LaMDA / Bard / Gemini / Project Astra</td>
+<td>主持人介紹中提到的他在 Google 參與的產品線</td>
+<td>Product lines he worked on at Google, per the moderator's intro</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Etchie / ad</td>
+<td>Ed Chi</td>
+</tr>
+<tr>
+<td>John Rele</td>
+<td>John Riedl</td>
+</tr>
+<tr>
+<td>Danny Zhao</td>
+<td>Denny Zhou</td>
+</tr>
+<tr>
+<td>wordtovec / word tovec</td>
+<td>word2vec</td>
+</tr>
+<tr>
+<td>Lambda（模型)</td>
+<td>LaMDA</td>
+</tr>
+<tr>
+<td>Xerox Spark</td>
+<td>Xerox PARC</td>
+</tr>
+<tr>
+<td>sik chi academy</td>
+<td>SIGCHI Academy</td>
+</tr>
+<tr>
+<td>C create Cray YMP / create YMP</td>
+<td>Cray Y-MP</td>
+</tr>
+<tr>
+<td>train of thought</td>
+<td>chain of thought</td>
+</tr>
+<tr>
+<td>20110 to 2015</td>
+<td>2010 to 2015</td>
+</tr>
+<tr>
+<td>imposttor syndrome</td>
+<td>impostor syndrome</td>
+</tr>
+<tr>
+<td>document turn matrices</td>
+<td>document–term matrices</td>
+</tr>
+<tr>
+<td>mindbrain（耳朵裡的)</td>
+<td>membrane</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>字幕作 "a single <strong>V8</strong> TPU chip now is <strong>4.7 times</strong> more computation than the Cray Y-MP"。兩處都可疑:Google 第八代 TPU(8t / 8i)在 2026 Cloud Next 只是預覽、目標 2027 量產,現役旗艦是第七代 Ironwood;而「4.7 倍」與他自己給的 Cray Y-MP 2.6 GFLOPS 對照明顯不合(數量級應為百萬倍)。需看投影片確認世代與倍率。/ The caption says "a single V8 TPU chip now is 4.7 times more computation than the Cray Y-MP." Both parts look wrong: Google's 8th-gen TPUs (8t/8i) were only previewed at Cloud Next 2026 for a 2027 launch, and 4.7× is inconsistent with his own 2.6 GFLOPS figure for the Cray Y-MP (the real ratio is on the order of millions). Check the slide.</li>
+<li>demo 影片是哪一個產品(Project Astra?Gemini app?)講者未指名。/ The demo video is not named on stage — Project Astra? the Gemini app?</li>
+<li>他說 word2vec 拿的是「十年 test of time 獎」,未指明是哪個會議(NeurIPS)。/ He doesn't name the venue for the word2vec test-of-time award.</li>
+<li>他提到台下的 "Vincent"(2015–2025 那三個想法的見證人),身分未明。/ The "Vincent" he acknowledges in the audience is unidentified.</li>
+<li>他說 1992 年 John Riedl 提出 user–item 矩陣的想法;推薦系統文獻通常把 GroupLens 定在 1994 年,年份待對。/ He dates the user–item matrix conversation to 1992; the recommender-systems literature usually dates GroupLens to 1994.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-plenary/ed-chi--the-future-of-personalized-universal-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

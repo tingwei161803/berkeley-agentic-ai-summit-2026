@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Building Frontier Inference and Training Infra for Agent: A Case Study of SGLang and Miles · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="2026 is the year of agentic infrastructure — inference is squeezed by cache reuse, trillion-parameter models, and million-token context, while RL training is squeezed by environment diversity and t…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/banghua-zhu--building-frontier-inference-and-training-infra-for-agent.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Building Frontier Inference and Training Infra for Agent: A Case Study of SGLang and Miles · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="2026 is the year of agentic infrastructure — inference is squeezed by cache reuse, trillion-parameter models, and million-token context, while RL training is squeezed by environment diversity and t…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/banghua-zhu--building-frontier-inference-and-training-infra-for-agent.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-atlas" data-talk="banghua-zhu--building-frontier-inference-and-training-infra-for-agent">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Building Frontier Inference and Training Infra for Agent: A Case Study of SGLang and Miles" data-title-zh="為 Agent 打造前沿推論與訓練基礎設施:SGLang 與 Miles 的案例">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Frameworks &amp; Dev Platforms</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Building Frontier Inference and Training Infra for Agent: A Case Study of SGLang and Miles</span><span class="lang-zh">為 Agent 打造前沿推論與訓練基礎設施:SGLang 與 Miles 的案例</span></h1>
+        <p class="dialog__speaker"><strong>Banghua Zhu</strong> — Co-Founder, RadixArk</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 04:01:00–04:13:55 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=psPzCQbjCCo&amp;t=14460s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 04:01:00</span><span class="lang-zh">從 04:01:00 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">2026 is the year of agentic infrastructure — inference is squeezed by cache reuse, trillion-parameter models, and million-token context, while RL training is squeezed by environment diversity and train–inference mismatch; RadixArk answers each with SGLang and Miles.</span><span class="lang-zh">2026 是 agentic infrastructure 之年——推論端的壓力來自 cache 重用率、trillion 級模型與百萬 context,訓練端的壓力則來自環境多樣性與 train–inference mismatch,而 RadixArk 用 SGLang 與 Miles 兩個開源專案分別回應。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>RadixArk 的定位</strong>:讓前沿等級的 AI 基礎設施開放且人人可用,兩根支柱是推論引擎 <strong>SGLang</strong> 與強化學習訓練框架 <strong>Miles</strong>(從 slime fork 並持續共同演化)。</li>
+<li><strong>推論端三個挑戰</strong>:高 cache 重用率(agentic workload 的成本命脈)、trillion 級模型的部署與分片、1M context 已成常態。</li>
+<li><strong>對應三組技術</strong>:unified hybrid radix cache + HiCache(把 KV cache 從 HBM 一路往下放到 DRAM 與外部儲存);5D 平行化 + DCP/PCP 與 PD、EPD 分離部署;chunked pipeline parallelism、序列切分與 sparse attention。實測 GLM-5.2 從 day-zero 最佳再拉到約 2.2×,達到每使用者約 500 tokens/s。</li>
+<li><strong>訓練端三個挑戰</strong>:環境更多樣(甚至需要實驗室實驗才拿得到 reward)、train–inference mismatch(會<strong>無聲地</strong>把你的 RL 變成 off-policy)、吞吐量決定你能做幾次實驗。</li>
+<li><strong>消除 mismatch 的三個層次</strong>:推論引擎的 deterministic kernel、多輪 agentic chat template 的 token-in-token-out 對齊、演算法層修正(rollout routing replay、truncated masked importance sampling)。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>RadixArk、SGLang 與 Miles(約 04:01–04:04)</h4>
+<p>Zhu 自介為 RadixArk 共同創辦人兼 CTO,也是 Berkeley 博士。RadixArk 的使命是<strong>讓前沿等級的 AI 基礎設施開放且人人可及</strong>,做法是全部在開源裡建:推論端是 SGLang,已在各處被當作生產推論引擎採用;後訓練端是較新的 RL 框架 <strong>Miles</strong>,正逐步被當成前沿級的 post-training 基礎設施使用。</p>
+<p>SGLang 生態系的組成:</p>
+<ul>
+<li><strong>SGLang 核心</strong>:語言模型與視覺語言模型推論</li>
+<li><strong>diffusion</strong>:較新的專案,做影像與影片生成(以及世界模型類推論)</li>
+<li><strong>omni</strong>:更近期,鎖定 ASR 與 TTS 等音訊側</li>
+</ul>
+<p>整體針對 agentic workload 最佳化,提供<strong>極快的 day-zero 模型支援</strong>與很廣的硬體支援:NVIDIA、AMD、TPU、Trainium、Intel 等。</p>
+<p><strong>Miles</strong> 是企業級 RL 框架,從 <strong>slime</strong> fork 並與之共同演化,在 NVIDIA 與 AMD 最新硬體上加了更多功能。slime 由 Zhipu AI 與社群共同打造,用於他們的 GLM 模型系列訓練,因此已在超大規模生產訓練上經過實戰驗證。Miles 同樣提供<strong>所有開放模型的 day-zero 支援</strong>——Kimi K3、Thinking Machines 的 Inkling、NVIDIA 的 Nemotron 等——模型一發布你就能直接拿 Miles 做訓練與客製、拿 SGLang 做推論。架構上 Miles <strong>原生用 SGLang 當 rollout 階段、用 NVIDIA Megatron 當訓練階段</strong>以取得最佳效能。</p>
+<p>採用面:硬體公司、hyperscaler、企業、AI lab(尤其是新 lab)、開發者工具與 neocloud 都在用。生態系合作方面,他們與 Google Cloud 密切合作提升其內部推論堆疊的吞吐,Cloudflare、IBM、xAI、Meta 也都拿 SGLang 當推論引擎後端。</p>
+<p>他給整場定調:<strong>2026 是 agentic infrastructure 之年</strong>。推論端需求爆炸且挑戰非常獨特;訓練端則是「每個細節都重要」,還很早期,但每件事都得做對,才能在不傷害模型泛化能力的前提下把它訓起來。</p>
+<h4>推論端:三個挑戰與 SGLang 的三組答案(約 04:04–04:09)</h4>
+<p><strong>挑戰一:高 cache 重用率。</strong> 他以 DeepSeek V4 極低的 cache-hit 價格為例——這類定價假設你真的能達到很高的 cache 重用,而確保高 cache hit rate 直接決定你整體 serving 成本。SGLang 帶來兩項技術:</p>
+<ul>
+<li><strong>Unified hybrid radix cache</strong>:為近期所有 hybrid 模型設計,確保 prefix cache 在新架構上也能順暢運作。</li>
+<li><strong>HiCache</strong>:讓 KV cache 從 HBM 往下移到 DRAM、甚至外部儲存,在不同記憶體層之間以最有效率的方式調度。</li>
+</ul>
+<p>以 Qwen3-Coder 為具體例子,cache 命中率、TTFT 與吞吐都有大幅改善。</p>
+<p><strong>挑戰二:大模型擴展</strong>,面對一 trillion、三 trillion 甚至更大的模型。標準技術是 5D 平行化(data、tensor、context、pipeline、expert),再加上較新的策略如 DCP 與 PCP。部署策略也在演進:從 colocate 出發,規模變大、prefill/decode 更不平衡時逐步走向 <strong>PD 分離</strong>;視覺語言模型則再多一層 <strong>EPD</strong>——連 encoder 也分離出去。runtime 最佳化方面,投機解碼從 EAGLE 到 MTP,再到 D-Flash 與 DeepSeek 近期提出的 DSpark;排程則有 overlap scheduler,以及他們最近的 spec v2,用來更好地支援推論階段原生的投機解碼加速。</p>
+<p><strong>挑戰三:長 context</strong>,尤其是要撐到 1M context window:</p>
+<ul>
+<li><strong>Chunked pipeline parallelism</strong>:不再一次送出整段 prefill 序列,而是把長 prompt 切成小 chunk 平行處理。</li>
+<li><strong>序列/context 切分</strong>:換一個維度切,把序列拆到多顆 GPU 上處理長 context。</li>
+<li><strong>Sparse attention 最佳化</strong>(HiSparse):用一個 hot buffer 搭配完整 KV 來處理,讓 sparse attention 佔用更少記憶體、換到高得多的吞吐。</li>
+</ul>
+<p>綜合這些技術再加上調校,他給的具體數字是:<strong>GLM-5.2 在 day zero 效能就已是最佳,之後累積達成超過 2.2× 的改進,來到每使用者約 500 tokens/s</strong>。</p>
+<p>小結時他列出 SGLang 率先在大規模生產中導入的技術:RadixAttention、投機解碼、PD 分離、sparse attention、與 Miles 的原生整合,以及較近期的 D-Flash、DSpark 與 HiSparse。</p>
+<h4>訓練端:agentic RL 的三個挑戰(約 04:09–04:13)</h4>
+<p><strong>挑戰一:環境多樣性大增。</strong> 不只是更多 tool call 與更長 context,有些環境本身就很難執行,甚至需要<strong>實驗室實驗才能拿到 reward 訊號</strong>。對策是與大多數環境供應方密切合作,讓 Miles 原生支援主流開源環境——他點名了 Prime Intellect 的 verifiers、Daytona、NVIDIA NeMo Gym 等。</p>
+<p><strong>挑戰二:train–inference mismatch。</strong> 這是前沿 lab 近期非常熱門的題目,也是 Miles 最大的著力點之一:如果訓練引擎與推論引擎之間有很大的落差,<strong>它會自然而然、而且無聲無息地把你的 RL 變成 off-policy</strong>,傷害整個訓練 run。他列了三個層次的解法:</p>
+<ol>
+<li><strong>推論引擎的 deterministic kernel</strong>——這是能讓推論與訓練引擎逐 token 精確對齊的前提。</li>
+<li><strong>Chat template 修正</strong>:token-in-token-out,確保多輪 agentic chat template 完全對齊,前幾輪的 token 不會在後續被重新 tokenize 成別的東西。</li>
+<li><strong>演算法層修正</strong>:rollout routing replay、truncated masked importance sampling,用來在大規模 RL 下維持訓練穩定。</li>
+</ol>
+<p><strong>挑戰三:吞吐量。</strong> 吞吐越高,你就能用更多不同的實驗更快迭代,GPU 利用率也更好。這一項偏工程:他們為大多數模型提供 day-zero 支援,而且<strong>每個新模型都跑自家的 in-house training run 驗證</strong>——確認 KL 有被控制住、reward 確實往上走,使用者才能直接拿去用而不必擔心。</p>
+<p>最後兩項近期投入:</p>
+<ul>
+<li><strong>全非同步 RL(fully async RL)</strong> 已有相當成熟的支援,把 rollout 與訓練的時間重疊起來、並把兩者分離部署,以最大化 GPU 使用效率(相對於同步做法)。</li>
+<li><strong>低精度訓練</strong>:rollout 走更低精度、訓練後端搭配某種量化訓練。他們原生支援 8-bit 與 4-bit 的 rollout,並在最近的合作中做到 <strong>NVFP4 原生 rollout 且沒有效能損失</strong>。</li>
+</ul>
+<h3>金句</h3>
+<blockquote>
+<p>"2026 is actually the year of agentic infrastructure."(約 04:04)</p>
+</blockquote>
+<p>他為推論與訓練兩端所有挑戰下的統一標題。</p>
+<blockquote>
+<p>"If you have very large train–inference mismatch between different engines, then that will naturally and silently turn your RL to be more off-policy and hurt your entire training run."(約 04:10)</p>
+</blockquote>
+<p>Agentic RL 最陰險的失敗模式——它不會報錯,只會讓你的訓練悄悄變差。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>RadixArk's mission</strong> is to make frontier-level AI infrastructure open and accessible, built entirely in the open on two pillars: the <strong>SGLang</strong> inference engine and <strong>Miles</strong>, an enterprise RL post-training framework forked from and co-evolving with slime.</li>
+<li><strong>Three inference challenges</strong>: high cache reuse (the cost lever for agentic workloads), deploying and sharding trillion-parameter models, and million-token context as the new norm.</li>
+<li><strong>Three answers</strong>: unified hybrid radix cache plus HiCache (moving KV cache from HBM down through DRAM to external storage); 5D parallelism plus DCP/PCP with PD and EPD disaggregated deployment; and chunked pipeline parallelism, sequence splitting, and sparse attention. On GLM-5.2 they went from best-in-class at day zero to a further 2.2× improvement, reaching roughly 500 tokens/s per user.</li>
+<li><strong>Three training challenges</strong>: far more diverse environments (some requiring lab experiments to produce a reward signal), train–inference mismatch (which <strong>silently</strong> turns your RL off-policy), and throughput, which determines how many experiments you can run.</li>
+<li><strong>Eliminating mismatch takes three layers</strong>: deterministic kernels in the inference engine, token-in-token-out alignment of multi-turn agentic chat templates, and algorithmic fixes (rollout routing replay, truncated masked importance sampling).</li>
+</ul>
+<h3>Key Points</h3>
+<h4>RadixArk, SGLang, and Miles (~04:01–04:04)</h4>
+<p>Zhu introduces himself as co-founder and CTO of RadixArk and a Berkeley PhD. RadixArk's mission is to <strong>make frontier-level AI infrastructure open and accessible to everyone</strong>, and it builds entirely in open source: SGLang for inference, already adopted as a production inference engine widely; and more recently Miles, an RL framework gradually being picked up as frontier-level post-training infrastructure.</p>
+<p>The SGLang ecosystem has three parts: the core engine for language and vision-language model inference; <strong>diffusion</strong>, a newer project for image and video generation (and world-model inference); and <strong>omni</strong>, the most recent, targeting ASR and TTS on the audio side. The whole thing is optimized for agentic workloads, with fast <strong>day-zero model support</strong> and broad hardware coverage — NVIDIA, AMD, TPU, Trainium, Intel, and others.</p>
+<p><strong>Miles</strong> is the enterprise-grade RL framework, forked from and co-evolving with <strong>slime</strong>, adding features for the latest NVIDIA and AMD hardware. slime was built by Zhipu AI together with the community for training their GLM model series, so it has been battle-tested on production training at very large scale. Miles likewise offers <strong>day-zero support for all open models</strong> — Kimi K3, Thinking Machines' Inkling, NVIDIA's Nemotron, and so on — so the day a model ships you can train and customize with Miles and serve with SGLang. Architecturally, Miles <strong>natively uses SGLang as the rollout stage and NVIDIA Megatron as the training stage</strong> for best performance.</p>
+<p>On adoption: hardware companies, hyperscalers, enterprises, AI labs (especially newer ones), developer tools, and neoclouds are running SGLang and Miles as part of their infrastructure. Ecosystem collaborations include close work with Google Cloud on throughput for their internal inference stack, and Cloudflare, IBM, xAI, and Meta all using SGLang as a backend for their inference engines.</p>
+<p>His framing for the rest of the talk: <strong>2026 is the year of agentic infrastructure.</strong> On inference, demand is exploding and the challenges are genuinely unique. On training, every detail matters — it's still early, but everything has to be done right if you want to train the model without hurting its generalization capability.</p>
+<h4>Inference: three challenges, three sets of answers (~04:04–04:09)</h4>
+<p><strong>High cache reuse</strong> comes first. He points at DeepSeek V4's very low cache-hit pricing: such pricing presumes you can actually achieve high reuse, and ensuring a high cache hit rate directly determines total serving cost. SGLang brings two things here — a <strong>unified hybrid radix cache</strong>, designed so prefix caching runs smoothly across all the recent hybrid models and new architectures, and <strong>HiCache</strong>, which lets you move KV cache down from HBM to DRAM and even to external storage, scheduling it efficiently across memory tiers. On Qwen3-Coder specifically, cache rate, TTFT, and throughput all improved substantially.</p>
+<p><strong>Large model scaling</strong> comes second, at one trillion, three trillion, and beyond. The standard toolkit is 5D parallelism — data, tensor, context, pipeline, expert — plus newer strategies like DCP and PCP. Deployment strategies are evolving too: teams start colocated, then move toward <strong>PD (prefill/decode) disaggregation</strong> at larger scale and with more imbalanced prefill/decode profiles; for vision-language models there is also <strong>EPD</strong>, which disaggregates the encoder as well. On the runtime side, speculative decoding runs from EAGLE to MTP to D-Flash and DeepSeek's recent DSpark, and scheduling includes an overlap scheduler plus their recent spec v2 for better native speculative-decoding speedup at inference.</p>
+<p><strong>Long context</strong> is third, particularly scaling to a million-token window. <strong>Chunked pipeline parallelism</strong> stops sending the whole prefill sequence at once, chunking long prompts and processing them in parallel. A second, orthogonal dimension of chunking <strong>splits sequences across GPUs</strong>. And <strong>sparse attention optimization (HiSparse)</strong> processes a full KV with a hot buffer, so sparse attention occupies less memory and yields much higher throughput.</p>
+<p>Combining all of this with tuning, his concrete result: on <strong>GLM-5.2 the day-zero performance was already best-in-class</strong>, and over time they achieved more than a further <strong>2.2× improvement, reaching up to about 500 tokens/s per user</strong>.</p>
+<p>Summarizing the inference half, he lists what SGLang introduced first at large production scale: RadixAttention, speculative decoding, PD disaggregation, sparse attention, native Miles integration, and more recently D-Flash, DSpark, and HiSparse.</p>
+<h4>Training: three challenges in agentic RL (~04:09–04:13)</h4>
+<p><strong>Environment diversity</strong> has grown sharply. It is not just more tool calls and longer context — some environments are very hard to execute, and some may even require lab experiments to produce a reward signal. RadixArk's response has been close collaboration with most environment suppliers so Miles natively supports the major open-source environments, among them Prime Intellect's verifiers, Daytona, and NVIDIA NeMo Gym.</p>
+<p><strong>Train–inference mismatch</strong> is a very popular topic in frontier labs right now and one of Miles's biggest focuses. If there is a large mismatch between your training and inference engines, it will <strong>naturally and silently turn your RL more off-policy and hurt the entire training run</strong>. Three layers of fix:</p>
+<ol>
+<li><strong>Deterministic kernels in the inference engine</strong> — a prerequisite for exact token-level agreement between inference and training engines.</li>
+<li><strong>Chat template fixing</strong> — token-in-token-out, so multi-turn agentic chat templates stay aligned and tokens from prior turns match exactly, with no drift introduced by re-tokenization.</li>
+<li><strong>Algorithmic fixes</strong> — rollout routing replay and truncated masked importance sampling, both aimed at stable training at large RL scale.</li>
+</ol>
+<p><strong>Throughput</strong> is the third: higher throughput means faster iteration across more experiments and better GPU utilization. This one is mostly engineering discipline — they provide day-zero support for most models and verify each with their <strong>own in-house training runs</strong>, checking that KL stays controlled and reward actually goes up, so users can adopt the framework without that concern.</p>
+<p>Two recent investments close the talk. <strong>Fully asynchronous RL</strong> now has sophisticated, mature support: overlapping rollout with training time and disaggregating the two to make the best use of GPUs, compared against the synchronous case. And <strong>low-precision training</strong>: rollout in lower precision with some form of quantized training on the backend. They natively support 8-bit and 4-bit rollout, and recently worked with a hardware partner to support <strong>NVFP4-native rollout in the RL stage with no performance loss</strong>.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"2026 is actually the year of agentic infrastructure." (~04:04)</p>
+</blockquote>
+<p>His unifying header for both the inference and training challenges.</p>
+<blockquote>
+<p>"If you have very large train–inference mismatch between different engines, then that will naturally and silently turn your RL to be more off-policy and hurt your entire training run." (~04:10)</p>
+</blockquote>
+<p>The nastiest failure mode in agentic RL: it never raises an error, it just quietly makes your training worse.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SGLang</td>
+<td>生產級開源推論引擎(LLM / VLM),另有 diffusion 與 omni 兩個子專案</td>
+<td>Production-grade open-source inference engine (LLM / VLM), plus diffusion and omni sub-projects</td>
+<td>廣泛硬體支援:NVIDIA、AMD、TPU、Trainium、Intel / broad hardware support</td>
+</tr>
+<tr>
+<td>Miles</td>
+<td>企業級 RL 後訓練框架,從 slime fork 並共同演化</td>
+<td>Enterprise RL post-training framework, forked from and co-evolving with slime</td>
+<td>原生以 SGLang 為 rollout、Megatron 為訓練後端 / SGLang for rollout, Megatron for training</td>
+</tr>
+<tr>
+<td>slime</td>
+<td>Zhipu AI 與社群為 GLM 系列訓練打造的 RL 框架</td>
+<td>RL framework built by Zhipu AI with the community for the GLM model series</td>
+<td>Miles 的上游 / Miles's upstream</td>
+</tr>
+<tr>
+<td>HiCache</td>
+<td>分層 KV cache:HBM → DRAM → 外部儲存</td>
+<td>Hierarchical KV cache across HBM, DRAM, and external storage</td>
+<td></td>
+</tr>
+<tr>
+<td>Unified hybrid radix cache</td>
+<td>讓 prefix cache 在 hybrid attention 模型上正常運作</td>
+<td>Makes prefix caching work across hybrid-attention architectures</td>
+<td></td>
+</tr>
+<tr>
+<td>RadixAttention</td>
+<td>SGLang 最早在大規模生產導入的前綴快取技術</td>
+<td>SGLang's prefix-caching technique, first at production scale</td>
+<td></td>
+</tr>
+<tr>
+<td>PD / EPD 分離</td>
+<td>prefill–decode 分離;VLM 再多分離 encoder</td>
+<td>Prefill–decode disaggregation; EPD adds encoder disaggregation for VLMs</td>
+<td></td>
+</tr>
+<tr>
+<td>EAGLE / MTP / D-Flash / DSpark</td>
+<td>投機解碼技術的演進;DSpark 由 DeepSeek 近期提出</td>
+<td>The progression of speculative decoding techniques; DSpark recently introduced by DeepSeek</td>
+<td>D-Flash 與 DSpark 拼寫待確認 / spellings to verify</td>
+</tr>
+<tr>
+<td>HiSparse</td>
+<td>sparse attention 最佳化:完整 KV 搭配 hot buffer</td>
+<td>Sparse attention optimization: full KV with a hot buffer</td>
+<td></td>
+</tr>
+<tr>
+<td>RL 環境 / RL environments</td>
+<td>Prime Intellect verifiers、Daytona、NVIDIA NeMo Gym</td>
+<td>Prime Intellect verifiers, Daytona, NVIDIA NeMo Gym</td>
+<td>另有兩三個名稱聽不清 / two or three further names unintelligible</td>
+</tr>
+<tr>
+<td>生態系合作 / Ecosystem partners</td>
+<td>Google Cloud、Cloudflare、IBM、xAI、Meta</td>
+<td>Google Cloud, Cloudflare, IBM, xAI, Meta</td>
+<td>均以 SGLang 為推論後端 / all use SGLang as an inference backend</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Banga Juke / Bonha</td>
+<td>Banghua Zhu</td>
+</tr>
+<tr>
+<td>Raex Arc / Regisart / Reddisart / Reddit</td>
+<td>RadixArk</td>
+</tr>
+<tr>
+<td>HGLN / HLN / Asha / Ashel / Ashland / Achelan / Helen</td>
+<td>SGLang</td>
+</tr>
+<tr>
+<td>MOS / mouse / smiles</td>
+<td>Miles</td>
+</tr>
+<tr>
+<td>slam</td>
+<td>slime</td>
+</tr>
+<tr>
+<td>triple AI</td>
+<td>Zhipu AI</td>
+</tr>
+<tr>
+<td>GM model series / GM 5 5 5.2</td>
+<td>GLM model series / GLM-5.2</td>
+</tr>
+<tr>
+<td>Kim Jam / Kim K3</td>
+<td>Kimi K3</td>
+</tr>
+<tr>
+<td>inkling from syncing machine</td>
+<td>Inkling from Thinking Machines</td>
+</tr>
+<tr>
+<td>neotron from avidia</td>
+<td>Nemotron from NVIDIA</td>
+</tr>
+<tr>
+<td>magnetron</td>
+<td>Megatron</td>
+</tr>
+<tr>
+<td>radius cache / radius attention</td>
+<td>radix cache / RadixAttention</td>
+</tr>
+<tr>
+<td>high cache / high spars</td>
+<td>HiCache / HiSparse</td>
+</tr>
+<tr>
+<td>QTFT</td>
+<td>TTFT</td>
+</tr>
+<tr>
+<td>PD desertation / disagregation</td>
+<td>PD disaggregation</td>
+</tr>
+<tr>
+<td>overlapuler</td>
+<td>overlap scheduler</td>
+</tr>
+<tr>
+<td>one qu three coder</td>
+<td>Qwen3-Coder</td>
+</tr>
+<tr>
+<td>draw out routing replay</td>
+<td>rollout routing replay</td>
+</tr>
+<tr>
+<td>truncated mass important sampling</td>
+<td>truncated masked importance sampling</td>
+</tr>
+<tr>
+<td>MVIP4</td>
+<td>NVFP4</td>
+</tr>
+<tr>
+<td>hover / open in / agent in</td>
+<td>待確認(見下)/ to verify (below)</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>投機解碼演進中的 "D-Flash" 與 "DSpark" 兩個名稱僅依發音推定,需看投影片確認拼寫與出處。/ "D-Flash" and "DSpark" in the speculative-decoding progression are inferred from pronunciation; confirm spelling and origin against the slides.</li>
+<li>Miles 原生支援的 RL 環境清單中,字幕的 "hover"、"open in"、"agent in" 三個名稱無法辨識;可辨識的是 Prime Intellect verifiers、Daytona、NeMo Gym。/ Three environment names in the transcript ("hover", "open in", "agent in") are unintelligible; the legible ones are Prime Intellect verifiers, Daytona, and NeMo Gym.</li>
+<li>「最近與 ___ 合作支援 NVFP4 原生 rollout」的合作對象,字幕作 "humans end",無法確認(NVFP4 為 NVIDIA 格式,但不宜逕自推定)。/ The partner in "recently worked with ___ to support NVFP4-native rollout" is transcribed as "humans end" and cannot be confirmed (NVFP4 is an NVIDIA format, but that is not sufficient to assume the partner).</li>
+<li>「agent in 被近期某模型的 post-training 使用」該句(字幕 "used by recent communic case post training for crackness")完全無法還原。/ The clause about a recent model's post-training using one of those environments is unrecoverable from the transcript.</li>
+<li>SGLang diffusion 子專案中提到的 "V and wood model" 應為 video / world model,但未確認。/ "V and wood model" under SGLang diffusion is likely video / world model inference, unconfirmed.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/banghua-zhu--building-frontier-inference-and-training-infra-for-agent.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

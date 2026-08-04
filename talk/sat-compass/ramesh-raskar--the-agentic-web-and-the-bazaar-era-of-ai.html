@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>The Agentic Web and the Bazaar Era of AI · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="AI is shifting from a factory era — a few large companies mass-producing what we consume — to a bazaar era of edge models running everywhere. Once billions of agents are on the open web, the decisi…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/ramesh-raskar--the-agentic-web-and-the-bazaar-era-of-ai.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Agentic Web and the Bazaar Era of AI · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="AI is shifting from a factory era — a few large companies mass-producing what we consume — to a bazaar era of edge models running everywhere. Once billions of agents are on the open web, the decisi…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/ramesh-raskar--the-agentic-web-and-the-bazaar-era-of-ai.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-compass" data-talk="ramesh-raskar--the-agentic-web-and-the-bazaar-era-of-ai">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="The Agentic Web and the Bazaar Era of AI" data-title-zh="Agentic Web 與 AI 的市集時代">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Frameworks &amp; Dev Platforms</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">The Agentic Web and the Bazaar Era of AI</span><span class="lang-zh">Agentic Web 與 AI 的市集時代</span></h1>
+        <p class="dialog__speaker"><strong>Ramesh Raskar</strong> — Professor, MIT</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 00:13:51–00:23:54 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=831s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:13:51</span><span class="lang-zh">從 00:13:51 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">AI is shifting from a factory era — a few large companies mass-producing what we consume — to a bazaar era of edge models running everywhere. Once billions of agents are on the open web, the decisive question isn&#x27;t whose model is best but who builds the infrastructure, because whoever builds it will own it.</span><span class="lang-zh">AI 正從少數大廠量產、我們被動消費的「工廠時代」轉向邊緣模型遍地開花的「市集時代」;當網路上有數十億個 agent 時,真正的問題不是誰的模型最強,而是誰來蓋 agent 的基礎設施——因為蓋的人就會擁有它。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>時代轉換</strong>:AI 的「工廠時代」(大廠量產、我們消費)正因 edge AI、小模型、跑在自己機器上的東西而轉向 <strong>bazaar era(市集時代)</strong>;對應到運算史,就是從 mainframe 走向 PC。</li>
+<li><strong>不是 agents for e-commerce,而是 commerce because of agents</strong>:他用 Sarah 與 Dr. John 的醫療情境說明——醫生在開放網路上出價 100 美元求解,全球數十億 agent 甦醒、組成 coalition、協作解題,最後約 10 個 agent 分掉這 100 美元。醫生取用的不是某個超強醫療模型,而是<strong>一個以 marketplace 形式存在的智能網路</strong>。</li>
+<li><strong>四個瓶頸</strong>:要讓 agentic web 維持像今天網際網路一樣開放(而非 iOS/Android、Facebook/Twitter 那樣的圍牆花園),必須解決 (1) 類 DNS 的名稱結構、(2) passports / certification、(3) interoperability、(4) attestation。這是 MIT <strong>Project NANDA</strong> 的任務。</li>
+<li><strong>三個研究題</strong>:agent 的 DNS;<strong>knowledge pricing</strong>(資料、模型、推論、算力都需要定價,他形容是「非常漂亮的數學問題」);<strong>co-learning</strong>(機器互學——會結盟、談判、競爭,甚至背叛,「agent 之間的權力遊戲」)。</li>
+<li><strong>視角翻轉</strong>:別再只想 agents for X(coding、browsing、shopping),要開始想 <strong>X for agents</strong>——給 agent 的基礎設施、算力、保險、醫療、教育。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>工廠時代 → 市集時代(約 00:14)</h4>
+<p>過去一段時間 AI 處在 <strong>factory era</strong>:少數大公司大量生產產品,我們只負責消費。但因為 edge AI、小模型、以及愈來愈多東西跑在自己機器上,<strong>很快就會轉向 bazaar era</strong>。MIT 這邊很多工作就是在想:當開放網路上有數十億、甚至數兆個 AI agent 時,「internet of AI agents」會長什麼樣?</p>
+<h4>動機情境:Sarah、Dr. John 與那 100 美元(約 00:15–00:16)</h4>
+<p>德州鄉間的 Sarah 有胸痛與共病,從醫生那裡得不到好答案。她的醫生 Dr. John 可以到開放網路上說:「<strong>出 100 塊,有誰能解 Sarah 的問題?</strong>」</p>
+<p>這時全世界數十億 agent 醒過來,心想「或許我能分到這 100 塊裡的一小塊」——它們去看相關健康條件的資料、開始訓練模型、彼此組成 coalition 協作;最後可能十來個 agent 一起把問題解掉,這 10 個分走那 100 美元,其餘的就散去。Dr. John 拿到的是一個「<strong>像 Expedia 那樣的答案</strong>」。</p>
+<p>Raskar 強調這裡發生的事情的性質:「這不是 agents for e-commerce,<strong>這是因為有 AI agent 才可能發生的 commerce</strong>。」而且 Dr. John 並不是去存取某個厲害的醫療 AI 模型,他是<strong>接進了一張智能的網路,而那張網路以 marketplace 的形式提供</strong>。</p>
+<h4>從 internet of agents 到 agentic web:NANDA(約 00:17–00:19)</h4>
+<p>現在有些公司已經在「可信邊界內」用 agent,但很快就會走到 agent 與<strong>信任邊界之外</strong>的 agent 協作、談判。不過那還只是給極客用的連線層——就像從 internet 走到 World Wide Web,還需要 HTML、瀏覽器、URL 這些東西。</p>
+<p><strong>Project NANDA</strong> 起源於 MIT,他當場的說法是 "AI agents in decentralized architecture";Nanda 在梵文中意為喜悅,也是他妹妹的名字。</p>
+<p>他認為最貼切的類比是<strong>高頻交易</strong>:高頻交易之所以成立,是因為有 registry、每個商家/股票都經過預先資格認定、有一定程度的價格透明、有處理詐欺的機制。<strong>這些東西全都得為 internet of AI agents 重新蓋一遍。</strong></p>
+<p>接著是他對 OpenClaw 的評語:「OpenClaw 很棒,但它只是單向的、只表現得像一個工具——<strong>我沒辦法呼叫你的 OpenClaw agent</strong>,就像一支只能打出去、永遠不能接聽的電話。」它是單向 agent,不是雙向 agent。</p>
+<p>於是關鍵問題浮現:誰來蓋這套基礎設施?更麻煩的是——<strong>蓋的人也會擁有它</strong>。所以我們會走向 agentic web 的圍牆花園,還是一個開放、有活力、中立、安全且可擴展的 web?這就是 NANDA 的使命。</p>
+<p><strong>四個瓶頸</strong>:(1) 類 DNS 的結構、(2) passports 與 certification、(3) interoperability、(4) attestation。他說 MIT 這個團隊在這個空間已經做了 11、12 年——從 AlexNet 之後就開始想「當數十億個 AI 系統彼此互動時會發生什麼」。</p>
+<h4>三個研究問題(約 00:20–00:21)</h4>
+<ol>
+<li><strong>Agent 的 DNS</strong>。</li>
+<li><strong>Knowledge pricing</strong>:資料、模型、推論、算力都必須被定價,「就像我們雇一個人時能算出他的薪水一樣」。他形容這是「一個非常漂亮的數學問題,來跟我們聊」。</li>
+<li><strong>Co-learning</strong>:過去 14 年是機器學習的黃金期,但接下來重點是 <strong>machine co-learning</strong>——兩個 agent 如何互相學習。而且不只是買賣服務與交易,agent 會<strong>組成 coalition、談判、為資源競爭</strong>,會有結盟也會有背叛,「agent 之間的權力遊戲」。</li>
+</ol>
+<h4>生態系:NANDA Town、NandaHack 與國家級部署(約 00:21–00:23)</h4>
+<p>Web 早期需要一個起點——那時是 Yahoo,它創造了一個安全的空間讓人探索 web 是什麼。所以他們做了 <strong>NANDA Town</strong>(掛在 MIT 網站上),是一個沙盒,任何人都能把企業 agent、payments、memory 帶進來,在這個高度異質的系統裡探索,也有 ethical hacker 在裡面;他說推進得非常快。</p>
+<p>另外有一系列由不同組織贊助的 hackathon,叫 <strong>NandaHack</strong>。</p>
+<p><strong>國家規模</strong>:在印度他們推出了名為「Duth」(意為 messenger)的計畫,涉及 <strong>15 億個 agent</strong>,<strong>沒有企業把持</strong>,跑在當地既有的身分與支付軌道上;<strong>波士頓市</strong>也和他們一起啟動了 Boston agent initiative,做 civic agents。</p>
+<p>最後的視角翻轉:今天大家都在想 agents for X——agents for coding、browsing、debugging、shopping。<strong>我們該把它翻過來</strong>:services for agents、infrastructure for agents、compute for agents、insurance for agents、healthcare for agents、education for agents——社會裡我們為人做的每一件事,都得為 agent 再做一次。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"It's not like agents for e-commerce — this is commerce that's possible because of AI agents."(約 00:16)</p>
+</blockquote>
+<p>整場演講的定位:重點不是把 agent 塞進既有電商,而是只有 agent 才做得出來的新交易形態。</p>
+<blockquote>
+<p>"OpenClaw is great, but it's only … a tool. I cannot call your OpenClaw agent. It's like having a telephone that can only make calls outside but can never receive calls."(約 00:18)</p>
+</blockquote>
+<p>單向 vs 雙向 agent——他認為這正是 agentic web 還沒到來的證據。</p>
+<blockquote>
+<p>"Whoever builds this infrastructure will also own it."(約 00:18)</p>
+</blockquote>
+<p>NANDA 存在的理由。</p>
+<blockquote>
+<p>"Intelligence will be discovered, intelligence will be priced, and intelligence will be coordinated at scale."(約 00:23)</p>
+</blockquote>
+<p>open agentic commerce 的三個前提。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Era shift</strong>: AI's factory era — a handful of companies mass-producing, the rest of us consuming — is giving way to a <strong>bazaar era</strong> driven by edge AI, small models, and things running on your own machine. In computing terms: mainframe to PC.</li>
+<li><strong>Not agents for e-commerce, but commerce because of agents</strong>: in his Sarah / Dr. John scenario, a doctor posts a $100 bounty on the open web, billions of agents wake up, form coalitions, and roughly ten of them solve it together and split the money. The doctor isn't calling one great health model; he's tapping a <strong>network of intelligence exposed as a marketplace</strong>.</li>
+<li><strong>Four bottlenecks</strong>: to keep the agentic web as open as today's internet — rather than the walled gardens of iOS/Android or Facebook/Twitter — you need (1) a DNS-like structure, (2) passports and certification, (3) interoperability, and (4) attestation. That's MIT's <strong>Project NANDA</strong>.</li>
+<li><strong>Three research problems</strong>: DNS for agents; <strong>knowledge pricing</strong> (data, models, inference, and compute all need prices — "a very beautiful mathematical problem"); and <strong>co-learning</strong> (agents forming coalitions, negotiating, competing, betraying — "game of thrones among agents").</li>
+<li><strong>Flip the framing</strong>: stop thinking only about agents for X (coding, browsing, shopping) and start thinking <strong>X for agents</strong> — infrastructure, compute, insurance, healthcare, and education for agents.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Factory era to bazaar era (~00:14)</h4>
+<p>For some time AI has been in a <strong>factory era</strong>: a few large companies produce products in quantity and we consume them. Thanks to edge AI, small models, and workloads moving onto your own machine, we're shifting to the <strong>bazaar era</strong>. Much of his group's work at MIT is about what the internet of AI agents looks like once billions — maybe trillions — of them are on the open web.</p>
+<h4>The motivating scenario: Sarah, Dr. John, and $100 (~00:15–00:16)</h4>
+<p>Sarah, in rural Texas, has chest pain and a comorbidity and isn't getting good answers from her doctors. Her doctor, John, goes onto the open web and says: <strong>"For a hundred bucks, can somebody solve the problem for Sarah?"</strong></p>
+<p>Billions of agents worldwide wake up thinking they might claim a slice of that $100. They look at data relevant to the condition, start training models, form coalitions, and collaborate. Eventually a handful — say ten — solve it together, those ten split the $100, and everyone else disappears. Dr. John gets back what Raskar calls "an Expedia-like answer."</p>
+<p>The framing matters: "It's not agents for e-commerce — <strong>this is commerce that's possible because of AI agents</strong>." And Dr. John isn't accessing one amazing health model; he's tapping into a <strong>network of intelligence, available as a marketplace</strong>.</p>
+<h4>From the internet of agents to the agentic web: NANDA (~00:17–00:19)</h4>
+<p>Some companies already run agents inside trusted boundaries. Soon agents will collaborate and negotiate with agents well outside those boundaries. But that's still just plumbing for geeks — going from the internet to the World Wide Web took HTML, browsers, and URLs.</p>
+<p><strong>Project NANDA</strong> started at MIT; on stage he glossed it as "AI agents in decentralized architecture." <em>Nanda</em> means joy in Sanskrit, and is also his sister's name.</p>
+<p>His closest analogy is <strong>high-frequency trading</strong>, which works because there's a registry, every merchant and stock is pre-qualified, there's some price transparency, and there are mechanisms for fraud detection. <strong>All of that has to be built again for the internet of AI agents.</strong></p>
+<p>Then a pointed aside about OpenClaw: it's great, but it behaves only as a tool — "<strong>I cannot call your OpenClaw agent.</strong> It's like having a telephone that can only make calls outside but can never receive calls." One-way, not bidirectional.</p>
+<p>Which raises the question of who builds this infrastructure, and the more troubling corollary: <strong>whoever builds it will also own it.</strong> Walled gardens for the agentic web, or something open, vibrant, neutral, safe, and scalable? That's NANDA's mission, organized around <strong>four bottlenecks</strong>: a DNS-like structure, passports and certification, interoperability, and attestation. His group has been in this space for 11 or 12 years, thinking since AlexNet about what happens when billions of individual AI systems interact.</p>
+<h4>Three research problems (~00:20–00:21)</h4>
+<ol>
+<li><strong>DNS for agents.</strong></li>
+<li><strong>Knowledge pricing</strong> — data, models, inference, and compute all need to be priced, "just the way when you hire a candidate we can figure out their salary." He calls it a very beautiful mathematical problem and openly recruits collaborators.</li>
+<li><strong>Co-learning</strong> — the last 14 years were a great run for machine learning; the next stretch is <strong>machine co-learning</strong>, how two agents learn from each other. And not just buying services and transacting: agents will form coalitions, negotiate, and compete for resources, with alliances and betrayals — "the game of thrones among agents."</li>
+</ol>
+<h4>Ecosystem: NANDA Town, NandaHack, and nation-scale deployments (~00:21–00:23)</h4>
+<p>The web needed a starting point, and that was Yahoo — a safe space to explore what the web even was. So they built <strong>NANDA Town</strong>, a sandbox off the MIT website where anyone working on enterprise agents, payments, or memory can bring their piece into a deliberately heterogeneous system, ethical hackers included. He says it's moving very fast.</p>
+<p>There's also <strong>NandaHack</strong>, a hackathon series sponsored by various organizations.</p>
+<p>At <strong>nation scale</strong>: in India they launched a program called <em>Duth</em> ("messenger"), covering <strong>1.5 billion agents</strong> with <strong>no corporate capture</strong>, running on the identity and payment rails the country already has. The <strong>City of Boston</strong> is also launching a Boston agent initiative around civic agents.</p>
+<p>The closing reframe: today everyone thinks about agents for X — coding, browsing, debugging, shopping. <strong>Flip it.</strong> Services for agents, infrastructure for agents, compute for agents, insurance for agents, healthcare for agents, education for agents. Everything society does for people has to be done for agents too.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"It's not like agents for e-commerce — this is commerce that's possible because of AI agents." (~00:16)</p>
+</blockquote>
+<p>The whole thesis: not agents bolted onto existing commerce, but transactions only agents make possible.</p>
+<blockquote>
+<p>"OpenClaw is great, but it's only … a tool. I cannot call your OpenClaw agent. It's like having a telephone that can only make calls outside but can never receive calls." (~00:18)</p>
+</blockquote>
+<p>One-way versus bidirectional agents — his evidence that the agentic web hasn't arrived yet.</p>
+<blockquote>
+<p>"Whoever builds this infrastructure will also own it." (~00:18)</p>
+</blockquote>
+<p>The reason NANDA exists.</p>
+<blockquote>
+<p>"Intelligence will be discovered, intelligence will be priced, and intelligence will be coordinated at scale." (~00:23)</p>
+</blockquote>
+<p>The three preconditions for open agentic commerce.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project NANDA</td>
+<td>MIT 發起、為 internet of AI agents 建立 discovery / identity / interoperability / attestation 基礎設施</td>
+<td>MIT-founded effort building discovery, identity, interoperability, and attestation infrastructure for the internet of AI agents</td>
+<td>官方展開為 Networked AI Agents in Decentralized Architecture;講者現場說 "AI agents in decentralized architecture"</td>
+</tr>
+<tr>
+<td>NANDA Town</td>
+<td>讓任何人帶入企業 agent、payments、memory 的異質沙盒</td>
+<td>Heterogeneous sandbox where anyone can bring enterprise agents, payments, or memory</td>
+<td>掛在 MIT 網站上 / hosted off the MIT site</td>
+</tr>
+<tr>
+<td>NandaHack</td>
+<td>NANDA 生態系的 hackathon 系列</td>
+<td>Hackathon series for the NANDA ecosystem</td>
+<td>字幕作 "nandaack.mmedia.mmit.edu",應為 nandahack.media.mit.edu(待確認)</td>
+</tr>
+<tr>
+<td>Duth(印度)</td>
+<td>印度國家級 agent 計畫,名稱意為「messenger」,涵蓋 15 億 agent</td>
+<td>India's nation-scale agent program; the name means "messenger", covering 1.5 billion agents</td>
+<td>拼法待確認(可能為 Doot / दूत)</td>
+</tr>
+<tr>
+<td>Boston agent initiative</td>
+<td>與波士頓市合作的 civic agent 計畫</td>
+<td>Civic-agent initiative with the City of Boston</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Romesh Rascar</td>
+<td>Ramesh Raskar</td>
+</tr>
+<tr>
+<td>bizarre era</td>
+<td>bazaar era</td>
+</tr>
+<tr>
+<td>Nanda / project Nanda</td>
+<td>NANDA / Project NANDA</td>
+</tr>
+<tr>
+<td>Nandatown</td>
+<td>NANDA Town</td>
+</tr>
+<tr>
+<td>Asians / Asian(多處)</td>
+<td>agents / agent</td>
+</tr>
+<tr>
+<td>at a stationation</td>
+<td>attestation</td>
+</tr>
+<tr>
+<td>wall gardens</td>
+<td>walled gardens</td>
+</tr>
+<tr>
+<td>open hive</td>
+<td>open web</td>
+</tr>
+<tr>
+<td>coorbidity</td>
+<td>comorbidity</td>
+</tr>
+<tr>
+<td>birectional</td>
+<td>bidirectional</td>
+</tr>
+<tr>
+<td>openclaw</td>
+<td>OpenClaw</td>
+</tr>
+<tr>
+<td>alexnet</td>
+<td>AlexNet</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>他結尾說 "come join us at nanda.edu",這不是有效網域,實際入口待確認(可能是 projectnanda.org 或 nanda.media.mit.edu)。/ He closed with "nanda.edu", which is not a valid domain — the actual entry point needs confirming.</li>
+<li>NandaHack 網址字幕作 "nandaack.mmedia.mmit.edu",推測為 nandahack.media.mit.edu,需確認。/ The NandaHack URL was garbled in the captions.</li>
+<li>印度計畫名稱字幕作 "Duth",意為 messenger;正確拼法待確認。/ The India program was transcribed as "Duth"; correct spelling unconfirmed.</li>
+<li>「1.5 billion agents」是規劃涵蓋人口對應的 agent 數還是已部署數量,講者未說明。/ Whether the 1.5 billion figure is deployed agents or target population coverage was not specified.</li>
+<li>NANDA 縮寫他現場說 "AI agents in decentralized architecture",與公開資料的 "Networked AI Agents in Decentralized Architecture" 略有出入。/ His on-stage gloss of the acronym differs slightly from the published expansion.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/ramesh-raskar--the-agentic-web-and-the-bazaar-era-of-ai.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

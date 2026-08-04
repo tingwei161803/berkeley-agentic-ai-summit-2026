@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>The Open Agentic Stack: Building the Future of AI Systems with Open Source, Open Standards and Composability · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="An agent is not a model, it&#x27;s a stack — model, harness, tools, environment, guardrails, the RL systems that improve it, the evaluation infrastructure that measures it, and the compute it all runs o…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/workshop--the-open-agentic-stack.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Open Agentic Stack: Building the Future of AI Systems with Open Source, Open Standards and Composability · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="An agent is not a model, it&#x27;s a stack — model, harness, tools, environment, guardrails, the RL systems that improve it, the evaluation infrastructure that measures it, and the compute it all runs o…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/workshop--the-open-agentic-stack.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-compass" data-talk="workshop--the-open-agentic-stack">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="The Open Agentic Stack: Building the Future of AI Systems with Open Source, Open Standards and Composability" data-title-zh="開放的 Agentic Stack:用開源、開放標準與可組合性打造 AI 系統的未來">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--workshop"><span class="lang-en">Workshop</span><span class="lang-zh">工作坊</span></span>
+          <span class="dialog__session">Session 3: Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">The Open Agentic Stack: Building the Future of AI Systems with Open Source, Open Standards and Composability</span><span class="lang-zh">開放的 Agentic Stack:用開源、開放標準與可組合性打造 AI 系統的未來</span></h1>
+        <p class="dialog__speaker"><strong>Matt White, Ben Burtenshaw, Daniel Han Chen, Shang Yang, Romil Bhardwaj</strong> — Matt White (Former Global CTO of AI, Linux Foundation; CTO, PyTorch Foundation); Ben Burtenshaw (Community Engineer, Hugging Face); Daniel-Han Chen (Co-Founder, Unsloth); Shang Yang (RadixArk); Romil Bhardwaj (Co-Founder and CPO, SkyPilot)</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 02:57:06–03:56:20 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=10626s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:57:06</span><span class="lang-zh">從 02:57:06 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">An agent is not a model, it&#x27;s a stack — model, harness, tools, environment, guardrails, the RL systems that improve it, the evaluation infrastructure that measures it, and the compute it all runs on. Close and vertically control any one layer and the whole ecosystem becomes less portable, less competitive, and more fragile. Four talks work through four of those layers: environments (OpenEnv), models (Unsloth), reinforcement learning (Miles), and compute (SkyPilot).</span><span class="lang-zh">agent 不是一個模型,而是一整個 stack——模型、harness、工具、環境、guardrail、RL 系統、評估基礎設施、算力,任何一層被垂直封閉,整個生態系就變得不可攜、缺乏競爭且更脆弱;這場 workshop 用四場子講題,分別攤開環境(OpenEnv)、模型(Unsloth)、RL(Miles)與算力(SkyPilot)這四層該怎麼保持開放。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>開場:Matt White — 為什麼 agent 時代的開放性更重要(約 02:58:30–03:04:45)</h3>
+<p>他先自我介紹:Linux Foundation 前 AI 全球 CTO,曾任 <strong>PyTorch Foundation</strong> 執行董事與 CTO,現為哥倫比亞大學訪問學者。這一段沒有投影片,他明說「就是我在碎念」,但這是整場的立論基礎。</p>
+<p><strong>論點一:能力躍升的同時,開放性正承受真實壓力。</strong> 模型現在能跨長脈絡推理、寫並執行程式碼、使用工具與操作軟體、協調日益複雜的工作流,能解複雜數學證明、生成龐大程式庫、驅動會在<strong>生產網路上採取行動、產生真實世界影響</strong>的系統。而恰恰在這個時刻,「<strong>限制甚至禁止 open-weight 模型的取用</strong>」已不再是假設性議題——它正在華府與各地被積極辯論;同時也有透過<strong>晶片、算力、蒸餾、安全測試與模型釋出流程</strong>來控制前沿的提案。</p>
+<p>他明確承認:<strong>這些安全、資安與國安顧慮是真實且正當的,值得技術上嚴謹的回應。</strong> 但另一邊的風險也必須說清楚:<strong>粗糙的限制會把能力、基礎設施與決策權集中到極少數機構手上</strong>,把 AI 從一個可廣泛取得的通用技術,變成「社會其餘部分只被允許向少數幾間實驗室<strong>租用</strong>」的東西。「That cannot be the foundation on which we build the future.」</p>
+<p><strong>論點二:開放是競爭與安全的來源。</strong> 開放帶來競爭,讓研究者能檢視系統、開發者能改造、學生能學習、企業能維持對自身資料與 stack 的主權、國家能建立不永久依賴單一供應商的 AI 能力。開放同時是<strong>安全的必要成分</strong>:可重現的評估、透明的介面、獨立的審查、共享的安全工具,以及發現並修正問題的能力。</p>
+<p>但他也劃清界線:<strong>開放不等於無治理</strong>,不等於粗心、不安全或放任。開放意味著系統<strong>可被檢視、評估、改造與改進</strong>;介面可互通、實作可被挑戰,而且<strong>沒有任何單一組織控制所有層級或決定誰能參與</strong>。</p>
+<p><strong>論點三:agent 讓這件事更關鍵,因為 agent 是一個 stack。</strong> 一個 agent 包含模型、harness、它能呼叫的工具、它行動的環境、guardrail、讓它變好的 RL 系統、量測它的評估基礎設施,以及支撐一切的算力;它可能依賴 API、憑證、sandbox、記憶、推論系統、編排框架與多種專用硬體,並在完成<strong>單一任務</strong>的過程中跨越組織、雲端與地理邊界。<strong>任一層被封閉並垂直控制,整個生態系就變得不可攜、缺乏競爭、更脆弱。</strong></p>
+<p>所以:<strong>光有開放模型不夠</strong>。還需要開放的<strong>環境</strong>(agentic 任務才能被重現與分享)、開放的 <strong>RL 框架</strong>(更多人才能改進模型與 agent)、開放的<strong>算力層</strong>(工作負載不被單一雲或算力供應商綁架),以及開放的<strong>標準</strong>(讓所有元件無需向中央平台請求許可就能協同)。</p>
+<p><strong>Open agentic stack 不是一個專案、一個框架或一個模型,而是一個由開源軟體、開放標準與可組合元件構成的共享架構。</strong> 這場 workshop 就沿著四個基礎層走:<strong>環境、模型、強化學習、算力</strong>。四場講題各自處理不同的技術挑戰,但共享同一個原則:<strong>AI 的未來應該是模組化而非單體、可互通而非受困、開放參與而非許可制。</strong> 他強調這不只是哲學偏好,而是健康 AI 生態系在<strong>架構、經濟與戰略上的要求</strong>。</p>
+<h3>子講題一:Ben Burtenshaw(Hugging Face)— Open Source Agentic RL Environment(約 03:05:45–03:18:20)</h3>
+<p><strong>主張</strong>:<strong>RL 環境是民主化 AI 最好的方式</strong>——因為環境「就只是應用程式」,是我們每天都在寫的那種東西,所以人人都能參與。</p>
+<p><strong>什麼是 RL 環境。</strong> 最簡單的說法:一個 actor / agent 在其中行動的世界。經典例子是西洋棋——棋盤是世界、棋子是狀態、規則是可採取的行動、分數是 reward,而 RL 就是拿這個 reward 去更新 agent。放大到現實:<strong>軟體工程</strong>可以定義成任務在 GitHub issue、工作在 pull request、分數是測試套件與 CI 的結果——這就是 <strong>SWE-smith</strong> 這類論文建構軟體工程環境的方式。把 PR 裡的程式碼拿掉、讓 agent 自己生成、再用測試套件給 reward,你就有了一個能訓練軟體工程 agent 的環境。同樣的原型可以搬到 email triage、專案管理等任務——只要在該環境中定義出<strong>任務、reward 與狀態</strong>,再把它做成應用程式。</p>
+<p><strong>生態系:「capability cycle」。</strong> 他把老派機器學習的 MATTER cycle(model, annotate, train, test, evaluate, revise)更新成能力循環:<strong>discover → benchmark → represent → train</strong>。</p>
+<ol>
+<li>用 harness 或 prompt <strong>誘出(elicit)</strong> 一個能力,看到模型「做得到,只是不太可靠」。</li>
+<li>用另一套 evaluation harness <strong>量測</strong>這個能力的頻率與可靠度,社群可以在上面迭代。</li>
+<li>把它<strong>表徵</strong>成資料集,最終成為環境——<strong>這一步需要領域專業</strong>。像 <strong>Mercor</strong> 這類公司會去接觸並雇用各領域專家,圍繞某個能力打造 RL 環境,部分基於 benchmark,但理想上兩者之間<strong>不能有洩漏</strong>。</li>
+<li>交給 trainer 訓練——又是另一段軟體 stack、另一個社群。</li>
+</ol>
+<p>結論:<strong>環境正是把能力從領域專家搬進模型的載體</strong>;能力進了權重之後,大家就往下一個能力前進。既然這麼多社群都在環境上交會,<strong>這一層就非開放不可</strong>——「想像一下如果資料集是封閉格式,那會有多可怕」。</p>
+<p><strong>現況的問題:環境極度分散。</strong> 你只能去論文與 GitHub 找。最近的 <strong>Kimi K3</strong> 論文附帶了<strong>數千個</strong>環境,<strong>MiniMax</strong> 論文他記得有<strong>一萬個</strong>,連第一篇 <strong>DeepSeek</strong> 論文也有約<strong>一千個</strong>。而這些實作方式各異、分享方式各異,很多是<strong>被販售的</strong>,不像 open-weight 模型那樣唾手可得。他形容這很像 2017 年當 MLE 的日子:在 GitHub 找到實作、再去 Google Drive 找權重,什麼都沒有像今天的 model checkpoint 那樣可暴露、可互通。</p>
+<p><strong>訓練時問題會複合。</strong> 訓練流程是一個框架(如 <strong>TRL</strong> 或 <strong>Unsloth</strong>)根據模型的行為更新模型,而中間需要一個 <strong>agent harness</strong> 去執行任務、與環境互動、使用環境裡的工具,然後才更新模型。<strong>每一條邊都是一個需要被介面化的層</strong>——harness 不能寫死它預期的環境定義,而且還得同時支援多種 harness(他點名 Codex、Claude Code 等)。</p>
+<p><strong>OpenEnv 的解法。</strong></p>
+<ul>
+<li><strong>環境 hub</strong>:Hugging Face 上目前有約 <strong>4,000 個</strong>環境,以標準格式提供,可接進大多數主流訓練框架。其他 hub 還有 <strong>Prime Intellect</strong>,更多正在出現;他們正與其他組織<strong>共享規格</strong>,讓別人建 hub 時也能用同一套 spec 下載與分享環境。</li>
+<li><strong>CLI 體驗像 Docker</strong>:<code>openenv init</code> 給你一個 hello-world 環境的骨架(只回傳一個泛用分數),接著你只要寫自己的業務邏輯——或請 coding agent 幫你生成。也可以從 <strong>verifiers</strong> 之類的函式庫匯入環境,然後在 hub 上 <strong>push / pull / fork</strong>。</li>
+<li><strong>下一步是 discover 與 validate</strong>:目前找到適合自己用例的環境很困難,能在 hub 上搜尋之後就能撈到一堆社群環境;但這帶來新問題——<strong>哪個環境比較好?哪個真的對我的用例有幫助?</strong> 於是有了新的 <code>validate</code> 指令:確認 spec 有效,並且<strong>訓一個小模型看它是否在給定 benchmark 上帶來提升</strong>。這兩個指令合起來,就構成 post-training 中整合環境的<strong>自主迴路</strong>。</li>
+</ul>
+<p><strong>怎麼用一個 RL 環境?</strong> 三條路,由易到難:</p>
+<ol>
+<li><strong>Evaluation</strong>(他建議大多數人從這裡開始):把典型工作負載表徵成環境,拿模型(權重或純 API)跑一組任務加 reward function,得到一個總分。</li>
+<li><strong>Reinforcement learning</strong>(核心用法):拿一個 policy 在環境中 rollout 得到一組動作,對每次 rollout 算 reward,用 <strong>GRPO</strong> 之類的演算法取整組平均後更新權重,反覆迭代。</li>
+<li><strong>Distillation</strong>:這時<strong>不能從字串/token 蒸餾,需要 log probabilities</strong>。取一個 student 與一個 teacher,讓 student 在環境中執行任務、取其 log probs;再讓 teacher 在<strong>同一批 token 上</strong> rollout、取其 log probs;用兩者的差(<strong>reverse KL</strong>)更新 student。變體包括 <strong>self-distillation</strong>(拿 student 最好的一次跟平均比),或給 student <strong>特權資訊 / 提示</strong>——例如在 PR 情境裡,一開始就把真正的解法給 agent,再用它「差的一次」與「好的一次」之差來更新權重。</li>
+</ol>
+<p><strong>他認為這件事會怎麼成功:leaderboard。</strong> 環境目前活在一個「影子領域」——在圍繞模型發布的社群討論裡幾乎不被提及。他相信只要大家開始自己建環境、試環境,再把它們放上 leaderboard、找出哪些真的對模型成功有貢獻,就會有更多人參與。</p>
+<h3>子講題二:Daniel Han Chen(Unsloth)— Making Open Models Not Suck(約 03:19:38–03:35:35)</h3>
+<p><strong>Unsloth 是誰。</strong> Hugging Face 上最大的組織之一,約 <strong>4 億次</strong>累計下載(他說這數字已過時),是全世界第三大的模型散布者,大模型小模型都發。但他們<strong>不只散布模型,還修 bug</strong>:與全球各大實驗室與硬體供應商合作,在模型送到你手上<strong>之前</strong>先修好問題。他點名 OpenAI 的 gpt-oss、Llama、Gemma、Mistral 都曾有問題。「如果你在筆電上跑開源模型,它八成被我們以某種方式修過。」</p>
+<p><strong>量化的現況。</strong> <strong>Kimi K3</strong> 幾天前(週一)發布,是任何人都能下載的最強 open-weight 模型,原始大小 <strong>1.5 TB</strong>;他們把它量化到 <strong>1 bit</strong>,降到約 <strong>600 GB</strong>。難點在於 <strong>Kimi K3 原生就是 4-bit</strong>,從 4-bit 再壓到 1-bit 省下的空間有限;但他們的結果是<strong>保留 76–78% 的準確率,體積減少 82%</strong>——「把模型縮小 82%,不會讓它笨 82%,只會笨 16% 左右」。另外 <strong>DeepSeek V4 Flash</strong> 前一天(0731)在一個奇怪的時區突然發布,他們也量化了,現在只需 <strong>90 GB</strong> 的 VRAM 或 RAM 就能跑;他評價它是<strong>同尺寸中最好的模型</strong>——Kimi K3 更強但體積巨大,V4 Flash 則真的能塞進你的本機。</p>
+<p><strong>METR 曲線與「推理發明前的平行線」。</strong> 他展示 METR 的任務時長圖:模型現在能完成人類要花 <strong>16 小時</strong>的任務(50% 成功率;80% 成功率下約 6 小時)。他自己把 <strong>Mythos / Fable</strong> 標成紅線,也標了 <strong>GPT-5.6 Sol</strong>——這是<strong>移除作弊案例後</strong>的數字;若把作弊案例算進去,GPT-5.6 Sol 是 <strong>270 小時</strong>,但那不是好例子,移除後約 16 小時。</p>
+<p>他的核心觀察是曲線上那段<strong>水平區</strong>:<strong>2023 到 2024 年左右其實有一段近似停滯</strong>(GPT-4 到 GPT-4o 進步不大),原因是<strong>強化學習與推理當時還沒被發明</strong>。如果分開擬合「推理發明前」與「推理發明後」兩段趨勢:
+- <strong>灰線(推理前)</strong>:能力<strong>每 7 個月翻倍</strong>;若 OpenAI 沒推出 o1-preview、沒告訴大家可以做推理,<strong>模型現在早就平原化了</strong>。
+- <strong>綠線(加入 RL 與推理後)</strong>:翻倍時間縮短到 <strong>3.5 個月</strong>——「Opus 5 幾天前發布,再等 3.5 個月就會有比它更好的」。</p>
+<p>但他強調前提是<strong>趨勢會延續</strong>:根本問題是綠線會不會一直往上,還是我們會退回灰線、AI 放慢然後得再發明新東西。「這是我們有生之年會看到答案的問題——<strong>你只要等 3.5 到 7 個月就知道了</strong>。」</p>
+<p><strong>開源模型追上封閉模型了嗎?</strong> 他先引 <strong>Artificial Analysis</strong> 的開源 vs 閉源曲線:開放模型已經非常接近閉源。但他說自己<strong>最愛的單一 benchmark 是 WeirdML</strong>(Google 搜 "weird ML"),理由是<strong>很難被 game</strong>。依 WeirdML:<strong>Fable 5 表現很好但極度昂貴</strong>;就成本與準確率的平衡而言他推薦 <strong>Opus 5 High</strong>;開放模型裡 <strong>Kimi K3 非常強大</strong>,也在榜上。</p>
+<p>他接著把「閉源分數減開放分數」畫成一條<strong>差距曲線</strong>:約一年半前有一段他稱為 <strong>open source drought(開源乾旱)</strong> 的落差,對應 o1-preview 之後開放模型跟不上的時期;而 <strong>DeepSeek R1 公開了 GRPO 怎麼做</strong>之後,開放模型重回趨勢線。他的估計:<strong>若 DeepSeek 沒有公開 GRPO,開放模型會落後閉源 16 個月;現在只落後約 2 個月。</strong> 有一篇 blog post 外推到 <strong>2026 年 12 月</strong>會出現與閉源同級的開放模型——但這都是趨勢外推,「誰知道呢,等幾個月就知道了」。</p>
+<p><strong>token 價格暴跌是合理的嗎?</strong> 他注意到 OpenAI 幾天前把 <strong>GPT Luna 降價 80%</strong>,聽起來驚人,但他認為<strong>其實不奇怪</strong>,並在演講前實際算了一遍:</p>
+<ul>
+<li>依 <strong>SemiAnalysis</strong> 的 InferenceX 對 vLLM / SGLang 等推論引擎在 NVIDIA 與 AMD GPU 上的 benchmark:<strong>DeepSeek V4 Pro</strong> 在單張 <strong>GB300</strong> 上約 <strong>13k tokens/s</strong> 吞吐 → <strong>一小時 4,700 萬 token</strong>。</li>
+<li>GB300 的價格約 <strong>每 GPU 每小時 5 美元</strong>。</li>
+<li>兩者相除:<strong>DeepSeek V4 Pro 的地板價約 11 美分 / 百萬 token</strong>。而 DeepSeek 實際收 <strong>44 美分 / 百萬輸入 token、87 美分 / 百萬輸出 token</strong>——<strong>所以並不是在燒錢</strong>。</li>
+<li>同理,假設 GPT-5.6 Luna 與 DeepSeek V4 同尺寸(他明說「很可能不是」),OpenAI 降到那個價位<strong>仍有約 1 美元 / 百萬輸出 token 的空間</strong>。</li>
+<li>對照組:<strong>Kimi K3</strong> 是新架構、尚未充分最佳化,依 SemiAnalysis 約 <strong>5k tokens/s per GPU</strong>(比 DeepSeek 慢約 2.6 倍),地板價約 <strong>30 美分 / 百萬 token</strong>;而它實際收 <strong>15 美元 / 百萬輸出 token</strong>——也就是 Moonshot 與其他推論供應商在你的 API 費用上賺了約 <strong>14.17 美元</strong>。「他們如果想降,可以一路降到 30 美分。」結論:<strong>這些模型的價格仍然偏高,DeepSeek 是唯一接近地板價收費的。</strong></li>
+</ul>
+<p><strong>另一條路:在本機跑。</strong> 他也喜歡看 <strong>Arena</strong> 的 Pareto efficiency 圖(他說自己不太看 Arena 分數,但這張圖有用):很多開源模型都在 Pareto 前緣上。以 <strong>web development</strong>(HTML/前端)為例,<strong>Opus 5 Max 目前最好,Kimi K3 緊追在後</strong>;<strong>GLM 5.2</strong> 等模型也在圖上。而如果你不想付 API 費用,可以在本機跑——成本降到只剩電費與一些前期投入。</p>
+<p>這正是 Unsloth 在做的事:用 <strong>dynamic quantization</strong> 把模型壓到極小的 bit 數。<strong>GLM 5.2 的 1-bit 版</strong>是個好例子——一次 prompt(沒有讓它改 bug、修 bug)就表現得非常好,對比的還是全精度的閉源模型。他們也發布 <strong>perplexity</strong> 與 <strong>KL divergence</strong> 的 benchmark 佐證 1-bit 可用。他們的目標是繼續往下壓:Kimi 現在 600 GB「大概還塞不進你的電腦」,他們想做到<strong>甚至低於 1 bit</strong>,例如把 Kimi 壓到 250 GB。</p>
+<p><strong>最後一個重點:ARC-AGI 的 harness 設定。</strong> 幾天前 OpenAI 指出 <strong>ARC-AGI benchmark 對 GPT 其實不太公平</strong>,原因是評測用了 <strong>175k token 的 rolling truncation</strong>,而且<strong>沒有啟用 compaction、沒有啟用 preserve thinking</strong>。他的結論很直接:<strong>只要打開這兩個 flag,OpenAI 模型的準確率就能一路提升到 40%——你什麼都不用做。</strong>(他在此因時間不足跳過剩下的投影片。)</p>
+<h3>子講題三:Shang Yang(RadixArk)— Miles: An Intro to Enterprise Facing RL with Miles(約 03:36:48–03:45:35)</h3>
+<p>講者自我介紹:RadixArk 的 research resident,同時是 MIT 博士生,代表團隊介紹 <strong>Miles</strong>。</p>
+<p><strong>Miles 是什麼</strong>:RadixArk 開發的<strong>開源 RL 引擎</strong>,面向前沿模型的生產級強化學習,主打<strong>快速與穩定</strong>。定位是「<strong>穩定、高效、可重現的大規模 RL 系統</strong>」——讓你用最小的力氣,就能在現代語言模型上、搭配各種環境與 reward 設計跑起 RL 訓練。</p>
+<p><strong>三層架構:</strong></p>
+<ol>
+<li><strong>Rollout 層</strong>:以 <strong>SGLang</strong> 作為 rollout 引擎,專為高吞吐生成最佳化,且與當今的 agentic 系統、agentic 環境與 agentic infra 高度相容。</li>
+<li><strong>編排層(中間)</strong>:把 rollout 引擎與後端訓練系統組織成一個整體,讓系統高效運轉。</li>
+<li><strong>訓練層</strong>:支援 <strong>Megatron</strong> 與 <strong>FSDP</strong> 等不同訓練引擎,也可在自己的算力上自訂訓練引擎。</li>
+</ol>
+<p><strong>資料流</strong>:rollout 引擎與外部環境或 agent 框架互動產生 trajectory(SGLang 提供生成層,環境本身可依客戶需求高度客製)→ 中間層把 trajectory 轉成 reward 與 loss 等訓練訊號 → Megatron / FSDP 做 forward/backward、算 loss、更新權重 → 權重同步回推論引擎,整條 pipeline 循環運轉。</p>
+<p><strong>為什麼用 SGLang 當 rollout 後端:</strong>
+- 與 RL 工作負載<strong>共同演化</strong>,包含 partial rollout 支援與專用的 rollout 控制,容易針對特定工作負載定制。
+- <strong>router 設計效能高</strong>:精心設計的快取與負載平衡以支撐高吞吐生成。
+- <strong>原生支援與訓練引擎的非同步生成</strong>——這是當代 RL 演算法的關鍵特性。
+- 迭代快,且有許多最佳化,例如與 Miles 搭配的 <strong>speculative decoding</strong>,可在 RL 的 rollout 階段使用。</p>
+<p><strong>Miles 如何改變 RL 開發流程:</strong>
+- <strong>可客製</strong>:用可插拔的 function pass 支援不同工作負載,自定 RL 工作負載、reward function 與更新方法都很容易。
+- <strong>模組化且非侵入式</strong>:更換訓練後端(FSDP / Megatron)很容易,未來會支援更多後端。</p>
+<p><strong>系統設計細節:</strong>
+- <strong>Multi-agentic rollout</strong>;特別支援 <strong>token-in-token-out(TITO)</strong>——同一段 multi-turn 生成不需要反覆 tokenize / detokenize,省下大量成本、也讓推論更穩定。
+- <strong>R3(routing replay)</strong>:訓練 MoE 模型時,同一個請求在不同次執行可能被路由到<strong>不同的 expert</strong>;R3 確保這件事<strong>完全可重現</strong>。
+- <strong>低精度</strong>:端到端 <strong>MXFP8</strong> 支援,以及 rollout 階段的 <strong>per-token NVFP4 量化</strong>,可大幅降低延遲、提升吞吐——都已在他們最新的 blog 以真實訓練工作負載驗證。
+- <strong>LoRA 支援</strong>,供資源受限情境下用較少 GPU 訓練大模型。</p>
+<p><strong>支援矩陣與實績:</strong>
+- <strong>Day-zero 支援</strong>最新模型:<strong>Kimi K3</strong>、Thinking Machines Lab 的 Ling(逐字稿作 "inkling",待確認)、<strong>DeepSeek V4</strong>、<strong>Nemotron Ultra</strong> 等。
+- 廣泛的精度與硬體支援;fine-tuning recipe 不只 SFT / RL,也支援 <strong>on-policy distillation</strong>。
+- 已在 <strong>超過 10,000 張 GPU</strong> 的 RL 訓練工作負載上驗證。以 <strong>Kimi K2.6</strong> 為例,生成吞吐加速到 <strong>每 GPU 每分鐘 12.5k output tokens</strong>。
+- 穩定性最佳化:R3、TITO,以及<strong>精度對齊訓練</strong>(降低 training–inference mismatch);另有<strong>容錯恢復</strong>,並支援 <strong>Ray on Kubernetes、Slurm、bare metal</strong> 等叢集後端。</p>
+<p><strong>近期成果:</strong>
+- <strong>Kimi K3(近 3 兆參數)day-zero 支援</strong>,並用 Miles 在數學題目上做 fine-tuning,準確率從 40% 左右提升到 <strong>76%</strong>。
+- <strong>Ling(Thinking Machines Lab,兆級參數)</strong>:做了全參數 fine-tuning 與 LoRA fine-tuning,並最佳化 <strong>LoRA adapter 同步</strong>(把 LoRA rank merge 進 SGLang 推論引擎),把時間從<strong>近 50 秒降到不到 3 秒</strong>。
+- 一篇<strong>混合精度訓練</strong>的近期 blog:驗證用 MXFP8 或 NVFP4 等不同精度選擇,能在<strong>維持模型準確率與訓練穩定性</strong>的同時,大幅加速 rollout 與推論。</p>
+<h3>子講題四:Romil Bhardwaj(SkyPilot)— AI Needs an Open Compute Layer(約 03:46:13–03:55:58)</h3>
+<p><strong>論點</strong>:AI 需要一個<strong>開放的算力層</strong>——具體來說,是一個<strong>坐在工作負載與實際 GPU 之間</strong>的東西。</p>
+<p><strong>為什麼建 AI infra 這麼難?他用 OpenAI 當例子</strong>:2016 年與 Azure 簽下 GPU 獨家供應協議;2024 年又與 Oracle 簽了 <strong>100 億美元</strong>的合約換更多算力;僅僅一年後又與 CoreWeave 簽了 <strong>110 億美元</strong>。而即使如此仍不夠——Sam Altman 還在推特上喊「我們需要更多 GPU,你要是能弄到就打給我們」。他的推論很直接:<strong>如果地球上資金最雄厚的公司都拿不到足夠的 GPU、也拿不到單一叢集裡的量,那你大概也拿不到。GPU 短缺是非常真實的。</strong></p>
+<p><strong>典型 AI 組織的算力現況</strong>:AI 團隊手上有一些 <strong>NeoCloud 保留量</strong>(hyperscaler 沒容量時簽的 2–3 年合約);又加了一些 hyperscaler 的 <strong>on-demand</strong> 實例補容量;因法規或想把資料留在自家而又有一些 <strong>on-prem</strong> 叢集;客戶在歐洲所以還得在歐洲再開一個叢集;最後為了跑環境與 sandbox,還需要一大票 CPU,於是又多維護一個 CPU 叢集。<strong>每一個決策在當下都合理,但結果是你現在得管理一大堆叢集。</strong></p>
+<p><strong>RL 讓情況更糟——它把問題變成排程問題。</strong> 一次 RL 訓練整體是<strong>一個 job</strong>,但由許多子元件構成,且資源需求截然不同:<strong>trainer</strong> 需要大量 VRAM、需要很猛的 GPU;<strong>rollout server</strong>(產生 trajectory 的那個)不需要那麼多 VRAM,但需要<strong>很多張</strong>才能大量生成;而若做程式碼生成,<strong>sandbox</strong> 需要大量並行 CPU 來執行所有 trajectory,而且要求<strong>很快的啟動速度</strong>。</p>
+<p><strong>為什麼不直接用現成方案?</strong>
+- <strong>Slurm</strong>:二十年前來自 HPC 世界,他認為是最好的進階排程與 quota / 優先權管理系統之一。但<strong>不支援容器形式的隔離</strong>(pyroot 之類可以硬接上去,但本來就不是為此設計),而且從來不是為 serving 而生——它是 batch job 導向。
+- <strong>Kubernetes</strong>:約十年前出現,微服務起家,很有彈性、為雲而生。但<strong>學習曲線極陡</strong>(「把 Kubernetes 交給一個研究員,他大概只能去問 agent 怎麼用」),而且缺少 AI 需要的原語,尤其是 <strong>gang scheduling</strong>——同樣得靠 Volcano 之類的排程器硬接。</p>
+<p>更關鍵的是:<strong>兩者都是單一叢集管理器</strong>,都不解決「我有 10 個叢集在跑,要怎麼管」的問題。<strong>所以真正缺的不是更好的排程器,而是管理這些排程器與平台的東西。</strong></p>
+<p><strong>目標不是取代 Kubernetes 或 Slurm</strong>——它們在各自的領域很好——而是<strong>橋接</strong>:一邊是訓練、serving、sandbox 這些工作負載,一邊是散落在 Kubernetes、Slurm 等處的破碎算力。理想的<strong>開放統一算力層</strong>要能最佳化可得性、決定 job 跑在哪裡最好、處理執行,而且<strong>讓工作負載不必知道底下是什麼</strong>。</p>
+<p><strong>SkyPilot 就是在做這件事</strong>:完全開源、讓你在任何有算力的地方使用 AI 算力,核心理念是 <strong>bring your own framework</strong>——Ray、PyTorch、OpenEnv、Unsloth,你自己的框架都行;你只要提交「我需要 8 張 B300 跑這個」,SkyPilot 就負責編排:掃過你的 Slurm 叢集、Kubernetes 叢集甚至雲端 VM,安排資源、跑 job、把 log 與結果交回來。專案起源於幾棟樓外的 <strong>Soda Hall</strong>,根植於 <strong>Sky Computing Lab</strong> 的研究,社群活躍,也被目前最大的一些公司使用。</p>
+<p><strong>實際長什麼樣:</strong>
+- 最簡單的取得資源方式就是 <code>sky launch</code>,指定要跑在哪個 infra、需要什麼 GPU。<strong>從 Kubernetes 換到 AWS 只是改一個 flag</strong>;換 GPU 型號也是改一個 flag(你的應用不需要知道底下跑什麼)。
+- 更複雜的情境用 <strong>job groups</strong> 這個宣告式抽象:例如「我有一個 rollout server 需要這些資源、跑這些指令;我要開一千個 sandbox 跑東西;rollout server 跑 H100,trainer 跑 B200」,交給 SkyPilot 編排整個工作負載。過程中還附帶 <strong>service discovery</strong> 與<strong>生命週期管理</strong>——<strong>其中一個 job 掛掉不代表整輪要失敗,它會自動重啟那個 job</strong>。</p>
+<p><strong>Serving 同樣受益</strong>:你獲得<strong>跨所有叢集的容量</strong>——不必在單一叢集起一個 KServe 實例,而是讓 SkyPilot 跨叢集跑推論;發生故障時可<strong>無縫把 replica 搬到還有容量的區域</strong>。而把所有工作負載都走同一層之後,還能做一件有意思的事:<strong>在同一批算力上同時跑推論與訓練</strong>——推論請求暴增時,SkyPilot 可以<strong>動態把資源從訓練挪給推論</strong>(先 preempt 訓練 job,由你的 checkpointing 邏輯保住進度);等尖峰過去再自動縮回推論、繼續訓練。</p>
+<p><strong>最後他強調 bring-your-own</strong>:你不是把信用卡交給 SkyPilot 去買算力,而是<strong>自帶算力、自帶資料,一切跑在你自己的環境裡</strong>。結語呼應開場:我們不需要重新發明或取代 Kubernetes 與 Slurm,<strong>需要的是一個統一層,橋接工作負載與你手上那一堆叢集</strong>。</p></section>
+        <section class="lang-en"><h3>Opening: Matt White — why openness matters more in the agent era (~02:58:30–03:04:45)</h3>
+<p>Former Global CTO of AI at the Linux Foundation, previously executive director and CTO of the <strong>PyTorch Foundation</strong>, now a visiting scholar at Columbia. No slides — "it's just me rambling" — but this is the frame for everything after.</p>
+<p><strong>One: capability is surging exactly as openness comes under real pressure.</strong> Models reason across long contexts, write and execute code, use tools and operate software, coordinate increasingly complex workflows, solve complex mathematical proofs, generate extensive codebases, and power systems <strong>that take actions in production networks with real-world impact</strong>. And at precisely this moment, restricting or even banning access to open-weight models <strong>is no longer hypothetical</strong> — it's being actively debated in Washington and elsewhere, alongside proposals to control the frontier through chips, compute, distillation, safety testing, and model release processes.</p>
+<p>He concedes the point directly: <strong>the safety, security, and national security concerns behind those discussions are real and legitimate, and deserve serious technically informed responses.</strong> But the risk on the other side must be stated with equal clarity: <strong>blunt restrictions concentrate capability, infrastructure, and decision-making into very few institutions</strong>, turning AI from a broadly accessible general-purpose technology into something the rest of society is only permitted to <em>rent</em> from a few labs. "That cannot be the foundation on which we build the future."</p>
+<p><strong>Two: openness is both how you get competition and part of how you get safety.</strong> It's how researchers inspect systems, developers adapt them, students learn, enterprises keep sovereignty over their data and stack, and countries build AI capability without permanent dependence on a single vendor. It enables reproducible evaluation, transparent interfaces, independent scrutiny, shared security tooling, and the ability to find and fix problems. But <strong>openness does not mean ungoverned</strong> — not careless, unsafe, or a free-for-all. It means systems can be inspected, evaluated, adapted, and improved; interfaces are interoperable, implementations contestable, and <strong>no single organization controls every layer or decides who may participate.</strong></p>
+<p><strong>Three: agents raise the stakes because an agent is a stack.</strong> Model, harness, invocable tools, environment, guardrails, the RL systems through which it improves, the evaluation infrastructure that measures it, and the compute underneath. It may depend on APIs, credentials, sandboxes, memory, inference systems, orchestration frameworks, and multiple forms of specialized hardware — crossing organizational, cloud, and geographic boundaries <strong>while completing a single task</strong>. Close and vertically control any one layer and the ecosystem becomes less portable, less competitive, and more fragile.</p>
+<p>So <strong>open models alone are not enough</strong>. We also need open <strong>environments</strong> so agentic tasks can be reproduced and shared, open <strong>RL frameworks</strong> so more people can improve models and agents, open <strong>compute layers</strong> so workloads aren't captive to one cloud or vendor, and open <strong>standards</strong> so the components interoperate without permission from a central platform.</p>
+<p><strong>The open agentic stack is not one project, framework, or model — it's a shared architecture built from open source software, open standards, and composable components.</strong> The workshop walks four foundational layers: environments, models, reinforcement learning, compute. Different technical challenges, one shared principle: <strong>the future of AI should be modular rather than monolithic, interoperable rather than captive, and open to participation rather than controlled by permission</strong> — an architectural, economic, and strategic requirement, not just a philosophical preference.</p>
+<h3>Talk 1: Ben Burtenshaw (Hugging Face) — Open Source Agentic RL Environments (~03:05:45–03:18:20)</h3>
+<p><strong>Thesis</strong>: <strong>RL environments are the best way to democratize AI</strong>, mainly because they're easy to build — they're just applications, the kind of thing we write daily — so everyone can get involved.</p>
+<p><strong>What an RL environment is.</strong> The simplest framing: a world an agent acts within. Chess is the canonical case — the board is the world, the pieces are state, the rules are the actions, the score is the reward. Scale that up to <strong>software engineering</strong>: the task is a GitHub issue, the work is the pull request, the score is the test suite and CI. That's how papers like <strong>SWE-smith</strong> built software engineering environments. Strip the code out of the PR, have an agent generate it, use the test suite for reward, and you have an environment to train a software engineering agent. Carry that archetype to email triage, project management, and so on — find the task, the reward, and the state, and build them into applications.</p>
+<p><strong>The ecosystem: a capability cycle.</strong> He updates the old MATTER cycle (model, annotate, train, test, evaluate, revise) into <strong>discover → benchmark → represent → train</strong>. You <em>elicit</em> a capability with a harness or prompt and see the model can do a thing, maybe unreliably. You <em>evaluate</em> it with a separate evaluation harness that measures how reliable it is, and iterate on that as a community. You <em>represent</em> it, first as a dataset and eventually as an environment — <strong>this is where domain expertise enters</strong>; companies like <strong>Mercor</strong> go hire domain experts and build RL environments around a capability, partially based on the benchmark but ideally with no leakage between the two. Then the trainers come in — another software stack, another community.</p>
+<p>The upshot: <strong>environments are the means by which capabilities move from domain experts into models.</strong> Once a capability is in the weights, everyone moves to the next one. Because so many communities meet at the environment, <strong>that layer has to be open</strong> — "imagine if datasets were in a closed format; it would be a particularly horrible situation."</p>
+<p><strong>The current problem is fragmentation.</strong> Environments live in papers and on GitHub. The recent <strong>Kimi K3</strong> paper came with thousands of environments; the <strong>MiniMax</strong> paper had around ten thousand; even the first <strong>DeepSeek</strong> paper had roughly a thousand. All implemented differently, shared differently, and many of them <strong>sold</strong> rather than readily available the way open-weight models are. It reminds him of being an MLE in 2017: find the implementation on GitHub, then chase the weights down on Google Drive — nothing exposed and interoperable the way model checkpoints are today.</p>
+<p><strong>The problem compounds at training time.</strong> A training process is a framework (<strong>TRL</strong>, <strong>Unsloth</strong>) updating a model based on its actions, but in between you need an <strong>agent harness</strong> to perform the task, interact with the environment, and use its tools. <strong>Every edge there is a layer that needs an interface</strong> — a harness can't hardcode an expected environment definition, and you need to work with multiple harnesses (he names Codex, Claude Code, and others).</p>
+<p><strong>What OpenEnv does about it.</strong></p>
+<ul>
+<li><strong>Environment hubs</strong>: about <strong>4,000 environments</strong> on Hugging Face today, in a standard format you can plug into most major training frameworks. Others exist (<strong>Prime Intellect</strong>) with more coming; they're sharing their spec with other orgs so anyone building a hub can use the same format for downloading and sharing.</li>
+<li><strong>A Docker-like CLI</strong>: <code>openenv init</code> scaffolds a hello-world environment that just returns a generic score; from there you write the business logic yourself, or generate it with a coding agent. You can import environments from libraries like <strong>verifiers</strong>, and push, pull, and fork on the hub.</li>
+<li><strong>Coming next: discover and validate.</strong> Finding an environment for your use case is hard today; hub search would give you a range of community environments — which creates the next problem: <em>which one is better? which will actually help my use case?</em> Hence a new <code>validate</code> command that checks the spec is valid and <strong>trains a small model to see whether it lifts performance on a given benchmark</strong>. Together those two commands give an autonomous loop for integrating environments into post-training.</li>
+</ul>
+<p><strong>Three ways to use an environment</strong>, easiest first:</p>
+<ol>
+<li><strong>Evaluation</strong> — what he suggests most people start with. Represent a typical workload as an environment, run a model (weights or just an API) over a set of tasks with a reward function, get an aggregate score.</li>
+<li><strong>Reinforcement learning</strong> — the core use. Roll a policy out over the environment, compute rewards per rollout, use something like <strong>GRPO</strong> to take the group mean and update weights, iterate.</li>
+<li><strong>Distillation</strong> — here you <strong>can't distill from strings or tokens; you need log probabilities.</strong> Roll out the student in the environment, take its log probs; have the teacher roll out over the same tokens, take its log probs; update the student on the difference (<strong>reverse KL</strong>). Variants: <strong>self-distillation</strong> (best student example versus the average), or giving the student <strong>privileged information or a hint</strong> — in the PR setup, hand the agent the actual solution up front and update weights on the difference between its bad run and its good run.</li>
+</ol>
+<p><strong>How he expects this to work: leaderboards.</strong> Environments currently live in "a bit of a shadow realm," rarely discussed in the community around model releases. If people build and try their own environments, put them on leaderboards, and figure out which ones actually contribute to model success, more people will get involved.</p>
+<h3>Talk 2: Daniel Han Chen (Unsloth) — Making Open Models Not Suck (~03:19:38–03:35:35)</h3>
+<p><strong>Who Unsloth is.</strong> One of the largest organizations on Hugging Face, roughly <strong>400 million cumulative downloads</strong> (a number he says is already outdated), the third largest model distributor in the world, shipping both the largest and smallest models. But they don't just distribute — <strong>they fix bugs in open source models</strong>, collaborating with the major labs and hardware providers to fix issues <em>before</em> the model reaches you (he cites OpenAI's gpt-oss, Llama, Gemma, Mistral). "If you're using open source models on your laptop, they were most likely fixed by us in some way."</p>
+<p><strong>Quantization right now.</strong> <strong>Kimi K3</strong> shipped Monday — the best open-weight model anyone can download, <strong>1.5 TB</strong> as released. They quantized it to <strong>1 bit</strong>, bringing it to about <strong>600 GB</strong>. The hard part: <strong>Kimi K3 is natively 4-bit</strong>, so 4-bit → 1-bit doesn't save as much. Their result: <strong>76–78% of accuracy retained for an 82% size reduction</strong> — shrinking a model by 82% doesn't make it 82% dumber, only about 16%. Separately, <strong>DeepSeek V4 Flash</strong> dropped the previous day (0731) at an odd hour in an odd time zone; they quantized it too, and it now needs <strong>90 GB</strong> of VRAM or RAM. His verdict: <strong>the best model for its size</strong> — Kimi K3 is much better but enormous, while V4 Flash actually fits on your machine.</p>
+<p><strong>The METR curve and the pre-reasoning plateau.</strong> Models now complete tasks that take humans <strong>16 hours</strong> (at 50% probability; about 6 hours at 80%). He plotted <strong>Mythos / Fable</strong> as a red line and <strong>GPT-5.6 Sol</strong> — the latter <strong>with cheating examples removed</strong>. Including cheating cases, GPT-5.6 Sol reaches <strong>270 hours</strong>, which he says isn't a good example; removing them puts it around 16.</p>
+<p>His central observation is the flat stretch in the curve: <strong>roughly 2023–2024 was an approximate plateau</strong> (GPT-4 to GPT-4o showed little progress), because <strong>reinforcement learning and reasoning hadn't been invented yet</strong>. Fit two separate trends:
+- <strong>Gray line (pre-reasoning)</strong>: capability <strong>doubling every 7 months</strong>. Had OpenAI never shipped o1-preview and told everyone reasoning was possible, models <strong>would have plateaued by now</strong>.
+- <strong>Green line (with RL and reasoning)</strong>: doubling time shrinks to <strong>3.5 months</strong>. "Opus 5 came out a few days ago — wait 3.5 months and you'll get something better."</p>
+<p>The caveat he stresses is that this holds only <strong>if the trend continues</strong>. Will the green line keep climbing, or do we fall back to the gray one and have to invent something new again? "That's a question we'll see answered in our lifetimes — <strong>all you need to do is wait 3.5 to 7 months.</strong>"</p>
+<p><strong>Have open models caught up?</strong> He cites <strong>Artificial Analysis</strong>' open-versus-closed curves: open models are now very close. But his favorite single benchmark is <strong>WeirdML</strong> (search "weird ML"), because it's genuinely hard to game. By WeirdML: <strong>Fable 5 is very good and ginormously expensive</strong>; for cost/accuracy balance he'd recommend <strong>Opus 5 High</strong>; among open models <strong>Kimi K3 is extremely powerful</strong> and on the leaderboard.</p>
+<p>He then plots closed minus open as a <strong>gap curve</strong>. About a year and a half ago there's a stretch he calls the <strong>open source drought</strong> — the period after o1-preview when open models fell behind. Once <strong>DeepSeek published how to do GRPO with R1</strong>, open models snapped back to trend. His estimate: <strong>without DeepSeek publishing GRPO, open models would be 16 months behind closed; now it's about 2 months.</strong> A blog post extrapolates that by <strong>December 2026</strong> there'll be an open model as good as a closed one — all trend extrapolation, so "who knows; wait a few months and we shall see."</p>
+<p><strong>Are collapsing token prices reasonable?</strong> OpenAI cut <strong>GPT Luna</strong> prices by <strong>80%</strong> a few days ago. Shocking-sounding, but he thinks not — and he ran the numbers before the talk:</p>
+<ul>
+<li>Per <strong>SemiAnalysis</strong>' InferenceX benchmarks of vLLM / SGLang and other inference engines on NVIDIA and AMD GPUs: <strong>DeepSeek V4 Pro</strong> does about <strong>13k tokens/s</strong> on a single <strong>GB300</strong> → <strong>47 million tokens per hour</strong> at saturation.</li>
+<li>A GB300 costs roughly <strong>$5 per GPU-hour</strong>.</li>
+<li>Divide: <strong>DeepSeek V4 Pro's floor price is about 11 cents per million tokens.</strong> DeepSeek charges <strong>44 cents per million input</strong> and <strong>87 cents per million output</strong> — <strong>so nobody is shedding money running these models.</strong></li>
+<li>By the same logic, assuming GPT-5.6 Luna is the same size as DeepSeek V4 (he's explicit it's most likely not), OpenAI still clears roughly <strong>$1 per million output</strong> at the new price.</li>
+<li>The contrast: <strong>Kimi K3</strong> is a new, not-yet-optimized architecture at about <strong>5k tokens/s per GPU</strong> (~2.6× slower than DeepSeek), giving a floor of about <strong>30 cents per million tokens</strong> — while it charges <strong>$15 per million output</strong>. That means Moonshot and other inference providers are taking about <strong>$14.17</strong> of your API bill. "If they wanted to reduce price, they could go all the way to 30 cents." Conclusion: <strong>prices are still somewhat inflated, and DeepSeek is the only one charging near floor.</strong></li>
+</ul>
+<p><strong>The other option: run locally.</strong> He likes <strong>Arena</strong>'s Pareto efficiency plot (less so the Arena score itself): many open source models sit on the Pareto frontier. For <strong>web development</strong> (HTML/front-end), <strong>Opus 5 Max is currently best with Kimi K3 just behind</strong>; <strong>GLM 5.2</strong> and others are on the plot too. If you don't want to pay API costs, run locally and the cost drops to electricity plus some front-loaded setup.</p>
+<p>Which is Unsloth's business: <strong>dynamic quantization</strong> down to very small bit widths. <strong>GLM 5.2 at 1 bit</strong> is his showcase — a one-shot prompt, no bug-fixing iterations, holding up well against full-precision closed models. They publish <strong>perplexity</strong> and <strong>KL divergence</strong> benchmarks to show 1-bit works. The goal is to push further: Kimi at 600 GB still probably doesn't fit on your computer, so they're aiming <strong>below 1 bit</strong> — Kimi at 250 GB, for example.</p>
+<p><strong>Last point: the ARC-AGI harness settings.</strong> A few days ago OpenAI noted the <strong>ARC-AGI benchmark is somewhat unfair to GPT</strong>, because the eval used a <strong>rolling truncation of 175k tokens</strong> with <strong>compaction disabled</strong> and <strong>preserve thinking disabled</strong>. His blunt takeaway: <strong>just enable those two flags and OpenAI's models climb to 40% accuracy. You don't need to do anything else.</strong> (He then ran out of time and skipped the remaining slides.)</p>
+<h3>Talk 3: Shang Yang (RadixArk) — Miles: An Intro to Enterprise Facing RL with Miles (~03:36:48–03:45:35)</h3>
+<p>The speaker is a research resident at RadixArk and a PhD student at MIT, presenting <strong>Miles</strong> on behalf of the team.</p>
+<p><strong>What Miles is</strong>: an <strong>open source RL engine</strong> for frontier models, production-facing, built for speed and stability — "a stable, efficient, and reproducible reinforcement learning system at scale," minimizing the effort to run an RL job on modern language models across different environments and reward designs.</p>
+<p><strong>Three layers:</strong></p>
+<ol>
+<li><strong>Rollout</strong> — <strong>SGLang</strong> as the rollout engine, specialized for high-throughput generation and highly compatible with today's agentic systems, environments, and infra.</li>
+<li><strong>Orchestration</strong> (middle) — organizes the rollout engine and the backend training systems as a whole so the system runs efficiently.</li>
+<li><strong>Training</strong> — supports <strong>Megatron</strong> and <strong>FSDP</strong>, and you can customize your own training engine on your own compute.</li>
+</ol>
+<p><strong>Data flow</strong>: the rollout engine generates trajectories by interacting with an external environment or agent framework (SGLang provides the generation layer; the environment itself can be heavily customized per customer requirements) → the middle layer turns trajectories into rewards and loss functions, i.e. training signals → Megatron or FSDP runs forward/backward, computes loss, updates weights → weights sync back to the inference engines, and the loop closes.</p>
+<p><strong>Why SGLang as the rollout backend:</strong>
+- <strong>Co-evolved with RL workloads</strong>, including partial rollout support and dedicated rollout control, so specifying your workload is easy.
+- <strong>High-performance router design</strong> — well-designed caching and load balancing for high-throughput generation.
+- <strong>Native asynchronous generation with the training engine</strong> — an important feature for modern RL algorithms.
+- Fast-moving, with optimizations such as <strong>speculative decoding</strong> with Miles, usable during the RL rollout stage.</p>
+<p><strong>How Miles changes the RL development workflow:</strong>
+- <strong>Customizable</strong> — different workloads via pluggable function passes; defining your own RL workload, reward function, and update method is easy.
+- <strong>Modular and non-invasive</strong> — switching training backends (FSDP, Megatron) is easy, with more backends coming.</p>
+<p><strong>System design details:</strong>
+- <strong>Multi-agentic rollout</strong>, with <strong>token-in-token-out (TITO)</strong> support so the same multi-turn generation isn't tokenized and detokenized repeatedly — saving cost and making inference more stable.
+- <strong>R3 (routing replay)</strong>: when training MoE models with RL, the same request can be routed to different experts across runs. R3 makes this <strong>fully reproducible</strong>.
+- <strong>Low precision</strong>: end-to-end <strong>MXFP8</strong> support plus <strong>per-token NVFP4 quantization</strong> for the rollout stage, greatly reducing inference latency and increasing throughput — all verified in their latest blog against real training workloads.
+- <strong>LoRA support</strong> for resource-constrained settings, training large models on fewer GPUs.</p>
+<p><strong>Support matrix and track record:</strong>
+- <strong>Day-zero support</strong> for the newest models: <strong>Kimi K3</strong>, Thinking Machines Lab's Ling (captions render "inkling" — to verify), <strong>DeepSeek V4</strong>, <strong>Nemotron Ultra</strong>, and others.
+- Wide precision and hardware coverage; fine-tuning recipes beyond SFT and RL, including <strong>on-policy distillation</strong>.
+- Verified on RL training workloads across <strong>more than 10,000 GPUs</strong>. For <strong>Kimi K2.6</strong>, generation throughput was sped up to <strong>12.5k output tokens per minute per GPU</strong>.
+- Stability work: R3, TITO, and <strong>precision-aligned training</strong> to reduce training–inference mismatch; plus <strong>fault-tolerant recovery</strong> and cluster backends including <strong>Ray on Kubernetes, Slurm, and bare metal</strong>.</p>
+<p><strong>Recent releases:</strong>
+- <strong>Day-zero support for Kimi K3</strong> (nearly 3 trillion parameters), with fine-tuning on math problems lifting accuracy from around 40% to <strong>76%</strong>.
+- <strong>Ling (Thinking Machines Lab, trillion-parameter class)</strong>: both full-parameter and LoRA fine-tuning, with <strong>LoRA adapter synchronization</strong> optimized (merging the LoRA rank into the SGLang inference engine) from nearly <strong>50 seconds to under 3 seconds</strong>.
+- A recent <strong>mixed-precision training</strong> blog verifying that MXFP8 or NVFP4 maintain model accuracy and training stability while substantially accelerating rollout and inference.</p>
+<h3>Talk 4: Romil Bhardwaj (SkyPilot) — AI Needs an Open Compute Layer (~03:46:13–03:55:58)</h3>
+<p><strong>The case</strong>: AI needs an <strong>open compute layer</strong> — specifically, something that sits between your workloads and the actual GPUs they run on.</p>
+<p><strong>Why AI infra is hard, told through OpenAI</strong>: an exclusive Azure GPU agreement in 2016; a <strong>$10 billion</strong> Oracle deal in 2024 for more compute; another <strong>$11 billion</strong> with CoreWeave just a year later. And it still isn't enough — Sam Altman is on record asking for more GPUs and telling people to call if they can secure any. His conclusion: <strong>if the most capitalized company on the planet can't secure enough GPUs, or get them in a single cluster, you probably can't either. The GPU crunch is very real.</strong></p>
+<p><strong>What a typical AI organization actually has</strong>: some <strong>NeoCloud reservation</strong> (a two- or three-year deal signed when the hyperscalers had no capacity); some hyperscaler <strong>on-demand</strong> instances to supplement it; some <strong>on-prem</strong> clusters for regulatory reasons or to keep data in-house; another cluster in Europe because there are customers in Europe; and a large <strong>CPU cluster</strong> for running environments and sandboxes. <strong>Each was a sensible decision at the time; the result is a large collection of clusters you're now responsible for managing.</strong></p>
+<p><strong>RL makes it worse — it turns this into a scheduling problem.</strong> An RL run is one job composed of subcomponents with very different resource profiles: the <strong>trainer</strong> needs lots of VRAM and beefy GPUs; the <strong>rollout server</strong> generating trajectories needs less VRAM but a <em>lot</em> of instances; and for something like code generation, the <strong>sandboxes</strong> need a ton of parallel CPUs with very fast startup.</p>
+<p><strong>Why not use existing solutions?</strong>
+- <strong>Slurm</strong>: two decades old, from HPC, and in his view among the best advanced scheduling and quota/priority systems out there. But it <strong>doesn't support container isolation</strong> (you can bolt on pyroot and similar layers, but it wasn't designed for it), and it was never built for serving — it's for batch jobs.
+- <strong>Kubernetes</strong>: about ten years old, popular for microservices, very elastic and cloud-native. But a <strong>super steep learning curve</strong> ("hand Kubernetes to a researcher and they'll just go ask their agent to make it work") and it lacks AI-specific primitives, notably <strong>gang scheduling</strong>, again bolted on via schedulers like Volcano.</p>
+<p>More importantly, <strong>both are single-cluster managers</strong>. Neither solves "I have 10 different clusters running — how do I manage them?" <strong>What's missing isn't a better scheduler; it's something to manage all the schedulers and platforms you already have.</strong></p>
+<p><strong>The goal isn't to replace Kubernetes or Slurm</strong> — they're good at what they do — but to <strong>bridge the gap</strong> between workloads (training, serving, sandboxes) and compute fragmented across Kubernetes, Slurm, and clouds. An open unified compute layer should optimize availability, figure out the best place to run a job, handle execution, and do it <strong>without the workload needing to know what's under the hood.</strong></p>
+<p><strong>That's SkyPilot</strong>: fully open source, use AI compute wherever you have it, <strong>bring your own framework</strong> — Ray, PyTorch, OpenEnv, Unsloth, your own. You submit "I need eight B300s to run this" and SkyPilot orchestrates: it looks at your Slurm clusters, Kubernetes clusters, and cloud VMs, provisions, runs the job, and returns logs and results. The project started a few buildings away in <strong>Soda Hall</strong>, rooted in <strong>Sky Computing Lab</strong> research, with an active community and adoption at some of the largest companies.</p>
+<p><strong>What it looks like in practice:</strong>
+- The simplest path is <code>sky launch</code>: state the infra and the GPUs you need. <strong>Switching from Kubernetes to AWS is one flag</strong>, and so is switching GPU type — your application doesn't need to know what's running underneath.
+- For complex work there's a declarative abstraction called <strong>job groups</strong>: "a rollout server with these resources running these commands; spin up a thousand sandboxes; put the rollout server on H100s and the trainer on B200s" — then SkyPilot orchestrates the whole workload, with <strong>service discovery</strong> and <strong>lifecycle management</strong> included. <strong>One job failing doesn't fail the run</strong> — SkyPilot restarts just that job.</p>
+<p><strong>Serving benefits too</strong>: you gain <strong>capacity across all your clusters</strong> instead of launching one KServe instance per cluster, and when a failure hits, SkyPilot <strong>seamlessly moves replicas to a region where you still have capacity</strong>. Routing all workloads through one layer also enables something interesting: <strong>running inference and training on the same compute</strong>. When inference requests spike, SkyPilot <strong>dynamically reallocates from training to inference</strong> — preempting training jobs while your checkpointing logic preserves progress — then scales inference back down after the spike and resumes training.</p>
+<p><strong>Bring-your-own, emphatically</strong>: you don't hand SkyPilot a credit card to buy compute. You bring your own compute from your own provider and your own data; everything runs on your own premises. Closing echo of the opening: we don't need to replace Kubernetes or Slurm — <strong>we need a unified layer bridging workloads and all those clusters.</strong></p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenEnv</td>
+<td>agentic 執行環境的開放規格與 hub;CLI 體驗類似 Docker(<code>openenv init</code>),支援 push/pull/fork</td>
+<td>Open spec and hub for agentic execution environments; Docker-like CLI (<code>openenv init</code>) with push/pull/fork</td>
+<td>Meta + Hugging Face 合作;HF 上約 4,000 個環境 / Meta–Hugging Face partnership; ~4,000 environments on HF</td>
+</tr>
+<tr>
+<td>Prime Intellect</td>
+<td>另一個環境 hub</td>
+<td>Another environment hub</td>
+<td>OpenEnv 正與其共享 spec / spec sharing under way</td>
+</tr>
+<tr>
+<td>verifiers</td>
+<td>可從中匯入環境的函式庫</td>
+<td>Library you can import environments from</td>
+<td></td>
+</tr>
+<tr>
+<td>SWE-smith</td>
+<td>以 GitHub issue / PR / 測試套件建構軟體工程環境的代表性論文</td>
+<td>Representative work building SWE environments from issues, PRs, and test suites</td>
+<td>字幕聽成 "Swissmith"</td>
+</tr>
+<tr>
+<td>Mercor</td>
+<td>雇用領域專家、圍繞能力打造 RL 環境的公司</td>
+<td>Company hiring domain experts to build RL environments around capabilities</td>
+<td>字幕聽成 "Merkore"</td>
+</tr>
+<tr>
+<td>TRL</td>
+<td>Hugging Face 的訓練框架</td>
+<td>Hugging Face training framework</td>
+<td></td>
+</tr>
+<tr>
+<td>Unsloth</td>
+<td>開源模型的散布與 bug 修復,dynamic quantization</td>
+<td>Open model distribution, bug fixes, and dynamic quantization</td>
+<td>HF 上約 4 億次下載 / ~400M downloads</td>
+</tr>
+<tr>
+<td>WeirdML</td>
+<td>Daniel 最愛的 benchmark,理由是難以 game</td>
+<td>His favorite benchmark, because it's hard to game</td>
+<td>Google "weird ML"</td>
+</tr>
+<tr>
+<td>METR 任務時長圖 / METR time-horizon plot</td>
+<td>模型能完成的人類任務時長隨時間的變化</td>
+<td>Length of human task a model can complete, over time</td>
+<td>講者說圖本身已過時 / he notes the plot is outdated</td>
+</tr>
+<tr>
+<td>Artificial Analysis</td>
+<td>開源 vs 閉源模型能力曲線</td>
+<td>Open vs closed model capability curves</td>
+<td></td>
+</tr>
+<tr>
+<td>SemiAnalysis InferenceX</td>
+<td>推論引擎在 NVIDIA / AMD GPU 上的吞吐 benchmark,他用來算 token 地板價</td>
+<td>Inference engine throughput benchmarks used for his floor-price calculation</td>
+<td></td>
+</tr>
+<tr>
+<td>Miles</td>
+<td>RadixArk 的開源 RL 訓練框架,SGLang rollout + Megatron/FSDP 訓練</td>
+<td>RadixArk's open-source RL training framework; SGLang rollout plus Megatron/FSDP training</td>
+<td>github.com/radixark/miles;PyTorch Foundation blog 有介紹</td>
+</tr>
+<tr>
+<td>SGLang</td>
+<td>Miles 的 rollout 引擎;高吞吐生成、非同步、partial rollout</td>
+<td>Miles' rollout engine: high-throughput generation, async, partial rollout</td>
+<td></td>
+</tr>
+<tr>
+<td>SkyPilot</td>
+<td>開源統一算力層,跨 Kubernetes / Slurm / 雲端 VM 編排 AI 工作負載</td>
+<td>Open source unified compute layer orchestrating AI workloads across Kubernetes, Slurm, and cloud VMs</td>
+<td>起源於 UC Berkeley Sky Computing Lab</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open aentic stack / compostability</td>
+<td>open agentic stack / composability</td>
+</tr>
+<tr>
+<td>Linux edition</td>
+<td>Linux Foundation</td>
+</tr>
+<tr>
+<td>Ben Burtonshaw</td>
+<td>Ben Burtenshaw</td>
+</tr>
+<tr>
+<td>openend / OpenM / open m / openm in it</td>
+<td>OpenEnv / <code>openenv init</code></td>
+</tr>
+<tr>
+<td>Swissmith</td>
+<td>SWE-smith</td>
+</tr>
+<tr>
+<td>Merkore</td>
+<td>Mercor</td>
+</tr>
+<tr>
+<td>Kimmy K3 / Kim K3 / Kim key3 / KI</td>
+<td>Kimi K3</td>
+</tr>
+<tr>
+<td>Miniaax / Miniax</td>
+<td>MiniMax</td>
+</tr>
+<tr>
+<td>deep seat / deep suite / Deep See</td>
+<td>DeepSeek / DeepSWE(視語境)</td>
+</tr>
+<tr>
+<td>Daniel Honchen</td>
+<td>Daniel Han Chen</td>
+</tr>
+<tr>
+<td>Unsolve</td>
+<td>Unsloth</td>
+</tr>
+<tr>
+<td>GWSS</td>
+<td>gpt-oss</td>
+</tr>
+<tr>
+<td>Jamma / MRO</td>
+<td>Gemma / Mistral</td>
+</tr>
+<tr>
+<td>GBD / GBD 5.6 soul / GBD Luna</td>
+<td>GPT / GPT-5.6 Sol / GPT Luna</td>
+</tr>
+<tr>
+<td>meter plot</td>
+<td>METR plot</td>
+</tr>
+<tr>
+<td>gpo</td>
+<td>GRPO</td>
+</tr>
+<tr>
+<td>Ko divergence</td>
+<td>KL divergence</td>
+</tr>
+<tr>
+<td>Shangyang from Radics Arc / Radx</td>
+<td>Shang Yang from RadixArk</td>
+</tr>
+<tr>
+<td>mouse / MOS</td>
+<td>Miles</td>
+</tr>
+<tr>
+<td>Nvidia action / maxron</td>
+<td>Megatron</td>
+</tr>
+<tr>
+<td>FSTP</td>
+<td>FSDP</td>
+</tr>
+<tr>
+<td>MVIP4 / MXP8</td>
+<td>NVFP4 / MXFP8</td>
+</tr>
+<tr>
+<td>the Chinese(多處)</td>
+<td>inference(自動字幕把 "inference" 聽成 "Chinese")</td>
+</tr>
+<tr>
+<td>three fore models / R3</td>
+<td>R3 (routing replay)</td>
+</tr>
+<tr>
+<td>tito</td>
+<td>TITO (token-in-token-out)</td>
+</tr>
+<tr>
+<td>natron ultra</td>
+<td>Nemotron Ultra</td>
+</tr>
+<tr>
+<td>sinking machines lab</td>
+<td>Thinking Machines Lab</td>
+</tr>
+<tr>
+<td>kubernetics</td>
+<td>Kubernetes</td>
+</tr>
+<tr>
+<td>Raml Bardage / Romeo Barage / Romel</td>
+<td>Romil Bhardwaj</td>
+</tr>
+<tr>
+<td>Sky Palot / Skypet / Sky Pallet / SkyPower</td>
+<td>SkyPilot</td>
+</tr>
+<tr>
+<td>slur / slowmo / slum</td>
+<td>Slurm</td>
+</tr>
+<tr>
+<td>core(「with core to get even more GPUs」)</td>
+<td>CoreWeave</td>
+</tr>
+<tr>
+<td>Sam Olen</td>
+<td>Sam Altman</td>
+</tr>
+<tr>
+<td>pyroot</td>
+<td>pyxis / enroot(容器化 Slurm 外掛,待確認)</td>
+</tr>
+<tr>
+<td>soda hall</td>
+<td>Soda Hall (UC Berkeley)</td>
+</tr>
+<tr>
+<td>case serve</td>
+<td>KServe</td>
+</tr>
+<tr>
+<td>old charts</td>
+<td>cold starts</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>Thinking Machines Lab 的兆級參數模型名稱</strong>:逐字稿作 "the inkling from sinking machines lab",Miles 對其提供 day-zero 支援並做 full/LoRA fine-tuning。名稱拼法待確認。/ Name of the trillion-parameter Thinking Machines Lab model rendered as "inkling".</li>
+<li><strong>Miles fine-tune Kimi K3 用的數學題目集</strong>:逐字稿作 "the amass problem",準確率 40% → 76%,實際 benchmark 名稱待確認。/ The math benchmark used, rendered as "the amass problem".</li>
+<li><strong>Slurm 的容器化外掛</strong>:逐字稿作 "pyroot",語境為「可以硬接上去的容器層」,正確名稱待確認(可能為 pyxis / enroot)。/ The Slurm container plugin rendered as "pyroot".</li>
+<li><strong>Daniel 提到的「2026 年 12 月開放模型追平閉源」blog post</strong> 的出處。/ Source for the blog post extrapolating open–closed parity by December 2026.</li>
+<li><strong>GPT-5.6 Sol 在 METR 上「含作弊 270 小時 / 去除作弊約 16 小時」</strong>的原始資料來源。/ Source for the METR figures with and without cheating cases.</li>
+<li><strong>OpenAI 關於 ARC-AGI harness 設定(175k rolling truncation、compaction、preserve thinking)的公告出處</strong>。/ Citation for OpenAI's ARC-AGI harness note.</li>
+<li><strong>Ben 提到的環境數量</strong>(Kimi K3 數千、MiniMax 一萬、DeepSeek 約一千)為現場口述,原論文數字待核對。/ Environment counts quoted from memory on stage; verify against the papers.</li>
+<li>OpenAI 與 CoreWeave 的 <strong>110 億美元</strong>合約、與 Oracle 的 <strong>100 億美元</strong>合約金額為講者口述,待核對。/ The $11B CoreWeave and $10B Oracle figures were quoted on stage.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/workshop--the-open-agentic-stack.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

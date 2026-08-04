@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Speaking the Same Language: NLIP for Agent Interoperability · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Traditional protocols demand that both endpoints and the wire speak the same language and break the moment a schema changes; NLIP drops that assumption — if there&#x27;s intelligence at both endpoints t…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/ranjan-sinha--speaking-the-same-language-nlip-for-agent-interoperability.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Speaking the Same Language: NLIP for Agent Interoperability · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Traditional protocols demand that both endpoints and the wire speak the same language and break the moment a schema changes; NLIP drops that assumption — if there&#x27;s intelligence at both endpoints t…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/ranjan-sinha--speaking-the-same-language-nlip-for-agent-interoperability.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-atlas" data-talk="ranjan-sinha--speaking-the-same-language-nlip-for-agent-interoperability">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Speaking the Same Language: NLIP for Agent Interoperability" data-title-zh="說同一種語言:用 NLIP 達成 Agent 互通">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Frameworks &amp; Dev Platforms</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Speaking the Same Language: NLIP for Agent Interoperability</span><span class="lang-zh">說同一種語言:用 NLIP 達成 Agent 互通</span></h1>
+        <p class="dialog__speaker"><strong>Ranjan Sinha</strong> — IBM Fellow, CTO &amp; VP for watsonx, Enterprise AI, IBM</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 04:14:09–04:26:57 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=psPzCQbjCCo&amp;t=15249s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 04:14:09</span><span class="lang-zh">從 04:14:09 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Traditional protocols demand that both endpoints and the wire speak the same language and break the moment a schema changes; NLIP drops that assumption — if there&#x27;s intelligence at both endpoints to translate, agents can keep their own languages, and NLIP moves intent across in just five fields.</span><span class="lang-zh">傳統協定要求兩端與線路上講同一種語言,一改 schema 就斷;NLIP 把這個假設拿掉——只要兩端都有智慧可以翻譯,agent 各講各的也能互通,而它自己只用五個欄位就把「意圖」搬過去。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>問題是 Tower of Babel</strong>:agent 各說各話時,你只能寫 custom glue code 與 adapter,而這條路不可能規模化。</li>
+<li><strong>NLIP 的定位是「意圖的 HTTP」</strong>:HTTP 是在異質 client 與 server 之間搬運資源的中立統一方式;NLIP 是在異質 agent 與 client 之間搬運<strong>意義與意圖</strong>的中立統一方式。</li>
+<li><strong>它鬆綁了協定最根本的假設</strong>:傳統協定要求 A = P = B(兩端語言與線路格式相同);NLIP 允許 A ≠ B ≠ P,<strong>代價是兩端必須有智慧可以翻譯</strong>——而以現在的趨勢,這個前提只會越來越成立。</li>
+<li><strong>刻意極簡</strong>:訊息模型是輕量 JSON、只有五個欄位(三個必填);相較之下 A2A 或 MCP 的完整資料模型有 166–480 個欄位。</li>
+<li><strong>它不是要取代 A2A / MCP</strong>,而是共存:NLIP 適合異質協定互通、語意彈性、跨協定中介;A2A 適合治理稽核、任務中心、嚴格 schema 與決定性執行;也可以混用,NLIP 在協調層、A2A 在治理層。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>問題與定位(約 04:14–04:16)</h4>
+<p>Sinha 開場一句話就把問題講完:當 agent 講不同語言時,你得寫 custom code、glue code、adapter,而這<strong>根本不 scale</strong>。這就是 Tower of Babel 問題。</p>
+<p>NLIP(Natural Language Interaction Protocol)是那個讓無縫互通成真的<strong>通用握手</strong>:只要 agent 會講 NLIP,它就能跟所有會講 NLIP 的東西對話。他給的類比貫穿全場——<strong>把 NLIP 想成「意圖的 HTTP」</strong>,而且它刻意採取和 HTTP 一樣的做法:極簡、中立。HTTP 是在異質 client 與 server 之間傳輸資源的中立統一方式;NLIP 是在異質 agent 與 client 之間傳輸<strong>意義或意圖</strong>的中立統一方式。</p>
+<p>出身背景:由學界與業界研究者、實務者組成的工作組,由 <strong>Enterprise Neurosystems Group</strong> 與 <strong>AI Alliance</strong> 贊助;現已是 <strong>ECMA 標準</strong>,由技術委員會 <strong>TC56</strong> 推動(他順帶提醒:JavaScript 也是由 ECMA 這個組織標準化的),並已送交 <strong>ISO</strong> 標準化,目前進行中。</p>
+<h4>核心設計:鬆綁 A = P = B(約 04:16–04:18)</h4>
+<p>他用一組左右對照的圖說明整個協定的關鍵洞見。</p>
+<p><strong>傳統協定(左)</strong>:agent 1 講語言 A、agent 2 講語言 B、線路上跑的是 P。傳統協定要求 <strong>A = P = B</strong>——三者必須相同。任何 schema 或欄位的改變都會讓它斷掉,結果就是 hard-coded integration 與緊耦合,並衍生出互通性與版本管理的麻煩。</p>
+<p><strong>NLIP(右)</strong>:同樣是 A、B、P 三者,但 <strong>A 不必等於 B、也不必等於 P</strong>。這帶來彈性,而條件是:<strong>兩端必須有智慧,能在這些訊息之間翻譯</strong>。他認為以現在的趨勢,你本來就可以預期解決方案與系統裡有智慧存在,而且它只會持續變好。</p>
+<p>在這個基礎上,NLIP 提供的是一個非常簡單、開放、共通的標準協定,讓應用、agent 與服務彼此溝通。它假設兩端都有智慧以達成語意理解,並採取 <strong>request–response 範式</strong>,確保意義或意圖在 agent 真正行動之前先被<strong>釐清並確認</strong>。他特別點出這個範式的好處:<strong>訊息如果語意模糊,agent 不會直接失敗,而是回頭要求澄清。</strong></p>
+<p>同時它是<strong>為企業現實打造</strong>的:必須安全、要有 safeguard;transport agnostic 且沿用既有基礎設施,不重造輪子;支援多媒體;通訊高效;可用多種語言實作;是由 ECMA 治理的開放標準(ISO 審查中)。</p>
+<h4>訊息模型:五個欄位(約 04:19–04:21)</h4>
+<p>NLIP <strong>刻意極簡</strong>。訊息模型是輕量 JSON,只有五個欄位,其中三個必填:</p>
+<ul>
+<li><strong>content</strong>:承載被交換資訊的輕量 JSON 信封</li>
+<li><strong>format</strong>:是 text、structured 還是 binary</li>
+<li><strong>subformat</strong>:format 的細化——若是 text 就標明語言,若是 binary 就標明編碼</li>
+<li>另外兩個選填欄位:一個 parsing hint,以及可放額外內容的 sub-message</li>
+</ul>
+<p>核心資料模型就這五個欄位。他直接拿現行熱門協定對比:A2A 或 MCP 的完整資料模型有 <strong>166 到 480 個欄位</strong>。</p>
+<p>實作上它在標準傳輸協定上都很簡單:<strong>HTTP、WebSocket、AMQP</strong> 的 binding 都已在 ECMA 規格中定義,可從 GitHub 頁面取得。安全性是 <strong>secure by design 且為強制</strong>:提供從基本到嚴謹企業級的<strong>三種 profile</strong>,並且處理的不只是傳輸層安全,還包含各種 AI 特有的風險。</p>
+<h4>與單一廠商協定共存的兩種模式(約 04:21)</h4>
+<p>NLIP 可以用兩種模式與各種單一廠商協定互通:</p>
+<ul>
+<li><strong>模式 A</strong>:NLIP 當 northbound API、單一廠商協定當 southbound API,中間用一個 translation agent 與 LLM pod 做兩者之間的翻譯。</li>
+<li><strong>模式 B</strong>:跨多個 domain 互通。每個 domain 內可以有多個 agent,各自用不同的 agent framework、講自己的語言;只要它們是 <strong>NLIP-aware</strong>,就都能彼此溝通。</li>
+</ul>
+<h4>PoC 與效能實驗(約 04:21–04:24)</h4>
+<p>已有企業與大學在多個領域做出 PoC:電信、購物、永續、多模態客服等,多數也放在專案頁面上。</p>
+<p>他挑客服那個 PoC 深入講:顧客送出一段<strong>語音</strong>請求 → 用語音轉文字模型(NVIDIA ASR)轉成文字 → 以 <strong>NLIP over HTTP</strong> 送給 channel recommender,由它挑出與該提問最相關的 subreddit 頻道 → 再以 <strong>NLIP over HTTP</strong> 送給 search agent,由它從那些頻道挑出最相關的主題、排序後回傳給顧客。整體就是:一個顧客提問,從 Reddit 撈出最相關的主題回覆。</p>
+<p>接著是效能比較:同一個 workflow,拿 <strong>NLIP 對比 A2A</strong>,使用<strong>對稱、完全相同的計時 harness</strong>,並取三種 A2A 變體(A2A SDK、cache 最佳化版 A2A、輕量 Python A2A)。他們做了<strong>階段層級的儀器化</strong>——message creation、connection、send 三個階段,總延遲是三者之和——並在兩台機器、兩份含多筆顧客提問的資料集上測。結果在兩台機器上的平均總延遲,NLIP 都比較低,他把這歸因於其訊息信封的極簡本質。他自己強調這是<strong>初步實驗</strong>,更複雜的 workflow 與實驗還待做,也歡迎外界參與。</p>
+<h4>給實務者的選型建議(約 04:24–04:26)</h4>
+<p>他把問題收斂成「什麼時候該用哪個協定」:</p>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>建議</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>異質協定互通、語意彈性、跨協定中介</td>
+<td>選 NLIP</td>
+</tr>
+<tr>
+<td>治理與稽核需求、任務中心或長時間執行的 workflow、嚴格 schema 強制、決定性執行</td>
+<td>選 A2A</td>
+</tr>
+<tr>
+<td>混合型 workload</td>
+<td>混用:NLIP 在協調層,A2A 在治理層</td>
+</tr>
+</tbody>
+</table>
+<p>但他強調真正的原則是:<strong>協定選擇應該由 workload 特性來決定。</strong> 現實是協定會有長尾——支付、購物等領域都在推出自己的 domain-centric 協定——所以問題變成如何跨這些協定以可互通的方式溝通,而那正是 NLIP 的位置。</p>
+<p>收尾:NLIP 已整合進 <strong>AG2</strong> framework(他說 AG2 每天被下載數萬次、每月可能達百萬次)。委員會每週開會、持續開發,歡迎回饋、實際 use case、參與評測或直接貢獻,聯絡方式都在專案頁面上。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Think of NLIP as the HTTP of intent."(約 04:15)</p>
+</blockquote>
+<p>整場演講的核心比喻,也解釋了為什麼它刻意做得這麼小。</p>
+<blockquote>
+<p>"In a traditional protocol they all have to be the same. A is equal to P is equal to B."(約 04:17)</p>
+</blockquote>
+<p>一句話點出既有 agent 協定的脆弱點,以及 NLIP 要鬆綁的到底是什麼。</p>
+<blockquote>
+<p>"If a message is ambiguous, the agent doesn't just fail — it will ask for clarifications."(約 04:18)</p>
+</blockquote>
+<p>request–response 範式的用意:意圖要先被確認,agent 才動手。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The problem is the Tower of Babel.</strong> When agents speak different languages, all you can do is write custom glue code and adapters — and that does not scale.</li>
+<li><strong>NLIP positions itself as "the HTTP of intent."</strong> HTTP is a neutral, uniform way to transfer <em>resources</em> between heterogeneous clients and servers; NLIP is a neutral, uniform way to transfer <em>meaning</em> between heterogeneous agents and clients.</li>
+<li><strong>It relaxes the foundational assumption of protocols.</strong> Traditional protocols require A = P = B — both endpoints and the wire format identical. NLIP allows A ≠ B ≠ P, <strong>provided there is intelligence at both endpoints to translate</strong> — a precondition that current trends make increasingly safe to assume.</li>
+<li><strong>Deliberately minimal</strong>: a lightweight JSON message model with five fields, three mandatory, against full data models of 166–480 fields for A2A or MCP.</li>
+<li><strong>It is not a replacement for A2A or MCP</strong> but a complement: NLIP for heterogeneous interoperability, semantic flexibility, and cross-protocol mediation; A2A for governance, audit, strict schemas, and deterministic execution; hybrid deployments put NLIP at the coordination layer and A2A at the governance layer.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The problem and the framing (~04:14–04:16)</h4>
+<p>Sinha states the problem in his opening sentence: when agents speak different languages you write custom code, glue code, and adapters, and that does not scale well. This is the Tower of Babel problem.</p>
+<p>NLIP — the Natural Language Interaction Protocol — is the <strong>universal handshake</strong> that makes seamless interoperability real: if an agent speaks NLIP, it speaks to everything else that does. His analogy carries the whole talk: <strong>think of NLIP as the HTTP of intent</strong>, and note that it follows the same approach of being deliberately minimal and neutral. HTTP is a neutral, uniform way to transfer resources between heterogeneous clients and servers; NLIP is a neutral, uniform way to transfer meaning or intent between heterogeneous agents and clients.</p>
+<p>Provenance: it came out of a working group of academic and industry researchers and practitioners, sponsored by the <strong>Enterprise Neurosystems Group</strong> and the <strong>AI Alliance</strong>. It is now an <strong>ECMA standard</strong>, driven by technical committee <strong>TC56</strong> — the same standards body, he points out, that standardized JavaScript — and has been submitted to <strong>ISO</strong>, where standardization is in progress.</p>
+<h4>The core design: relaxing A = P = B (~04:16–04:18)</h4>
+<p>A pair of side-by-side diagrams carries the central insight.</p>
+<p>In a <strong>traditional protocol</strong>, agent 1 speaks language A, agent 2 speaks language B, and language P passes over the wire — but <strong>A = P = B is required</strong>. Any change in schema or fields typically breaks it. That is what hard-coded integrations and tight coupling look like, and it produces the familiar interoperability and version-management problems.</p>
+<p>Under <strong>NLIP</strong>, agent 1 still speaks A and agent 2 still speaks B while P goes over the wire, but <strong>A need not equal B and neither needs to equal P</strong>. This buys flexibility, on one condition: <strong>there must be intelligence at both endpoints capable of translating between these messages.</strong> Given current trends, he argues, you would expect intelligence to be available in solutions and systems anyway — and it keeps improving.</p>
+<p>On that foundation, NLIP is a very simple, open, common standard protocol for applications, agents, and services to communicate. It assumes intelligence at both endpoints for semantic understanding, and it follows a <strong>request–response paradigm</strong> so that meaning or intent is refined and confirmed <em>before</em> the agent acts. The consequence he highlights: <strong>if a message is ambiguous, the agent does not simply fail — it asks for clarification.</strong></p>
+<p>It is also built for enterprise reality: it must be secure with safeguards; it is transport agnostic and uses existing infrastructure rather than rebuilding the wheel; it supports multimedia; communication is efficient; it can be implemented in multiple languages; and it is an open standard governed by ECMA, with ISO review underway.</p>
+<h4>The message model: five fields (~04:19–04:21)</h4>
+<p>NLIP is <strong>deliberately minimal</strong>. The message model is lightweight JSON with just five fields, three of them mandatory:</p>
+<ul>
+<li><strong>content</strong> — a lightweight JSON envelope carrying the information being exchanged</li>
+<li><strong>format</strong> — whether the content is text, structured, or binary</li>
+<li><strong>subformat</strong> — a refinement of format: which language for text, which encoding for binary</li>
+<li>plus two optional fields: a parsing hint, and a sub-message that can carry additional content</li>
+</ul>
+<p>That is the core data model. For contrast he cites the full data models of widely used protocols such as A2A or MCP at <strong>166 to 480 fields</strong>.</p>
+<p>It is simple to implement over standard transports, with bindings for <strong>HTTP, WebSocket, and AMQP</strong> specified in the ECMA documents and available from the project's GitHub page. Security is <strong>mandatory and by design</strong>: three profiles ranging from basic to rigorous enterprise, addressing AI-specific risks in addition to transport security.</p>
+<h4>Two modes of coexistence with vendor protocols (~04:21)</h4>
+<p>NLIP interoperates with single-vendor protocols in two modes. In <strong>mode A</strong>, NLIP is the northbound API and the single-vendor protocol the southbound API, with a translation agent and an LLM pod translating between them. In <strong>mode B</strong>, it spans multiple domains, each of which may contain many agents built on different frameworks speaking their own languages — as long as they are <strong>NLIP-aware</strong>, they can all communicate.</p>
+<h4>Proofs of concept and a latency comparison (~04:21–04:24)</h4>
+<p>Companies and universities have built PoCs across telecom, shopping, sustainability, and multimodal customer support, most of them published on the project page.</p>
+<p>He walks through the customer support one. A customer submits a <strong>voice</strong> request; the audio is converted to text by a speech-to-text model (NVIDIA ASR); that text goes over <strong>NLIP over HTTP</strong> to a channel recommender, which selects the most relevant subreddit channels for the query; that goes over <strong>NLIP over HTTP</strong> to a search agent, which pulls the most relevant topics from those channels, ranks them, and returns them. Net effect: a customer query fetches the most relevant Reddit topics back to the customer.</p>
+<p>They then compared <strong>NLIP against A2A</strong> on this workflow using a symmetric, identical timing harness and three A2A variants — the A2A SDK, a cache-optimized A2A, and a lightweight Python A2A. Instrumentation was <strong>phase-level</strong> (message creation, connection, send), with total latency the sum of the three phases, run across two machines and two datasets of customer queries. Average total latency was lower for NLIP on both machines, which he attributes to the minimal nature of its message envelope. He is careful to call these <strong>preliminary experiments</strong>: more complex workflows and evaluations remain to be done, and participation is welcome.</p>
+<h4>Guidance for practitioners (~04:24–04:26)</h4>
+<p>The practical question reduces to when to use which protocol. Choose <strong>NLIP</strong> for use cases requiring heterogeneous protocol interoperability, semantic flexibility, or cross-protocol mediation. Choose <strong>A2A</strong> when you have governance and audit needs, task-centric or long-running workflows, strict schema enforcement, or deterministic execution. Choose a <strong>hybrid</strong> for mixed workloads, with NLIP at the coordination layer and A2A at the governance layer.</p>
+<p>The principle behind the table matters more than the table: <strong>protocol selection should be guided by workload characteristics.</strong> There is already a long tail of protocols, with domain-centric ones appearing for payments, shopping, and more, so the real question is how to work across them and communicate interoperably — which is where NLIP fits.</p>
+<p>He closes by noting NLIP has been integrated with the <strong>AG2</strong> framework, which he says is downloaded tens of thousands of times daily and perhaps a million times a month. The committee meets weekly and continues to develop the protocol; feedback, use cases, participation in evaluation, and contributions are all welcome, with contact details on the project page.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Think of NLIP as the HTTP of intent." (~04:15)</p>
+</blockquote>
+<p>The organizing metaphor, and the reason the protocol is deliberately so small.</p>
+<blockquote>
+<p>"In a traditional protocol they all have to be the same. A is equal to P is equal to B." (~04:17)</p>
+</blockquote>
+<p>The brittleness of existing agent protocols in one line — and exactly what NLIP relaxes.</p>
+<blockquote>
+<p>"If a message is ambiguous, the agent doesn't just fail — it will ask for clarifications." (~04:18)</p>
+</blockquote>
+<p>The point of the request–response paradigm: confirm intent before acting on it.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NLIP</td>
+<td>Natural Language Interaction Protocol,agent 間互通的語意協定</td>
+<td>Natural Language Interaction Protocol — a semantic protocol for agent interoperability</td>
+<td>ECMA 標準,TC56 制定;ISO 標準化進行中 / ECMA standard from TC56; ISO standardization in progress</td>
+</tr>
+<tr>
+<td>ECMA TC56</td>
+<td>制定 NLIP 的技術委員會</td>
+<td>The technical committee that produced NLIP</td>
+<td>同一標準組織也標準化了 JavaScript / the same body standardized JavaScript</td>
+</tr>
+<tr>
+<td>Enterprise Neurosystems Group</td>
+<td>NLIP 工作組的贊助組織之一</td>
+<td>Co-sponsor of the NLIP working group</td>
+<td></td>
+</tr>
+<tr>
+<td>AI Alliance</td>
+<td>NLIP 工作組的贊助組織之一</td>
+<td>Co-sponsor of the NLIP working group</td>
+<td></td>
+</tr>
+<tr>
+<td>NLIP transport bindings</td>
+<td>HTTP、WebSocket、AMQP,規格在 ECMA 文件與 GitHub 頁面</td>
+<td>HTTP, WebSocket, and AMQP bindings, specified in ECMA documents and on GitHub</td>
+<td></td>
+</tr>
+<tr>
+<td>A2A / MCP</td>
+<td>對照組協定;完整資料模型有 166–480 個欄位</td>
+<td>Comparison protocols; full data models of 166–480 fields</td>
+<td>NLIP 核心僅 5 個欄位 / NLIP's core is 5 fields</td>
+</tr>
+<tr>
+<td>AG2</td>
+<td>已整合 NLIP 的 agent framework</td>
+<td>Agent framework with NLIP integration</td>
+<td>講者稱每日下載數萬次 / he cites tens of thousands of downloads daily</td>
+</tr>
+<tr>
+<td>客服 PoC / Customer support PoC</td>
+<td>語音 → NVIDIA ASR → NLIP/HTTP → channel recommender → NLIP/HTTP → search agent → Reddit 主題</td>
+<td>Voice → NVIDIA ASR → NLIP/HTTP → channel recommender → NLIP/HTTP → search agent → Reddit topics</td>
+<td>與 A2A 三種變體做延遲比較 / benchmarked against three A2A variants</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runja Singha / Ron John</td>
+<td>Ranjan Sinha</td>
+</tr>
+<tr>
+<td>Nlip / NLP / Enley / enlip / LIP</td>
+<td>NLIP</td>
+</tr>
+<tr>
+<td>ECMA uh body / TC56</td>
+<td>Ecma International / TC56(拼寫正確,僅斷句混亂)</td>
+</tr>
+<tr>
+<td>A28 SDK / HA</td>
+<td>A2A SDK / A2A</td>
+</tr>
+<tr>
+<td>ag2</td>
+<td>AG2</td>
+</tr>
+<tr>
+<td>interable</td>
+<td>interoperable</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>欄位數比較的前半段(字幕作 "you're looking at 60 to 99 to the full data model having 166 to 480 fields")語意不完整;可確認的是 A2A / MCP <strong>完整資料模型為 166–480 個欄位</strong>,而 60–99 可能是其核心資料模型的欄位數,需看投影片確認。/ The first half of the field-count comparison is garbled; only "166 to 480 fields for the full data model" of A2A / MCP is reliable — the 60–99 figure is probably the core data model but needs slide confirmation.</li>
+<li>五個欄位中兩個選填欄位的正式名稱(字幕僅描述為 "a parsing hint" 與 "more additional content in the sub message"),應以 ECMA 規格為準。/ The formal names of the two optional fields (described only as a parsing hint and a sub-message) should be checked against the ECMA specification.</li>
+<li>三種安全 profile 的正式名稱未在演講中列出(僅說「從 basic 到 rigorous enterprise」)。/ The formal names of the three security profiles were not given; he only described the range from basic to rigorous enterprise.</li>
+<li>AG2 的下載量數字為講者口述概估。/ The AG2 download figures were given verbally as approximations.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/ranjan-sinha--speaking-the-same-language-nlip-for-agent-interoperability.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

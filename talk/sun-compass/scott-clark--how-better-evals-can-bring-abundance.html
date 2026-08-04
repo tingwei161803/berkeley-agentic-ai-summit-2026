@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>How Better Evals Can Bring Abundance Through Accelerated Scientific Discovery · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="The best thing about a black-box optimizer is that it will optimize any eval you give it; the worst thing is that it will *blindly* optimize any eval you give it. So the bottleneck on accelerating …" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/scott-clark--how-better-evals-can-bring-abundance.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How Better Evals Can Bring Abundance Through Accelerated Scientific Discovery · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="The best thing about a black-box optimizer is that it will optimize any eval you give it; the worst thing is that it will *blindly* optimize any eval you give it. So the bottleneck on accelerating …" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/scott-clark--how-better-evals-can-bring-abundance.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="scott-clark--how-better-evals-can-bring-abundance">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="How Better Evals Can Bring Abundance Through Accelerated Scientific Discovery" data-title-zh="更好的 Eval 如何透過加速科學發現帶來豐盛">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Agent Evaluation &amp; Benchmarks</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">How Better Evals Can Bring Abundance Through Accelerated Scientific Discovery</span><span class="lang-zh">更好的 Eval 如何透過加速科學發現帶來豐盛</span></h1>
+        <p class="dialog__speaker"><strong>Scott Clark</strong> — Co-Founder &amp; CEO, Distributional</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 02:54:38–03:00:54 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=10478s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:54:38</span><span class="lang-zh">從 02:54:38 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">The best thing about a black-box optimizer is that it will optimize any eval you give it; the worst thing is that it will *blindly* optimize any eval you give it. So the bottleneck on accelerating science was never optimization power — it&#x27;s evals that know physics, know the research process, and know how to validate a hypothesis.</span><span class="lang-zh">黑箱最佳化器最棒的一點是它會最佳化你給它的任何 eval,最糟的一點是它會盲目地最佳化你給它的任何 eval——所以加速科學的瓶頸從來不是最佳化能力,而是懂物理、懂科研流程、懂假說驗證的 eval。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>他定義的 abundance 是科幻式的生活品質提升</strong>:更好的科學發現 → 新材料、更高效的能源 → 更好的醫藥、更高效的交通。他明確劃清界線:<strong>這件事不是關於淘汰更多白領工作,而是關於改善人的生活品質。</strong></li>
+<li><strong>20 年的個人主線是「調參數」</strong>:從蛋白質摺疊、量子力學模擬到 metagenome assembly,每個問題最後都卡在同一件事——東西做好了,然後要調。研究生熬夜在高維空間裡轉旋鈕換一篇好一點的論文,他們戲稱 <strong>grad student descent</strong>。他愛上了 Bayesian optimization,做成博論核心,再做成第一家新創 <strong>SigOpt</strong>。</li>
+<li><strong>最佳化解決了,信任沒有</strong>:SigOpt 幫客戶把某個數字推上去,客戶回頭說「另一個數字掉了」。<strong>黑箱最佳化器會盲目最佳化你給的任何 eval</strong>——只要 1% 交易是詐欺,「全部判定非詐欺」就有 99% 準確率。</li>
+<li><strong>Distributional 的兩次轉向是誠實的失敗紀錄</strong>:先用最複雜的統計檢定去解 chaos 與 non-stationarity(「糟透的點子,因為沒人喜歡寫測試,大家的資料也不夠,而且反正都在 YOLO 把模型丟進 production」),再轉去做 analytics 抓 unknown unknown——結論是「<strong>eval 是個好點子,但它比較像一個 feature,談不上產品,更談不上一家新創</strong>」。</li>
+<li><strong>現在的答案是 bespoke evals</strong>:懂物理、懂科研流程、懂假說驗證的客製化 eval,讓「what-if 機器」的飛輪越轉越快——<strong>把他當年要花六個月的事情壓縮到六小時</strong>。NeurIPS 時開源,目前私測中。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>什麼是 abundance,以及為什麼是現在(約 02:55–02:56)</h4>
+<p>Scott Clark 是 Distributional 的共同創辦人兼 CEO,同時在打造 <strong>Talaria Scientific</strong>。他開場先定義題目裡的 abundance:</p>
+<p><strong>透過 AI 帶來的豐盛,是更好的科學發現——帶來新材料、更高效的能源,進而帶來更好的醫藥、更高效的移動方式。「基本上就是活在科幻小說般的未來。」</strong></p>
+<p>他刻意把這件事和另一種敘事切開:<strong>「這比較不是關於我們怎麼淘汰更多白領工作、讓大家失業,而是關於我們怎麼改善人的生活品質。」</strong></p>
+<p>他說,他相信<strong>我們第一次真正有能力有意義地用 AI 加速科學發現</strong>——過去幾個月解鎖了相當多能力。而這是他 20 年來的執念。</p>
+<h4>Grad student descent:20 年的同一個問題(約 02:56–02:57)</h4>
+<p>從大學到博士,他解過的每一個問題、合作過的每一個團隊——<strong>蛋白質摺疊、量子力學模擬、metagenome assembly</strong>——最後都撞上同一堵牆:<strong>你做出了很棒的東西,然後你得去調它。</strong> 各種旋鈕、槓桿、hyperparameter。<strong>把圖表和 benchmark 弄好看一點,你就有一篇好一點的論文。</strong></p>
+<p>他們戲稱這叫 <strong>grad student descent</strong>:因為通常就是研究生在深夜裡,於高維空間中手動轉旋鈕,只為換一篇稍微好一點的論文。</p>
+<p>當然有人用聰明的方法:simulated annealing、genetic algorithms、local methods。而<strong>他愛上的是 Bayesian optimization</strong>——它成了他博士論文的核心,後來也成了他第一家 AI 新創的核心。</p>
+<h4>SigOpt:把最佳化做成生意(約 02:57–02:58)</h4>
+<p><strong>SigOpt 創立於 2014 年</strong>,目標就是解決參數調校問題。七年間他們合作過:</p>
+<ul>
+<li><strong>Netflix</strong>——調推薦系統</li>
+<li><strong>American Express</strong>——調詐欺偵測系統</li>
+<li><strong>OpenAI</strong>——在它還是非營利實驗室的早期,調它們早期的 RL 系統</li>
+<li>約 <strong>一兆美元規模的避險基金</strong></li>
+<li><strong>數百位學者</strong>透過免費方案調自己的論文,從材料設計到藥物發現</li>
+</ul>
+<p><strong>2020 年他把公司賣給 Intel</strong>,在那裡從晶片設計一路調到「benchmaxxing MLPerf」——「那時候大家都在對它 overfit。」</p>
+<p>目標是「為真正重要的問題做規模化最佳化」。他的評語是:<strong>「它運作得非常好——除了它不行的時候。」</strong></p>
+<h4>黑箱最佳化器的兩面(約 02:58–02:59)</h4>
+<p>問題在於:<strong>它會精準地照你告訴它的去做。</strong> 客戶常常回頭說:「對,你把那個數字弄上去了,但另一個數字掉下來了。」</p>
+<p>他給了全場最鋒利的對句:</p>
+<blockquote>
+<p><strong>黑箱最佳化器最棒的一點,是它會最佳化你給它的任何 eval。而黑箱最佳化器最糟的一點,是它會盲目地最佳化你給它的任何 eval。</strong></p>
+</blockquote>
+<p>例子:如果你的交易裡只有 1% 是詐欺,那麼<strong>「宣稱沒有任何交易是詐欺」就能得到 99% 準確率</strong>——一個非常「準確」的詐欺偵測系統。</p>
+<p>而且,<strong>我們離「把這些系統設定成完全自主」還很遠</strong>。他不認為我們近期能直接下指令說「目標:解決穩定核融合侷限問題」「解決癌症」。<strong>而且就算模型真的給出了答案,我們要怎麼信任它?</strong></p>
+<p>這就是硬幣的兩面:<strong>你需要最佳化這些系統,你也需要能信任它們。</strong></p>
+<h4>Distributional 的兩次轉向(約 02:59–03:00)</h4>
+<p>信任這一面,就是他創立 <strong>Distributional</strong> 的初衷。</p>
+<p><strong>第一版</strong>:他打算用最複雜的數學方式解決它——大型統計檢定,把 chaos 和 non-stationarity 一起解掉。他的自評很直接:<strong>「這是個糟透的點子,因為沒有人喜歡測試。他們沒有那些資料,而且反正大家都在 YOLO 把模型丟進 production。」</strong></p>
+<p><strong>於是他 pivot 了</strong>——「你就是這樣做的嘛,失敗了就 pivot」——轉向 analytics:<strong>去抓那些偷偷溜過你系統的 eval,從行為中找出模式,好指認出「這是一個 unknown unknown」。</strong></p>
+<p>但他對這條路也給了誠實的判決:<strong>「eval 是個很好的點子,但它比較像一個 feature,談不上是產品,更談不上是一家新創。」</strong></p>
+<h4>現在的答案:bespoke evals(約 03:00)</h4>
+<p>所以他現在把過去 20 年學到的一切,用來攻擊那個科學問題:<strong>我們要怎麼加速科學?</strong> 而聚焦點在於「真正重要的東西」——</p>
+<p><strong>打造 bespoke evals:懂物理的 eval、懂科學研究流程的 eval、懂得怎麼做假說驗證的 eval。</strong> 有了它,你就能把那台「what-if 機器」的飛輪轉得越來越快——<strong>把他研究所時代要花六個月的事,壓縮成六小時。</strong></p>
+<p>他們<strong>公開地在做這件事</strong>:<strong>NeurIPS 時會開源</strong>,目前有 private beta。他歡迎任何在做計算科學相關工作的人找他聊。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"The very best thing about a black-box optimizer is it will optimize any eval you give it. And the very worst thing about a black-box optimizer is it will blindly optimize any eval you give it."(約 02:58)</p>
+</blockquote>
+<p>整場的軸心:最佳化器的品質上限,就是你的 eval 的品質上限。</p>
+<blockquote>
+<p>"You could make a really accurate fraud detection system if only 1% of your transactions are fraud by saying nothing's fraud. 99% accuracy right there."(約 02:58)</p>
+</blockquote>
+<p>最省力的 benchmark 破解法,也是最好的反面教材。</p>
+<blockquote>
+<p>"This was a terrible idea because nobody likes tests. They didn't have the data and everybody was just YOLOing models into production anyway."(約 02:59)</p>
+</blockquote>
+<p>創業者對自己第一版產品的誠實驗屍。</p>
+<blockquote>
+<p>"The eval is a really good idea, but it's more of a feature, let alone a product, let alone a startup."(約 02:59)</p>
+</blockquote>
+<p>在一場以 eval 為主題的 session 裡,這句話格外有份量。</p>
+<blockquote>
+<p>"Doing what I did in grad school that used to take six months in six hours instead."(約 03:00)</p>
+</blockquote>
+<p>他對加速科學的具體度量。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>His definition of abundance is sci-fi quality of life</strong>: better scientific discoveries → new materials and more efficient energy → better medicine and more efficient travel. He drew an explicit line: <strong>this is not about eliminating white-collar jobs, it's about improving people's quality of life.</strong></li>
+<li><strong>His 20-year through-line is parameter tuning.</strong> From protein folding to quantum mechanics simulation to metagenome assembly, every problem ended the same way: you build something great, then you have to tune it. Grad students up at night turning knobs in a high-dimensional space for a marginally better paper — <strong>grad student descent</strong>. He fell for Bayesian optimization, made it his thesis, then made it <strong>SigOpt</strong>.</li>
+<li><strong>Optimization got solved; trust didn't.</strong> SigOpt would push a customer's number up and the customer would return to say another number went down. <strong>A black-box optimizer will blindly optimize whatever eval you hand it</strong> — if 1% of transactions are fraud, calling nothing fraud gets you 99% accuracy.</li>
+<li><strong>Distributional's two pivots are an honest record of failure.</strong> First, attack it with heavy statistical testing and solve chaos and non-stationarity ("a terrible idea, because nobody likes tests, they didn't have the data, and everybody was YOLOing models into production anyway"). Then pivot to analytics for catching unknown unknowns — with the verdict that <strong>"the eval is a really good idea, but it's more of a feature, let alone a product, let alone a startup."</strong></li>
+<li><strong>His current answer is bespoke evals</strong>: evals that know physics, know the scientific research process, and know how to validate hypotheses, so the flywheel of a "what-if machine" spins faster — <strong>doing in six hours what took six months in grad school.</strong> Open sourcing at NeurIPS; private beta now.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>What abundance means, and why now (~02:55–02:56)</h4>
+<p>Clark is co-founder and CEO of Distributional and is building <strong>Talaria Scientific</strong>. He opened by defining the word in his title:</p>
+<p><strong>Abundance through AI means better scientific discoveries that lead to new materials and more efficient energy, which lead to better medicine and more efficient ways of travel. "It basically means living in a sci-fi future."</strong></p>
+<p>He deliberately separated this from a competing narrative: <strong>"It's less about how do we get rid of more white collar jobs and put everybody out of work, and more about how do we improve people's quality of life."</strong></p>
+<p>For the first time, he said, we can <strong>meaningfully accelerate scientific discovery with AI</strong> — the last few months have unlocked quite a bit of capability. And this has been his obsession for 20 years.</p>
+<h4>Grad student descent: the same problem for two decades (~02:56–02:57)</h4>
+<p>From undergrad through his PhD, every problem he solved and every group he worked with — <strong>protein folding, quantum mechanics simulation, metagenome assembly</strong> — hit the same wall: <strong>you'd build something great, and then you'd need to tune it.</strong> Knobs, levers, hyperparameters, whatever you call them. <strong>Make the graphs and benchmarks slightly better and you got a better paper.</strong></p>
+<p>They jokingly called it <strong>grad student descent</strong>, because it was usually the grad students sitting up late turning knobs in a high-dimensional space for a marginally better paper.</p>
+<p>People did apply smarter techniques — simulated annealing, genetic algorithms, local methods. But <strong>he fell in love with Bayesian optimization</strong>, which became core to his PhD thesis and then the central point of his first AI startup.</p>
+<h4>SigOpt: turning optimization into a business (~02:57–02:58)</h4>
+<p><strong>SigOpt started in 2014</strong> to solve the parameter tuning problem. Over seven years they worked with:</p>
+<ul>
+<li><strong>Netflix</strong> — tuning recommender systems</li>
+<li><strong>American Express</strong> — tuning fraud systems</li>
+<li><strong>OpenAI</strong> — in the early days, when it was still a nonprofit lab, tuning their early RL systems</li>
+<li>Roughly <strong>a trillion dollars' worth of hedge funds</strong></li>
+<li><strong>Several hundred academics</strong> using the free program to tune their papers, from materials design to drug discovery</li>
+</ul>
+<p><strong>He sold the company to Intel in 2020</strong>, where it went on to tune everything from chip design to "benchmaxxing MLPerf, when that was what everybody was overfitting to at the time."</p>
+<p>The goal was optimization at scale for problems that really mattered. His own verdict: <strong>"it worked really well, except when it didn't."</strong></p>
+<h4>The two faces of a black-box optimizer (~02:58–02:59)</h4>
+<p>The problem is that <strong>it fits exactly what you told it to do.</strong> Customers would come back and say: yeah, you made that number go up, but some other number went down.</p>
+<p>Then came the sharpest line of the talk:</p>
+<blockquote>
+<p><strong>The very best thing about a black-box optimizer is it will optimize any eval you give it. And the very worst thing about a black-box optimizer is it will blindly optimize any eval you give it.</strong></p>
+</blockquote>
+<p>His illustration: if only 1% of your transactions are fraud, <strong>you can build a very "accurate" fraud detection system by saying nothing is fraud. 99% accuracy right there.</strong></p>
+<p>On top of that, <strong>we are still a long way from setting these systems up to be completely autonomous.</strong> He doesn't think we're anywhere near issuing a goal like "solve stable fusion containment" or "solve cancer." <strong>And even if the model came back with something — how could we trust it?</strong></p>
+<p>That's the other side of the coin: <strong>you need to optimize these systems, and you need to trust them.</strong></p>
+<h4>Distributional's two pivots (~02:59–03:00)</h4>
+<p>Trust is what he set out to solve with <strong>Distributional</strong>.</p>
+<p><strong>Version one</strong>: attack it in the most complex mathematical way possible — big statistical tests, solve chaos, solve non-stationarity. His own assessment is unsparing: <strong>"this was a terrible idea because nobody likes tests. They didn't have the data and everybody was just YOLOing models into production anyway."</strong></p>
+<p><strong>So he pivoted</strong> — "this is what you do, you're failing, pivot" — to analytics: <strong>catch the evals sneaking through your system, find patterns in behavior so you can point at something and say "this is the unknown unknown."</strong></p>
+<p>But he delivered an honest verdict on that path too: <strong>"the eval is a really good idea, but it's more of a feature, let alone a product, let alone a startup."</strong></p>
+<h4>The current answer: bespoke evals (~03:00)</h4>
+<p>So now he's applying everything from the last 20 years to the scientific problem: <strong>how do we accelerate science?</strong> — with the focus on what actually matters:</p>
+<p><strong>Building bespoke evals that know physics, that know about the scientific research process, that know how to do hypothesis validation.</strong> With those, you can spin the flywheel of a what-if machine faster and faster — <strong>doing what took him six months in grad school in six hours instead.</strong></p>
+<p>They're <strong>building it in the open</strong>: it will be <strong>open sourced at NeurIPS</strong>, with a private beta running now. He invited anyone working on computational science to come talk.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"The very best thing about a black-box optimizer is it will optimize any eval you give it. And the very worst thing about a black-box optimizer is it will blindly optimize any eval you give it." (~02:58)</p>
+</blockquote>
+<p>The axis of the talk: an optimizer's quality ceiling is your eval's quality ceiling.</p>
+<blockquote>
+<p>"You could make a really accurate fraud detection system if only 1% of your transactions are fraud by saying nothing's fraud. 99% accuracy right there." (~02:58)</p>
+</blockquote>
+<p>The laziest way to beat a benchmark, and the best cautionary example.</p>
+<blockquote>
+<p>"This was a terrible idea because nobody likes tests. They didn't have the data and everybody was just YOLOing models into production anyway." (~02:59)</p>
+</blockquote>
+<p>A founder's honest post-mortem on his own first product.</p>
+<blockquote>
+<p>"The eval is a really good idea, but it's more of a feature, let alone a product, let alone a startup." (~02:59)</p>
+</blockquote>
+<p>A weighty thing to say in a session devoted entirely to evals.</p>
+<blockquote>
+<p>"Doing what I did in grad school that used to take six months in six hours instead." (~03:00)</p>
+</blockquote>
+<p>His concrete yardstick for accelerating science.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Talaria Scientific</td>
+<td>他目前打造的計算科學 agentic 系統,搭配懂物理與科研流程的 bespoke evals</td>
+<td>His current venture: an agentic system for computational science paired with bespoke, physics-aware evals</td>
+<td>將於 NeurIPS 開源,目前 private beta / open sourcing at NeurIPS, private beta now</td>
+</tr>
+<tr>
+<td>Distributional</td>
+<td>他共同創辦的公司,從統計檢定轉向 AI 行為 analytics</td>
+<td>His company; pivoted from statistical testing to AI behavioral analytics</td>
+<td></td>
+</tr>
+<tr>
+<td>SigOpt</td>
+<td>2014 年創立的 Bayesian optimization 新創,2020 年由 Intel 收購</td>
+<td>Bayesian optimization startup founded 2014, acquired by Intel in 2020</td>
+<td>客戶含 Netflix、American Express、早期 OpenAI / customers included Netflix, American Express, and early OpenAI</td>
+</tr>
+<tr>
+<td>Bayesian optimization</td>
+<td>他博論與第一家新創的核心方法</td>
+<td>The core method of his thesis and first startup</td>
+<td>與 simulated annealing、genetic algorithms 等並列比較 / contrasted with simulated annealing and genetic algorithms</td>
+</tr>
+<tr>
+<td>MLPerf</td>
+<td>他形容 Intel 時期「大家都在對它 overfit」的 benchmark</td>
+<td>The benchmark he says everyone was overfitting to during his Intel years</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Taria Scientific</td>
+<td>Talaria Scientific</td>
+</tr>
+<tr>
+<td>SIGOPT / Sigopt</td>
+<td>SigOpt</td>
+</tr>
+<tr>
+<td>AMX</td>
+<td>American Express (AmEx)</td>
+</tr>
+<tr>
+<td>Beijian optimization</td>
+<td>Bayesian optimization</td>
+</tr>
+<tr>
+<td>benchmaxing MLF</td>
+<td>benchmaxxing MLPerf</td>
+</tr>
+<tr>
+<td>recommener systems</td>
+<td>recommender systems</td>
+</tr>
+<tr>
+<td>non-stationerity</td>
+<td>non-stationarity</td>
+</tr>
+<tr>
+<td>stable confu stable fusion containment</td>
+<td>stable fusion containment</td>
+</tr>
+<tr>
+<td>Nurips</td>
+<td>NeurIPS</td>
+</tr>
+<tr>
+<td>evolves</td>
+<td>evals</td>
+</tr>
+<tr>
+<td>yoloing</td>
+<td>YOLOing</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Talaria Scientific 的開源專案名稱與 NeurIPS 釋出的確切時間點。/ The name of the Talaria Scientific open-source project and the exact NeurIPS release timing.</li>
+<li>「約一兆美元規模的避險基金」為口頭說法,確切口徑不明。/ The "roughly a trillion dollars' worth of hedge funds" figure was spoken loosely; the exact basis is unclear.</li>
+<li>SigOpt 服務 OpenAI 早期 RL 系統的公開紀錄。/ A public record of SigOpt's work on OpenAI's early RL systems.</li>
+<li>bespoke evals 的具體設計(如何「懂物理」、如何做 hypothesis validation)在演講中未展開。/ The concrete design of the bespoke evals — how they "know physics" and perform hypothesis validation — was not detailed on stage.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/scott-clark--how-better-evals-can-bring-abundance.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

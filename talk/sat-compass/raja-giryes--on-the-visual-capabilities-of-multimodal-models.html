@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>On the Visual Capabilities of Multimodal Models · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="In today&#x27;s multimodal models the reasoning happens almost entirely in the LLM while the vision side is a head bolted on, which explains their long lag on spatial cognition; but the two-year jump fr…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/raja-giryes--on-the-visual-capabilities-of-multimodal-models.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="On the Visual Capabilities of Multimodal Models · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="In today&#x27;s multimodal models the reasoning happens almost entirely in the LLM while the vision side is a head bolted on, which explains their long lag on spatial cognition; but the two-year jump fr…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/raja-giryes--on-the-visual-capabilities-of-multimodal-models.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-compass" data-talk="raja-giryes--on-the-visual-capabilities-of-multimodal-models">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="On the Visual Capabilities of Multimodal Models" data-title-zh="談多模態模型的視覺能力">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">On the Visual Capabilities of Multimodal Models</span><span class="lang-zh">談多模態模型的視覺能力</span></h1>
+        <p class="dialog__speaker"><strong>Raja Giryes</strong> — Professor, Tel Aviv University</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 02:45:41–02:57:05 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=9941s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:45:41</span><span class="lang-zh">從 02:45:41 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">In today&#x27;s multimodal models the reasoning happens almost entirely in the LLM while the vision side is a head bolted on, which explains their long lag on spatial cognition; but the two-year jump from near-chance to near-perfect on several tasks shows that asking the right question is itself what drives progress — and the mechanism turns out to be models internally *imagining* visual intermediate states.</span><span class="lang-zh">多模態模型的推理幾乎都發生在 LLM 那一側、視覺端只是外掛,這解釋了它們在空間認知上的長期落後;但兩年間從「接近隨機猜」到「接近滿分」的躍進顯示——問對問題本身就會驅動進展,而進展的機制正是模型開始在內部權重裡「想像」視覺中間狀態。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>視角轉換</strong>:當天所有人都在談 coding agent 怎麼延伸;他要談的是<strong>加入新能力</strong>,也就是多模態。「當你現在聽我說話,你不是只看到文字,你看到我、看到一切——我們活在一個多模態的世界。」</li>
+<li><strong>現代多模態模型的結構性偏斜</strong>:很強的 LLM + 一個「不知從哪找來就接上去」的視覺頭,一起做後訓練。分析下來,<strong>多模態理解的推理幾乎都發生在 LLM 端而非視覺端</strong>;in-context learning 一旦塞太多圖片,模型反而會混亂——因為訓練時主要仰賴語言那一側。</li>
+<li><strong>空間認知的兩年躍進</strong>:兩年前,frontier model 在 mental rotation、perspective taking、maze completion、shortcut discovery 這些空間認知測驗上幾乎是隨機水準;今年一月的研究說它們大約到了<strong>三歲小孩</strong>的程度;2026 年二月的研究說它們能解人類<strong>約 10 秒</strong>能解完的空間認知任務。而在 perspective taking 上,Opus 4.6 與 Gemini 3.1 已經接近 100%。</li>
+<li><strong>為什麼會進步</strong>:他與 Apple 同事的近期工作發現,<strong>即使是不能生成影像的模型,也在內部權重中重建視覺中間狀態</strong>——用探針(probe)接上權重就能把它讀出來。而<strong>主動監督模型去「想像」,效能還會再提升</strong>。</li>
+<li><strong>兩個帶走的訊息</strong>:(1) 提出對的問題對推進科學極其重要;(2) 多模態模型不能只顧文字,<strong>也要練生成視覺的那一半</strong>。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>多模態的老問題:compositionality 與「詞袋」(約 02:46–02:48)</h4>
+<p>他先致謝並說明角度不同:大家都在談 coding agent,他要談的是<strong>加入新能力</strong>。而他觀察到領域裡一個有趣的規律——<strong>一旦有人開始問對的問題,一兩年內就會開始看到解法</strong>。</p>
+<p>早期的例子是 <strong>compositional reasoning</strong>。舊的多模態模型在做影像描述時,如果一張圖是「三隻斑馬和兩隻長頸鹿」,數字與名詞會全部混在一起——模型把所有東西當成一個 <strong>bag of words</strong>,於是組合性就出問題。他的團隊做過多項改進工作:用<strong>樹狀結構</strong>把詞分解、產生更<strong>密集且對齊</strong>的描述,把模型教得更有結構。此後情況確實改善了。</p>
+<h4>結構性偏斜:推理都在 LLM 那一側(約 02:48–02:50)</h4>
+<p>接著他們發現這些模型還有別的問題,並用兩項工作分析「模型在理解流程中到底發生了什麼」:</p>
+<ul>
+<li>一項與同事合作、去年發表於 <strong>ACL</strong> 的工作(關於 entity knowledge 的效能落差):他們想知道多模態模型的推理發生在哪裡。發現是——<strong>所有現代多模態模型的結構,都是一個很強的 LLM,加上一個從某處找來、接上去的視覺頭</strong>;我們投入大量資源訓練 LLM,視覺語言模型的部分則相對隨意,再一起做後訓練。分析下來,<strong>多模態理解的分析工作大部分發生在 LLM 那一側,而不是視覺那一側。</strong></li>
+<li>另一項是 <strong>in-context learning</strong> 的分析:LLM 的 ICL 效果很好,但 VLM / 多模態模型有個奇怪現象——<strong>如果 in-context 的示例太長、圖片太多,模型反而開始混亂</strong>。原因同樣是:訓練多模態模型時我們主要依賴語言那一部分。</li>
+</ul>
+<p>他的問題:<strong>也許我們需要做一次轉向。</strong></p>
+<h4>空間認知:從隨機猜到接近滿分(約 02:50–02:54)</h4>
+<p>演講聚焦在多模態模型的一項特定能力:<strong>spatial cognition(空間認知)</strong>。</p>
+<p>他引用同事兩年前發表的研究「<strong>Does Spatial Cognition Emerge in Frontier Models?</strong>」,該研究對多模態模型施以一系列空間認知測驗:</p>
+<ul>
+<li><strong>Mental rotation</strong>:給一個形狀,問哪個是同一形狀的旋轉版本。</li>
+<li><strong>Perspective taking</strong>:例如問「蝙蝠與狗之間的角度是多少」,看模型能否從特定視角作答。</li>
+<li><strong>Maze completion</strong>:要模型解迷宮。</li>
+<li><strong>Shortcut discovery</strong>:給模型看一段走過某地的路徑,但不是最短路徑,再要求它走最短路徑。</li>
+</ul>
+<p><strong>兩年前的結論是:所有模型都很糟。</strong> 連 GPT 等 frontier model 都幾乎接近隨機水準,只是略好一點。</p>
+<p>但一旦問題被提出來,進展就開始出現:</p>
+<ul>
+<li><strong>今年一月</strong>,一項名為(字幕作)"baby vision" 的研究做了類似的探索,發現 frontier model 大約到了<strong>三歲小孩</strong>的水準。他調侃:「一年半就長到三歲很不錯,但通常我們希望長慢一點。」</li>
+<li>另一項工作把「人類解一題要花多久」拿來跟模型比,發現到 <strong>2026 年二月</strong>,frontier model 能解的是<strong>人類約 10 秒能解完</strong>的空間認知任務。以 mental rotation 為例,人類解它是要花一點時間的,所以模型只能解 10 秒級的題目「不算太好,但比以前好」。</li>
+<li>逐項來看:<strong>perspective taking</strong> 兩年前最好的模型接近隨機,現在 <strong>Opus 4.6 與 Gemini 3.1 幾乎接近 100%</strong>,兩年內的進步非常驚人。<strong>Maze completion</strong> 還沒那麼好,但<strong>就在三個月前</strong>,從接近隨機一躍而上(他舉 GPT-5.4 為例),<strong>shortcut discovery</strong> 也發生了同樣的躍升。</li>
+</ul>
+<h4>為什麼會進步:模型在內部「想像」(約 02:54–02:56)</h4>
+<p>那麼問題來了:為什麼會發生這件事?</p>
+<p>他與 <strong>Apple</strong> 的同事做了一項近期工作,問的問題是「<strong>多模態模型會夢見電子羊嗎?</strong>(Do multimodal models imagine electric sheep?)」——答案是<strong>會</strong>。</p>
+<p>做法:研究多種空間認知任務,在 <strong>open-loop</strong> 設定下——只給模型第一格畫面,然後要模型告訴我們該走哪一步來解這個遊戲。重點是,他們看的是<strong>不能生成影像的模型</strong>(能接收影像但不能產生影像)。<strong>用一個 transformer 接上模型權重做探針(probe)</strong>,結果發現:<strong>模型在內部想像著怎麼解這個問題</strong>。</p>
+<ul>
+<li>例如問兩個形狀是否為同一個形狀(旋轉後是否重合),可以看到模型在內部權重中<strong>重建了視覺內容</strong>——正是我們人類在心裡旋轉兩個形狀時會做的事。</li>
+<li>組裝字元(assemble characters)的任務也一樣:模型在內部權重中組裝字元。</li>
+</ul>
+<p><strong>這也許正是這兩年大幅進步的原因:模型開始想像了。</strong> 而他們接著做的是:<strong>主動給模型「想像」的能力並加以監督</strong>,結果<strong>效能又進一步提升</strong>。</p>
+<h4>兩個結論(約 02:56)</h4>
+<p>他因時間關係跳過其餘結果,留下兩點:</p>
+<ol>
+<li><strong>提出對的問題,對推進科學非常重要。</strong></li>
+<li>對多模態模型而言,<strong>不要只聚焦在文字,也要聚焦在生成視覺的部分</strong>——這對模型的進步幫助很大。</li>
+</ol>
+<h3>金句</h3>
+<blockquote>
+<p>"When you hear me now, you don't just see a text, you see me, you see everything. So we live in a multimodal world."(約 02:46)</p>
+</blockquote>
+<p>一句話說明為什麼在滿場的 coding agent 討論裡,還是需要有人談視覺。</p>
+<blockquote>
+<p>"You have very strong LLM and a nice visual head attached to it … we found somewhere, we attached to it."(約 02:48–02:49)</p>
+</blockquote>
+<p>對當前多模態架構最不客氣也最傳神的描述——視覺端是外掛,不是共同設計。</p>
+<blockquote>
+<p>"Nice to grow to become three years old in one and a half year — but usually we want to grow slower."(約 02:52)</p>
+</blockquote>
+<p>對空間認知進步速度的一句冷幽默。</p>
+<blockquote>
+<p>"Once you start asking the question, you start to see improvement throughout time."(約 02:51)</p>
+</blockquote>
+<p>貫穿全場的主軸:提問本身就是推進器。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>A deliberately different angle.</strong> Everyone else was talking about coding agents and how to extend them; he wants to talk about <em>adding a new capability</em> — multimodality. "When you hear me now, you don't just see a text, you see me, you see everything. So we live in a multimodal world."</li>
+<li><strong>The structural skew in today's multimodal models</strong>: a very strong LLM with a visual head found somewhere and attached, trained together in post-training. Analysis shows <strong>most of the reasoning in multimodal understanding happens in the LLM part, not the visual part</strong> — and in-context learning with too many images actually confuses these models, for the same reason.</li>
+<li><strong>A two-year jump in spatial cognition.</strong> Two years ago frontier models were near chance on mental rotation, perspective taking, maze completion, and shortcut discovery. By January this year they were at the level of a three-year-old child; by February 2026 they could solve spatial tasks that take a human about 10 seconds. On perspective taking, Opus 4.6 and Gemini 3.1 are now near 100%.</li>
+<li><strong>The mechanism</strong>: recent work with colleagues at Apple probed models that <em>cannot</em> generate images and found they <strong>internally reconstruct visual intermediate states</strong> — and explicitly supervising that imagination improves performance further.</li>
+<li><strong>Two takeaways</strong>: asking the right question is what advances the science; and multimodal models should not focus on text alone — training the generate-the-visual half helps a lot.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The old problem: compositionality and the bag of words (~02:46–02:48)</h4>
+<p>His observation about the field: <strong>once people start asking the right question, solutions start appearing within a year or two.</strong></p>
+<p>An early example is compositional reasoning. Older multimodal models captioning an image of, say, three zebras and two giraffes would jumble the numbers and the names together — treating everything as a <strong>bag of words</strong>, so compositionality broke. His group worked on fixing this: decomposing words into <strong>tree structures</strong>, producing denser and better-aligned captions, teaching the model to be structured. Things improved from there.</p>
+<h4>The structural skew: reasoning lives in the LLM (~02:48–02:50)</h4>
+<p>Two analyses of what actually happens inside the understanding workflow:</p>
+<ul>
+<li>Work with colleagues on the <strong>performance gap in entity knowledge</strong>, published at <strong>ACL</strong> a year ago, asking where in a multimodal model the reasoning occurs. The finding follows from the architecture: every modern multimodal model is a very strong LLM with a nice visual head attached — we invest heavily in training LLMs, then take some visual language model we found somewhere, attach it, and post-train them together. When you analyze multimodal understanding, <strong>most of the analysis happens in the LLM part, not the visual part</strong>.</li>
+<li>A second analysis of <strong>in-context learning</strong>. ICL is great in LLMs, but in VLMs there's a strange effect: give too long an in-context sequence with too many images and the models <strong>start to get confused</strong> — again because training relies mainly on the language side.</li>
+</ul>
+<p>His question: maybe we need a shift.</p>
+<h4>Spatial cognition: from chance to near-perfect (~02:50–02:54)</h4>
+<p>The talk narrows to <strong>spatial cognition</strong>, starting from colleagues' work two years ago, "<strong>Does Spatial Cognition Emerge in Frontier Models?</strong>", which ran classic spatial-cognition tests on multimodal models:</p>
+<ul>
+<li><strong>Mental rotation</strong> — given a shape, identify which candidate is the same shape rotated.</li>
+<li><strong>Perspective taking</strong> — e.g. what is the angle between the bat and the dog, answered from a given viewpoint.</li>
+<li><strong>Maze completion</strong> — solve the maze.</li>
+<li><strong>Shortcut discovery</strong> — show the model a walkthrough of a place that doesn't take the shortest path, then ask it to take the shortest path.</li>
+</ul>
+<p><strong>Two years ago, all models were very bad</strong> — frontier models including GPT sat near chance, only slightly better.</p>
+<p>Then, once the question was on the table:</p>
+<ul>
+<li><strong>January this year</strong>, a study the captions render as "baby vision" ran a similar exploration and found frontier models roughly at the level of a <strong>three-year-old child</strong>. His aside: nice to grow to three years old in a year and a half, though usually we'd prefer to grow slower.</li>
+<li>Another work compared how long a human takes to solve each problem against what models can do, finding that by <strong>February 2026</strong> frontier models solve spatial-cognition tasks that take humans <strong>about 10 seconds</strong>. Since mental rotation takes humans real time to work through, being capped at 10-second tasks is "not so great, but better than what we had before."</li>
+<li>Task by task: on <strong>perspective taking</strong>, the best models were near chance two years ago; now <strong>Opus 4.6 and Gemini 3.1 are almost at 100%</strong>. <strong>Maze completion</strong> is still not great, but <strong>just three months ago</strong> it leapt from near chance (his example: GPT-5.4), and <strong>shortcut discovery</strong> did the same.</li>
+</ul>
+<h4>Why: the models are imagining internally (~02:54–02:56)</h4>
+<p>Recent work with colleagues at <strong>Apple</strong> asked: <strong>do multimodal models imagine electric sheep?</strong> The answer is yes.</p>
+<p>They studied a range of spatial-cognition tasks in an <strong>open-loop</strong> setting — show the model only the first frame, then ask what step it should take to solve the game. Critically, they looked at models that <strong>cannot generate images</strong> (they can receive images but not produce them), and <strong>probed the weights with an attached transformer</strong>.</p>
+<p>The finding: <strong>the model is internally imagining how to solve the problem.</strong> Asked whether two shapes are the same shape under rotation, the model's internal weights <strong>reconstruct the visual content</strong> — the same thing we do when we mentally rotate two shapes. The same holds for assembling characters.</p>
+<p>That may be exactly why the last two years improved so much: models started to imagine. So they went further and <strong>gave the model the ability to imagine and supervised it to do so — and performance improved.</strong></p>
+<h4>Two closing points (~02:56)</h4>
+<p>Skipping the remaining results for time, he leaves two:</p>
+<ol>
+<li><strong>Asking the right question is very important to advancing science.</strong></li>
+<li>For multimodal models, <strong>don't focus on text only — focus on generating the visual part too.</strong> It helps the model improve a lot.</li>
+</ol>
+<h3>Quotes</h3>
+<blockquote>
+<p>"When you hear me now, you don't just see a text, you see me, you see everything. So we live in a multimodal world." (~02:46)</p>
+</blockquote>
+<p>Why a room full of coding-agent talks still needs someone talking about vision.</p>
+<blockquote>
+<p>"You have very strong LLM and a nice visual head attached to it … we found somewhere, we attached to it." (~02:48–02:49)</p>
+</blockquote>
+<p>The bluntest and most memorable description of current multimodal architecture: vision is bolted on, not co-designed.</p>
+<blockquote>
+<p>"Nice to grow to become three years old in one and a half year — but usually we want to grow slower." (~02:52)</p>
+</blockquote>
+<p>His deadpan on the pace of spatial-cognition progress.</p>
+<blockquote>
+<p>"Once you start asking the question, you start to see improvement throughout time." (~02:51)</p>
+</blockquote>
+<p>The through-line of the talk: the question itself is the engine.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Does Spatial Cognition Emerge in Frontier Models?</td>
+<td>同事兩年前的研究,系統性評估多模態模型的空間認知(SPACE benchmark)</td>
+<td>Colleagues' work from two years ago systematically evaluating spatial cognition in frontier models (the SPACE benchmark)</td>
+<td>arXiv 2410.06468;含 mental rotation / perspective taking / maze completion / shortcut discovery</td>
+</tr>
+<tr>
+<td>Do multimodal models imagine electric sheep?</td>
+<td>與 Apple 同事的近期工作:探測不能生成影像的模型,發現其內部權重重建視覺中間狀態;主動監督「想像」可提升效能</td>
+<td>Recent work with Apple colleagues: probing non-image-generating models reveals internally reconstructed visual states; supervising imagination improves performance</td>
+<td>arXiv 2605.09693</td>
+</tr>
+<tr>
+<td>「Performance gap in entity knowledge」(ACL,一年前)</td>
+<td>分析多模態模型的推理發生在 LLM 端而非視覺端</td>
+<td>Analysis showing multimodal reasoning occurs in the LLM rather than the visual component</td>
+<td>講題名稱以逐字稿口述為準,完整標題待確認</td>
+</tr>
+<tr>
+<td>Compositional reasoning 相關工作</td>
+<td>用樹狀結構分解詞、密集對齊 caption,改善「詞袋」問題</td>
+<td>Tree-structured decomposition and denser aligned captions to fix bag-of-words compositionality</td>
+<td>講者團隊多篇工作,未報出個別標題</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raja Giris</td>
+<td>Raja Giryes</td>
+</tr>
+<tr>
+<td>multimodel</td>
+<td>multimodal</td>
+</tr>
+<tr>
+<td>special cognition</td>
+<td>spatial cognition</td>
+</tr>
+<tr>
+<td>mess completion</td>
+<td>maze completion</td>
+</tr>
+<tr>
+<td>shortest discovery</td>
+<td>shortcut discovery</td>
+</tr>
+<tr>
+<td>bag of forts</td>
+<td>bag of words</td>
+</tr>
+<tr>
+<td>group positionality</td>
+<td>compositionality</td>
+</tr>
+<tr>
+<td>OPUS 4.6</td>
+<td>Opus 4.6</td>
+</tr>
+<tr>
+<td>Germany 3.1</td>
+<td>Gemini 3.1</td>
+</tr>
+<tr>
+<td>GPD 5.4</td>
+<td>GPT-5.4</td>
+</tr>
+<tr>
+<td>electric ship</td>
+<td>electric sheep</td>
+</tr>
+<tr>
+<td>great lip</td>
+<td>great leap</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>"baby vision"</strong>(2026 年一月、發現 frontier model 約當三歲小孩水準的研究)的正確名稱與出處。/ Correct name and source for the January 2026 study heard as "baby vision".</li>
+<li>「比較人類解題所需時間」的那篇 2026 年二月工作的名稱。/ Title of the February 2026 work comparing human solve-time against model capability.</li>
+<li>與同事合作、去年發表於 ACL 的那篇工作的完整標題(逐字稿作 "performance gap in entity knowledge")。/ Full title of the ACL paper.</li>
+<li>探測實驗中「if two shapes have the same naturality」——"naturality" 應為某個空間認知術語(疑為 chirality / orientation),需看投影片確認。/ The term rendered as "naturality" in the probing experiment likely mis-transcribes a spatial-cognition term.</li>
+<li>他因時間跳過的其餘結果(講者說 "we have some more results, because of time I will skip them")。/ The results he skipped for time.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/raja-giryes--on-the-visual-capabilities-of-multimodal-models.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

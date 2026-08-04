@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Measuring API Agent Reliability for Long-Horizon Tasks in Production · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="On single API tasks every model scores 88–97%, which looks like a solved problem; chain those same tasks into a dependent sequence and scores collapse to 44–73%. The tasks didn&#x27;t get harder — one s…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/zelin-wan--measuring-api-agent-reliability-long-horizon.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Measuring API Agent Reliability for Long-Horizon Tasks in Production · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="On single API tasks every model scores 88–97%, which looks like a solved problem; chain those same tasks into a dependent sequence and scores collapse to 44–73%. The tasks didn&#x27;t get harder — one s…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/zelin-wan--measuring-api-agent-reliability-long-horizon.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="zelin-wan--measuring-api-agent-reliability-long-horizon">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Measuring API Agent Reliability for Long-Horizon Tasks in Production" data-title-zh="衡量 API Agent 在生產環境長程任務中的可靠度">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Agent Evaluation &amp; Benchmarks</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Measuring API Agent Reliability for Long-Horizon Tasks in Production</span><span class="lang-zh">衡量 API Agent 在生產環境長程任務中的可靠度</span></h1>
+        <p class="dialog__speaker"><strong>Zelin Wan</strong> — Senior AI Engineer, Postman</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 02:24:04–02:34:28 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=8644s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:24:04</span><span class="lang-zh">從 02:24:04 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">On single API tasks every model scores 88–97%, which looks like a solved problem; chain those same tasks into a dependent sequence and scores collapse to 44–73%. The tasks didn&#x27;t get harder — one small early mistake gets amplified downstream into a broken result, which is exactly the difference between answering and executing.</span><span class="lang-zh">單一 API 任務上所有模型都拿 88–97%,看起來問題已解決;但把同樣的任務串成互相依賴的長鏈,分數立刻掉到 44–73%——任務本身沒有變難,是早期的一個小錯會被後續步驟放大成整份報告的崩潰,而這正是「回答問題」與「執行任務」的差別。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>單一任務的高分是假象</strong>:APIFlow-Bench 上,即使是輕量模型在單一 API 任務也有 88–97% 通過率;一旦串成依賴鏈,同樣的子任務組合起來只剩 44–73%。<strong>難度沒變,變的是錯誤會不會被繼承</strong>。</li>
+<li><strong>把 API 工作拆成七種失敗模式分別評分</strong>:authentication、discovery、schema repair、multi-step execution、error recovery、pagination、statefulness。分開評分才知道模型<strong>為什麼</strong>失敗——step 3 沒存狀態害 step 15 失敗,和 pagination 處理不好,是完全不同的病。</li>
+<li><strong>合成任務必須設「硬性關卡」才可信</strong>:三道 gate——self-testing(空白提交與被破壞的證據都必須失敗)、solvability(frontier 模型試 10 次至少過 3 次才收)、golden replay(把各子任務的參考答案串起來重放,整條鏈必須全過)。</li>
+<li><strong>確定性 validator 與 LLM validator 兩者都要</strong>:兩個確定性驗證器(環境最終狀態 + 最終答案)決定 leaderboard 分數;LLM validator 不計分,專門標記可疑的通過案例交給人審。<strong>驗證器錯了,模型的真實能力就永遠測不出來。</strong></li>
+</ul>
+<h3>重點整理</h3>
+<h4>問題:企業把商業邏輯包在 API 裡,現在把 agent 接了上去(約 02:24–02:26)</h4>
+<p>Zelin Wan 是 Postman 的工程師,這場介紹他們的 benchmark <strong>APIFlow-Bench</strong>。</p>
+<p>企業用 AI agent 執行長程任務時,已經在面對一個具體問題:<strong>agent 在早期犯的一個小錯,會讓整件事整個失敗</strong>。而工程師實際在做的事情長這樣——把一個 build job 接到 monitoring API、建立一筆紀錄、或從 rate limit 中復原。這些任務類型就是 benchmark 的取材來源。</p>
+<p>他們的核心發現非常乾脆:</p>
+<table>
+<thead>
+<tr>
+<th>任務型態</th>
+<th>模型表現</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>單一 API 任務</td>
+<td><strong>88%–97%</strong>(連輕量模型都很好)</td>
+</tr>
+<tr>
+<td>串成長程依賴鏈</td>
+<td><strong>44%–73%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>他強調關鍵:<strong>任務本身沒有變難。是當後面的任務依賴前面任務的結果時,模型才開始失敗。</strong></p>
+<p>在企業裡,大量商業邏輯被包在 API 中,而現在我們正把 AI agent 接進這些 API。<strong>AI 造成的一個小錯,會在後期變成一個大問題。</strong></p>
+<p>所以真正的問題不是「模型能不能回答問題」——那件事大家都知道可以了。真正的問題是:<strong>AI agent 能不能在一條長程依賴鏈上一路保持正確?這就是「回答」與「執行」的差別。</strong></p>
+<h4>七種失敗模式,分開評分(約 02:27)</h4>
+<p>一兩種 failure mode 不夠,他們要的是<strong>能涵蓋真實 API 工作的最小集合</strong>。因此把 API 工作拆成七種失敗模式,<strong>各自獨立評分</strong>:</p>
+<ol>
+<li>authentication(認證)</li>
+<li>discovery(探索)</li>
+<li>schema repair(schema 修復)</li>
+<li>multi-step execution(多步驟執行)</li>
+<li>error recovery(錯誤復原)</li>
+<li>pagination(分頁)</li>
+<li>statefulness(狀態保持)</li>
+</ol>
+<p>為什麼要分開?他舉 statefulness 的例子:<strong>agent 在第 3 步更新了某個東西,而第 15 步只有在 agent 當初確實存下那個更新時才會成功。</strong> 一個在 statefulness 上失敗的模型,和一個在 pagination 上失敗的模型,失敗原因完全不同。分開評分,才能告訴你<strong>模型為什麼失敗</strong>,而不只是失敗了。</p>
+<h4>任務生成 pipeline 與 fixer agent(約 02:27–02:29)</h4>
+<p>他們用內部資料近似真實使用者的 workflow,建出一套<strong>模擬的企業 API 生態系</strong>(模仿真實公司的 API),再在上面生成任務。</p>
+<p>pipeline 從 step 0 的「企業 API 生態系生成」開始,接著九個步驟逐一生成任務。<strong>每個生成的任務都要通過驗證</strong>:</p>
+<ul>
+<li>用 frontier 模型對每個任務嘗試 <strong>10 次</strong>,<strong>至少通過 3 次</strong>才保留。</li>
+<li>理由很實際:<strong>用語言模型生成的任務,有些根本無解</strong>。你不會想拿一堆無解任務去評估 frontier 模型,然後宣稱那就是模型的極限。</li>
+<li>任務沒通過驗證怎麼辦?把<strong>嘗試的 transcript 與程式碼餵給一個 fixer agent</strong>,由它修正任務,再跑一次那 10 次嘗試。若持續失敗,就整個丟掉重新生成。</li>
+</ul>
+<h4>Harness 與三個 validator(約 02:29–02:30)</h4>
+<p>benchmark 由四塊組成:一套 API 生態系、蓋在上面的任務、<strong>一個共用 harness</strong>、以及為每次 trial 評分的 grader。</p>
+<ul>
+<li><strong>Harness</strong>:設計了 <strong>7 個工具</strong>,作用在 <strong>5 種不同的 entity</strong>。每個任務、每次 trial 都跑在同一個 harness 上,差別只在生態系與 grader 不同。</li>
+<li><strong>三個 validator</strong>:</li>
+<li><strong>兩個確定性 validator</strong>——一個檢查<strong>環境的最終狀態</strong>,一個檢查 <strong>agent 給出的最終答案</strong>。這兩個決定 leaderboard 上看到的 pass rate。</li>
+<li><strong>一個 LLM validator</strong>——<strong>不計入分數</strong>,用途是標記「可疑的通過」,交給人類複核。</li>
+</ul>
+<h4>三道 gate:讓生成的任務值得信任(約 02:30–02:31)</h4>
+<p>每道 gate 擋掉任務生成過程中不同類型的失敗:</p>
+<ol>
+<li><strong>Self-testing</strong>:<strong>空白提交必須永遠失敗</strong>;而拿參考答案但把證據破壞掉,<strong>也必須失敗</strong>。否則就代表任務本身或 validator 有問題。</li>
+<li><strong>Solvability</strong>:就是前面提到的——frontier 模型試 10 次、至少 3 次通過才收。</li>
+<li><strong>Golden replay</strong>:建構鏈式任務時,<strong>把各子任務的參考答案全部串起來、接進這條鏈式任務,結果必須全部通過</strong>。這樣才能確認組出來的最終鏈是正確的、如預期運作的。</li>
+</ol>
+<h4>實驗規模與結果(約 02:31–02:32)</h4>
+<ul>
+<li><strong>467 個任務</strong>,最終產出 20 步的長鏈任務</li>
+<li><strong>19 個模型</strong>,每個模型每個任務跑 <strong>5 次 trial</strong></li>
+<li>合計約 <strong>44,000 次 trial</strong>,<strong>所有 transcript 都公開在 leaderboard 上</strong></li>
+<li>下一版計畫擴增任務數量與鏈的長度</li>
+</ul>
+<p><strong>Leaderboard 結果</strong>(20 步鏈式任務):<strong>GPT-5.5 居首</strong>;橘色長條是開源模型,紫色是閉源模型。他提到 leaderboard 在演講當週剛更新,<strong>已納入 Kimi K3 與 Fable 5</strong>。</p>
+<p><strong>一個有意思的發現</strong>:此時此刻,<strong>開源模型已經逼近閉源模型的頂端集團</strong>——在他們的 bench 上,GLM 與 Qwen 3.7 拿下第二與第三名。</p>
+<h4>三個 takeaway(約 02:32–02:33)</h4>
+<ol>
+<li><strong>單一任務已經無法區分模型</strong>。所有模型(包括輕量模型)在 solo 任務上都拿高分,<strong>看不出差距</strong>——這正是他們建構鏈式測試去逼出極限的原因。他們反覆看到:<strong>模型在早期犯一個極小的錯,那個小錯到後面就變成一份壞掉的報告。</strong></li>
+<li><strong>生成合成任務時,一定要用硬性 gate 確保任務可信</strong>。例如「10 次嘗試至少 3 次通過」;再加上 <strong>golden replay</strong> 確認你的參考答案真的能跑。他也鼓勵大家自己發展更多方法。</li>
+<li><strong>確定性 validator 與 LLM validator 兩者都需要</strong>。而且建立 validator / grader 時<strong>務必 human-in-the-loop 持續打磨</strong>——因為<strong>一個錯的 validator,永遠測不出模型的真實能力</strong>。</li>
+</ol>
+<p>blog 與 leaderboard 都在 blog.postman.com。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"So the task itself didn't get harder. But if the later task is depend on the results of the previous task … then that's where the model start to fail."(約 02:26)</p>
+</blockquote>
+<p>整場的核心診斷:崩潰的來源是依賴,不是難度。</p>
+<blockquote>
+<p>"The real problem is: can the AI agent stay correct across a long horizon of dependent chain tasks? That's the difference between answering and executing."(約 02:26)</p>
+<p>"We don't want to generate a bunch of unsolvable tasks and then use those to evaluate frontier models and claim that's the limit of the models."(約 02:28)</p>
+</blockquote>
+<p>合成 benchmark 的誠實原則:先證明題目有解,再用它下結論。</p>
+<blockquote>
+<p>"A wrong validator cannot reveal the true performance of the models."(約 02:33)</p>
+</blockquote>
+<p>驗證器本身也需要被驗證。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>High single-task scores are an illusion.</strong> On APIFlow-Bench even lightweight models pass 88–97% of single API tasks; chain the same subtasks into a dependent sequence and the score falls to 44–73%. <strong>The difficulty didn't change — what changed is whether errors get inherited.</strong></li>
+<li><strong>API work is decomposed into seven failure modes, graded separately</strong>: authentication, discovery, schema repair, multi-step execution, error recovery, pagination, and statefulness. Separate grading is what tells you <em>why</em> a model failed — failing to persist state at step 3 so step 15 breaks is a completely different illness from mishandling pagination.</li>
+<li><strong>Synthetic tasks need hard gates to be trustworthy.</strong> Three of them: self-testing (a blank submission and a sabotaged-evidence reference answer must both fail), solvability (a frontier model gets 10 attempts and the task is kept only if at least 3 pass), and golden replay (concatenate every subtask's reference answer into the chain and the whole thing must pass).</li>
+<li><strong>You need both deterministic and LLM validators.</strong> Two deterministic validators — final environment state and final answer — produce the leaderboard score; the LLM validator doesn't score but flags doubtful passes for human review. <strong>A wrong validator can never reveal a model's true performance.</strong></li>
+</ul>
+<h3>Key Points</h3>
+<h4>The problem: enterprise logic lives in APIs, and agents are now wired into it (~02:24–02:26)</h4>
+<p>Wan, an engineer at Postman, presented their benchmark <strong>APIFlow-Bench</strong>.</p>
+<p>Enterprises running AI agents on long-horizon tasks already face a concrete failure: <strong>a small mistake the agent makes early can fail the entire task.</strong> And the work engineers actually do looks like this — connecting a build job to a monitoring API, creating a record, recovering from a rate limit. Those task shapes are what the benchmark draws from.</p>
+<p>The headline finding is blunt:</p>
+<table>
+<thead>
+<tr>
+<th>Task shape</th>
+<th>Model performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single API task</td>
+<td><strong>88%–97%</strong> (even lightweight models do well)</td>
+</tr>
+<tr>
+<td>Long dependent chain</td>
+<td><strong>44%–73%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>His emphasis: <strong>the task itself didn't get harder. Models start failing precisely when a later task depends on an earlier task's result.</strong></p>
+<p>In the enterprise, a great deal of business logic is wrapped in APIs, and AI agents are now being wired into those APIs. <strong>A small AI-caused error becomes a big problem later on.</strong></p>
+<p>So the real question isn't whether a model can answer questions — everyone knows it can. It's <strong>whether an AI agent can stay correct across a long horizon of dependent chained tasks. That's the difference between answering and executing.</strong></p>
+<h4>Seven failure modes, graded separately (~02:27)</h4>
+<p>One or two failure modes isn't enough; they wanted <strong>a minimal set that covers real API work.</strong> So API work is broken into seven failure modes, each <strong>graded on its own</strong>:</p>
+<ol>
+<li>authentication</li>
+<li>discovery</li>
+<li>schema repair</li>
+<li>multi-step execution</li>
+<li>error recovery</li>
+<li>pagination</li>
+<li>statefulness</li>
+</ol>
+<p>Why separate? His statefulness example: <strong>the agent updates something at step 3, and step 15 only works if that update was actually saved back at step 3.</strong> A model that fails on statefulness fails for entirely different reasons than one that fails on pagination. Grading them apart is what tells you <strong>why</strong> a model failed rather than just that it did.</p>
+<h4>Task generation pipeline and the fixer agent (~02:27–02:29)</h4>
+<p>They approximate real user workflows using internal data and build a <strong>simulated enterprise API ecosystem</strong> that mimics a real company's APIs, then generate tasks on top of it.</p>
+<p>The pipeline starts at step zero with enterprise API ecosystem generation, then walks through nine steps generating tasks one at a time. <strong>Every generated task passes through validation:</strong></p>
+<ul>
+<li>A frontier model attempts each task <strong>10 times</strong>; the task is kept only if <strong>at least 3 attempts pass.</strong></li>
+<li>The reasoning is practical: <strong>some LLM-generated tasks simply aren't solvable at all.</strong> You don't want to evaluate frontier models on a pile of unsolvable tasks and then claim you've found the limit of those models.</li>
+<li>When a task fails validation, <strong>the trial transcript and code go to a fixer agent</strong>, which repairs the task, and the 10 trials rerun. If it keeps failing, the task is discarded and regenerated from scratch.</li>
+</ul>
+<h4>The harness and three validators (~02:29–02:30)</h4>
+<p>The benchmark is four pieces: an API ecosystem, tasks built on it, <strong>one shared harness</strong>, and graders that score each trial.</p>
+<ul>
+<li><strong>Harness</strong>: <strong>7 tools</strong> operating on <strong>5 different entity types</strong>. Every task and every trial runs on the same harness — only the ecosystem and graders differ.</li>
+<li><strong>Three validators</strong>:</li>
+<li><strong>Two deterministic</strong> — one checks the <strong>final state of the environment</strong>, one checks the <strong>final answer the agent produced</strong>. These two generate the pass rate you see on the leaderboard.</li>
+<li><strong>One LLM validator</strong> — <strong>not part of the score</strong>, used to flag doubtful passes so a human can review them.</li>
+</ul>
+<h4>Three gates for trustworthy generated tasks (~02:30–02:31)</h4>
+<p>Each gate catches a different failure of the generation process:</p>
+<ol>
+<li><strong>Self-testing</strong>: a <strong>blank submission must always fail</strong>, and taking the reference answer while sabotaging the evidence <strong>must also fail</strong>. Otherwise something is wrong with the task or the validator.</li>
+<li><strong>Solvability</strong>: the frontier model's 10 attempts with a minimum of 3 passes, as above.</li>
+<li><strong>Golden replay</strong>: when building a chain task, <strong>concatenate all the reference answers from each subtask, append them into the chain, and the whole thing must pass</strong> — confirming the assembled chain is correct and behaves as intended.</li>
+</ol>
+<h4>Scale and results (~02:31–02:32)</h4>
+<ul>
+<li><strong>467 tasks</strong>, yielding 20-step long-chain tasks</li>
+<li><strong>19 models</strong>, <strong>5 trials</strong> per model per task</li>
+<li>Roughly <strong>44,000 trials</strong> total, with <strong>every transcript published on the leaderboard</strong></li>
+<li>Next version will expand both task count and chain length</li>
+</ul>
+<p><strong>Leaderboard results</strong> on the 20-step chain tasks: <strong>GPT-5.5 on top</strong>; orange bars are open-source models, purple are closed. He noted the leaderboard had been refreshed that week to include <strong>Kimi K3 and Fable 5</strong>.</p>
+<p><strong>One notable finding</strong>: as of now, <strong>open-source models are approaching the top group of closed models</strong> — on their bench, GLM and Qwen 3.7 land in second and third place.</p>
+<h4>Three takeaways (~02:32–02:33)</h4>
+<ol>
+<li><strong>Single tasks no longer separate models.</strong> Everything, including lightweight models, scores high on solo tasks, so <strong>the gap stays invisible</strong> — which is exactly why they built chain tests to find the ceiling. What they saw repeatedly: <strong>a model makes one tiny mistake early, and that tiny mistake becomes a broken report later.</strong></li>
+<li><strong>When generating synthetic tasks, always use hard gates.</strong> For instance, 10 trials with at least 3 passes; plus golden replay to verify your reference answer actually works. He encouraged the audience to invent more of their own.</li>
+<li><strong>You need both deterministic and LLM validators</strong>, and when building a validator or grader, <strong>keep a human in the loop polishing it</strong> — because <strong>a wrong validator cannot reveal the true performance of the models.</strong></li>
+</ol>
+<p>Blog and leaderboard are at blog.postman.com.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"So the task itself didn't get harder. But if the later task is depend on the results of the previous task … then that's where the model start to fail." (~02:26)</p>
+</blockquote>
+<p>The core diagnosis: the collapse comes from dependency, not difficulty.</p>
+<blockquote>
+<p>"The real problem is: can the AI agent stay correct across a long horizon of dependent chain tasks? That's the difference between answering and executing." (~02:26)</p>
+<p>"We don't want to generate a bunch of unsolvable tasks and then use those to evaluate frontier models and claim that's the limit of the models." (~02:28)</p>
+</blockquote>
+<p>The honesty principle for synthetic benchmarks: prove the question is answerable before drawing conclusions from it.</p>
+<blockquote>
+<p>"A wrong validator cannot reveal the true performance of the models." (~02:33)</p>
+</blockquote>
+<p>The validator itself needs validating.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APIFlow-Bench</td>
+<td>Postman 的企業 API agent benchmark,含 20 步依賴鏈任務與公開 leaderboard</td>
+<td>Postman's enterprise API agent benchmark with 20-step dependent chain tasks and a public leaderboard</td>
+<td>blog.postman.com/apiflow-bench;公開 leaderboard 與全部 trial transcripts / public leaderboard plus full trial transcripts</td>
+</tr>
+<tr>
+<td>APIFlow-Bench 逐筆 transcripts</td>
+<td>全部 trial 的原始紀錄</td>
+<td>Raw transcripts for every trial</td>
+<td>GitHub: postmanlabs/apiflow-bench-transcripts</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jayen Juan / "this is one"</td>
+<td>Zelin Wan</td>
+</tr>
+<tr>
+<td>API flow bench</td>
+<td>APIFlow-Bench</td>
+</tr>
+<tr>
+<td>the line model</td>
+<td>the light model</td>
+</tr>
+<tr>
+<td>pagionation / pagenation</td>
+<td>pagination</td>
+</tr>
+<tr>
+<td>the stiffness / Stephan</td>
+<td>statefulness</td>
+</tr>
+<tr>
+<td>greater / gradient</td>
+<td>grader / grade</td>
+</tr>
+<tr>
+<td>gay(第二道關卡)</td>
+<td>gate</td>
+</tr>
+<tr>
+<td>subtage the evidence</td>
+<td>sabotage the evidence</td>
+</tr>
+<tr>
+<td>readerboard / leadable</td>
+<td>leaderboard</td>
+</tr>
+<tr>
+<td>GBD 5.5</td>
+<td>GPT-5.5</td>
+</tr>
+<tr>
+<td>Kim K3</td>
+<td>Kimi K3</td>
+</tr>
+<tr>
+<td>Fab Five</td>
+<td>Fable 5</td>
+</tr>
+<tr>
+<td>GRM</td>
+<td>GLM</td>
+</tr>
+<tr>
+<td>QN 3.7</td>
+<td>Qwen 3.7</td>
+</tr>
+<tr>
+<td>synced task</td>
+<td>synthetic task</td>
+</tr>
+<tr>
+<td>hard / hart(gate)</td>
+<td>hard gate</td>
+</tr>
+<tr>
+<td>467 t test</td>
+<td>467 tasks</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「467 tasks across 13 …」中的「13」所指為何(字幕聽作 "13 general world",可能是 13 條通用 workflow)。/ What the "13" refers to in "467 tasks across 13 …" (captions give "13 general world", possibly 13 general workflows).</li>
+<li>467 個任務中依賴鏈與獨立子任務的拆分比例(公開資料顯示為 226 條依賴鏈 + 241 個獨立子任務,演講中未說明)。/ The chain-vs-standalone split of the 467 tasks — public materials indicate 226 dependent chains plus 241 standalone subtasks, not stated on stage.</li>
+<li>開源模型第二、三名的正式型號(字幕聽作 "GRM" 與 "QN 3.7 plus")。/ Exact model identifiers for the second- and third-place open-source models (captions give "GRM" and "QN 3.7 plus").</li>
+<li>演講當週更新後的 leaderboard 模型總數與 trial 總數(演講引用的是發布時的 19 模型 / 約 44,000 trials)。/ Post-update model and trial counts — the talk quotes the launch figures of 19 models and ~44,000 trials.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/zelin-wan--measuring-api-agent-reliability-long-horizon.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

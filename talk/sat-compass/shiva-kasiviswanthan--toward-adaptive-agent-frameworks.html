@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Toward Adaptive Agent Frameworks · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Today&#x27;s agents plan and use tools well, but their execution policy is hard-coded. For mission-critical deployment, agents need to learn what to do next under an explicit budget (a constrained MDP),…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/shiva-kasiviswanthan--toward-adaptive-agent-frameworks.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Toward Adaptive Agent Frameworks · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Today&#x27;s agents plan and use tools well, but their execution policy is hard-coded. For mission-critical deployment, agents need to learn what to do next under an explicit budget (a constrained MDP),…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/shiva-kasiviswanthan--toward-adaptive-agent-frameworks.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-compass" data-talk="shiva-kasiviswanthan--toward-adaptive-agent-frameworks">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Toward Adaptive Agent Frameworks" data-title-zh="邁向自適應的 Agent 框架">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Frameworks &amp; Dev Platforms</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Toward Adaptive Agent Frameworks</span><span class="lang-zh">邁向自適應的 Agent 框架</span></h1>
+        <p class="dialog__speaker"><strong>Shiva Kasiviswanthan</strong> — Principal Applied Scientist, Amazon Web Services</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 00:23:54–00:29:58 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=1434s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:23:54</span><span class="lang-zh">從 00:23:54 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Today&#x27;s agents plan and use tools well, but their execution policy is hard-coded. For mission-critical deployment, agents need to learn what to do next under an explicit budget (a constrained MDP), learn to explore several reasoning paths in parallel, and keep adapting to new tasks without forgetting old ones.</span><span class="lang-zh">今天的 agent 已經很會 plan 與用工具,但它們的執行策略是寫死的;要進到 mission-critical 場景,agent 得學會在預算約束下決定下一步(constrained MDP)、學會平行探索多條推理路徑,並能持續適應新任務而不遺忘舊的。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>三個研究問題</strong>:(1) agent 該如何在固定運算預算下分配資源?(2) 如何讓 agent 推理得更好?(3) 如何讓 agent 隨時間演化?他的團隊在 AWS 做大規模雲端維運的 monitoring / observability agent,這三題是他們認為要走進 mission-critical 場景必須先解的。</li>
+<li><strong>Budget-aware adaptive execution</strong>:今天多數 agent 的執行策略靠 prompt 或啟發式寫死;他們把它形式化成 <strong>constrained Markov decision process</strong>——在預算(latency / cost / token 皆可)約束下最大化期望效用,並<strong>學出</strong>執行策略。實測比常用的 scalar reward model 更好,而且<strong>更 sample-efficient</strong>(達到同樣能力所需的迭代次數顯著更少)。</li>
+<li><strong>Parallel reasoning</strong>:讓模型平行探索多條推理路徑,且這些路徑是<strong>在訓練期學到的、不是推論期才展開</strong>,最後由一個 coordinated reasoning 步驟收斂成單一答案。在數學與程式 benchmark 上,pass@1 到 pass@k 都優於強 baseline,<strong>k=1 時效果特別突出</strong>。</li>
+<li><strong>Continual adaptation</strong>:第三個方向是有原則的 post-training 方案,讓 agent 適應新任務時<strong>不遺忘先前學會的東西</strong>。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>出發點:agent 已經很強,但還不夠可靠(約 00:24–00:25)</h4>
+<p>Kasiviswanthan 開場說明他與團隊在 AWS 做的是大規模雲端維運的 monitoring 與 observability agent。今天的 agent 在 planning、tool execution、資訊檢索、迭代求解上都已經相當能幹;但當它們被部署到<strong>更 mission-critical 的應用</strong>時,AWS 認為有幾個關鍵研究問題必須先解決:</p>
+<ol>
+<li>Agent 該<strong>如何分配運算資源</strong>?想像你有固定的運算預算,要讓 agent 把它用在刀口上。</li>
+<li>如何讓 agent <strong>推理得更好</strong>——有效率地探索多條路徑再下決策。</li>
+<li>如何讓 agent <strong>隨時間演化</strong>?Agent 不該是靜態的,而要持續適應、愈做愈好。</li>
+</ol>
+<p>本場聚焦前兩題,第三題結尾簡述。</p>
+<h4>方向一:budget-aware adaptive execution(約 00:25–00:27)</h4>
+<p>今天絕大多數 agent 的<strong>執行策略是固定的</strong>——由 prompt 或某個局部啟發式定義。他們的目標是讓 agent <strong>把執行策略學起來</strong>。</p>
+<p>抽象化之後:agent 有一段 context,要決定下一個最佳動作(重新檢索資訊、用工具、驗證結果、更新記憶……),而關鍵約束是<strong>預算</strong>——agent 必須在執行工具的同時尊重這個預算。這在形式上可以寫成一個 <strong>constrained Markov decision process</strong>:在某個運算預算的約束下最大化期望效用。預算可以是 latency、成本、token,任何你想用的定義。</p>
+<p>有效嗎?有。他展示兩張圖:一張顯示這些自適應 agent 學到的執行策略<strong>優於實務上常用的 scalar reward model</strong>;另一張顯示它同時<strong>更 sample-efficient</strong>——要達到同樣的能力水準,所需樣本數顯著更少。</p>
+<h4>方向二:parallel reasoning(約 00:27–00:28)</h4>
+<p>今天的模型基本上沿著<strong>單一推理路徑</strong>走。他們探索的方向是讓模型<strong>平行探索多條推理路徑</strong>——關鍵在於這些平行路徑是<strong>在訓練期學到的,而不是推論時才展開</strong>;最後由一個 coordinated reasoning 步驟把多條路徑收斂成一個答案。</p>
+<p>在數學推理與程式 benchmark 上都拿到穩定的好結果:從 pass@1 到 pass@k 都勝過很強的 baseline,<strong>k=1(只取一個答案)時的結果尤其亮眼</strong>。</p>
+<h4>方向三與收尾:continual adaptation(約 00:29)</h4>
+<p>第三個方向是 <strong>continual model / agent adaptation</strong>:找出有原則的 post-training 方案,讓 agent 能適應新任務。主要挑戰是<strong>學新任務時不能忘掉舊的</strong>。他認為解開這三個方向,就能催生下一代的 frontier agent。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Three research questions</strong> his team at AWS is working on, motivated by monitoring and observability agents for large-scale cloud operations: how should an agent allocate compute; how do we make agents reason better; and how do agents evolve over time.</li>
+<li><strong>Budget-aware adaptive execution</strong>: most agents today have a fixed execution policy defined by a prompt or a local heuristic. They formalize it as a <strong>constrained Markov decision process</strong> — maximize expected utility subject to a computational budget (latency, cost, tokens, whatever you like) — and <em>learn</em> the policy. It beats the scalar reward model commonly used in practice and is markedly <strong>more sample-efficient</strong>.</li>
+<li><strong>Parallel reasoning</strong>: let the model explore multiple reasoning paths in parallel, with those paths <strong>learned during training rather than unrolled at inference time</strong>, then coordinated into a single answer. Consistent gains on math and coding benchmarks from pass@1 through pass@k, with <strong>k=1 the standout</strong>.</li>
+<li><strong>Continual adaptation</strong>: principled post-training schemes that adapt to new tasks <strong>without forgetting</strong> what was learned before.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Starting point: capable agents aren't yet dependable ones (~00:24–00:25)</h4>
+<p>Kasiviswanthan works on AI agents for monitoring and observability in large-scale cloud operations at AWS. Today's agents are already good at planning, tool execution, retrieving information, and iterating toward a solution. But as they get deployed into <strong>mission-critical applications</strong>, AWS sees critical research questions that need answers first:</p>
+<ol>
+<li>How should an agent <strong>allocate computational resources</strong> given a fixed budget?</li>
+<li>How do we make agents <strong>reason better</strong> — efficiently exploring multiple paths before deciding?</li>
+<li>How do agents <strong>evolve over time</strong>, rather than staying static?</li>
+</ol>
+<p>The talk covers the first two and closes on the third.</p>
+<h4>Direction 1: budget-aware adaptive execution (~00:25–00:27)</h4>
+<p>Most agents run a <strong>fixed execution policy</strong> you define with a prompt or a heuristic. The goal is to have agents <strong>learn</strong> that policy instead.</p>
+<p>Abstractly: the agent holds some context and must pick the best next action — re-retrieve information, use a tool, verify results, update memory — and the binding constraint is a <strong>budget</strong> it must respect while executing tools. That formulation is a <strong>constrained Markov decision process</strong>: maximize expected utility subject to a computational budget, where the budget can be latency, cost, tokens, or any other notion.</p>
+<p>Does it work? Two plots say yes. One shows adaptive agents learning a better execution policy than the scalar reward model commonly used in practice; the other shows the approach is <strong>more sample-efficient</strong> — reaching the same level of competence takes significantly fewer iterations.</p>
+<h4>Direction 2: parallel reasoning (~00:27–00:28)</h4>
+<p>Models today follow a <strong>single reasoning path</strong>. Their work lets models explore <strong>multiple reasoning paths in parallel</strong>, and the important detail is that those parallel paths are <strong>learned during training, not spun up at inference time</strong>. A coordinated reasoning step at the end collapses the multiple paths into one answer.</p>
+<p>Tested on mathematical reasoning and coding benchmarks, the results consistently beat strong baselines from pass@1 through pass@k — and are <strong>especially impressive at k=1</strong>, the single-shot case.</p>
+<h4>Direction 3 and wrap-up: continual adaptation (~00:29)</h4>
+<p>The third thread is <strong>continual model or agent adaptation</strong>: principled post-training schemes that adapt to new tasks, where the main challenge is not forgetting what was previously learned. Solving all three, he argues, is what gets us to the next generation of frontier agents.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Constrained MDP 形式化 / Constrained MDP formulation</td>
+<td>把 agent 執行策略學習寫成「在運算預算約束下最大化期望效用」</td>
+<td>Framing execution-policy learning as maximizing expected utility subject to a compute budget</td>
+<td>演講未點名論文 / no paper named on stage</td>
+</tr>
+<tr>
+<td>Parallel reasoning(訓練期學習的多路徑推理)</td>
+<td>多條推理路徑於訓練期學得,推論時由 coordinated reasoning 收斂為單一答案</td>
+<td>Multiple reasoning paths learned at training time, coordinated into one answer</td>
+<td>演講未點名論文 / no paper named on stage</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shivakashnatan</td>
+<td>Shiva Kasiviswanthan(依官網議程 / per the official agenda)</td>
+</tr>
+<tr>
+<td>constraint marker decision process</td>
+<td>constrained Markov decision process</td>
+</tr>
+<tr>
+<td>scale riser word model</td>
+<td>scalar reward model</td>
+</tr>
+<tr>
+<td>competition budget / competitional budget</td>
+<td>computational budget</td>
+</tr>
+<tr>
+<td>precinct paths</td>
+<td>reasoning paths</td>
+</tr>
+<tr>
+<td>par reasoning</td>
+<td>parallel reasoning</td>
+</tr>
+<tr>
+<td>postraining</td>
+<td>post-training</td>
+</tr>
+<tr>
+<td>principal postraining schemes</td>
+<td>principled post-training schemes</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>官網議程的姓名拼法為 "Shiva Kasiviswanthan";AWS 公開資料中此研究者通常拼作 <strong>Shiva Prasad Kasiviswanathan</strong>,建議日後核對正名。frontmatter 目前依議程。/ The agenda spells the name "Shiva Kasiviswanthan"; AWS publications generally use <strong>Shiva Prasad Kasiviswanathan</strong>. The frontmatter follows the agenda pending confirmation.</li>
+<li>兩個方向都只展示了結果圖,未點名對應論文或開源專案。/ Both directions were shown as result plots only, with no paper or repo named.</li>
+<li>對照基線他說的是 "scalar reward model"(字幕作 "scale riser word model"),此處為推定;實際基線名稱待確認。/ The baseline was transcribed as "scale riser word model", read here as "scalar reward model" — worth confirming against the slides.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/shiva-kasiviswanthan--toward-adaptive-agent-frameworks.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

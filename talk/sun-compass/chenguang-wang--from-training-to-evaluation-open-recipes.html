@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>From Training to Evaluation: Open Recipes for Building Agentic AI at Scale AI · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="RL used to work only in verifiable domains like math and code; rubric-based rewards turn open-ended grading criteria into verification signals, pushing RL into science and open-ended tasks — and th…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/chenguang-wang--from-training-to-evaluation-open-recipes.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="From Training to Evaluation: Open Recipes for Building Agentic AI at Scale AI · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="RL used to work only in verifiable domains like math and code; rubric-based rewards turn open-ended grading criteria into verification signals, pushing RL into science and open-ended tasks — and th…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/chenguang-wang--from-training-to-evaluation-open-recipes.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="chenguang-wang--from-training-to-evaluation-open-recipes">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="From Training to Evaluation: Open Recipes for Building Agentic AI at Scale AI" data-title-zh="從訓練到評估:Scale AI 打造 Agentic AI 的開放配方">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Agent Evaluation &amp; Benchmarks</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">From Training to Evaluation: Open Recipes for Building Agentic AI at Scale AI</span><span class="lang-zh">從訓練到評估:Scale AI 打造 Agentic AI 的開放配方</span></h1>
+        <p class="dialog__speaker"><strong>Chenguang Wang</strong> — Assistant Professor, UC Santa Cruz; Research Advisor, Scale AI</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 02:11:10–02:24:04 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=7870s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:11:10</span><span class="lang-zh">從 02:11:10 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">RL used to work only in verifiable domains like math and code; rubric-based rewards turn open-ended grading criteria into verification signals, pushing RL into science and open-ended tasks — and the same idea reshapes evaluation (SWE-Atlas, a drug discovery bench, synthetically generated long-horizon computer-use tasks), with failure modes flowing back into training as a flywheel meant to run forever.</span><span class="lang-zh">RL 過去只在「可驗證領域」(數學、程式碼)有效,而 rubric-based reward 把開放領域的評分準則轉成可驗證訊號,讓 RL 走進科學與開放任務;同一套思維反過來也重塑評估——SWE-Atlas、drug discovery bench、合成長程 computer-use 任務,而訓練與評估之間的失敗模式回饋,是一個應該永遠轉下去的飛輪。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>RL 的下一個邊界是「不可驗證領域」</strong>:coding 和數學有 ground truth,可以直接判對錯;但 frontier labs 真正在乎的科學、開放式任務沒有 verifier。Scale AI 的做法是把評分準則(rubric)轉成驗證訊號,做出<strong>基於 rubric 的 ranking-based reward model</strong>,並用它推進 GRPO,在開放式任務上看到實質改善。</li>
+<li><strong>Online rubrics 是自然的延伸</strong>:訓練中 policy 一直在變好,rubric 也該跟著變。比較 reference policy 與 current policy,找出目前 reward 沒抓到的東西、生成更好的 rubric 併回 reward model——講者說這條線和近期 recursive self-improvement 的趨勢高度一致。</li>
+<li><strong>SWE-bench 類 benchmark 太乾淨</strong>:真實工程師不是看完 issue 就吐一個 patch,而是要寫單元測試、來回翻 repo、自問自答才知道下一步做什麼。因此 Scale 推出 <strong>SWE-Atlas</strong>,目前已被 frontier labs 廣泛採用。</li>
+<li><strong>CLI vs MCP 的爭論可能是假議題</strong>:他們的結論是——<strong>只要模型夠強(近期的 Claude 4.8、GPT-5.5/5.6 等級),而且後端相同,工具介面就不重要</strong>,模型會自己學會用最好的那個介面。</li>
+<li><strong>Computer-use benchmark 太貴,那就合成</strong>:以既有高品質 benchmark 為基底,生成更長程、更困難、更貼近真實的任務。效果是把 OSWorld 上 80%+ 的 SOTA 打回 <strong>約 30%</strong>——證明高品質的真實世界資料集是可以合成出來的。</li>
+<li><strong>最後的框架:訓練 ↔ 評估的飛輪</strong>。從 post-training 的洞見去蓋更好的 RL 環境,從評估的失敗模式去改進 post-training 演算法。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>定位與 Scale AI 背景(約 02:12–02:13)</h4>
+<p>Chenguang Wang 是 UC Santa Cruz 的助理教授,同時是 Scale AI 的 research advisor,與前一場的 Emily Xue 密切合作。他只有 10 分鐘,所以 post-training 只快速帶過,重點放在 evaluation,以及兩者之間的綜效。</p>
+<p>Scale AI 的使命是「為世界上最重要的決策打造可靠的 AI 系統」,2016 年創立,目前規模相當大,在美國與其他國家設有辦公室。</p>
+<h4>Post-training:從 RLHF 走向 rubric-based RL(約 02:13–02:15)</h4>
+<p>Scale 目前的 post-training 研究主軸,是<strong>從 RLHF 移動到 rubric-based RL</strong>。這個判斷來自他們替 frontier labs 提供資料服務的實務——這是 post-training 真正重要的一塊。</p>
+<p>挑戰有三層:<strong>如何設計有效的 reward、如何把 reward 用進 RL、以及如何在 RL 訓練過程中讓 reward 本身變得更好</strong>。相關成果發表在今年的 ICLR、ICML,也投了 NeurIPS。</p>
+<p>具體上,他們用 rubric-based reward 的範式<strong>推進了 GRPO 的邊界</strong>,除了效能提升,也從訓練與資料的互動中萃取出配方——如何把「資料 ↔ RL」這個飛輪轉起來。</p>
+<h4>為什麼 rubric-based reward 是關鍵(約 02:15–02:17)</h4>
+<p>他特別強調這一點:</p>
+<p><strong>過去 RL 的主流戰場是「可驗證領域」(verifiable domains)</strong>——coding、數學。這些領域你能明確知道答案是對是錯,有 ground-truth verification。</p>
+<p><strong>但真實世界、frontier labs 真正在乎的,大多是沒有 verifier 的開放領域</strong>——科學,或各種個人任務。所以必須找出方法讓 RL 在這些 open-ended domain 上運作。</p>
+<p>他們的做法是建立一套範式:<strong>把評估準則(criteria)轉換成驗證訊號</strong>。由此建出的新 reward model 有一個關鍵差異——<strong>它不是單純判斷「哪個回應比較好、哪個比較差」,而是基於 rubric 的 ranking</strong>,因此能規模化到真實世界情境。</p>
+<p>他們建了一條可靠的 pipeline:<strong>從簡單的 rubric 起步,逐步養出高品質的 rubric,再把它用在 RL 階段</strong>,並在開放式任務上觀察到實質的改善。</p>
+<h4>Online rubrics:reward 也要跟著 policy 進化(約 02:17–02:18)</h4>
+<p>這是第一項工作的自然延伸。核心觀察是:<strong>訓練過程中 policy 一直在變,而且越變越好</strong>——那麼固定的 rubric 就會逐漸跟不上。</p>
+<p>做法是:同時持有一個 <strong>reference policy</strong> 與一個 <strong>current policy</strong>,找出<strong>目前 reward 沒有捕捉到的東西</strong>,據此生成更好的 rubric(<strong>online rubric</strong>),再把它整合回 reward model。這樣能訓出更好、對下游任務更 robust 的模型。</p>
+<p>他指出這條「online rubric 演化」的路線,<strong>與近期 self-improvement / recursive self-improvement 的研究趨勢高度一致</strong>。</p>
+<h4>評估:SWE-Atlas 與真實工程的樣子(約 02:18–02:20)</h4>
+<p>評估是 Scale 的主戰場:把訓練得到的洞見與客戶對話的洞見,轉成給 frontier 模型用的全球 leaderboard。</p>
+<p><strong>SWE agents 的問題</strong>:大家熟悉的 SWE-bench、SWE-bench Pro 的形式是——GitHub 上有一段問題的文字描述,agent 生成一個 patch 去修好原 repo 的 bug。</p>
+<p>但他直接點出這與現實的落差:<strong>真實世界髒得多</strong>。工程師不是只看 PR 和 issue 就生出一個 patch;你得<strong>寫單元測試</strong>,有時候得<strong>來回翻 repo、自己提問再自己回答</strong>,才知道下一步該做什麼。</p>
+<p>因此他們釋出了新的 benchmark <strong>SWE-Atlas</strong>,他說目前已被 frontier labs 廣泛採用。</p>
+<h4>專業推理與 AI for Science(約 02:20–02:21)</h4>
+<ul>
+<li><strong>HLE(Humanity's Last Exam)</strong>:專業推理的代表性 benchmark,各家模型仍在持續 hill climbing。</li>
+<li><strong>Drug discovery bench</strong>:目標是建構真實的醫療照護環境,由專家生成真實的藥物發現任務,<strong>從概念出發,一路走到交付出藥物</strong>。近期已釋出 preprint。</li>
+</ul>
+<h4>工具介面之爭:CLI vs MCP(約 02:21)</h4>
+<p>這是一個現場很有共鳴的結論。他們研究「哪種工具介面比較好」,得到的高階結論是:</p>
+<p><strong>一旦模型變得夠強——像近期的 Claude 4.8、GPT-5.5 或 5.6 這個等級——介面就不重要了。</strong> 模型會自己學會盡可能用上最好的工具介面。前提是<strong>你給它相同的後端</strong>。換句話說,爭論 CLI 還是 MCP,可能問錯了問題。</p>
+<h4>Computer-use agents:用合成把 benchmark 變難(約 02:21–02:22)</h4>
+<p>benchmark computer-use agent 的困難在於<strong>成本極高</strong>——多模態模型、驗證細節多。</p>
+<p>他們的解法是:<strong>以既有的高品質 benchmark 為基底,合成生成更長程、更困難、更貼近真實的任務</strong>。</p>
+<p>效果非常明顯:<strong>原本 OSWorld 上新版 Opus 的 SOTA 在 80% 以上,被壓回約 30%</strong>。這證明了他的論點——<strong>真實世界的資料集是可以合成出來的,而且能保持高品質</strong>。</p>
+<h4>收尾:訓練與評估的飛輪(約 02:22–02:23)</h4>
+<p>最後一張技術投影片講的是綜效:</p>
+<ul>
+<li>從 <strong>post-training 的洞見</strong> → 打造更好的 <strong>RL 環境</strong></li>
+<li>從 <strong>評估的失敗模式</strong> → 改進 <strong>post-training 演算法</strong></li>
+</ul>
+<p>「希望這個迴圈可以永遠跑下去」——兩邊同時得到更好的 eval 與更好的訓練成果。</p>
+<h4>結語與 workshop 預告(約 02:23)</h4>
+<p>Scale 目前與各家 frontier labs、政府、企業合作,也涉足 robotics 的 physical AI。</p>
+<p>最後宣傳:第三屆 <strong>Agents in the Wild</strong> workshop 已獲 NeurIPS 接受,投稿截止在當月底;他是核心籌辦人之一,講者陣容包含 Dawn Song、Joshua 與 Jav(後兩位姓氏字幕不清)。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"In many real world cases where Frontier Labs really care about … it's not a verifiable domain. So we need to find out a way to make it work for those open-ended domains."(約 02:15)</p>
+</blockquote>
+<p>整場 post-training 部分的動機:RL 必須離開數學與程式碼的舒適圈。</p>
+<blockquote>
+<p>"Once a model becomes really capable … the model will learn to use the best tool interface possible. So that really doesn't matter — unless you give the same backend."(約 02:21)</p>
+</blockquote>
+<p>CLI vs MCP 之爭的降溫劑:能力夠強時,介面不是瓶頸,後端才是。</p>
+<blockquote>
+<p>"We can pretty much bring down the performance of the original OSWorld … from something definitely beyond 80% to something like 30%."(約 02:22)</p>
+</blockquote>
+<p>合成的長程任務,直接把 computer-use 的 SOTA 打回原形。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>RL's next frontier is the non-verifiable domain.</strong> Math and code have ground truth, so correctness is checkable; the science and open-ended tasks frontier labs actually care about have no verifier. Scale AI's answer is to turn grading criteria (rubrics) into verification signals, producing a <strong>ranking-based reward model built from rubrics</strong>, and using it to push GRPO forward with measurable gains on open-ended tasks.</li>
+<li><strong>Online rubrics are the natural extension.</strong> The policy keeps improving during training, so the rubric should too: compare a reference policy against the current policy, find what the current reward is missing, generate better rubrics, and fold them back into the reward model. Wang notes this lines up closely with the recursive self-improvement research trend.</li>
+<li><strong>SWE-bench-style benchmarks are too clean.</strong> A real engineer doesn't read an issue and emit a patch — they write unit tests, go back and forth through the repo, and ask and answer their own questions to work out the next step. Hence <strong>SWE-Atlas</strong>, which he says frontier labs have widely adopted.</li>
+<li><strong>The CLI vs MCP debate may be the wrong question.</strong> Their finding: <strong>once a model is capable enough (recent Claude 4.8, GPT-5.5/5.6 tier) and the backend is the same, the tool interface stops mattering</strong> — the model learns to use whatever is best.</li>
+<li><strong>Computer-use benchmarks are expensive, so synthesize.</strong> Building on existing high-quality benchmarks, they generate longer-horizon, harder, more realistic tasks — knocking the OSWorld state of the art from above 80% down to roughly <strong>30%</strong>, evidence that high-quality realistic datasets can be constructed synthetically.</li>
+<li><strong>The closing frame is a training ↔ evaluation flywheel</strong>: post-training insights build better RL environments; evaluation failure modes improve post-training algorithms.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Positioning and Scale AI background (~02:12–02:13)</h4>
+<p>Wang is an assistant professor at UC Santa Cruz and a research advisor at Scale AI, working closely with Emily Xue (the previous speaker). With only 10 minutes, he covered post-training briefly and spent most of the talk on evaluation and the synergy between the two.</p>
+<p>Scale AI's mission is to build reliable AI systems for the world's most important decisions. Founded in 2016, now large, with offices in the US and other countries.</p>
+<h4>Post-training: from RLHF to rubric-based RL (~02:13–02:15)</h4>
+<p>Scale's current post-training research thrust is <strong>moving from RLHF to rubric-based RL</strong> — a direction that came out of providing data services to frontier labs, where it emerged as genuinely important.</p>
+<p>Three layers of challenge: <strong>how to design an effective reward, how to use that reward with RL, and how to make the reward itself better during RL training.</strong> Results have appeared at ICLR and ICML this year, with NeurIPS submissions pending.</p>
+<p>Concretely, they <strong>pushed the boundary of GRPO</strong> using a rubric-based reward paradigm — improving performance, and extracting recipes for spinning the data ↔ RL flywheel.</p>
+<h4>Why rubric-based rewards are the key move (~02:15–02:17)</h4>
+<p>This was the point he most wanted to land.</p>
+<p><strong>RL's traditional battleground has been verifiable domains</strong> — coding, math. There you know whether an answer is true or false; you have ground-truth verification.</p>
+<p><strong>But most of what matters in the real world, and to frontier labs, is open-ended and has no verifier</strong> — science, or personal tasks of all kinds. So a way had to be found to make RL work in those domains.</p>
+<p>Their approach: set up a paradigm that <strong>turns evaluation criteria into verification</strong>. The reward model built this way has one crucial difference — <strong>it isn't just distinguishing a better response from a worse one; it ranks, based on rubrics</strong> — which is what lets it scale to real-world scenarios.</p>
+<p>The pipeline: <strong>start simple, gradually build a very high-quality rubric, then use it in the RL phase</strong> — with improvements observed on open-ended tasks.</p>
+<h4>Online rubrics: rewards that evolve with the policy (~02:17–02:18)</h4>
+<p>A natural extension of the first work. The observation is that <strong>the policy keeps changing and improving during training</strong>, so a fixed rubric progressively falls behind.</p>
+<p>The method: hold a <strong>reference policy</strong> alongside the <strong>current policy</strong>, identify <strong>what the current reward is failing to capture</strong>, generate a better rubric from that gap (an <strong>online rubric</strong>), and integrate it back into the reward model — yielding a better-trained model that's more robust on downstream tasks.</p>
+<p>He flagged that this online-rubric evolution <strong>aligns closely with the recent self-improvement / recursive self-improvement line of work.</strong></p>
+<h4>Evaluation: SWE-Atlas and what real engineering looks like (~02:18–02:20)</h4>
+<p>Evaluation is Scale's main focus: turn insights from training and customer conversations into worldwide leaderboards for frontier models.</p>
+<p><strong>The problem with SWE agent benchmarks</strong>: SWE-bench and SWE-bench Pro give you a text description of a problem from GitHub and ask the agent to produce a patch that fixes the bug in the original repo.</p>
+<p>His objection is that <strong>the real world is far messier</strong>. Engineers don't just read the PR and the issue and emit a patch — you have to <strong>write unit tests</strong>, and sometimes <strong>go back and forth through the repo, asking questions and answering them</strong> before you know what to do next.</p>
+<p>So they released <strong>SWE-Atlas</strong>, which he says is now widely adopted by frontier labs.</p>
+<h4>Professional reasoning and AI for science (~02:20–02:21)</h4>
+<ul>
+<li><strong>HLE (Humanity's Last Exam)</strong> as the representative professional-reasoning benchmark, with model families still hill-climbing on it.</li>
+<li><strong>A drug discovery bench</strong>: building a genuine healthcare environment where experts generate real drug-discovery tasks that run <strong>from the initial concept all the way to delivering the drug</strong>. A preprint was released recently.</li>
+</ul>
+<h4>The tool interface debate: CLI vs MCP (~02:21)</h4>
+<p>A conclusion that clearly resonated in the room. Their high-level finding on which tool interface is better:</p>
+<p><strong>Once the model becomes capable enough — the recent Claude 4.8, GPT-5.5 or 5.6 tier — the interface stops mattering.</strong> The model learns to use the best available tool interface on its own. The caveat: <strong>you have to give it the same backend.</strong> In other words, arguing CLI versus MCP may be the wrong question.</p>
+<h4>Computer-use agents: making benchmarks harder by synthesis (~02:21–02:22)</h4>
+<p>Benchmarking computer-use agents is hard because it's <strong>very expensive to run</strong> — multimodal models, plus a long tail of verification details.</p>
+<p>Their answer: <strong>take existing high-quality benchmarks as a base and synthetically generate longer-horizon, more challenging, more realistic tasks from them.</strong></p>
+<p>The effect is dramatic: <strong>on OSWorld, where a new Opus version's state of the art sits comfortably above 80%, the generated tasks drove it down to about 30%.</strong> Evidence for his claim that realistic datasets can be constructed synthetically while staying high quality.</p>
+<h4>Closing: the training–evaluation flywheel (~02:22–02:23)</h4>
+<p>His last technical slide was about synergy:</p>
+<ul>
+<li>From <strong>post-training insights</strong> → build better <strong>RL environments</strong></li>
+<li>From <strong>evaluation failure modes</strong> → improve <strong>post-training algorithms</strong></li>
+</ul>
+<p>"Hopefully this can run forever" — with both better evals and better training results falling out of the loop.</p>
+<h4>Wrap-up and workshop plug (~02:23)</h4>
+<p>Scale works with frontier labs, governments, and enterprises, and is active in robotics and physical AI.</p>
+<p>He closed by promoting the third edition of the <strong>Agents in the Wild</strong> workshop, accepted at NeurIPS, with a submission deadline at the end of that month. He is one of the core organizers; the panelist lineup includes Dawn Song plus two speakers whose surnames the captions garble (heard as "Joshua" and "Jav").</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"In many real world cases where Frontier Labs really care about … it's not a verifiable domain. So we need to find out a way to make it work for those open-ended domains." (~02:15)</p>
+</blockquote>
+<p>The motivation for the entire post-training half: RL has to leave the comfort of math and code.</p>
+<blockquote>
+<p>"Once a model becomes really capable … the model will learn to use the best tool interface possible. So that really doesn't matter — unless you give the same backend." (~02:21)</p>
+</blockquote>
+<p>A cooling agent for the CLI-vs-MCP argument: at sufficient capability, the interface isn't the bottleneck; the backend is.</p>
+<blockquote>
+<p>"We can pretty much bring down the performance of the original OSWorld … from something definitely beyond 80% to something like 30%." (~02:22)</p>
+</blockquote>
+<p>Synthetically generated long-horizon tasks strip computer-use agents back down to size.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SWE-Atlas</td>
+<td>Scale 推出的 SWE agent benchmark,涵蓋 issue 修補以外的真實工程流程</td>
+<td>Scale's SWE agent benchmark covering real engineering work beyond issue resolution</td>
+<td>已開源(scaleapi/SWE-Atlas),含 Codebase QnA、Test Writing、Refactoring 三個 leaderboard / open-sourced with three leaderboards</td>
+</tr>
+<tr>
+<td>SWE-bench / SWE-bench Pro</td>
+<td>作為對照的既有 SWE benchmark</td>
+<td>Prior SWE benchmarks cited as the contrast</td>
+<td></td>
+</tr>
+<tr>
+<td>HLE (Humanity's Last Exam)</td>
+<td>專業推理 benchmark</td>
+<td>Professional-reasoning benchmark</td>
+<td>字幕聽作 "hie" / heard as "hie"</td>
+</tr>
+<tr>
+<td>Drug discovery bench</td>
+<td>真實藥物發現任務的 agent benchmark,已有 preprint</td>
+<td>Agent benchmark of real drug-discovery tasks; preprint released</td>
+<td>Scale Labs 有 "DrugDiscoveryBench: Can Coding Agents Assist Early-Stage Drug Discovery?"(2026/06/30),應為同一項工作但未於演講中點名 / likely the same work, not named on stage</td>
+</tr>
+<tr>
+<td>OSWorld</td>
+<td>被用來合成更難任務的 computer-use benchmark 基底</td>
+<td>Computer-use benchmark used as the base for synthesizing harder tasks</td>
+<td></td>
+</tr>
+<tr>
+<td>GRPO</td>
+<td>被 rubric-based reward 推進的 RL 演算法</td>
+<td>The RL algorithm advanced with rubric-based rewards</td>
+<td></td>
+</tr>
+<tr>
+<td>Agents in the Wild(第三屆 / 3rd edition)</td>
+<td>NeurIPS workshop,講者為核心籌辦人</td>
+<td>NeurIPS workshop; speaker is a core organizer</td>
+<td>投稿截止當月底 / deadline end of the month</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jen Wuang Wang / Chinua</td>
+<td>Chenguang Wang</td>
+</tr>
+<tr>
+<td>University of Santa California, Santa Cruz</td>
+<td>UC Santa Cruz</td>
+</tr>
+<tr>
+<td>Rubik's / Rubik / rubik</td>
+<td>rubric / rubrics</td>
+</tr>
+<tr>
+<td>gRPO</td>
+<td>GRPO</td>
+</tr>
+<tr>
+<td>su bench / sway bench / sway agents</td>
+<td>SWE-bench / SWE agents</td>
+</tr>
+<tr>
+<td>su atlas</td>
+<td>SWE-Atlas</td>
+</tr>
+<tr>
+<td>hie</td>
+<td>HLE (Humanity's Last Exam)</td>
+</tr>
+<tr>
+<td>two use / two interface</td>
+<td>tool use / tool interface</td>
+</tr>
+<tr>
+<td>marty model</td>
+<td>multimodal</td>
+</tr>
+<tr>
+<td>OS world</td>
+<td>OSWorld</td>
+</tr>
+<tr>
+<td>cloud 4.8</td>
+<td>Claude 4.8</td>
+</tr>
+<tr>
+<td>GPT 4 5 5.5 or 5.6</td>
+<td>GPT-5.5 / GPT-5.6</td>
+</tr>
+<tr>
+<td>I clear / SML</td>
+<td>ICLR / ICML</td>
+</tr>
+<tr>
+<td>new rips</td>
+<td>NeurIPS</td>
+</tr>
+<tr>
+<td>agency in the wild</td>
+<td>Agents in the Wild</td>
+</tr>
+<tr>
+<td>Don</td>
+<td>Dawn Song</td>
+</tr>
+<tr>
+<td>RL freeze / RL phrase</td>
+<td>RL phase</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>藥物發現 benchmark 的正式名稱(演講未點名;Scale Labs 於 2026/06/30 發布 DrugDiscoveryBench,需確認是否為同一項)。/ Formal name of the drug discovery bench — not named on stage; Scale Labs published DrugDiscoveryBench on 2026-06-30, needs confirming as the same work.</li>
+<li>rubric-based reward 與 online rubrics 兩篇論文的正式篇名與發表場次(他只說 ICLR / ICML / NeurIPS 投稿中)。/ Formal titles and venues of the rubric-based reward and online rubric papers.</li>
+<li>Agents in the Wild workshop 的 panel 講者「Joshua」與「Jav」的全名。/ Full names of the "Joshua" and "Jav" panelists.</li>
+<li>演講結尾「see you guys at Sly」的地名(NeurIPS 2026 舉辦地),字幕不清。/ The venue name at the end ("see you guys at Sly") — the NeurIPS 2026 location, garbled in the captions.</li>
+<li>CLI vs MCP 結論所依據的實驗與是否有公開報告。/ The experiment behind the CLI-vs-MCP conclusion and whether it is published.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/chenguang-wang--from-training-to-evaluation-open-recipes.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

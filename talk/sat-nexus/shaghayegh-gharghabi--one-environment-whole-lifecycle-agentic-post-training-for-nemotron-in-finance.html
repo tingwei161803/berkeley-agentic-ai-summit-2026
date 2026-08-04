@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>One Environment, Whole Lifecycle: Agentic Post-Training for Nemotron in Finance · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="NVIDIA&#x27;s finance reasoning team is open-sourcing not a checkpoint but the whole post-training pipeline — and by running synthetic data generation, SFT, and RL inside one shared environment with the…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/shaghayegh-gharghabi--one-environment-whole-lifecycle-agentic-post-training-for-nemotron-in-finance.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="One Environment, Whole Lifecycle: Agentic Post-Training for Nemotron in Finance · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="NVIDIA&#x27;s finance reasoning team is open-sourcing not a checkpoint but the whole post-training pipeline — and by running synthetic data generation, SFT, and RL inside one shared environment with the…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/shaghayegh-gharghabi--one-environment-whole-lifecycle-agentic-post-training-for-nemotron-in-finance.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="shaghayegh-gharghabi--one-environment-whole-lifecycle-agentic-post-training-for-nemotron-in-finance">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="One Environment, Whole Lifecycle: Agentic Post-Training for Nemotron in Finance" data-title-zh="同一個環境貫穿整個生命週期:Nemotron 金融領域的 Agentic 後訓練">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Agentic AI in Finance &amp; Healthcare</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">One Environment, Whole Lifecycle: Agentic Post-Training for Nemotron in Finance</span><span class="lang-zh">同一個環境貫穿整個生命週期:Nemotron 金融領域的 Agentic 後訓練</span></h1>
+        <p class="dialog__speaker"><strong>Shaghayegh Gharghabi</strong> — Deep Learning Scientist, NVIDIA</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 02:23:23–02:30:45 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=ZIRc3EpzQJs&amp;t=8603s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:23:23</span><span class="lang-zh">從 02:23:23 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">NVIDIA&#x27;s finance reasoning team is open-sourcing not a checkpoint but the whole post-training pipeline — and by running synthetic data generation, SFT, and RL inside one shared environment with the same tools and the same format, they design the train/inference mismatch problem out of existence.</span><span class="lang-zh">NVIDIA 金融推理團隊要開源的不是一個 checkpoint,而是整條後訓練流水線——而且合成資料生成、SFT 與 RL 全部跑在同一個環境、同一套工具與格式上,把「訓練與推論不一致」這個問題從架構層消掉。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>要開源的是整條流水線,不是模型權重</strong>:資料、SDG recipe、訓練 recipe、環境、orchestration 全部公開,讓別人能自己再生成資料、再訓一次。</li>
+<li><strong>金融任務難在「多輪 + 工具 + 長文件 + 數學 + 引用」全都要</strong>:一題「算 US Steel 2024 年的存貨周轉率」就要求模型知道公式、知道去 SEC 抓哪一份表單、看懂結構化與非結構化混雜的長文件、做財務計算,最後還要<strong>指出答案根據文件的哪一段</strong>。現況是最佳閉源模型約 64%、開源約 60%,更難的新 benchmark 上最佳僅 58%。</li>
+<li><strong>關鍵設計是「單一共用環境」</strong>:SDG、SFT、RL 共用同一組工具與同一種格式,不必再操心一致性。成果是 Qwen 系列微調後約 +11%、Nemotron 約 +7%,且在不損失準確度的前提下<strong>少用 25% token</strong>。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>目標:開源的是「orchestra」而不是 checkpoint(約 02:23–02:25)</h4>
+<p>講者所屬團隊在 NVIDIA 做的是<strong>金融領域推理模型的後訓練</strong>,底座是 Nemotron。她開場就把目標講清楚:目標是釋出一個做金融推理的開源模型,但<strong>「不只是分享一個 checkpoint 讓大家載下來跑」</strong>——要分享的是整條 pipeline:資料公開、生成資料用的 recipe 與 pipeline 公開、模型公開、環境公開。用她的話說,是把整個過程的「orchestra」都交出來,讓別人可以用他們的 recipe 自己生資料。</p>
+<h4>為什麼金融特別難:一題存貨周轉率的拆解(約 02:25–02:27)</h4>
+<p>金融問題要答對,模型得走完一整條 <strong>multi-turn reasoning</strong>:呼叫多個工具、做網頁搜尋、抓取不同的 SEC filing;而這些檔案又長又複雜,結構化與非結構化資料混在一起。模型不只要讀懂,還要<strong>在這些文件上做財務數學</strong>,最後<strong>引用文件中哪一段支撐了答案</strong>。</p>
+<p>她用的例子是:<strong>「計算 US Steel 2024 年的存貨周轉率(inventory turnover)」</strong>。模型必須:</p>
+<ol>
+<li>知道 turnover 的計算公式;</li>
+<li>判斷需要哪一種 filing、哪一份表單,以及該從哪個工具(web、SEC)取得;</li>
+<li>呼叫後對文件做抽取與理解;</li>
+<li>套公式算出結果;</li>
+<li><strong>引用</strong>——指出是文件的哪一部分支持這個答案,才能確認答案有據可查。</li>
+</ol>
+<p>現況數字說明差距有多大:在一個近期發布的知名金融 benchmark 上,<strong>最佳閉源模型約 64%,開源模型只有約 60%</strong>;而在更近期發布、更複雜的金融 benchmark 上,<strong>目前最佳表現只有 58%</strong>。</p>
+<h4>四項貢獻與成效(約 02:27–02:29)</h4>
+<p>她把團隊貢獻歸成四根柱子:</p>
+<ol>
+<li><strong>兩條 SDG(合成資料生成)pipeline</strong>:document-based SDG 與 template-based SDG。</li>
+<li><strong>公開資料</strong>:超過 <strong>100 萬筆</strong>資料,現在就可以取用。</li>
+<li><strong>用自家資料訓練模型</strong>:走 SFT recipe 與 RL recipe,模型表現有明顯提升。</li>
+<li><strong>Pipeline 原生支援帶 tool calling 的 RL 微調</strong>,而且全部在同一條 pipeline 裡。</li>
+</ol>
+<p>此外她提到已有<strong>兩家金融機構客戶</strong>在用。金融資料的安全性是硬需求,而這條 pipeline<strong>可以完全離線執行、不需連網</strong>,已達 enterprise-ready。</p>
+<p>成效數字:用他們的資料與 pipeline 微調後,<strong>Qwen 系列模型約提升 11%,Nemotron 約提升 7%</strong>;而且在<strong>不損失準確度</strong>的前提下,<strong>token 用量減少 25%</strong>——她的註解是 "less token, less cost, better life"。</p>
+<h4>核心設計:單一共用環境(約 02:28–02:29)</h4>
+<p>整條流程由 <strong>NVFlow</strong> 統一編排:合成資料生成、模型微調、評估、RL 訓練都在同一條 pipeline 上完成。</p>
+<p>而她特別點名團隊做的一個<strong>重要決定</strong>:<strong>shared single environment</strong>。意思是 SDG、SFT、RL 三個階段全部使用<strong>同一組工具、同一種格式</strong>,因此不必再擔心各階段之間的一致性問題。這正是講題「One Environment, Whole Lifecycle」的意思。</p>
+<p>收尾是邀請合作:程式碼與資料全部公開,歡迎聯繫。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"It's not just sharing a checkpoint so everyone can load it and run the model — but we want to share the whole pipeline."(約 02:24)</p>
+</blockquote>
+<p>開源的單位從「模型」提升到「流程」。</p>
+<blockquote>
+<p>"All the synthetic data generation, SFT tuning, RL tuning — all of them use the same tools, same format. So no need to be worried about being consistent."(約 02:29)</p>
+</blockquote>
+<p>一致性不是靠紀律維持,而是靠架構保證。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The artifact being open-sourced is the pipeline, not the weights</strong>: the data, the SDG recipes, the training recipes, the environment, and the orchestration are all released so others can regenerate the data and retrain themselves.</li>
+<li><strong>Finance is hard because it demands everything at once</strong> — multi-turn reasoning, tool calls, long mixed structured/unstructured filings, financial math, and a citation back to the supporting passage. A question like "calculate the inventory turnover for US Steel in 2024" exercises all five. Today the best closed model sits around 64% and open models around 60%; on a newer, harder finance benchmark the best result is only 58%.</li>
+<li><strong>The load-bearing design choice is one shared environment</strong>: SDG, SFT, and RL all run against the same tools in the same format, so consistency is structural rather than a discipline problem. Result: roughly +11% on Qwen models and +7% on Nemotron after fine-tuning, with <strong>25% fewer tokens</strong> at no accuracy cost.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The goal: releasing the orchestra, not a checkpoint (~02:23–02:25)</h4>
+<p>Gharghabi's team at NVIDIA works on <strong>post-training reasoning models for finance</strong> on top of Nemotron. She set the goal out front: release an open-source model that does financial reasoning — but explicitly <strong>not just a checkpoint that people load and run</strong>. The whole pipeline goes out: open data, the recipe and pipeline used to generate that data, the model, and the environment. Her framing was that they want to share the entire "orchestra" of the process, so that others can generate their own data using the same recipe.</p>
+<h4>Why finance is genuinely hard: unpacking one inventory-turnover question (~02:25–02:27)</h4>
+<p>Answering a finance question correctly requires a full <strong>multi-turn reasoning</strong> trajectory: calling multiple tools, running web search, retrieving different SEC filings. Those filings are long and complex, mixing structured and unstructured content. The model must not only read them but perform <strong>financial math</strong> over them, and then <strong>cite which part of the document supported the answer</strong>.</p>
+<p>Her worked example: <strong>"calculate the inventory turnover for US Steel in 2024."</strong> The model has to know the turnover formula; identify which filing and which form it needs, and from which tool (web, SEC); extract and understand the retrieved documents; compute the formula; and cite the supporting evidence so the answer can be confirmed as grounded.</p>
+<p>The gap to close is large. On a well-known recently released finance benchmark, the <strong>best closed model reaches roughly 64%</strong> and the <strong>best open-source model roughly 60%</strong>. On a newer, more complicated finance benchmark, the <strong>best current performance is only 58%</strong>.</p>
+<h4>Four contributions and the numbers (~02:27–02:29)</h4>
+<p>She grouped the team's work into four pillars:</p>
+<ol>
+<li><strong>Two synthetic data generation (SDG) pipelines</strong>: document-based SDG and template-based SDG.</li>
+<li><strong>Publicly released data</strong>: more than <strong>one million</strong> samples, available now.</li>
+<li><strong>Models trained on that data</strong> using their own SFT and RL recipes, with substantial measured improvement.</li>
+<li><strong>RL fine-tuning with tool calling supported natively</strong>, all inside the same pipeline.</li>
+</ol>
+<p>She also noted <strong>two financial-institution customers</strong> already using it. Security is a hard requirement for finance data, and the pipeline <strong>runs entirely without internet access</strong>, which she described as enterprise-ready.</p>
+<p>Results: fine-tuning with their data and pipeline gave roughly <strong>+11% on Qwen models and +7% on Nemotron models</strong>, and — without losing accuracy — <strong>25% lower token usage</strong>. Her gloss: "less token, less cost, better life."</p>
+<h4>The core design: one shared environment (~02:28–02:29)</h4>
+<p>Everything is orchestrated under <strong>NVFlow</strong>: synthetic data generation, model fine-tuning, evaluation, and RL training all run through a single pipeline.</p>
+<p>The decision she singled out as important is the <strong>shared single environment</strong>: SDG, SFT, and RL tuning all use <strong>the same tools and the same format</strong>, so there is nothing to keep manually in sync. That is exactly what the talk title means by "One Environment, Whole Lifecycle."</p>
+<p>She closed with an invitation to collaborate — code and data are all public.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"It's not just sharing a checkpoint so everyone can load it and run the model — but we want to share the whole pipeline." (~02:24)</p>
+</blockquote>
+<p>The unit of open-sourcing moves from the model to the process.</p>
+<blockquote>
+<p>"All the synthetic data generation, SFT tuning, RL tuning — all of them use the same tools, same format. So no need to be worried about being consistent." (~02:29)</p>
+</blockquote>
+<p>Consistency enforced by architecture rather than by discipline.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nemotron</td>
+<td>NVIDIA 的開源模型家族,本演講後訓練工作的底座</td>
+<td>NVIDIA's open model family; the base for this post-training work</td>
+<td><a href="https://github.com/NVIDIA-NeMo/Nemotron">https://github.com/NVIDIA-NeMo/Nemotron</a></td>
+</tr>
+<tr>
+<td>NVFlow</td>
+<td>端到端編排 SDG → 訓練(SFT/RL)→ 評估的工作流框架,建於 NeMo 生態系之上</td>
+<td>Workflow orchestration framework for end-to-end SDG, training (SFT/RL), and evaluation, built on the NeMo ecosystem</td>
+<td>字幕聽為 "NV flow";<a href="https://github.com/NVIDIA/nvflow">https://github.com/NVIDIA/nvflow</a> 上有 finance recipe</td>
+</tr>
+<tr>
+<td>Document-based SDG / Template-based SDG</td>
+<td>團隊釋出的兩條合成資料生成 pipeline</td>
+<td>The team's two synthetic data generation pipelines</td>
+<td>貢獻四柱之一 / first of the four pillars</td>
+</tr>
+<tr>
+<td>金融後訓練資料集 / finance post-training dataset</td>
+<td>超過 100 萬筆公開資料</td>
+<td>Over one million publicly released samples</td>
+<td>確切資料集名稱與連結待確認 / exact dataset name and link to verify</td>
+</tr>
+<tr>
+<td>Shared single environment</td>
+<td>SDG / SFT / RL 共用同一組工具與格式的設計決策</td>
+<td>Design decision: SDG, SFT, and RL share the same tools and format</td>
+<td>講題核心 / the talk's central claim</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shia Gagabi / Gaggabi</td>
+<td>Shaghayegh Gharghabi</td>
+</tr>
+<tr>
+<td>neotron / neos model</td>
+<td>Nemotron</td>
+</tr>
+<tr>
+<td>coin model</td>
+<td>Qwen model</td>
+</tr>
+<tr>
+<td>SG / two SG pipeline</td>
+<td>SDG(synthetic data generation)</td>
+</tr>
+<tr>
+<td>SFD recipe</td>
+<td>SFT recipe</td>
+</tr>
+<tr>
+<td>oral training</td>
+<td>RL training</td>
+</tr>
+<tr>
+<td>NV flow</td>
+<td>NVFlow</td>
+</tr>
+<tr>
+<td>multi-term reasoning</td>
+<td>multi-turn reasoning</td>
+</tr>
+<tr>
+<td>sec filing</td>
+<td>SEC filing</td>
+</tr>
+<tr>
+<td>site / cite 混用</td>
+<td>cite</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>演講引用的兩個金融 benchmark 名稱(最佳閉源 64% / 開源 60%;更難的那個最佳 58%)——逐字稿只說「one of the famous benchmark」,未報名稱。/ Names of the two finance benchmarks cited (64%/60%, and the harder one at 58%) — the transcript says only "one of the famous benchmark".</li>
+<li>100 萬筆以上公開資料集的正式名稱與 Hugging Face 連結。/ Official name and Hugging Face link for the 1M+ sample dataset.</li>
+<li>+11%(Qwen)/ +7%(Nemotron)的具體模型尺寸與評測基準未說明。/ The exact model sizes and evaluation benchmark behind the +11% / +7% figures.</li>
+<li>兩家金融機構客戶未具名。/ The two financial-institution customers were not named.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/shaghayegh-gharghabi--one-environment-whole-lifecycle-agentic-post-training-for-nemotron-in-finance.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

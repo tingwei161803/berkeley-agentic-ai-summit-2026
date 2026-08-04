@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Ghost in the Web Store: Preempting LLM-Hallucinated Browser Extension Supply Chain Attacks · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="LLMs confidently recommend browser extensions that never existed, were deleted, or sit unclaimed — and an attacker who registers those hallucinated identifiers gets in without breaking anything. Th…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/mohamed-nabeel--ghost-in-the-web-store.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Ghost in the Web Store: Preempting LLM-Hallucinated Browser Extension Supply Chain Attacks · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="LLMs confidently recommend browser extensions that never existed, were deleted, or sit unclaimed — and an attacker who registers those hallucinated identifiers gets in without breaking anything. Th…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/mohamed-nabeel--ghost-in-the-web-store.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="mohamed-nabeel--ghost-in-the-web-store">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Ghost in the Web Store: Preempting LLM-Hallucinated Browser Extension Supply Chain Attacks" data-title-zh="Web Store 裡的幽靈:先攻擊者一步堵住 LLM 幻覺型瀏覽器擴充套件供應鏈攻擊">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Secure Agentic AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Ghost in the Web Store: Preempting LLM-Hallucinated Browser Extension Supply Chain Attacks</span><span class="lang-zh">Web Store 裡的幽靈:先攻擊者一步堵住 LLM 幻覺型瀏覽器擴充套件供應鏈攻擊</span></h1>
+        <p class="dialog__speaker"><strong>Mohamed Nabeel</strong> — Senior Principal Researcher, Palo Alto Networks</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 03:38:10–03:45:00 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=ZIRc3EpzQJs&amp;t=13090s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 03:38:10</span><span class="lang-zh">從 03:38:10 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">LLMs confidently recommend browser extensions that never existed, were deleted, or sit unclaimed — and an attacker who registers those hallucinated identifiers gets in without breaking anything. The research hunts those ghosts before attackers bring them back to life.</span><span class="lang-zh">LLM 會「有自信地」推薦根本不存在、已下架或無人認領的瀏覽器擴充套件,攻擊者只要把這些幻覺名稱註冊回來,就能不必入侵任何系統、直接讓 AI 幫他們開門——他們的做法是先去找這些幽靈,在攻擊者把它們復活之前。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>威脅模型的重點是「誰在瀏覽網路」變了</strong>:過去二十年的 web 防護是為「人類瀏覽網路」設計的;現在要問的是<strong>如何建一個保護 agent 的 web</strong>,保護了 agent 就等於保護了人。</li>
+<li><strong>幻覺在供應鏈上不是假設性問題</strong>:已有研究顯示 PyPI / npm 套件名稱會被幻覺;講者團隊近期也做了<strong>幻覺網域名稱</strong>的研究。而瀏覽器擴充套件更危險——權限過大、看得到你的 session token 與 cookie,一旦被攻陷,攻擊者就有你作業系統的第一排座位。</li>
+<li><strong>三個「幻覺高發區」(hallucination-prone zones)</strong>:(1) <strong>時效性</strong>——現在每個月新增約 2 萬個擴充套件,過去是一整年才這麼多,而 LLM 不擅長偵測新近變化;(2) <strong>已刪除的東西</strong>——同時期也有數千個擴充套件被下架,但 LLM 是 <strong>snapshot learner</strong>,以為它們還在;(3) <strong>無品牌的擴充套件</strong>——沒有品牌訊號的擴充套件特別容易被編造。</li>
+<li><strong>實測結果</strong>:LLM 推薦的一批擴充套件是<strong>真實存在但已被下架</strong>的,其中不少已被標記為惡意軟體;另一批則是<strong>無人認領</strong>的識別碼,LLM 依然自信地叫你安裝。他們持續監控高幻覺率的擴充套件,研究之後觀察到<strong>約十來個</strong>被註冊並用於惡意活動。</li>
+<li><strong>可帶走的一句話</strong>:幻覺是 LLM 的固有性質,不會消失;不要盲信瀏覽器或 chatbot 給的推薦,一定要查證。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>開場:從「保護人瀏覽網路」到「建一個保護 agent 的 web」(約 03:38–03:39)</h4>
+<p>講者在 Palo Alto Networks 做 web security。他的切入點很簡潔:過去這些年,web 防護是為「人類在瀏覽網路」建立的;隨著 LLM 與 agent 大量普及,現在瀏覽網路的不再是人。所以團隊近期在想的是——<strong>怎麼建一個會保護 agent 的 web</strong>,而保護 agent 反過來就是保護人。</p>
+<p>本場聚焦其中一塊:<strong>幻覺</strong>,而且是<strong>瀏覽器擴充套件上的幻覺</strong>。理由是「瀏覽器就是新的作業系統」,理解這個攻擊面很重要。</p>
+<p>他也點出研究缺口:現有關於幻覺的研究、甚至 benchmark,主要衡量的是<strong>摘要任務</strong>上的幻覺,而不是供應鏈安全或相關產出物上的幻覺。</p>
+<h4>一個關於火星日落的插曲(約 03:40–03:41)</h4>
+<p>他女兒問他:如果站在火星上看天空,日落是什麼顏色?他不想讓她失望,就去問了自己最愛的 chatbot,得到一段關於紅色日落、寫得非常漂亮的描述。他轉述給女兒,她很開心——但<strong>答案是錯的,火星的日落是藍色的</strong>。</p>
+<p>原因是 LLM 把地球的經驗一般化到火星,又抓住「火星天空是紅的」這個事實推導出紅色日落;真正的物理是紅光波長較長、難以穿過大氣粒子,而藍光波長較短——連火星車拍回來的照片都是藍色日落。從此他學會凡事再確認一次。</p>
+<h4>為什麼是瀏覽器擴充套件(約 03:42–03:43)</h4>
+<p>安全領域的幻覺不是假設性問題:已有研究顯示 <strong>PyPI 與 npm 的套件名稱</strong>會被幻覺,講者團隊近期也做了<strong>幻覺網域名稱</strong>的研究。而擴充套件之所以特別危險:</p>
+<ul>
+<li><strong>權限過大</strong>;</li>
+<li><strong>看得到你的 session token 與 cookie</strong>;</li>
+<li>一旦有任何一個被攻陷,攻擊者就等於拿到通往你作業系統的第一排座位。</li>
+</ul>
+<p>而攻擊手法「簡單得令人不安」:攻擊者不需要突破你的系統,只需要<strong>騙過 AI</strong>,讓 AI 幫他從正門走進來。</p>
+<h4>三個幻覺高發區與實測結果(約 03:43–03:44)</h4>
+<p>問題根源在 LLM 的運作方式本身。他歸納出三個 <strong>hallucination-prone zones</strong>:</p>
+<ol>
+<li><strong>時效性(recency)</strong>:因為 AI 的緣故,擴充套件正在暴增——現在<strong>每個月約 2 萬個</strong>新擴充套件,而過去是一整年才產生這個數量。LLM 不擅長偵測新近變化,於是傾向「幻覺+盡量幫忙」。</li>
+<li><strong>刪除(deletion)</strong>:同一時間也有<strong>數千個</strong>擴充套件被刪除。LLM 是 <strong>snapshot learner</strong>,對「已被刪除」沒有概念,會以為它們還在。</li>
+<li><strong>無品牌(no brand)</strong>:並非所有擴充套件都有品牌訊號,這也會誘發幻覺。</li>
+</ol>
+<p>實測發現分成兩類:</p>
+<ul>
+<li>一類是 LLM 幻覺出來的擴充套件其實<strong>真實存在過但已被刪除</strong>,而且其中許多在瀏覽器商店裡<strong>被標記為惡意軟體</strong>。</li>
+<li>另一類是<strong>無人認領</strong>的識別碼,LLM 仍自信地告訴你可以安裝——攻擊者可以直接利用。</li>
+</ul>
+<p>最後一張投影片是他們<strong>持續監控</strong>的高幻覺率擴充套件清單:他們持續重新評分、追蹤;在研究之後,他們看到<strong>約十來個</strong>這類擴充套件被註冊並用於惡意活動。</p>
+<h4>結論(約 03:44)</h4>
+<p>不要盲信瀏覽器(或 chatbot)給你的推薦,永遠再確認一次——因為<strong>幻覺是 LLM 的固有性質,不會消失</strong>。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Attackers don't need to break into your system. They just need to trick the AI to get through your front door."(約 03:42:47)</p>
+</blockquote>
+<p>整場最精煉的威脅模型:供應鏈攻擊的入口從「漏洞」變成「幻覺」。</p>
+<blockquote>
+<p>"LLMs are snapshot learners. They don't have an understanding of deleted extensions. They think they are already still existing."(約 03:43:30)</p>
+</blockquote>
+<p>「已刪除」這個概念在訓練快照裡不存在——這正是幽靈的來源。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The threat model changed because the browsing population changed.</strong> Two decades of web defenses were built for humans browsing the web. The question now is how to build a web that protects <em>agents</em> — which in turn protects the humans behind them.</li>
+<li><strong>Supply-chain hallucination is not hypothetical</strong>: prior work shows LLMs hallucinate PyPI and npm package names, and his team recently published research on hallucinated domain names. Extensions are worse: excessive permissions, visibility into session tokens and cookies, and a front-row seat to your operating system if compromised.</li>
+<li><strong>Three hallucination-prone zones</strong>: (1) <strong>recency</strong> — roughly 20,000 new extensions per month now, versus that many per <em>year</em> previously, and LLMs are poor at recency; (2) <strong>deletion</strong> — thousands are removed in the same period, but LLMs are <strong>snapshot learners</strong> with no concept of deletion; (3) <strong>brand-less extensions</strong>, which lack the signal that anchors a model.</li>
+<li><strong>Findings</strong>: one set of hallucinated extensions turned out to be real but deleted, many of them flagged as malware; another set were unclaimed identifiers the LLM still confidently told users to install. Monitoring the highest-hallucination extensions, they saw <strong>about a dozen</strong> subsequently registered and used for malicious activity.</li>
+<li><strong>Takeaway</strong>: hallucination is inherent to LLMs and will not go away — never blindly trust a browser or chatbot recommendation.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>From protecting human browsing to building a web that protects agents (~03:38–03:39)</h4>
+<p>He works in web security at Palo Alto Networks, and framed the shift plainly: the protections built over the years assumed humans were the ones browsing. With LLMs and agents proliferating, that's no longer true — so the team has been thinking about how to build a web that protects agents, which by extension protects humans.</p>
+<p>This talk narrowed to hallucinations, specifically hallucinations about <strong>browser extensions</strong>, on the premise that the browser is the new operating system, which makes it an attack surface worth understanding precisely. He also noted a gap in the literature: existing hallucination research and benchmarks mostly measure hallucination in <strong>summarization</strong>, not in supply-chain security artifacts.</p>
+<h4>An aside about sunsets on Mars (~03:40–03:41)</h4>
+<p>His young daughter asked what color the sunset would be if she stood on Mars. Not wanting to disappoint her, he asked his favorite chatbot, which described a red sunset beautifully. She was delighted with the answer — which was wrong. Martian sunsets are <strong>blue</strong>.</p>
+<p>The model generalized from Earth and leaned on the fact that the Martian sky is red. The actual physics runs the other way: red has the longer wavelength and scatters out, blue the shorter one — and the rover photos show blue sunsets. Ever since, he double-checks answers.</p>
+<h4>Why browser extensions (~03:42–03:43)</h4>
+<p>Hallucination in security is already documented — hallucinated PyPI and npm package names, and his own team's recent research on hallucinated domain names. Extensions raise the stakes because they hold excessive permissions, see your session tokens and cookies, and hand a compromise attacker a front-row seat to your operating system.</p>
+<p>The attack itself is, in his word, deceptively simple: attackers don't need to break into your system, they just need to trick the AI into walking them through the front door.</p>
+<h4>Three hallucination-prone zones, and what they found (~03:43–03:44)</h4>
+<p>The problem arises from how LLMs work. He named three zones where they perform badly:</p>
+<ol>
+<li><strong>Recency.</strong> AI has driven an extension boom — roughly 20,000 new extensions <em>per month</em>, where previously that many appeared over a whole year. LLMs are bad at recency detection, so they hallucinate while trying to be helpful.</li>
+<li><strong>Deletion.</strong> Thousands of extensions are deleted over the same period, but LLMs are snapshot learners with no representation of deletion — they think the deleted ones still exist.</li>
+<li><strong>No brand.</strong> Not every extension has a brand, and the absence of that signal invites hallucination.</li>
+</ol>
+<p>Two categories of finding:</p>
+<ul>
+<li>Extensions the LLM hallucinated that were <strong>real but deleted</strong>, many of them marked as malware in the store.</li>
+<li><strong>Unclaimed</strong> extensions the LLM nonetheless confidently told users to install — directly exploitable by attackers.</li>
+</ul>
+<p>His closing slide showed the set they keep monitoring and rescoring. After the study, about a dozen of these highly-hallucinated extensions were registered and used for malicious activity.</p>
+<h4>Conclusion (~03:44)</h4>
+<p>Don't blindly trust recommendations from your browser or chatbot. Always fact-check, because hallucination is inherent to LLMs and won't go away.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Attackers don't need to break into your system. They just need to trick the AI to get through your front door." (~03:42:47)</p>
+</blockquote>
+<p>The whole threat model in one line: the supply-chain entry point moved from vulnerabilities to hallucinations.</p>
+<blockquote>
+<p>"LLMs are snapshot learners. They don't have an understanding of deleted extensions. They think they are already still existing." (~03:43:30)</p>
+</blockquote>
+<p>"Deleted" is a concept that doesn't exist inside a training snapshot — which is exactly where the ghosts come from.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>幻覺網域名稱研究 / Hallucinated domain research</td>
+<td>講者團隊近期關於 LLM 幻覺網域被攻擊者註冊的研究</td>
+<td>His team's recent research on attackers registering LLM-hallucinated domains</td>
+<td>對應 Unit 42 2026 年 "Phantom Squatting: AI-Hallucinated Domains as a Software Supply Chain Vector"</td>
+</tr>
+<tr>
+<td>PyPI / npm 幻覺套件研究</td>
+<td>既有研究顯示 LLM 會幻覺出不存在的套件名稱</td>
+<td>Prior work showing LLMs hallucinate nonexistent package names</td>
+<td>講者引用為先例,未指名論文 / cited as precedent, paper not named</td>
+</tr>
+<tr>
+<td>高幻覺擴充套件監控清單 / Hallucinated extension watchlist</td>
+<td>團隊持續重新評分與監控的擴充套件集合</td>
+<td>Set of extensions the team continuously rescores and monitors</td>
+<td>研究後約十來個被註冊並用於惡意活動 / ~a dozen later registered for malicious use</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Muhammad Nabil</td>
+<td>Mohamed Nabeel</td>
+</tr>
+<tr>
+<td>PA Alter Network / PaloAlto Network</td>
+<td>Palo Alto Networks</td>
+</tr>
+<tr>
+<td>junk professor</td>
+<td>adjunct professor</td>
+</tr>
+<tr>
+<td>pi and npm packages</td>
+<td>PyPI and npm packages</td>
+</tr>
+<tr>
+<td>mass / Martian(指行星時)</td>
+<td>Mars</td>
+</tr>
+<tr>
+<td>rob ran on mass</td>
+<td>rover on Mars</td>
+</tr>
+<tr>
+<td>eicric</td>
+<td>(聽不清,推測為 electric/lyric 類形容詞;語意為「文采斐然的描述」)</td>
+</tr>
+<tr>
+<td>browse extensions</td>
+<td>browser extensions</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>主持人介紹時提到他同時是「adjunct professor at National University in San Diego」;官網議程只列 Palo Alto Networks 職稱,兼職教職資訊建議另行核實後再寫入。/ The MC also introduced him as an adjunct professor at National University (San Diego); the official agenda lists only the Palo Alto Networks title.</li>
+<li>「每月約 20,000 個新擴充套件」與「數千個被刪除」的資料來源與統計區間未說明。/ The ~20,000 new extensions per month and "thousands deleted" figures were given without a source or time window.</li>
+<li>研究後被註冊並用於惡意活動的擴充套件「約一打」的確切數字與案例。/ The exact count and cases behind "about a dozen" extensions registered for malicious use.</li>
+<li>議程標題為 "Ghost in the Web Store";對應論文或 Unit 42 報告是否已公開發表、連結為何。/ Whether the "Ghost in the Web Store" work has a published paper or Unit 42 write-up, and its link.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/mohamed-nabeel--ghost-in-the-web-store.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

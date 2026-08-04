@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Is Kubernetes Good for Agents? Infrastructure Solutions for Agent-Shaped Problems · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Agents are bursty, untrusted, single-tenant, and latency-sensitive — precisely the opposite of what Kubernetes was designed for. Google&#x27;s open-source Agent Substrate doesn&#x27;t rebuild Kubernetes; it …" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/tim-hockin--is-kubernetes-good-for-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Is Kubernetes Good for Agents? Infrastructure Solutions for Agent-Shaped Problems · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Agents are bursty, untrusted, single-tenant, and latency-sensitive — precisely the opposite of what Kubernetes was designed for. Google&#x27;s open-source Agent Substrate doesn&#x27;t rebuild Kubernetes; it …" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/tim-hockin--is-kubernetes-good-for-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-compass" data-talk="tim-hockin--is-kubernetes-good-for-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Is Kubernetes Good for Agents? Infrastructure Solutions for Agent-Shaped Problems" data-title-zh="Kubernetes 適合跑 Agent 嗎?為 Agent 形狀的問題找基礎設施解法">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: AI Systems</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Is Kubernetes Good for Agents? Infrastructure Solutions for Agent-Shaped Problems</span><span class="lang-zh">Kubernetes 適合跑 Agent 嗎?為 Agent 形狀的問題找基礎設施解法</span></h1>
+        <p class="dialog__speaker"><strong>Tim Hockin</strong> — Distinguished Engineer, Google</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 00:44:13–00:55:30 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=IBpR4uYftLY&amp;t=2653s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:44:13</span><span class="lang-zh">從 00:44:13 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Agents are bursty, untrusted, single-tenant, and latency-sensitive — precisely the opposite of what Kubernetes was designed for. Google&#x27;s open-source Agent Substrate doesn&#x27;t rebuild Kubernetes; it layers an aggressively suspend/resume-based actor runtime on top, turning tens of seconds to tens of minutes of idle into sub-second wake-ups.</span><span class="lang-zh">Agent 是 bursty、不可信、單租戶、又對延遲敏感的工作負載,恰好違反 Kubernetes「長時間執行、可水平擴展、可攤平開銷」的設計前提;Google 的開源專案 Agent Substrate 不重造 Kubernetes,而是在其上加一層積極 suspend/resume 的 actor 執行層,把「幾秒到幾十分鐘的閒置」壓成「幾百毫秒的喚醒」。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>Agent 為什麼不適合 Kubernetes</strong>:agent 工作負載 <strong>bursty</strong>(短暫爆發後閒置數分鐘、數小時甚至數週)、<strong>不可信</strong>(必須跑在 sandbox 裡)、<strong>單租戶</strong>(sandbox 不能共用,否則失去意義,因而失去攤平開銷的機會)、且<strong>有人在迴圈裡</strong>(對感知延遲極度敏感)。Kubernetes 是為「跑很久、可水平擴展、開銷可攤平」的東西設計的。</li>
+<li><strong>現況只有兩種模式</strong>:(1) 用 Kubernetes 的 <strong>runtime class</strong>(預設是 OCI 容器,也有 gVisor 與 microVM)為每個使用者 session 開一個 sandbox pod——但 pod 啟動要數秒,加上 agent 自身的初始化可能再花 10–15 秒以上,於是大家用「閒置等待」來攤平,等待時間從數十秒到數十分鐘不等,期間資源完全浪費。(2) <strong>DIY</strong>:每台機器一個巨型 workload、內含 manager,自建控制平面排程進這個 mega sandbox——效率可以很高,但等於重新發明大半個 Kubernetes,對小公司與新創幾乎無法維運。</li>
+<li><strong>Agent Substrate</strong>:Google 今年開始並已開源的專案,取兩種模式的優點——用 suspend/resume 加雲端儲存,把 agent 多工到<strong>預熱好的 worker</strong> 上,<strong>積極地暫停與恢復</strong>,把 5–10 秒到 10 分鐘的閒置壓到一秒甚至更少。目標規模是<strong>數十億個 session</strong>、每秒<strong>上萬次 activation</strong>、喚醒時間壓到<strong>低三位數毫秒</strong>。目前仍是 pre-production,目標是這個秋天進入可用狀態。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>Agent 工作負載為什麼「形狀不對」(約 00:45:30–00:46:40)</h4>
+<p>Hockin 說自己習慣從基礎設施由下往上看這個問題:客戶帶著「我們有一堆 agent,要跑很多、而且現在的效率不夠」來找他。Agent 與傳統應用的差異有四點:</p>
+<ol>
+<li><strong>Bursty</strong>:短暫爆發後閒置很久——數分鐘、數小時,甚至數天數週。天真做法會導致大量閒置資源。</li>
+<li><strong>通常不可信</strong>:因此必須跑在 sandbox 裡,而業界也持續在找新的 sandbox 技術。</li>
+<li><strong>單租戶</strong>:sandbox 不能共用,不然就失去意義。<strong>這代表失去大量最佳化機會,特別是開銷的攤平(amortization of overheads)。</strong></li>
+<li><strong>人在迴圈裡</strong>:因此對系統的<strong>感知延遲</strong>非常敏感。</li>
+</ol>
+<p>而 Kubernetes 是為「跑很久、水平擴展、成本可攤平」的東西建的。所以「Kubernetes 是不是跑 agent 的正確平台」是一個公道的問題。</p>
+<h4>現有的兩種做法(約 00:46:40–00:49:50)</h4>
+<p><strong>做法一:直接用 Kubernetes 的 runtime class</strong></p>
+<p>Kubernetes 的 runtime class 讓你定義一種 sandbox:預設是 Docker 式的 OCI 容器,也有 <strong>gVisor</strong> 與 <strong>microVM</strong> 的 runtime class,而且它是 Kubernetes 的<strong>擴充點</strong>,適合做研究。</p>
+<p>流程:某個事件(例如使用者開啟一個 chat session)觸發需要一個新的 agent 實例 → 為他建立專屬的單租戶 sandbox pod。但 pod 啟動<strong>不是 Kubernetes 最快的事</strong>——通常是「秒」等級,而這不夠快;再加上 agent 啟動時要做的事(載入 runtime 環境、瀏覽器等),可能再花 10 到 15 秒以上。Pod ready 後使用者送出訊息、拿到回覆,一個 turn 結束——然後呢?</p>
+<p>因為 pod 啟動不免費,大家的做法是<strong>等下一個事件</strong>。等多久?取決於你的 agent 在做什麼、啟動成本多高,每家算出來的數字都不一樣;他們看到的範圍是<strong>低到數十秒、高到數十分鐘</strong>。在這段時間裡,agent 佔著誰都用不到的資源。可能在第 9 分 59 秒來了下一個 turn,整個流程重來一次。最後 timeout、判定為 idle,要嘛整個丟棄、要嘛存下狀態然後終止 pod。</p>
+<p><strong>而這件事,是對系統上每一個使用者的每一個 agent 的每一個實例都在發生。</strong> 有 warm pool、有 suspend/resume 之類的技巧,但 <strong>Kubernetes 原生不支援這些</strong>,等於在跟系統作對,規模一大就很難自圓其說。</p>
+<p><strong>做法二:在 Kubernetes 上自建(DIY)</strong></p>
+<p>每台機器一個巨型 workload,裡面是一個 manager application;自建的控制平面負責把東西排程進那個 mega sandbox,manager 管生命週期。對 Kubernetes 而言一切都是不透明的,<strong>你會重新發明 Kubernetes 的一大部分</strong>。它可以非常有效率,但建起來相當複雜,對小公司特別是新創來說<strong>難以維運</strong>。</p>
+<h4>Agent Substrate:兩種模式的交集(約 00:49:50–00:55:00)</h4>
+<p>Hockin 說他做 Kubernetes 12 年,深信「<strong>在基礎設施這件事上,開放的一定會贏</strong>」。所以今年他們著手做一個新東西,取兩種模式的優點:能用 Kubernetes 的地方就用(幾乎所有人的機隊裡都有一些 Kubernetes),需要新元件的地方才自己建。他很坦白:<strong>這裡沒有石破天驚的新研究</strong>,他們做的是把客戶與使用者身上最好的點子黏成一個大家都能用的東西。</p>
+<p>專案名為 <strong>Agent Substrate</strong>,已開源。核心模型很直接:<strong>不要閒置資源</strong>;用 suspend/resume 加雲端儲存,把 agent 多工到<strong>預熱好的 runner</strong> 上,並<strong>積極地暫停與恢復</strong>,把 5–10 秒到 10 分鐘的閒置壓到一秒或更短。</p>
+<p><strong>目標(Google 式的大規模視角)</strong>:數十億個 session 在管理之下、每秒數千到數萬次 activation、喚醒時間壓進<strong>低三位數毫秒</strong>。</p>
+<p><strong>術語</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>術語</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Actor</strong></td>
+<td>agent / sandbox / 行為像 agent 的東西的統稱</td>
+</tr>
+<tr>
+<td><strong>Actor template</strong></td>
+<td>「如果 actor 是餅乾,template 就是餅乾模具」;定義例如用哪種 sandbox 技術(gVisor 或 microVM)。<strong>單一 substrate 內可以有很多種 template</strong></td>
+</tr>
+<tr>
+<td><strong>Worker</strong></td>
+<td>通常是 Kubernetes 叢集裡的一個 pod,<strong>真正消耗資源的東西</strong>;等待被指派 actor,然後執行它,可以序列執行很多個;一個叢集可以有很多 worker</td>
+</tr>
+<tr>
+<td><strong>atelet</strong></td>
+<td>每個節點上的 worker 管理器(networking 的緣故需要它)</td>
+</tr>
+<tr>
+<td><strong>atenet</strong></td>
+<td>「enlightened proxy」,收到流量時觸發喚醒</td>
+</tr>
+</tbody>
+</table>
+<p><strong>運作流程</strong>:從任一現代 Kubernetes 叢集開始(支援 <strong>kind</strong>,所以筆電上就能跑)。叢集管理員部署一個 Agent Substrate 實例:API server 與儲存層、負責與 Kubernetes 同步資料的 controller、一個或多個 worker pool(建立 deployment→pod 來跑你的工作負載)、管理 worker 的 atelet、以及知道怎麼把外部流量帶進內部的 atenet proxy。接著 substrate 管理員建立一個或多個 actor template,controller 看到後做預備工作:把 template 啟動起來、<strong>拍一份快照(他們稱為 golden snapshot)</strong>存起來備用。</p>
+<p>到 substrate 層(他提醒<strong>其中一部分還是 aspirational,仍在開發中</strong>):由更上層的系統從 template <strong>建立</strong>一個 actor(注意:建立 actor 不等於執行 actor)。以聊天應用為例,前端做完授權等工作後建立 actor;使用者送出 prompt → 路由到 atenet proxy → <strong>喚醒 actor</strong>,透過 router 送訊息把它指派給一個 worker → 因為是新 actor,就從 <strong>golden snapshot</strong> 喚醒 → proxy 把訊息轉給現在已在執行的 actor。<strong>這整個過程只要幾百毫秒</strong>,而且還在繼續優化。</p>
+<p>Turn 一結束,actor 大概就閒置了,於是叫它回去睡覺——他們稱為 <strong>pause</strong>:拍快照、把資料搬走,worker 隨即解除指派、可供其他 actor 使用。這些都能以「一次 API 操作 / 一次 agent transaction」的速度發生。下一個 prompt 進來就再跑一次循環;最後沒有訊息了,資料會被搬到雲端儲存,「睡到明天」。</p>
+<p>從最高層看:一個 Kubernetes 叢集可以是筆電上的單節點,也可以是雲端的 20 萬節點;每個節點跑多個 worker;而<strong>每個 agent 有 99.999% 的時間是閒置的</strong>——算一下就知道為什麼能衝到「數十億」那個數量級。</p>
+<h4>現況與邀請(約 00:55:00–00:55:30)</h4>
+<p>Agent Substrate 是<strong>開源專案</strong>,目前仍是 <strong>pre-production grade</strong>,他們的目標是<strong>這個秋天結束前</strong>進入可用狀態。他要的回饋很具體:<strong>經驗、需求,以及你們拿 agent 在做什麼的脈絡</strong>。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Kubernetes was built for things that run for a long time and tend to be scale out, horizontally scalable, and you can amortize your costs."(約 00:46:29)</p>
+</blockquote>
+<p>一句話說完為什麼 agent 的形狀跟 Kubernetes 不合。</p>
+<blockquote>
+<p>"I have a deeply held belief that when it comes to infrastructure, open always wins."(約 00:49:56)</p>
+</blockquote>
+<p>做了 12 年 Kubernetes 的人給 Agent Substrate 開源的理由。</p>
+<blockquote>
+<p>"Each of those agents are idle 99.999% of the time, so you can do the math and see we're driving up to those billions of numbers."(約 00:54:50)</p>
+</blockquote>
+<p>這個數字就是整套 suspend/resume 設計的經濟學基礎。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Why agents fit Kubernetes badly</strong>: agent workloads are <strong>bursty</strong> (short spurts, then idle for minutes, hours, or weeks), generally <strong>untrusted</strong> (so they must run in sandboxes), necessarily <strong>single-tenant</strong> (you can't share a sandbox without defeating its purpose, which kills amortization of overheads), and <strong>human-in-the-loop</strong> (so they're very sensitive to perceived latency). Kubernetes was built for long-running, horizontally scalable things whose costs amortize.</li>
+<li><strong>Only two patterns exist today</strong>: (1) Kubernetes <strong>runtime classes</strong> — the default OCI container, plus gVisor and microVM classes — with one sandbox pod per user session. Pod startup takes seconds, agent startup can add 10–15 seconds or more, so operators keep pods idling anywhere from tens of seconds to tens of minutes, burning resources nobody else can use. (2) <strong>DIY</strong>: one giant per-machine workload containing a manager, with a bespoke control plane scheduling into a mega sandbox — efficient, but you reinvent large parts of Kubernetes and it's hard for smaller companies to operate.</li>
+<li><strong>Agent Substrate</strong>: Google's open-source project, started earlier this year, takes the best of both — suspend/resume plus cloud storage to multiplex agents onto pre-warmed runners and aggressively suspend them, driving 5–10 seconds to 10 minutes of idle down to a second or less. Targets: billions of sessions under management, thousands to tens of thousands of activations per second, and wake-up times in the low three-digit milliseconds. Still pre-production, aiming for a workable state by the end of the fall.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>What makes agents infrastructure-shaped differently (~00:45:30–00:46:40)</h4>
+<p>Hockin looks at agentic AI bottom-up, as an infrastructure problem. Customers arrive saying "we have these agents, we need to run a lot of them, and we're not getting the efficiency." Four properties matter:</p>
+<ol>
+<li><strong>Bursty</strong> — very short spurts, then idle for minutes, hours, days, or weeks. Handled naively, that's a lot of idle resources.</li>
+<li><strong>Untrusted</strong> — so they run in sandboxes, and new sandboxing technologies keep appearing.</li>
+<li><strong>Single-tenant</strong> — you can't share a sandbox without defeating the purpose, which means losing a ton of optimization opportunities, specifically <strong>amortization of overheads</strong>.</li>
+<li><strong>Human-in-the-loop</strong> — making them very sensitive to perceived latency.</li>
+</ol>
+<p>Kubernetes, by contrast, was built for long-running, horizontally scalable workloads whose costs amortize. So asking whether it's the right platform for agents is a fair question.</p>
+<h4>The two patterns in the wild (~00:46:40–00:49:50)</h4>
+<p><strong>Pattern one: Kubernetes runtime classes.</strong> A runtime class defines a kind of sandbox — the default being a Docker-style OCI container, with classes for gVisor and microVMs, and it's an extension point, so there's room for research. Some event (a user starting a chat session) requires a new agent instance, which means a dedicated single-tenant sandbox pod.</p>
+<p>Starting a pod is not the thing Kubernetes does fastest — it's seconds, which isn't fast enough — and depending on what the agent does at startup (loading runtime environments, browsers), it can take 10 or 15 seconds more. Once the pod is ready the user chats, one turn completes, and then what? Since pod startup isn't free, people wait for another event. How long? It depends on the agent and the startup cost, and it's different for everyone; Hockin has seen <strong>tens of seconds at the low end to tens of minutes at the high end</strong>. Through all of that the agent holds resources nobody else can use. The next turn might land at 9:59, restarting the whole cycle; eventually a timeout declares it idle and the pod is discarded or its state saved and terminated.</p>
+<p>And this is happening for every instance of every agent for every user on the system. Warm pools and suspend/resume tricks exist, but <strong>Kubernetes doesn't support them natively</strong>, so you're working around the system — hard to justify at scale.</p>
+<p><strong>Pattern two: DIY on Kubernetes.</strong> A giant workload per machine, containing a manager application; a bespoke control plane schedules into that mega sandbox and the manager handles lifecycle. Everything is opaque to Kubernetes, and you end up reinventing large parts of it. Very efficient, fairly complicated to build, and difficult to operate — especially for startups.</p>
+<h4>Agent Substrate (~00:49:50–00:55:00)</h4>
+<p>Twelve years into Kubernetes, Hockin holds "a deeply held belief that when it comes to infrastructure, open always wins." So earlier this year they set out to build something taking the best of both models — leaning on Kubernetes where possible, since nearly everyone has some in their fleet, and building new components where necessary. He's explicit that there's <strong>no earth-shaking research here</strong>: they took the best ideas from their customers and users and glued them into something everyone can use.</p>
+<p><strong>Agent Substrate</strong> is that project, and it's open source. The model: no idle resources. Use suspend/resume plus cloud storage to multiplex agents onto pre-warmed runners and aggressively suspend and resume them, driving 5–10 seconds to 10 minutes of idle down to a single second or less.</p>
+<p>Goals, from a Google-scale vantage point: billions of sessions under management, thousands to tens of thousands of activations per second, and wake-up time in the low three-digit milliseconds.</p>
+<p><strong>Vocabulary</strong>: an <strong>actor</strong> is the stand-in term for an agent, sandbox, or agent-like thing. An <strong>actor template</strong> is the cookie cutter to the actor's cookie — it carries details like which sandbox technology (gVisor or microVM), and a single substrate can hold many different templates. A <strong>worker</strong> is usually a pod in a Kubernetes cluster and is the thing that actually consumes resources; it waits for an actor assignment, runs it, and can run many in serial, with many workers per cluster. <strong>atelet</strong> is the per-node manager for all workers on that node (needed for networking reasons), and <strong>atenet</strong> is their "enlightened proxy," which triggers wake-ups on receipt of traffic.</p>
+<p><strong>How it fits together</strong>: start with any modern Kubernetes cluster — kind is supported, so it runs on a laptop. The cluster admin deploys an Agent Substrate instance: API server and storage layer, a controller that synchronizes data in and out of Kubernetes, one or more worker pools (which create deployments, which create pods), atelets to manage the workers, and the atenet proxy that moves traffic from outside to inside. The substrate admin then creates actor templates; the controller spins each one up, takes a <strong>golden snapshot</strong>, and stores it for later.</p>
+<p>At the substrate layer (Hockin warned that <strong>some of this is aspirational and still being built</strong>), a higher-order system creates an actor from a template — note that creating an actor doesn't run it. In a chat app, the front end does its authorization work and creates the actor. The user sends a prompt, which routes to the atenet proxy; the proxy wakes the actor and assigns it to a worker via the router; since this actor is new, it wakes from the golden snapshot; the proxy forwards the message to the now-running actor. <strong>The whole thing happens in a couple hundred milliseconds</strong>, and they're still optimizing.</p>
+<p>As soon as the turn is done the actor is probably idle, so they <strong>pause</strong> it: take the snapshot, shuffle the data off, and the worker becomes unassigned and available to another actor — all at the speed of a single API operation or agent transaction. The next prompt restarts the cycle; when messages stop, the data goes to cloud storage and the actor sleeps for the night.</p>
+<p>From the top: a Kubernetes cluster can be one node on a laptop or 200,000 nodes in the cloud, each node runs multiple workers, and <strong>each agent is idle 99.999% of the time</strong> — which is how the arithmetic reaches billions.</p>
+<h4>Status and ask (~00:55:00–00:55:30)</h4>
+<p>Agent Substrate is open source and still pre-production grade; they're working hard to have it in a workable state by the end of the fall. The most useful feedback they can get, he said, is experience, requirements, and context about what people are actually doing with agents.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Kubernetes was built for things that run for a long time and tend to be scale out, horizontally scalable, and you can amortize your costs." (~00:46:29)</p>
+</blockquote>
+<p>The whole mismatch in one sentence.</p>
+<blockquote>
+<p>"I have a deeply held belief that when it comes to infrastructure, open always wins." (~00:49:56)</p>
+</blockquote>
+<p>Twelve years of Kubernetes, applied as the rationale for open-sourcing Agent Substrate.</p>
+<blockquote>
+<p>"Each of those agents are idle 99.999% of the time, so you can do the math and see we're driving up to those billions of numbers." (~00:54:50)</p>
+</blockquote>
+<p>The economics behind the entire suspend/resume design.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent Substrate</td>
+<td>Google 主導的開源 agent 執行層,在 Kubernetes 上做 actor 的 suspend/resume 多工</td>
+<td>Google-led open-source agent runtime multiplexing actors on Kubernetes via suspend/resume</td>
+<td>github.com/agent-substrate/substrate;演講中請大家去該 URL 看 GitHub</td>
+</tr>
+<tr>
+<td>atelet</td>
+<td>每節點的 worker 管理器(DaemonSet),協調快照與狀態轉移</td>
+<td>Node-level DaemonSet supervising worker pods, coordinating snapshotting and state transfer</td>
+<td>字幕聽成 "Eightlet"</td>
+</tr>
+<tr>
+<td>atenet</td>
+<td>網路控制器 / enlightened proxy,收到流量時觸發喚醒</td>
+<td>Networking controller and "enlightened proxy" that triggers wake-ups on traffic</td>
+<td>字幕聽成 "Eightnet" / "8net"</td>
+</tr>
+<tr>
+<td>Kubernetes runtime class</td>
+<td>定義 sandbox 種類的擴充點(OCI / gVisor / microVM)</td>
+<td>Kubernetes extension point defining sandbox kinds (OCI / gVisor / microVM)</td>
+<td></td>
+</tr>
+<tr>
+<td>gVisor</td>
+<td>使用者空間核心式 sandbox</td>
+<td>User-space-kernel style sandbox</td>
+<td>Agent Substrate 的 actor template 選項之一</td>
+</tr>
+<tr>
+<td>kind (Kubernetes in Docker)</td>
+<td>讓 Agent Substrate 能在筆電上跑</td>
+<td>Lets Agent Substrate run on a laptop</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eightlet</td>
+<td>atelet</td>
+</tr>
+<tr>
+<td>Eightnet / 8net proxy</td>
+<td>atenet(proxy)</td>
+</tr>
+<tr>
+<td>Agentyc AI / Agentyc workloads</td>
+<td>Agentic AI / agentic workloads</td>
+</tr>
+<tr>
+<td>Tim Hockin(字幕正確)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>"gVisor"(字幕作 "gVisor")</td>
+<td>gVisor</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Agent Substrate 的 GitHub URL 在投影片上,字幕只說「go to this URL」;對照公開 repo 應為 github.com/agent-substrate/substrate,建議看投影片確認。/ The GitHub URL was on a slide but the captions only say "go to this URL"; the public repo appears to be github.com/agent-substrate/substrate — confirm against the slide.</li>
+<li>「the end of this fall」指的是 2026 年秋天(演講時間為 2026-08),但未明說年份。/ "The end of this fall" presumably means autumn 2026 (talk given 2026-08) but the year wasn't stated.</li>
+<li>演講中未說明 golden snapshot 的底層 checkpoint/restore 技術(CRIU?gVisor checkpoint?)。/ The underlying checkpoint/restore technology behind the golden snapshot (CRIU? gVisor checkpoint?) wasn't named.</li>
+<li>「billions of sessions / tens of thousands of activations per second」是設計目標而非已達成的實測值。/ The billions-of-sessions and tens-of-thousands-of-activations figures are design targets, not measured results.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/tim-hockin--is-kubernetes-good-for-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

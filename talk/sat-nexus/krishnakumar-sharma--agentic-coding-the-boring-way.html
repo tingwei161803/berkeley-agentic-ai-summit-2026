@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Agentic Coding, the Boring Way · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Piling on more agents, more loops, and more tokens just multiplies errors and invoices. What actually works in legacy enterprise environments is boring: produce a research artifact, then a well-def…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/krishnakumar-sharma--agentic-coding-the-boring-way.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Agentic Coding, the Boring Way · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Piling on more agents, more loops, and more tokens just multiplies errors and invoices. What actually works in legacy enterprise environments is boring: produce a research artifact, then a well-def…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/krishnakumar-sharma--agentic-coding-the-boring-way.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="krishnakumar-sharma--agentic-coding-the-boring-way">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Agentic Coding, the Boring Way" data-title-zh="無聊的那條路:agentic coding 的紀律做法">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Coding &amp; Web Agents</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Agentic Coding, the Boring Way</span><span class="lang-zh">無聊的那條路:agentic coding 的紀律做法</span></h1>
+        <p class="dialog__speaker"><strong>Krishnakumar Sharma</strong> — CEO, Omokai</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 00:46:09–00:54:02 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=ZIRc3EpzQJs&amp;t=2769s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:46:09</span><span class="lang-zh">從 00:46:09 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Piling on more agents, more loops, and more tokens just multiplies errors and invoices. What actually works in legacy enterprise environments is boring: produce a research artifact, then a well-defined plan, then let AI deliver — with human sign-off, cross-vendor model diversity, and no more than about four clearly scoped agents.</span><span class="lang-zh">無節制地堆 agent、堆 loop、堆 token,只會讓錯誤與帳單一起變多;在 legacy 企業環境裡真正可靠的做法很無聊——先做研究產出 artifact、再產出明確計畫、才交給 AI 交付,搭配人類簽核、跨家族多模型交叉驗證,以及不超過四個定義清楚的 agent。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>我們正處在「agentic hangover」</strong>:他引用 Gartner 的研究指出,用更多 AI 並不等於更高生產力——只是讓 Anthropic 和 OpenAI 更有錢。</li>
+<li><strong>兩個該破除的迷思</strong>:(1) <strong>agent swarm</strong>——用上百個 agent 解一個問題,結果是成本爆炸加錯誤爆炸;(2) <strong>loop engineering / loop within loop</strong>——同樣是燒錢。</li>
+<li><strong>成本不會被便宜的模型救回來</strong>:另一份關於 AI 生成程式碼的研究顯示,不受控地使用 AI 會在 production 留下<strong>更多、而且更難根除</strong>的錯誤。</li>
+<li><strong>真正的隱性成本</strong>是驗證、資安漏洞、除錯,最後是 <strong>cognitive debt 與 burnout</strong>——AI 用太多,人自己會失去 context。</li>
+<li><strong>解法是 D3 framework</strong>(他 2025 年在 Amazon 開發):<strong>Discover</strong>(產出含上下游依賴的研究 artifact)→ <strong>計畫</strong>(拆成明確 subtask)→ <strong>Deliver</strong>(AI 執行)。再加上人類簽核、<strong>用不同公司(而非同家族)的多個模型</strong>、以及最多約四個定義清楚的 agent。</li>
+<li><strong>一句帶走</strong>:stop token maxing, start ROI maxing。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>為什麼談 legacy 與「無聊」(約 00:48–00:49)</h4>
+<p>他先框定範圍:這場談的是<strong>企業的 legacy 系統</strong>。「無聊的做法」是給那些想建<strong>可擴展、安全、可靠</strong>系統的人聽的。</p>
+<p>他的資歷:曾任 Amazon Germany 的 head of AI,建過大規模 AI 系統、為 Amazon 帶來數十億美元的營收影響,也做過 robotics AI;現在創辦 Omokai,做 physical AI 作業系統——<strong>把語音轉成機器人與無人機的自主任務</strong>。這場不談 Omokai 的產品,而是談他的工程團隊怎麼解決問題,而且他預告「有些說法會相當有爭議」。</p>
+<p>一個有意思的自我定位:Omokai 非常 AI-native——自己微調模型、用 AI 生成資料,<strong>7 名人類員工、10 名以上「AI 員工」</strong>。</p>
+<h4>診斷:agentic hangover(約 00:50–00:52)</h4>
+<ul>
+<li><strong>生產力悖論</strong>:他引用 Gartner 的研究——用更多 AI 並不會帶來更多生產力,只會讓 Anthropic 和 OpenAI 更有錢。若你在<strong>沒有適當約束</strong>的情況下無節制用 AI,那多半是用錯了。</li>
+<li><strong>兩個當紅迷思</strong>:</li>
+<li><strong>Agent swarm</strong>:動用上百個 agent 解一個問題 → 大量成本 + 大量錯誤。</li>
+<li><strong>Loop engineering / loop within loop</strong>:他看到有人在做的巢狀迴圈 → 成本遠超過你想付的。</li>
+<li><strong>「未來 AI 會很便宜所以成本不重要」也站不住腳</strong>:另一份針對 AI 程式碼生成的研究顯示,不受控的用法會在 production 資料庫留下<strong>更多而且更持久</strong>的錯誤。</li>
+<li><strong>隱性成本鏈</strong>:驗證成本 → 資安漏洞 → 除錯 → 最後是 <strong>cognitive debt 與 burnout</strong>。他強調這是真實存在的:<strong>AI 用太多,你自己會失去 context</strong>。</li>
+<li>他放了一張截圖:某人對著網路怒吼,因為受不了某個開源 repo 被 AI slop 淹沒。「我們不想變成那樣。」</li>
+</ul>
+<h4>解方:D3 framework(約 00:52–00:53)</h4>
+<p>他在 Amazon 學到的心得是:<strong>framework 與 mechanism</strong> 才是可靠、可擴展系統的關鍵。他 2025 年在 Amazon 開發了一套給 agentic coding 用的 <strong>D3 framework</strong>,三個階段:</p>
+<ol>
+<li><strong>Discover</strong>:產出一份<strong>研究 artifact</strong>。這份文件不只涵蓋你的 repository,還要含<strong>上游與下游的依賴</strong>。</li>
+<li><strong>計畫</strong>:根據研究文件產出一份<strong>定義非常明確的計畫</strong>,並拆解成 subtask。</li>
+<li><strong>Deliver</strong>:AI 拿到上述全部資訊,執行並解決問題。</li>
+</ol>
+<p>三個補充原則:</p>
+<ul>
+<li><strong>不要完全信任 AI</strong>:流程中要有<strong>人類簽核</strong>。</li>
+<li><strong>模型要跨家族</strong>:解題時使用來自<strong>不同公司</strong>的多個模型,而不是同一家族的變體。</li>
+<li><strong>不要用太多 agent</strong>:大約四個、且每個定義清楚就好。</li>
+</ul>
+<p><strong>收尾</strong>:如果只帶走一件事——<strong>stop token maxing and start ROI maxing</strong>。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Using more AI does not lead to more productivity. It just leads to you making Anthropic and OpenAI richer."(約 00:50)</p>
+</blockquote>
+<p>引用 Gartner 研究後的直白總結。</p>
+<blockquote>
+<p>"If you use AI too much you end up losing a lot of context."(約 00:51)</p>
+</blockquote>
+<p>cognitive debt 的本質:失去 context 的是人,不是模型。</p>
+<blockquote>
+<p>"Stop token maxing and start ROI maxing."(約 00:53)</p>
+</blockquote>
+<p>整場唯一要求聽眾帶走的一句話。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>We're in an "agentic hangover"</strong>: citing Gartner research, using more AI doesn't produce more productivity — it mostly makes Anthropic and OpenAI richer.</li>
+<li><strong>Two myths to kill</strong>: (1) <strong>agent swarms</strong> — hundreds of agents on one problem, yielding an explosion of both cost and errors; (2) <strong>loop engineering / loops within loops</strong> — same bill, same outcome.</li>
+<li><strong>Cheap models won't bail you out</strong>: another study on AI code generation shows uncontrolled use leaves <strong>more errors, and more persistent errors</strong>, in production.</li>
+<li><strong>The real hidden costs</strong> are verification, security holes, debugging, and finally <strong>cognitive debt and burnout</strong> — lean on AI too hard and <em>you</em> lose the context.</li>
+<li><strong>The fix is the D3 framework</strong> (built at Amazon in 2025): <strong>Discover</strong> (a research artifact covering the repo plus upstream and downstream dependencies) → plan (well-defined, broken into subtasks) → <strong>Deliver</strong> (AI executes). Plus human sign-off, multiple models <strong>from different companies</strong> rather than one family, and no more than about four well-scoped agents.</li>
+<li><strong>One takeaway</strong>: stop token maxing, start ROI maxing.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Why legacy, and why "boring" (~00:48–00:49)</h4>
+<p>He scoped the talk up front: this is about <strong>legacy systems in enterprises</strong>. The "boring way" is for people who want systems that are scalable, secure, and reliable.</p>
+<p>His background: former head of AI at Amazon Germany, where he built large-scale AI systems worth billions in revenue impact, plus work in robotics AI. He now runs Omokai, building a physical AI operating system that <strong>turns voice into autonomous missions for robots and drones</strong>. He wasn't there to pitch Omokai but to describe how his engineering team works — and warned that some of it would be controversial.</p>
+<p>A telling detail about that team: Omokai is deeply AI-native — custom fine-tuned models, AI-generated data, and <strong>seven human employees against more than ten "AI employees."</strong></p>
+<h4>The diagnosis: an agentic hangover (~00:50–00:52)</h4>
+<ul>
+<li><strong>The productivity paradox</strong>: citing Gartner research, more AI does not translate into more productivity — it translates into Anthropic and OpenAI getting richer. If you're using AI unbounded, without proper constraints, you're probably using it wrong.</li>
+<li><strong>Two fashionable myths</strong>:</li>
+<li><strong>Agent swarms</strong> — hundreds of agents on a single problem, which buys you a lot of cost and a lot of errors.</li>
+<li><strong>Loop engineering / loops within loops</strong> — he's seen people nest loops, and it costs far more than you'd want to pay.</li>
+<li><strong>"AI will get cheap, so cost won't matter" doesn't survive either</strong>: another study on AI code generation found that uncontrolled use produces far more errors — and more <em>persistent</em> errors — in production databases.</li>
+<li><strong>The hidden cost chain</strong>: verification, then security loopholes, then debugging, and finally <strong>cognitive debt and burnout</strong>. He insists this last one is real: <strong>use AI too much and you end up losing a lot of context yourself.</strong></li>
+<li>He showed a screenshot of someone screaming at the internet, fed up with an open-source repository drowning in AI slop. "We don't want to do that."</li>
+</ul>
+<h4>The prescription: the D3 framework (~00:52–00:53)</h4>
+<p>What he learned at Amazon is that <strong>frameworks and mechanisms</strong> are what make systems reliable and scalable. In 2025 he built a <strong>D3 framework</strong> for agentic coding at Amazon, with three phases:</p>
+<ol>
+<li><strong>Discover</strong> — produce a <strong>research artifact</strong> containing everything about your repository, plus its <strong>upstream and downstream dependencies</strong>.</li>
+<li><strong>Plan</strong> — from that research document, write a very well-defined plan broken into subtasks.</li>
+<li><strong>Deliver</strong> — the AI takes all of that information and solves the problem.</li>
+</ol>
+<p>Three supporting rules:</p>
+<ul>
+<li><strong>Don't fully trust AI</strong>: keep a <strong>human sign-off</strong> in the loop.</li>
+<li><strong>Diversify across vendors</strong>: use multiple models from <strong>different companies</strong>, not variants from the same family.</li>
+<li><strong>Don't use too many agents</strong>: around four, each well defined.</li>
+</ul>
+<p><strong>Closing</strong>: if you take one thing from the session — <strong>stop token maxing and start ROI maxing.</strong></p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Using more AI does not lead to more productivity. It just leads to you making Anthropic and OpenAI richer." (~00:50)</p>
+</blockquote>
+<p>His blunt summary of the Gartner finding.</p>
+<blockquote>
+<p>"If you use AI too much you end up losing a lot of context." (~00:51)</p>
+</blockquote>
+<p>Cognitive debt in a sentence: it's the human who loses the context, not the model.</p>
+<blockquote>
+<p>"Stop token maxing and start ROI maxing." (~00:53)</p>
+</blockquote>
+<p>The one line he asked the audience to take home.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Omokai</td>
+<td>他創辦的公司,做 physical AI 作業系統,把語音轉為機器人/無人機的自主任務</td>
+<td>His company: a physical AI operating system turning voice into autonomous missions for robots and drones</td>
+<td>7 名人類員工 + 10 名以上「AI 員工」</td>
+</tr>
+<tr>
+<td>D3 framework</td>
+<td>他 2025 年於 Amazon 開發的 agentic coding 機制:Discover → 計畫 → Deliver</td>
+<td>Agentic-coding mechanism he built at Amazon in 2025: Discover → plan → Deliver</td>
+<td>中間階段的 D 名稱待確認</td>
+</tr>
+<tr>
+<td>Gartner 研究</td>
+<td>用於支持「更多 AI ≠ 更高生產力」</td>
+<td>Cited to support "more AI ≠ more productivity"</td>
+<td>未給出報告名稱</td>
+</tr>
+<tr>
+<td>AI code generation 錯誤研究</td>
+<td>用於支持「不受控使用會留下更多且更持久的錯誤」</td>
+<td>Cited for "uncontrolled use leaves more and more persistent errors"</td>
+<td>未給出出處</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Krishna Kumar Shama</td>
+<td>Krishnakumar Sharma</td>
+</tr>
+<tr>
+<td>Omaki / Omukai / Omoai / Omakai</td>
+<td>Omokai</td>
+</tr>
+<tr>
+<td>agent swamps</td>
+<td>agent swarms</td>
+</tr>
+<tr>
+<td>AI slope</td>
+<td>AI slop</td>
+</tr>
+<tr>
+<td>cognitive dep</td>
+<td>cognitive debt</td>
+</tr>
+<tr>
+<td>open air</td>
+<td>OpenAI</td>
+</tr>
+<tr>
+<td>definfined</td>
+<td>well-defined</td>
+</tr>
+<tr>
+<td>brought billions in dollars</td>
+<td>brought in billions of dollars</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>D3 的三個 D 分別是什麼</strong>:講者只點名 Discover 與 Deliver,中間階段他一律說 "plan"(可能是 Design 或 Define)。/ What the three D's in "D3" stand for — he only named Discover and Deliver; the middle phase he simply called "plan" (possibly Design or Define).</li>
+<li>Gartner 研究的正式名稱與發布時間未提供。/ No title or date given for the Gartner research cited.</li>
+<li>「AI 生成程式碼會留下更多持久錯誤」的研究出處未提供。/ No citation given for the AI-code-generation error study.</li>
+<li>D3 framework 是否已對外公開發表(Amazon 內部機制 vs 公開文件)。/ Whether the D3 framework has been published externally or remains an internal Amazon mechanism.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/krishnakumar-sharma--agentic-coding-the-boring-way.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Building the Software Factory · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Every software company already runs an implicit loop — signals in, triage, plan, code, validate, ship, new signals out — but almost nobody models it explicitly; the &quot;software factory&quot; makes that lo…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/eno-reyes--building-the-software-factory.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Building the Software Factory · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Every software company already runs an implicit loop — signals in, triage, plan, code, validate, ship, new signals out — but almost nobody models it explicitly; the &quot;software factory&quot; makes that lo…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/eno-reyes--building-the-software-factory.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="eno-reyes--building-the-software-factory">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Building the Software Factory" data-title-zh="打造軟體工廠">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Enterprise AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Building the Software Factory</span><span class="lang-zh">打造軟體工廠</span></h1>
+        <p class="dialog__speaker"><strong>Eno Reyes</strong> — Co-Founder / CTO, Factory AI</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:53:09–01:08:37 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=3189s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:53:09</span><span class="lang-zh">從 00:53:09 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Every software company already runs an implicit loop — signals in, triage, plan, code, validate, ship, new signals out — but almost nobody models it explicitly; the &quot;software factory&quot; makes that loop explicit so signals can flow to deployed software without human intervention, and the new human job is to build, govern, and refine the factory.</span><span class="lang-zh">每家公司都有一條「訊號 → 分流 → 規劃 → 寫程式 → 驗證 → 部署 → 產生新訊號」的隱性迴圈,但幾乎沒有人把它顯式建模;「軟體工廠」就是把這條迴圈顯式化並交給 agent 自動流動,而人的新角色是建造、治理與持續改良這座工廠。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>寫程式不是難的部分</strong>,是最簡單的部分。企業感受不到「100x 生產力」,是因為只把 AI 塞進整條迴圈中很窄的一段,其餘仍是人驅動的同步工作流。</li>
+<li><strong>軟體工廠的三個設計主張</strong>:model independent(不把工廠押注在單一模型廠商,要把 model layer 商品化才能拿到成本與品質的 Pareto frontier)、你自己是工廠的主權者(支援 on-prem / airgapped)、以及跨所有工作流共用一個 <strong>shared agent core</strong>,而不是為 code review、incident response 各養一套 agent 架構。</li>
+<li><strong>阻礙 agent 成功的最大瓶頸是環境,不是模型</strong>。最高槓桿的投資是 dev 可重現性、環境乾淨度、linting、type checking、測試品質——也就是「有沒有足夠多的 deterministic verifiable feedback loop 讓 agent 不必問人就能自我收斂」。</li>
+<li><strong>治理要先於規模化</strong>:agent 一定會拿到危險權限,「不是 if 而是 when」。要像對待人一樣建立分層管控,而且要把護欄拉到「比現在大 10 倍的組織」該有的水準(5 人團隊要用 50 人公司的控管)。</li>
+<li><strong>量測 outcome,不要量測 token</strong>:看 cycle time、code shelf life、incident time、bug 數;成本用「每次程式變更的成本」這種類比薪資的方式看。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>什麼是軟體工廠:讓隱性迴圈顯式化(約 00:53–00:57)</h4>
+<p>三年半來這個領域的演進:autocomplete → chatbot → agent → software factory。所謂軟體工廠,是把公司裡本來就存在的一條迴圈畫出來:各種<strong>訊號</strong>流入(客戶回饋、內部 telemetry、主管說「我們要轉向」),被 triage,然後進入 planning,再到寫程式、驗證、shipping、部署,而部署後被監控的軟體又產生新的訊號。</p>
+<p>問題在於:這些訊號今天幾乎都是<strong>人在腦袋裡分流</strong>,從來沒有被顯式表示在任何系統裡;planning 也多半散在 Jira / Notion / Confluence 裡且高度非結構化。所以「這個隱性回饋迴圈在每家做軟體的公司都存在,但幾乎沒有任何地方有它的顯式模型」。</p>
+<p>由此他點出為什麼很多公司感受不到 AI 帶來的爆炸性生產力:<strong>你只把 AI 用在這條迴圈裡很窄的一段</strong>,其餘仍是「我叫機器做一件事,它回傳給我」的同步 autocomplete 式互動。真正該問的是:怎麼設計一個讓訊號一路流到 deployed software 而<strong>不需要人介入</strong>的系統?(注意:是不需要人「介入」,不是不需要人。)</p>
+<h4>系統該怎麼設計:三個主張(約 00:57–01:01)</h4>
+<ol>
+<li><strong>Model independent</strong>:模型廠商會論證「你必須垂直整合、agent harness 必須跟模型綁在一起」——他說經驗上這明顯不成立。你要把 model layer 聚合並商品化,才拿得到成本與品質的真實 Pareto frontier。</li>
+<li><strong>你是工廠的主權者</strong>:即使買的是 SaaS,也要能控制它;Factory 提供 on-prem、airgapped 等形式。理由是「你的軟體工廠就是你的公司」,它必須能在任何廠商來來去去之後繼續運作。</li>
+<li><strong>Shared agent core</strong>:軟體工廠要覆蓋產品與工程組織裡的每一個動作——code review、security analysis、testing、documentation、incident response。但如果為每個場景養一套高度特化的 agent 架構,就會掉進一種奇怪的 microservice 化;實際上這些工作流在高層次上都是同一件事:<strong>蒐集資訊 → 在電腦系統上行動 → 回報使用者</strong>。變的是 context 與 workflow,不是 agent 本身。</li>
+</ol>
+<p>大型組織還要處理 governance:一致性、防止 agent 去 drop 一堆資料表、IT ops。他主張這是 agent 平台的責任,並給了一個評估廠商的具體方法:<strong>去看它有沒有一頁「enterprise controls / organizational controls」,上面有幾條</strong>;如果沒有數以百計的情境,就該再看看別家。他點名 Docker 近期推出的一套 vendor-neutral agent 控制項清單(約 35 條)是不錯的呈現方式。</p>
+<h4>最大的瓶頸是環境,不是模型(約 01:02–01:04)</h4>
+<p>他用人類演化打比方:20 萬年前的人跟現在的我們差不多,但今天先進太多——因為我們<strong>徹底改造了周遭的環境</strong>。同理,你可以等模型變強(它大概會),但<strong>改造 codebase 與工程系統才是槓桿最高的事</strong>:dev reproducibility、環境乾淨度、linting、type checking、測試品質。</p>
+<p>真正的判準是:<strong>你的組織裡有沒有足夠多的 deterministic verifiable feedback loop,讓 agent 不必諮詢人類就能成功?</strong> 等 code review 來告訴你「這段程式組織得不好」是一回事;有一個確定性訊號直接說出這件事,agent 就能自己 loop、自己驗證直到過關。</p>
+<p>至於權限:agent 終究會拿到危險的存取權,「不是 if,而是 when」。所以要像對待人一樣建立分層控管。他的類比是:公司超過 50–75 人之後你會明白,就算 75 個人都極為能幹,<strong>總有一天會有人 drop 掉資料庫</strong>;引入 agent 等於把組織規模放大 10 倍,護欄也要跟著升級——5 人新創要用 50 人公司的控管,50 人公司要用 500 人的。這些都是既有的軟體開發最佳實務,不必重新發明輪子,只要確保它們被強制套用在 agent 上。</p>
+<h4>人的新角色與量測(約 01:04–01:08)</h4>
+<p>人的新工作就是<strong>觀察 → 介入 → 迭代改良</strong>這座工廠:哪裡缺護欄就補護欄、agent 在哪裡失敗就補 context、更新 agent 遵循的 workflow。他建議去聽晶圓廠或 industry 4.0 真實工廠的分享——那裡有專職的 process control / loop management 角色,專門看「這裡損失了 10% 資源,去修好工廠的那一段」,然後迭代。軟體系統即將照做一遍。</p>
+<p><strong>Code review 是最好的第一個案例</strong>:建一套系統,讓你有信心把 5% → 10% → 50% → 100% 的 PR 在沒有人工 code review 的情況下合併。這需要什麼樣的系統?他借用自動駕駛的類比(儘管有點黑暗):大家知道<strong>當道路死亡率降到跟人類同級、或低一個數量級時</strong>,我們就願意讓機器上路。驗證也一樣——你要先定義哪些指標(bug 數、incident、MTTR⋯)達標時,可以讓 review 這一步不需要人在迴圈裡。</p>
+<p>量測什麼:cycle time、code shelf life、incident time、bug 數。<strong>不要量 token</strong>,它給不了什麼資訊或價值;要看成本就看「每次程式變更的成本」「每個 loop / 每週的成本」,用近似看待人類薪資的方式來看。</p>
+<p><strong>三個帶走的重點</strong>:(1) 投資 agent readiness;(2) govern before you scale——先把治理做好再全公司推廣;(3) 事先想清楚要量測什麼 outcome。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Coding is just not the hard part. It's basically in fact the easiest part of this problem."(約 00:56)</p>
+</blockquote>
+<p>難的是寫程式周圍的一切;把 AI 只塞進「寫程式」那一格,自然感受不到倍數效應。</p>
+<blockquote>
+<p>"Your software factory is your company. If you build software, you're basically describing the new version of your business."(約 00:59)</p>
+</blockquote>
+<p>因此工廠的主權必須在自己手上,不能綁死在某個廠商身上。</p>
+<blockquote>
+<p>"It's not really a matter of if, but just when."(約 01:03)</p>
+</blockquote>
+<p>指 agent 終將拿到危險權限——所以護欄要現在就建,而且要照大 10 倍的組織規格建。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Coding isn't the hard part</strong> — it's the easiest part. Companies don't feel the promised 100x because they've only applied AI to one narrow slice of the loop while everything around it stays a human-driven synchronous workflow.</li>
+<li><strong>Three design commitments for a software factory</strong>: stay model-independent (commoditize the model layer to reach the real cost/quality Pareto frontier); own and govern your own factory (on-prem and airgapped options matter); and run every surface off a <strong>shared agent core</strong> rather than hyper-specializing a separate architecture per workflow.</li>
+<li><strong>The environment, not the model, is the binding constraint.</strong> The highest-leverage investment is dev reproducibility, environment cleanliness, linting, type checking, and test quality — i.e., enough deterministic, verifiable feedback loops that agents can converge without consulting a human.</li>
+<li><strong>Govern before you scale.</strong> Agents will get dangerous access — "not a matter of if, but when." Build layered controls at the level an organization 10x your size would need: a 5-person startup should run 50-person controls.</li>
+<li><strong>Measure outcomes, not tokens</strong>: cycle time, code shelf life, incident time, bug counts; treat cost as cost-per-change or cost-per-loop, roughly the way you'd think about salary.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The software factory: making the implicit loop explicit (~00:53–00:57)</h4>
+<p>Three and a half years of evolution: autocomplete → chatbots → agents → software factories. A software factory is simply the loop that already exists inside every software company, drawn explicitly: <strong>signals</strong> flow in (customer feedback, internal telemetry, an executive announcing a pivot), get triaged, feed planning, then coding, validation, shipping, deployment — and the deployed, monitored software generates fresh signals.</p>
+<p>The trouble is that triage happens <strong>inside people's heads</strong> and is almost never explicitly represented in any real system, and planning is scattered and unstructured across Jira, Notion, or Confluence. As he put it, this implicit feedback loop exists at almost every company building software, and yet an explicit model of it does not really exist anywhere.</p>
+<p>That explains the gap between "AGI is six months away, expect 100x" and what teams actually experience: you've only AI-ified one narrow slice, and the rest remains a synchronous, autocomplete-shaped interaction. The real design question is how to build a system where signals flow all the way to deployed software <strong>without human intervention</strong> — which he's careful to distinguish from without humans.</p>
+<h4>How the system should be designed (~00:57–01:01)</h4>
+<ol>
+<li><strong>Model independence.</strong> Model vendors will argue you must verticalize aggressively and couple the agent harness to the model; empirically he finds that clearly untrue. Aggregate and commoditize the model layer to actually reach the cost/quality frontier.</li>
+<li><strong>You are the sovereign of your factory.</strong> Even when buying SaaS, you should control it — hence on-prem and airgapped deployments. The reasoning: your software factory <em>is</em> your company, so it has to keep running regardless of which vendors come and go.</li>
+<li><strong>A shared agent core.</strong> The factory should span every action in the product and engineering org — code review, security analysis, testing, documentation, incident response. But specializing a distinct agent architecture per surface lands you in an odd microservices trap; at a high level all these workflows are the same thing: gather information, act on computer systems, keep the user informed. What changes is context and workflow, not the agent.</li>
+</ol>
+<p>Larger organizations then need governance — consistency, preventing an agent from dropping a bunch of tables, IT ops. He argues that's the agent platform's job, and offers a concrete vendor test: <strong>look for a page listing enterprise or organizational controls, and count them.</strong> If it doesn't cover hundreds of scenarios, keep shopping. He cited Docker's recent vendor-neutral agent control set (~35 controls) as a nice way to present this.</p>
+<h4>The environment is the bottleneck (~01:02–01:04)</h4>
+<p>His analogy: humans 200,000 years ago were roughly the same animal we are; what changed is that we completely rebuilt the environment around us. Likewise, you can wait for models to improve — they probably will — but <strong>updating the codebase and engineering system around the factory is by far the highest-leverage move</strong>.</p>
+<p>The real test: does your organization have <strong>enough deterministic, verifiable feedback loops for agents to succeed without needing to consult a human?</strong> Waiting for code review to say the code is poorly organized is one thing; a deterministic signal saying so lets the agent loop and validate its own work until it passes.</p>
+<p>On access: agents will end up with dangerous privileges, and it's not a matter of if but when — so treat them like people and build layered systems of control. Anyone who has built an org past 50–75 people knows that even 75 extremely competent people will eventually include someone who drops the database. Introducing agents is like scaling to an organization 10x larger, so the guardrails need to scale accordingly: a 5-person startup needs 50-person controls, a 50-person company needs 500-person controls. None of this requires reinventing the wheel — it's established software development best practice, now enforced on agents.</p>
+<h4>The new human role, and what to measure (~01:04–01:08)</h4>
+<p>The human job becomes <strong>observe → intervene → iteratively refine</strong> the factory: spot a missing guardrail and implement it, see where agents fail and add context, update the workflows agents follow. He recommends listening to talks about chip fabs or real Industry 4.0 factories, where dedicated process-control and loop-management roles exist purely to say "we lost 10% of resources to this inefficiency, go fix that part of the factory," then iterate. Software is about to do the same.</p>
+<p><strong>Code review is the natural first case study</strong>: build a system that makes you confident merging 5%, then 10%, 50%, 100% of PRs without human review. What does that system look like? He borrows the self-driving analogy — somewhat dark, but everyone recognizes the moment road fatalities drop to human parity or an order of magnitude below, and we let the thing drive. Validation needs the same: define up front which metrics (bugs, incidents, MTTR) would justify taking the human out of the review step, and have engineers thinking about that inside your company.</p>
+<p>What to measure: cycle time, code shelf life, incident time, bug counts. <strong>Do not measure tokens</strong> — it gives you very little information or value. If you want cost, use cost per code change or per loop or per week, treating it roughly the way you treat salary.</p>
+<p><strong>Three takeaways</strong>: (1) invest in agent readiness; (2) govern before you scale; (3) decide in advance which outcomes you'll measure — you can't optimize against something you aren't measuring.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Coding is just not the hard part. It's basically in fact the easiest part of this problem." (~00:56)</p>
+</blockquote>
+<p>Everything <em>around</em> writing code is where the mess lives.</p>
+<blockquote>
+<p>"Your software factory is your company. If you build software, you're basically describing the new version of your business." (~00:59)</p>
+</blockquote>
+<p>The argument for sovereignty over your own agent platform.</p>
+<blockquote>
+<p>"It's not really a matter of if, but just when." (~01:03)</p>
+</blockquote>
+<p>On agents getting dangerous access — build the guardrails now, sized for an org 10x larger.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Factory AI</td>
+<td>講者共同創辦的公司,提供建構「軟體工廠」的平台,支援 SaaS / on-prem / airgapped</td>
+<td>The speaker's company; platform for building software factories, offered as SaaS, on-prem, or airgapped</td>
+<td>講者為 Co-Founder / CTO</td>
+</tr>
+<tr>
+<td>Docker 的 agent 控制項清單 / Docker agent controls</td>
+<td>約 35 條、vendor-neutral 的 agent 平台控制項</td>
+<td>A vendor-neutral set of ~35 agent-platform controls</td>
+<td>條目數與正式名稱待確認 / exact name and count to verify</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anna Reus</td>
+<td>Eno Reyes</td>
+</tr>
+<tr>
+<td>MTR</td>
+<td>MTTR(mean time to recovery/resolution)</td>
+</tr>
+<tr>
+<td>code reveal</td>
+<td>code review</td>
+</tr>
+<tr>
+<td>"you have an AI CEO or saying like oh AGI's here"</td>
+<td>語意為「聽到 AI 公司 CEO 說 AGI 快來了」/ paraphrase: hearing an AI-company CEO claim AGI is months away</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Docker 那套「35 個 agent 控制項」的正式名稱與確切條目數:Docker 確有 AI agent runtime governance 框架,但搜尋未能對上「35」這個數字。/ Docker does publish an AI-agent runtime governance framework, but the "35 controls" figure could not be matched to a published document.</li>
+<li>投影片上「laundry list of controls(security / governance / enablement)」的完整內容——講者明說可以拍照,逐字稿無法還原。/ The full controls checklist on the slide (security / governance / enablement) — he told the audience to photograph it; not recoverable from the transcript.</li>
+<li>講者提到「上一場的 talk」談 specialized agents 與「上一份 deck 說 you can't optimize what you can't measure」,指的應是同場次前面的講者,未指名。/ He references "the talk just a bit ago" and "the last deck" without naming them.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/eno-reyes--building-the-software-factory.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>E2E Autonomy Without Imitation · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Decouple learning to drive from learning to see — train a driving expert with large-scale self-play RL and zero human demonstrations (TerraZero), then distill its latents and actions into an end-to…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/wei-zhan--e2e-autonomy-without-imitation.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="E2E Autonomy Without Imitation · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Decouple learning to drive from learning to see — train a driving expert with large-scale self-play RL and zero human demonstrations (TerraZero), then distill its latents and actions into an end-to…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/wei-zhan--e2e-autonomy-without-imitation.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="wei-zhan--e2e-autonomy-without-imitation">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="E2E Autonomy Without Imitation" data-title-zh="不靠模仿的端到端自動駕駛">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Robotics &amp; World Models</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">E2E Autonomy Without Imitation</span><span class="lang-zh">不靠模仿的端到端自動駕駛</span></h1>
+        <p class="dialog__speaker"><strong>Wei Zhan</strong> — Chief Scientist, Applied Intuition</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 03:02:02–03:08:45 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=Tcn5Yb2K0h4&amp;t=10922s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 03:02:02</span><span class="lang-zh">從 03:02:02 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Decouple learning to drive from learning to see — train a driving expert with large-scale self-play RL and zero human demonstrations (TerraZero), then distill its latents and actions into an end-to-end model (TerraTransfer) — and you reach state-of-the-art closed-loop end-to-end driving with no imitation anywhere in the recipe.</span><span class="lang-zh">把「學會開車」與「學會看」拆開——先用零人類示範的大規模 self-play RL 練出駕駛專家(TerraZero),再把它的 latent 與動作蒸餾給端到端模型(TerraTransfer)——就能在訓練配方裡完全不用 imitation,仍拿下閉環端到端駕駛的 SOTA。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>典範正在從 AV 2.0 換到 AV 3.0</strong>:L2++ ADAS 已經收斂到「imitation learning 為底的端到端」並量產,領先者再用開環 RL 做 post-training;下一代預期是<strong>在能反應式生成周遭行為與畫面的 world model 裡做閉環 RL</strong>——也就是從 AV 2.0 的開環 scaling 轉向 <strong>AV 3.0 的閉環 scaling</strong>。</li>
+<li><strong>他們的作法是拆成兩階段</strong>:phase 1「learn to drive」用 <strong>TerraZero</strong>(self-play RL 框架,吞吐量遠高於既有駕駛模擬器)在<strong>零人類示範</strong>下累積等效 <strong>25 個世紀的駕駛經驗</strong>;phase 2「learn to see」用 <strong>TerraTransfer</strong> 把這個 self-play 專家的 latent 與動作,在離線資料集的同一批駕駛情境上對齊給端到端模型。</li>
+<li><strong>關鍵論點</strong>:self-play 閉環 RL 搭配 reactive world model <strong>不只是 post-training 技巧,而是很強的 pre-training 技巧</strong>;而 RL 框架與 world model 的<strong>吞吐量</strong>會是這條路線的決勝因素。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>為什麼是「不靠模仿」(約 03:02–03:04)</h4>
+<p>開場定位:端到端自動駕駛是<strong>真實世界中第一個被大規模量產的 physical AI</strong>,而他要談的是一件<strong>與主流有點反直覺</strong>的事——只用強化學習、不靠模仿,來增強這種自動駕駛。</p>
+<p>Applied Intuition 的自我介紹:涵蓋汽車、卡車、農業、礦業、營建等垂直產業的 physical AI 技術供應商,提供 autonomy stack、OS、模擬工具與更廣義的 physical AI 基礎設施;<strong>估值 150 億美元、超過一千名工程師</strong>;同時在 RL 與 world model 上做前沿研究並在頂會發表(含得獎論文)。</p>
+<p>典範現況與趨勢:</p>
+<ul>
+<li><strong>現在</strong>:L2++ ADAS 已收斂到 imitation learning 為底的端到端方案並量產,部分領先者再用<strong>開環 RL</strong> 做 post-training,把安全性與魯棒性推上一級。</li>
+<li><strong>接下來</strong>:下一代自動駕駛預期會在一個<strong>能反應式(reactively)生成周遭行為與視覺的 world model</strong> 裡,用<strong>閉環 RL</strong> 訓練。這就是 <strong>AV 2.0 開環 scaling → AV 3.0 閉環 scaling</strong> 的典範轉移。</li>
+</ul>
+<p>Applied 一直在打造<strong>高吞吐量的 reactive world model</strong>,支撐端到端自動駕駛的大規模閉環 RL,而且這條路已經拿到很好的成績。但他要問的是:<strong>有沒有更聰明的做法?</strong> 他們的答案是<strong>把「學會開車」和「學會看」解耦</strong>。</p>
+<h4>Phase 1:learn to drive — TerraZero(約 03:04–03:07)</h4>
+<p><strong>TerraZero</strong> 是他們的 self-play RL 框架,<strong>吞吐量遠高於其他 SOTA 的駕駛模擬器與 self-play 框架</strong>。他們只用了一些公開資料集的地圖多樣性,就能取得<strong>等效 25 個世紀的駕駛經驗,且零人類示範</strong>;而且只要 scale GPU 算力與地圖多樣性,這個數字<strong>還能再往上兩到三個數量級</strong>。</p>
+<p>成果:TerraZero 訓練出的 policy 在多個<strong>閉環 planning benchmark</strong>(vector-based)上達到 state-of-the-art,<strong>相對於 imitation learning 為底的 planner 有明顯優勢</strong>,尤其是在那些<strong>尚未飽和、只收錄 corner case</strong> 的 benchmark(例如 <strong>InterPlan</strong>)上。它能在各種困難駕駛情境中做出理想動作,並在全球不同城市間展現 <strong>zero-shot 泛化</strong>。</p>
+<p>(他也順帶呼應了前一場:Michael 剛剛給了一個 self-play 賦能自駕賽車的好例子,而他要給的是 self-play 賦能<strong>城市道路駕駛</strong>的例子。)</p>
+<h4>Phase 2:learn to see — TerraTransfer(約 03:07–03:08:45)</h4>
+<p><strong>TerraTransfer</strong> 的做法是:用一個從 self-play 訓練出來的專家(也就是 TerraZero)去<strong>教</strong>另一個端到端自動駕駛模型。具體是在<strong>離線資料集裡的同一批駕駛情境上,同時對齊兩者的 latent 與動作</strong>。</p>
+<p>這樣得到的端到端自動駕駛——<strong>訓練配方裡完全沒有 imitation</strong>——在<strong>閉環端到端駕駛 benchmark</strong> 上取得 state-of-the-art,相對其他 imitation-based 方法有明顯優勢,並在各種<strong>刻意構造的困難駕駛情境</strong>中展現出「意外地魯棒」的駕駛行為。</p>
+<p><strong>Key takeaways:</strong></p>
+<ol>
+<li>自動駕駛典範正朝<strong>閉環 scaling(AV 3.0)</strong> 移動。</li>
+<li><strong>端到端模型與 vector-based planner 都能靠純 self-play / 閉環 RL 的訓練配方達到 SOTA,不需要 imitation。</strong></li>
+<li>搭配 reactive world model 的 self-play 閉環 RL <strong>不只是 post-training 技巧,更是很強的 pre-training 技巧</strong>。</li>
+<li><strong>RL 框架與 world model 的吞吐量</strong>,會是這種閉環 scaling 典範的決勝因素。</li>
+</ol>
+<h3>金句</h3>
+<blockquote>
+<p>"End-to-end autonomy … is the first massively productionized physical AI in the real world."(約 03:02:05)</p>
+</blockquote>
+<p>在一整場談「機器人還在 pre-ChatGPT 時刻」的 session 裡,這是唯一一場談「已經量產」的技術。</p>
+<blockquote>
+<p>"25 centuries of driving experience with zero human demonstrations."(約 03:05)</p>
+</blockquote>
+<p>一句話說明 self-play 相對於路測資料的規模差距。</p>
+<blockquote>
+<p>"They are not just some post-training technique, actually they are very powerful pre-training techniques."(約 03:08:20)</p>
+</blockquote>
+<p>他最想扭轉的認知:閉環 RL 不是最後一哩的修飾,而是主訓練手段。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The paradigm is shifting from AV 2.0 to AV 3.0.</strong> L2++ ADAS has converged on imitation-learning-based end-to-end stacks in mass production, with leading players adding open-loop RL post-training. The next generation is expected to train with <strong>closed-loop RL inside a world model that reactively generates surrounding behavior and visuals</strong> — open-loop scaling giving way to <strong>closed-loop scaling</strong>.</li>
+<li><strong>Their approach splits the problem in two.</strong> Phase 1, "learn to drive," uses <strong>TerraZero</strong>, a self-play RL framework with far higher throughput than existing driving simulators, accumulating the equivalent of <strong>25 centuries of driving experience with zero human demonstrations</strong>. Phase 2, "learn to see," uses <strong>TerraTransfer</strong> to align the self-play expert's latents and actions into an end-to-end model over the same driving cases from an offline dataset.</li>
+<li><strong>The central claim</strong>: self-play closed-loop RL with a reactive world model is <strong>not merely a post-training technique but a powerful pre-training one</strong> — and the <strong>throughput</strong> of the RL framework and the world model is the decisive factor for this paradigm.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Why "without imitation" (~03:02–03:04)</h4>
+<p>He framed the talk around end-to-end autonomy as <strong>the first massively productionized physical AI in the real world</strong>, and set out to argue something <strong>counterintuitive relative to the mainstream</strong>: enhancing that autonomy with reinforcement learning alone, without imitation.</p>
+<p>Applied Intuition's positioning: a premier physical AI technology provider across verticals including cars, trucks, agriculture, mining, and construction, supplying the autonomy stack, OS, simulation tools, and broader physical AI infrastructure. <strong>A $15 billion valuation company with over a thousand engineers</strong>, also doing cutting-edge research on RL and world models with publications (including award-winning papers) at top venues.</p>
+<p>Where the paradigm stands, and where it's heading:</p>
+<ul>
+<li><strong>Today</strong>: the L2++ ADAS paradigm has converged on imitation-learning-based end-to-end systems in mass production, with some leading players adding <strong>open-loop RL</strong> post-training to push safety and robustness to the next level.</li>
+<li><strong>Next</strong>: end-to-end autonomy is expected to be trained with <strong>closed-loop RL inside a world model</strong> that can <strong>reactively</strong> generate surrounding behavior and visuals. That's the shift from <strong>AV 2.0 open-loop scaling to AV 3.0 closed-loop scaling</strong>.</li>
+</ul>
+<p>Applied has been building the <strong>high-throughput reactive world model</strong> that supports large-scale closed-loop RL for end-to-end autonomy, and the paradigm already performs well. But his question was whether there's <strong>an even smarter way</strong> — and their answer is to <strong>decouple learning to drive from learning to see</strong>.</p>
+<h4>Phase 1: learn to drive — TerraZero (~03:04–03:07)</h4>
+<p><strong>TerraZero</strong> is their self-play RL framework, <strong>much faster and higher-throughput than other state-of-the-art driving simulators and self-play frameworks</strong>. Using only some public datasets for map diversity, it obtains the equivalent of <strong>25 centuries of driving experience with zero human demonstrations</strong> — and that number can be scaled <strong>two to three orders of magnitude higher</strong> simply by scaling GPU compute and map diversity.</p>
+<p>The results: policies trained by TerraZero achieve state of the art on various <strong>closed-loop planning benchmarks</strong> (vector-based), setting <strong>a clear edge over imitation-learning-based planners</strong>, especially on non-saturated, corner-case-only benchmarks such as <strong>InterPlan</strong>. The policy handles a range of challenging driving scenarios with desirable actions and shows <strong>zero-shot generalization across global cities</strong>.</p>
+<p>(He connected back to the previous talk: Michael had just given a good example of self-play powering autonomous racing; his is an example of self-play powering autonomous <em>urban</em> driving.)</p>
+<h4>Phase 2: learn to see — TerraTransfer (~03:07–03:08:45)</h4>
+<p><strong>TerraTransfer</strong> trains an end-to-end autonomy model taught by an expert trained from self-play — namely TerraZero. Concretely, they <strong>align both the latents and the actions of the two models on the same driving cases from an offline dataset</strong>.</p>
+<p>The resulting end-to-end autonomy — with <strong>no imitation anywhere in its training recipe</strong> — obtains state-of-the-art driving performance on <strong>closed-loop end-to-end driving benchmarks</strong>, a clear edge over other imitation-based methods, handling a variety of intentionally constructed challenging scenarios with what he called surprisingly robust driving behavior.</p>
+<p><strong>Key takeaways:</strong></p>
+<ol>
+<li>The autonomy paradigm is shifting toward <strong>closed-loop scaling (AV 3.0)</strong>.</li>
+<li><strong>Both end-to-end and vector-based planners can reach state of the art with a self-play / closed-loop RL training recipe alone — no imitation.</strong></li>
+<li>Self-play closed-loop RL with a reactive world model is <strong>not just a post-training technique; it's a very powerful pre-training technique</strong>.</li>
+<li>The <strong>throughput</strong> of the RL framework and the world models can be the <strong>decisive factor</strong> for this closed-loop scaling paradigm.</li>
+</ol>
+<h3>Quotes</h3>
+<blockquote>
+<p>"End-to-end autonomy … is the first massively productionized physical AI in the real world." (~03:02:05)</p>
+</blockquote>
+<p>In a session premised on robotics being pre-ChatGPT, this was the one talk about technology already in mass production.</p>
+<blockquote>
+<p>"25 centuries of driving experience with zero human demonstrations." (~03:05)</p>
+</blockquote>
+<p>The scale gap between self-play and road-test data, in one number.</p>
+<blockquote>
+<p>"They are not just some post-training technique, actually they are very powerful pre-training techniques." (~03:08:20)</p>
+</blockquote>
+<p>The perception he most wants to change: closed-loop RL isn't last-mile polish, it's the main training method.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TerraZero</td>
+<td>self-play RL 框架,零人類示範累積等效 25 個世紀駕駛經驗;閉環 planning benchmark SOTA</td>
+<td>Self-play RL framework; 25 centuries of driving experience with zero human demonstrations; SOTA on closed-loop planning benchmarks</td>
+<td>phase 1「learn to drive」/ the "learn to drive" phase</td>
+</tr>
+<tr>
+<td>TerraTransfer</td>
+<td>把 self-play 專家的 latent 與動作對齊給端到端模型,訓練配方完全無 imitation</td>
+<td>Aligns a self-play expert's latents and actions into an end-to-end model; no imitation in the recipe</td>
+<td>phase 2「learn to see」/ the "learn to see" phase</td>
+</tr>
+<tr>
+<td>InterPlan</td>
+<td>只收錄 corner case、尚未飽和的閉環 planning benchmark</td>
+<td>Non-saturated, corner-case-only closed-loop planning benchmark</td>
+<td>TerraZero 在此對 imitation-based planner 拉開差距 / where TerraZero's edge is clearest</td>
+</tr>
+<tr>
+<td>Applied Intuition</td>
+<td>涵蓋車、卡車、農業、礦業、營建的 physical AI 技術供應商</td>
+<td>Physical AI technology provider across cars, trucks, agriculture, mining, construction</td>
+<td>估值 150 億美元、逾千名工程師 / $15B valuation, 1000+ engineers</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wei Jean / Ray / Way</td>
+<td>Wei Zhan</td>
+</tr>
+<tr>
+<td>terra zero / terror zero</td>
+<td>TerraZero</td>
+</tr>
+<tr>
+<td>terror transfer</td>
+<td>TerraTransfer</td>
+</tr>
+<tr>
+<td>interplan</td>
+<td>InterPlan</td>
+</tr>
+<tr>
+<td>cell play / selflay</td>
+<td>self-play</td>
+</tr>
+<tr>
+<td>close reinforcement learning / closable scaling / close super RL</td>
+<td>closed-loop reinforcement learning / closed-loop scaling</td>
+</tr>
+<tr>
+<td>Engine autonomy</td>
+<td>End-to-end autonomy</td>
+</tr>
+<tr>
+<td>ADA system</td>
+<td>ADAS</td>
+</tr>
+<tr>
+<td>local motion</td>
+<td>locomotion</td>
+</tr>
+<tr>
+<td>Acura and the CPR booth(panel 段)</td>
+<td>ICRA and the CVPR booth(待確認 / to verify)</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>主持人介紹他時提到「co-director of Berkeley DeepDrive」,官網議程僅列 Applied Intuition 職稱;此處 frontmatter 以議程為準。/ The host also introduced him as co-director of Berkeley DeepDrive; the official agenda lists only the Applied Intuition title, which is what frontmatter uses.</li>
+<li>他提到的閉環端到端駕駛 benchmark 具體名稱,演講中未逐一報出(除 InterPlan 外)。/ Beyond InterPlan, the specific closed-loop end-to-end driving benchmarks were not individually named.</li>
+<li>panel 中他提到一家未具名公司的 R&amp;D 車輛在擁擠街道連續一小時零接管、算力僅 Tesla HW4 的 1/7;無法查證。/ In the panel he cited an undisclosed company achieving one hour of intervention-free driving in dense streets on 1/7 the compute of Tesla HW4 — unverifiable.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/wei-zhan--e2e-autonomy-without-imitation.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

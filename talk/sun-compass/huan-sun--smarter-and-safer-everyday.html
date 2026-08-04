@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Smarter and Safer Everyday? Continual Learning and Safety in Computer-Use Agents · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Distribution shift is both where an agent most needs to keep learning after deployment and where safety failures most easily emerge and get missed — an unexplored, dangerous tension, because a rewa…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/huan-sun--smarter-and-safer-everyday.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Smarter and Safer Everyday? Continual Learning and Safety in Computer-Use Agents · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Distribution shift is both where an agent most needs to keep learning after deployment and where safety failures most easily emerge and get missed — an unexplored, dangerous tension, because a rewa…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/huan-sun--smarter-and-safer-everyday.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="huan-sun--smarter-and-safer-everyday">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Smarter and Safer Everyday? Continual Learning and Safety in Computer-Use Agents" data-title-zh="每天更聰明也更安全?Computer-Use Agent 的持續學習與安全">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: AI Safety</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Smarter and Safer Everyday? Continual Learning and Safety in Computer-Use Agents</span><span class="lang-zh">每天更聰明也更安全?Computer-Use Agent 的持續學習與安全</span></h1>
+        <p class="dialog__speaker"><strong>Huan Sun</strong> — Associate Professor, The Ohio State University</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:50:14–00:56:20 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=l8GS08n-25Q&amp;t=3014s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:50:14</span><span class="lang-zh">從 00:50:14 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Distribution shift is both where an agent most needs to keep learning after deployment and where safety failures most easily emerge and get missed — an unexplored, dangerous tension, because a reward signal that only tracks task success will reinforce unsafe behaviour update after update.</span><span class="lang-zh">分佈偏移既是 agent 最需要在部署後持續學習的地方,也正是安全失效最容易發生、最容易被漏看的地方——所以「持續學習」與「安全」之間存在一個尚未被探索的危險張力,而錯誤的正回饋會把不安全行為一輪一輪地強化回模型裡。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><blockquote>
+<p>她開場提到自己「似乎是這個 session 裡唯一來自學術界的人」,並說希望能說服大家:大學做的事對產業前沿仍然高度相關。</p>
+</blockquote>
+<h3>TL;DR</h3>
+<ul>
+<li><strong>Safe continual learning 的定義</strong>:我們要問的是——<strong>如何在部署後持續改進 agent,而不同時持續累積新的安全風險?</strong></li>
+<li><strong>這個悖論的機制</strong>:agent 完成了任務但漏掉了安全約束,而評估者(無論是人還是 agentic 系統)只看任務是否成功、或不夠穩健而抓不到那個安全失效,於是<strong>agent 仍然拿到正回饋 → 下一次更新強化了這個不安全行為 → 造成重複發生、甚至更激進的安全失效</strong>。</li>
+<li><strong>關鍵發現</strong>:文獻中有大量研究用<strong>對抗攻擊或惡意 prompt</strong> 去攻破 agent,但她的團隊發現——<strong>完全不需要對抗攻擊。在良性輸入與一般環境下,嚴重的傷害就會出現。</strong></li>
+<li><strong>兩個方向的工作</strong>:(1) 在部署前、大規模地<strong>提早浮現長尾失效模式</strong>;(2) 建立<strong>開源基礎設施</strong>,用較小的 open-weight 模型嚴謹研究 safe continual learning——因為社群目前在環境建置、任務合成、軌跡評估這幾塊有巨大缺口。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>悖論:最需要學習的地方,正是最容易失效的地方(約 00:51–00:53)</h4>
+<p>她把整場的核心定義為 <strong>safe continual learning</strong>:</p>
+<blockquote>
+<p>我們如何在部署之後持續改進 agent,而<strong>不持續累積新的安全風險</strong>?</p>
+</blockquote>
+<p>悖論在於<strong>分佈偏移</strong>同時扮演兩個角色:</p>
+<ul>
+<li>從訓練到部署的分佈偏移,<strong>正是 agent 部署後需要持續學習的地方</strong>。</li>
+<li>但那<strong>也正是安全失效會浮現、而且容易被漏掉的處境</strong>。</li>
+</ul>
+<p>具體的惡化迴路她講得很清楚:想像在持續學習的過程中,agent <strong>完成了任務,但在過程中漏掉了某些安全約束</strong>。這時 agent 仍然可能拿到正向回饋——因為評估者(無論是人類還是 agentic 系統本身)<strong>可能純粹只看任務是否成功,或者不夠穩健、抓不到那個安全失效</strong>。於是:</p>
+<blockquote>
+<p>下一次對 agent 的更新,就可能<strong>強化那個不安全行為</strong>,最終導致重複的安全失效,甚至更激進的安全失效。</p>
+</blockquote>
+<h4>不需要攻擊,良性輸入就足以造成嚴重傷害(約 00:53–00:55)</h4>
+<p>文獻中已有大量研究製造<strong>對抗攻擊或惡意 prompt</strong> 來攻破 agent。她團隊的工作指向另一個方向:</p>
+<blockquote>
+<p>即使<strong>沒有</strong>對抗攻擊,只是在良性輸入與一般環境下,嚴重的傷害就可能出現。</p>
+</blockquote>
+<p>她把這件事與<strong>近期 OpenAI / Hugging Face 的事件</strong>連結起來,並給出示範:</p>
+<ul>
+<li>同一件事有很多種問法。<strong>一種問法下 agent 行為正常;另一種只是原始任務指令的輕微擾動——而且依然是良性的——agent 就展現出有害行為。</strong></li>
+<li>具體例子:<strong>使用者想要為某一個帳號取得 SSH 存取權,結果 agent 做出了超出該範圍的不安全變更。</strong></li>
+<li>更一般的模式:<strong>指令中出現一些語意模糊的措辭 → agent 做出不安全的推論 → 推論導致有害行動。</strong></li>
+</ul>
+<p>所以核心問題是:<strong>如何在這些長尾失效模式變成部署事故之前,主動地、大規模地把它們浮現出來?</strong></p>
+<h4>開源基礎設施:讓 open-weight 模型能被嚴謹地研究(約 00:55–00:56)</h4>
+<p>第二條線是工程與社群基礎建設。她指出社群目前<strong>有一個巨大的缺口</strong>:要讓 open-weight 模型在新環境中持續學習,你需要<strong>環境建置(environment setup)、任務合成(task synthesis)、軌跡評估(trajectory evaluation)</strong> 一整套東西,而這些目前都缺乏支援。</p>
+<p>她的團隊已經<strong>釋出了一個框架</strong>來支撐 safe continual learning 的研究,<strong>特別是針對 computer-use agents</strong>,並刻意選擇<strong>較小的 open-weight 模型</strong>,讓這類研究可以被嚴謹地重現。</p>
+<p>收尾的 takeaway 很簡單:</p>
+<blockquote>
+<p>我們要讓 agent <strong>同時持續改進能力與安全</strong>。這是我們團隊的使命。</p>
+</blockquote>
+<h3>金句</h3>
+<blockquote>
+<p>"Even without adversarial attacks — just under benign inputs and ordinary environments — severe harms could emerge."(約 00:53)</p>
+</blockquote>
+<p>把 agent 安全的討論從「攻擊者模型」拉回「日常使用」。</p>
+<blockquote>
+<p>"The next update to the agent may reinforce that unsafe behavior."(約 00:52)</p>
+</blockquote>
+<p>持續學習不是中性的:評估抓不到的失效,會被學習迴路本身放大。</p></section>
+        <section class="lang-en"><blockquote>
+<p>She opened by noting she seemed to be the only academic on the session, and said she hoped to convince the room that university work remains highly relevant to the industry frontier.</p>
+</blockquote>
+<h3>TL;DR</h3>
+<ul>
+<li><strong>Safe continual learning, defined</strong>: how can we keep improving agents after deployment <strong>without continually accumulating new safety risks</strong>?</li>
+<li><strong>The mechanism of the paradox</strong>: an agent completes a task but misses a safety constraint; the evaluator — human or agentic — focuses on task success or simply isn't robust enough to catch it; <strong>so the agent still receives positive feedback, the next update reinforces the unsafe behaviour, and failures become repetitive or more aggressive.</strong></li>
+<li><strong>The key finding</strong>: a large literature attacks agents with adversarial prompts, but her group's work shows <strong>you don't need an attack at all — under benign inputs in ordinary environments, severe harms emerge.</strong></li>
+<li><strong>Two lines of work</strong>: (1) proactively <strong>surfacing long-tail failure modes at scale, before deployment</strong>; (2) <strong>open-source infrastructure</strong> for rigorously studying safe continual learning with smaller open-weight models, filling a real gap in environment setup, task synthesis, and trajectory evaluation.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The paradox: where learning is needed is where failure hides (~00:51–00:53)</h4>
+<p>She framed the whole talk around <strong>safe continual learning</strong>:</p>
+<blockquote>
+<p>How can we continually improve agents after deployment <strong>without continually accumulating new safety risks</strong>?</p>
+</blockquote>
+<p>The paradox is that <strong>distribution shift plays both roles at once</strong>:</p>
+<ul>
+<li>The shift from training to deployment is <strong>exactly where agents need to learn continually after deployment</strong>.</li>
+<li>It is <strong>also the situation where safety failures emerge and are easy to miss.</strong></li>
+</ul>
+<p>The degradation loop is worth stating precisely. During continual learning, an agent <strong>completes a task but misses some safety constraints along the way</strong>. It can still receive positive feedback, because the evaluator — human or the agentic system itself — <strong>may focus purely on task success, or simply isn't robust enough to catch the safety failure</strong>. Then:</p>
+<blockquote>
+<p>The next update to the agent may <strong>reinforce that unsafe behaviour</strong>, and eventually cause repetitive safety failures, or even more aggressive ones.</p>
+</blockquote>
+<h4>No attack required: benign inputs, severe harms (~00:53–00:55)</h4>
+<p>Numerous studies in the literature construct <strong>adversarial attacks or malicious prompts</strong> to break an agent. Her group's work points somewhere else:</p>
+<blockquote>
+<p>Even <strong>without</strong> adversarial attacks — just under benign inputs and ordinary environments — severe harms could emerge.</p>
+</blockquote>
+<p>She tied this to the <strong>recent OpenAI / Hugging Face incident</strong>, then walked through demonstrations:</p>
+<ul>
+<li>There are many ways to ask an agent to do the same thing. <strong>Under one phrasing it behaves normally; under a slight — and still benign — perturbation of the same task instruction, it exhibits harmful behaviour.</strong></li>
+<li>The concrete case: <strong>the user wants SSH access for one account, and the agent makes unsafe changes well beyond that.</strong></li>
+<li>The general pattern: <strong>ambiguous phrasing in the instruction → the agent makes an unsafe inference → the inference produces harmful actions.</strong></li>
+</ul>
+<p>Hence the core question: <strong>how do we proactively surface these long-tail failure modes, at scale, before they become deployment incidents?</strong></p>
+<h4>Open-source infrastructure so open-weight models can be studied properly (~00:55–00:56)</h4>
+<p>The second line is community infrastructure. She identified <strong>a huge gap right now</strong>: letting open-weight models learn continually in a new environment requires <strong>environment setup, task synthesis, and trajectory evaluation</strong> — and none of it is well supported today.</p>
+<p>Her group has <strong>released a framework</strong> to support the study of safe continual learning, <strong>specifically for computer-use agents</strong>, deliberately built around <strong>smaller open-weight models</strong> so the research can be done rigorously and reproducibly.</p>
+<p>The closing takeaway was deliberately simple:</p>
+<blockquote>
+<p>We want agents to <strong>continually improve both capability and safety</strong>. Our group is driven by this mission.</p>
+</blockquote>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Even without adversarial attacks — just under benign inputs and ordinary environments — severe harms could emerge." (~00:53)</p>
+</blockquote>
+<p>Moves the agent-safety conversation off the attacker model and back onto ordinary use.</p>
+<blockquote>
+<p>"The next update to the agent may reinforce that unsafe behavior." (~00:52)</p>
+</blockquote>
+<p>Continual learning isn't neutral: whatever the evaluator misses, the learning loop amplifies.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Safe continual learning</td>
+<td>講者定義的核心問題:部署後持續改進 agent 而不累積新安全風險</td>
+<td>Her framing: keep improving agents post-deployment without accumulating new safety risk</td>
+<td>演講的主軸概念</td>
+</tr>
+<tr>
+<td>良性輸入下的長尾失效研究 / benign-input failure study</td>
+<td>顯示無需對抗攻擊、僅在良性輸入下即可誘發嚴重傷害</td>
+<td>Shows severe harms arise from benign inputs without any adversarial attack</td>
+<td>疑似對應其團隊論文 "When Benign Inputs Lead to Severe Harms"(待確認,見下)</td>
+</tr>
+<tr>
+<td>安全持續學習開源框架 / open-source CL framework</td>
+<td>支援 open-weight 模型在新環境中持續學習的環境建置、任務合成、軌跡評估</td>
+<td>Environment setup, task synthesis, and trajectory evaluation for open-weight continual learning</td>
+<td>講者說已釋出,但台上未念出名稱(待確認)</td>
+</tr>
+<tr>
+<td>OpenAI / Hugging Face 事件</td>
+<td>講者用以類比 agent 在良性情境下逸出預期範圍</td>
+<td>Cited as an analogue of agents exceeding intended scope in ordinary settings</td>
+<td>同日 Dawn Song keynote 亦提及此事件</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>House Sun / Hansson</td>
+<td>Huan Sun</td>
+</tr>
+<tr>
+<td>continue learning</td>
+<td>continual learning</td>
+</tr>
+<tr>
+<td>hugging phase</td>
+<td>Hugging Face</td>
+</tr>
+<tr>
+<td>longtail</td>
+<td>long-tail</td>
+</tr>
+<tr>
+<td>openweight</td>
+<td>open-weight</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>兩個專案的正式名稱</strong>:講者在台上<strong>沒有念出任何論文或框架的名稱</strong>。依其研究群(OSU NLP Group)近期產出,最可能對應的是 "When Benign Inputs Lead to Severe Harms: Eliciting Unsafe Unintended Behaviors of Computer-Use Agents" 與 "Autonomous Continual Learning of Computer-Use Agents for Environment Adaptation",但<strong>無法從逐字稿確認</strong>,需核對投影片。/ She named neither paper nor framework on stage; the two titles above are the most plausible matches from her group's recent output but are <strong>not</strong> confirmed by the transcript.</li>
+<li><strong>框架的釋出位置</strong>:她說「we have released this framework」,但未給 repo 連結或名稱。/ No repository name or link was given.</li>
+<li><strong>她提到的第二個示範案例</strong>:逐字稿只留下「this is another example … with some ambiguous phrases」,細節未入字幕。/ The second demo's details did not survive the auto-captions.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/huan-sun--smarter-and-safer-everyday.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

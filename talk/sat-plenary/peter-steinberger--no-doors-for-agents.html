@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>No Doors for Agents · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Everything — meeting platforms, operating systems, APIs — has doors built for humans, so agents have to sneak in disguised as one; that&#x27;s not a complaint but an invitation, because building the doo…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/peter-steinberger--no-doors-for-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="No Doors for Agents · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Everything — meeting platforms, operating systems, APIs — has doors built for humans, so agents have to sneak in disguised as one; that&#x27;s not a complaint but an invitation, because building the doo…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/peter-steinberger--no-doors-for-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="peter-steinberger--no-doors-for-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="No Doors for Agents" data-title-zh="沒有為 agent 開的門">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Future of Software Engineering</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">No Doors for Agents</span><span class="lang-zh">沒有為 agent 開的門</span></h1>
+        <p class="dialog__speaker"><strong>Peter Steinberger</strong> — Creator of OpenClaw, OpenAI</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 02:34:52–02:47:35 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=gKdeLQd_LIQ&amp;t=9292s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:34:52</span><span class="lang-zh">從 02:34:52 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Everything — meeting platforms, operating systems, APIs — has doors built for humans, so agents have to sneak in disguised as one; that&#x27;s not a complaint but an invitation, because building the doors is the fun part.</span><span class="lang-zh">今天的世界——從會議平台到作業系統到 API——全都是為人類開的門,agent 只能偽裝成人類擠進去;但這不是壞消息,因為「造門」正是現在最好玩、最有價值的工程工作。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>文字框是 AI 的「電視上播廣播節目」階段</strong>。每個新媒介都從模仿舊媒介開始;text box 讓十億人用得上 AI,但那不是最終形態。終端機、super app、agent OS、sidebar 都被試過,他認為答案是<strong>隱形的、常駐背景、隨處可喚起的 agent</strong>。</li>
+<li><strong>真正難的不是「產出」,是「在場」</strong>。做會議紀錄早就被一千個產品解決了;難的是讓 agent 進到房間裡——連作業系統都還沒有為 agent 開的門,他得靠一個要重開機才能裝的音訊驅動,把系統聲音導給 agent。</li>
+<li><strong>agent 常駐的前提是它是「你的」</strong>。他要知道自己的記憶存在哪裡,所以 agent 跑在自己的硬體上、或跑在自己握有金鑰的雲端盒子裡,並且能按任務挑模型。這是 OpenClaw 交給非營利基金會的理由。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>開場:一個偽裝成人類去開會的 agent(約 02:36)</h4>
+<p>他用一個本週發生的真事開場:他的 agent 參加了一場會議——<strong>有自己的帳號、自己的瀏覽器,會聽系統音訊,而且是偽裝成人類進去的</strong>,因為「在 2026 年,沒有為 agent 開的門」。他強調今天是以 OpenClaw 作者的身分講(「我戴的是 claw 帽,不是 OpenAI 那頂」),而且坦承他的 agent 現在還是會卡住——「軟體還是很難」。</p>
+<p>他從十一月以來的願景沒變過:<strong>一個永遠開著、永遠在想的 agent,它隱藏複雜度,讓生活變簡單。</strong></p>
+<h4>形態之爭:我們還在「電視播廣播」的階段(約 02:37–02:40)</h4>
+<ul>
+<li>在場的人是全世界玩 agent 最前面的一群;但他的非技術朋友用 AI 的方式<strong>就像用 Google——在框裡打字,文字回來</strong>。</li>
+<li>他的類比:<strong>電視剛出現時,人們把廣播節目搬上電視,真的就是有人對著鏡頭念廣播稿</strong>,因為沒人懂這個新媒介。<strong>「文字框就是 AI 的『電視上播廣播』階段。」</strong> 公平地說,它讓十億人用得上 AI。</li>
+<li>但人類比文字框有表現力得多——我們看、我們說、我們聽、我們感覺。要走到最終形態,只能大量嘗試(他說自己最好的點子都來自玩技術、看遍各種形態)。</li>
+<li>他逐一點評已經試過的形態:</li>
+<li><strong>終端機</strong>:agent 浪潮居然從終端機開始。他愛終端機,但<strong>大多數人一輩子沒開過</strong>。</li>
+<li><strong>super app</strong>:那為什麼是 app?不如是作業系統——agent OS?聽起來很棒,但<strong>kernel 是真實存在的東西,而且永遠會有 legacy app</strong>。</li>
+<li><strong>sidebar</strong>:業界目前的答案。他直言<strong>「我不想要 Gmail 裡的 Gemini sidebar」</strong>——那個 agent 對我系統的其他部分一無所知,而且不是我能控制的東西。</li>
+<li>他的傾向:<strong>最好的 agent 也許是隱形的</strong>,永遠在背景、我可以在任何地方喚起它,而且<strong>留給我還能當人的空間</strong>——有時候我就是想打開一份文件自己打字。</li>
+<li>更遠的目標是 Jarvis:不管我在哪個房間,它知道我家裡的裝置並且能用;它知道我在哪台電腦上,<strong>需要動手時可以接管螢幕</strong>;透過手錶、眼鏡,它能看見我看見的東西。零件已經在了——browser use、computer use、canvas、能同時說與聽的語音模型、以及影像(還沒真正即時,但會到)。</li>
+</ul>
+<h4>難的是「在場」,不是「產出」(約 02:41–02:42)</h4>
+<p>回到開場那場會議:為什麼要偽裝?<strong>因為「把筆記整理出來」早就解決了,有一千個產品在做。真正難的是「人在房間裡」——那件事沒有門。</strong></p>
+<p>而且卡關的不只是會議平台。<strong>為了給 agent 一個聲音,他的做法是裝一個把系統音訊導進去的音訊驅動,安裝說明白紙黑字寫著「你必須重新開機」。連作業系統都還沒有為 agent 開的門。</strong></p>
+<p>他描述他真正想要的行為:討論到一個沒人知道答案的問題,<strong>agent 注意到了,於是分身出一份自己去查,本體繼續留在對話裡</strong>——「因為 harness 某種意義上就只是軟體,agent 可以複製自己。它永遠不必在『聽』和『做』之間二選一。」查完之後<strong>它不打斷,它等到合適的時機才加入對話</strong>。「我覺得那會非常自然。那就是一個同事會做的事。」</p>
+<h4>工具、遞迴,以及「這到底算 agent 還是軟體」(約 02:42–02:45)</h4>
+<p>常有人問他這場演講是講 agent 還是講軟體——<strong>「這不是同一件事嗎?」</strong></p>
+<ul>
+<li>他做了一堆小工具,笑說<strong>「我大部分工具是為我的 agent 做的,也就是為我自己做的」</strong>,因為資料合併之後才變有趣:Discord 告訴他大家愛哪個功能,GitHub 告訴他哪裡壞掉。</li>
+<li><strong>GitHub 的 API 很好,但那是為人類設計的;在 agent 的規模下它會壞掉。</strong> 所以他自己做了一個工具,現在他的 agent 在本地對 <strong>11 萬則 issue 與 PR</strong> 做全文檢索。Twitter 至少可以匯出封存檔,但那是一座 JSON 山,所以他也做了工具。有些服務最近把 key 搬到 agent 跟不上的地方,結果只是讓他的 agent 多花一點時間拿到資料,順便<strong>更有動力自己做一個</strong>。</li>
+<li>兩個他很喜歡的社群案例:</li>
+<li>有人請 Claude 幫他的 Samsung 環繞音響做一個 CLI。<strong>它 root 了手機、裝了對應的 app、逆向工程、把每一個隱藏控制項都挖出來——而他只是想把音量調小。</strong></li>
+<li>另一個人把 Codex 指向他的攝影棚燈,<strong>AI 告訴他該買哪塊開發板,兩天後他有了一個開源控制器</strong>。當事人原話:「我完全不知道它在幹嘛,但它幹得很好。」</li>
+<li>結論:<strong>「開源也好、閉源也好,沒有東西擋得住一個帶著 agent 的、下定決心的人。」</strong></li>
+<li>而且<strong>這件事會遞迴</strong>:我們用 agent 蓋軟體,用 agent 蓋 agent。第一個 agent 是手寫的,現在 agent 蓋 agent,<strong>軟體就是 agent</strong>。「我們到底在蓋什麼?我不知道。」他知道的是:<strong>小的塞得進一個 session,大的可能需要自己的工廠——而 factory 這種體驗已經開始真的能用了。「編譯器當年也花了一段時間。」</strong></li>
+</ul>
+<h4>「這樣不會很毛嗎?」——所有權才是答案(約 02:45–02:47)</h4>
+<p>大家禮貌地會問:一個永遠在旁邊、永遠在聽的 agent,不會很毛嗎?</p>
+<p><strong>「如果它不是你的,也許會。」</strong> 那東西握著他的記憶,而他「骨子裡非常歐洲」——<strong>他要知道他的記憶在哪裡</strong>。所以他的 agent 跑在自己的硬體上;或者跑在雲端一個他握有金鑰的盒子裡。<strong>而且可以按任務挑模型</strong>:寫軟體要前沿模型;比較私人的東西,也許用一個永遠不離開房間的本地模型更好。有硬體就跑 open weights,沒有就挑一個你信任的供應商。</p>
+<p><strong>「重點是選擇權。這就是為什麼 OpenClaw 活在一個非營利基金會裡。」</strong></p>
+<p>收尾他講了二月在舊金山發生的 <strong>ClawCon</strong>——一場關於他的專案、但<strong>不是他辦的</strong>研討會。他是去當客人的,而整個房間都是 builder,大家興奮得不得了,因為<strong>「AI 突然變成他們可以擁有、可以改的東西,感覺像是他們的」</strong>。「那就是我要的未來。不需要適合所有人,但適合的人會愛死它——我就是其中一個。」</p>
+<p>最後一句:<strong>「agent 還是沒有門。而這是好事,因為造門才是好玩的部分。」</strong></p>
+<h3>金句</h3>
+<blockquote>
+<p>"It went disguised as a human because in 2026, there are no doors for agents."(約 02:36)</p>
+</blockquote>
+<p>整場演講的題眼:今天所有介面都是為人類開的,agent 只能假扮成人。</p>
+<blockquote>
+<p>"The text box is AI's radio-on-TV phase."(約 02:38)</p>
+</blockquote>
+<p>新媒介先模仿舊媒介——聊天框不是 AI 的最終形態,只是過渡期。</p>
+<blockquote>
+<p>"I don't want the Gemini sidebar in Gmail. The agent knows nothing about the rest of my system, and it's not something I control."(約 02:39)</p>
+</blockquote>
+<p>對「每個產品塞一個 sidebar」這個業界共識的直接否定。</p>
+<blockquote>
+<p>"Getting notes out is easy. That's solved. … But actually being in the room is what's hard, what has no door."(約 02:41)</p>
+</blockquote>
+<p>價值不在輸出,在存取權。</p>
+<blockquote>
+<p>"It never has to choose between listening and working."(約 02:42)</p>
+</blockquote>
+<p>agent 相對人類助理的結構性優勢:它可以複製自己。</p>
+<blockquote>
+<p>"GitHub has a good API, but it's built for humans. At agent scale, it breaks."(約 02:43)</p>
+</blockquote>
+<p>為人類設計的 API 在 agent 規模下失效,是現在最具體的「沒有門」。</p>
+<blockquote>
+<p>"Nothing stops a determined human with an agent."(約 02:44)</p>
+</blockquote>
+<p>閉源、無文件、無 API 都不再是護城河。</p>
+<blockquote>
+<p>"I'm very European at heart. I want to know where my memories are."(約 02:45)</p>
+</blockquote>
+<p>常駐 agent 的隱私問題,他的答案是所有權而不是政策。</p>
+<blockquote>
+<p>"There's still no doors for agents, and that's good, because building doors is the fun part."(約 02:47)</p>
+</blockquote>
+<p>收尾:把整個缺口重新框成機會。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The text box is AI's radio-on-TV phase.</strong> Every new medium starts by imitating the old one. Terminals, super apps, agent OSes, and sidebars have all been tried; his bet is on an <strong>invisible, always-background agent you can invoke anywhere</strong> — one that leaves you room to still be a human.</li>
+<li><strong>The hard part isn't output, it's presence.</strong> Meeting notes are a solved problem with a thousand products. Getting the agent <em>into the room</em> is what has no door — down to the OS level, where giving his agent a voice meant installing an audio driver whose install instructions say "you must reboot."</li>
+<li><strong>An always-on agent is only acceptable if it's yours.</strong> He wants to know where his memories live, so his agent runs on his own hardware or in a cloud box he holds the keys to, picking a model per task. That's the reasoning behind putting OpenClaw in a nonprofit foundation.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Cold open: an agent that went to a meeting disguised as a human (~02:36)</h4>
+<p>He opened with something that happened that week. His agent attended a meeting — <strong>its own account, its own browser, listening to system audio, and disguised as a human</strong> — because "in 2026, there are no doors for agents." He noted he was speaking as OpenClaw's creator, not in his OpenAI capacity ("I'm wearing my claw hat"), and was upfront that his agent still sometimes stops: "software is still hard."</p>
+<p>His vision hasn't changed since November: <strong>an agent that's always on, always thinking, that hides complexity and makes life easier.</strong></p>
+<h4>Form factors: we're still putting radio shows on television (~02:37–02:40)</h4>
+<ul>
+<li>The room is about as far along on agents as anyone in the world. But his non-technical friends <strong>use AI like Google</strong>: type a question in a box, text comes back.</li>
+<li>The analogy: when television was new, they put radio shows on TV — <strong>people literally read radio scripts on camera</strong>, because nobody understood the new medium yet. <strong>"The text box is AI's radio-on-TV phase."</strong> To be fair, it made AI usable for a billion people.</li>
+<li>Humans are more expressive than a text box — we see, talk, hear, feel. Getting to the final form requires trying a lot of things; he gets his best ideas playing with technology and surveying form factors.</li>
+<li>His verdict on each attempt so far:</li>
+<li><strong>The terminal.</strong> The whole agent wave started there, of all places. He loves the terminal, but <strong>most people have never opened one</strong>.</li>
+<li><strong>The super app.</strong> Why an app? Why not an operating system — agent OS? Sounds great, but <strong>kernels are real, and there will always be legacy apps</strong>.</li>
+<li><strong>The sidebar.</strong> The industry's current answer. His blunt take: <strong>"I don't want the Gemini sidebar in Gmail."</strong> That agent knows nothing about the rest of his system and isn't something he controls.</li>
+<li>Where he lands: <strong>maybe the best agents are invisible</strong> — always in the background, invocable anywhere, and leaving space to still be human. Sometimes he just wants to open a document and type.</li>
+<li>The longer arc is Jarvis: it shouldn't matter what room he's in; it knows the devices in his home and can use them; it knows which computer he's on and <strong>can take over the screen when the job needs hands</strong>; through a watch or glasses it could see what he sees. The pieces exist — browser use, computer use, canvas, voice models that talk and listen simultaneously, and video (not quite real time, but getting there).</li>
+</ul>
+<h4>Presence, not output, is the hard part (~02:41–02:42)</h4>
+<p>Back to the meeting: why the disguise? <strong>Because getting notes out is solved — a thousand products do it. Actually being in the room is what's hard, and that has no door.</strong></p>
+<p>And it isn't only the meeting platforms. <strong>To give his agent a voice, the setup is an audio driver that pipes system audio through it, and the install instructions literally say you have to reboot. Even the operating system has no doors for agents yet.</strong></p>
+<p>The behavior he actually wants: the group is discussing something, nobody knows the answer, <strong>the agent notices and spins off a copy of itself to go find out while the original stays in the conversation</strong> — "because the harness is just software, in a way, and the agent can clone itself. It never has to choose between listening and working." When the answer comes back, <strong>it doesn't interrupt; it waits for the moment that fits.</strong> "That's what a colleague would do."</p>
+<h4>Tools, recursion, and whether this is even about agents (~02:42–02:45)</h4>
+<p>People ask whether the talk is about agents or about software. <strong>"How is it not really the same thing?"</strong></p>
+<ul>
+<li>He's built a lot of small tools, joking that <strong>"I built most of the tools for my agent, which means I built them for myself"</strong> — data gets more interesting when you combine it. Discord tells him which features people love; GitHub tells him where things break.</li>
+<li><strong>GitHub has a good API, but it's built for humans. At agent scale, it breaks.</strong> So he built a tool, and now his agent has local full-text search over <strong>110,000 issues and PRs</strong>. Twitter at least lets you export your archive, but it's a mountain of JSON, so he built a tool for that too. When services move their keys somewhere agents can't follow, all it achieves is making his agent take a bit longer — and <strong>motivating him to build his own</strong>.</li>
+<li>Two community stories he loves:</li>
+<li>Someone asked Claude to build a CLI for his Samsung surround system. <strong>It rooted the phone, installed the vendor app, reverse-engineered it, and extracted every hidden control</strong> — the guy just wanted to turn the volume down.</li>
+<li>Someone else pointed Codex at his studio lights. <strong>It told him which dev board to buy, and two days later he had an open-source controller.</strong> His words: "I have no idea what it's doing, but it's doing a great job."</li>
+<li>The conclusion: <strong>"closed source, open source — nothing stops a determined human with an agent."</strong></li>
+<li>And <strong>it gets recursive</strong>: we build software with agents, we build agents with agents. The first agent was written by hand; now agents build agents, and <strong>software is agents</strong>. "What are we even building? I don't know." What he does know: <strong>the small ones fit in a session; the big ones might get their own factory — and the factory experiences are starting to actually work. "Compilers took a while too."</strong></li>
+</ul>
+<h4>"Isn't that creepy?" — the answer is ownership (~02:45–02:47)</h4>
+<p>Everyone is polite enough to ask: an agent that's always there, always listening — isn't that creepy?</p>
+<p><strong>"Maybe, if it's not yours."</strong> The thing holds his memories, and he's "very European at heart" — <strong>he wants to know where his memories are</strong>. So his agent runs on his hardware, or in a cloud box he holds the keys to. <strong>And he picks a model per task</strong>: the frontier for building software; for something personal, maybe a local model that never leaves the room. Have the hardware, run open weights; don't, pick a provider you trust.</p>
+<p><strong>"It's about choice. That's why OpenClaw lives in a nonprofit foundation."</strong></p>
+<p>He closed on <strong>ClawCon</strong> in San Francisco in February — a conference about his project that <strong>he didn't organize</strong>. He went as a guest, and the room was full of builders who were thrilled because <strong>"AI was suddenly something they could own, they could change. It felt like theirs."</strong> "That's the future I want. It doesn't need to be for everyone. The people it's for are going to love it — I'm one of them."</p>
+<p>Final line: <strong>"There's still no doors for agents, and that's good, because building doors is the fun part."</strong></p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"It went disguised as a human because in 2026, there are no doors for agents." (~02:36)</p>
+</blockquote>
+<p>The thesis: every interface is built for humans, so agents have to impersonate one.</p>
+<blockquote>
+<p>"The text box is AI's radio-on-TV phase." (~02:38)</p>
+</blockquote>
+<p>New media imitate old media first. Chat is a transitional form, not the final one.</p>
+<blockquote>
+<p>"I don't want the Gemini sidebar in Gmail. The agent knows nothing about the rest of my system, and it's not something I control." (~02:39)</p>
+</blockquote>
+<p>A direct rejection of the industry's current default answer.</p>
+<blockquote>
+<p>"Getting notes out is easy. That's solved. … But actually being in the room is what's hard, what has no door." (~02:41)</p>
+</blockquote>
+<p>The value isn't in the output; it's in the access.</p>
+<blockquote>
+<p>"It never has to choose between listening and working." (~02:42)</p>
+</blockquote>
+<p>The structural advantage an agent has over a human assistant: it can fork itself.</p>
+<blockquote>
+<p>"GitHub has a good API, but it's built for humans. At agent scale, it breaks." (~02:43)</p>
+</blockquote>
+<p>The most concrete "missing door" available today.</p>
+<blockquote>
+<p>"Nothing stops a determined human with an agent." (~02:44)</p>
+</blockquote>
+<p>Closed source, no docs, and no API have stopped being moats.</p>
+<blockquote>
+<p>"I'm very European at heart. I want to know where my memories are." (~02:45)</p>
+</blockquote>
+<p>His answer to the privacy problem is ownership, not policy.</p>
+<blockquote>
+<p>"There's still no doors for agents, and that's good, because building doors is the fun part." (~02:47)</p>
+</blockquote>
+<p>Reframing the entire gap as the opportunity.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenClaw</td>
+<td>他創建的開源個人 AI agent 框架,現由自有非營利基金會託管</td>
+<td>The open-source personal AI agent framework he created, now stewarded by its own nonprofit foundation</td>
+<td>主持人介紹稱數月內累積逾 20 萬 GitHub stars / introduced as passing 200,000+ GitHub stars in a few months</td>
+</tr>
+<tr>
+<td>PSPDFKit</td>
+<td>他先前在奧地利創辦的 PDF SDK 公司,零外部融資、覆蓋逾十億裝置、九位數出場</td>
+<td>His earlier Austrian PDF SDK company: no outside funding, more than a billion devices, nine-figure exit</td>
+<td>主持人介紹內容 / from the host's introduction</td>
+</tr>
+<tr>
+<td>ClawCon</td>
+<td>2026 年二月在舊金山舉行的 OpenClaw 社群研討會,由社群自行發起</td>
+<td>Community-run OpenClaw conference held in San Francisco in February 2026</td>
+<td>他以來賓身分出席,非主辦 / he attended as a guest, not an organizer</td>
+</tr>
+<tr>
+<td>自建 GitHub 全文檢索工具 / custom GitHub full-text search tool</td>
+<td>讓 agent 在本地檢索 11 萬則 issue 與 PR,繞開為人類設計的 API 限制</td>
+<td>Gives his agent local full-text search over 110,000 issues and PRs, around the human-shaped API</td>
+<td>未提及工具名稱 / tool name not given</td>
+</tr>
+<tr>
+<td>自建 Twitter 封存檔工具 / custom Twitter archive tool</td>
+<td>把可匯出但難用的 JSON 封存檔轉成 agent 可用的資料</td>
+<td>Turns the exportable-but-unwieldy JSON archive into something an agent can use</td>
+<td>未提及工具名稱 / tool name not given</td>
+</tr>
+<tr>
+<td>系統音訊驅動 / system-audio driver</td>
+<td>讓 agent 聽見會議聲音的做法;安裝需重開機,他用來說明「OS 也沒有為 agent 開門」</td>
+<td>How he gets meeting audio into the agent; the reboot-required install is his example of the OS having no agent doors</td>
+<td>未提及具體驅動名稱 / specific driver not named</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PSDFKit</td>
+<td>PSPDFKit</td>
+</tr>
+<tr>
+<td>Open Club / OpenC</td>
+<td>OpenClaw</td>
+</tr>
+<tr>
+<td>OpenI</td>
+<td>OpenAI</td>
+</tr>
+<tr>
+<td>the gin sidebar</td>
+<td>the Gemini sidebar</td>
+</tr>
+<tr>
+<td>pipes sa through it</td>
+<td>pipes system audio through it</td>
+</tr>
+<tr>
+<td>a mountain of Jason</td>
+<td>a mountain of JSON</td>
+</tr>
+<tr>
+<td>deaf board</td>
+<td>dev board</td>
+</tr>
+<tr>
+<td>Clawcon</td>
+<td>ClawCon</td>
+</tr>
+<tr>
+<td>the factory experience are starting</td>
+<td>the factory experiences are starting</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Samsung 環繞音響案例中「It installed Smart Syncs」的正確 app 名稱(疑為 SmartThings,但字幕不清,未硬猜)。/ The app in the Samsung surround-system story ("installed Smart Syncs") — likely SmartThings, but the caption is unclear and this is not confirmed.</li>
+<li>「one by I really loved recently moved his keys somewhere my agents can follow」整句嚴重失真,推測是某個服務把 API 金鑰搬到 agent 無法取用的位置;服務名稱待看影片確認。/ The garbled line about a service moving its keys "somewhere my agents can('t) follow" — which service is unclear.</li>
+<li>他說「On Lex this year, I predicted that 80% of the apps will disappear」——應指 Lex Fridman Podcast,集數與確切措辭待查。/ The "80% of apps will disappear" prediction was made "on Lex" (presumably the Lex Fridman Podcast) — episode and exact wording unverified.</li>
+<li>OpenClaw GitHub star 數:主持人現場說「逾 20 萬」,公開資料另有 21 萬+ 的說法,以哪個時點為準待定。/ OpenClaw star count: the host said 200,000+; public sources also cite 214,000+, depending on the date.</li>
+<li>他自建的 GitHub 檢索工具與 Twitter 封存工具是否有公開名稱與 repo。/ Whether his custom GitHub search and Twitter archive tools have public names or repos.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/peter-steinberger--no-doors-for-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

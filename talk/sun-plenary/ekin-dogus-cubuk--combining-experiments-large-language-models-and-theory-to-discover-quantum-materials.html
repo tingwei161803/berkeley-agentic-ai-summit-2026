@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Combining Experiments, Large Language Models, and Theory to Discover Quantum Materials · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="No amount of intelligence can think its way to the next scientific breakthrough — the universe is too complex, and the entire history of superconductivity says so. The right question isn&#x27;t whether …" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/ekin-dogus-cubuk--combining-experiments-large-language-models-and-theory-to-discover-quantum-materials.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Combining Experiments, Large Language Models, and Theory to Discover Quantum Materials · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="No amount of intelligence can think its way to the next scientific breakthrough — the universe is too complex, and the entire history of superconductivity says so. The right question isn&#x27;t whether …" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/ekin-dogus-cubuk--combining-experiments-large-language-models-and-theory-to-discover-quantum-materials.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-plenary" data-talk="ekin-dogus-cubuk--combining-experiments-large-language-models-and-theory-to-discover-quantum-materials">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Combining Experiments, Large Language Models, and Theory to Discover Quantum Materials" data-title-zh="結合實驗、大型語言模型與理論來發現量子材料">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Frontier Research</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Combining Experiments, Large Language Models, and Theory to Discover Quantum Materials</span><span class="lang-zh">結合實驗、大型語言模型與理論來發現量子材料</span></h1>
+        <p class="dialog__speaker"><strong>Ekin Dogus Cubuk</strong> — Co-Founder, Periodic Labs</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Plenary Stage · 00:33:17–00:42:43 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=I2PosBXwoPI&amp;t=1997s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:33:17</span><span class="lang-zh">從 00:33:17 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sun</span><span class="lang-zh">回 Plenary · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">No amount of intelligence can think its way to the next scientific breakthrough — the universe is too complex, and the entire history of superconductivity says so. The right question isn&#x27;t whether AGI can zero-shot a discovery, but where agents belong inside the scientific method we&#x27;ve used for centuries.</span><span class="lang-zh">再強的 AI 也沒辦法「純靠想」想出下一個科學突破,因為宇宙太複雜了——超導的整部歷史都在說同一件事;所以正確的問題不是「AGI 能不能 zero-shot 突破」,而是「怎麼把 agent 塞進那套已經用了幾百年的科學方法裡」。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>他要回答的問題</strong>:今天或未來的 AI 能不能直接 <strong>zero-shot</strong> 出下一個重大科學突破?之所以必須是 zero-shot,是因為<strong>突破就定義而言不可能在訓練資料裡</strong>。</li>
+<li><strong>他的答案是「不能」</strong>,而反面就是他所謂的 <strong>thinkism</strong>:把你(或 AGI、或一群 agent)關在一間堆滿教科書、論文、專利的房間裡拼命想。宇宙太複雜,任何智慧都想不出來。</li>
+<li><strong>超導史就是證據</strong>:1911 年的超導、MgB2、1986 年的銅氧化物高溫超導——<strong>三次都不是從理論推導出來的</strong>,而是新能力、大量試誤,或根本找錯目標時撞上的。</li>
+<li><strong>所以 agent 不是沒用,而是要放對位置</strong>:把 AI 插進「觀察 → 假說 → 實驗 → 結果 → 理解失敗 → 再試」這個既有迴圈的各個環節——模擬(force fields)、characterization、文獻搜尋、實驗設計(DOE)。</li>
+<li><strong>給科學學生的建議正好相反於「AI 要取代科學家」的敘事</strong>:去把<strong>基本功</strong>練到最扎實,並投入實驗方法與量測工具的創新——你造出新的量測方法,AI 才有更多資料可看,thinkism 那部分技能才發揮得出來。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>問題設定:AGI 能 zero-shot 一個突破嗎?(約 00:34–00:35)</h4>
+<p>他開場先把問題釘死:<strong>breakthrough 依定義不可能在訓練集裡</strong>,所以它必須在「沒有先例示範」的情況下做出來——也就是 zero-shot。</p>
+<p>換個問法就是:<strong>thinkism 能不能推進物理學?</strong> 所謂 thinkism,是「你把自己鎖在一個房間裡,手上有這個領域所有的教科書、所有做過的實驗、論文、專利,然後你非常非常努力地想」——不管想的人是人類、是 AGI、還是一整群 agent。</p>
+<p>他的答案很直接:<strong>不能。因為宇宙對任何智慧來說都太複雜了,沒有誰能靠想的方式想進一個科學進展裡。</strong> 那替代方案是什麼?就是人類做了幾百年的事——<strong>跟宇宙迭代</strong>:提出假說 → 試 → 第一次通常不成 → 從失敗學到東西 → 再試。</p>
+<h4>超導史:三次突破,沒有一次來自「想得夠努力」(約 00:35–00:39)</h4>
+<p><strong>1911,超導的發現。</strong> 不是某個天才想通了「把汞降到夠低的溫度,電子會透過聲子感受到吸引力」。實際發生的是:<strong>Kamerlingh Onnes 的實驗室先造出一個新能力</strong>——把溫度降到史上任何紀錄之下(大約 4 K,最低做到 1.8 K)——而汞剛好在 4 K 就會超導。而且這還是主線任務(液化氦)的<strong>副產品</strong>。幾年後他拿了諾貝爾獎,但<strong>很重要的一點:諾貝爾獎不是頒給超導的發現,是頒給他能液化氦。</strong></p>
+<p><strong>1957/58,BCS 理論。</strong> John Bardeen 與合作者搞懂了傳統超導的理論。照理說,人類既然懂了機制,就該用它推導出一堆新超導體——<strong>但歷史不是這樣走的</strong>。從 1958 到 2000 年左右,傳統超導最大的進展(用深度學習的語言說就是當時的 SOTA)是 <strong>MgB2</strong>;而它的發現方式是<strong>試了幾萬種材料,剛好那一種是很好的 BCS 超導體</strong>,不是有人拿著理論想出來的。</p>
+<p><strong>1986,銅氧化物(cuprates)。</strong> Karl Alexander Müller 與合作者找到第一個高溫、非傳統超導體。但<strong>你去看他的諾貝爾獎演說就會發現,他當時其實是在找傳統超導體</strong>——因為他根本還不知道「非傳統超導體」會長什麼樣子。</p>
+<p>他把範圍講清楚:這個結論適用於<strong>材料科學、化學、固態物理這類複雜系統</strong>,<strong>不包含數學與理論計算機科學</strong>(他認為那是另一個 regime)。在複雜系統這一邊,<strong>大多數東西是靠意外或大量試誤找到的</strong>。</p>
+<h4>那 agent 要放在哪裡?(約 00:39–00:41)</h4>
+<p>他的結論不是悲觀:<strong>我們沒事,只要想清楚怎麼把 agent 用進那套已經用了幾百年的科學方法裡就好。</strong></p>
+<p>科學方法的骨架是:觀察 → 假說 → 用實驗檢驗 → 看結果 → 第一次通常不太行 → 理解為什麼失敗 → 再試一次。而 AI 可以插進不只一個位置:</p>
+<ul>
+<li><strong>模擬</strong>(迴圈正中央)——<strong>已經被機器學習徹底改寫了</strong>。今天大家用 force fields 來近似基態的量子力學;他說得很重:<strong>就算再來一次 AI winter,他也無法想像 force fields 還會回到不用機器學習的時代。</strong> AlphaFold 是另一個例子。但他也提醒:<strong>force fields、AlphaFold 都是工具</strong>,它們不會直接給你下一個新藥或下一個超導體。</li>
+<li><strong>Characterization(表徵分析)</strong>——幫你看懂實驗資料到底發生了什麼。很技術,但 AI 能大幅自動化與放大規模。他順帶提到 <strong>Berkeley 這邊已經有前沿工作</strong>,用機械手臂在實驗室裡大量嘗試粉末合成。</li>
+<li><strong>文獻搜尋</strong>——把所有論文讀過,找出還有哪些想法值得試。</li>
+<li><strong>DOE(design of experiment,實驗設計)</strong>——根據目前為止的所有實驗,決定下一個實驗做什麼。</li>
+</ul>
+<p>他補了一句誠實話:實際上沒有投影片畫得那麼乾淨,<strong>真實情況是一張所有環節互相糾纏的 spaghetti plot</strong>;但只要<strong>刻意而謹慎地</strong>把 AI 放進去,整套科學方法確實會加速。</p>
+<h4>給科學學生的話(約 00:41–00:42)</h4>
+<p><strong>看到 LLM 的進展不該覺得沮喪,應該覺得相反——現在是做科學最令人興奮的時候。</strong></p>
+<p>他的具體建議是:<strong>把基本功練透。</strong> 物理的就去讀超導理論、固態化學;生物的就去搞懂生物學裡真正重要的東西。並且特別重視<strong>實驗</strong>——因為回頭看,<strong>很多重大進展都發生在有人做出新的實驗方法、新技術、新量測工具的時候</strong>,而這些都是你能貢獻的。</p>
+<p>而且這是正向循環:<strong>你創造出新的實驗方法與工具,AI 就會看到更多資料</strong>,它那套 thinkism 的技能就能用更大的規模、更快地把資料變成理解,然後你的下一個實驗就更有機會成功、也更聰明。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"The universe is too complex for any intelligence, whether it's humans or machines, to think their way into the scientific advance."(約 00:35)</p>
+</blockquote>
+<p>全場的核心論點。</p>
+<blockquote>
+<p>"Nobel Prize was not given to superconductor discovery — it was given to the fact that he could liquefy helium."(約 00:37)</p>
+</blockquote>
+<p>Kamerlingh Onnes 的獎座在「新能力」上,不在「新發現」上;這正是他想說的因果方向。</p>
+<blockquote>
+<p>"He was actually trying to find a conventional superconductor, because he didn't even know what an unconventional superconductor would be."(約 00:38)</p>
+</blockquote>
+<p>高溫超導的發現者,是在找別的東西的時候撞上它的。</p>
+<blockquote>
+<p>"This universe is too complex for thinkism alone to innovate."(約 00:41)</p>
+</blockquote>
+<p>最後一張投影片。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The question</strong>: can today's (or tomorrow's) AI <strong>zero-shot</strong> the next big scientific breakthrough? It has to be zero-shot, because a breakthrough by definition cannot be in the training set.</li>
+<li><strong>His answer is no</strong> — and the position he's arguing against is what he calls <strong>thinkism</strong>: locking yourself (or an AGI, or a swarm of agents) in a room with every textbook, paper and patent in the field and thinking very hard.</li>
+<li><strong>The history of superconductivity is the evidence.</strong> The 1911 discovery, MgB2, and the 1986 cuprates were each found by building a new capability, by brute-force trial and error, or by looking for something else entirely — never by deriving from theory.</li>
+<li><strong>So agents aren't useless — they belong in specific slots</strong> of the loop scientists have used for centuries: simulation (ML force fields), characterization, literature search, and design of experiments.</li>
+<li><strong>His advice to science students inverts the doom narrative</strong>: go deep on fundamentals and on experimental methods and measurement tools. New instruments create new data, and only then does AI's thinkism skill have something to work with.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Framing: can AGI zero-shot a breakthrough? (~00:34–00:35)</h4>
+<p>He pins the question down immediately: a breakthrough can't be in the training set, so it has to be produced without a previous demonstration — zero-shot by construction.</p>
+<p>Restated: <strong>can thinkism ever be enough for advancing physics?</strong> Thinkism being the idea that you lock yourself in a room with all the textbooks, all the previous experiments, papers and patents in the field, and think really hard — whether you're a human, an AGI, or a bunch of agents.</p>
+<p>His answer: no, because the universe is too complex for any intelligence to think its way into a scientific advance. The alternative is what we've done for centuries — <strong>iterate with the universe</strong>: hypothesis, attempt, failure, learn from the failure, try again.</p>
+<h4>Three superconductivity breakthroughs, none from thinking harder (~00:35–00:39)</h4>
+<p><strong>1911, the discovery itself.</strong> Nobody reasoned their way to "cool mercury far enough and electrons will feel an attractive force through phonons." What happened is that <strong>Kamerlingh Onnes's lab built a new capability</strong> — cooling below any temperature previously recorded, around 4 K, eventually reaching 1.8 K — and mercury happens to superconduct at 4 K. It was a side project of the main effort, which was liquefying helium. Onnes won a Nobel a few years later, and Cubuk underlines the detail that matters: <strong>the Nobel was not for superconductivity, it was for liquefying helium.</strong></p>
+<p><strong>1957/58, BCS theory.</strong> Bardeen and collaborators explained conventional superconductivity. In principle, humans could then use that understanding to find many more superconductors — but that isn't what happened. From 1958 to roughly 2000, the biggest advance in conventional superconductivity (the SOTA, in deep-learning language) was <strong>MgB2</strong>, and it was found by trying tens of thousands of materials until one turned out to be an excellent BCS superconductor.</p>
+<p><strong>1986, the cuprates.</strong> Karl Alexander Müller and a collaborator found the first high-temperature, unconventional superconductor. But read his Nobel lecture and you discover <strong>he was actually looking for a conventional superconductor</strong>, because he had no concept of what an unconventional one would even be.</p>
+<p>He scopes the claim carefully: this holds for complex systems — materials science, chemistry, solid-state physics — and explicitly <strong>not</strong> for math and theoretical computer science, which he considers a different regime. On the complex-systems side, most things were found by accident or by intelligent trial and error.</p>
+<h4>Where the agents go (~00:39–00:41)</h4>
+<p>His conclusion isn't pessimistic: we're fine, we just have to work out how to use agents inside the scientific method we already have.</p>
+<p>The loop is: observations → hypothesis → experiment → result → (it probably didn't work) → understand why it failed → try again. AI slots into several places at once:</p>
+<ul>
+<li><strong>Simulation</strong>, in the middle of the loop, has already been completely rewritten by machine learning. Force fields approximate the ground-state quantum mechanics, and he puts it strongly: <strong>even if another AI winter arrived, he can't imagine ever going back to force fields without machine learning.</strong> AlphaFold is the other example. But he flags the limit — force fields and AlphaFold are <em>tools</em>; they don't hand you the next drug or the next superconductor.</li>
+<li><strong>Characterization</strong>: making sense of what the experiment actually produced. Technical, but exactly the kind of thing AI can automate and scale. He notes that Berkeley has produced frontier work here, using robotic arms to try many powder syntheses in the lab.</li>
+<li><strong>Literature search</strong>: reading everything and surfacing which ideas are worth trying next.</li>
+<li><strong>Design of experiments</strong>: given everything measured so far, choosing the next experiment.</li>
+</ul>
+<p>The honest caveat: it's never as clean as the slide. Reality is a spaghetti plot where everything interacts with everything else — but you can still see the whole method accelerate if AI is inserted deliberately and carefully.</p>
+<h4>Advice to science students (~00:41–00:42)</h4>
+<p>Don't look at LLM progress and get discouraged; conclude the opposite. It's an exciting time to do science.</p>
+<p>His concrete advice: <strong>go all-in on the fundamentals.</strong> If you're a physicist, study the theory of superconductivity and solid-state chemistry; if you're a biologist, learn what actually matters in biology. And take experimentation seriously, because a lot of historical progress came from someone inventing a new experimental method, technique, or measurement tool — all of which you can still contribute to.</p>
+<p>The loop closes on itself: as you create new experimental methods and tools, AI sees more data, applies its thinkism skill to make sense of it faster and at larger scale, and your next experiment gets both more successful and more intelligent.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"The universe is too complex for any intelligence, whether it's humans or machines, to think their way into the scientific advance." (~00:35)</p>
+</blockquote>
+<p>The thesis of the talk.</p>
+<blockquote>
+<p>"Nobel Prize was not given to superconductor discovery — it was given to the fact that he could liquefy helium." (~00:37)</p>
+</blockquote>
+<p>The prize went to the new capability, not the discovery it enabled — which is exactly the causal direction he's arguing for.</p>
+<blockquote>
+<p>"He was actually trying to find a conventional superconductor, because he didn't even know what an unconventional superconductor would be." (~00:38)</p>
+<p>"This universe is too complex for thinkism alone to innovate." (~00:41)</p>
+</blockquote>
+<p>His closing slide.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Periodic Labs</td>
+<td>他與 Liam Fedus 共同創辦,結合模擬、實驗與 LLM 加速實體 R&amp;D,以高溫超導為 north star</td>
+<td>Co-founded with Liam Fedus; combines simulation, experiments and LLMs to accelerate physical R&amp;D, with high-Tc superconductivity as a north star</td>
+<td>官網議程職稱為 Co-Founder;他自稱 co-CEO and co-founder</td>
+</tr>
+<tr>
+<td>GNoME</td>
+<td>他在 Google Brain / DeepMind 帶的材料發現工作,發現超過 200 萬種新晶體</td>
+<td>The materials-discovery work he led at Google Brain / DeepMind; over 2 million new crystals</td>
+<td>主持人介紹時提到 / from the moderator's intro</td>
+</tr>
+<tr>
+<td>AlphaFold</td>
+<td>他舉的「機器學習改寫科學工具」的第二個例子</td>
+<td>His second example of ML rewriting a scientific tool</td>
+<td>他強調它是工具,不是發現本身 / a tool, not the discovery</td>
+</tr>
+<tr>
+<td>ML force fields</td>
+<td>近似基態量子力學的模擬工具,已被機器學習永久改寫</td>
+<td>Simulation tools approximating ground-state quantum mechanics, permanently changed by ML</td>
+<td>panel 中補充:近十年因 graph neural networks 而改變(約 01:02)</td>
+</tr>
+<tr>
+<td>MgB2（magnesium diboride）</td>
+<td>1958–2000 間傳統超導最大的進展,靠試遍數萬種材料找到</td>
+<td>The biggest conventional-superconductivity advance between 1958 and 2000, found by screening tens of thousands of materials</td>
+<td></td>
+</tr>
+<tr>
+<td>Cuprates</td>
+<td>1986 年第一個高溫(非傳統)超導體</td>
+<td>The first high-temperature (unconventional) superconductors, 1986</td>
+<td>Karl Alexander Müller 等人</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Do Chubuk / Dos / Do / D / Josh</td>
+<td>Ekin Doğuş Çubuk（Doğuş)</td>
+</tr>
+<tr>
+<td>Gnome</td>
+<td>GNoME</td>
+</tr>
+<tr>
+<td>Liam Fetis</td>
+<td>Liam Fedus</td>
+</tr>
+<tr>
+<td>Camelang Anes / Anest's lab / an</td>
+<td>(Heike) Kamerlingh Onnes</td>
+</tr>
+<tr>
+<td>John Bardin</td>
+<td>John Bardeen</td>
+</tr>
+<tr>
+<td>BCA superconductivity</td>
+<td>BCS superconductivity</td>
+</tr>
+<tr>
+<td>magnesium dyoride, MGB2</td>
+<td>magnesium diboride, MgB2</td>
+</tr>
+<tr>
+<td>coupe rates</td>
+<td>cuprates</td>
+</tr>
+<tr>
+<td>Alex Mueller</td>
+<td>(Karl) Alexander Müller</td>
+</tr>
+<tr>
+<td>phonance</td>
+<td>phonons</td>
+</tr>
+<tr>
+<td>the soda（in deep learning language)</td>
+<td>the SOTA</td>
+</tr>
+<tr>
+<td>DOE design of experiment</td>
+<td>design of experiments (DoE)</td>
+</tr>
+<tr>
+<td>supercondiv conductivity / superc conductivity</td>
+<td>superconductivity</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>他說 BCS 理論是「around 1958」,學界通用年份是 <strong>1957</strong>(Bardeen–Cooper–Schrieffer)。/ He dates BCS to "around 1958"; the standard date is 1957.</li>
+<li><strong>MgB2 的超導性發現年份</strong>他未明說(只說 1958–2000 這段區間),實際是 2001 年由日本團隊報告——與他的敘述略有出入,值得對照投影片。/ He doesn't date the MgB2 discovery; it was reported in 2001, slightly outside the 1958–2000 window he draws. Worth checking the slide.</li>
+<li>他提到「Berkeley 這邊用機械手臂做粉末合成」的前沿工作但未指名,推測是 LBNL 的 A-Lab,待確認。/ The Berkeley robotic-arm powder-synthesis work is unnamed on stage — likely LBNL's A-Lab, but unconfirmed.</li>
+<li>GNoME「超過 200 萬種新晶體」的數字出自主持人介紹,非講者本人。/ The "over 2 million crystals" figure comes from the moderator, not the speaker.</li>
+<li>Kamerlingh Onnes 實驗室的降溫數字(約 4 K、最低 1.8 K)以逐字稿為準,未與文獻核對。/ The cooling figures (~4 K, down to 1.8 K) are as spoken, not cross-checked against sources.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-plenary/ekin-dogus-cubuk--combining-experiments-large-language-models-and-theory-to-discover-quantum-materials.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

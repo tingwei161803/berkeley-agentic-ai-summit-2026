@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Real-World Superintelligence · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Math and code advanced so fast because we have sandboxes where rollouts are effectively free; the real world has none, and video is the most general candidate — so Runway&#x27;s bet is to predict the wo…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/anastasis-germanidis--real-world-superintelligence.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Real-World Superintelligence · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Math and code advanced so fast because we have sandboxes where rollouts are effectively free; the real world has none, and video is the most general candidate — so Runway&#x27;s bet is to predict the wo…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/anastasis-germanidis--real-world-superintelligence.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="anastasis-germanidis--real-world-superintelligence">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Real-World Superintelligence" data-title-zh="真實世界的超級智慧">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Robotics &amp; World Models</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Real-World Superintelligence</span><span class="lang-zh">真實世界的超級智慧</span></h1>
+        <p class="dialog__speaker"><strong>Anastasis Germanidis</strong> — Co-Founder/Co-CEO, Runway</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 02:47:50–03:01:25 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=Tcn5Yb2K0h4&amp;t=10070s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:47:50</span><span class="lang-zh">從 02:47:50 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Math and code advanced so fast because we have sandboxes where rollouts are effectively free; the real world has none, and video is the most general candidate — so Runway&#x27;s bet is to predict the world by predicting the next frame, then turn that into a real-time, interactive, action-conditioned learned simulator.</span><span class="lang-zh">數學與程式碼之所以進步神速,是因為我們有可以無限便宜地跑 rollout 的沙盒;真實世界沒有,而影片是最通用的那個沙盒——所以 Runway 的路線是「用預測下一幀來預測世界」,再把它變成即時、可互動、以動作為條件的學習型模擬器。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>落差的成因是沙盒,不是智力</strong>:coding LLM 能解的任務時間跨度每年翻倍,但同一批模型仍然搞不定「經營一台販賣機」這種事。差別在於程式與數學有可以近乎無限 scale 的 rollout 沙盒,真實世界的 rollout 又慢又貴。</li>
+<li><strong>影片是最通用的模態</strong>:它最豐富、能教物理、能涵蓋各種時間與空間尺度的科學觀測,也能記錄數位世界的介面操作。所以 Runway 押注「pixel / 下一幀預測」是訓練世界表徵的正確 auxiliary task,而且 <strong>bitter lesson 在影片模型上同樣成立</strong>——算力上去,物理準確度可預測地上去。</li>
+<li><strong>從影片模型到可用的模擬器要再走三步</strong>:(1) 把雙向 diffusion 基座轉成 autoregressive/causal 再蒸餾到即時,取得可互動與 counterfactual 探索能力;(2) 從「靜態環境導航」推進到「多 agent 在世界中採取動作」;(3) 專門化成 <strong>GWM Robotics</strong>——action-conditioned 影片模型,讓 policy 評估可大規模 scale,並成為未來在 world model 內做 RL 的基礎。</li>
+<li><strong>一個容易被忽略的關鍵</strong>:world model 必須<strong>會模擬失敗</strong>。傳統影片模型有強烈的「成功偏誤」(生成射門進球比沒進容易),但要拿來評估 policy,錯誤動作就必須可靠地失敗。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>為什麼真實世界的進步沒跟上(約 02:48–02:49)</h4>
+<p>他從一張大家都熟悉的圖開始:coding LLM 能解決的<strong>任務時間跨度每年翻倍</strong>。語言領域、尤其是 coding agent 的進展驚人。但存在一個反差:數學與程式的進展<strong>沒有等比例地轉移到「與不可預測的真實世界互動」的任務</strong>上。我們每天聽到某個未解猜想被推翻,但 LLM 仍然會在「有效經營一門販賣機生意」這種基本任務上失敗。</p>
+<p>他認為原因在於我們<strong>怎麼訓練</strong>這些模型:對 coding 與數學,我們奢侈地擁有可以近乎無限規模運行的沙盒,rollout 要多少有多少;但我們在意的大量真實世界問題,<strong>沒有一個可以輕易大量跑 rollout 的模擬器</strong>,而在真實世界裡跑 rollout 既慢又貴。</p>
+<h4>為什麼是影片(約 02:49–02:52)</h4>
+<p>解法自然導向 world model。多數人是從 2010 年代 David Ha 的論文認識這個概念的,但這個想法其實可以追溯到 20 世紀中葉的認知科學,以及早期 model-based RL:<strong>人類的運作方式就是不斷在腦中預測與試演</strong>——在真的動手之前先理解行動的後果,用來規劃。要讓 agent 也這麼做,就需要一個「經驗的模擬器」。</p>
+<p>而要 bootstrap 這樣的模擬器,<strong>影片是我們手上最通用的模態</strong>:</p>
+<ul>
+<li>它是最豐富的真實世界情境來源;</li>
+<li>它能教物理,也能教人類在乎的所有任務;</li>
+<li>它的通用性還不只是「人類尺度、相機拍下來的畫面」——影片可以表示<strong>各種時間與空間尺度的科學觀測</strong>;</li>
+<li>它也能捕捉<strong>數位世界</strong>的觀測,這在要教 agent 操作各式介面時特別重要。</li>
+</ul>
+<p>所以 Runway 的路線是:<strong>用預測下一幀來預測世界</strong>。他們相信 pixel / frame prediction 是在巨大規模上訓練出強大世界表徵的正確 auxiliary task,之後這些表徵可以拿去做各種下游任務。</p>
+<p>品質到哪了?他連放三組影片,每組一真一假,請全場指認。事後說明:他們做過 <strong>1,000 人的使用者研究,能穩定分辨的參與者不到 10%</strong>。如果你長期浸在影片生成裡、又盯著看很久,你還是分得出來,但已經越來越難。<strong>從品質角度,我們已經跨過「騙過人類感知」的門檻。</strong></p>
+<p>這是過去十年不斷加大算力與資料規模的結果。他列了里程碑:<strong>Gen-2</strong> 是他們幾年前發布的第一個 text-to-video 模型,<strong>Gen-4.5</strong> 是 Runway 目前最新的模型——在模擬物理、動態運動、以及「看起來像真實世界影片」的能力上有巨幅提升。</p>
+<h4>從創作品質到物理正確(約 02:52–02:54)</h4>
+<p>創作用的影片生成進步了,有多少能轉化成 physical AI 需要的東西?<strong>相當多</strong>。影片生成可以模擬大量<strong>長尾情境</strong>——那些用別的方法幾乎不可能或極度昂貴才能模擬的情況。</p>
+<p>而且這件事可以量測。已有很好的 benchmark 能在多種物理內容類別上比對真實影片與生成影片:<strong>solid mechanics、fluid dynamics、thermodynamics、optics</strong>。即便標準拉高到「不只是看起來合理,而是物理上正確」,結果仍然是<strong>算力規模上升,模型的物理表現可預測地變好</strong>。換句話說,<strong>bitter lesson 在影片模型上完全適用</strong>,而且在他們訓練過的所有影片模型上都可預測地重現。</p>
+<h4>讓模型變成模擬器:即時、可互動、多 agent(約 02:54–02:57)</h4>
+<p>要讓這些模型對真實世界真的有用,下一階段是<strong>即時與可互動</strong>。無論你想在影片模型上蓋模擬器還是蓋 policy 模型,這對機器人等場景都是關鍵。</p>
+<p>Runway 的做法是:拿基座影片模型——原本是<strong>雙向(bidirectional)的 diffusion 模型</strong>——把它改成 <strong>autoregressive 且 causal</strong>,再做一階段<strong>蒸餾讓它即時</strong>。這讓模型變成可互動的,能輕易探索 counterfactual:「我做動作 A 相對於動作 B 會怎樣?」畫面隨你採取的動作即時生成。</p>
+<p>同時有兩條持續推進的軸:<strong>通用性(generality)</strong> 與<strong>彈性(flexibility)</strong>。他把演進畫成一條線:David Ha 原始論文的 world model 訓練在特定賽車遊戲上;接著是自駕影像這類窄領域專用的 world model(生成道路、路上移動的車);再到去年發布的 <strong>Genie</strong> 那種高擬真但<strong>大致是靜態環境的導航</strong>。而他們聚焦的是:<strong>怎麼讓 world model 真的動態起來</strong>——不只是在靜態世界裡導航,而是<strong>在世界裡採取動作</strong>,而且理想上是<strong>多個 agent 同時採取動作</strong>。示範中就是同時指揮兩個不同 agent,並模擬其結果。</p>
+<h4>GWM Robotics:把 policy 評估搬進世界模型(約 02:57–03:01)</h4>
+<p>他們釋出的 world model 變體中,有一個是專門給機器人的:<strong>GWM Robotics</strong>,一個 action-conditioned 影片模型,用來模擬<strong>單臂或雙臂機器人</strong>動作的結果。</p>
+<ul>
+<li>很多情況下,這些模型生成的 rollout <strong>和真實 teleop 資料難以分辨</strong>;</li>
+<li>它能模擬<strong>布料等非剛體物體</strong>的細緻互動;</li>
+<li>帶來的直接價值是<strong>讓評估變得可大規模 scale</strong>:拿任何 policy 模型(可以是 VLA 或其他),預測某個動作的結果,再把結果餵回 policy;</li>
+<li>而且<strong>對得上真實世界</strong>:拿像 <strong>π0.5</strong> 這樣的 policy,用同一批動作分別在真實 teleop 資料與 world model 內 rollout,<strong>任務成功率在真實與模擬之間有很好的相關性</strong>。於是評估 policy 的速度可以大幅拉高。</li>
+<li>未來這也是<strong>在 world model 內做 RL</strong> 的良好基礎,把互動 scale 得比真實世界快得多。</li>
+</ul>
+<p>最後是一個他特別強調、也最容易被忽略的點:<strong>world model 必須能模擬失敗</strong>。傳統影片模型有強烈的<strong>成功偏誤</strong>——生成「某人成功進球」的影片比生成沒進的容易得多。但如果你要用它評估 policy 好不好,你就需要<strong>當 policy 做錯動作時,它會可靠地失敗</strong>。</p>
+<p>結語:world model 的終極目標是把<strong>投入其中的觀測數量</strong>極大化。他們相信<strong>學習型模擬器(learned simulators)</strong>是更可 scale 的路——在那些「手工撰寫傳統模擬器極為困難」或「在真實世界執行動作、蒐集資料極為昂貴」的情境裡,尤其如此。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"For coding and for math we have this luxury of having sandboxes that we can run at effectively infinite scale."(約 02:49)</p>
+</blockquote>
+<p>一句話定位了真實世界 AI 的瓶頸:不是模型不夠聰明,是沒有便宜的 rollout。</p>
+<blockquote>
+<p>"Our approach at Runway has been predicting the world by predicting the next frame."(約 02:50:30)</p>
+</blockquote>
+<p>整場的路線宣言。</p>
+<blockquote>
+<p>"The bitter lesson really applies to video models."(約 02:53:30)</p>
+</blockquote>
+<p>物理正確度隨算力可預測地提升,不是靠架構先驗。</p>
+<blockquote>
+<p>"A lot of traditional video models have this bias towards success."(約 03:00:20)</p>
+</blockquote>
+<p>最反直覺的一點:能生成漂亮成功畫面的模型,恰恰不適合拿來評估 policy。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The gap is about sandboxes, not intelligence.</strong> The time horizon of tasks a coding LLM can solve has doubled every year, yet the same models still fail at running a vending machine business. Code and math have rollout sandboxes that scale essentially for free; real-world rollouts are slow and expensive.</li>
+<li><strong>Video is the most general modality</strong>: the most abundant source of real-world scenarios, it teaches physics, spans scientific observations at many temporal and spatial scales, and even captures the digital world's interfaces. So Runway's bet is that pixel/next-frame prediction is the right auxiliary task for learning world representations — and <strong>the bitter lesson applies to video models</strong>: more compute predictably buys better physics.</li>
+<li><strong>Three more steps turn a video model into a usable simulator</strong>: (1) convert the bidirectional diffusion base into an autoregressive, causal model and distill it to real time, unlocking interactivity and counterfactual exploration; (2) move from static-environment navigation to multiple agents taking actions in the world; (3) specialize into <strong>GWM Robotics</strong>, an action-conditioned model that makes policy evaluation scalable and lays the groundwork for RL inside the world model.</li>
+<li><strong>The easily-missed requirement</strong>: a world model has to <strong>simulate failure</strong>. Traditional video models carry a strong success bias (a video of a goal going in is easier to generate than one missing), but to evaluate a policy you need wrong actions to reliably fail.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Why real-world progress lags (~02:48–02:49)</h4>
+<p>He opened with the graph everyone knows: the <strong>time horizon of software tasks a coding LLM can solve has doubled every year</strong>. Progress in the language domain, and especially with coding agents, has been incredible. Yet there's a contrast — that progress in math and code <strong>does not transfer as well to tasks that involve interacting with the unpredictable real world</strong>. We hear daily about some open conjecture being disproven, and meanwhile LLMs still fail at rudimentary tasks like running a vending machine business effectively.</p>
+<p>The reason, he argues, comes down to <strong>how effectively we train those models</strong>. For coding and math we have the luxury of sandboxes we can run at effectively infinite scale, so rollouts scale trivially. For most real-world problems we care about, <strong>there is no simulator we can easily run at scale</strong>, and scaling rollouts in the real world is slow and expensive.</p>
+<h4>Why video (~02:49–02:52)</h4>
+<p>The natural response is world models. Most people know the concept from David Ha's paper in the 2010s, but the idea goes back to mid-20th-century cognitive science and early model-based RL: <strong>humans constantly predict and try things out in their heads</strong>, understanding the outcome of actions before taking them, and that's what enables planning. To do this with agents, you need a simulator of experience.</p>
+<p>To bootstrap such a simulator, <strong>video is the most general modality available</strong>:</p>
+<ul>
+<li>it's the most abundant source of real-world scenarios;</li>
+<li>it can teach physics and essentially all the tasks humans care about;</li>
+<li>its generality goes beyond human-scale camera footage — video can represent <strong>scientific observations across many temporal and spatial scales</strong>;</li>
+<li>and it captures <strong>digital-world observations</strong>, which matters enormously if you want agents that work with the variety of interfaces we use every day.</li>
+</ul>
+<p>So Runway's approach has been <strong>predicting the world by predicting the next frame</strong> — treating pixel and frame prediction as the right auxiliary task to train at massive scale, producing models with powerful world representations usable for many downstream tasks.</p>
+<p>How good is the quality? He ran three real-versus-generated pairs with the audience. Then the reveal: in a <strong>user study with 1,000 participants, reliably fewer than 10% could tell them apart</strong>. If you live in video generation and stare long enough you can still call it, but it's getting harder. <strong>On quality, we've crossed the threshold where it's easy to fool human perception.</strong></p>
+<p>That came from a decade of increasing compute and data scale. The milestones: <strong>Gen-2</strong>, their first text-to-video model released a few years ago, through to <strong>Gen-4.5</strong>, Runway's latest — a massive improvement in simulating physics, producing dynamic motion, and generally feeling like plausible real-world video.</p>
+<h4>From creative quality to physical accuracy (~02:52–02:54)</h4>
+<p>How much of the creative-video progress translates into what physical AI needs? Quite a lot. Video generation can simulate a great many <strong>long-tail scenarios</strong> that are basically impossible or incredibly expensive to simulate otherwise.</p>
+<p>And it's measurable. Good benchmarks now compare real to generated video across many categories of physics content — <strong>solid mechanics, fluid dynamics, thermodynamics, optics</strong>. Even on the stricter bar of whether the video is physically <em>accurate</em> rather than merely plausible, <strong>increasing compute scale reliably improves the physics of these models</strong>. In other words, <strong>the bitter lesson really applies to video models</strong>, and they've seen it hold predictably across every video model they've trained.</p>
+<h4>Making it a simulator: real-time, interactive, multi-agent (~02:54–02:57)</h4>
+<p>The next stage toward real-world usefulness is making the models <strong>real-time and interactive</strong> — critical for robotics whether you want to build a simulator or a policy model on top of a video model.</p>
+<p>Their approach: take the foundation video model, which is a <strong>bidirectional diffusion model</strong>, make it <strong>autoregressive and causal</strong>, then run another <strong>distillation stage to make it real-time</strong>. That makes the model interactive and lets you explore counterfactuals easily — if I take this action versus that one, what happens? — with frames generated on the fly from the actions you take.</p>
+<p>Two axes keep advancing: <strong>generality</strong> and <strong>flexibility</strong> of world models. He traced the arc: David Ha's original world model was trained on one particular racing game; then came narrow-domain world models for things like self-driving footage (generating roads and cars moving along them); then last year's <strong>Genie</strong>, high fidelity but mostly <strong>static-environment navigation</strong>. Their focus has been on making world models genuinely <strong>dynamic</strong> — not just navigating a static world, but <strong>taking actions in it, and ideally with multiple agents</strong>. The demo instructs two different agents simultaneously and simulates the outcome.</p>
+<h4>GWM Robotics: moving policy evaluation inside the world model (~02:57–03:01)</h4>
+<p>One of the released world model variants is robotics-specific: <strong>GWM Robotics</strong>, an action-conditioned video model that simulates the outcomes of actions for <strong>single-arm or bimanual robots</strong>.</p>
+<ul>
+<li>In many cases the generated rollouts are <strong>very difficult to tell apart from ground-truth teleop data</strong>.</li>
+<li>It simulates fine-grained interactions with <strong>cloth and other non-rigid objects</strong>.</li>
+<li>The immediate payoff is <strong>making evaluation far more scalable</strong>: take any policy model — a VLA or otherwise — predict the outcome of an action, and feed that back into the policy.</li>
+<li>And it <strong>matches the real world</strong>: take a policy like <strong>π0.5</strong>, roll out identical actions against ground-truth teleop data and inside the world model, and task success correlates well between simulation and reality. That massively speeds up how fast you can evaluate policy models.</li>
+<li>Looking forward, this is also a strong foundation for <strong>doing RL inside the world model</strong>, scaling interactions far faster than reality allows.</li>
+</ul>
+<p>He closed on the point most likely to be overlooked: <strong>world models must be able to simulate failure.</strong> Traditional video models carry a <strong>bias toward success</strong> — it's much easier to generate a video of someone scoring a goal than missing one. But if you want to evaluate how well a policy works, you need the model to <strong>reliably fail when the policy performs the wrong actions</strong>.</p>
+<p>The ultimate goal of world models is to increase the number of observations you can put into them. He believes <strong>learned simulators</strong> are a far more scalable path to building environments where agents can train — especially where hand-authoring a traditional simulator is very difficult, or performing the actions and gathering data in the real world is very expensive.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"For coding and for math we have this luxury of having sandboxes that we can run at effectively infinite scale." (~02:49)</p>
+</blockquote>
+<p>The bottleneck for real-world AI in one line: not model intelligence, but the cost of a rollout.</p>
+<blockquote>
+<p>"Our approach at Runway has been predicting the world by predicting the next frame." (~02:50:30)</p>
+</blockquote>
+<p>The thesis statement of the talk.</p>
+<blockquote>
+<p>"The bitter lesson really applies to video models." (~02:53:30)</p>
+</blockquote>
+<p>Physical accuracy improves predictably with compute, not with architectural priors.</p>
+<blockquote>
+<p>"A lot of traditional video models have this bias towards success." (~03:00:20)</p>
+</blockquote>
+<p>The most counterintuitive point: the very models that produce beautiful successful footage are the wrong ones for evaluating a policy.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runway Gen-2</td>
+<td>Runway 幾年前發布的第一個 text-to-video 模型</td>
+<td>Runway's first text-to-video model, released a few years ago</td>
+<td>影片品質演進的起點 / start of the quality timeline he showed</td>
+</tr>
+<tr>
+<td>Runway Gen-4.5</td>
+<td>Runway 目前最新的基座影片模型,物理模擬與動態運動大幅提升</td>
+<td>Runway's latest base video model; large gains in physics simulation and dynamic motion</td>
+<td>GWM 系列建立在其之上 / the GWM family is built on top of it</td>
+</tr>
+<tr>
+<td>GWM Robotics</td>
+<td>針對機器人的 action-conditioned 影片世界模型,模擬單臂/雙臂動作結果</td>
+<td>Robotics-specific action-conditioned video world model for single-arm and bimanual outcomes</td>
+<td>用於可 scale 的 policy 評估與未來的 world-model 內 RL / for scalable policy evaluation and future in-model RL</td>
+</tr>
+<tr>
+<td>David Ha 的 World Models 論文</td>
+<td>2010 年代讓多數人認識 world model 概念的論文</td>
+<td>The paper that introduced most people to world models in the 2010s</td>
+<td>他指出概念本身可追溯至 20 世紀中的認知科學與 model-based RL / he notes the concept predates it</td>
+</tr>
+<tr>
+<td>Genie</td>
+<td>去年發布、高擬真但以靜態環境導航為主的 world model</td>
+<td>Last year's world model: high fidelity, mostly static-environment navigation</td>
+<td>作為「通用性/彈性」演進軸上的參照點 / a reference point on the generality axis</td>
+</tr>
+<tr>
+<td>π0.5 (pi 0.5)</td>
+<td>用來驗證 world model 內外任務成功率相關性的 policy 模型</td>
+<td>The policy model used to show sim-vs-real task-success correlation</td>
+<td>Physical Intelligence 的模型 / from Physical Intelligence</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anastasis Germanis / Anastasio</td>
+<td>Anastasis Germanidis</td>
+</tr>
+<tr>
+<td>gen 2 / gen 4.5</td>
+<td>Gen-2 / Gen-4.5</td>
+</tr>
+<tr>
+<td>GWM robotics</td>
+<td>GWM Robotics</td>
+</tr>
+<tr>
+<td>pi 0.5</td>
+<td>π0.5</td>
+</tr>
+<tr>
+<td>RILL / model based RL</td>
+<td>model-based RL</td>
+</tr>
+<tr>
+<td>birectional</td>
+<td>bidirectional</td>
+</tr>
+<tr>
+<td>auto reggressive</td>
+<td>autoregressive</td>
+</tr>
+<tr>
+<td>VA / VAS</td>
+<td>VLA / VLAs</td>
+</tr>
+<tr>
+<td>many nons of reliability(panel 段)</td>
+<td>many nines of reliability</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「時間跨度每年翻倍」那張圖的原始出處,演講中只說「大家應該都熟悉這張圖」而未具名。/ The source of the doubling-time-horizon chart was not cited on stage.</li>
+<li>用來比對真實與生成影片物理正確性的 benchmark 名稱,演講中僅稱 "some really great benchmarks"。/ The physics benchmarks used to compare real versus generated video were not named.</li>
+<li>1,000 人使用者研究的完整方法與發表出處。/ Full methodology and publication venue for the 1,000-participant user study.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/anastasis-germanidis--real-world-superintelligence.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

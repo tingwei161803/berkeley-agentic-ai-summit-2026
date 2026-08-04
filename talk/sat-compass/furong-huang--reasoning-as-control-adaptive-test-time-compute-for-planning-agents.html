@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Reasoning as Control: Adaptive Test-Time Compute for Planning Agents · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Self-improvement is usually framed as a model capability, but the model is only one layer; foundation models are increasingly runtime decision makers, and a self-improving agentic system can be imp…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/furong-huang--reasoning-as-control-adaptive-test-time-compute-for-planning-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Reasoning as Control: Adaptive Test-Time Compute for Planning Agents · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Self-improvement is usually framed as a model capability, but the model is only one layer; foundation models are increasingly runtime decision makers, and a self-improving agentic system can be imp…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/furong-huang--reasoning-as-control-adaptive-test-time-compute-for-planning-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-compass" data-talk="furong-huang--reasoning-as-control-adaptive-test-time-compute-for-planning-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Reasoning as Control: Adaptive Test-Time Compute for Planning Agents" data-title-zh="把推理當成控制:給規劃型 agent 的自適應 test-time compute">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Reasoning as Control: Adaptive Test-Time Compute for Planning Agents</span><span class="lang-zh">把推理當成控制:給規劃型 agent 的自適應 test-time compute</span></h1>
+        <p class="dialog__speaker"><strong>Furong Huang</strong> — Associate Professor, University of Maryland</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 02:33:55–02:45:45 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=9235s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:33:55</span><span class="lang-zh">從 02:33:55 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Self-improvement is usually framed as a model capability, but the model is only one layer; foundation models are increasingly runtime decision makers, and a self-improving agentic system can be improved at three levels — thinking (token-level decoding control), action (genuine self-reflection rather than imitating a stronger model), and workflow (retrieving a topology from a pre-computed bank at test time) — all without retraining the model.</span><span class="lang-zh">自我改進不該只被當成「模型能力」;基礎模型正在變成 runtime 的決策者,而 agentic 系統的自我改進可以發生在三個層級——thinking(token 級解碼控制)、action(真正的自我反思而非模仿更強模型)、workflow(從 workflow bank 中即時挑選拓撲)——這三層都能在不重訓模型的前提下改進。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>重新框定自我改進</strong>:大家談 self-improvement 時多半框成模型能力(模型改進自己的推理、從自己的輸出學習、獲得新技能)。但<strong>模型只是其中一層</strong>——最終被部署的是一整個 agentic 系統,模型周圍那一大圈基礎設施同樣是很有意思的改進層,對垂直應用尤其關鍵。</li>
+<li><strong>runtime 決策有階層</strong>:從最底層的 thinking choices / token control,到每一步的 action control,再到最高層的 workflow control。這三層都可以最佳化,而且都可以<strong>在不訓練模型的前提下</strong>做。</li>
+<li><strong>三個層級的具體做法</strong>:(1) <strong>Thinking</strong>——用 reward 訊號在解碼時把模型「向早期就導正」,從 Transfer Q<em> 到 token-level reward model,把成本降低數個數量級,可做 weak-to-strong 引導與即時多目標對齊;(2) </em><em>Action</em><em>——「genuine self-reflection」:不模仿更強模型的反思,而是強迫模型自己判斷此刻哪個動作更好、並說明為什麼,實質上是在建 world model;(3) </em><em>Workflow</em><em>——不做「one-for-all」也不做「one-for-each」,而是預先建一個 </em><em>workflow bank</em>*,test time 再即時挑選。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>重新框定:自我改進不只是模型的事(約 02:34–02:36)</h4>
+<p>她開場就把講題往「<strong>self-improving agentic systems</strong>」拉。一般談 self-improvement,框的是模型能力:模型能改進自己的推理、開始從自己的輸出學習、進而習得新技能。但她認為<strong>模型只是一層</strong>——最終要被部署的是一個 agentic 系統,模型外圍還有大量基礎設施:模型怎麼被建造、怎麼被部署。那也是一個很值得理解的改進層,而且<strong>對垂直應用可能更重要</strong>——當你在自己的環境、自己的企業、自己的應用領域裡使用語言模型時。</p>
+<p>接著她拆解 agentic 系統拿到一個任務後實際發生的事:從環境觀察到狀態轉移 → 觀察經過思考流程 → 最後做出決策(每個時刻決定當下最該做什麼)。因為任務通常很複雜,你會把它<strong>分解給多個 agent</strong>、<strong>指派角色</strong>、<strong>設計 workflow</strong>(她說現在大家叫這個「loop engineering」);而 workflow 裡的每個 agent,每個時間步都要決定動作,而每個動作決策前都得走一遍思考流程、產出一段 reasoning trace。</p>
+<p>於是 runtime 就出現了一個<strong>決策階層</strong>:</p>
+<ol>
+<li>最底層:<strong>thinking choices 與 token control</strong></li>
+<li>中層:<strong>action control</strong>(每個決策時間步)</li>
+<li>最上層:<strong>workflow control</strong></li>
+</ol>
+<p>她的主張:<strong>基礎模型正越來越成為 runtime 的決策者</strong>。自我改進的 agentic 系統,不只可以改進模型能力,也可以改進基礎設施——改進模型在 runtime 怎麼被部署,跨 thinking、跨 action、跨 workflow。</p>
+<h4>層級一:Thinking — 解碼時的 steering(約 02:36–02:40)</h4>
+<p>起點是 <strong>steering 問題</strong>:有一個 reward model,希望把 LLM 導向特定 reward。熟悉數學的人知道這有<strong>封閉解</strong>,而這個封閉解對「對齊」這個複雜問題給了一個很短的答案:<strong>拿 base model 的輸出,加上一個額外的 steering 訊號</strong>,而這個 steering 訊號無非就是「某個最佳策略下的 trajectory reward」的某種形式。</p>
+<p>從自迴歸的 next-token 取樣角度看,實務上就是:看著語言模型的輸出,用一個<strong>可以從企業自有資料學來的外部訊號</strong>去引導它。</p>
+<p>但這裡有個<strong>落差</strong>:你真正想要的是<strong>盡可能早</strong>在生成過程中就 steer,而你手上的 reward model 是 <strong>trajectory-level</strong> 的——它評的是完整回應,支撐不了 next-token 級的引導。</p>
+<ul>
+<li><strong>Transfer Q</strong><em>:先接受這個限制,做 auto-completion 再正確地使用 reward model。做法是對的,但</em><em>太慢</em><em>——在她的學術環境裡用 A6000 GPU,生成 500 個 token 要 </em><em>14 小時</em>*,基本上不可行。</li>
+<li><strong>近期工作(token-level reward model)</strong>:設計一個特定的 reward 模型族、做出 <strong>token 級的 reward</strong>,把成本<strong>降低數個數量級</strong>。結果她形容為 phenomenal:可以做任意的 runtime steering、<strong>完全不需要訓練模型</strong>;可以做 <strong>weak-to-strong guidance</strong>(用很小的模型引導很大的模型);還可以做<strong>多目標對齊</strong>——不同目標之間即時依使用者需求調整。</li>
+</ul>
+<h4>層級二:Action — genuine self-reflection(約 02:40–02:42)</h4>
+<p>思考終究是為了服務行動,那麼怎麼做決策?</p>
+<p>Agentic 系統常用 <strong>imitation learning</strong>(從專家示範蒸餾),但這常掉進 <strong>stuck loop</strong> 問題:agent 反覆嘗試同樣的動作直到終止或耗盡 token 預算。</p>
+<p>於是有人轉向 world model 訓練,具體做法之一是<strong>模仿 self-reflection</strong>。她點出這件事的矛盾:<strong>當你在「模仿」自我反思時,你並不是在用自己反思——你是在模仿一個更強的模型教你怎麼反思</strong>。這確實比 imitation learning 好,但結果並不令人滿意。</p>
+<p>她們做了一件很簡單的事,稱為 <strong>genuine self-reflection</strong>:不模仿更強的模型怎麼想、怎麼反思,而是<strong>強迫模型自己去反思——在這個時間點,哪個動作更好</strong>。你可以把這理解成在建一個 <strong>world model</strong>:模型在建立「什麼狀態下哪個動作更好」的心智模型,而且<strong>同時被強迫理解為什麼</strong>。</p>
+<p>結果她說「worked really phenomenally」:能同時改進 imitation learning 與 reinforcement learning,<strong>out-of-distribution 表現顯著提升</strong>,也大幅超越先前的 SOTA。她認為最酷的一點是:<strong>它會外溢到一般推理能力</strong>——僅僅透過理解「agent 在特定環境裡怎樣運作得更好」,這種看似與一般推理無關的 critical learning,卻神奇地提升了一般推理能力。</p>
+<h4>層級三:Workflow — 一個可即時檢索的 workflow bank(約 02:42–02:45)</h4>
+<p>最上層是<strong>自主決定 agent 角色、最佳化 agent 拓撲</strong>,也就是 workflow 最佳化。她舉了一個 agentic safety 應用的固定 workflow 為例:它運作得很好,但問題是——<strong>能不能設計一個框架,讓一個 meta designer 在 query 進來時,為這個特定任務生出最好的 agentic 框架、最好的 harness?而且是自主地做?</strong></p>
+<p>既有的兩條路線:</p>
+<ul>
+<li><strong>One-for-all</strong>:為特定任務找出世界上最好的那一個 workflow。</li>
+<li><strong>One-for-each</strong>:為進來的<strong>每一個 query</strong> 各自設計最好的 flow,追求適應性。</li>
+</ul>
+<p>她們的取徑是「基礎模型式的哲學」:<strong>兩者都不做</strong>。而是<strong>在訓練時預先計算一批 workflow、建成一個 workflow bank</strong>,部署時<strong>即時適配</strong>到具體 workflow,藉此取得效率。結果顯示效能有顯著提升。</p>
+<p>(她在此坦言現場投影片渲染出了問題,說會分享渲染正確的版本。)</p>
+<h4>總結(約 02:45)</h4>
+<p>自我改進的 agentic 系統有<strong>三個 runtime 決策層級</strong>,而重點都是:在<strong>有限預算</strong>下聰明地分配運算資源——</p>
+<ol>
+<li>如何<strong>盡可能早</strong>地導正思考流程,免得走完一段又長又錯的思考;</li>
+<li>如何做 <strong>action control</strong>;</li>
+<li>如何做 <strong>workflow control</strong>。</li>
+</ol>
+<h3>金句</h3>
+<blockquote>
+<p>"Foundation models are actually more and more becoming a runtime decision maker."(約 02:36)</p>
+</blockquote>
+<p>整場演講的軸心:模型不只是被訓練出來的能力,更是部署時每一層決策的執行者。</p>
+<blockquote>
+<p>"This is not actually self-reflection — when you are trying to self-reflect, you're not actually using yourself to reflect, you are actually mimicking some stronger model which teaches you how to reflect."(約 02:41)</p>
+</blockquote>
+<p>對「模仿式自我反思」的一句到位的拆穿,也是 genuine self-reflection 的動機。</p>
+<blockquote>
+<p>"You're doing it right, but you're doing it way too slow."(約 02:39)</p>
+</blockquote>
+<p>對 Transfer Q* 的自我評價——500 個 token 要跑 14 小時,方法正確但工程上不可用。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Reframing self-improvement.</strong> It's usually framed as a <em>model</em> capability — the model improves its reasoning, learns from its own output, acquires new skills. But the model is one layer. What actually gets deployed is an agentic system, and the infrastructure around the model is an equally interesting layer to keep improving — possibly <em>more</em> important for vertical applications.</li>
+<li><strong>Runtime decisions form a hierarchy</strong>: low-level thinking choices and token control, then per-step action control, then high-level workflow control. All three can be optimized, and all three without retraining the model.</li>
+<li><strong>Three concrete lines of work</strong>: (1) <strong>Thinking</strong> — steer decoding with a reward signal as early as possible; from Transfer Q<em> to a token-level reward model that cuts cost by orders of magnitude, enabling weak-to-strong guidance and real-time multi-objective alignment; (2) </em><em>Action</em><em> — "genuine self-reflection," forcing the model to judge which action is better </em>and why<em> rather than mimicking a stronger model's reflection, which is effectively building a world model; (3) </em><em>Workflow</em><em> — neither one-for-all nor one-for-each, but a pre-computed </em><em>workflow bank</em>* adapted at test time.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The reframe (~02:34–02:36)</h4>
+<p>She opens by redirecting the topic toward <strong>self-improving agentic systems</strong>. When people talk about self-improvement they frame it as a model capability. But the model is just one layer; at the end of the day an agentic system gets deployed, and there's a lot of infrastructure around the model — how it's built, how it's served — that's a very interesting layer in its own right, and possibly more important for vertical applications where you're using a language model inside your own environment and domain.</p>
+<p>She then walks through what happens in an agentic system given a task: observe a state transition from the environment → run it through a thinking process → make a decision about the best action right now. Because these tasks are complicated, you decompose them across agents, assign roles, and design a workflow — what she notes people now call <strong>loop engineering</strong>. Each agent in the workflow decides an action per timestep, and each action decision requires generating a reasoning trace.</p>
+<p>That produces a <strong>hierarchy of runtime decision making</strong>: low-level thinking choices and token control → action control at each timestep → high-level workflow control. Her framing: <strong>foundation models are increasingly runtime decision makers</strong>, so a self-improving agentic system can improve the model's capability <em>and</em> how the model is deployed at runtime across thinking, actions, and workflows.</p>
+<h4>Level 1: Thinking — steering at decode time (~02:36–02:40)</h4>
+<p>Start from the <strong>steering problem</strong>: you have a reward model and want to steer an LLM to align with that specific reward. The math gives a closed-form solution, and it's a remarkably short answer to a complicated alignment question: take whatever the base model gives you and <strong>add a steering signal</strong>, where that signal relates to a trajectory reward under some optimal policy.</p>
+<p>From an autoregressive next-token sampling perspective this reduces to: look at the language model's output and steer it with an external signal you can learn from your own corporate data.</p>
+<p>The discrepancy: you want to steer <strong>as early as possible</strong> in generation, but reward models are <strong>trajectory-level</strong> — designed to score complete responses, not partial ones.</p>
+<ul>
+<li><strong>Transfer Q*</strong> takes the honest route: do the auto-completion and use the reward model correctly. Right idea, far too slow — on an academic A6000, generating 500 tokens takes <strong>14 hours</strong>. Basically impossible.</li>
+<li>A more recent work designs a specific reward model family giving a <strong>token-level reward</strong>, cutting cost by <strong>orders of magnitude</strong>. That unlocks arbitrary runtime steering with <strong>no model training at all</strong>, <strong>weak-to-strong guidance</strong> (a very small model guiding a very large one), and <strong>multi-objective alignment</strong> where objectives adapt in real time to user need.</li>
+</ul>
+<h4>Level 2: Action — genuine self-reflection (~02:40–02:42)</h4>
+<p>Thinking exists to serve action, so how is the decision made?</p>
+<p>Agentic systems are commonly learned via <strong>imitation learning</strong>, distilling from expert demonstrations — which frequently hits the <strong>stuck loop</strong> failure: the agent retries the same actions until termination or budget exhaustion.</p>
+<p>The natural next move is world-model training, and one popular version is imitating self-reflection. Her objection is sharp: <strong>that isn't self-reflection at all</strong> — you're not using yourself to reflect, you're mimicking a stronger model that teaches you how to reflect. It works better than imitation learning, but the results aren't satisfying.</p>
+<p>So they did something simple, <strong>genuine self-reflection</strong>: rather than imitating how stronger models think and reflect, force the model itself to do the reflection — <em>which action is better at this point</em> — <strong>and to understand why</strong>. That's effectively a world model: a mental model of which action is better under which state.</p>
+<p>It "worked really phenomenally": improvements over both imitation learning and reinforcement learning, significant gains <strong>out of distribution</strong>, and performance well beyond prior state of the art. The part she finds most interesting is that it <strong>generalizes to general reasoning</strong> — this kind of critical learning bears no obvious relation to general reasoning capability, yet it magically improves it.</p>
+<h4>Level 3: Workflow — a bank you retrieve from (~02:42–02:45)</h4>
+<p>The top layer: autonomously deciding agent roles and optimizing agent topology. Her example is a fixed workflow for an agentic-safety application that works well — but can you design a framework where a <strong>meta designer</strong> produces the best agentic framework and harness for each incoming query, autonomously?</p>
+<p>Two existing routes: <strong>one-for-all</strong> (find the single best workflow in the world for the task) and <strong>one-for-each</strong> (design the best flow per query, maximizing adaptability).</p>
+<p>Their answer takes a foundation-model philosophy: neither. <strong>Pre-compute a bank of workflows</strong> at training time, then <strong>adapt to the specific workflow at test time</strong>, efficiently. The results show significant performance improvement. (She flagged live that the slide wasn't rendering correctly and offered to share a corrected version.)</p>
+<h4>Wrap-up (~02:45)</h4>
+<p>Three levels of runtime decision making in a self-improving agentic system, all about allocating compute intelligently under a limited budget: steer the thinking process as early as possible so you don't run a long process in the wrong direction; control the action; and control the workflow.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Foundation models are actually more and more becoming a runtime decision maker." (~02:36)</p>
+</blockquote>
+<p>The talk's axis: the model isn't just a trained capability, it's the thing making decisions at every deployment layer.</p>
+<blockquote>
+<p>"This is not actually self-reflection — when you are trying to self-reflect, you're not actually using yourself to reflect, you are actually mimicking some stronger model which teaches you how to reflect." (~02:41)</p>
+</blockquote>
+<p>The puncture that motivates genuine self-reflection.</p>
+<blockquote>
+<p>"You're doing it right, but you're doing it way too slow." (~02:39)</p>
+</blockquote>
+<p>Her verdict on Transfer Q*: 14 hours for 500 tokens is methodologically correct and practically unusable.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transfer Q*</td>
+<td>用 baseline 模型估計最佳 token 級 value function 的原理式解碼對齊法;正確但極慢</td>
+<td>Principled decoding for LLM alignment using baseline models to estimate the optimal token-level value function; correct but very slow</td>
+<td>arXiv 2405.20495</td>
+</tr>
+<tr>
+<td>Token-level reward model(近期工作)</td>
+<td>設計 reward 模型族做 token 級 reward,成本降數個數量級,支援 weak-to-strong 與多目標對齊</td>
+<td>Reward model family giving token-level rewards; orders-of-magnitude cheaper; weak-to-strong guidance and multi-objective alignment</td>
+<td>疑為 GenARM(arXiv 2410.08193),講者未報名稱,待確認 / likely GenARM — not named in the talk</td>
+</tr>
+<tr>
+<td>Genuine self-reflection</td>
+<td>強迫模型自行判斷哪個動作更好與為什麼,而非模仿更強模型的反思</td>
+<td>Forces the model to judge which action is better and why, instead of mimicking a stronger model's reflection</td>
+<td>論文名稱待確認 / paper title to verify</td>
+</tr>
+<tr>
+<td>Workflow bank</td>
+<td>訓練時預算一批 workflow,test time 即時挑選;介於 one-for-all 與 one-for-each 之間</td>
+<td>Pre-computed bank of workflows adapted at test time; between one-for-all and one-for-each</td>
+<td>論文名稱待確認 / paper title to verify</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fuang Hong</td>
+<td>Furong Huang</td>
+</tr>
+<tr>
+<td>ajinky / agendic / a gentic</td>
+<td>agentic</td>
+</tr>
+<tr>
+<td>transfer Q star</td>
+<td>Transfer Q*</td>
+</tr>
+<tr>
+<td>auto reggressive</td>
+<td>autoregressive</td>
+</tr>
+<tr>
+<td>a loop engineering("a" 為贅字)</td>
+<td>loop engineering</td>
+</tr>
+<tr>
+<td>premputee</td>
+<td>pre-compute</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>token-level reward model</strong> 那篇「very recent work」的論文名稱(語境高度符合 GenARM,但講者未在逐字稿中報出名稱)。/ Title of the "very recent work" on token-level rewards — context matches GenARM but the name isn't spoken.</li>
+<li><strong>genuine self-reflection</strong> 的論文名稱與 benchmark(講者只描述方法與結果)。/ Paper title and benchmarks for genuine self-reflection.</li>
+<li><strong>workflow bank</strong> 工作的論文名稱;講者提到的 "one for all" / "one for each" 是否為特定論文的名稱亦待確認。/ Paper title for the workflow bank work; whether "one for all" and "one for each" refer to named papers.</li>
+<li>講者展示 workflow 範例時提到的 agentic safety 應用具體為何(投影片渲染失敗,現場未細講)。/ The agentic-safety application used as the fixed-workflow example — the slide failed to render.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/furong-huang--reasoning-as-control-adaptive-test-time-compute-for-planning-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

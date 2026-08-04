@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Building Resilience for the Intelligence Age · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Fire didn&#x27;t become safe because we banned it — it became safe through a layered ecosystem of detection, brigades, hydrants, materials, inspections and insurance; AI has no silver bullet either, ali…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/wojciech-zaremba--building-resilience-for-the-intelligence-age.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Building Resilience for the Intelligence Age · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Fire didn&#x27;t become safe because we banned it — it became safe through a layered ecosystem of detection, brigades, hydrants, materials, inspections and insurance; AI has no silver bullet either, ali…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/wojciech-zaremba--building-resilience-for-the-intelligence-age.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="wojciech-zaremba--building-resilience-for-the-intelligence-age">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Building Resilience for the Intelligence Age" data-title-zh="為智慧時代建立韌性">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Agentic AI Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Building Resilience for the Intelligence Age</span><span class="lang-zh">為智慧時代建立韌性</span></h1>
+        <p class="dialog__speaker"><strong>Wojciech Zaremba</strong> — Co-Founder, OpenAI; Head of AI Resilience, OpenAI Foundation</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 00:59:45–01:10:08 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=Tcn5Yb2K0h4&amp;t=3585s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:59:45</span><span class="lang-zh">從 00:59:45 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Fire didn&#x27;t become safe because we banned it — it became safe through a layered ecosystem of detection, brigades, hydrants, materials, inspections and insurance; AI has no silver bullet either, aligning individual models is only one layer, and the real work is building the institutions that don&#x27;t exist yet.</span><span class="lang-zh">火的安全不是靠禁止用火達成的,而是靠偵測、消防隊、水管網、建材、檢查、保險層層疊起來的生態系;AI 也不會有 silver bullet,把個別模型對齊只是其中一層,真正要做的是去打造那些還不存在的機構與組織。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>AI resilience 是什麼</strong>:OpenAI 重組後,非營利的 OpenAI Foundation 持有約四分之一的 OpenAI 股權,其中一個部門就是 AI resilience。它和 AI safety 相近但不同——safety 多半問「模型本身安不安全」,resilience 問「世界要長成什麼樣子,AI 才會走向好的結果」。</li>
+<li><strong>限制(restriction)這條路歷史上不太成功</strong>:curfew 這個字源自法文、原意就是「熄火」,中世紀警察會半夜敲門要你把火熄掉——但倫敦大火還是在宵禁之下發生了。AI 這邊也類似:少數限制(如平台一致禁止 NCII)有效,但被大力倡議的開源限制其實並沒有落地。</li>
+<li><strong>火之所以變安全,是因為多層生態系</strong>:早期偵測、受訓的消防隊與消防車、專門設計的水帶、遍布城市且有足夠壓力與水量的消防栓、把木造換成金屬與混凝土、檢查、保險、逃生動線⋯⋯沒有任何一項是 silver bullet。成效驚人:今天城市密度比中世紀高一個數量級,起火源多得多(電、瓦斯、工業、甚至資料中心),但沒有人在擔心火災。</li>
+<li><strong>對 AI 的三個具體對照</strong>:生物領域要「硬化環境本身」(例如空氣消毒,讓病原體無法傳播);資安要走到<strong>軟體形式化驗證</strong>,才擋得住超級智慧的入侵;安全事故要有<strong>像航空業那樣的公開事故資料庫</strong>,並給通報者 safe harbor。</li>
+<li><strong>這是一份招募</strong>:有些要靠公司、有些要靠非營利組織來完成。他呼籲有能力、能「扭曲現實」的人自問「這個世界還缺什麼,AI 才會走好」,然後去把那些新機構建出來——OpenAI Foundation 有大量資源支持這類努力。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>定位:AI resilience 與 OpenAI Foundation(約 00:59–01:01)</h4>
+<p>開場投影片一路出錯,他順手自嘲:「這就是 AGI 還沒到的證據。」</p>
+<p>正題:OpenAI 幾個月前完成重組,現在有一個非營利組織持有<strong>約四分之一的 OpenAI 股權</strong>——這是極為龐大的資源。OpenAI Foundation 底下的其中一個部門就是 <strong>AI resilience</strong>,而這場演講要解釋 AI resilience 是什麼:<strong>它和 AI safety 相似,但不一樣</strong>。他選擇用「火的韌性」這個類比來講,並先聲明火和 AI 在很多面向上非常不同,所以這些類比絕非完美。</p>
+<h4>火與 AI 的兩個相似點(約 01:01–01:03)</h4>
+<p><strong>相似點一:兩者都是通用技術(general purpose technology)</strong>,適用面極廣。火被用來加熱食物、提供溫暖、冶煉金屬、驅動引擎,基本上是文明的根基。AI 正在發生類似的事:它已經是知識與智慧生產的一部分、是科學流程的一部分;而<strong>如果你認真看待機器人的走向,它將直接成為未來經濟引擎的基礎組件</strong>。</p>
+<p><strong>相似點二:兩者都帶著風險</strong>。火的部分:歷史上有過幾場重大火災,倫敦被燒過四次,波士頓、芝加哥也有,大火期間倫敦約 80% 被吞噬。差別在於<strong>今天我們已經相當清楚火的風險是什麼,AI 則不然</strong>——問人們 AI 的風險是什麼,大家指的方向都不一樣,打開報紙就能看到各種恐懼。他的判斷是:<strong>這些風險高度不確定</strong>;最後可能有些會變成只是文書作業層級的小事,有些會比大家預期的嚴重 10 倍,而<strong>有些真正的風險甚至根本不在現在這張清單上</strong>。</p>
+<h4>轉折:靠「限制」求安全,歷史上沒成功(約 01:03–01:04)</h4>
+<p>有趣的地方在這裡。人類最早對火的安全手段其實是<strong>限制</strong>:curfew(宵禁)一詞源自法文,原意就是「熄火」。中世紀很常見的情況是,你家晚上還有火在燒,警察會來敲門要求你熄掉。這顯然是<strong>降低這項技術的能力</strong>——而至少在這個案例上,它並沒有奏效:<strong>倫敦大火還是在宵禁制度下發生了。</strong></p>
+<p>AI 這邊比較複雜。有些限制看起來運作得相當好,例如<strong>絕大多數平台都遵循禁止非合意親密影像(NCII)的限制</strong>;但也有人倡議對開源模型設限,那些其實並沒有真的被實施。他的結論是:<strong>在 AI 這邊,限制這條路也沒走出好結果。</strong></p>
+<h4>火真正變安全的方式:沒有 silver bullet,只有多層生態系(約 01:04–01:07)</h4>
+<p>那火到底是怎麼變安全的?<strong>結論是根本沒有單一解方</strong>,最後靠的是一整套多層次的生態系:</p>
+<ul>
+<li>火災<strong>早期偵測系統</strong></li>
+<li>受過專門訓練的<strong>消防隊</strong>、專用<strong>消防車</strong>、特別設計的<strong>水帶</strong></li>
+<li>城市層級的<strong>供水網與消防栓</strong>——而且要有足夠的壓力與水量才能真的滅火</li>
+<li><strong>建材的更替</strong>:從木造換成金屬與混凝土</li>
+<li><strong>檢查制度、保險</strong></li>
+<li><strong>指定的逃生出口</strong>與動線</li>
+</ul>
+<p>一旦這些都到位,火就不再是我們特別擔心的事——<strong>我們能夠完全享受它的好處</strong>。這套做法有效嗎?<strong>效果好得驚人</strong>:今天的城市密度比中世紀高一個數量級,起火來源也多得多(電力、瓦斯、工業,甚至資料中心),但火災已經不是一般人會擔心的事情。</p>
+<h4>對照回 AI:三個「硬化環境」的例子(約 01:07–01:09)</h4>
+<p>他觀察到 <strong>AI 圈的人普遍在找那個 silver bullet,認為會有某一個解方讓 AI 走向好結果——他認為這個思考方式是錯的</strong>。而且<strong>只把個別模型對齊也不夠</strong>,那是解方的一部分,但生態系裡需要的解方不只一個。三個具體例子:</p>
+<ul>
+<li><strong>生物安全</strong>:模型在生物領域已經相當強,很多人擔心模型讓製造大流行變得容易。如果這是風險,<strong>而且我們同時假設先進的開源模型會擴散開來,那麼只在前沿實驗室裡對這些能力加 guardrail 就不會夠</strong>——該做,但不夠。我們可能需要<strong>硬化環境本身</strong>:例如有人在思考<strong>空氣消毒</strong>,因為空氣一旦被消毒,病原體就無法散播。</li>
+<li><strong>資安</strong>:也許我們需要走到<strong>軟體被形式化驗證</strong>的程度,那才能防止它被超級智慧入侵。</li>
+<li><strong>安全事故</strong>:也許我們需要<strong>公開的事故資料庫</strong>,像航空業那樣公開通報事故,而<strong>通報者可以因為通報而獲得 safe harbor(免責保護)</strong>。</li>
+</ul>
+<h4>收尾:這是一份招募(約 01:09–01:10)</h4>
+<p>這些東西怎麼生出來?<strong>有些可以透過成立公司來達成,有些則要靠成立非營利組織。</strong> 但更根本的是:我們現在需要一批有能力的人——那種「能扭曲現實」的人、那種標竿型人物——<strong>自問「這個世界還需要被建造出什麼,AI 才會走向好的結果」,然後真的去建立那些新的機構與組織</strong>。而 OpenAI Foundation 這邊有大量資源可以支持這類努力。</p>
+<p>最後一句話直接把責任交回台下:<strong>AI resilience 會不會成功,取決於在座的各位。</strong></p>
+<h3>金句</h3>
+<blockquote>
+<p>"That's an evidence that AGI is not yet here."(約 01:00)</p>
+</blockquote>
+<p>投影片翻不動時的自嘲。</p>
+<blockquote>
+<p>"The great fire of London happened despite of curfews."(約 01:04)</p>
+</blockquote>
+<p>限制技術能力並不等於安全——這是整場演講的支點。</p>
+<blockquote>
+<p>"It turns out that there wasn't a silver bullet. … It ends up being a multi-layer ecosystem approach."(約 01:05)</p>
+</blockquote>
+<p>火的教訓,也是他對 AI 的主張。</p>
+<blockquote>
+<p>"It might not be sufficient to guardrail these capabilities within the frontier labs. … We might need to harden the environment itself."(約 01:08)</p>
+</blockquote>
+<p>從「管好模型」轉向「改造世界」——這正是 resilience 有別於 safety 的地方。</p>
+<blockquote>
+<p>"Whether or not AI resilience will succeed depends on people in this room."(約 01:10)</p>
+</blockquote></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>What AI resilience is</strong>: after OpenAI's restructuring, a nonprofit now owns roughly a quarter of OpenAI's equity, and one of the OpenAI Foundation's divisions is AI resilience. It is adjacent to AI safety but distinct — safety mostly asks whether the model is safe; resilience asks what the world must look like for AI to play out well.</li>
+<li><strong>Restriction has a poor historical record.</strong> "Curfew" comes from the French for <em>extinguish the fire</em>; in medieval times police would knock at your door at night to make you put it out. The Great Fire of London happened anyway. AI is similar: a few restrictions work (platforms broadly honor non-consensual intimate imagery bans), while the loudly advocated open-source restrictions were never really implemented.</li>
+<li><strong>Fire became safe through a layered ecosystem</strong>: early detection, trained brigades and fire trucks, purpose-designed hoses, city-wide water supply with hydrants at sufficient pressure and volume, materials shifting from wood to metal and concrete, inspections, insurance, designated exits. No single item was the answer. The result is remarkable — cities an order of magnitude denser than medieval ones, far more ignition sources (electricity, gas, industry, even data centers), and nobody worries about fire.</li>
+<li><strong>Three concrete AI analogues</strong>: for bio, harden the environment itself (e.g. sanitizing air so pathogens can't spread); for cyber, get software <strong>formally verified</strong> so superintelligence can't hack it; for safety incidents, build a <strong>public incident database like aviation's</strong>, with safe harbor for those who report.</li>
+<li><strong>This is a recruiting pitch.</strong> Some of it gets built by companies, some by nonprofits. He wants capable, reality-warping people to ask what the world still needs for AI to go well, and then go build those institutions — the OpenAI Foundation has substantial resources to back such efforts.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Framing: AI resilience and the OpenAI Foundation (~00:59–01:01)</h4>
+<p>After several slides refused to advance, he deadpanned: "That's evidence that AGI is not yet here."</p>
+<p>The substance: OpenAI restructured a number of months ago, and there is now a nonprofit that owns <strong>around one quarter of OpenAI's equity</strong> — a massive pool of resources. One of the OpenAI Foundation's divisions is <strong>AI resilience</strong>, and the talk exists to explain what that means: <strong>similar to AI safety, and yet different.</strong> He explains it through an analogy to fire resilience, flagging up front that fire and AI differ in many, many ways, so the analogies are by no means perfect.</p>
+<h4>Two similarities between fire and AI (~01:01–01:03)</h4>
+<p><strong>First, both are general purpose technologies</strong> with enormously broad applicability. Fire heats food, provides warmth, smelts metal, powers engines — it is fundamental to civilization. Something similar is happening with AI: it is already part of how knowledge and wisdom get developed, part of the scientific process, and <strong>if you take seriously where robotics is going, it will simply be a fundamental part of the economic engine of the future.</strong></p>
+<p><strong>Second, both come with risks.</strong> For fire: a number of major historical fires, London burned four times, Boston and Chicago too, roughly 80% of London consumed during the large fires. The difference is that <strong>we understand fire's risks pretty well today, and we don't understand AI's</strong> — ask people about AI risk and they point in different directions; open a newspaper and you'll find every fear on offer. His view: <strong>these risks are highly uncertain.</strong> Some may turn out to be paperwork-level nuisances, some may turn out 10x worse than expected, and <strong>some real risks may not even be on the current list.</strong></p>
+<h4>The twist: safety through restriction didn't work (~01:03–01:04)</h4>
+<p>Here is the interesting turn. The earliest approach to fire safety was <strong>restriction</strong>. Curfew comes from the French and means <em>extinguish the fire</em>; in medieval times, if you had a fire going at home at night, police would come knock and tell you to put it out. That is plainly <strong>a reduction in the capability of the technology</strong> — and at least in this case, it didn't work out: <strong>the Great Fire of London happened despite curfews.</strong></p>
+<p>For AI it is more complicated. Some restrictions do seem to work well — <strong>most platforms follow non-consensual intimate imagery restrictions.</strong> Others, like the open-source restrictions various people advocated for, were never really implemented. His conclusion: <strong>in AI's case too, restriction hasn't worked out well.</strong></p>
+<h4>How fire actually became safe: no silver bullet, a layered ecosystem (~01:04–01:07)</h4>
+<p>So what did it take? <strong>There was no silver bullet.</strong> It ended up being a multi-layer ecosystem:</p>
+<ul>
+<li><strong>Early detection</strong> systems for fires</li>
+<li>Trained <strong>firefighter brigades</strong>, purpose-built <strong>fire trucks</strong>, specially designed <strong>hoses</strong></li>
+<li>A city-wide <strong>water supply with hydrants</strong>, at sufficient pressure and in sufficient quantity to actually extinguish a fire</li>
+<li><strong>Materials</strong> redesigned: wood replaced by metal and concrete</li>
+<li><strong>Inspections and insurance</strong></li>
+<li><strong>Designated exits</strong> and egress routes</li>
+</ul>
+<p>Once all of that was in place, fire stopped being something we worry about — <strong>we became able to fully harness its benefits.</strong> Did it work? <strong>Remarkably well.</strong> Cities today are an order of magnitude denser than medieval ones, with far more sources of fire — electricity, gas, industry, even data centers — and fire is not something people worry about.</p>
+<h4>The AI analogue: three ways to harden the environment (~01:07–01:09)</h4>
+<p>His observation is that <strong>people in the AI space keep looking for the silver bullet, the one solution that makes AI play out well — and he thinks that is the wrong way to think about it.</strong> It is also <strong>not enough to make individual models aligned</strong>; that is part of the solution, but the ecosystem needs several. Three examples:</p>
+<ul>
+<li><strong>Biosecurity</strong>: models are becoming quite capable in the biological domain, and many foresee risk from models making pandemics easy to manufacture. If that is the risk — <strong>and if we also assume advanced open-source models will diffuse — then guardrailing those capabilities inside frontier labs won't be sufficient.</strong> It should be done, but it won't be enough. <strong>We may need to harden the environment itself</strong>: people are thinking about ideas like <strong>sanitizing air</strong>, because if air is sanitized, pathogens can't spread.</li>
+<li><strong>Cybersecurity</strong>: perhaps we need to reach the point where <strong>software is formally verified</strong>, which would prevent it from being hacked by superintelligence.</li>
+<li><strong>Safety incidents</strong>: perhaps we need a <strong>public incident database, as aviation has</strong> — incidents publicly reported, with those who report gaining <strong>safe harbor</strong> by reporting.</li>
+</ul>
+<h4>Closing: a recruiting pitch (~01:09–01:10)</h4>
+<p>How does any of this get created? <strong>Some through founding companies, some through founding nonprofits.</strong> But fundamentally, what's needed is for a number of capable people — reality-warping people, the kind who set the reference points — <strong>to ask themselves what needs to be built in the world for AI to play out well, and then go after building those new institutions and organizations.</strong> The OpenAI Foundation, he notes, has tons of resources to support endeavors like that.</p>
+<p>His last line hands the responsibility back to the audience: <strong>whether or not AI resilience succeeds depends on the people in this room.</strong></p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"That's an evidence that AGI is not yet here." (~01:00)</p>
+</blockquote>
+<p>On the slides refusing to advance.</p>
+<blockquote>
+<p>"The great fire of London happened despite of curfews." (~01:04)</p>
+</blockquote>
+<p>Capping a technology's capability is not the same as making it safe — the pivot the whole talk rests on.</p>
+<blockquote>
+<p>"It turns out that there wasn't a silver bullet. … It ends up being a multi-layer ecosystem approach." (~01:05)</p>
+</blockquote>
+<p>The lesson from fire, and his thesis for AI.</p>
+<blockquote>
+<p>"It might not be sufficient to guardrail these capabilities within the frontier labs. … We might need to harden the environment itself." (~01:08)</p>
+</blockquote>
+<p>Moving from <em>control the model</em> to <em>change the world</em> — precisely what separates resilience from safety.</p>
+<blockquote>
+<p>"Whether or not AI resilience will succeed depends on people in this room." (~01:10)</p>
+</blockquote></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenAI Foundation</td>
+<td>OpenAI 重組後的非營利母體,持有約 1/4 OpenAI 股權;AI resilience 為其部門之一</td>
+<td>The nonprofit resulting from OpenAI's restructuring, holding ~1/4 of OpenAI equity; AI resilience is one of its divisions</td>
+<td>講者為該部門負責人 / the speaker heads it</td>
+</tr>
+<tr>
+<td>空氣消毒 / Air sanitization</td>
+<td>生物風險的「硬化環境」代表做法:空氣消毒使病原體無法傳播</td>
+<td>Representative environment-hardening measure for bio risk: sanitized air prevents pathogen spread</td>
+<td>講者舉例,未指名特定計畫 / cited as an idea, no specific project named</td>
+</tr>
+<tr>
+<td>形式化驗證軟體 / Formally verified software</td>
+<td>資安層面的長期解:可證明的軟體,超級智慧也駭不進去</td>
+<td>The long-run cyber answer: provably correct software that superintelligence cannot hack</td>
+<td>與 Dawn Song 同場稍早的 security-by-construction 主張呼應 / echoes Dawn Song's security-by-construction argument earlier in the session</td>
+</tr>
+<tr>
+<td>航空業式公開事故資料庫 / Aviation-style public incident database</td>
+<td>事故公開通報 + 通報者取得 safe harbor</td>
+<td>Public incident reporting with safe harbor for reporters</td>
+<td>講者提議的制度設計 / proposed institutional design</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voych Zeremba / Voych</td>
+<td>Wojciech Zaremba</td>
+</tr>
+<tr>
+<td>non-conensual intimate images</td>
+<td>non-consensual intimate images (NCII)</td>
+</tr>
+<tr>
+<td>curfew ... uh like a 80% of London</td>
+<td>語序為自動字幕斷句造成 / sentence breaks are an artifact of auto-captioning</td>
+</tr>
+<tr>
+<td>asmtote(panel 段)</td>
+<td>asymptote</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「非營利持有約四分之一 OpenAI 股權」為講者口述的約略數字;公開報導的確切比例宜另行查證後補上。/ The "around one quarter" equity figure is the speaker's approximation; the exact publicly reported percentage should be confirmed and cited.</li>
+<li>curfew 的字源:講者說法文原意是「extinguish fire」,一般辭源解釋為 <em>couvre-feu</em>(「覆蓋火」)。此處照講者原話記錄。/ Etymology: he said the French means "extinguish fire"; standard etymology gives <em>couvre-feu</em>, "cover the fire". Recorded as spoken.</li>
+<li>「倫敦被燒過四次」「大火吞噬約 80% 的倫敦」等歷史數字為講者口述,未附出處。/ The historical figures (London burned four times, ~80% consumed) were stated without a source.</li>
+<li>AI resilience 部門的具體資助領域與金額(演講中未提),可由 OpenAI Foundation 官方公告補充。/ The division's specific funding areas and amounts weren't given in the talk; can be supplemented from OpenAI Foundation announcements.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/wojciech-zaremba--building-resilience-for-the-intelligence-age.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

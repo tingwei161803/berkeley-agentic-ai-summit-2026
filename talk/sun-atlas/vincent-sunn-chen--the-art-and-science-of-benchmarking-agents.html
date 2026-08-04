@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>The Art &amp; Science of Benchmarking Agents · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Our ability to measure AI has been outpaced by our ability to build it, and &quot;bench slop&quot; — vibe-coding a benchmark for a nice Twitter post — makes it worse; benchmarks that last need a thesis about…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/vincent-sunn-chen--the-art-and-science-of-benchmarking-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Art &amp; Science of Benchmarking Agents · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Our ability to measure AI has been outpaced by our ability to build it, and &quot;bench slop&quot; — vibe-coding a benchmark for a nice Twitter post — makes it worse; benchmarks that last need a thesis about…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/vincent-sunn-chen--the-art-and-science-of-benchmarking-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-atlas" data-talk="vincent-sunn-chen--the-art-and-science-of-benchmarking-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="The Art &amp; Science of Benchmarking Agents" data-title-zh="評測 Agent 的藝術與科學">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: Enterprise AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">The Art &amp; Science of Benchmarking Agents</span><span class="lang-zh">評測 Agent 的藝術與科學</span></h1>
+        <p class="dialog__speaker"><strong>Vincent Sunn Chen</strong> — VP &amp; Founding Member, Snorkel AI</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Atlas Stage · 00:46:26–00:59:34 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=LGW_6P1CMC8&amp;t=2786s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:46:26</span><span class="lang-zh">從 00:46:26 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sun</span><span class="lang-zh">回 Atlas · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Our ability to measure AI has been outpaced by our ability to build it, and &quot;bench slop&quot; — vibe-coding a benchmark for a nice Twitter post — makes it worse; benchmarks that last need a thesis about the frontier, a roadmap the community can build on, and near-obsessive task quality control, which is how Snorkel built Senior SWE-Bench.</span><span class="lang-zh">我們量測 AI 的能力已經被開發 AI 的能力甩開,而「vibe code 一個 benchmark 換一則漂亮推文」的 bench slop 正在惡化這件事;真正能留下來的 benchmark 需要一個對前沿的下注、一份給社群的路線圖、以及近乎偏執的任務品質控管——Snorkel 的 Senior SWE-Bench 就是照這套原則做的。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>核心問題</strong>:「我們量測 AI 的能力,已經被我們開發 AI 的能力甩開了。」Benchmark 越來越重要——它們在引導研究議程、模型發表與數十億美元的算力投向——但也越來越難建。</li>
+<li><strong>兩個新病灶</strong>:<strong>bench slop</strong>(快速 vibe code 一個 benchmark、換一則漂亮的推文,但單一任務的品質極差),以及模型在<strong>reward hacking 與欺騙出題者</strong>這件事上同步變強,讓出題變成貓捉老鼠。</li>
+<li><strong>好 benchmark 的三個條件</strong>:(1) 帶著一個對前沿的<strong>下注</strong>(Terminal-Bench 押注「agent 的未來發生在文字介面」是對的);(2) 為整個領域<strong>設定路線圖</strong>(SWE-Bench 開枝散葉成一整個系列);(3) 認真對待 <strong>researcher UX</strong>——讓別人容易在上面建東西。</li>
+<li><strong>Senior SWE-Bench 的四個設計</strong>:天然 under-specified 的指令(Slack 訊息、一坨 error log,而不是完整 spec)、長 horizon 且跨服務的任務、可持續從最新開源 repo 補題、以及 <strong>tasteful solve</strong>——除了正確性,還量測 codebase 對齊、實務對齊、相對 Oracle PR 的 bloat。</li>
+<li><strong>量測的科學</strong>:任務品質(GPQA 那篇附錄談如何用<strong>報酬機制</strong>逼出高品質貢獻)、明確的分類法(MMLU)、難度與 headroom、以及可靠的出題方法論。他們的 QC 是 agentic + 專家 in-the-loop 雙軌,逐題檢查 verifier 的非決定性與偽陽/偽陰。</li>
+<li><strong>未來三個軸</strong>:環境複雜度與真實度、自主 horizon、以及<strong>輸出複雜度</strong>——從可驗證領域走進法律、醫療這種「好」沒有封閉解的領域。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>問題:量測能力被開發能力甩開(約 00:47–00:51)</h4>
+<p>他先交代 Snorkel 的來歷:團隊源自 Chris Ré 在 Stanford 的研究群,以及 Alex Ratner 與 Fred Sala 分別在 Washington 與 Wisconsin 的研究群,十多年來聚焦在<strong>以資料為中心(data-centric)</strong> 的前沿 AI 方法。這讓他們現在能以資料與研究夥伴的身分,參與許多開放 benchmark:</p>
+<ul>
+<li><strong>Agents' Last Exam</strong>(Dawn Song 團隊)——他們協助其中的品質控管機制;</li>
+<li><strong>Continual Learning Bench</strong>(同樣出自 Berkeley,Sky Lab)(名稱待確認);</li>
+<li><strong>OSWorld 2.0</strong>;</li>
+<li><strong>Terminal-Bench</strong> 最近幾個版本(就在演講前幾週出貨)。</li>
+</ul>
+<p>接著是整場的核心命題:<strong>我們量測 AI 的能力,已經被我們開發 AI 的能力甩開了。</strong></p>
+<p>他用 coding 舉例說明難度的攀升:HumanEval 幾年前推出時就已經在 95%;而最近那批最難的程式 benchmark 只有 3%。當你沿著複雜度往上爬,<strong>光是「驗證」與「評估」前沿任務本身就變得極度困難</strong>。</p>
+<p>同時 benchmark 的重要性也前所未有:它們在引導研究議程、模型發表,以及<strong>數十億美元等級的算力</strong>往哪個山頭爬。</p>
+<p>所以他主張:<strong>建 benchmark 本身就是一個非平凡的研究領域。</strong> 兩個具體病灶——</p>
+<ul>
+<li><strong>Benchmaxing</strong>:模型針對測驗調校,這是真實存在的問題,需要更用心的設計與社群共同貢獻,才能給這個領域有效的標準與量尺。</li>
+<li><strong>Bench slop</strong>(他自創的說法):你可以很快 vibe code 出一個 benchmark、發一則漂亮的推文,但<strong>單題品質是不合格的</strong>;要做出極高品質的任務需要投入大量心力。</li>
+</ul>
+<p>還有第三重壓力:模型能力提升的同時,<strong>它們在 reward hacking、在騙過出題者這件事上也一起變強</strong>,於是建 benchmark 的方法論本身變成一場貓捉老鼠。</p>
+<p>他也點出資料形狀的變化:agentic AI 讓資料從單純的 prompt–response 配對、單純的按讚/倒讚回饋,變成<strong>由 RL 環境構成的複雜堆疊</strong>——rubric、verifier、工具,乃至整個模擬日常情境的世界。這讓「量測」本身又更難了一層。</p>
+<p>他用一張二維圖說明還有多少空間:<strong>y 軸是 sequence length,也就是自主的長度;x 軸是輸入/輸出與環境的複雜度</strong>。有些任務飽和了,不代表這個領域做完了——例如程式領域,即使近一兩年進展驚人,長尾仍然很長,benchmark 這邊還有大量工作要做。</p>
+<h4>好 benchmark 的三個條件,與 Senior SWE-Bench 的四個設計(約 00:52–00:56)</h4>
+<p>他們上個月推出 <strong>Senior SWE-Bench</strong>,與 Princeton 原始的 SWE-Bench 團隊合作。核心論點是:<strong>我們的 agent 已經遠遠超過 junior 工程師的能力,但我們沒有好方法在 senior 這個層級評估它們。</strong></p>
+<p>那麼,講到 senior 工程師你會想到什麼?他的答案是三件事:能接住 under-specified 的需求、能拿著一個模糊問題自己跑起來、以及<strong>有品味(taste)</strong>。這一版就是要處理這三件事。</p>
+<p>他先講什麼樣的 benchmark 是有效的:</p>
+<ol>
+<li><strong>它本身是一個重要的研究議程</strong>——最好的 benchmark 對前沿有很強的論點,是在<strong>下注</strong>這個領域要往哪走。他認為 Terminal-Bench 團隊做得非常好:幾年前他們押注「agent 的未來會發生在介面上,也就是 LLM 與 agent 已經很擅長的文字介面」——事後看是完全正確的賭注,現在它是<strong>幾乎每一張前沿模型 model card 上都會出現</strong>的 benchmark 之一。</li>
+<li><strong>它為領域設定路線圖</strong>——SWE-Bench 幾年前發表後長成了一整個系列,他們很高興能接上這條血脈。好的 benchmark 是好的研究工具,能替後續的同行鋪路。</li>
+<li><strong>它認真對待 researcher UX</strong>——怎麼讓別人容易在上面建東西?怎麼設計出對的原語,讓社群成員真的能貢獻?</li>
+</ol>
+<p>對應到 Senior SWE-Bench 的四個設計:</p>
+<ul>
+<li><strong>天然 under-specified 的指令</strong>。你在 Slack 上找一位 senior 或 principal 工程師時,不會給他完整規格文件、不會逐行說明做什麼不做什麼。你給的是 Slack 訊息:「這是一坨 error log,去查一下」,或者「這是我認為的幾條 user story,你想辦法搞定」。他們用專家網路加上一些內部方法來捕捉這個特性。</li>
+<li><strong>長得多的任務 horizon</strong>。這些任務挑戰的是工程能力,涉及<strong>跨服務的修改</strong>,而不是單一位置的一個 patch;刻意瞄準複雜、長 horizon 的任務。</li>
+<li><strong>可持續擴充</strong>。不是一次性的努力,而是能<strong>持續從最新的開源 repo 補題</strong>,讓其他研究者可以在上面繼續建。</li>
+<li><strong>品味(taste)</strong>。他們認為品味與可維護性是現代高品質軟體工程的核心,而這正是當前這一波 benchmark 缺的。於是他們引入 <strong>tasteful solve</strong> 這個概念:不只量測正確性,還量測 <strong>codebase 對齊、實務對齊、相對於 Oracle PR 的 bloat</strong> 等多項指標(細節在部落格與網站上)——也就是<strong>正確性以外的品質</strong>。</li>
+</ul>
+<h4>量測的科學:從 GPQA、MMLU 到他們自己的 QC(約 00:56–00:58)</h4>
+<p>他挑了幾個「我最愛的 benchmark 精選集」來說明什麼讓一個 benchmark 成為強力的量尺:</p>
+<ul>
+<li><strong>任務品質</strong>:GPQA 讓他印象非常深刻,尤其是附錄的其中一頁——那頁談的是<strong>如何用報酬與激勵機制驅動貢獻者</strong>,而這直接帶來了極高的品質。</li>
+<li><strong>分布控制與明確分類法</strong>:MMLU 定義了一套學術分類法,在當時是非常有企圖心的做法。</li>
+<li><strong>難度與 headroom</strong>:確保前沿模型還有往上跑的空間。</li>
+<li><strong>穩健的方法論</strong>:如何取得與建構任務,最終對 benchmark 的有效性至關重要。</li>
+</ul>
+<p>他們自己在 Senior SWE-Bench 上實作了非常嚴格的品質控管:<strong>每一題</strong>都經過 agentic 與<strong>專家 in-the-loop</strong> 雙軌的 QC,用來抓 verifier 的<strong>非決定性</strong>與<strong>偽陽性 / 偽陰性</strong>;包括他自己與 Snorkel 幾位資深研究員在內的多位專家,連同專家網路裡的真實在職軟體工程師,逐題「痛苦地」看過,才把可靠性撐起來。</p>
+<p><strong>排行榜結果</strong>(他說就在演講前一週更新,結果三重確認過):在 <strong>tasteful solve</strong> 這個指標上,目前<strong>第一名是三方並列</strong>——Fable、Opus 與另一個模型(字幕聽作 "Soul",待確認)。他認為以 Pareto 效率的角度看這個結果相當值得玩味。排行榜位於 senior-swe-bench.snorkel.ai。</p>
+<p><strong>協作者</strong>:由 Snorkel 共同創辦人 Henry(Henry Ehrenberg)主導,與 Princeton 原始 SWE-Bench 團隊、Karthik 的研究群(名字待確認)、以及 Snorkel 首席科學家 Fred Sala 與 Wisconsin 的幾位夥伴合作。</p>
+<h4>未來:benchmark 該推的三個軸(約 00:58–00:59)</h4>
+<ol>
+<li><strong>環境複雜度與真實度</strong>:不只是簡單的 prompt 與 response,而是真實的 codebase 環境、科學計算環境、法務工作流——人們每天實際在裡面工作的真實系統。</li>
+<li><strong>自主 horizon</strong>:這些模型自主運作能走多遠,以及在各種情境下如何把人拉進來。</li>
+<li><strong>輸出複雜度</strong>:不只是可驗證的領域,還要進入<strong>法律、醫療</strong>這類細膩領域——在那裡,「好」不像數學那樣有一個簡單的封閉解。</li>
+</ol>
+<p><strong>行動呼籲</strong>:Snorkel 正在<strong>資助</strong>一批這類 benchmark(Open Benchmarks Grant),歡迎有相關題目的人合作,入口在 benchmarks.snorkel.ai。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Our ability to measure AI has really been outpaced by our ability to develop it."(約 00:48:42)</p>
+</blockquote>
+<p>整場演講的問題陳述。</p>
+<blockquote>
+<p>"What I'll call bench slop — the idea that you can really quickly vibe code a benchmark and get a fancy Twitter post."(約 00:49:50)</p>
+</blockquote>
+<p>這一波 benchmark 通膨最精準的命名。</p>
+<blockquote>
+<p>"Not only are we measuring correctness, but we're measuring notions of codebase alignment, practice alignment, bloat relative to an Oracle PR."(約 00:55:32)</p>
+</blockquote>
+<p>tasteful solve 的具體內涵——把「品味」變成可量測的東西。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The core problem</strong>: "our ability to measure AI has really been outpaced by our ability to develop it." Benchmarks matter more than ever — they steer research agendas, model releases, and billions in compute — and they keep getting harder to build.</li>
+<li><strong>Two new pathologies</strong>: <strong>bench slop</strong> (vibe-coding a benchmark quickly and getting a fancy Twitter post while individual task quality is lacking), and models improving at reward hacking and deceiving benchmark builders, which turns methodology into a cat-and-mouse game.</li>
+<li><strong>Three properties of benchmarks that last</strong>: they carry a <strong>bet on the frontier</strong> (Terminal-Bench's wager that agents' future happens at the text interface was correct); they <strong>set a roadmap</strong> the field builds on (SWE-Bench spawned a whole series); and they take <strong>researcher UX</strong> seriously so others can extend them.</li>
+<li><strong>Senior SWE-Bench's four design choices</strong>: naturally under-specified instructions (Slack messages and error-log dumps, not a full spec), much longer-horizon multi-service tasks, a design that keeps sourcing from the latest open-source repos, and <strong>tasteful solve</strong> — measuring codebase alignment, practice alignment, and bloat relative to an Oracle PR alongside correctness.</li>
+<li><strong>The science of measurement</strong>: task quality (GPQA's appendix on how pay and incentive mechanisms produced quality), a concrete taxonomy (MMLU), difficulty and headroom, and a robust sourcing methodology. Their own QC ran every task through both agentic and expert-in-the-loop checks for verifier non-determinism and false positives/negatives.</li>
+<li><strong>Three axes for the future</strong>: environment complexity and realism, the autonomy horizon, and output complexity — moving past verifiable fields into legal and healthcare, where "good" has no closed-form definition.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Measurement has fallen behind development (~00:47–00:51)</h4>
+<p>He opens with Snorkel's lineage: the team grew out of Chris Ré's group at Stanford plus Alex Ratner's and Fred Sala's groups at Washington and Wisconsin, with a decade-plus focus on data-centric methods for frontier AI. That puts them in a position to partner on open benchmarks as a data and research partner — Dawn Song's <strong>Agents' Last Exam</strong> (where they helped with quality-control mechanisms), a continual-learning benchmark also out of Berkeley's Sky Lab (name to verify), <strong>OSWorld 2.0</strong>, and the most recent versions of <strong>Terminal-Bench</strong>, which shipped in the weeks before the talk.</p>
+<p>Then the thesis: our ability to measure AI has been outpaced by our ability to develop it.</p>
+<p>Coding illustrates the climb. HumanEval launched several years ago already sitting at 95%; the hardest current programming benchmarks sit around 3%. As you climb the complexity scale, simply <em>verifying and evaluating</em> frontier tasks becomes the hard part.</p>
+<p>Benchmarks have simultaneously never mattered more — they steer research agendas, model releases, and billions in compute pushed toward hill climbing on particular gaps.</p>
+<p>Hence his argument that building benchmarks is a genuine, non-trivial research area. <strong>Benchmaxing</strong> — models tuned to the test — is a real problem requiring more thoughtful design and community contribution. And then there's what he calls <strong>bench slop</strong>: you can quickly vibe-code a benchmark and get a fancy Twitter post out of it, while the quality of the individual tasks is lacking; designing extremely high-quality tasks takes real effort.</p>
+<p>A third pressure compounds both: as model capabilities improve, they also improve at reward hacking and at tricking and deceiving benchmark builders, so improving benchmark methodology becomes a cat-and-mouse game.</p>
+<p>He also flags a change in the shape of data. Agentic AI moved the field from simple prompt-response pairs and thumbs-up/thumbs-down feedback to a much more complex stack of datasets in RL environments: entire worlds built from rubrics to verifiers to tools, with environments mimicking day-to-day settings. That adds difficulty to measuring these datasets.</p>
+<p>His map of the remaining space is two-dimensional: <strong>sequence length — the length of autonomy — on the y-axis, and input/output and environment complexity on the x-axis</strong>. Saturation on some tasks doesn't mean a field is finished; coding has become impressive over the last year or two and still has a long tail and a lot of benchmarking work to do.</p>
+<h4>Three properties of effective benchmarks, and Senior SWE-Bench's design (~00:52–00:56)</h4>
+<p>They launched <strong>Senior SWE-Bench</strong> the month before the talk, working with the original SWE-Bench team at Princeton. The thesis: agents have moved far beyond junior engineering capability, and there's no good way to evaluate them at the senior level. What do you think of when you think of a senior engineer? Someone who can capture under-specified requirements, take an ambiguous problem and run with it, and has some notion of taste.</p>
+<p>The properties he considers essential:</p>
+<ol>
+<li><strong>An important research agenda.</strong> The greatest benchmarks have a strong thesis on the frontier — they make a bet on where the field is going. He credits the Terminal-Bench team: years ago they bet that the future of agents would happen at the text-based interface that agents and LLMs already handle well. That bet was correct, and it's now one of the most widely adopted benchmarks, appearing on essentially every frontier model card.</li>
+<li><strong>A roadmap for the field.</strong> SWE-Bench, released several years ago, grew into a large series they were happy to contribute to — good benchmarks are research tools that set the stage for colleagues to build on.</li>
+<li><strong>Researcher UX.</strong> How do you make it easy for other people to build on top of this, and what primitives let community members actually contribute?</li>
+</ol>
+<p>Applied to Senior SWE-Bench:</p>
+<ul>
+<li><strong>Naturally under-specified instructions.</strong> When you talk to a senior or principal engineer on Slack, you don't hand over a full spec or line-by-line instructions. You send Slack messages: here's a dump of error logs, go investigate; here are a few bullets on the user stories, go figure this out. They captured this working with their expert network plus internal methods.</li>
+<li><strong>A much longer horizon.</strong> Tasks that challenge engineering skill and involve multi-service changes, not a single localized patch — deliberately targeting complex, longer-horizon work.</li>
+<li><strong>Built to scale.</strong> Not a one-time effort: it continually sources from the latest open-source repos so other researchers can build on it.</li>
+<li><strong>Taste.</strong> Taste and maintainability matter in modern high-quality software engineering, and were missing from the current wave of benchmarks. So they introduced the notion of a <strong>tasteful solve</strong>: beyond correctness, measuring codebase alignment, practice alignment, bloat relative to an Oracle PR, and other metrics documented on the blog and website.</li>
+</ul>
+<h4>The science: from GPQA and MMLU to their own QC (~00:56–00:58)</h4>
+<p>He runs through a "greatest hits" tour of what makes a benchmark a strong measuring tool. <strong>Task quality</strong>: GPQA impressed him, especially an appendix page on how pay incentives and contributor-incentive mechanisms led to very high quality. <strong>Distributional control and a concrete taxonomy</strong>: MMLU's academic taxonomy was ambitious for its time. <strong>Difficulty and headroom</strong>: making sure frontier models still have room to run. And a <strong>robust sourcing methodology</strong> for how you actually build tasks.</p>
+<p>Their own QC was rigorous: every single task relied on a suite of both agentic and expert-in-the-loop quality-control methods to catch non-determinism and false positives and false negatives in the verifiers. Multiple experts — including himself and senior Snorkel researchers, alongside their expert network of working software engineers — painstakingly reviewed every task to make the benchmark reliable.</p>
+<p><strong>Leaderboard result</strong>, updated the week before the talk and triple-checked: on the tasteful-solve metric there is currently a <strong>three-way tie for first</strong> between Fable, Opus, and a third model (heard as "Soul" — to verify), which he finds remarkable when you consider the Pareto efficiency curve. It's live at senior-swe-bench.snorkel.ai.</p>
+<p><strong>Collaborators</strong>: led by Snorkel co-founder Henry (Ehrenberg), with the original SWE-Bench team, Karthik's group (name to verify), and Snorkel chief scientist Fred Sala plus colleagues at Wisconsin.</p>
+<h4>Three axes for the future (~00:58–00:59)</h4>
+<ol>
+<li><strong>Environment complexity and realism</strong> — real codebase environments, scientific computing environments, legal workflows, the actual systems people work in daily, not simple prompts and responses.</li>
+<li><strong>The autonomy horizon</strong> — how far models can go working autonomously, and how humans get pulled in across those settings.</li>
+<li><strong>Output complexity</strong> — beyond verifiable fields into nuanced ones like legal and healthcare, where the definition of good isn't a simple closed-form solution the way it is in mathematics.</li>
+</ol>
+<p>His closing call to action: Snorkel is funding a number of these benchmarks through their open benchmarks grants, and welcomes collaboration at benchmarks.snorkel.ai.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Our ability to measure AI has really been outpaced by our ability to develop it." (~00:48:42)</p>
+</blockquote>
+<p>The problem statement for the whole talk.</p>
+<blockquote>
+<p>"What I'll call bench slop — the idea that you can really quickly vibe code a benchmark and get a fancy Twitter post." (~00:49:50)</p>
+</blockquote>
+<p>The sharpest available name for the current benchmark inflation.</p>
+<blockquote>
+<p>"Not only are we measuring correctness, but we're measuring notions of codebase alignment, practice alignment, bloat relative to an Oracle PR." (~00:55:32)</p>
+</blockquote>
+<p>What a tasteful solve actually contains — taste turned into something measurable.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Senior SWE-Bench</td>
+<td>Snorkel 與 Princeton 原始 SWE-Bench 團隊合作,評估 senior 級軟體工程能力;引入 tasteful solve 指標</td>
+<td>Snorkel × the original Princeton SWE-Bench team; evaluates senior-level SWE capability with a "tasteful solve" metric</td>
+<td>senior-swe-bench.snorkel.ai(逐字稿誤作 "seniorbench.snorkele.ai")</td>
+</tr>
+<tr>
+<td>Snorkel Open Benchmarks Grant</td>
+<td>資助社群建 agentic AI benchmark 的計畫</td>
+<td>Grant program funding community-built agentic AI benchmarks</td>
+<td>benchmarks.snorkel.ai(逐字稿誤作 "benchmarks.n.ai")</td>
+</tr>
+<tr>
+<td>Agents' Last Exam</td>
+<td>Dawn Song 團隊的長 horizon 真實任務 benchmark;Snorkel 為資料與研究夥伴,協助品質控管</td>
+<td>Dawn Song's long-horizon real-world benchmark; Snorkel contributed quality-control mechanisms as data and research partner</td>
+<td>見 8/1 Plenary Dawn Song 場</td>
+</tr>
+<tr>
+<td>OSWorld 2.0</td>
+<td>Snorkel 參與的 benchmark 之一</td>
+<td>One of the benchmarks Snorkel partnered on</td>
+<td></td>
+</tr>
+<tr>
+<td>Terminal-Bench</td>
+<td>押注「agent 的未來在文字介面」;現已出現在幾乎每張前沿 model card 上</td>
+<td>Bet that agents' future happens at the text interface; now on essentially every frontier model card</td>
+<td>最近幾版由 Snorkel 參與</td>
+</tr>
+<tr>
+<td>GPQA</td>
+<td>以任務品質著稱;附錄記載報酬/激勵機制如何驅動高品質貢獻</td>
+<td>Cited for task quality; its appendix documents how pay incentives produced high-quality contributions</td>
+<td></td>
+</tr>
+<tr>
+<td>MMLU</td>
+<td>以明確學術分類法達成分布控制,在當時極具企圖心</td>
+<td>Distributional control via a concrete academic taxonomy, ambitious for its time</td>
+<td></td>
+</tr>
+<tr>
+<td>HumanEval</td>
+<td>幾年前推出即達 95%,用來對照今日最難程式 benchmark 的 3%</td>
+<td>Launched years ago at 95%, contrasted with today's hardest programming benchmarks at 3%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sweetbench / senior sweeb bench</td>
+<td>SWE-Bench / Senior SWE-Bench</td>
+</tr>
+<tr>
+<td>senior bench</td>
+<td>Senior SWE-Bench</td>
+</tr>
+<tr>
+<td>seniorbench.snorkele.ai</td>
+<td>senior-swe-bench.snorkel.ai</td>
+</tr>
+<tr>
+<td>benchmarks.n.ai</td>
+<td>benchmarks.snorkel.ai</td>
+</tr>
+<tr>
+<td>Fred Salah</td>
+<td>Fred Sala</td>
+</tr>
+<tr>
+<td>Chris Ray's group</td>
+<td>Chris Ré's group</td>
+</tr>
+<tr>
+<td>Don Don's agents last exam</td>
+<td>Dawn Song's Agents' Last Exam</td>
+</tr>
+<tr>
+<td>human eval</td>
+<td>HumanEval</td>
+</tr>
+<tr>
+<td>continue learning bench</td>
+<td>Continual Learning Bench(名稱待確認)</td>
+</tr>
+<tr>
+<td>Carics Group</td>
+<td>待確認,可能為 Karthik (Narasimhan)'s group</td>
+</tr>
+<tr>
+<td>Soul(第三名模型)</td>
+<td>待確認 / to verify</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>與 Berkeley Sky Lab 合作的「continue learning bench」正式名稱與連結。/ The official name of the Berkeley Sky Lab continual-learning benchmark he cited.</li>
+<li>「Harding program benchmarks are at 3%」——這裡的 benchmark 名稱不確定,可能是形容詞("the hardest programming benchmarks")而非專有名詞,需看投影片。/ Whether "Harding program benchmarks" is a benchmark name or simply "the hardest programming benchmarks".</li>
+<li>Senior SWE-Bench 排行榜上與 Fable、Opus 並列第一的第三個模型(字幕聽作 "Soul")。/ The third model tied for first alongside Fable and Opus (heard as "Soul").</li>
+<li>協作研究群 "Carics Group" 的正確名稱;原始 SWE-Bench 團隊出自 Princeton,推測為 Karthik Narasimhan 的研究群,但未經證實。/ The correct name of the collaborating group heard as "Carics Group"; likely Karthik Narasimhan's Princeton group, unconfirmed.</li>
+<li>Senior SWE-Bench 的題數與公開/私有切分,演講中未念出(公開資料為 100 題、50 公開 50 私有,但應以官方頁面為準)。/ Task count and public/private split were not stated on stage.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-atlas/vincent-sunn-chen--the-art-and-science-of-benchmarking-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

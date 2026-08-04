@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Scaling Sidewalk Autonomy with World Models · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="The bottleneck in sidewalk autonomy isn&#x27;t a shortage of models — it&#x27;s having no fair way to evaluate them before deployment; the fix is to treat real-world video as source code, reconstruct it into…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/bolei-zhou--scaling-sidewalk-autonomy-with-world-models.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Scaling Sidewalk Autonomy with World Models · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="The bottleneck in sidewalk autonomy isn&#x27;t a shortage of models — it&#x27;s having no fair way to evaluate them before deployment; the fix is to treat real-world video as source code, reconstruct it into…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/bolei-zhou--scaling-sidewalk-autonomy-with-world-models.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-atlas" data-talk="bolei-zhou--scaling-sidewalk-autonomy-with-world-models">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Scaling Sidewalk Autonomy with World Models" data-title-zh="用世界模型擴展人行道自主性">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Robotics &amp; World Models</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Scaling Sidewalk Autonomy with World Models</span><span class="lang-zh">用世界模型擴展人行道自主性</span></h1>
+        <p class="dialog__speaker"><strong>Bolei Zhou</strong> — Associate Professor, UCLA; Chief AI Scientist, Coco Robotics</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 01:04:45–01:13:53 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=psPzCQbjCCo&amp;t=3885s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:04:45</span><span class="lang-zh">從 01:04:45 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">The bottleneck in sidewalk autonomy isn&#x27;t a shortage of models — it&#x27;s having no fair way to evaluate them before deployment; the fix is to treat real-world video as source code, reconstruct it into interactive simulation, and grow many &quot;digital cousins&quot; from a single clip for training and evaluation.</span><span class="lang-zh">人行道自主性的瓶頸不是模型不夠多,而是沒辦法在部署前公平評估它們;而解法是把真實世界的影片當成「原始碼」,重建成可互動的模擬環境,再從一支影片長出多個「數位表親」來訓練與評估。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>人行道自主性比道路自主性更難的地方在於約束</strong>:單一 RGB 相機、有限算力與電力,卻要處理各種天候光照、與行人及動物做<strong>社交合宜</strong>的互動(例:繞過躺在人行道上的狗而不踩到牠的尾巴)。</li>
+<li><strong>評估才是瓶頸</strong>:sidewalk foundation model 已經很多(他的實驗室與其他實驗室都有),但<strong>部署前要怎麼公平比較?</strong> 他們先做了 <strong>SidewalkBench</strong>(建在 NVIDIA Omniverse / Isaac Sim 上),但圖形引擎的視覺真實感不足,仍有 scene-to-real gap。</li>
+<li><strong>解法是把真實影片當原始碼</strong>:<strong>Vid2Sim</strong>(CVPR)把人行道影片重建成 Gaussian splatting,再放進物理引擎,得到資料驅動的模擬;在其中用 RL 訓練後可<strong>零樣本遷移</strong>到真實世界,因為訓練與部署之間<strong>沒有視覺落差</strong>。</li>
+<li><strong>一支影片不能只長出一個環境</strong>:<strong>UrbanVerse</strong> 從單支影片抽出 <strong>scene graph</strong>,替換不同物件實例,產生多個<strong>digital cousins</strong>(相對於一對一的 digital twin);同時釋出 <strong>10 萬個帶正確尺度的 3D 資產</strong>。</li>
+<li><strong>成果</strong>:<strong>FlowPilot</strong> 用單一 RGB 相機輸出 waypoint 完成真實人行道導航;並且能<strong>跨載體遷移而不必微調</strong>——已在足式機器人上驗證,正在推進輪足機器人與電動輪椅。「未來我們不只能自主外送食物,也能自主載送人。」</li>
+</ul>
+<h3>重點整理</h3>
+<h4>問題:人行道自主性是另一種自主性(約 01:05–01:07)</h4>
+<p>他先開了個玩笑:台上前面幾位分別來自 UC Berkeley、UC San Diego,加上他的 UCLA——「不如來辦一個 UC AI Summit?」</p>
+<p>接著把場景拉開:大家熟悉的是<strong>道路自主性</strong>(前一位講者剛談過),全尺寸車輛在城市裡跑;但都市環境裡還有另一種自主性,他稱為 <strong>sidewalk autonomy</strong>。Coco Robotics 是一家做<strong>最後一哩食物外送</strong>的新創,有<strong>數百台機器人</strong>在跑這個任務。</p>
+<p>跟道路自主性相比,人行道的處境更雜:</p>
+<ul>
+<li>要非常小心地在人行道上導航、避開障礙物碰撞;</li>
+<li>要處理<strong>所有</strong>天候與光照條件;</li>
+<li>人行道<strong>本來就是為人設計的</strong>,所以機器人必須與行人、動物等動態 agent 做<strong>社交合宜</strong>的互動。他放了自己很喜歡的一段影片:一隻狗躺在人行道上,機器人必須非常小心地繞過去、<strong>不能壓到狗的尾巴</strong>,同時完成導航任務。</li>
+</ul>
+<p>而且機器人工作在<strong>算力與電力受限</strong>的環境:「我們只被允許用單一 RGB 相機來做導航。」</p>
+<h4>瓶頸:模型很多,但沒辦法在部署前評估(約 01:07–01:09)</h4>
+<p>近年人行道導航的 AI 模型不少,主要靠<strong>模仿學習</strong>從人類示範中學,他的實驗室與其他實驗室都貢獻了一些;這些模型訓練在影片示範上,跨條件泛化得不錯。</p>
+<p>但問題來了:<strong>面對這麼多不同的 sidewalk foundation model,真實世界部署前要怎麼 benchmark 它們?</strong></p>
+<p>他們的第一步是 <strong>SidewalkBench</strong>:在模擬中評估導航策略,環境用 <strong>NVIDIA Omniverse 與 Isaac Sim</strong> 建。它能比較不同模型如何與人互動、如何避免碰撞。<strong>但仔細看就會發現,圖形引擎建出來的模擬仍然缺乏視覺真實感</strong>——跟真實部署之間存在 scene-to-real gap,而這個 gap 會讓評估不公平。</p>
+<h4>解法一:把真實影片當原始碼(Vid2Sim)(約 01:09–01:10)</h4>
+<p>他們的解法是<strong>從真實世界影片建構世界模擬</strong>:「我們想把真實世界影片當成 source code,用它來建這個評估 benchmark。」</p>
+<p><strong>Vid2Sim</strong>(發表於 CVPR)的流程:拿一段在人行道上行走的影片 → 從影片建 <strong>Gaussian splatting 重建</strong> → 把 splat 放進<strong>物理引擎</strong> → 得到資料驅動的模擬環境 → 在其中訓練與評估人行道機器人。</p>
+<p>他放的 demo 顯示用<strong>強化學習</strong>在其中訓練 agent,訓練完的模型可以<strong>零樣本遷移到真實世界</strong>——原因很直接:<strong>訓練環境與部署環境之間幾乎沒有視覺落差。</strong> 有了這種環境,就能評估各種人行道導航策略在不同情況下的表現。</p>
+<h4>解法二:從一支影片長出多個環境(UrbanVerse)(約 01:10–01:12)</h4>
+<p>但這種影片重建有個限制:<strong>一支影片只能重建出一個環境</strong>。理想上我們希望從同一支影片產生多種變化。</p>
+<p>這是 <strong>UrbanVerse</strong> 的動機:從單支影片產生多個 <strong>digital cousins</strong>。他把兩個概念分清楚:<strong>digital twin</strong> 是一支影片對應一個模擬環境;<strong>digital cousins</strong> 則是同一來源長出的多種變體。做法是用電腦視覺技術從輸入影片中<strong>抽出 scene graph</strong>,再<strong>替換不同的物件實例</strong>,就能生出不同版本的環境,每個都能拿來訓練與評估。</p>
+<p>UrbanVerse 已公開釋出,同時釋出一個<strong>大規模 3D 資產庫:10 萬個帶有正確尺度的資產</strong>。</p>
+<p>他們也建了<strong>用模擬做後訓練</strong>的流程:先用影片以模仿學習訓練模型,再把模型放進模擬環境中做後訓練,<strong>提升它的互動性與反事實推理能力</strong>。</p>
+<h4>成果:FlowPilot 與跨載體遷移(約 01:12–01:13)</h4>
+<p>累積這些進展後的近期成果是 <strong>FlowPilot</strong>:在真實世界用<strong>單一 RGB 相機</strong>完成人行道導航。機器人只有一台 RGB 相機,模型輸出 <strong>waypoint</strong>,控制器執行下一個點。展示中機器人能處理困難的人行道場景——避開障礙物、與行人適當互動。</p>
+<p>另一個他認為很令人興奮的方向是<strong>跨載體(cross-embodiment)遷移或部署</strong>:既然有了人行道導航的 foundation model,他們的研究能<strong>在不微調的情況下</strong>把模型遷移到不同的機器人本體。示範影片顯示模型在<strong>足式機器人</strong>上運作良好;還有許多進行中的研究要遷移到其他人行道機器人,例如<strong>輪足機器人</strong>與<strong>電動輪椅</strong>。</p>
+<p>他的結語:「所以未來我們不只能自主外送食物,<strong>我們也能在人行道上自主載送人。</strong>」benchmark 與程式碼都已在他們的網頁上釋出。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"We want to use real world videos as a source code to build up this evaluation benchmark."(約 01:09)</p>
+</blockquote>
+<p>把影片當「原始碼」,是整場方法論的核心比喻。</p>
+<blockquote>
+<p>"There is no visual gap between the training environment and the deployment."(約 01:10)</p>
+</blockquote>
+<p>零樣本遷移為什麼成立的一句話解釋。</p>
+<blockquote>
+<p>"In the future, not only we can autonomously deliver the food, we can also autonomously deliver the people on the sidewalk."(約 01:13)</p>
+</blockquote>
+<p>跨載體遷移的終點:從外送包裹到載送人。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>What makes sidewalks harder than roads is the constraint budget</strong>: a single RGB camera, limited compute and battery, yet the robot must handle all weather and lighting and interact in a <strong>socially compliant</strong> way with pedestrians and animals — including navigating around a dog lying on the sidewalk without stepping on its tail.</li>
+<li><strong>Evaluation is the bottleneck</strong>, not model supply. Plenty of sidewalk foundation models exist (from his lab and others), but there was no fair way to compare them before deployment. Their first attempt, <strong>SidewalkBench</strong>, is built on NVIDIA Omniverse and Isaac Sim — but graphics-engine simulation still lacks visual realism, leaving a scene-to-real gap.</li>
+<li><strong>The fix is to treat real video as source code</strong>: <strong>Vid2Sim</strong> (CVPR) reconstructs sidewalk footage into Gaussian splats, drops them into a physics engine, and yields data-driven simulation. RL agents trained there <strong>transfer zero-shot</strong> to the real world because there is essentially no visual gap between training and deployment.</li>
+<li><strong>One video shouldn't yield only one environment</strong>: <strong>UrbanVerse</strong> extracts a <strong>scene graph</strong> from a single clip and swaps in different object instances to produce many <strong>digital cousins</strong> (as opposed to a one-to-one digital twin), alongside a released library of <strong>100,000 correctly-scaled 3D assets</strong>.</li>
+<li><strong>The payoff</strong>: <strong>FlowPilot</strong> does real-world sidewalk navigation from a single RGB camera by emitting waypoints, and the policy <strong>transfers across embodiments without fine-tuning</strong> — demonstrated on legged robots, with wheeled-legged robots and electric wheelchairs in progress.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Sidewalk autonomy is its own problem (~01:05–01:07)</h4>
+<p>He opened with a joke about the lineup — UC Berkeley, UC San Diego, and his own UCLA: "How about having a UC AI summit?"</p>
+<p>Most people know <strong>road autonomy</strong>, which the previous speaker had just covered: full-size vehicles running around cities. But urban environments have a second kind of autonomy he calls <strong>sidewalk autonomy</strong>. Coco Robotics runs last-mile food delivery with <strong>hundreds of robots</strong> doing this today.</p>
+<p>Compared to road autonomy, sidewalks bring harder settings: careful navigation and collision avoidance in tight space; all weather and lighting conditions; and — because sidewalks were designed for people — the requirement to interact in a <strong>socially compliant</strong> way with dynamic agents including pedestrians and animals. His favorite clip shows a dog lying across the sidewalk, with the robot threading past <strong>without stepping on the dog's tail.</strong></p>
+<p>And all of it under compute and battery constraints: "we're only allowed to use a single RGB camera to do the navigation."</p>
+<h4>The bottleneck: many models, no way to evaluate before deployment (~01:07–01:09)</h4>
+<p>Recent years have produced many sidewalk navigation models, largely via <strong>imitation learning</strong> from human demonstrations — some from his lab, some from others. Trained on video demonstrations, they generalize well across conditions.</p>
+<p>That creates the problem: <strong>given so many different sidewalk foundation models, how do you benchmark them before real-world deployment?</strong></p>
+<p>Their first answer was <strong>SidewalkBench</strong>, evaluating navigation policies in simulation, with environments built in <strong>NVIDIA Omniverse and Isaac Sim</strong>. It compares how models interact with people and avoid collisions. But look closely and the graphics-engine simulation <strong>still lacks visual realism</strong> — a scene-to-real gap that makes the comparison unfair.</p>
+<h4>Fix 1: real video as source code — Vid2Sim (~01:09–01:10)</h4>
+<p>Their solution is to create world simulation from real-world video: "we want to use real world videos as a source code to build up this evaluation benchmark."</p>
+<p><strong>Vid2Sim</strong>, published at CVPR, takes a video of walking on a sidewalk, builds a <strong>Gaussian splatting reconstruction</strong> from it, and turns those splats into a <strong>physics engine</strong> environment — a data-driven simulation in which sidewalk robots can be trained and evaluated.</p>
+<p>The demo shows an agent trained there with reinforcement learning transferring <strong>zero-shot to the real world</strong>, for a direct reason: <strong>there is no visual gap between the training environment and the deployment.</strong> With those environments in hand, different sidewalk navigation policies can be evaluated across cases.</p>
+<h4>Fix 2: many environments from one video — UrbanVerse (~01:10–01:12)</h4>
+<p>Video reconstruction has a limitation: <strong>one video reconstructs exactly one environment.</strong> Ideally you want several variations from the same footage.</p>
+<p>Hence <strong>UrbanVerse</strong>, which creates multiple <strong>digital cousins</strong> from a single video. He distinguishes the terms: a <strong>digital twin</strong> is one video mapping to one simulation environment; <strong>digital cousins</strong> are variations from the same source. The method uses computer vision to <strong>extract a scene graph</strong> from the input video, then plugs in different object instances to create environment variants, each usable for training and evaluation.</p>
+<p>UrbanVerse is publicly released, together with a <strong>large-scale 3D asset library of 100,000 assets with correct scales.</strong></p>
+<p>They also built a <strong>simulation post-training pipeline</strong>: train the model on videos via imitation learning first, then place it in the simulated environments for post-training that improves <strong>interactivity and counterfactual reasoning.</strong></p>
+<h4>The payoff: FlowPilot and cross-embodiment transfer (~01:12–01:13)</h4>
+<p><strong>FlowPilot</strong> is the recent result: real-world sidewalk navigation from a <strong>single RGB camera</strong>. The model outputs <strong>waypoints</strong> and the controller executes the next one. In the demo the robot handles challenging sidewalk navigation — avoiding obstacles and interacting appropriately with pedestrians.</p>
+<p>The direction he finds most exciting is <strong>cross-embodiment transfer</strong>: with a sidewalk navigation foundation model in hand, they can transfer the model across robot embodiments <strong>without fine-tuning</strong>. The demo shows it working well on <strong>legged robots</strong>, with ongoing work on other sidewalk platforms including <strong>wheeled-legged robots</strong> and <strong>electric wheelchairs</strong>.</p>
+<p>His closing line: "In the future, not only can we autonomously deliver the food, we can also autonomously deliver the people on the sidewalk." Benchmark and code are released on their lab page.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"We want to use real world videos as a source code to build up this evaluation benchmark." (~01:09)</p>
+</blockquote>
+<p>The central metaphor of the whole methodology.</p>
+<blockquote>
+<p>"There is no visual gap between the training environment and the deployment." (~01:10)</p>
+</blockquote>
+<p>Why zero-shot transfer works, in one sentence.</p>
+<blockquote>
+<p>"In the future, not only we can autonomously deliver the food, we can also autonomously deliver the people on the sidewalk." (~01:13)</p>
+</blockquote>
+<p>Where cross-embodiment transfer is headed: from parcels to passengers.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SidewalkBench</td>
+<td>人行道視覺導航的模擬 benchmark,建於 Omniverse / Isaac Sim</td>
+<td>Simulation benchmark for sidewalk visual navigation, built on Omniverse / Isaac Sim</td>
+<td>arXiv 2606.16953</td>
+</tr>
+<tr>
+<td>Vid2Sim</td>
+<td>從單目影片重建可互動 3D 模擬環境,支援 RL 訓練與零樣本 sim2real</td>
+<td>Real2sim pipeline turning monocular video into interactive 3D simulation for RL navigation</td>
+<td>CVPR 2025;arXiv 2501.06693 — <a href="https://metadriverse.github.io/vid2sim/">metadriverse.github.io/vid2sim</a></td>
+</tr>
+<tr>
+<td>UrbanVerse</td>
+<td>從單支影片抽 scene graph 產生多個 digital cousins;附 10 萬件 3D 資產</td>
+<td>Scene-graph extraction from a single video to produce many digital cousins; ships 100k 3D assets</td>
+<td>資產庫另稱 UrbanVerse-100K / asset library also referred to as UrbanVerse-100K</td>
+</tr>
+<tr>
+<td>FlowPilot</td>
+<td>單目 RGB、無地圖的人行道導航策略,輸出 waypoint</td>
+<td>Mapless monocular sidewalk navigation policy emitting waypoints</td>
+<td>在 Coco Robotics 平台上做真實世界驗證 / validated on Coco Robotics hardware — <a href="https://vail-ucla.github.io/FlowPilot/">vail-ucla.github.io/FlowPilot</a></td>
+</tr>
+<tr>
+<td>Coco Robotics</td>
+<td>最後一哩食物外送機器人公司,數百台機器人在營運</td>
+<td>Last-mile food delivery robot company running hundreds of robots</td>
+<td>講者任 Chief AI Scientist / he serves as Chief AI Scientist</td>
+</tr>
+<tr>
+<td>NVIDIA Omniverse / Isaac Sim</td>
+<td>SidewalkBench 的模擬底層</td>
+<td>The simulation stack underneath SidewalkBench</td>
+<td>逐字稿誤聽為 "media omniverse and isoxaxing"</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ble Joe / Blet / Boley Joe</td>
+<td>Bolei Zhou</td>
+</tr>
+<tr>
+<td>Koko robotics</td>
+<td>Coco Robotics</td>
+</tr>
+<tr>
+<td>sidework foundation models</td>
+<td>sidewalk foundation models</td>
+</tr>
+<tr>
+<td>media omniverse and isoxaxing</td>
+<td>NVIDIA Omniverse and Isaac Sim</td>
+</tr>
+<tr>
+<td>V2</td>
+<td>Vid2Sim</td>
+</tr>
+<tr>
+<td>gion splants / gshian splatting</td>
+<td>Gaussian splatting / Gaussian splats</td>
+</tr>
+<tr>
+<td>urban versse</td>
+<td>UrbanVerse</td>
+</tr>
+<tr>
+<td>flow pilot</td>
+<td>FlowPilot</td>
+</tr>
+<tr>
+<td>lagged robots</td>
+<td>legged robots</td>
+</tr>
+<tr>
+<td>social professor</td>
+<td>associate professor</td>
+</tr>
+<tr>
+<td>last male delivery</td>
+<td>last-mile delivery</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Vid2Sim 的發表年份:講者說「last year… published at the CVPR」,但外部資料顯示為 <strong>CVPR 2025</strong>,與「去年」的口語表述需再對照。/ He said "last year… published at CVPR", but external sources list it as <strong>CVPR 2025</strong> — reconcile with the spoken timeline.</li>
+<li>UrbanVerse 資產庫「10 萬個資產」的正式名稱與釋出授權條款。/ The formal name and licensing of the "100,000 assets" library.</li>
+<li>跨載體遷移「不需微調」的具體評估數據,台上未給。/ No quantitative results were given for the zero-fine-tuning cross-embodiment claim.</li>
+<li>他提到「我的實驗室貢獻了一些模型」但未點名是哪些 sidewalk foundation model。/ He referenced models from his own lab without naming them.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/bolei-zhou--scaling-sidewalk-autonomy-with-world-models.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

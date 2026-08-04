@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Continuous Model Improvement · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Five engines drive continuous model improvement — compute, data, architecture, distillation and RL — but the real leverage isn&#x27;t the model itself: optimize everything around it first, and note that…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/weizhu-chen--continuous-model-improvement.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Continuous Model Improvement · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Five engines drive continuous model improvement — compute, data, architecture, distillation and RL — but the real leverage isn&#x27;t the model itself: optimize everything around it first, and note that…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/weizhu-chen--continuous-model-improvement.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="weizhu-chen--continuous-model-improvement">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Continuous Model Improvement" data-title-zh="持續性的模型改進">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Agentic AI Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Continuous Model Improvement</span><span class="lang-zh">持續性的模型改進</span></h1>
+        <p class="dialog__speaker"><strong>Weizhu Chen</strong> — Technical Fellow &amp; CVP, Microsoft AI</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 01:37:03–01:47:34 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=Tcn5Yb2K0h4&amp;t=5823s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:37:03</span><span class="lang-zh">從 01:37:03 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Five engines drive continuous model improvement — compute, data, architecture, distillation and RL — but the real leverage isn&#x27;t the model itself: optimize everything around it first, and note that continuous improvement presupposes continuous deployment at scale, because only real interaction data tells you what&#x27;s broken.</span><span class="lang-zh">推動模型持續變好的是 compute、data、architecture、distillation 與 RL 五個引擎,但真正的槓桿不在模型本身——先把模型周圍的一切最佳化再說,而持續改進的前提是持續、大規模的部署,因為只有真實互動資料才知道哪裡壞了。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>Compute 有三個維度</strong>:pre-training(更大模型、更多資料、更多 exploration)、post-training(簡單問題已解完,算力現在花在難問題、長程問題,以及<strong>把 multi-agent 放進訓練而不只是推論</strong>)、test-time compute(產品服務端,讓一整個模型家族協作)。</li>
+<li><strong>「Data is the king, everything else is the queen」</strong>。合成資料的重點<strong>不是品質而是覆蓋率</strong>——能造出過去沒有的互補資料;而我們每天產生的人類資料,將成為合成資料的<strong>種子</strong>。</li>
+<li><strong>架構的第二個維度最常被忽略:推論成本</strong>。模型最後能不能普及,是由<strong>跑得多快、多便宜</strong>決定的,所以<strong>推論要在設計之初就定義好</strong>。他認為資料比架構更能決定品質,架構則該多顧成本與效率。</li>
+<li><strong>蒸餾是機器學習的通則</strong>:從網路資料學是向人類蒸餾,從產品遙測資料學也是,請人標註更是。<strong>下一個更好的模型會建立在既有模型之上,而不是從零開始。</strong> 而且——<strong>更強的老師不代表更好的老師</strong>,弱模型有時反而是好老師。</li>
+<li><strong>Harness 的兩句話</strong>:一,<strong>在想著優化模型之前,先把模型周圍的一切優化</strong>;二,你今天建的 harness 有很多會<strong>被模型吸收</strong>,harness 會越來越簡單——但我們同時也在定義越來越複雜的場景。</li>
+<li><strong>持續改進 = 持續大規模部署</strong>。不要只看 benchmark,要看生產環境的可用性;互動資料才是把模型變好的燃料。</li>
+<li><strong>最後一條也是他刻意留在最後的</strong>:<strong>人的參與仍然不可或缺</strong>——尤其要確保自我改進是對齊人類價值,而不是模型自己想做的事。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>引擎一:Compute 的三個維度(約 01:37–01:39)</h4>
+<p>第一個驅動力顯然是 <strong>compute</strong>——它是第一個 scaling engine,沒有算力什麼都做不了。多數改進本質上就是算力推出來的:算力多、訓練久,模型自然變好。<strong>但算力還有第二層效果:它解鎖了大量實驗,而很多創新其實來自實驗與快速迭代。</strong></p>
+<p>今天算力有三個維度:</p>
+<ol>
+<li><strong>Pre-training</strong>:大模型、更多資料,而<strong>今天還多了 exploration</strong>——可能來自模型、也可能來自人。探索得越多,模型就越好。這大致就是大家說的 pre-training scaling law。</li>
+<li><strong>Post-training</strong>:<strong>簡單的問題今天已經解得差不多了</strong>,所以算力現在集中在:怎麼解更難的問題、怎麼解更長的問題(long horizon),以及<strong>怎麼在訓練階段就處理 multi-agent 問題——不只是在推論階段</strong>。這可以稱作 post-training scaling law。</li>
+<li><strong>Test-time compute</strong>:用於產品服務,重點是<strong>怎麼讓一整個模型家族彼此協作</strong>。</li>
+</ol>
+<h4>引擎二:Data,以及「覆蓋率比品質更重要」(約 01:39–01:41)</h4>
+<p>「<strong>我們總說 data is the king,其他一切都是 queen;data 也是氧氣。</strong>」資料是讓一切發生的第二個引擎。他分成幾塊:</p>
+<ul>
+<li><strong>Pre-training 資料</strong>:pre-training 的進展多半來自資料——<strong>每一次你把資料清得更乾淨、把資料刷新(網路資料每天都在變好、覆蓋越來越廣),模型就進步一次。</strong></li>
+<li><strong>合成資料的重點是覆蓋率</strong>:「合成資料不只是品質問題,<strong>最重要的是覆蓋率</strong>——它能創造出比以前更多的互補資料。」</li>
+<li><strong>人類資料是種子</strong>:他認為資料是未來最重要的東西。<strong>我們每天創造的所有資料,大概都會成為合成資料的種子</strong>——也就是說,合成資料會成為主流,而我們現有的資料,價值在於<strong>怎麼用它產生更好的合成資料</strong>。</li>
+<li><strong>Post-training 的資料就是 RL 環境</strong>:關鍵在於<strong>讓訓練時的 RL 環境跑起來和使用者實際使用時一模一樣</strong>,這樣模型才會對真實產品情境有用。因為 RL 需要 trial and error,所以你必須把推論時會出現的東西搬進訓練裡,模型才學得到。<strong>這很類似在訓練中建一個模擬環境,好讓你能大量生成資料。</strong></li>
+</ul>
+<h4>引擎三:架構——別忘了推論成本(約 01:41–01:42)</h4>
+<p>模型架構很複雜,論文和細節極多,但他把它總結成<strong>三個優化維度</strong>:</p>
+<ol>
+<li><strong>更高品質的模型</strong>;</li>
+<li><strong>更低的推論成本</strong>——「<strong>很多人直接忽略了第二點</strong>」;</li>
+<li><strong>支撐更長的 context 且更有效率</strong>。</li>
+</ol>
+<p>目標很簡單:<strong>how can you make it better and cheapest?</strong></p>
+<p>他的立場很清楚:<strong>資料比模型架構更能決定模型品質;架構真正該多花心思的地方是推論成本與推論效率。</strong> 因為<strong>一個模型最後能不能流行起來,是由你能跑多快、能跑多便宜決定的</strong>——他認為這比什麼都重要。<strong>所以推論必須在一開始就被定義進去。</strong> 另外,順著 GPU 的演進方向,設計上應該<strong>往「更多計算、更少 I/O」走</strong>。</p>
+<h4>引擎四:蒸餾——機器學習其實一直都是蒸餾(約 01:42–01:44)</h4>
+<p>他認為機器學習裡很多事情<strong>本質上就是蒸餾</strong>,差別只在你是<strong>從人類蒸餾</strong>還是<strong>從模型蒸餾</strong>:</p>
+<ul>
+<li>從網路上的既有資料學習 → 你在向人類蒸餾;</li>
+<li>從產品的遙測互動資料學習 → 你也在向人類蒸餾;</li>
+<li>請人幫你標註資料 → 你同樣在蒸餾他們的知識。</li>
+</ul>
+<p>所以蒸餾一直都很普遍。<strong>在產業界,蒸餾比從頭訓練有效率得多——你不需要從零建起任何東西。他相信下一個更好的模型,會建立在既有模型之上,而不是從零開始。</strong></p>
+<p><strong>蒸餾也是一個很通用的模式</strong>:你可以<strong>建立多個 teacher</strong>(因為讓學生從單一特定 teacher 學比較容易,而且多個 teacher 可以平行跑),最後蒸餾進一個模型。</p>
+<p>但他也強調<strong>蒸餾有一堆全新的研究問題</strong>,不是簡單題:光是類型就有<strong>強模型 → 強模型、強模型 → 弱模型,甚至弱模型 → 強模型</strong>(這也是可能的)。而其中最反直覺的一條:<strong>更強大的 teacher 模型,不代表它是更好的老師——這一點和人類非常像;而有時候弱模型反而可以是很好的老師。</strong> 蒸餾這件事上「什麼都有可能」。</p>
+<h4>引擎五:RL 的長處與三個痛點(約 01:44–01:45)</h4>
+<p>RL 今天運作得相當好:<strong>它非常 effective(他特別更正:是有效,不是有效率)</strong>,不論是可驗證還是不可驗證的問題都能解;它<strong>特別適合修產品行為</strong>——只要定義一個 grader、餵一些資料,就比其他做法有效率得多;而且它<strong>能直接在真實環境裡運作</strong>。他甚至認為 <strong>RL + 蒸餾 + 合成資料,或許就足以讓我們走到自我改進。</strong></p>
+<p>但 RL 也有明顯挑戰:</p>
+<ul>
+<li><strong>很慢</strong>,他認為需要不少突破才能大幅加速;</li>
+<li><strong>更新非常增量</strong>——跑起來會發現每次更新的幅度都很小,有時候一次 LoRA 級的更新其實就夠了;</li>
+<li><strong>另一面還是資料</strong>:<strong>驅動 RL 的就是資料,而資料對 RL 訓練只會更重要。他相信下一階段可能有 99.9% 的資料來自合成資料。</strong></li>
+</ul>
+<h4>Harness:先優化模型周圍的一切(約 01:45–01:47)</h4>
+<p>因為當天已經談了很多 harness,他講得很快,但留下兩句核心主張:</p>
+<p><strong>第一,要優化的是整個系統,而 harness 是系統裡非常大的一塊——不要一開始就想著優化模型。</strong> 他特地對台下的 builder 說:<strong>在你想著優化模型之前,先把模型周圍的一切都優化過一遍。</strong></p>
+<p><strong>第二,你今天建的 harness,有很多會在某個時點被模型吸收進去</strong>,於是 harness 會變得越來越簡單——但<strong>與此同時我們也在定義越來越複雜的場景、建越來越複雜的 harness</strong>。這個吞噬過程會持續下去,沒有什麼是我們能改變的。</p>
+<p><strong>還有一點他認為非常重要</strong>:不要只在意 benchmark,<strong>也要在意生產環境的可用性</strong>——真實的互動資料對打造更好的模型非常有價值,那不是 benchmark 給得了的。因此:<strong>持續的模型改進,真正需要的是持續的、大規模的部署</strong>。當大量的人在用你的模型,你才能理解哪裡出了問題,才能從互動資料裡拿到洞見,也才能看到別的模型在同樣場景下是怎麼做的,並從中學習。</p>
+<h4>收尾:下一輪的四個判斷(約 01:46–01:47)</h4>
+<ol>
+<li><strong>Scaling 還在有效,而且我們不知道天花板在哪裡。</strong></li>
+<li><strong>模型已經能夠優化 harness,接下來也將能優化並改動另一個模型</strong>——因為在這件事上模型比人更強,他認為這一定會發生。</li>
+<li><strong>要優化的是整個系統;而合成資料將成為主流</strong>,尤其是在下一代模型的訓練上。</li>
+<li><strong>最後一點同樣非常重要:人的參與仍然不可或缺。</strong> 我們仍然需要人來引導模型該怎麼做,<strong>尤其是要確保這種自我改進對齊人類的價值,而不是去做模型自己想做的事。</strong></li>
+</ol>
+<h3>金句</h3>
+<blockquote>
+<p>"We always say data is the king, everything else is the queen. And also data is oxygen."(約 01:39)</p>
+<p>"Synthetic data is not just about the quality. The most important is the coverage."(約 01:39)</p>
+</blockquote>
+<p>合成資料的價值在於補上真實資料沒有的分布,不只是把品質拉高。</p>
+<blockquote>
+<p>"How popular a model becomes is finally going to be decided by how fast you're able to run it and how cheap you're able to run it. So we need to define the inference at the beginning."(約 01:41)</p>
+<p>"A more powerful teacher model doesn't mean it's a better teacher. That's very similar as humans."(約 01:43)</p>
+<p>"Before we think about optimizing the model, try to optimize everything around the model."(約 01:45)</p>
+</blockquote>
+<p>整場演講給 builder 的一句話。</p>
+<blockquote>
+<p>"Continuous model improvement really requires continuous deployment at scale."(約 01:46)</p>
+<p>"Human involvement is still very essential … especially to make sure this self-improvement aligns with human values, instead of doing something the model wants to do."(約 01:47)</p>
+</blockquote>
+<p>刻意留在最後一張投影片的一條。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Compute has three dimensions</strong>: pre-training (bigger models, more data, and now more exploration), post-training (the easy problems are solved, so compute goes to harder problems, long-horizon problems, and <strong>multi-agent handled in training rather than only at inference</strong>), and test-time compute for product serving, where a family of models has to interact.</li>
+<li><strong>"Data is the king, everything else is the queen."</strong> What matters about synthetic data <strong>isn't quality but coverage</strong> — creating complementary data that didn't exist before; and the human data we generate daily becomes the <strong>seed</strong> for it.</li>
+<li><strong>Architecture's second dimension is the one people skip: inference cost.</strong> How popular a model becomes is ultimately decided by <strong>how fast and how cheap it runs</strong>, so <strong>inference has to be defined at the very beginning.</strong> He'd bet on data over architecture for quality, and have architecture focus on cost and efficiency.</li>
+<li><strong>Distillation is the general pattern of machine learning</strong>: learning from web data distills from humans, so does learning from product telemetry, so does human labeling. <strong>The next better model will be built from existing models, not from scratch.</strong> And counter-intuitively — <strong>a more powerful teacher is not necessarily a better teacher</strong>, while a weak model can sometimes teach well.</li>
+<li><strong>Two things about the harness</strong>: first, <strong>optimize everything around the model before you try to optimize the model</strong>; second, much of what you build into the harness today <strong>will be absorbed into the model</strong>, so harnesses simplify — even as we keep defining more complicated scenarios.</li>
+<li><strong>Continuous improvement means continuous deployment at scale.</strong> Don't optimize only for benchmarks; production usability and real interaction data are what actually make the next model better.</li>
+<li><strong>The point he deliberately saved for last</strong>: <strong>human involvement is still essential</strong> — above all to ensure self-improvement aligns with human values rather than with what the model wants to do.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Engine one: three dimensions of compute (~01:37–01:39)</h4>
+<p>The first driver is obviously <strong>compute</strong> — the first scaling engine; without it you can't do anything. Most improvement is essentially compute-driven: more compute, train longer, the model gets better automatically. <strong>But compute has a second-order effect: it unblocks a lot of experiments, and much of the innovation actually comes out of experimentation and fast iteration.</strong></p>
+<p>Three dimensions today:</p>
+<ol>
+<li><strong>Pre-training</strong> — large models, more data, and <strong>today also more exploration</strong>, whether coming from the model or from humans. The more you explore, the better the model. This is roughly what people call the pre-training scaling law.</li>
+<li><strong>Post-training</strong> — <strong>a lot of the simple problems are already solved</strong>, so compute now focuses on how to solve harder problems, how to solve longer (long-horizon) problems, and <strong>how to handle multi-agent problems in training, not just at inference.</strong> Call it the post-training scaling law.</li>
+<li><strong>Test-time compute</strong> — for product serving, centered on <strong>making a whole family of models interact together.</strong></li>
+</ol>
+<h4>Engine two: data, and why coverage beats quality (~01:39–01:41)</h4>
+<p>"<strong>We always say data is the king, everything else is the queen. And data is oxygen.</strong>" Data is the second engine that makes everything happen. Several parts:</p>
+<ul>
+<li><strong>Pre-training data</strong> — most pre-training progress comes from data. <strong>Every time you clean the data better, or refresh it (web data gets better and broader in coverage every day), the model improves.</strong></li>
+<li><strong>Synthetic data is about coverage</strong> — "synthetic data is not just about the quality; the most important thing is the coverage," creating far more complementary data than before.</li>
+<li><strong>Human data is the seed</strong> — he thinks data is the most important thing going forward, and <strong>all the data we create every day will be the seed for synthetic data.</strong> Synthetic data becomes the mainstream; the value of the data we already have lies in <strong>how it produces better synthetic data.</strong></li>
+<li><strong>Post-training data means RL environments</strong> — the key is <strong>making the training-time RL environment run exactly as the user actually uses the product</strong>, so the model becomes useful in real product scenarios. RL needs trial and error, so whatever appears at inference must be present in training for the model to learn it. <strong>Very similar to building a simulation in training so you can generate data at volume.</strong></li>
+</ul>
+<h4>Engine three: architecture — don't forget inference cost (~01:41–01:42)</h4>
+<p>Model architecture is complicated and the literature is vast, but he summarizes it into <strong>three optimization dimensions</strong>:</p>
+<ol>
+<li><strong>Higher model quality</strong>;</li>
+<li><strong>Lower inference cost</strong> — "<strong>a lot of people just ignore the second one</strong>";</li>
+<li><strong>Supporting much longer context, more efficiently.</strong></li>
+</ol>
+<p>The goal is simple: <strong>how do you make it better and cheapest?</strong></p>
+<p>His position is explicit: <strong>data matters more for model quality than architecture does; architecture should pay more attention to inference cost and inference efficiency.</strong> Because <strong>how popular a model becomes is finally decided by how fast and how cheap you can run it</strong> — which he considers more important than anything else. <strong>So inference must be defined at the beginning.</strong> And tracking GPU advancement, designs should move toward <strong>more compute and less I/O.</strong></p>
+<h4>Engine four: distillation is what machine learning has always been (~01:42–01:44)</h4>
+<p>He argues much of machine learning <strong>is just distillation</strong>, and the only question is whether you distill <strong>from humans</strong> or <strong>from a model</strong>:</p>
+<ul>
+<li>Learning from existing web data → distilling from humans;</li>
+<li>Learning from product telemetry and interaction data → distilling from humans;</li>
+<li>Asking humans to label data → distilling their knowledge.</li>
+</ul>
+<p>So distillation was always ubiquitous. <strong>In industry it's far more efficient than training from scratch — you don't need to build anything from zero. He believes the next better model will be built from existing models rather than from scratch.</strong></p>
+<p><strong>Distillation is also a very general pattern</strong>: build <strong>multiple teachers</strong> — it's easier for a student to learn from one specific teacher, and teachers can run in parallel — then distill into a single model.</p>
+<p>But he stresses that <strong>distillation brings a lot of new research problems</strong>, not simple ones. The type space alone includes <strong>strong → strong, strong → weak, and even weak → strong</strong> distillation. And the most counter-intuitive finding: <strong>a more powerful teacher model doesn't mean it's a better teacher — very much like humans — and sometimes a weak model can be a very good teacher.</strong> With distillation, everything is possible.</p>
+<h4>Engine five: what RL is good at, and three pain points (~01:44–01:45)</h4>
+<p>RL works well today: <strong>it is very effective</strong> — he corrects himself mid-sentence, effective rather than efficient — at solving problems, verifiable or non-verifiable alike. It's <strong>particularly good at fixing product behavior</strong>: define a grader, add some data, and it's far more efficient than the alternatives. And it <strong>works directly against the real environment.</strong> He goes as far as saying <strong>RL plus distillation plus synthetic data may be enough to get us to self-improvement.</strong></p>
+<p>The challenges:</p>
+<ul>
+<li><strong>It's very slow</strong> — he thinks real breakthroughs are needed to make it much faster;</li>
+<li><strong>Updates are very incremental</strong> — run an RL chain and you'll see each update is tiny; sometimes a LoRA-scale update is already good enough;</li>
+<li><strong>And on the other side it's data again</strong> — <strong>what drives RL is data, and data only becomes more important for RL training. He believes maybe 99.9% of the data will come from synthetic data in the next step.</strong></li>
+</ul>
+<h4>The harness: optimize around the model first (~01:45–01:47)</h4>
+<p>Since the day had already covered harnesses at length he moves fast, but two claims stand out.</p>
+<p><strong>First: optimize the entire system. The harness is a very big part of that system — don't start by optimizing the model.</strong> Speaking directly to the builders in the room: <strong>before you think about optimizing the model, try to optimize everything around the model.</strong></p>
+<p><strong>Second: a lot of what you build into the harness today will at some point be absorbed into the model</strong>, so harnesses get simpler and simpler — <strong>while at the same time we keep defining more complicated scenarios and building more complicated harnesses.</strong> That absorption keeps going, and there's nothing we can change about it.</p>
+<p><strong>One more point he flags as very important</strong>: don't care only about benchmarks; <strong>care about production usability.</strong> Real interaction data is extremely valuable for building a better model in ways benchmarks are not. Hence: <strong>continuous model improvement really requires continuous deployment at scale.</strong> When a lot of people use your model, you can understand what's going wrong, extract insight from interaction data, and see what other models do in the same scenarios and learn from them.</p>
+<h4>Closing: four calls for the next round (~01:46–01:47)</h4>
+<ol>
+<li><strong>Scaling keeps working, and we don't know where the ceiling is.</strong></li>
+<li><strong>Models can already optimize the harness, and will also be able to optimize and change another model</strong> — because models are better than humans at this. He thinks it's going to happen.</li>
+<li><strong>Optimize the whole system; synthetic data becomes the mainstream</strong>, especially for the next round of model training.</li>
+<li><strong>And equally important: human involvement is still essential.</strong> We still need humans to guide the model — <strong>above all to make sure this self-improvement aligns with human values, instead of doing something the model wants to do.</strong></li>
+</ol>
+<h3>Quotes</h3>
+<blockquote>
+<p>"We always say data is the king, everything else is the queen. And also data is oxygen." (~01:39)</p>
+<p>"Synthetic data is not just about the quality. The most important is the coverage." (~01:39)</p>
+</blockquote>
+<p>The value of synthetic data is filling distribution gaps real data never covered, not just raising quality.</p>
+<blockquote>
+<p>"How popular a model becomes is finally going to be decided by how fast you're able to run it and how cheap you're able to run it. So we need to define the inference at the beginning." (~01:41)</p>
+<p>"A more powerful teacher model doesn't mean it's a better teacher. That's very similar as humans." (~01:43)</p>
+<p>"Before we think about optimizing the model, try to optimize everything around the model." (~01:45)</p>
+</blockquote>
+<p>The one line for builders in the room.</p>
+<blockquote>
+<p>"Continuous model improvement really requires continuous deployment at scale." (~01:46)</p>
+<p>"Human involvement is still very essential … especially to make sure this self-improvement aligns with human values, instead of doing something the model wants to do." (~01:47)</p>
+</blockquote>
+<p>Deliberately saved for the final slide.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LoRA</td>
+<td>講者為原論文最後作者(由主持人介紹時提及);演講中提到「LoRA 級的增量更新有時已足夠」</td>
+<td>He is the last author (mentioned in the host's introduction); in the talk he notes a LoRA-scale incremental update is sometimes already enough</td>
+<td>主持人稱其為「efficient LLM customization 的產業標準技術」</td>
+</tr>
+<tr>
+<td>RL 環境 / RL environments</td>
+<td>Post-training 的「資料」形式:讓訓練環境與使用者真實使用情境一致</td>
+<td>The data form for post-training: make the training environment match real user usage</td>
+<td>他視之為 post-training 的核心工程</td>
+</tr>
+<tr>
+<td>Grader</td>
+<td>修產品行為的做法:定義 grader + 補資料,比其他方法有效率</td>
+<td>The way to fix product behavior: define a grader, add data — more efficient than alternatives</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wu Chen / Wazu</td>
+<td>Weizhu Chen</td>
+</tr>
+<tr>
+<td>Laura</td>
+<td>LoRA</td>
+</tr>
+<tr>
+<td>pre-chaining / pre-chaning</td>
+<td>pre-training</td>
+</tr>
+<tr>
+<td>power training</td>
+<td>post-training</td>
+</tr>
+<tr>
+<td>posting</td>
+<td>post-training</td>
+</tr>
+<tr>
+<td>the I environment / the I training / the I chain</td>
+<td>the RL environment / RL training / the RL chain</td>
+</tr>
+<tr>
+<td>distear / distiller / diste / thisation</td>
+<td>distill / distillation</td>
+</tr>
+<tr>
+<td>honeys</td>
+<td>harness</td>
+</tr>
+<tr>
+<td>observed into the model</td>
+<td>absorbed into the model</td>
+</tr>
+<tr>
+<td>the lower update</td>
+<td>the LoRA update</td>
+</tr>
+<tr>
+<td>infants</td>
+<td>inference</td>
+</tr>
+<tr>
+<td>tri error</td>
+<td>trial and error</td>
+</tr>
+<tr>
+<td>SE improvement / set improvement</td>
+<td>self-improvement</td>
+</tr>
+<tr>
+<td>IIL</td>
+<td>LLM</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「so you are able to generate an Olympic datas」語意不明,推測為「generate unlimited data」或類似說法,需看投影片確認。/ "Generate an Olympic datas" is unintelligible — likely "generate unlimited data" or similar; check the slides.</li>
+<li>「with this DF model … this is very popular as well」中的 "DF model" 指涉不明(可能是某個具體模型名稱)。/ The "DF model" reference is unclear — possibly a specific model name.</li>
+<li>「99.9% 的資料來自合成資料」為講者對下一階段的預期,非既有數據。/ The "99.9% synthetic data" figure is his forward-looking expectation, not a measured statistic.</li>
+<li>演講未點名任何具體 Microsoft 模型或產品;若要補上對應的模型家族名稱需另行查證。/ No specific Microsoft model or product was named; mapping his remarks to a model family would require separate verification.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/weizhu-chen--continuous-model-improvement.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

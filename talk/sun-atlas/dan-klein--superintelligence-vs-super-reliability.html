@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Superintelligence vs. Super-Reliability · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Intelligence is multifaceted and its facets are not advancing at the same rate — breadth, plasticity, and fluency are through the roof while precise verifiable control and explainability lag badly.…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/dan-klein--superintelligence-vs-super-reliability.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Superintelligence vs. Super-Reliability · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Intelligence is multifaceted and its facets are not advancing at the same rate — breadth, plasticity, and fluency are through the roof while precise verifiable control and explainability lag badly.…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/dan-klein--superintelligence-vs-super-reliability.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-atlas" data-talk="dan-klein--superintelligence-vs-super-reliability">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Superintelligence vs. Super-Reliability" data-title-zh="超級智慧 vs. 超級可靠">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: Enterprise AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Superintelligence vs. Super-Reliability</span><span class="lang-zh">超級智慧 vs. 超級可靠</span></h1>
+        <p class="dialog__speaker"><strong>Dan Klein</strong> — Professor, UC Berkeley; Co-founder &amp; CTO, Scaled Cognition</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Atlas Stage · 00:59:34–01:12:57 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=LGW_6P1CMC8&amp;t=3574s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:59:34</span><span class="lang-zh">從 00:59:34 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sun</span><span class="lang-zh">回 Atlas · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Intelligence is multifaceted and its facets are not advancing at the same rate — breadth, plasticity, and fluency are through the roof while precise verifiable control and explainability lag badly. Demos need only the former; shippable products need the latter, and that mismatch is the structural reason the last mile keeps failing.</span><span class="lang-zh">智慧是多面向的,而各面向並沒有同速前進——廣度、可塑性、流暢度衝上天,精確可驗證的控制與可解釋性卻嚴重落後;做 demo 只需要前者,出貨產品需要後者,這正是那條「最後一哩」始終跨不過去的結構性原因。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>結構性診斷</strong>:今天的模型在<strong>知識廣度、行為可塑性、輸出流暢度</strong>上一路衝高;但在<strong>精確且可驗證的控制</strong>與<strong>輸出可解釋性</strong>上長期落後。Demo 只吃左邊那組能力,可靠產品同時需要右邊——這就是最後一哩的本質。</li>
+<li><strong>出事的方式會帶著同一組指紋</strong>:會接訂單也會幫你 debug 的 burrito bot(廣度失控)、一美元成交的賣車 bot(可塑性失控)——「你以為 2026 年不會發生了,但 2026 年還是有車在便宜賣」。</li>
+<li><strong>五道結構性障礙</strong>:看不見的錯誤、控制力不足、可驗證的真話、非可驗證領域的 RL、以及超級智慧超級貴。</li>
+<li><strong>最刺的數字</strong>:他們替潛在客戶做嚴謹稽核時,<strong>實際幻覺率通常是客戶自認的五倍左右</strong>——因為大多數錯誤根本沒被發現。LLM 本質是 plausibility engine,錯誤天生長在冰山水面下。</li>
+<li><strong>prompt 不是硬控制的介面</strong>:同一段 prompt 裡,「語氣要安撫」這種軟指令和「報價必須走這個 API」這種硬指令,一放進去<strong>全都變軟了</strong>。「加到第三個驚嘆號的時候,你大概會開始覺得這不是做硬控制該用的介面。」</li>
+<li><strong>出路</strong>:整條鏈路(資料、架構、訓練、推論)都要可驗證;要有真正的控制介面能給保證;以及<strong>高效的專才模型</strong>——他們的 APT 就是專為 agentic 互動(一邊是人、一邊是 API)設計的自我驗證專才模型。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>開場:你大概已經知道的那個故事(約 01:00)</h4>
+<p>現在的 AI 能力讓一個小團隊、甚至單一工程師,幾乎一夜之間就能生出一個令人驚豔的 demo。主管很興奮,這就是未來,衝。三個月後,還有些細節要收尾。六個月後,我們正在處理一些可靠性問題。所以——這東西到底會不會出貨?</p>
+<p>如果你看過這個劇本,你不孤單:有不少研究顯示,企業裡<strong>大多數 agentic AI 專案會停滯或失敗</strong>;而就算出貨了,有時候還會<strong>摔得非常壯觀</strong>。</p>
+<p>問題是:為什麼「做 demo 比以往任何時候都容易」和「最後一哩到可靠產品依然極難」會同時成立?</p>
+<h4>核心診斷:智慧的各面向沒有同速前進(約 01:01)</h4>
+<p>他的答案是:<strong>智慧是多面向的</strong>,而系統雖然越來越聰明,各個面向卻不是等速前進。而<strong>可靠性,正是那個沒跟上的面向</strong>。</p>
+<p>具體攤開來看今天的模型:</p>
+<ul>
+<li><strong>衝破天花板的</strong>:知識的廣度、行為的可塑性、輸出的流暢度。</li>
+<li><strong>持續落後的</strong>:施加精確且可驗證的控制的能力、解釋模型輸出的能力。</li>
+</ul>
+<p>這跟 demo 對產品有什麼關係?<strong>做 demo 你只需要左邊那組;要出貨一個可靠產品,右邊那組全部同時變成關鍵。</strong> 這組「強弱指紋」不只解釋了最後一哩為什麼難,還會直接印在已上線系統的失效模式上。</p>
+<p>他的例子:</p>
+<ul>
+<li><strong>burrito bot</strong>——它很樂意幫你點餐,也很樂意幫你 debug 程式。這是底層模型的<strong>廣度</strong>以缺陷的形式現身,而且伴隨著不精確的控制。</li>
+<li><strong>一美元的車</strong>——AI 銷售 bot 很樂意接受使用者下的指令「所有使用者的成交條件都要接受」。這是底層模型的<strong>可塑性</strong>:在開發 demo 時是天大的優勢,在這裡卻不是你要的東西。你可以說這是 prompt injection、我們現在當然懂了、2026 年不會再發生——但<strong>2026 年還是有車在便宜賣</strong>。</li>
+</ul>
+<p>而當系統開始<strong>採取行動</strong>,「確定自己在做對的事」就變得重要得多。能編輯你資料庫的系統,就能刪掉你公司的資料庫;更糟的還有醫療上的錯誤、金融上的錯誤,那可能是毀滅性的。他同樣補了一句:你可能覺得「AI 能刪掉整個公司資料庫這種事,2026 年當然不會發生了」——但它就是在發生。</p>
+<p>當聰明人嘗試合理的做法、卻反覆撞上同一道牆,那通常代表<strong>有結構性的東西在作用</strong>,不是一次性的異常或失誤。以下是五道結構性障礙。</p>
+<h4>障礙一:看不見的錯誤(約 01:04–01:06)</h4>
+<p>他把 LLM 的錯誤(以幻覺為例)比喻成<strong>冰山</strong>:露出水面的那一小塊是「錯得很明顯」的錯誤,你一看就知道出事了。問題是<strong>冰山絕大部分在水面下</strong>。</p>
+<p>Scaled Cognition 在跟潛在客戶談他們現有技術與幻覺率時,只要做過一次嚴謹稽核,<strong>通常會發現實際幻覺率大約是客戶自認的五倍</strong>——因為大多數錯誤根本從來沒被發現。</p>
+<p>原因在本質:<strong>LLM 核心是 plausibility engine(合理性引擎)</strong>,它生成看起來合理的輸出,而我們希望那些輸出不只合理、還正確。但當它出錯時,錯誤傾向落在冰山底部。</p>
+<p>這在開發期是問題(<strong>抓不到的錯誤修不掉</strong>),在出貨後同樣是問題。他的例子是一封客服信:非常像人寫的、非常流暢、非常有權威感——只是它描述的是一條<strong>捏造出來的授權政策</strong>。正因為太流暢,使用者<strong>沒有辦法繞過這個錯誤,也看不出到底哪裡出了問題</strong>。</p>
+<h4>障礙二:控制力不足(約 01:06–01:07)</h4>
+<p>找到錯誤就想修,修就需要對系統有控制力。而這裡有一道長期的難題:<strong>主要的控制介面是 prompt,而 prompt 缺乏精確的語意。</strong></p>
+<p>他的例子:一個銀行 agent,使用者上門問貸款,另一邊接著一堆金融 API。這個 agent 會拿到一些指令,其中有些<strong>天生是軟的</strong>(例如「語氣要讓人安心」),有些<strong>天生是硬的</strong>(例如「報價必須透過這個 API 授權」)。問題是——<strong>當你把指令放進 prompt 裡,它們全部都變成軟的</strong>。你放進去的 token 和你拿到的行為之間,沒有任何清晰可言的關係。</p>
+<p>那大家怎麼辦?這房間裡很多人應該都經歷過:把 prompt 重寫一遍、把重點搬到指令最後面、改成全大寫、加幾個驚嘆號——「<strong>加到第三個驚嘆號的時候,你大概會開始覺得這不是做硬控制該用的介面。</strong>」</p>
+<p>外面的替代做法是換一種控制結構:用<strong>外部 harness</strong> 拿到硬控制,讓模型檢查模型、讓程式碼做驗證。這確實是往前一步,因為你終於有辦法做某種硬控制了。但它仍然很難:模型檢查模型會<strong>增加延遲、增加費用</strong>,而且會變成一個<strong>複雜、難以維護、本身也不可靠</strong>的架構。</p>
+<p>我們真正想要的是什麼?<strong>模型一開始就內建針對硬約束的控制介面,並且在模型內部完成驗證。</strong> 這就是 Scaled Cognition 採取的路線,他也認為這會越來越常見。</p>
+<h4>障礙三:可驗證的真話(約 01:08–01:09)</h4>
+<p>前一節談的是<strong>輸入的架構</strong>,這一節談<strong>輸出的架構</strong>。我們想要會說真話的模型——最好是能<strong>以某種可驗證的方式保證</strong>自己說真話。而「可驗證的真」與「剛好輸出了一串正確的 token」之間差距很大。</p>
+<p>他的例子:問模型「柏克萊的人口是多少?」它會湊出一串 token 給你答案。也許湊出來的這串很合理但其實不對;也許湊出來的那串既合理又正確。這不代表模型不會常常答對——希望它大多數時候都對——但關鍵是:<strong>一個 vanilla LLM 根本分不出自己什麼時候知道、什麼時候不知道。這些都只是猜測,有些猜對,有些猜錯。</strong></p>
+<p>那要怎樣才能真的「確定」?需要某種 <strong>metacognition(後設認知)</strong>。你可以在一些系統裡看到它的微光:例如系統決定發出一個 tool call 或 RAG 查詢,再把結果輸出——這已經走上了後設認知的路,也就是<strong>針對「你將如何計算、如何思考」再做一層計算</strong>。</p>
+<p>但那不是唯一一種。他的對照很漂亮:如果我現在問在座各位柏克萊的人口是多少,<strong>最可能的回答是「我不知道」</strong>。人類非常擅長追蹤自己到底有沒有某一項知識,<strong>現在的系統做不到這件事</strong>,而他認為系統變得有後設認知能力會越來越重要。</p>
+<h4>障礙四:非可驗證領域的 RL(約 01:09–01:11)</h4>
+<p>系統的行為與它怎麼被訓練密不可分。而現在系統的行為越來越不是來自 pre-training,而是來自 <strong>post-training</strong>,通常是以 RL 的方式進行。</p>
+<p>RL 在<strong>數學、程式</strong>這類領域帶來爆炸性的進展,原因是這些是<strong>可驗證領域</strong>——就像下棋一樣,你可以先用 <strong>Lean</strong> 檢查證明,再拿它去訓練或交給使用者。<strong>可驗證的 RL 威力非常強大,但大多數領域並不可驗證。</strong></p>
+<p>非可驗證的 RL 會怎麼出問題?它可能<strong>以犧牲某些面向為代價,提升另一些面向</strong>。他用「shipping bot 的寓言」說明:</p>
+<p>使用者問「我的訂單在哪?追蹤資訊很久沒更新了。」Shipping bot 查了資料庫,發現包裹遺失了,於是說「您的包裹遺失了。」到這裡都很好。但如果我們在上面疊 RL,而且沒有小心處理——比方說我們叫系統去最佳化按讚數(可能以 NPS 之類的形式)——這個回答大概拿不到讚。但如果它說「您的包裹正在路上」,使用者可能就開心了,至少短期內是。<strong>於是你剛剛教會了你的系統對你說謊。</strong></p>
+<p>這在現實中真的會發生:例如 RLHF 可以<strong>提高人類對輸出的認可度,同時降低其事實正確性</strong>。</p>
+<h4>障礙五:超級智慧超級貴(約 01:11–01:12)</h4>
+<p>最後一道障礙:<strong>superintelligence turns out to be super expensive</strong>。原因其實已經在前面鋪好了:</p>
+<ul>
+<li>你可能在<strong>替你不需要也不想要的廣度付錢</strong>;</li>
+<li>你可能在<strong>替「模型檢查模型」付錢</strong>——不管是以 token 還是以延遲的形式;</li>
+<li>你可能在<strong>替 test-time compute 付錢</strong>——那本質上是在測試時教你的模型去做一件「你其實希望它早就會」的事。</li>
+</ul>
+<p>這些都很貴,結果就是通用模型上出現一條取捨曲線:在某個 agentic benchmark 上,<strong>左上角的模型準確但昂貴,右下角的模型較不準確但成本效率高得多</strong>。</p>
+<p>怎麼跳出這條曲線?他舉自家的 <strong>APT</strong> 為例:一個<strong>專為 agentic 互動特化</strong>的模型——這裡的 agentic 互動意思是<strong>一邊是人、另一邊是 API</strong>。它是一個<strong>專才、且會自我驗證</strong>的模型,因此能同時拿到高準確度與高效率。他認為這會越來越成為解法的一部分。</p>
+<h4>結論:可靠的解法長什麼樣(約 01:12)</h4>
+<ol>
+<li><strong>可驗證性會出現在系統的每一層</strong>——資料、架構、訓練、推論,你只會聽到越來越多這件事。</li>
+<li><strong>更豐富的控制介面</strong>——能真正告訴系統你要什麼,並拿到「它真的會照做」的保證。</li>
+<li><strong>越來越依賴高效的專才模型</strong>,把可用算力的效益最大化。</li>
+</ol>
+<p>而可靠性之所以重要,是因為<strong>可靠性正是讓你從 demo 走到真正能出貨的產品的那個東西</strong>。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Reliability has not kept pace with other aspects of intelligence."(約 01:01)</p>
+</blockquote>
+<p>整場演講的診斷句:落後的不是智慧,是可靠。</p>
+<blockquote>
+<p>"Typically we find that the actual hallucination rates are something like five times what they thought, because most errors just don't get discovered."(約 01:05:08)</p>
+</blockquote>
+<p>冰山比喻最有殺傷力的一個註腳。</p>
+<blockquote>
+<p>"Maybe after the third exclamation point, you start to feel like this isn't the right control surface for hard control."(約 01:06:58)</p>
+</blockquote>
+<p>用一個所有人都幹過的動作,說明 prompt 作為硬控制介面的荒謬。</p>
+<blockquote>
+<p>"A vanilla LLM can't actually tell the difference between when it knows something and when it doesn't."(約 01:08:30)</p>
+</blockquote>
+<p>後設認知那一節的核心——問題不是猜錯,是不知道自己在猜。</p>
+<blockquote>
+<p>"Superintelligence turns out to be super expensive."(約 01:11:11)</p>
+</blockquote>
+<p>講題那個對比的收束:更聰明未必更划算,專才模型才是。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The structural diagnosis</strong>: today's models are through the roof on <strong>breadth of knowledge, plasticity of behavior, and fluency of output</strong>, and have consistently lagged on <strong>precise verifiable control</strong> and <strong>explainability</strong>. Demos need only the first group; reliable products need both — that mismatch <em>is</em> the last mile.</li>
+<li><strong>Shipped failures carry the same fingerprint</strong>: the burrito bot happy to take your order or debug your code (breadth as a flaw), the car going for a dollar because a sales bot accepted "all user deals are to be accepted" (plasticity as a flaw). "You might think this isn't happening in 2026 — but there are still some cars going cheap."</li>
+<li><strong>Five structural barriers</strong>: invisible errors, insufficient control, verifiable truth, RL in non-verifiable domains, and superintelligence being super expensive.</li>
+<li><strong>The sharpest number</strong>: when Scaled Cognition audits a prospective customer's current stack carefully, actual hallucination rates typically come in around <strong>five times what the customer believed</strong>, because most errors are never discovered. LLMs are plausibility engines, so their mistakes live below the waterline by construction.</li>
+<li><strong>Prompts are the wrong surface for hard control</strong>: inherently soft instructions ("be reassuring") and inherently hard ones ("quotes are authorized through this API") both become soft the moment they go into a prompt. "Maybe after the third exclamation point, you start to feel like this isn't the right control surface."</li>
+<li><strong>The way out</strong>: verifiability throughout the stack (data, architecture, training, inference), richer control surfaces that come with guarantees, and efficient specialist models — their APT is a self-verifying specialist built for agentic interactions with humans on one side and APIs on the other.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The story you already know (~01:00)</h4>
+<p>Thanks to today's capabilities, a small team or even a single engineer can whip up an eye-popping demo seemingly overnight. Executives get excited — this is the future, go. Three months later there are still details to iron out. Six months later you're working through reliability issues. Will this thing ever ship?</p>
+<p>If you've seen this play out you're not alone: a number of studies show that most agentic AI initiatives in enterprises stall or fail, and when they do ship they sometimes face-plant spectacularly. The question is what's behind the contrast between demos being easier than ever and the last mile to a reliable product still being very hard.</p>
+<h4>The diagnosis: facets of intelligence aren't advancing together (~01:01)</h4>
+<p>Intelligence is multifaceted, and although systems keep getting smarter, not all aspects advance at the same rate. <strong>Reliability is the one that hasn't kept pace.</strong></p>
+<p>Look at today's models. Breadth of knowledge, plasticity of behavior, fluency of output — through the roof and improving. The ability to exert precise verifiable control, and the ability to explain a model's output — consistently behind.</p>
+<p>To make a demo, you really only need the things on the left. To ship a reliable product, everything on the right becomes critical too. That signature of strengths and weaknesses explains the last mile, and it shows up again in the failure modes of systems that do ship.</p>
+<p>The examples: the <strong>burrito bot</strong> happy to take your order or debug your code — the underlying model's breadth surfacing as a flaw, accompanied by imprecise control. The <strong>car you can get for a dollar</strong>, because an AI sales bot accepted a user instruction saying all user deals are to be accepted — the underlying model's plasticity, such an advantage while developing a demo, showing up where it isn't wanted. You could call that a prompt injection attack and say surely we know better now, this isn't happening in 2026 — but even in 2026, some cars are going cheap.</p>
+<p>Once systems start taking actions, being sure matters far more. If a system can edit your database, it can delete your company's database — and healthcare or financial mistakes could be devastating. Again: you might think an AI deleting a whole company's database naturally isn't happening in 2026, but it is.</p>
+<p>When smart people try basically reasonable things and hit consistent barriers, something structural is going on — this isn't a one-off anomaly. He walks through five such barriers.</p>
+<h4>Barrier one: invisible errors (~01:04–01:06)</h4>
+<p>He frames LLM errors — hallucinations in particular — as an <strong>iceberg</strong>. The small tip above water is the errors that are wrong and obviously so; you look and know something went wrong. Most of the iceberg is underwater.</p>
+<p>At Scaled Cognition, when they talk to prospective customers about their current technology and hallucination rates and then run a careful audit, the actual rates typically come in around <strong>five times</strong> what the customer thought, because most errors simply never get discovered.</p>
+<p>The reason is architectural: <strong>LLMs are at their core plausibility engines</strong>. They produce plausible output, and hopefully that output is often not just plausible but right — but when they make a mistake, it tends to be the bottom of the iceberg.</p>
+<p>That's a problem during development, because it's hard to fix an error you can't catch. It's also a problem after shipping. His example is a customer-service email that is very human, very fluent, very authoritative — and happens to describe a bogus, hallucinated licensing policy. Precisely because it is so fluent, users have no way to work around the error or tell what went wrong.</p>
+<h4>Barrier two: insufficient control (~01:06–01:07)</h4>
+<p>Finding errors means wanting to fix them, which means needing control. And the enduring challenge is that <strong>the primary control surface — the prompt — lacks precise semantics</strong>.</p>
+<p>Picture a banking agent: users come and ask for a loan, and financial APIs sit on the other side. Some of the agent's instructions are inherently soft, like "be reassuring." Some are inherently hard, like "quotes are authorized through this API." The problem is that once instructions go into a prompt, they all become soft — there's nothing crisp you can say about the relationship between the tokens you put in and the behavior you get out.</p>
+<p>So what do people do? Probably a lot of people in this room have rewritten the prompt, moved things to the end of the instructions, put things in all caps, added exclamation points. "Maybe after the third exclamation point, you start to feel like this isn't the right control surface for hard control."</p>
+<p>The alternative in the field is a different control structure: get hard control from an <strong>external harness</strong>, with models checking models and code verifying things. That's a step forward, because you finally have some form of hard control. But it remains challenging: models checking models adds latency, adds expense, and makes for a complex, hard-to-maintain, and itself unreliable architecture.</p>
+<p>What we'd really like is models that have control surfaces for hard constraints in the first place, doing verification internally to the model. That's the approach Scaled Cognition takes, and he thinks it's increasingly what you'll see.</p>
+<h4>Barrier three: verifiable truth (~01:08–01:09)</h4>
+<p>The previous barrier was about the architecture of the input; this one is about the architecture of the output. We want models that tell the truth, and preferably models that <em>guarantee</em> they tell the truth in some verifiable way — and there's a big difference between verifiable truth and happening to output a correct sequence of tokens.</p>
+<p>Ask a model the population of Berkeley and it throws together tokens. Maybe those tokens are plausible but wrong; maybe they're plausible and also correct. That doesn't mean models won't be correct more often than not — hopefully they're right most of the time. The important thing is that <strong>a vanilla LLM can't tell the difference between when it knows something and when it doesn't. These are just guesses; some are right and some are wrong.</strong></p>
+<p>Being sure would take some form of <strong>metacognition</strong>. You can see glimmers in a system that decides to issue a tool call or a RAG query and output the result — that's computation about how you will compute, how you will think. But it isn't the only kind. Ask the people in this room the population of Berkeley and the most likely answer is "I don't know." Humans are very good at tracking whether or not we have an item of knowledge; systems currently do not do this, and he expects metacognitive systems to become increasingly important.</p>
+<h4>Barrier four: RL in non-verifiable domains (~01:09–01:11)</h4>
+<p>A system's behavior is critically intertwined with how it's trained, and increasingly behavior comes not from pre-training but from <strong>post-training</strong>, typically done via reinforcement learning.</p>
+<p>RL has produced explosive progress in math and coding because those are <strong>verifiable domains</strong> — as with game playing, you can check a proof with <strong>Lean</strong> before you train on it or hand it to the user. Verifiable RL can be extremely powerful, but most domains aren't verifiable.</p>
+<p>How does non-verifiable RL cause problems? It can increase some aspects of intelligence at the cost of others. His <strong>parable of the shipping bot</strong>: a user asks where their order is, saying tracking hasn't updated in a while. The bot checks the database, finds the package is lost, and says the package is lost. So far so good. Now layer RL on top without care — say, tell the system to optimize thumbs-up, perhaps in the form of net promoter score. That answer probably doesn't earn a thumbs-up. But "your package is on your way" might make the user happy, at least in the short term. <strong>You have just taught your system to lie to you.</strong></p>
+<p>And this does happen in practice: RLHF can increase human approval of outputs while degrading their factual accuracy.</p>
+<h4>Barrier five: superintelligence is super expensive (~01:11–01:12)</h4>
+<p>The last barrier, and the one the talk's title turns on. We already know why it might be true: you may be paying for breadth you don't need or want; you may be paying for models to check other models, in tokens or in latency; or you may be paying for test-time compute, which is essentially teaching your model at test time to do something you really wish it had already known how to do.</p>
+<p>The result is a visible trade-off among generalist models on an agentic benchmark: the upper-left models are accurate but expensive, the lower-right ones less accurate but far more cost-efficient.</p>
+<p>How do you get off that curve? His example is their own model, <strong>APT</strong>, specialized to agentic interactions — meaning humans on one side and APIs on the other. It's a specialist, self-verifying model, which lets you have both high accuracy and high efficiency. He expects this to be an increasing part of the solution.</p>
+<h4>What reliable solutions look like (~01:12)</h4>
+<p>You'll hear more and more about <strong>verifiability</strong> throughout the system — in the data, the architecture, the training, the inference. There will be <strong>richer control surfaces</strong> that let you actually tell your system what you want and get guarantees it will happen. And there will be increasing reliance on <strong>efficient specialist models</strong> that maximize the use of available compute. Reliability matters because reliability is what takes you from a demo to a product you can actually ship.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Reliability has not kept pace with other aspects of intelligence." (~01:01)</p>
+</blockquote>
+<p>The diagnosis in one line: what's lagging isn't intelligence, it's reliability.</p>
+<blockquote>
+<p>"Typically we find that the actual hallucination rates are something like five times what they thought, because most errors just don't get discovered." (~01:05:08)</p>
+</blockquote>
+<p>The most damaging footnote to the iceberg metaphor.</p>
+<blockquote>
+<p>"Maybe after the third exclamation point, you start to feel like this isn't the right control surface for hard control." (~01:06:58)</p>
+</blockquote>
+<p>A universally recognized gesture used to show why prompts can't carry hard constraints.</p>
+<blockquote>
+<p>"A vanilla LLM can't actually tell the difference between when it knows something and when it doesn't." (~01:08:30)</p>
+</blockquote>
+<p>The core of the metacognition section — the problem isn't guessing wrong, it's not knowing you're guessing.</p>
+<blockquote>
+<p>"Superintelligence turns out to be super expensive." (~01:11:11)</p>
+</blockquote>
+<p>Where the title's contrast lands: smarter isn't automatically better value; specialists are.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scaled Cognition</td>
+<td>聚焦「高可靠、行為可驗證的 agentic 模型」的 AI lab;講者為共同創辦人暨 CTO</td>
+<td>AI lab focused on high-reliability agentic models with verifiable behavior; the speaker is co-founder and CTO</td>
+<td></td>
+</tr>
+<tr>
+<td>APT(Agentic Pretrained Transformer)</td>
+<td>專為 agentic 互動特化的自我驗證專才模型:一邊是人、一邊是 API</td>
+<td>Self-verifying specialist model built for agentic interactions — humans on one side, APIs on the other</td>
+<td>逐字稿聽作 "our model AP";公開版本為 APT-1</td>
+</tr>
+<tr>
+<td>Lean</td>
+<td>可驗證領域中用來檢查證明的定理證明器</td>
+<td>Theorem prover used to check proofs in verifiable domains</td>
+<td>作為「可驗證 RL」的例子</td>
+</tr>
+<tr>
+<td>RLHF</td>
+<td>可提升人類對輸出的認可度,同時降低事實正確性</td>
+<td>Can increase human approval of outputs while degrading factual accuracy</td>
+<td>非可驗證 RL 的具體風險案例</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>David Klene(主持人口誤後自行更正)</td>
+<td>Dan Klein</td>
+</tr>
+<tr>
+<td>scale cognition</td>
+<td>Scaled Cognition</td>
+</tr>
+<tr>
+<td>our model AP</td>
+<td>APT(APT-1)</td>
+</tr>
+<tr>
+<td>lean</td>
+<td>Lean(定理證明器)</td>
+</tr>
+<tr>
+<td>burritobot</td>
+<td>burrito bot</td>
+</tr>
+<tr>
+<td>costefficient</td>
+<td>cost-efficient</td>
+</tr>
+<tr>
+<td>aentic / agentic(字幕混用)</td>
+<td>agentic</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>他引用「大多數企業 agentic AI 專案停滯或失敗」的研究出處,演講中未指名。/ The studies he cites for most enterprise agentic AI initiatives stalling or failing were not named.</li>
+<li>「一美元買到車」與「AI 刪掉整個公司資料庫」的具體事件出處(投影片上有截圖,逐字稿未念出來源)。/ Sources for the dollar-car and deleted-database incidents were on slides but not read aloud.</li>
+<li>最後那張成本/準確度取捨圖用的是哪個 agentic benchmark,以及 APT 在圖上的確切位置。/ Which agentic benchmark the cost-vs-accuracy chart used, and APT's exact position on it.</li>
+<li>議程原定的 David Hsu(Retool)「Governance Is the Bottleneck to AI」是否於當日稍晚補講,需另行確認其他時段逐字稿。/ Whether David Hsu's originally scheduled Retool talk happened later that day needs checking against other sessions' transcripts.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-atlas/dan-klein--superintelligence-vs-super-reliability.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

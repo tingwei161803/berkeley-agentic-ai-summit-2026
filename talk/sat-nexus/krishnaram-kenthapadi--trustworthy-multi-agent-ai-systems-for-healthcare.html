@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Trustworthy Multi-Agent AI Systems for Healthcare: Challenges &amp; Lessons Learned · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="The value of a healthcare agent lies not in model strength but in giving clinicians their time back from EHR paperwork — and shipping one hinges on domain knowledge encoded as a semantic knowledge …" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/krishnaram-kenthapadi--trustworthy-multi-agent-ai-systems-for-healthcare.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Trustworthy Multi-Agent AI Systems for Healthcare: Challenges &amp; Lessons Learned · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="The value of a healthcare agent lies not in model strength but in giving clinicians their time back from EHR paperwork — and shipping one hinges on domain knowledge encoded as a semantic knowledge …" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-nexus/krishnaram-kenthapadi--trustworthy-multi-agent-ai-systems-for-healthcare.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-nexus" data-talk="krishnaram-kenthapadi--trustworthy-multi-agent-ai-systems-for-healthcare">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Trustworthy Multi-Agent AI Systems for Healthcare: Challenges &amp; Lessons Learned" data-title-zh="醫療領域的可信多 Agent AI 系統:挑戰與經驗教訓">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Agentic AI in Finance &amp; Healthcare</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Trustworthy Multi-Agent AI Systems for Healthcare: Challenges &amp; Lessons Learned</span><span class="lang-zh">醫療領域的可信多 Agent AI 系統:挑戰與經驗教訓</span></h1>
+        <p class="dialog__speaker"><strong>Krishnaram Kenthapadi</strong> — Chief Scientist, Oracle Health</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Nexus Stage · 01:54:12–02:08:05 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=ZIRc3EpzQJs&amp;t=6852s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:54:12</span><span class="lang-zh">從 01:54:12 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-nexus.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Nexus · Sat</span><span class="lang-zh">回 Nexus · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">The value of a healthcare agent lies not in model strength but in giving clinicians their time back from EHR paperwork — and shipping one hinges on domain knowledge encoded as a semantic knowledge graph, two-sided guardrails, and an evaluation methodology that assumes offline metrics will not survive contact with production.</span><span class="lang-zh">醫療 agent 的價值不在於模型多強,而在於把醫師從電子病歷的行政負擔中解放出來——而要真的落地,關鍵是領域知識(semantic knowledge graph)、雙向 guardrails、以及一套「線下評估會失效」的評估方法論。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>問題定義先於技術</strong>:美國醫療的痛點是醫師短缺、80% 臨床人員 burnout、每次門診 15 分鐘裡醫師大半時間盯著螢幕,連帶造成每年約 40 萬件可預防死亡,以及約 1 兆美元的行政成本。Oracle Health 的 Clinical AI Agent 就是針對「把時間還給醫師」這一件事設計的。</li>
+<li><strong>架構重點在 orchestrator 與 guardrails</strong>:一句「show me the recent labs」背後要判斷查結構化資料還是非結構化病歷、要不要帶入 UI 與病人脈絡、該用推理模型還是一段 deterministic Python;input/output 兩側都要 guardrail(病人端問診特別要能辨識醫療急症並升級)。</li>
+<li><strong>醫療的評估與別的領域不一樣</strong>:離線評估的假設在線上常不成立(病人分佈會漂移);而且 <strong>recall 極度重要</strong>——病人摘要漏掉一項醫療相關資訊,不是體驗變差,是病人安全事故。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>為什麼是醫療:被行政工作吃掉的臨床時間(約 01:56–01:59)</h4>
+<p>講者先花了幾分鐘鋪陳問題規模,而不是講模型:</p>
+<ul>
+<li>臨床人力短缺,加上 burnout 與行政負擔——早在 COVID 之前的調查就顯示約 <strong>80% 的臨床人員處於 burnout 狀態</strong>,導致離職或計畫離開整個醫療產業。</li>
+<li>病人能分到的看診時間持續縮短,典型只有 15 分鐘左右,而醫師在這段時間裡還得花一大塊在電腦前,而不是看著病人。</li>
+<li>這些因素疊加系統性問題,結果是<strong>光美國每年約 40 萬件可預防死亡</strong>;同時醫療成本持續上升,美國約有 <strong>1 兆美元</strong>與行政負擔相關。</li>
+</ul>
+<p>他的結論很直接:這不可持續。AI 在醫療其實已經在快速被採用,真正的問題是「怎麼用它降低行政負擔與 burnout,而且是<strong>以可信的方式</strong>做到——病人安全、法規遵循」。</p>
+<h4>Clinical AI Agent 與 multi-agent orchestrator(約 01:59–02:04)</h4>
+<p>Oracle Health 已上線的產品 <strong>Clinical AI Agent</strong>,能力是逐層堆上去的:</p>
+<ol>
+<li>在病人與醫師同意下,聆聽問診對話並自動生成病歷(medical notes)。</li>
+<li>在此之上自動擷取醫囑(X 光、檢驗、用藥等 orders)。</li>
+<li>再往前一步,在醫師看診「之前」就準備好摘要——這位病人為什麼來、病歷中哪些部分相關。</li>
+</ol>
+<p>設計原則是 <strong>voice-first、多模態、跨裝置</strong>(手機、web、桌機),而且同時吃<strong>醫師偏好(provider context)</strong>與<strong>病人脈絡(patient context)</strong>,並盡可能主動——例如新的檢驗報告進來時,主動建議下一步的照護路徑。</p>
+<p>核心元件是 <strong>multi-agent orchestrator</strong>。以「show me the recent labs」這種看似簡單的查詢為例,系統得決定:</p>
+<ul>
+<li>要查<strong>結構化</strong>紀錄(檢驗數值)還是<strong>非結構化</strong>資料(病歷文字)?</li>
+<li>要帶入哪些 UI 脈絡與病人脈絡?怎麼支援多輪對話?</li>
+<li>更複雜的查詢(「Samantha 現在吃的藥有沒有副作用?」「根據她的病史與新報告,最佳處置是什麼?」)要調用工具庫與技能庫中的哪一個?</li>
+</ul>
+<p>Orchestrator 之外還有兩層:</p>
+<ul>
+<li><strong>Guardrails 在輸入與輸出兩側都要有</strong>。輸入側在<strong>面向病人</strong>的場景特別關鍵——敏感查詢、需要升級處理的醫療急症必須被正確攔截;輸出側則檢查 agent 回覆。</li>
+<li><strong>延遲與成本必須被壓住</strong>:做 caching、平行計算,並在 runtime 決定這個查詢該路由到複雜推理模型、較簡單的語言模型,還是一段確定性的 Python 就夠了。這個 runtime 決策同時省下延遲與成本。</li>
+</ul>
+<h4>從單一應用到「多 agent 醫療系統」,以及會出什麼錯(約 02:04–02:07)</h4>
+<p>再往上一層,是整個醫療體系的 multi-agent 化:利害關係人包含病人、醫師、行政、payer 端;系統包含 EHR;任務涵蓋搜尋、文件摘要、醫療編碼(medical coding)等。這些 agent 之間要如何互動,是開放問題。</p>
+<p>他點名兩類最容易踩雷的地方:</p>
+<ul>
+<li><strong>評估</strong>:離線評估的結果<strong>不一定能轉移到線上</strong>——可能是假設不再成立,也可能是病人分佈改變了。而且要把商業指標對應到可量測、可迭代的 applied science 指標。</li>
+<li><strong>Omission(漏訊息)</strong>:呈現病人摘要時,<strong>recall 極度重要</strong>,這點和網頁搜尋等場景不同。摘要中漏掉一項醫療上相關(medically pertinent)的資訊,直接就是病人安全問題。</li>
+</ul>
+<p>醫療影像的例子展示了另一種設計:胸部 X 光判讀的任務,用一個 orchestrated agent 加上一組<strong>依臨床工作流程設計的 sub-agents</strong>——對應放射判讀常用的 <strong>ABCDE</strong> 系統(airway、breathing 等)。這些 sub-agents <strong>平行執行</strong>,再由一個 synthesizer 整合彼此<strong>可能互相衝突</strong>的結果,決定最終判讀。</p>
+<h4>收尾的四點經驗(約 02:07)</h4>
+<ol>
+<li><strong>先懂領域</strong>,不要只盯著模型開發;資料驗證與評估方法論同等重要。</li>
+<li><strong>和臨床人員一起迭代</strong>:理解需求、早期版本先出來、根據回饋修。</li>
+<li><strong>前沿模型不懂醫療的細節</strong>:必須把領域與任務知識編碼進 <strong>semantic knowledge graph</strong> 與 <strong>semantic data layer</strong>。</li>
+<li><strong>信任與安全是硬需求</strong>:他們內部跑一套稱為 "AI review for health" 的審查流程。</li>
+</ol>
+<h3>金句</h3>
+<blockquote>
+<p>"Our goal is to reduce the time doctors spend entering data or searching patient records or typing notes, and instead spend more time interacting with the patient — which is the reason they came to the profession in the first place."(約 01:59)</p>
+</blockquote>
+<p>整場演講的動機不是「AI 能做什麼」,而是「醫師為什麼當醫師」。</p>
+<blockquote>
+<p>"If you miss something which is medically pertinent in the summary, that can lead to patient safety."(約 02:05)</p>
+</blockquote>
+<p>在醫療場景,recall 不是體驗指標,是安全指標。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The problem statement comes before the technology.</strong> US healthcare is squeezed by clinician shortage, ~80% clinician burnout (documented even pre-COVID), and 15-minute visits in which the doctor spends much of the time facing a screen — contributing to roughly 400,000 preventable deaths a year and about $1T in administrative cost. Oracle Health's Clinical AI Agent is aimed squarely at giving clinicians their time back.</li>
+<li><strong>The hard parts are the orchestrator and the guardrails.</strong> A query as plain as "show me the recent labs" requires deciding between structured and unstructured retrieval, folding in UI and patient context, and routing at runtime between a reasoning model, a cheaper LM, or plain deterministic Python. Guardrails sit on both the input and output sides — the input side matters most in patient-facing settings, where medical emergencies must be escalated rather than answered.</li>
+<li><strong>Healthcare evaluation has its own failure mode.</strong> Offline results frequently do not transfer online because assumptions break or the patient distribution shifts. And unlike web search, <strong>recall dominates</strong>: an omission of medically pertinent information in a patient summary is a patient-safety incident, not a quality regression.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Why healthcare: clinical time eaten by paperwork (~01:56–01:59)</h4>
+<p>Kenthapadi opened on the size of the problem rather than on models. Clinician shortage compounds with burnout and administrative overhead — surveys from before the COVID pandemic already put roughly <strong>80% of clinicians in burnout</strong>, driving them to quit their practice or leave healthcare altogether. Meanwhile patients get less time: a typical visit runs about 15 minutes, much of which the provider spends looking at a computer rather than at the patient. Together with other systemic factors, this contributes to something on the order of <strong>400,000 preventable deaths per year in the US alone</strong>, and healthcare costs keep climbing — roughly <strong>$1 trillion</strong> in the US is tied to administrative burden.</p>
+<p>His framing: this is not sustainable, AI is already being adopted rapidly across healthcare, and the open question is how to use it to cut administrative overhead and burnout <strong>in a trustworthy manner</strong> — patient safety intact, regulations followed.</p>
+<h4>Clinical AI Agent and the multi-agent orchestrator (~01:59–02:04)</h4>
+<p>Oracle Health's shipped product, <strong>Clinical AI Agent</strong>, layers capability upward: first automatically capturing medical notes by listening to the doctor–patient conversation (with consent from both), then capturing orders placed by the doctor (X-rays, labs, medications), then moving <em>ahead</em> of the visit — summarizing why the patient is here and what parts of the record are relevant before the doctor walks in.</p>
+<p>The product is <strong>voice-first and multimodal</strong>, works across mobile, web, and desktop, and conditions on both <strong>provider context</strong> (physician preferences) and <strong>patient context</strong> (reason for visit, history). It aims to be proactive: when a new lab report arrives, it suggests the next best step in the care pathway.</p>
+<p>The <strong>multi-agent orchestrator</strong> is the core component. Even for a simple-looking query, the orchestrator must decide whether to search structured records or unstructured notes, incorporate UI and patient context, and support multi-turn conversation — and for harder questions ("are there side effects of the medications Samantha is taking?", "what is the best course of action given her history and the new labs?") pick the right item out of a library of tools and skills.</p>
+<p>Two other layers wrap it:</p>
+<ul>
+<li><strong>Guardrails on both sides.</strong> The input side matters especially when the surface is patient-facing rather than doctor-facing: sensitive queries and medical emergencies requiring escalation must be handled appropriately. Output-side guardrails check the agent's response.</li>
+<li><strong>Latency and cost containment.</strong> Caching, parallel computation, and a runtime routing decision — complex reasoning model vs. simpler language model vs. deterministic Python — that saves both latency and cost.</li>
+</ul>
+<h4>From one application to a multi-agent healthcare system, and what goes wrong (~02:04–02:07)</h4>
+<p>Scaling beyond a single application means a multi-agent <em>healthcare system</em>: patients, doctors, administrators, and payer-side stakeholders; systems including the EHR; tasks spanning search, document summarization, and medical coding. How all those agents interact with one another is the open design problem.</p>
+<p>Two failure classes he called out:</p>
+<ul>
+<li><strong>Evaluation.</strong> What works offline may not translate online, either because the assumptions no longer hold or because the patient distribution has shifted. Business metrics also need to be mapped onto applied-science metrics that can actually be measured and iterated on.</li>
+<li><strong>Omissions.</strong> When presenting a patient summary, recall is extremely important — unlike web search. Missing something medically pertinent is a patient-safety failure.</li>
+</ul>
+<p>A medical-imaging example showed a different shape of the same idea: for chest X-ray interpretation, an orchestrated agent sits above sub-agents <strong>modeled on clinical workflows</strong> — following the <strong>ABCDE</strong> system used in imaging (airway, breathing, and so on). The sub-agents run <strong>in parallel</strong>, and a synthesizer reconciles their potentially <strong>conflicting</strong> outputs into a final read.</p>
+<h4>Four closing lessons (~02:07)</h4>
+<ol>
+<li><strong>Understand the domain</strong> — don't focus only on model development; data validation and evaluation methodology carry equal weight.</li>
+<li><strong>Iterate with clinicians</strong>: understand their needs, get an early version out, refine on feedback.</li>
+<li><strong>Frontier models lack healthcare-specific nuance</strong> — encode domain and task knowledge into a <strong>semantic knowledge graph</strong> and a <strong>semantic data layer</strong>.</li>
+<li><strong>Trust and safety are non-negotiable</strong>; his team runs an internal process he described as "AI review for health."</li>
+</ol>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Our goal is to reduce the time doctors spend entering data or searching patient records or typing notes, and instead spend more time interacting with the patient — which is the reason they came to the profession in the first place." (~01:59)</p>
+</blockquote>
+<p>The motivation is framed around why clinicians entered medicine, not around what AI can do.</p>
+<blockquote>
+<p>"If you miss something which is medically pertinent in the summary, that can lead to patient safety." (~02:05)</p>
+</blockquote>
+<p>In clinical settings recall is a safety metric, not a quality metric.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle Health Clinical AI Agent</td>
+<td>Oracle Health 已上線的臨床 agent:環境語音記錄病歷、自動擷取醫囑、看診前摘要</td>
+<td>Oracle Health's shipped clinical agent: ambient note capture, automatic order capture, pre-visit summarization</td>
+<td>演講中提到有 live demo 連結 / a live demo link was shown on slide;產品頁 <a href="https://www.oracle.com/health/clinical-suite/clinical-ai-agent/">https://www.oracle.com/health/clinical-suite/clinical-ai-agent/</a></td>
+</tr>
+<tr>
+<td>Multi-agent orchestrator</td>
+<td>決定結構化 vs 非結構化檢索、工具/技能選擇、runtime 模型路由</td>
+<td>Decides structured vs. unstructured retrieval, tool/skill selection, and runtime model routing</td>
+<td>Clinical AI Agent 的核心元件 / core component of the product</td>
+</tr>
+<tr>
+<td>ABCDE 影像判讀子 agent</td>
+<td>依胸部 X 光臨床流程(airway、breathing…)拆出平行 sub-agents,再由 synthesizer 整合衝突結果</td>
+<td>Parallel sub-agents modeled on the ABCDE chest X-ray workflow, reconciled by a synthesizer</td>
+<td>醫療影像案例 / medical-imaging case study</td>
+</tr>
+<tr>
+<td>Semantic knowledge graph / semantic data layer</td>
+<td>把醫療領域與任務知識編碼進系統,補前沿模型缺的醫療 nuance</td>
+<td>Encodes domain and task knowledge that frontier models lack</td>
+<td>收尾四點經驗之一 / one of the closing lessons</td>
+</tr>
+<tr>
+<td>Agentic systems tutorial</td>
+<td>團隊在一場 ACM 會議上發表的 agentic 系統 tutorial,整理了「會出什麼錯」</td>
+<td>Tutorial his team presented at an ACM conference, cataloguing agentic failure modes</td>
+<td>會議全名待確認 / exact venue name to verify</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Krishnaram Kintapati / Krishna Ram</td>
+<td>Krishnaram Kenthapadi</td>
+</tr>
+<tr>
+<td>chief science scientist</td>
+<td>Chief Scientist</td>
+</tr>
+<tr>
+<td>clinical agent / clinical AI agent</td>
+<td>Oracle Health Clinical AI Agent</td>
+</tr>
+<tr>
+<td>multi- aent / aent</td>
+<td>multi-agent / agent</td>
+</tr>
+<tr>
+<td>medical nodes</td>
+<td>medical notes</td>
+</tr>
+<tr>
+<td>god rails</td>
+<td>guardrails</td>
+</tr>
+<tr>
+<td>explanability</td>
+<td>explainability</td>
+</tr>
+<tr>
+<td>multimodel</td>
+<td>multimodal</td>
+</tr>
+<tr>
+<td>patient phasing / doctor phasing</td>
+<td>patient-facing / doctor-facing</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「tutorial that we presented at the ACM conference on agentic systems and AI」——會議正式名稱與 tutorial 連結待查證。/ The exact name of the ACM conference and a link to the tutorial.</li>
+<li>「AI review for health」是否為 Oracle 內部正式流程名稱,拼法待確認。/ Whether "AI review for health" is the official internal process name at Oracle.</li>
+<li>投影片上 Clinical AI Agent live demo 的連結網址未在逐字稿中出現。/ The live-demo URL shown on slide is not captured in the transcript.</li>
+<li>80% burnout、40 萬件可預防死亡、1 兆美元行政成本三個數字的原始出處(講者只說是 surveys / estimates)。/ Primary sources for the 80% burnout, 400K preventable deaths, and $1T administrative cost figures — the speaker cited them as surveys/estimates only.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-nexus/krishnaram-kenthapadi--trustworthy-multi-agent-ai-systems-for-healthcare.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

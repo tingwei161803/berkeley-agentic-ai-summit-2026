@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Constraint-Driven Innovation: A Look at the AI Systems Problem · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Delivering on AI&#x27;s promise takes an order-of-magnitude efficiency gain, not one more model or one faster chip — and that gain only comes from treating AI infrastructure as a whole-stack systems pro…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/peter-desantis--constraint-driven-innovation-a-look-at-the-ai-systems-problem.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Constraint-Driven Innovation: A Look at the AI Systems Problem · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Delivering on AI&#x27;s promise takes an order-of-magnitude efficiency gain, not one more model or one faster chip — and that gain only comes from treating AI infrastructure as a whole-stack systems pro…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/peter-desantis--constraint-driven-innovation-a-look-at-the-ai-systems-problem.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-plenary" data-talk="peter-desantis--constraint-driven-innovation-a-look-at-the-ai-systems-problem">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Constraint-Driven Innovation: A Look at the AI Systems Problem" data-title-zh="約束驅動的創新:AI 系統問題巡禮">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--keynote"><span class="lang-en">Keynote</span><span class="lang-zh">主題演講</span></span>
+          <span class="dialog__session">Session 1: Agentic AI Infrastructure &amp; Platform</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Constraint-Driven Innovation: A Look at the AI Systems Problem</span><span class="lang-zh">約束驅動的創新:AI 系統問題巡禮</span></h1>
+        <p class="dialog__speaker"><strong>Peter DeSantis</strong> — SVP, Foundational AI Models, Custom Silicon, Quantum Computing, Amazon</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 00:42:23–01:01:30 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=gKdeLQd_LIQ&amp;t=2543s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:42:23</span><span class="lang-zh">從 00:42:23 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Delivering on AI&#x27;s promise takes an order-of-magnitude efficiency gain, not one more model or one faster chip — and that gain only comes from treating AI infrastructure as a whole-stack systems problem where models and silicon are co-designed and no layer of indirection sits between you and the hardware.</span><span class="lang-zh">要讓 AI 兌現承諾,關鍵不是再多一個模型或再快一顆晶片,而是把效率提升一個數量級——而效率只能從「模型與晶片協同設計、且不在中間放抽象層」的全棧系統觀取得;世界處處是約束,那正是這件事有趣的原因。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>這是 day one</strong>:Amazon 的 day one 文化不是狀態描述而是態度——「不管你過去做出什麼成就,前面還有更多」。DeSantis 認為 AI 現在正處在 day one,不是快做完了。</li>
+<li><strong>最核心的問題是效率</strong>:要達成大家共同想像的 AI 未來,現有基礎設施得<strong>提升一個數量級</strong>,不是漸進改善。</li>
+<li><strong>觀察一:不會只有一種晶片</strong>。GPU 是個美麗的意外(它為 graphics 而生),但不是跑今天模型的最優架構;AI 運算的記憶體與計算流是<strong>可預測的</strong>,所以最適合的是 systolic array——這是 Trainium(前身 Inferentia)近十年前就下的賭注。</li>
+<li><strong>推論工作負載本身就是兩種</strong>:prefill/encoding 極度 compute-bound,autoregressive token generation 極度 memory-bandwidth-bound(每產生一個 token 都要讀過全部權重)。SRAM-heavy 晶片能讓 token generation 快很多,但用電晶體換了記憶體、又難塞下 agentic 需要的超長 context——所以是<strong>補位而非取代</strong>。</li>
+<li><strong>觀察二:模型與晶片必須同時設計</strong>。模型架構是數億(未來可能數十億)美元、跨年度的投入;晶片從設計到規模化上線要兩到三年。兩條長弧不能各走各的。Amazon 約半年前把內部 foundation model 團隊與晶片開發拉到一起。</li>
+<li><strong>觀察三:這不是模型問題,也不是晶片問題,是系統問題</strong>。無論你把 performance 定義成準確率、延遲還是吞吐/成本,任何一項的改善都需要對整個堆疊的完整理解。</li>
+<li><strong>因此刻意不做抽象</strong>:軟體工程的本能是加一層 indirection,但要榨出極致效能就得直接碰硬體——Trainium 公開了完整指令集、開源了 toolchain,並整合 PyTorch 與 vLLM。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>開場:day one 與 AI 樂觀論(約 00:42–00:46)</h4>
+<ul>
+<li>在 Amazon 28 年,day one 是一種「相信並意志出來」的文化:不管過去有多成功,前面還有更多成功。零售起家時說 day one 合理,變成大零售商後說起來有點傻,20 年前開 AWS 時又真的像 day one(公司內部當時都在笑這個雲端玩意)。</li>
+<li>他自陳是分布右尾的 AI 樂觀主義者,相信 AI 會幫人類解決能源、健康與醫學這類最根本的問題——但<strong>要走到那個未來,必須先解決一批問題,而且是數量級的改善</strong>。</li>
+<li>最根本的那個問題:<strong>怎麼讓 AI 效率高得多</strong>。這也是為什麼他說我們還在 day one。</li>
+</ul>
+<h4>觀察一:未來十年不會只有一種晶片或伺服器型別(約 00:47–00:54)</h4>
+<ul>
+<li>回望十年前,幾乎所有工作負載都跑在 CPU 上——Moore's law 持續產出更好的通用處理器,單一 tool chain 帶來槓桿;而在雲之前,支援多種硬體對聚焦本業的公司來說不划算。</li>
+<li>雲改變了這件事(Amazon 約 12 年前開始興奮於此),把客製硬體的麻煩吸收掉,所以<strong>早在 AI 起飛前 AWS 就在做各種 bespoke 硬體</strong>。AI 來了之後,「AI」底下其實是一整個工作負載生態系,agentic AI 又把這件事推得更快。</li>
+<li>GPU 的地位很特別:它是個 phenomenal chip,徹底改變了浮點與矩陣運算的遊戲規則,是今日模型的起源故事的關鍵一環——但它「是為它名字裡那個東西(graphics)設計的」,<strong>不是</strong>跑今天模型最優的架構。</li>
+<li>Amazon 近十年前就注意到:AI 模型雖然做大量矩陣與浮點運算,但<strong>做的方式相當可預測</strong>;既然記憶體與計算的流動可以預測,就不需要一堆核心配一堆暫存器去隨機存取記憶體。最適合這種形態的是 <strong>systolic array</strong>。</li>
+<li>Trainium(原名 Inferentia,後來長成更大的變體)就是建立在 systolic array 上:拿掉這類工作負載不需要的彈性換效率,同時保留足夠彈性去跑各種 ML 模型。「It's not an ASIC customized for one application. It's an AI accelerator.」</li>
+<li>但即使 Trainium 是今天最優的架構,一顆晶片也不可能是未來的答案。Amazon 認為訓練還有一到兩個十年的新創新可做,同時 Amazon 與其他人都會投資別的晶片——這讓硬體生態系更有意思。</li>
+<li><strong>推論管線的兩種工作負載</strong>:</li>
+<li><strong>prefill / encoding</strong>:極度 compute-intensive。</li>
+<li><strong>autoregressive token generation</strong>:極度 memory-bandwidth-bound,因為每產生一個後續 token 都要存取每一個模型權重。</li>
+<li>兩者的硬體 profile 天差地遠。Trainium 兩邊都跑得不錯:高效記憶體流利於 decode、大浮點效能利於 prefill。</li>
+<li>目前最受矚目的特化方向是用 <strong>SRAM 晶片</strong>(把更多記憶體放上計算晶片,代價是計算容量)加速 token generation。但這是 trade-off:需要更多計算時你已經把電晶體換成記憶體了;需要更多記憶體時本來就塞不進晶片;而 agentic AI 需要<strong>非常非常長的 context</strong>,把 context 搬進搬出 SRAM 遠比在 Trainium 上昂貴。結論:SRAM 與記憶體密集晶片會是推論系統的重要一環,<strong>但是在許多其他晶片的脈絡裡,不是取代品</strong>。</li>
+</ul>
+<h4>觀察二:模型與晶片必須協同設計(約 00:54–00:57)</h4>
+<ul>
+<li>建一個 AI 模型等於對某個模型架構做<strong>多年、數億美元</strong>的投入;他預期不久後會有模型家族投入數十億美元。這種長期投入的每一步都得有效率。</li>
+<li>晶片投入是同樣的形狀:以今日領先 AI 處理器的複雜度,從設計到在資料中心規模化上線很容易就是兩到三年。</li>
+<li>兩條同樣長弧的投資如果各走各的——模型不管一年後硬體會長怎樣、硬體不管兩年後模型要什麼——就是錯的。</li>
+<li>一個具體切面:<strong>你要把哪些能力放進晶片?</strong>新點子的來源之一是學術界(他說投影片上有一批很重要的 Berkeley 論文)。但不是每個好點子都該進矽晶,不是因為它不好,而是設計選擇的名額有限。<strong>做好硬體的藝術,就是判斷哪些好點子必須進硬體,好讓晶片上市時科學與技術剛好成熟到能用它。</strong></li>
+<li>Trainium 最新世代加進去的特性正是這樣挑出來的——靈感來自學術界,也來自客戶與內部團隊的研究。</li>
+<li>約六個月前,Amazon 把內部的 foundational model 團隊與晶片開發拉得更近,這現在是 DeSantis 職掌的重要一塊。</li>
+</ul>
+<h4>觀察三:AI 基礎設施是系統問題(約 00:57–01:00)</h4>
+<ul>
+<li>「AI infrastructure is not a model problem. It's not a chip problem. It's a systems problem.」——正因為系統彼此高度連動,這是工程師/科學家能碰到最有意思的問題之一,幾乎把電腦科學與工程的每個部分都拉了進來。</li>
+<li>performance 可以定義成更好的準確率、更低的延遲、更好的吞吐與成本;但<strong>任何一種「更好」都需要對每一層堆疊的完整理解</strong>。</li>
+<li>由此得出一個反直覺的工程決定:身為軟體工程師,他的本能是加一層 indirection 來擴展——對大組織裡的軟體通常是對的,<strong>但要在 AI 系統上追求絕對最佳效能就不是</strong>。你得親手碰整個堆疊:網路、晶片、晶片與網路的硬體指令層能力。</li>
+<li>所以 Amazon 給客戶最深的硬體存取權:Trainium <strong>公開完整指令集</strong>(很多 Berkeley 學生協助推進了這方面的極限)、<strong>開源 toolchain</strong>(讓外界理解編譯器與軟體堆疊如何運作),並整合 PyTorch 與 vLLM 這類生態關鍵元件。</li>
+</ul>
+<h4>結尾:約束就是題目(約 01:00–01:01)</h4>
+<p>世界充滿約束——容量、效能、電力。這正是整件事有意思的原因,也是他此刻對技術與 AI 感到興奮的理由。像這樣把整個堆疊各方的專家聚在一起的場合,是解鎖「理解整個系統」帶來的潛力的關鍵。收尾回到開頭:這趟旅程才剛剛開始,前面的路會比至今看到的更精彩。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"It's always day one."(約 00:44)</p>
+</blockquote>
+<p>不是描述公司規模,是一種刻意維持的態度:不管做出什麼成就,前面還有更多。</p>
+<blockquote>
+<p>"It's not an ASIC customized for one application. It's an AI accelerator that's been built specifically to optimally run the biggest and broadest range of AI models."(約 00:51)</p>
+</blockquote>
+<p>Trainium 的定位:用 systolic array 拿掉不需要的彈性,但刻意保留跑各種 ML 模型的彈性。</p>
+<blockquote>
+<p>"The art of building great hardware is understanding which of the great ideas ultimately need to be put into hardware — so that by the time the hardware is in market, the science and the technology is ready to take advantage of that chip."(約 00:57)</p>
+</blockquote>
+<p>兩到三年的晶片 lead time,逼你在論文階段就下注。</p>
+<blockquote>
+<p>"AI infrastructure is not a model problem. It's not a chip problem. It's a systems problem."(約 00:57)</p>
+</blockquote>
+<p>整場演講的軸心,也是接下來 panel 的共同前提。</p>
+<blockquote>
+<p>"I have an instinctual desire to put a layer of indirection between things to scale — and that is usually the right way to build software … but it's not the right way to build an AI system if you want to achieve absolute best performance."(約 00:59)</p>
+</blockquote>
+<p>刻意違反軟體工程本能,是 Trainium 公開完整指令集的理由。</p>
+<blockquote>
+<p>"The world is full of constraints — capacity constraints, performance constraints, power constraints. That's what makes this whole thing so interesting."(約 01:00)</p>
+</blockquote>
+<p>演講標題的出處。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>It's day one.</strong> Amazon's day-one culture is an attitude, not a stage: however much you've already succeeded, more is ahead. DeSantis sees AI as squarely in day one, not on the cusp of being finished.</li>
+<li><strong>The core problem is efficiency.</strong> Realizing the AI future everyone wants requires an <strong>order-of-magnitude</strong> improvement in infrastructure, not incremental gains.</li>
+<li><strong>Observation 1: no single chip wins the next decade.</strong> The GPU was a happy accident — built for the thing it's named after, graphics — and is not the optimal architecture for today's models. AI models do predictable matrix and floating-point work, so memory and compute flow can be predicted, which is what makes a <strong>systolic array</strong> the right shape. That's the bet behind Trainium (originally Inferentia), placed the better part of a decade ago.</li>
+<li><strong>Inference is really two workloads</strong>: prefill/encoding is extremely compute-intensive; autoregressive token generation is extremely memory-bandwidth-bound, since every subsequent token touches every model weight. SRAM-heavy chips speed up token generation but trade transistors for memory and struggle with the very long contexts agentic AI needs — so they complement rather than replace.</li>
+<li><strong>Observation 2: models and chips must be designed in tandem.</strong> A model architecture is a multi-year, hundreds-of-millions-of-dollars commitment (soon billions); a leading AI chip takes two to three years from design to data-center scale. Two long-arc investments cannot be made in isolation from each other. Amazon brought its internal foundation model work closer to chip development about six months ago.</li>
+<li><strong>Observation 3: this is a systems problem</strong>, not a model or chip problem. Whether you define performance as accuracy, latency, or throughput-and-cost, improving any of them requires understanding every layer of the stack.</li>
+<li><strong>So Amazon deliberately removes abstractions</strong>: Trainium's full instruction set is exposed, the toolchain is open-sourced, and the stack integrates with PyTorch and vLLM.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Opening: day one and AI optimism (~00:42–00:46)</h4>
+<p>Twenty-eight years at Amazon have made "day one" a familiar phrase — a culture you believe and will into existence, meaning that whatever you've built, more success lies ahead. It made obvious sense in a retail startup that fit in one conference room, felt silly once Amazon was a huge retailer, and felt true again when AWS launched twenty years ago and everyone inside the company was laughing at "this cloud thing."</p>
+<p>DeSantis places himself on the far tail of the optimist distribution: he believes AI will help solve fundamental problems like energy, health, and medicine, and that we are seeing only the tip of the iceberg. But getting there requires order-of-magnitude improvements, and the single most fundamental problem is <strong>making AI far more efficient</strong>.</p>
+<h4>Observation 1: no single chip or server type will power the next decade (~00:47–00:54)</h4>
+<ul>
+<li>A decade ago essentially everything ran on a CPU. Moore's law kept producing better general-purpose processors, one tool chain gave leverage, and supporting many hardware types made little sense for a company focused on its business.</li>
+<li>The cloud absorbed the pain of custom hardware, which is why AWS was already building bespoke silicon well before AI took off. Then AI arrived — and "AI" is really an ecosystem of workload types, with agentic AI pushing diversity faster still.</li>
+<li>The GPU is a phenomenal chip and a critical part of the origin story of modern models, but it was built for graphics and is not the optimal architecture for the models we run today.</li>
+<li>The insight, noticed the better part of a decade ago: AI models do a lot of matrix and floating-point math, but they do it in a <strong>fairly predictable way</strong>. If you can predict the flow of memory and compute through a chip, you don't need many cores with many registers doing random memory access — you want a <strong>systolic array</strong>.</li>
+<li>Trainium (originally Inferentia, later grown into a larger variant) is built on that architecture: strip out the flexibility these workloads don't need, keep the flexibility that lets it run a broad range of ML models. "It's not an ASIC customized for one application. It's an AI accelerator."</li>
+<li>Even so, one chip won't be the answer. Amazon sees another decade or two of novel innovation in training, and expects both itself and others to invest in additional chips — which makes the hardware ecosystem more interesting.</li>
+<li><strong>Two workloads inside inference</strong>: prefill/encoding is compute-intensive; autoregressive decode is memory-bandwidth-bound because each token requires reading every weight. Their hardware profiles are radically different. Trainium runs both well — efficient memory flow serves decode, large floating-point throughput serves prefill.</li>
+<li>The specialization getting the most attention now is <strong>SRAM-heavy chips</strong> that trade compute capacity for on-chip memory to accelerate token generation. But the trade-offs bite: you've spent transistors on memory, you can't fit much memory on-chip anyway, and agentic AI needs very long contexts that are expensive to move in and out of SRAM. DeSantis expects such chips to be an important part of inference systems <strong>in the context of many other chips, not as a replacement</strong>.</li>
+</ul>
+<h4>Observation 2: models and chips must be designed in tandem (~00:54–00:57)</h4>
+<ul>
+<li>Building an AI model is a multi-year commitment to an architecture costing hundreds of millions of dollars — soon, he suspects, billions for some model families. Every step of that investment needs to be efficient.</li>
+<li>Chip investment has the same shape: two to three years from design to production scale, given the complexity of leading AI processors.</li>
+<li>Developing models without knowing what happens in hardware a year out — or building hardware two years out without understanding model needs — is a mistake. Bringing the model, the system around it, and the silicon together is fundamental.</li>
+<li>A concrete lens: <strong>which capabilities do you put on the chip?</strong> Academia is one source of ideas (he noted a set of important Berkeley papers on the slide). Not every good idea makes it into production — not because it wasn't good, but because you only get so many design choices. "The art of building great hardware is understanding which of the great ideas ultimately need to be put into hardware."</li>
+<li>The features in the latest Trainium generation were selected this way, inspired by academic work as well as customer and internal research. About six months ago Amazon pulled its internal foundational model work closer to chip development, now a major part of DeSantis's remit.</li>
+</ul>
+<h4>Observation 3: AI infrastructure is a systems problem (~00:57–01:00)</h4>
+<ul>
+<li>Because these systems are so interconnected, improving performance — however you define it (accuracy, latency, throughput and cost) — demands a complete understanding of every level of the stack. Done well, it draws on nearly every part of computer science and engineering, which is what makes it such a fun place to build.</li>
+<li>This produces a deliberately counterintuitive engineering stance. As a software engineer, his instinct is to insert a layer of indirection to scale — usually right for software, especially in a large organization, <strong>but wrong for an AI system chasing absolute best performance</strong>. There you need hands on the whole stack: the network, the chip, the hardware instruction-level capabilities of both.</li>
+<li>Hence Amazon exposes Trainium's <strong>complete instruction set</strong> (Berkeley students have helped push the limits there), <strong>open-sources the toolchain</strong> so people can see how the compiler and the rest of the software stack work, and integrates with PyTorch and vLLM.</li>
+</ul>
+<h4>Closing: constraints are the point (~01:00–01:01)</h4>
+<p>The world is full of constraints — capacity, performance, power — and that is exactly what makes this interesting. Events that gather experts from every part of the stack are critical to unlocking what comes from understanding the whole system. He closed where he started: this is the very beginning, and what lies ahead will be far more exciting than what we've seen.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"It's always day one." (~00:44)</p>
+</blockquote>
+<p>Not a description of company size — a deliberately maintained attitude.</p>
+<blockquote>
+<p>"It's not an ASIC customized for one application. It's an AI accelerator that's been built specifically to optimally run the biggest and broadest range of AI models." (~00:51)</p>
+</blockquote>
+<p>Trainium's positioning: strip the flexibility you don't need, keep the flexibility you do.</p>
+<blockquote>
+<p>"The art of building great hardware is understanding which of the great ideas ultimately need to be put into hardware — so that by the time the hardware is in market, the science and the technology is ready to take advantage of that chip." (~00:57)</p>
+</blockquote>
+<p>A two-to-three-year lead time forces you to bet at the paper stage.</p>
+<blockquote>
+<p>"AI infrastructure is not a model problem. It's not a chip problem. It's a systems problem." (~00:57)</p>
+</blockquote>
+<p>The spine of the talk, and the shared premise of the panel that followed.</p>
+<blockquote>
+<p>"I have an instinctual desire to put a layer of indirection between things to scale — and that is usually the right way to build software … but it's not the right way to build an AI system if you want to achieve absolute best performance." (~00:59)</p>
+</blockquote>
+<p>Why Trainium's full instruction set is public.</p>
+<blockquote>
+<p>"The world is full of constraints — capacity constraints, performance constraints, power constraints. That's what makes this whole thing so interesting." (~01:00)</p>
+</blockquote>
+<p>Where the talk's title comes from.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWS Trainium</td>
+<td>Amazon 自研 AI 加速器,systolic array 架構;完整指令集公開</td>
+<td>Amazon's in-house AI accelerator built on a systolic array; full instruction set exposed</td>
+<td>原名 Inferentia,後長成更大變體 / originally Inferentia, later grown into a larger variant</td>
+</tr>
+<tr>
+<td>AWS Inferentia</td>
+<td>Trainium 的前身</td>
+<td>Trainium's predecessor</td>
+<td></td>
+</tr>
+<tr>
+<td>Systolic array</td>
+<td>適合可預測記憶體/計算流的架構,Trainium 的基礎</td>
+<td>Architecture suited to predictable memory/compute flow; the basis of Trainium</td>
+<td></td>
+</tr>
+<tr>
+<td>SRAM-heavy 推論晶片</td>
+<td>把更多記憶體放上計算晶片以加速 token generation</td>
+<td>Chips trading compute for on-chip memory to accelerate token generation</td>
+<td>未點名廠商;DeSantis 視為補位而非取代 / no vendor named; framed as complement, not replacement</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>Amazon 晶片軟體堆疊整合的生態關鍵元件</td>
+<td>Key ecosystem component the Amazon chip stack integrates with</td>
+<td></td>
+</tr>
+<tr>
+<td>vLLM</td>
+<td>同上</td>
+<td>Same</td>
+<td>逐字稿誤聽為 "L uh BLM" / heard as "L uh BLM"</td>
+</tr>
+<tr>
+<td>Amazon 開源 toolchain</td>
+<td>編譯器與軟體堆疊開源,供外界理解</td>
+<td>Open-sourced compiler and software stack</td>
+<td>正式名稱待確認 / official name to verify</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peter Dantis</td>
+<td>Peter DeSantis</td>
+</tr>
+<tr>
+<td>tranium / trrenium</td>
+<td>Trainium</td>
+</tr>
+<tr>
+<td>inferentia</td>
+<td>Inferentia</td>
+</tr>
+<tr>
+<td>L uh BLM</td>
+<td>vLLM</td>
+</tr>
+<tr>
+<td>a Gentic AI / aentic</td>
+<td>agentic AI</td>
+</tr>
+<tr>
+<td>SRAMM</td>
+<td>SRAM</td>
+</tr>
+<tr>
+<td>floatingoint / auto reggressive</td>
+<td>floating-point / autoregressive</td>
+</tr>
+<tr>
+<td>Don</td>
+<td>Dawn (Song)</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Amazon「開源 toolchain」的正式名稱與連結(推測與 AWS Neuron SDK / 其 kernel 介面相關,但演講未點名)。/ Official name and link for the open-sourced Amazon toolchain (likely related to the AWS Neuron SDK / its kernel interface, but not named in the talk).</li>
+<li>「latest generation」Trainium 指的是哪一代與新增了哪些特性(投影片上有列表,語音未逐項念出)。/ Which Trainium generation "latest generation" refers to and which features were added (listed on a slide, not read aloud).</li>
+<li>投影片上那批「很重要的 Berkeley 論文」是哪幾篇。/ Which Berkeley papers appeared on the slide.</li>
+<li>「約六個月前把內部 foundational model 團隊與晶片開發拉近」是否有對應的公開組織異動公告。/ Whether the reorg bringing Amazon's foundational model team closer to chip development was publicly announced.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/peter-desantis--constraint-driven-innovation-a-look-at-the-ai-systems-problem.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

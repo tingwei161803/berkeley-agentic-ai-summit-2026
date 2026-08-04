@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Transforming from SaaS to an Agentic Enterprise · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="When content volume is effectively infinite and everyone is a creator, scanning and fixing after the fact no longer works; Siteimprove&#x27;s answer is to shift compliance left into the moment of creati…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/nayaki-nayyar--transforming-from-saas-to-an-agentic-enterprise.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Transforming from SaaS to an Agentic Enterprise · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="When content volume is effectively infinite and everyone is a creator, scanning and fixing after the fact no longer works; Siteimprove&#x27;s answer is to shift compliance left into the moment of creati…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/nayaki-nayyar--transforming-from-saas-to-an-agentic-enterprise.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="nayaki-nayyar--transforming-from-saas-to-an-agentic-enterprise">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Transforming from SaaS to an Agentic Enterprise" data-title-zh="從 SaaS 轉型為 Agentic Enterprise">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Enterprise AI</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Transforming from SaaS to an Agentic Enterprise</span><span class="lang-zh">從 SaaS 轉型為 Agentic Enterprise</span></h1>
+        <p class="dialog__speaker"><strong>Nayaki Nayyar</strong> — CEO, Siteimprove</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 01:20:50–01:27:05 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=4850s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 01:20:50</span><span class="lang-zh">從 01:20:50 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">When content volume is effectively infinite and everyone is a creator, scanning and fixing after the fact no longer works; Siteimprove&#x27;s answer is to shift compliance left into the moment of creation, wiring its agents directly into AI building tools like Lovable and VS Code through an MCP server.</span><span class="lang-zh">當內容量無限、且人人都能生成內容時,事後掃描與修補來不及了;Siteimprove 的轉型路線是把合規檢測「左移」到創作當下,用 MCP server 把自家 agent 直接接進 Lovable、VS Code 這類 AI 創作工具裡。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>客戶的兩個核心痛點</strong>:一是<strong>內容合規</strong>——歐洲的 EAA(European Accessibility Act)與北美的 ADA 都要求大型企業確保內容可及性;二是<strong>內容能見度</strong>——搜尋已經從傳統搜尋演化成 AI 驅動搜尋,內容能不能被 AI 找到成了新問題。</li>
+<li><strong>解法是 shift left</strong>:不在事後掃描,而是在開發者、設計師、內容創作者<strong>產生內容的當下</strong>就偵測並自動修復問題。</li>
+<li><strong>落地方式是 MCP server</strong>:把自家 agent 接進 Lovable、Copilot、VS Code 等 AI 工具,讓 agent 之間互相呼叫;原本要花數週到數月的整合,現在幾天甚至幾分鐘就能完成。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>問題:無限內容 + 兩種合規壓力(約 01:21–01:23)</h4>
+<p>Siteimprove 已在業界超過 20 年,全球有 <strong>5,500+ 客戶</strong>,涵蓋 Global 2000 與 Fortune 500、金融機構、醫療、公部門等產業。講者說我們現在活在一個「AI 驅動、內容無限」的世界——網頁內容、行動內容、社群內容、文件,各種形態的內容都在暴增,而大型全球企業對此非常吃力。</p>
+<p>客戶的第一個共同挑戰是<strong>內容合規</strong>,尤其是可及性(accessibility):歐洲有 <strong>EAA(European Accessibility Act)</strong>,北美有 <strong>ADA(Americans with Disabilities Act)</strong>,都要求大型企業確保內容合規。</p>
+<p>第二個挑戰是<strong>內容能見度</strong>:搜尋已經從傳統搜尋演化成 AI 驅動的搜尋(她當場請聽眾舉手,幾乎全場都在用 AI 搜尋找資訊)。內容能不能出現在這些 AI 搜尋裡,成了新的競爭問題。</p>
+<p>第三個挑戰她描述為:<strong>在人人都是開發者、人人都能生成內容與設計的世界裡,怎麼確保這些內容是合規且有效的?</strong></p>
+<h4>解法:shift left 與 agentic content intelligence platform(約 01:23–01:25)</h4>
+<p>回應是<strong>「shift left」</strong>——在創作的當下就解決問題,在開發者寫程式、設計師做設計、內容創作者產內容、應用被生成出來的那一刻就偵測問題並修復,而不是事後補救。</p>
+<p>為此,他們去年推出了 <strong>agentic content intelligence platform</strong>,分四大支柱:</p>
+<ol>
+<li><strong>Accessibility agents</strong>:在創作當下偵測並自動修復可及性問題。</li>
+<li><strong>Conversational analytics agents</strong>:你可以直接問問題,它自動生成報表與 dashboard。</li>
+<li><strong>Search agents</strong>:確保內容在各種 AI 驅動搜尋中可被看見。</li>
+<li><strong>Content strategy agents</strong>:產生 content brief、content draft 與各種內容描述。</li>
+</ol>
+<p>同時他們發布了 <strong>MCP server</strong>,把 agent-to-agent 的整合能力接進 Lovable、Copilot、VS Code 這類 AI 工具。她強調的效益是<strong>整合速度</strong>:原本進入市場需要數週甚至數月的整合,現在能在幾天、甚至幾分鐘內完成。</p>
+<h4>Demo:Lovable × Siteimprove agent 互相呼叫(約 01:25–01:27)</h4>
+<p>現場播放了一段預錄 demo,展示與 <strong>Lovable</strong> 的整合:</p>
+<ol>
+<li>先問 Lovable 有哪些 agent 可用——它立刻偵測到 Siteimprove agents、Lovable agents 與 browser agents。</li>
+<li>再問 Siteimprove agents 能做什麼——列出多個能力(偵測、AI rules、auto remediation 等;確切名稱見「待確認」)。</li>
+<li>抓取右側網站的 URL,跑一次快速可及性檢查,回報約 <strong>5 個問題</strong>。</li>
+<li>最後下一個提示,讓 <strong>Siteimprove agents 與 Lovable agents 互相協作</strong>:透過 MCP server 呼叫 agent、偵測問題、並自動修復。</li>
+</ol>
+<p>她的結論:過去偵測與修復這些問題要花數週到數月,現在幾分鐘就能完成。目標是幫客戶讓那些「無限量的內容」同時<strong>保持合規又有成效</strong>——「這對我們不是二選一,是 and,而且全部跑在單一平台上」。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Our response … is to shift left — is to address this problem at the time of creation."(約 01:23)</p>
+</blockquote>
+<p>在「人人都是開發者」的世界裡,事後掃描的模式已經追不上內容產生的速度。</p>
+<blockquote>
+<p>"It's not an either-or solution for us. It's an and solution, and that's all running on one single platform."(約 01:27)</p>
+</blockquote>
+<p>合規與成效不是取捨關係,而是要同時滿足的兩個條件。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Two core customer pains</strong>: <strong>content compliance</strong> — the European Accessibility Act (EAA) in Europe and the ADA in North America both require large enterprises to keep content accessible — and <strong>content visibility</strong>, now that search has moved from traditional engines to AI-driven search.</li>
+<li><strong>The answer is shifting left</strong>: detect and remediate issues at the moment developers, designers, and content creators produce the content, rather than scanning after publication.</li>
+<li><strong>The delivery mechanism is an MCP server</strong> that plugs their agents into Lovable, Copilot, VS Code, and similar AI building tools so agents can call each other — collapsing integrations that used to take weeks or months into days or minutes.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>The problem: infinite content plus two kinds of compliance pressure (~01:21–01:23)</h4>
+<p>Siteimprove has been in the industry 20+ years with <strong>5,500+ customers worldwide</strong> across the Global 2000 and Fortune 500 — financial institutions, healthcare, public sector, and more. Her framing: we now live in an AI-driven world with infinite content — web, mobile, social, documents — and large global enterprises are struggling with all of it.</p>
+<p>The first challenge every customer raises is <strong>compliance</strong>, specifically accessibility. The <strong>European Accessibility Act (EAA)</strong> in Europe and the <strong>ADA (Americans with Disabilities Act)</strong> in North America both require large enterprises to keep their content compliant.</p>
+<p>The second is <strong>content visibility</strong>: search has evolved past traditional search into AI-driven search — she asked for a show of hands and, at an agentic AI conference, essentially everyone was using AI search. Whether your content surfaces there is now a competitive question.</p>
+<p>The third: in a world where everyone is a developer and everyone can generate content and designs, how do you ensure that content stays compliant and performs?</p>
+<h4>The response: shift left and an agentic content intelligence platform (~01:23–01:25)</h4>
+<p>Their answer is to <strong>shift left</strong> — address the problem at the time of creation, detecting and remediating issues as developers write code, designers produce designs, and creators generate content, instead of cleaning up afterward.</p>
+<p>Last year they released an <strong>agentic content intelligence platform</strong> across four pillars:</p>
+<ol>
+<li><strong>Accessibility agents</strong> — detect and auto-remediate accessibility issues at creation time.</li>
+<li><strong>Conversational analytics agents</strong> — ask a question, get generated reports and dashboards.</li>
+<li><strong>Search agents</strong> — make content visible across AI-driven search surfaces.</li>
+<li><strong>Content strategy agents</strong> — content briefs, drafts, and descriptions.</li>
+</ol>
+<p>Alongside that they released an <strong>MCP server</strong> enabling agent-to-agent integration across AI tools — Lovable, Copilot, VS Code. The benefit she emphasized is integration speed: what used to take weeks or months to bring to market can now be done in days or even minutes.</p>
+<h4>Demo: Lovable and Siteimprove agents calling each other (~01:25–01:27)</h4>
+<p>A recorded demo of the <strong>Lovable</strong> integration:</p>
+<ol>
+<li>Ask Lovable which agents it has access to — it immediately detects the Siteimprove agents, Lovable agents, and browser agents.</li>
+<li>Ask what the Siteimprove agents can do — it lists capabilities including detection, AI rules, and auto-remediation (exact product names in "To Verify").</li>
+<li>Grab the URL of the site shown on the right and run a quick accessibility check — roughly <strong>five issues</strong> come back.</li>
+<li>Prompt the <strong>Siteimprove agents and Lovable agents to work together</strong>: calls go through the MCP server, issues are identified, and remediation happens automatically.</li>
+</ol>
+<p>Her conclusion: detecting and remediating these issues used to take weeks to months and now takes minutes. The goal is helping customers keep their infinite volume of content both compliant <em>and</em> performing — "it's not an either-or for us, it's an and, and that's all running on one single platform."</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Our response … is to shift left — is to address this problem at the time of creation." (~01:23)</p>
+</blockquote>
+<p>In a world where everyone is a developer, post-hoc scanning can't keep up with content creation.</p>
+<blockquote>
+<p>"It's not an either-or solution for us. It's an and solution, and that's all running on one single platform." (~01:27)</p>
+</blockquote>
+<p>Compliance and performance are both requirements, not a trade-off.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Siteimprove.ai Agentic Content Intelligence Platform</td>
+<td>四大支柱:accessibility / conversational analytics / search / content strategy agents</td>
+<td>Four pillars: accessibility, conversational analytics, search, and content strategy agents</td>
+<td>去年發布 / released last year</td>
+</tr>
+<tr>
+<td>Siteimprove.ai MCP Server</td>
+<td>讓自家 agent 接進 Lovable、Copilot、VS Code 等 AI 創作工具,支援 agent-to-agent 呼叫</td>
+<td>Connects their agents into Lovable, Copilot, VS Code and other AI-native tools for agent-to-agent calls</td>
+<td>官方新聞稿另提及 Anthropic Claude 與 Figma 連接器 / press materials also list Anthropic Claude and Figma connectors</td>
+</tr>
+<tr>
+<td>EAA (European Accessibility Act)</td>
+<td>歐洲的可及性法規</td>
+<td>EU accessibility legislation driving enterprise compliance demand</td>
+<td></td>
+</tr>
+<tr>
+<td>ADA (Americans with Disabilities Act)</td>
+<td>北美的可及性法規</td>
+<td>US accessibility legislation</td>
+<td>逐字稿誤作 "American Disability Act"</td>
+</tr>
+<tr>
+<td>Lovable</td>
+<td>Demo 中示範整合的 AI 應用生成工具</td>
+<td>The AI app-building tool used in the live-recorded demo</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nyaki Naar / Nyaki Ner</td>
+<td>Nayaki Nayyar</td>
+</tr>
+<tr>
+<td>Sentiment Proof / side improve</td>
+<td>Siteimprove</td>
+</tr>
+<tr>
+<td>SAS</td>
+<td>SaaS</td>
+</tr>
+<tr>
+<td>American Disability Act</td>
+<td>Americans with Disabilities Act (ADA)</td>
+</tr>
+<tr>
+<td>agent-gagent</td>
+<td>agent-to-agent</td>
+</tr>
+<tr>
+<td>lovables of the world / co-pilots of the world / VS codes of the world</td>
+<td>Lovable / Copilot / VS Code</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Demo 中念到的三個 agent 能力名稱:「alpha detect agent」「AI rules agent」「auto remediation agents」——前兩者拼法無法確認(「alpha detect」可能是可及性領域慣用的 a11y 相關命名),需看影片畫面確認。/ The three capability names read out in the demo — "alpha detect agent", "AI rules agent", "auto remediation agents" — the first two can't be confirmed from audio; check the on-screen demo.</li>
+<li>講者提到的「MCP server 讓整合從數週縮短到數分鐘」缺少具體案例佐證。/ No concrete case study was given behind the "weeks to minutes" integration claim.</li>
+<li>5,500+ 客戶數與「20 plus years」為講者口述,未見於本場其他資料。/ The 5,500+ customer count and "20+ years" figure are as spoken; not otherwise sourced here.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/nayaki-nayyar--transforming-from-saas-to-an-agentic-enterprise.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

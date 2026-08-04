@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>vLLM: Building Open and Efficient Inference for Agents · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Agents barely changed the inference API but changed everything underneath it — so vLLM is rebuilding along three axes: workload-aware model parallelism, dynamic hierarchical KV cache, and enough ha…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/woosuk-kwon--vllm-building-open-and-efficient-inference-for-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="vLLM: Building Open and Efficient Inference for Agents · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Agents barely changed the inference API but changed everything underneath it — so vLLM is rebuilding along three axes: workload-aware model parallelism, dynamic hierarchical KV cache, and enough ha…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/woosuk-kwon--vllm-building-open-and-efficient-inference-for-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-atlas" data-talk="woosuk-kwon--vllm-building-open-and-efficient-inference-for-agents">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="vLLM: Building Open and Efficient Inference for Agents" data-title-zh="vLLM:為 Agent 打造開放且高效的推論引擎">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 3: Frameworks &amp; Dev Platforms</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">vLLM: Building Open and Efficient Inference for Agents</span><span class="lang-zh">vLLM:為 Agent 打造開放且高效的推論引擎</span></h1>
+        <p class="dialog__speaker"><strong>Woosuk Kwon</strong> — Co-Founder &amp; CTO, Inferact</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 03:44:21–04:00:55 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=psPzCQbjCCo&amp;t=13461s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 03:44:21</span><span class="lang-zh">從 03:44:21 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Agents barely changed the inference API but changed everything underneath it — so vLLM is rebuilding along three axes: workload-aware model parallelism, dynamic hierarchical KV cache, and enough hardware backends to turn any compute on earth into tokens.</span><span class="lang-zh">Agent 幾乎沒有改變推論的 API,卻徹底改變了 API 底下的一切——vLLM 因此沿三條軸線重寫自己:workload-aware 的模型平行化、動態分層的 KV cache,以及能吃下地球上任何一種運算的多硬體後端。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>API 沒變,底下全變了</strong>:<code>vllm serve</code> 給的仍是 OpenAI / Anthropic 相容端點,agent framework 開箱即用;真正被 agent 改寫的是引擎內部。</li>
+<li><strong>三條壓力軸線</strong>:模型變大(Kimi K3、DeepSeek V4 這類 trillion 級模型逼你認真做 model parallelism)、context 變長(數百輪對話、上看 1M token,絕不能重算前幾輪)、token 需求爆炸(成長速度快過 GPU 供給)。</li>
+<li><strong>平行化沒有萬用解</strong>:vLLM 支援七種平行化(含訓練世界沒有的 decode context parallelism),但正確答案取決於模型架構 × 叢集配置 × workload 形狀。實測中「16 GPU 上的 TP × PP × EP 組合」明顯打敗直覺的單機 8-way TP。</li>
+<li><strong>Hybrid 模型讓記憶體切分變成動態問題</strong>:full attention 的 KV 隨 context 線性成長,linear attention(如 Kimi Delta Attention)則是每個序列固定大小的 state。vLLM 用共用記憶體池 + 各自的 allocator 動態再平衡,取代靜態切分。</li>
+<li><strong>Token 經濟學翻轉了</strong>:模型夠聰明時,一個 token 的價值遠超過生成它的成本,於是需求無上限而地球上的 GPU 不夠用——vLLM 的答案是 10+ 種硬體後端的 plugin 架構。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>vLLM 現況與兩種用法(約 03:45–03:47)</h4>
+<p>Kwon 自介為 vLLM 的 co-creator,以及圍繞 vLLM 成立的新創 Inferact 的共同創辦人。vLLM 是開源的 LLM 推論引擎,目標是讓 LLM 推論「efficient and effortless」;大約三年前在 UC Berkeley 他讀博期間開始,至今持續高速成長,GitHub 星數在演講前不久突破約 88k。他強調這是一個橫跨學界與業界的高度協作專案,主要貢獻者包括 Red Hat、NVIDIA、AMD、Google、Moonshot,以及 Inferact 自己,並已被廣泛部署在生產環境。</p>
+<p>兩種用法:</p>
+<ul>
+<li><strong>離線批次</strong>:Python 的 <code>LLM</code> class,給它一個 Hugging Face 模型名稱、呼叫 <code>generate</code> 就結束。模型載入、最佳化、排程、記憶體管理與 GPU 利用全部在底下自動處理。</li>
+<li><strong>線上服務</strong>:<code>vllm serve</code> 一行指令起一個 OpenAI 相容端點;Anthropic API 也支援,因此任何會講這兩種 API 的 agent framework 都能直接接上。</li>
+</ul>
+<p>他接著點出全場的樞紐:<strong>這個 API 跟幾年前其實差不多,為 agent 幾乎沒改變</strong>;為 agent 大改的是 API 底下的一切。</p>
+<h4>Agent 施加的三條壓力(約 03:47–03:49)</h4>
+<ol>
+<li><strong>更大的模型</strong>:前沿 agent 模型如 Kimi K3、DeepSeek V4 都是 trillion 級參數,逼所有人認真面對 model parallelism。他把這視為機會——它讓我們能用很多有創意、各有取捨的方式去切模型。</li>
+<li><strong>更長的 context</strong>:agent session 動輒數百輪,可以到一百萬 token,而且 context 在整個 session 內只增不減。因此管理前幾輪的 KV cache 對效能極為關鍵,<strong>推論框架絕對不能重算前一輪的 token</strong>,否則就是大量重複計算與浪費。</li>
+<li><strong>巨大的 token 需求</strong>:agent 越聰明越能幹,可以部署的場景就趨近無限,需求實質上沒有上限,而且<strong>成長速度快過 GPU 供給</strong>。vLLM 的對策是把高效推論擴展到更多種硬體後端,好把所有能用的算力都拿來產 token。</li>
+</ol>
+<h4>軸線一:平行化沒有普世贏家(約 03:49–03:53)</h4>
+<p>為了服務這麼大的模型,vLLM 今天支援七種主要平行化:tensor、pipeline、data、expert、sequence,以及兩種 context parallelism。其中一種是訓練世界不存在的 <strong>decode context parallelism</strong>——圍繞 KV cache 做的平行化。作為通用引擎,vLLM 有效率地實作了全部,也支援它們的混合。</p>
+<p>但他說這還不夠。<strong>關鍵在於這些平行化必須針對目標模型架構、目標叢集配置與目標 workload 形狀被正確選擇與調校,沒有 universal winner。</strong></p>
+<p>他用一個真實案例說明調校長什麼樣:在 B200 GPU 上、以 prefill/decode 分離的部署方式跑 DeepSeek 模型的 prefill 階段(這批 GPU 只負責 prefill)。最直覺的部署是單機 8-way tensor parallelism——最標準、最簡單。但<strong>實測的勝出組合完全不同</strong>:改成跨 16 顆 GPU、由 tensor parallelism × pipeline parallelism × expert parallelism(再加上 sequence parallelism)組成的配置作為一個模型 replica,得到明顯更低的 TTFT(首 token 延遲)與明顯更高的每 GPU 吞吐。</p>
+<p>原因他快速帶過:pipeline parallelism 讓長 prefill 序列的不同 chunk 之間也能平行;sequence parallelism 讓通訊與計算有更多重疊機會;expert parallelism 相較 8-way TP 給出更好的 GEMM(矩陣乘法)形狀。結論是在 agentic 時代,你需要正確的洞見與效能模型來設定這些參數,而 <strong>vLLM 提供的是讓你能玩遍所有平行化的共同基底</strong>。</p>
+<h4>軸線二:KV cache——從靜態切分到動態再平衡(約 03:53–03:58)</h4>
+<p>現代 LLM 的一個關鍵特徵是它們是 <strong>hybrid 模型</strong>:全域注意力層與更高效的注意力機制(sliding window,或 Kimi Delta Attention 這類 linear attention)交錯排列。這正是 1M context 之所以可行的原因——純粹的 global attention 在百萬 context 下記憶體開銷太大。</p>
+<p>理論上很漂亮,實務上製造出真正的系統難題:<strong>不同注意力型別的層,記憶體行為完全不同</strong>。full attention 的 KV cache 隨 context 線性成長;linear attention(KDA)則是每個序列維持固定大小的 state,與實際 context 長度無關。那 GPU 記憶體該怎麼在兩者之間切?</p>
+<p>直覺解是<strong>靜態切分</strong>——保留 x% 給 full attention、y% 給其餘。可行,但問題是最佳切分點取決於 batch size 與 context 長度,而這兩者在推論過程中一直變動。</p>
+<p>vLLM 的解法是<strong>動態切分</strong>:用一個共用的 GPU 記憶體池,每種記憶體行為不同的注意力型別各自擁有一個 allocator,從共用池取用。full attention 的 allocator 按 token 數向池中請求;KDA 的 allocator 因為是 linear attention,一次為整個序列配一個大 block;兩者之間有邏輯動態共享同一塊記憶體空間。實際效果是<strong>引擎自動在兩者之間再平衡,不浪費任何 GPU 記憶體</strong>,使用者不必操心不同注意力型別的記憶體切分。</p>
+<p>但只管好 GPU 記憶體裡的 KV cache 還不夠。agent session 的特徵是<strong>又長壽又斷斷續續</strong>:模型產出一些 token,然後停下來等 tool call、有時等人類回覆,然後再繼續。在這些等待期間,KV cache 得被放在某處。vLLM 的抽象是 <strong>KV connector</strong>:把閒置的 KV cache 存到外部記憶體(CPU 記憶體或磁碟),需要時再取回。他坦言他們在這個抽象的設計上花了很多力氣,要確保它能跟 Mooncake 這類第三方函式庫良好協作,也要能配合 prefill/decode 分離這種 KV 搬移本身就很動態複雜的機制——KV 得在 prefill instance 與 decode instance 之間、以及 prefill instance 與 Mooncake 這類分散式 KV 儲存池之間移動。做好這層基礎設施的目的很單純:<strong>在多輪 agent session 裡,只要儲存空間允許,就永遠不重算前幾輪的 token。</strong></p>
+<h4>軸線三:硬體——把地球上的算力都變成 token(約 03:58–04:00)</h4>
+<p>Kwon 認為 token 的經濟學正在翻轉:模型越聰明,<strong>一個 token 的價值就遠超過生成它的成本</strong>,於是需求自然爆炸,而世界上老實說沒有足夠的 GPU 來供應。問題因此變成:我們能不能有效率地用上地球上所有可用的算力來產 token?</p>
+<p>vLLM 的答案是今天支援 10 種以上的硬體後端。NVIDIA GPU 顯然是主力,但也涵蓋 Google TPU、AMD GPU 以及業界其他多種晶片;它們以 <strong>plugin 結構</strong>接進 vLLM,共用核心、各自客製硬體相關部分。他指出這在推論領域特別合理,因為<strong>推論的 API 已經高度標準化</strong>——使用者仍然用同一套 OpenAI 或 Anthropic API,只是底下換了另一種硬體在產 token。</p>
+<p>他因時間關係跳過細節投影片,但留下 TL;DR:把新硬體帶起來、讓它高效支援新模型,這件事<strong>因為 coding agent 而正在變得比較容易</strong>,但另一方面它仍然需要幾乎從頭重做整套推論堆疊,團隊正在積極處理。</p>
+<p>總結一頁:agentic 時代從三條軸線施壓,vLLM 各給一個答案——大模型用 workload-aware 的 model parallelism、長 context 用動態且分層的 KV cache、爆炸的 token 需求用多樣的硬體後端;而且<strong>今天講的全部都是開源的</strong>。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"The API itself is pretty much similar to a few years ago … What has changed a lot for agents is everything underneath it."(約 03:47)</p>
+</blockquote>
+<p>整場演講的框架:agent 革命發生在 API 之下。</p>
+<blockquote>
+<p>"There's no universal winner."(約 03:50)</p>
+</blockquote>
+<p>平行化策略沒有預設正解,只有針對模型 × 叢集 × workload 的正解。</p>
+<blockquote>
+<p>"As models get smarter, the value of a token far exceeds the cost of generating it … and honestly there are not enough GPUs in the world to serve it."(約 03:58)</p>
+</blockquote>
+<p>多硬體後端不是相容性功能,而是供給側的必然。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The API didn't change; everything under it did.</strong> <code>vllm serve</code> still hands you an OpenAI- (and Anthropic-) compatible endpoint that any agent framework speaks out of the box. Agents rewrote the engine, not the interface.</li>
+<li><strong>Three axes of pressure</strong>: bigger models (trillion-parameter agent models like Kimi K3 and DeepSeek V4 force serious model parallelism), longer context (hundreds of turns, up to a million tokens, with recomputation strictly forbidden), and unbounded token demand growing faster than GPU supply.</li>
+<li><strong>Parallelism has no universal winner.</strong> vLLM supports seven kinds, including a decode context parallelism that doesn't exist in training — but the right choice depends on model architecture × cluster setup × workload shape. In one real case a TP × PP × EP configuration across 16 GPUs beat the obvious single-host 8-way TP baseline on both TTFT and per-GPU throughput.</li>
+<li><strong>Hybrid models turn memory partitioning into a dynamic problem.</strong> Full attention's KV cache grows linearly with context; linear attention (e.g. Kimi Delta Attention) keeps a fixed-size state per sequence. vLLM replaces static partitioning with one shared pool, per-attention-type allocators, and automatic rebalancing.</li>
+<li><strong>Token economics have flipped</strong>: once models are smart enough, a token is worth far more than it costs to generate, so demand is effectively unbounded and there aren't enough GPUs on earth — hence a plugin architecture spanning 10+ hardware backends.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Where vLLM stands, and the two ways to use it (~03:45–03:47)</h4>
+<p>Kwon introduces himself as a co-creator of vLLM and co-founder of Inferact, the startup built around it. vLLM is an open-source LLM inference engine whose goal is to make LLM inference "efficient and effortless." It started roughly three years ago at UC Berkeley during his PhD and has grown fast ever since — around 88k GitHub stars as of shortly before the talk. He stresses that it is a highly collaborative project across academia and industry, with major contributors including Red Hat, NVIDIA, AMD, Google, and Moonshot alongside Inferact, and that it is widely deployed for production inference.</p>
+<p>Two entry points. Offline batch inference goes through the Python <code>LLM</code> class: pass a Hugging Face model name, call <code>generate</code>, done — model loading, optimization, scheduling, memory management, and GPU utilization are all handled underneath. Online serving is a single <code>vllm serve</code> command yielding an OpenAI-compatible endpoint; Anthropic APIs are supported too, so any agent framework that speaks either works out of the box.</p>
+<p>Which sets up the hinge of the talk: <strong>that API looks much as it did a few years ago — agents barely changed it. What agents changed enormously is everything underneath.</strong></p>
+<h4>The three pressures agents apply (~03:47–03:49)</h4>
+<p>First, <strong>large models</strong>. Frontier agent models — Kimi K3, DeepSeek V4 — are around a trillion parameters, forcing everyone to get serious about model parallelism. He frames this as opportunity: it opens many creative ways to shard a model, each with different trade-offs.</p>
+<p>Second, <strong>long context</strong>. Agent sessions run for hundreds of turns, up to a million tokens, and context only grows over a session. Managing the KV cache of prior turns is therefore critical, and the engine <strong>must never recompute tokens from a previous turn</strong> — otherwise you get enormous duplicated computation and wasted compute.</p>
+<p>Third, <strong>enormous token demand</strong>. As agents get smarter and more capable there are near-infinite places to deploy them, so demand is effectively unbounded — and growing faster than GPU supply. vLLM's response is to make efficient inference work on many more hardware backends so that all available compute can be turned into tokens.</p>
+<h4>Axis 1: no universal winner in parallelism (~03:49–03:53)</h4>
+<p>vLLM today supports seven main kinds of parallelism: tensor, pipeline, data, expert, sequence, and two flavors of context parallelism — one of which, <strong>decode context parallelism</strong>, is parallelism around the KV cache and has no analogue in training. As a general-purpose engine, vLLM implements all of them efficiently, and mixtures of them.</p>
+<p>That, he says, is not enough. <strong>These parallelisms must be selected and tuned for the target model architecture, the target cluster setup, and the target workload shape. There is no universal winner.</strong></p>
+<p>The worked example: prefill for a DeepSeek model on B200 GPUs in a disaggregated serving setup, where this pool of GPUs only does prefill. The most straightforward deployment is single-host 8-way tensor parallelism — standard and simple. The winning configuration is nothing like it: a combination of tensor, pipeline, and expert parallelism (plus sequence parallelism) spread across 16 GPUs per model replica, delivering substantially lower TTFT and substantially higher per-GPU throughput than the 8-way TP baseline.</p>
+<p>Why: pipeline parallelism enables parallelism across chunks within a long prefill; sequence parallelism enables more communication–computation overlap; and expert parallelism yields better GEMM shapes than 8-way tensor parallelism. The takeaway is that in the agentic era you need the right insight and performance model to configure this correctly — and vLLM's contribution is the <strong>common substrate on which you can play with all of these parallelisms</strong>.</p>
+<h4>Axis 2: KV cache, from static partitioning to dynamic rebalancing (~03:53–03:58)</h4>
+<p>A defining property of modern LLMs is that they are <strong>hybrid</strong>: global attention layers interleaved with cheaper mechanisms such as sliding-window or linear attention (Kimi Delta Attention being his example). That interleaving is what makes million-token context feasible at all, since global attention alone consumes too much memory at that scale.</p>
+<p>Elegant in theory, genuinely hard in practice, because <strong>layers of different attention types have completely different memory behavior</strong>. Full attention's KV cache grows linearly with context; a linear-attention layer like KDA keeps a fixed-size state per sequence regardless of actual context length. So how should GPU memory be carved between them?</p>
+<p>The straightforward answer is <strong>static partitioning</strong> — reserve x% for full attention, y% for the rest. It works, but the optimal split depends on batch size and context length, both of which move continuously during inference.</p>
+<p>vLLM's answer is <strong>dynamic partitioning</strong>: one shared GPU memory pool, with each attention type getting its own allocator drawing from it. The full-attention allocator requests from the pool by token count; the KDA allocator, being linear attention, allocates one large block for the entire sequence; and logic between them shares the same memory space dynamically. The engine <strong>rebalances automatically so no GPU memory is wasted</strong>, and the user never has to reason about the split.</p>
+<p>Managing KV cache within GPU memory isn't sufficient, though. Agent sessions are <strong>long-lived and intermittent</strong>: generate some tokens, then wait — for tool calls, sometimes for a human — then continue. During those waits the KV cache has to live somewhere. vLLM's abstraction is the <strong>KV connector</strong>, which stores idle KV cache in external memory (CPU memory or disk) and brings it back on demand. He notes real design effort went into making that abstraction work with third-party libraries like Mooncake and with mechanisms like prefill/decode disaggregation, where KV movement is itself dynamic and complex — cache has to move from prefill instances to decode instances, and from prefill instances to a distributed KV storage pool. The purpose of all that infrastructure is one guarantee: <strong>in a many-turn agent session, as long as storage allows, never recompute tokens from previous turns.</strong></p>
+<h4>Axis 3: hardware — turning all the compute on earth into tokens (~03:58–04:00)</h4>
+<p>Kwon argues the economics of tokens are flipping: as models get more intelligent, <strong>the value of a token far exceeds the cost of generating it.</strong> Demand explodes accordingly, and honestly there are not enough GPUs in the world to serve it. So the question becomes: can we use all available compute on earth to generate tokens efficiently?</p>
+<p>vLLM's answer is 10+ hardware backends today. NVIDIA GPUs are the major focus, but Google TPUs, AMD GPUs, and various other industry chips are supported through a <strong>plugin structure</strong> that shares vLLM's core while customizing hardware-specific parts. This makes particular sense in inference, he argues, because <strong>the API layer is already standardized</strong> — you keep using the same OpenAI or Anthropic API while different silicon generates the tokens underneath.</p>
+<p>He skips the detail slides for time, leaving the TL;DR: bringing up new hardware and making it efficiently support new models <strong>is getting easier because of coding agents</strong>, but it still requires retaking the entire inference stack from the ground up, and the team is actively working on it.</p>
+<p>Summary: the agentic era stresses inference along three axes, and vLLM answers each — large models with workload-aware model parallelism, long context with a dynamic and hierarchical KV cache, exploding token demand with diverse hardware backends. Everything shown is open source.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"The API itself is pretty much similar to a few years ago … What has changed a lot for agents is everything underneath it." (~03:47)</p>
+</blockquote>
+<p>The framing device for the whole talk: the agent revolution happened below the API.</p>
+<blockquote>
+<p>"There's no universal winner." (~03:50)</p>
+</blockquote>
+<p>Parallelism has no default answer, only an answer for a given model × cluster × workload.</p>
+<blockquote>
+<p>"As models get smarter, the value of a token far exceeds the cost of generating it … and honestly there are not enough GPUs in the world to serve it." (~03:58)</p>
+</blockquote>
+<p>Multi-backend support is not a compatibility nicety; it is a supply-side necessity.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vLLM</td>
+<td>開源 LLM 推論引擎,2023 年起於 UC Berkeley;約 88k GitHub stars</td>
+<td>Open-source LLM inference engine, started at UC Berkeley ~3 years ago; ~88k GitHub stars</td>
+<td>貢獻者含 Red Hat、NVIDIA、AMD、Google、Moonshot、Inferact / contributors include Red Hat, NVIDIA, AMD, Google, Moonshot, Inferact</td>
+</tr>
+<tr>
+<td>Inferact</td>
+<td>圍繞 vLLM 成立的新創,講者為共同創辦人兼 CTO</td>
+<td>Startup built around vLLM; the speaker is co-founder and CTO</td>
+<td></td>
+</tr>
+<tr>
+<td>Decode context parallelism</td>
+<td>圍繞 KV cache 的平行化,訓練世界不存在</td>
+<td>Parallelism around the KV cache; has no counterpart in training</td>
+<td>vLLM 七種平行化之一 / one of vLLM's seven parallelism types</td>
+</tr>
+<tr>
+<td>KV connector</td>
+<td>把閒置 KV cache 卸載到 CPU 記憶體或磁碟並取回的抽象層</td>
+<td>Abstraction for offloading idle KV cache to CPU memory or disk and retrieving it</td>
+<td>與 prefill/decode 分離協同運作 / interoperates with prefill/decode disaggregation</td>
+</tr>
+<tr>
+<td>Mooncake</td>
+<td>分散式 KV cache 儲存池,vLLM 的 KV connector 與之整合</td>
+<td>Distributed KV cache storage pool integrated with vLLM's KV connector</td>
+<td>逐字稿作 "moon key" / "Moon Cake"</td>
+</tr>
+<tr>
+<td>Kimi Delta Attention (KDA)</td>
+<td>Kimi K3 採用的 linear attention 機制,是 hybrid 模型記憶體行為差異的代表</td>
+<td>The linear-attention mechanism in Kimi K3; his example of divergent memory behavior in hybrid models</td>
+<td>Moonshot AI</td>
+</tr>
+<tr>
+<td>Kimi K3 / DeepSeek V4</td>
+<td>演講中舉例的 trillion 級前沿 agent 模型</td>
+<td>Trillion-parameter frontier agent models cited as examples</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wusak Quan / Usok / Wuk</td>
+<td>Woosuk Kwon</td>
+</tr>
+<tr>
+<td>Infirect / Infact</td>
+<td>Inferact</td>
+</tr>
+<tr>
+<td>VLM / EDLM VLM / VM</td>
+<td>vLLM(自動字幕把 LLM 與 vLLM 混淆)</td>
+</tr>
+<tr>
+<td>deepse pro / deep 4</td>
+<td>DeepSeek(V4)</td>
+</tr>
+<tr>
+<td>Kimmy K3</td>
+<td>Kimi K3</td>
+</tr>
+<tr>
+<td>KDA / sighting window</td>
+<td>Kimi Delta Attention / sliding window</td>
+</tr>
+<tr>
+<td>moon key</td>
+<td>Mooncake</td>
+</tr>
+<tr>
+<td>Redhead</td>
+<td>Red Hat</td>
+</tr>
+<tr>
+<td>TTFP</td>
+<td>TTFT (time to first token)</td>
+</tr>
+<tr>
+<td>accessor parallelism</td>
+<td>expert parallelism</td>
+</tr>
+<tr>
+<td>reccast</td>
+<td>requests</td>
+</tr>
+<tr>
+<td>disagregation / disegration</td>
+<td>disaggregation</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>B200 prefill 案例的精確平行化度數(逐字稿把 "two-way tensor parallel × … pipeline parallel × eight-way …" 講得含糊,只能確定總計 16 GPU / replica、由 TP × PP × EP 組成)。/ The exact parallelism degrees in the B200 prefill case — the transcript garbles the numbers; only "16 GPUs per replica, TP × PP × EP" is reliable.</li>
+<li>案例中的 DeepSeek 模型是哪一個版本(字幕作 "deepse pro",可能是 DeepSeek V4 Pro)。/ Which DeepSeek variant the B200 case used (transcript "deepse pro", possibly DeepSeek V4 Pro).</li>
+<li>88k GitHub stars 為講者口述的近期數字,未指定日期。/ The 88k GitHub stars figure was stated verbally as "pretty recently," without a date.</li>
+<li>「10 種以上硬體後端」的完整清單未在演講中列出(僅明確提到 NVIDIA、Google TPU、AMD)。/ The full list of "more than 10 hardware backends" was not enumerated; only NVIDIA, Google TPU, and AMD were named.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/woosuk-kwon--vllm-building-open-and-efficient-inference-for-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

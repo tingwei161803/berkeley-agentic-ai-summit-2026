@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Advancing the State of the Art: The Frontier of Enterprise Agentic AI · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Capital One started on agentic AI more than two and a half years ago and had a multi-agent system in production by last January. Its differentiation isn&#x27;t model choice — it&#x27;s customizing the entire…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/milind-naphade--advancing-the-state-of-the-art-the-frontier-of-enterprise-agentic-ai.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Advancing the State of the Art: The Frontier of Enterprise Agentic AI · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Capital One started on agentic AI more than two and a half years ago and had a multi-agent system in production by last January. Its differentiation isn&#x27;t model choice — it&#x27;s customizing the entire…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-plenary/milind-naphade--advancing-the-state-of-the-art-the-frontier-of-enterprise-agentic-ai.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-plenary" data-talk="milind-naphade--advancing-the-state-of-the-art-the-frontier-of-enterprise-agentic-ai">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Advancing the State of the Art: The Frontier of Enterprise Agentic AI" data-title-zh="推進技術前沿:企業級 Agentic AI 的邊界">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 4: Agentic AI in Finance &amp; Legal</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Advancing the State of the Art: The Frontier of Enterprise Agentic AI</span><span class="lang-zh">推進技術前沿:企業級 Agentic AI 的邊界</span></h1>
+        <p class="dialog__speaker"><strong>Milind Naphade</strong> — SVP, AI Foundations, Capital One</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Plenary Stage · 02:00:11–02:08:56 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=I2PosBXwoPI&amp;t=7211s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 02:00:11</span><span class="lang-zh">從 02:00:11 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-plenary.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Plenary · Sun</span><span class="lang-zh">回 Plenary · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Capital One started on agentic AI more than two and a half years ago and had a multi-agent system in production by last January. Its differentiation isn&#x27;t model choice — it&#x27;s customizing the entire AI stack with proprietary data, and putting an independent evaluator agent in the loop to catch plans that violate policy.</span><span class="lang-zh">Capital One 兩年半前就開始做 agentic AI、去年一月把多 agent 系統送上生產環境,他們的差異化不是選了哪個模型,而是用自家資料把整條 AI stack 客製化,並在框架裡放進一個獨立的 evaluator agent 來擋住不合規的計畫。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>多 agent 框架有四類 agent</strong>:understanding(理解環境與客戶需求)、planner(握有 API、知識與 Capital One 政策,規劃如何滿足需求)、<strong>evaluator(獨立驗證計畫是否合規、是否安全,可退回給 planner 甚至 understanding agent)</strong>、explainer(把 agent 之間的語言翻譯成人話)。他強調 evaluator 是「secret sauce」。</li>
+<li><strong>這不是把 RPA 換皮</strong>:「這不是把 robotic 那套換成 agent 重做一遍,這是一個本質上非決定性(non-deterministic)的 agent 系統協作達成結果。」</li>
+<li><strong>已在生產環境</strong>:兩個已上線案例——全美經銷商後端使用的購車 chat concierge(車輛需求、庫存、預約、換車,24/7/365 全自主),以及消費金融的<strong>詐騙相關對話</strong>輔助(理解客訴、建議行員採取的動作、摘要對話形成學習語料)。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>定位:一家有深厚技術根柢、又懂風險管理的銀行(約 02:00–02:02)</h4>
+<p>Capital One 一向自我定位為 technology-first 公司,他的判斷是<strong>銀行業的贏家會是一家科技公司</strong>——同時具備深厚技術根柢與管理風險的能力。技術轉型的路走了一段時間:第一家把業務全面搬上公有雲的大型銀行、現代化資料生態系,以及從創立之初就有的資料驅動分析文化。過去三年半在 generative AI 與 agentic AI 上投入巨大資源,並且是<strong>最早把 agentic AI 送進生產環境的企業之一</strong>。</p>
+<p>他帶的組織叫 <strong>AI Foundations</strong>,成員以 AI 研究員、應用 AI 工程師、資料科學家為主,目標是「用科學創新換取商業影響」:</p>
+<ul>
+<li>今年在主要研討會與期刊發表 <strong>65 篇以上論文</strong>(ICML、ICLR、NeurIPS、ACM 等)。</li>
+<li>與學界合作:University of Southern California、University of Illinois Urbana-Champaign、Columbia University 等,聚焦在推進 <strong>safe AI</strong>。</li>
+</ul>
+<p>近期論文舉例(他只快速帶過):</p>
+<ul>
+<li><strong>多 agent 環境下多輪對話的資料集生成</strong>——他強調這和單輪、單 agent 的合成資料生成是完全不同的問題。</li>
+<li><strong>把生成資料路由到多個模型</strong>——「你可以把它想成 mixture of models,而不是 mixture of experts」(發表於 ACL)。</li>
+<li><strong>critic-guided distillation</strong> 用於穩健推理(發表於 ICML)。</li>
+</ul>
+<p>他的核心信念是:<strong>真正的差異化只來自用自家資料客製化整條 AI stack</strong>——「Capital One 的 AI 優勢,就是把 Capital One 的資料優勢轉換成 AI 優勢。」</p>
+<h4>框架:四類 agent 與那個獨立的 evaluator(約 02:04–02:06)</h4>
+<p>Capital One 兩年半前開始探索 agentic AI,<strong>去年一月就有第一個 multi-agent 生產系統</strong>。他們的整體框架(字幕聽作 "MACA",拼法待確認)由四類 agent 組成:</p>
+<ol>
+<li><strong>Understanding agent</strong> — 與環境或客戶互動,弄清楚對方到底需要什麼。</li>
+<li><strong>Planner agent</strong> — 握有所有 API、所有知識與 Capital One 的政策,規劃如何滿足這個需求。</li>
+<li><strong>Evaluator agent</strong> — 他說「一部分祕方在這裡」:一個<strong>完全獨立</strong>的 agent,用一個很簡單的 world model 驗證這個計畫執行下去是否符合 Capital One 政策、是否安全;不合格就退回 planner,planner 也可以再退回 understanding agent 去跟客戶要更多輸入。</li>
+<li><strong>Explainer agent</strong> — 其他 agent 之間用自己的語言溝通,explainer 負責把結果講成人聽得懂的話。</li>
+</ol>
+<p>他特別強調這個系統的性質:</p>
+<blockquote>
+<p>這自然是一個非決定性的系統。這不是把 robotic(RPA)那套換個做法用 agent 重做一遍,而是一群 agent 本質上以非決定性的方式協作達成結果。</p>
+</blockquote>
+<h4>兩個生產案例與招募(約 02:06–02:08)</h4>
+<ul>
+<li><strong>購車 concierge</strong>:全美有大量經銷商後端跑 Capital One,消費者買車時很可能就是在跟這個 chat concierge 互動——釐清你要什麼車、庫存狀況、預約、以及是否要以車換車,<strong>24/7/365 全自主運作</strong>。</li>
+<li><strong>詐騙相關對話輔助</strong>(去年首度亮相,服務消費金融):三個部分——理解客戶的申訴內容、為行員推薦正確的處理動作、最後把對話摘要起來,<strong>形成下一輪互動的學習語料</strong>。</li>
+</ul>
+<p>收尾是招募:他們在<strong>基礎模型層、服務層、agentic 層、solution 層</strong>四個層次都在客製化,對應三個 job family。賣點是「在受監管的企業裡用破紀錄的速度把研究送進生產」——這在受監管產業通常是聽不到的——以及「讓 1.3 億名客戶用到你的成果,並從中形成持續學習迴圈」。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Capital One's AI advantage is Capital One's data advantage being converted into an AI advantage."(約 02:03)</p>
+</blockquote>
+<p>差異化不在模型選型,在資料與客製化整條 stack。</p>
+<blockquote>
+<p>"This is not robotic just done differently with agents. This is an inherently non-deterministic system of agents that works together to achieve outcomes."(約 02:05)</p>
+</blockquote>
+<p>不要用 RPA 的心智模型去理解 agentic 系統。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>A four-role multi-agent framework</strong>: an <em>understanding</em> agent (reads the environment or the customer and figures out what's needed), a <em>planner</em> agent (holds the APIs, the knowledge, and Capital One's policies), an <strong>independent <em>evaluator</em> agent</strong> that validates whether executing the plan would fit policy and be safe — kicking it back to the planner, or further back to the understanding agent, when it wouldn't — and an <em>explainer</em> agent that translates inter-agent chatter into human language. Naphade calls the evaluator the secret sauce.</li>
+<li><strong>This is not RPA with new branding</strong>: "This is not robotic just done differently with agents. This is an inherently non-deterministic system of agents that works together to achieve outcomes."</li>
+<li><strong>Already in production</strong>: a car-buying chat concierge running behind dealerships nationwide (vehicle needs, availability, appointments, trade-ins — fully autonomous, 24/7/365), and a consumer-bank assistant for <strong>fraud-related customer conversations</strong> (understanding the complaint, recommending the right actions for the human agent, then summarizing the conversation into a learning corpus).</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Positioning: a technology company that knows how to manage risk (~02:00–02:02)</h4>
+<p>Capital One has always framed itself as a technology-first company, and Naphade's thesis is that <strong>the winner in banking will be a technology company</strong> — one with deep technology roots <em>and</em> deep competence at managing risk. The transformation has been running for years: the first large bank fully on the public cloud, a modern data ecosystem, and a data-driven analytical culture dating to the company's origins. The last three and a half years brought heavy investment in generative and agentic AI, making Capital One one of the first enterprises to put agentic AI into production.</p>
+<p>His organization, <strong>AI Foundations</strong>, is mostly AI researchers, applied AI engineers, and data scientists, chartered to deliver business impact through scientific innovation:</p>
+<ul>
+<li><strong>65+ publications</strong> this year at leading conferences and journals (ICML, ICLR, NeurIPS, ACM, and others).</li>
+<li>Academic partnerships with the University of Southern California, University of Illinois Urbana-Champaign, Columbia University, and others, focused on advancing <strong>safe AI</strong>.</li>
+</ul>
+<p>Sample recent work, mentioned in passing:</p>
+<ul>
+<li>Generating curated datasets for <strong>multi-turn conversations in multi-agent environments</strong> — which he stresses is a materially different problem from synthetic data generation for single-turn or single-agent interactions.</li>
+<li>Routing generated data through multiple models — "think of this as a <strong>mixture of models</strong> instead of a mixture of experts" (presented at ACL).</li>
+<li><strong>Critic-guided distillation</strong> for robust reasoning (at ICML).</li>
+</ul>
+<p>The through-line: <strong>true differentiation comes only from customizing the entire AI stack with your own data.</strong> "Capital One's AI advantage is Capital One's data advantage being converted into an AI advantage."</p>
+<h4>The framework and its independent evaluator (~02:04–02:06)</h4>
+<p>Capital One began exploring agentic AI more than two and a half years ago and had its <strong>first multi-agent production system running last January</strong>. The overall framework (heard in the captions as "MACA" — spelling unverified) comprises four classes of agent:</p>
+<ol>
+<li><strong>Understanding agent</strong> — interacts with the environment or the customer to determine what is actually needed.</li>
+<li><strong>Planner agent</strong> — has access to all the APIs, all the knowledge, and all of Capital One's policies, and works out how to satisfy the need.</li>
+<li><strong>Evaluator agent</strong> — the piece he singles out as secret sauce: a <strong>completely independent</strong> agent that uses a simple world model to determine whether executing the plan would fit Capital One policy and be safe to do. If not, it kicks the plan back to the planner, which can in turn go back to the understanding agent for better input from the customer.</li>
+<li><strong>Explainer agent</strong> — the other agents talk in their own language; this one speaks in terms humans understand.</li>
+</ol>
+<blockquote>
+<p>This is a non-deterministic system at play, naturally. This is not robotic just done differently with agents — this is an inherently non-deterministic system of agents that works together to achieve outcomes.</p>
+</blockquote>
+<h4>Two production cases, and a hiring pitch (~02:06–02:08)</h4>
+<ul>
+<li><strong>Car-buying concierge</strong>: dealerships across the country run Capital One on the back end, so a buyer is most likely interacting with this concierge — working out what they're looking for in a vehicle, availability, appointments, and trade-ins, <strong>fully autonomously, 24/7/365</strong>.</li>
+<li><strong>Fraud-related conversations</strong> (debuted last year, serving the consumer bank): understanding the customer's complaint, recommending the right set of actions for the human agent to take, and summarizing the conversation to build a <strong>learning corpus for the next round of interactions</strong>.</li>
+</ul>
+<p>He closed with recruiting. The team customizes at four layers — the foundation models themselves, the services around them, the agentic layer, and the solution layer — across three job families. The pitch: going from research to production in record time inside a regulated enterprise ("typically unheard of"), and seeing <strong>130 million customers</strong> use your work and feed a continuous learning loop.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"Capital One's AI advantage is Capital One's data advantage being converted into an AI advantage." (~02:03)</p>
+<p>"This is not robotic just done differently with agents. This is an inherently non-deterministic system of agents that works together to achieve outcomes." (~02:05)</p>
+</blockquote></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI Foundations (Capital One)</td>
+<td>Naphade 帶領的組織,以研究員 / 應用工程師 / 資料科學家為主</td>
+<td>Naphade's organization: AI researchers, applied AI engineers, data scientists</td>
+<td>今年 65+ 篇論文</td>
+</tr>
+<tr>
+<td>多 agent 框架(字幕作 "MACA")</td>
+<td>understanding / planner / evaluator / explainer 四類 agent</td>
+<td>Four-role framework: understanding / planner / evaluator / explainer</td>
+<td>名稱拼法<strong>待確認</strong></td>
+</tr>
+<tr>
+<td>購車 chat concierge</td>
+<td>全美經銷商後端,24/7/365 全自主</td>
+<td>Car-buying concierge behind dealerships nationwide, fully autonomous</td>
+<td>生產環境案例</td>
+</tr>
+<tr>
+<td>詐騙對話輔助</td>
+<td>消費金融:理解客訴 → 建議行員動作 → 摘要成學習語料</td>
+<td>Consumer-bank fraud conversations: complaint understanding → action recommendation → summarization into a learning corpus</td>
+<td>去年首度亮相</td>
+</tr>
+<tr>
+<td>多輪 × 多 agent 資料集生成論文</td>
+<td>與單輪/單 agent 合成資料是不同問題</td>
+<td>Dataset curation for multi-turn conversations in multi-agent environments</td>
+<td>發表場合未明說</td>
+</tr>
+<tr>
+<td>Mixture of models 論文</td>
+<td>把生成資料路由到多個模型</td>
+<td>Routing generated data through multiple models</td>
+<td>ACL</td>
+</tr>
+<tr>
+<td>Critic-guided distillation</td>
+<td>用於穩健推理</td>
+<td>For robust reasoning</td>
+<td>ICML</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Milinda Nafed / Milan Naft</td>
+<td>Milind Naphade</td>
+</tr>
+<tr>
+<td>maca</td>
+<td>框架名稱待確認 / framework name to verify</td>
+</tr>
+<tr>
+<td>Arbana Champagne</td>
+<td>Urbana-Champaign</td>
+</tr>
+<tr>
+<td>Colombia University</td>
+<td>Columbia University</td>
+</tr>
+<tr>
+<td>neurips</td>
+<td>NeurIPS</td>
+</tr>
+<tr>
+<td>chat concier</td>
+<td>chat concierge</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>多 agent 框架的正式名稱與拼法(字幕聽作 "MACA"),需看投影片或 Capital One 官方資料確認。/ The official name and spelling of the multi-agent framework (heard as "MACA") — needs slide or Capital One documentation.</li>
+<li>論文題名皆未在口頭中完整說出,表中僅記錄主題;若要引用需回查 Capital One 的發表清單。/ None of the papers were named in full; the table records topics only. Look up Capital One's publication list before citing.</li>
+<li>「130 million customers」為講者口述數字,未附出處。/ The "130 million customers" figure is as spoken; no source given.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-plenary/milind-naphade--advancing-the-state-of-the-art-the-frontier-of-enterprise-agentic-ai.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

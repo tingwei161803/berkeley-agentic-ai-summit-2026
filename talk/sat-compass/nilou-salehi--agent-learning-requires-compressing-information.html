@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Agent Learning Requires Compressing Information into an Executable Reasoning Structure · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="A model and a harness are doing the same thing — compressing large amounts of information into something executable. For enterprise processes that must run repeatedly with high consistency and expl…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/nilou-salehi--agent-learning-requires-compressing-information.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Agent Learning Requires Compressing Information into an Executable Reasoning Structure · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="A model and a harness are doing the same thing — compressing large amounts of information into something executable. For enterprise processes that must run repeatedly with high consistency and expl…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/nilou-salehi--agent-learning-requires-compressing-information.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-compass" data-talk="nilou-salehi--agent-learning-requires-compressing-information">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Agent Learning Requires Compressing Information into an Executable Reasoning Structure" data-title-zh="Agent 的學習,是把資訊壓縮成一個可執行的推理結構">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: Frameworks &amp; Dev Platforms</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Agent Learning Requires Compressing Information into an Executable Reasoning Structure</span><span class="lang-zh">Agent 的學習,是把資訊壓縮成一個可執行的推理結構</span></h1>
+        <p class="dialog__speaker"><strong>Nilou Salehi</strong> — Associate Professor, UC Berkeley</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 00:43:55–00:49:32 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=2635s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:43:55</span><span class="lang-zh">從 00:43:55 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">A model and a harness are doing the same thing — compressing large amounts of information into something executable. For enterprise processes that must run repeatedly with high consistency and explainability, the right executable form is a reasoning graph that an agent builds for itself.</span><span class="lang-zh">模型在做的、harness 在做的,本質是同一件事——把大量資訊壓縮成可執行的形式;而對那些必須高度一致、可解釋、長期跑的企業流程,最適合的可執行形式是一張由 agent 自己搭建的 reasoning graph。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>統一視角</strong>:我們這些年在解的問題其實只有一個——<strong>壓縮資訊</strong>。模型在做的是這件事,harness 在做的也是這件事:把大量資訊壓成一個<strong>可執行</strong>的格式(transformer 是可執行的,它預測下一個 token)。</li>
+<li><strong>接下來的關鍵題</strong>:會出現愈來愈多做這件事的架構,所以第一個要解的問題是——<strong>流程有哪些類型,每一類的最佳架構 / harness 是什麼</strong>。</li>
+<li><strong>Reasoning graph</strong>:一張由 agent 組成的圖。最底層負責連接原始資料所在的各種系統並理解資料,中間層負責推理,最上層負責在對的時間採取對的行動;<strong>從底到頂的任一條路徑就是一條可能的推理路徑</strong>。適用於「需要反覆執行且要求極高一致性」的流程。</li>
+<li><strong>由 agent 來建圖</strong>:這張圖不該由人手寫,而是由一個 <strong>architect agent</strong> 建出來,形成「agent 與 harness 之間的 handshake」——而且<strong>每建一次就變得更會建</strong>(compounding intelligence 進到模型權重裡)。</li>
+<li><strong>戰績(invoice matching)</strong>:baseline agent harness 即使用 Fable 也只做對約 40%;他們的 reasoning graph 做到 <strong>99.9% 準確率</strong>,<strong>96% 的案例還能正確解釋決策理由</strong>;某 Fortune 500 客戶單張發票處理成本從 <strong>5 美元 → 1.5 美元 → 本週的 10 美分</strong>。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>一切都是壓縮(約 00:44)</h4>
+<p>Salehi 的開場命題很簡潔:<strong>我們多年來在解的那個問題,就是壓縮資訊</strong>。因為說到底,模型做的就是這件事,harness 做的也是這件事——我們只是不斷找出新方法,把大量資訊壓縮成<strong>一個可執行的格式</strong>。transformer 模型就是可執行的,它執行的方式是預測下一個 token。</p>
+<p>接下來幾年會出現愈來愈多、以更複雜方式做這件事的架構。所以<strong>首先要解的問題是:流程有哪些種類,而每一種流程的最佳架構或 harness 是什麼?</strong></p>
+<h4>Reasoning graph:一張由 agent 構成的圖(約 00:44–00:46)</h4>
+<p>她分享團隊做得很成功的一種:<strong>reasoning graph</strong>——圖上的每一個圓圈都是一個 agent。他們發現對於<strong>需要反覆執行、且要求極高一致性</strong>的流程,這是非常好的架構。</p>
+<p>分層結構是:</p>
+<ul>
+<li><strong>最底層</strong>:一層 agent 只做一件事——連接到原始資料所在的各個系統,並理解那些原始資料。</li>
+<li><strong>中間層</strong>:負責推理的 agent。</li>
+<li><strong>最上層</strong>:在對的時間採取對的行動的 agent。</li>
+</ul>
+<p><strong>任何一條從底層走到頂層的路徑,就是一條可能的推理路徑。</strong>她也指出當天其他場次出現過同一個想法的不同變體——這些路徑可以平行跑,也可以用各種方式最佳化。</p>
+<p>那麼,這張圖怎麼生出來?<strong>必須由 agent 來做。</strong>她預期未來會愈來愈常看到「<strong>agent 與 harness 之間的 handshake</strong>」:那個 agent 被訓練成非常懂得怎麼和特定 harness 協作;而不同架構會擅長不同類型的流程。</p>
+<p>他們投入最多的是一個 <strong>architect agent</strong>,負責處理那些必須高度一致且可解釋的流程——財務流程、供應鏈,或任何公司需要一遍又一遍跑下去的東西:<strong>非確定性、仍需要智能,但必須高度一致並且說得出理由</strong>。</p>
+<p>成果:一致性非常高——<strong>在某些例子或 benchmark 上,連 Fable 都只能做到約 40–70% 準確率,他們可以穩定超過 95%</strong>;速度也很快。而且<strong>整個 harness 的生成過程沒有寫任何 custom code</strong>,全部是 architect agent 與這個 harness 協作的產物,所以<strong>新的 use case 幾週就能上線</strong>。</p>
+<p>她認為這個架構最重要的部分是 <strong>compounding intelligence,而且它累積在模型的權重裡</strong>:architect 每接一個新 use case、為它建一張 reasoning graph 並學會怎麼建,它就更會建。</p>
+<h4>案例:invoice matching(約 00:47–00:49)</h4>
+<p>她挑了一個具體流程說明:<strong>發票比對</strong>。</p>
+<p>超大型企業每個月要處理數百萬張發票,而決策看似很簡單——<strong>付,或不付</strong>。難點在兩邊都不能鬆:他們會收到一定比例的詐欺發票,所以不能全付;但也不能拖太久,因為沒有按時付款會影響整條供應鏈。</p>
+<p>流程本身是:收到發票 → 比對到採購單(PO)→ 正規化 → 處理大量例外。例外多到令人頭痛:單位不同、幣別不同、某些地區有稅。她說有一個例子她印象特別深刻也覺得特別好笑——<strong>如果貨品是液體,發票金額比採購單少最多 5% 是可以接受的,但只限夏季,因為會蒸發掉一些,你也拿它沒辦法</strong>。</p>
+<p>所以 agent <strong>必須持續學習</strong>:這不是一次性的 one-shot learning,也不是在單一 session 裡發生的事,而是一個<strong>橫跨數週數月的長程流程</strong>;每遇到一個例外,就得從中學到東西。</p>
+<p>數字:</p>
+<ul>
+<li>一個 baseline agent harness,<strong>即使用 Fable,也只做對約 40%</strong>。</li>
+<li>他們的 <strong>architect agent 為這個流程建出的 reasoning graph</strong>——包含大量 agent、它們的接線、各自的 instruction、每個 agent 該用哪個模型、每個 agent 自己的長期記憶——<strong>這些工程決策全部由 agent 做</strong>。</li>
+<li>結果在真實資料上達到 <strong>99.9% 準確率</strong>,<strong>第一版圖一週內就上線</strong>,而且 <strong>96% 的案例不只給出正確決策,還能正確解釋這個決策為什麼成立</strong>。</li>
+<li>成本:某 Fortune 500 客戶單張發票的處理成本從 <strong>5 美元降到 1.5 美元</strong>,而<strong>就在本週再降到 10 美分</strong>。</li>
+</ul>
+<p><strong>結語</strong>:能把學到的東西壓縮成一個<strong>可重複使用的結構</strong>,就能做到這種級別的進展。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"The whole problem that we're all solving and have been solving for years now is compressing information."(約 00:44)</p>
+</blockquote>
+<p>整場演講的第一句,也是它的全部論點。</p>
+<blockquote>
+<p>"If it's liquid, it's okay if the amount on the invoice is up to 5% less than what was on the purchase order — but only during summers, because some of it evaporates and there's nothing you can do."(約 00:47)</p>
+</blockquote>
+<p>一個很好笑但很真實的例子,說明為什麼企業流程沒辦法一次學完:規則本身就是這樣長出來的。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>One framing</strong>: the problem we've all been solving for years is <strong>compressing information</strong>. That's what a model does, and it's what a harness does — finding ways to take a great deal of information and compress it into an <strong>executable</strong> format (a transformer is executable; it predicts the next token).</li>
+<li><strong>The next question</strong>: more architectures will do this in more complicated ways, so the first thing to figure out is <strong>what the types of processes are, and what the optimal architecture or harness is for each</strong>.</li>
+<li><strong>Reasoning graphs</strong>: a graph of agents. A bottom layer connects to the systems where raw data lives and does nothing but understand that data; a middle layer reasons; a top layer takes the right action at the right time. <strong>Any path from bottom to top is one possible reasoning path.</strong> It fits processes that must run repeatedly with very high consistency.</li>
+<li><strong>An agent builds the graph</strong>: not a human. An <strong>architect agent</strong> produces it, forming a "handshake between an agent and a harness" — and it <strong>gets better at building them every time</strong>, with the compounding intelligence living in the model's weights.</li>
+<li><strong>Invoice matching results</strong>: a baseline agent harness, even using Fable, gets ~40% right. Their reasoning graph reached <strong>99.9% accuracy</strong>, correctly <strong>explained</strong> the decision in 96% of cases, and took one Fortune 500 client from <strong>$5 per invoice to $1.50, and this week to 10 cents</strong>.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>It's all compression (~00:44)</h4>
+<p>Salehi opened with a single claim: <strong>the problem we've all been solving for years is compressing information</strong>. At the end of the day that's what a model does and what a harness does — we keep finding different ways to take lots and lots of information and compress it into a format that is executable. A transformer model is executable, and the way it executes is by predicting the next token.</p>
+<p>Over the next few years there will be more and more architectures doing this in more complicated ways. So the first problem to solve is: <strong>what are the various types of processes, and what is the optimal architecture or harness for each?</strong></p>
+<h4>Reasoning graphs: a graph of agents (~00:44–00:46)</h4>
+<p>The one her team has had a lot of success with is the <strong>reasoning graph</strong> — every circle in the graph is an agent. They've found this is a very good architecture for processes that need to be run repeatedly and with very high consistency.</p>
+<p>The layering:</p>
+<ul>
+<li><strong>Bottom</strong>: agents that connect to all the different systems where the raw data lives, whose only job is to understand that raw data.</li>
+<li><strong>Middle</strong>: agents that do the reasoning.</li>
+<li><strong>Top</strong>: agents that take the right action at the right time.</li>
+</ul>
+<p><strong>Any path from bottom to top is one possible reasoning path.</strong> She noted that variations on the same idea had shown up in other talks that day — the paths can be run in parallel and optimized in various ways.</p>
+<p>So how do you create one? <strong>It has to be done by an agent.</strong> What we'll see more and more, she argued, are <strong>handshakes between an agent and a harness</strong>, where the agent is trained to know that harness very well — and different architectures will suit different kinds of processes.</p>
+<p>The one her team has invested most in is an <strong>architect agent</strong> aimed at processes that must run consistently and accurately: financial processes, supply chain, anything a company needs to keep running over and over. <strong>Non-deterministic, still requiring intelligence, but demanding high consistency and explainability.</strong></p>
+<p>The payoff is consistency: they routinely clear <strong>95% accuracy on examples and benchmarks where even Fable only reaches about 40–70%</strong>, and it's fast. <strong>No custom code is written anywhere in generating the harness</strong> — it's all the architect agent working with the harness — so new use cases launch in a matter of weeks.</p>
+<p>The most important property, she said, is <strong>compounding intelligence held in the model's weights</strong>: each time the architect takes a new use case, builds a reasoning graph for it, and learns how, it gets better at doing that.</p>
+<h4>Case study: invoice matching (~00:47–00:49)</h4>
+<p>Very large companies receive enormous volumes of invoices and face a deceptively simple decision: <strong>pay it or don't</strong>. They can't pay everything, because a certain amount of it is fraud; they also can't sit on invoices too long, because late payment ripples through the supply chain. At scale that's millions of invoices a month.</p>
+<p>The process: receive the invoice, match it to a PO, normalize it, and handle a long tail of exceptions — different units, different currencies, tax in certain jurisdictions. Her favorite: <strong>if the goods are liquid, the invoice may come in up to 5% under the purchase order — but only during summer, because some of it evaporates and there's nothing anyone can do about it.</strong></p>
+<p>Which is exactly why the agent has to <strong>keep learning</strong>. It isn't one-shot, and it doesn't happen inside a single session: it's a long-horizon process spanning weeks and months, and every exception is something to learn from.</p>
+<p>The numbers:</p>
+<ul>
+<li>A baseline agent harness, <strong>even using Fable, gets about 40% of it right</strong>.</li>
+<li>Their <strong>architect agent built the reasoning graph</strong> for this process — the agents, their wiring, their instructions, which model each agent should use, and a long-term memory per agent. <strong>All of those engineering decisions were made by the agent.</strong></li>
+<li>The graph hit <strong>99.9% accuracy</strong> on real data, the first version was up and running <strong>within a week</strong>, and in <strong>96% of cases it not only made the right decision but correctly explained why</strong>.</li>
+<li>Cost at one Fortune 500 client fell from <strong>$5 per invoice to $1.50</strong>, and <strong>this week to 10 cents</strong>.</li>
+</ul>
+<p>Her closing line: those are the kinds of advances available once you can take that learning and compress it into a reusable structure.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"The whole problem that we're all solving and have been solving for years now is compressing information." (~00:44)</p>
+</blockquote>
+<p>The first sentence of the talk, and its entire argument.</p>
+<blockquote>
+<p>"If it's liquid, it's okay if the amount on the invoice is up to 5% less than what was on the purchase order — but only during summers, because some of it evaporates and there's nothing you can do." (~00:47)</p>
+</blockquote>
+<p>A funny but very real illustration of why enterprise processes can't be learned in one pass.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Across AI</td>
+<td>講者自述其共同創辦的公司,主打企業級 reasoning graph 架構</td>
+<td>The company she co-founded, built around enterprise reasoning-graph architecture</td>
+<td>字幕作 "Across AI";公開資料顯示為 UC Berkeley I School 與 USC 教授共同創辦</td>
+</tr>
+<tr>
+<td>Reasoning graph</td>
+<td>分層的 agent 圖:資料理解層 → 推理層 → 行動層;任一底到頂路徑為一條推理路徑</td>
+<td>Layered graph of agents — data understanding, reasoning, action — where any bottom-to-top path is a reasoning path</td>
+<td>由 architect agent 自動生成 / generated by the architect agent</td>
+</tr>
+<tr>
+<td>Architect agent</td>
+<td>為特定流程自動建構 reasoning graph(含接線、instruction、選模型、長期記憶)的 agent</td>
+<td>Agent that builds the reasoning graph for a process: wiring, instructions, model choice per agent, long-term memory</td>
+<td>每建一次就更會建 / improves with each use case</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>professor Neu / My name is Nio</td>
+<td>Nilou Salehi</td>
+</tr>
+<tr>
+<td>Across AI(字幕正確)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>transforming model</td>
+<td>transformer model</td>
+</tr>
+<tr>
+<td>oneshot</td>
+<td>one-shot</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>職稱衝突</strong>:她在台上自述為 Across AI 的 <strong>co-founder and CEO</strong>;而 2024–2025 年的公開資料顯示 Across AI 由 UC Berkeley 的 Niloufar Salehi(co-founder / CPO)、USC 的 Afshin Nikzad(CTO)與 Steven Mih(CEO)共同創辦。角色可能已變動,需查證。frontmatter 依官網議程列 UC Berkeley 職稱。/ <strong>Title conflict</strong>: on stage she introduced herself as <strong>co-founder and CEO</strong> of Across AI, while public 2024–2025 material lists her as co-founder/CPO with Steven Mih as CEO. Roles may have changed; the frontmatter follows the official agenda.</li>
+<li>議程姓名為 "Nilou Salehi",公開學術資料多作 <strong>Niloufar Salehi</strong>。/ The agenda uses "Nilou Salehi"; academic sources generally use <strong>Niloufar Salehi</strong>.</li>
+<li>「even Fable can only hit about 40 to 70%」所指的 benchmark 未在台上點名。/ The benchmark behind the "even Fable only hits 40–70%" claim was not named.</li>
+<li>99.9% 準確率與 96% 可解釋率的評估設定(資料量、切分方式)未說明。/ The evaluation setup behind the 99.9% accuracy and 96% explanation figures was not described.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/nilou-salehi--agent-learning-requires-compressing-information.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Trustworthy Agentic AI in Regulated Domains: Robustness, Privacy, and Accountability as Co-Design Imperatives · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="In agentic systems trustworthiness is a systems property, not a model property — robustness, privacy, and accountability actively contradict one another — so the interesting research question isn&#x27;t…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/lovedeep-gondara--trustworthy-agentic-ai-in-regulated-domains.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Trustworthy Agentic AI in Regulated Domains: Robustness, Privacy, and Accountability as Co-Design Imperatives · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="In agentic systems trustworthiness is a systems property, not a model property — robustness, privacy, and accountability actively contradict one another — so the interesting research question isn&#x27;t…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/lovedeep-gondara--trustworthy-agentic-ai-in-regulated-domains.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="lovedeep-gondara--trustworthy-agentic-ai-in-regulated-domains">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Trustworthy Agentic AI in Regulated Domains: Robustness, Privacy, and Accountability as Co-Design Imperatives" data-title-zh="受監管領域的可信 Agentic AI:把穩健性、隱私與問責視為共同設計的必要條件">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 1: AI Safety</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Trustworthy Agentic AI in Regulated Domains: Robustness, Privacy, and Accountability as Co-Design Imperatives</span><span class="lang-zh">受監管領域的可信 Agentic AI:把穩健性、隱私與問責視為共同設計的必要條件</span></h1>
+        <p class="dialog__speaker"><strong>Lovedeep Gondara</strong> — Head of AI R&amp;D, Vanguard; Adjunct Professor, University of British Columbia</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:25:18–00:34:46 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=l8GS08n-25Q&amp;t=1518s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:25:18</span><span class="lang-zh">從 00:25:18 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">In agentic systems trustworthiness is a systems property, not a model property — robustness, privacy, and accountability actively contradict one another — so the interesting research question isn&#x27;t how to push everything to full autonomy, but how to make level 2 and level 3 useful, safe, and provably compliant.</span><span class="lang-zh">可信度在 agentic 系統裡是系統屬性、不是模型屬性——因為穩健性、隱私、問責這三個我們都想要的性質彼此會直接衝突,所以真正該研究的不是怎麼把一切推到全自主,而是怎麼把 L2/L3 做得好用、安全且可證明合規。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>核心命題</strong>:「一個模型幻覺出一個建議,是個困擾;一個 agent 照著它行動,是個責任(liability)。」從古典 ML 到 LLM,我們都還有中斷、偵測、修正的餘裕;到了自主 agent,那個餘裕沒了——後果從行事曆填錯一路到生產資料庫被刪。</li>
+<li><strong>Agent 特有的失效模式</strong>(他列了六個,現場講了五個):compounding error(每步 95% 準確,10 步後掉到 60% 以下)、<strong>indirect</strong> prompt injection(工具呼叫的回傳結果本身帶惡意指令,而那是 agent 的輸入)、goal drift(拆解子任務後為子目標最佳化而偏離最終目標)、inter-agent manipulation 與 agent collusion、unauthorized tool invocation(為了彈性而設計的寬鬆 schema 讓稽核變難)。</li>
+<li><strong>三個想要的性質彼此衝突</strong>:privacy vs auditability(要稽核就要詳細 log,詳細 log 就會曝露你想保護的資訊)、autonomy vs accountability(要問責就要有人介入點,有人介入就削減自主)、robustness vs autonomy(要穩健就得能中止漂移中的 agent,中止就是削減自主)。</li>
+<li><strong>結論</strong>:不要問怎麼把所有東西推到 L4,要問<strong>怎麼讓 L2/L3 對我們更有用</strong>;金融、醫療這類受監管領域會暴露出其他領域看不到的失效模式,而可信度必須被當成系統屬性來設計。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>三個世代的失敗:從「困擾」到「責任」(約 00:26–00:27)</h4>
+<p>他要全場記住的一句話,也是全場的核心論點:</p>
+<blockquote>
+<p>A model that hallucinates a recommendation is a nuisance. An agent that acts on it is a liability.</p>
+</blockquote>
+<p>順著這條線看三個世代:</p>
+<table>
+<thead>
+<tr>
+<th>世代</th>
+<th>輸出</th>
+<th>會出什麼錯</th>
+<th>有沒有補救餘裕</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>古典 ML</td>
+<td>機率 / 排序 / 標籤</td>
+<td>標籤錯、機率誤差、排序錯</td>
+<td><strong>有</strong>,可以中斷模型流程並介入</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>非結構化文字</td>
+<td>幻覺、錯誤資訊</td>
+<td><strong>有</strong>,可以偵測並修正</td>
+</tr>
+<tr>
+<td>自主 Agent</td>
+<td>行動</td>
+<td>「天花板就是極限」</td>
+<td><strong>沒有</strong></td>
+</tr>
+</tbody>
+</table>
+<p>最後一格他給的例子從輕到重排開:<strong>行事曆多一筆錯誤條目 → 收件匣被清空 → 生產資料庫被刪除。</strong></p>
+<h4>Agent 特有的五種失效模式(約 00:27–00:30)</h4>
+<ol>
+<li><strong>Compounding error</strong>:長程 agent 要走很多步才到目標。假設<strong>每一步準確率 95%</strong>,在若干前提下,<strong>走完 10 步的準確率會掉到 60% 以下</strong>。</li>
+<li><strong>Indirect prompt injection</strong>:他特別區分了這跟 LLM 的 prompt injection 不同——agent 在自主環境裡跑,<strong>工具呼叫的結果本身可以夾帶惡意指令,而這些輸出正是 agent 的下一輪輸入</strong>;同理,agent 檢索回來的任何內容也可能夾帶指令。</li>
+<li><strong>Goal drift</strong>:長程 agent 通常會把最終目標拆解成子任務;一旦它開始為那些子任務最佳化,就可能偏離最終目標。</li>
+<li><strong>Inter-agent manipulation / agent collusion</strong>:作為研究題目,多 agent 系統的這種動力學非常有趣;但<strong>放到 production 就必須嚴肅看待</strong>——依照 orchestration 的方式,一個惡意 agent 有可能說服其他 agent 替它辦事。</li>
+<li><strong>Unauthorized tool invocation</strong>:設計自主系統時,無論是 tool calling 還是 agent 間通訊,我們傾向把 schema 設計得有彈性;<strong>而彈性的 schema 讓稽核更難做,也留下我們不想要的惡意行為空間</strong>。</li>
+</ol>
+<h4>三個想要的性質,以及它們彼此的衝突(約 00:30–00:32)</h4>
+<p>高階來看,一個可信的 agentic 系統要三件事:</p>
+<ul>
+<li><strong>Robustness</strong>:agent 能撐過長程任務,壓住前面說的累積誤差。</li>
+<li><strong>Privacy</strong>:agent 在環境裡經常碰到敏感私密資料,那些資料的隱私必須被保住。</li>
+<li><strong>Accountability</strong>:必須能<strong>稽核 agent 的行動</strong>——「如果我們無法稽核導致某個結果的那條行動鏈,我們就已經失敗了。」</li>
+</ul>
+<p>而這正是多 agent 系統與單一模型最不一樣的地方:<strong>這些性質單獨看沒問題,放在一起就互相干涉。</strong></p>
+<ul>
+<li><strong>Privacy ↔ Auditability</strong>:要稽核就得留詳細 log;但詳細的 log 本身就會曝露你原本想保護的那些資訊。</li>
+<li><strong>Autonomy ↔ Accountability</strong>:自主的定義就是 agent 自己去做、我們不打斷;但那要怎麼指派責任?要有問責就需要 human in the loop、需要人可以介入的步驟——而那就削減了自主。</li>
+<li><strong>Robustness ↔ Autonomy</strong>:要建穩健的系統,就得能中止一個正在漂移、或沒有照我們要的方式行動的 agent;中止本身就是在削減自主,但為了穩健你非做不可。</li>
+</ul>
+<h4>自駕車式的自主分級,以及真正該問的問題(約 00:32–00:33)</h4>
+<p>他提到這張投影片跟 <strong>Vincent 前一天講的那張很像</strong>,而且跟很多人聊下來,大家對 agent 自主的想像確實都很接近自駕車的分級——這很自然,因為談自主時我們想的就是同一套 autonomy level。</p>
+<ul>
+<li><strong>Level 0</strong>:AI 只給建議,由人決定要不要採納、要不要照做。</li>
+<li><strong>Level 4</strong>(另一端):完全自主,我們只觀察輸出,其他什麼都不做。</li>
+</ul>
+<p>而他的立場很清楚:</p>
+<blockquote>
+<p>對我來說,更有趣的研究問題不是怎麼把一切變得更自主、怎麼把所有東西推向 L4,而是<strong>怎麼讓 level 2 和 level 3 為我們工作得更好</strong>——怎麼確保 L2/L3 系統是有用的、安全的、而且<strong>可證明合規的(provably compliant)</strong>,這樣我們才能把盡可能多的工作從自己手上卸下來,同時確保部署出去的東西是可信的。</p>
+</blockquote>
+<h4>兩個帶走的結論(約 00:34)</h4>
+<ol>
+<li><strong>金融、醫療這類受監管領域會暴露出該領域獨有、且 agentic 系統獨有的失效模式。</strong></li>
+<li><strong>Agentic AI 的可信度必須被當成「系統屬性」而不是「模型屬性」來思考</strong>——因為這些性質經常彼此互動、彼此矛盾,設計系統時必須把這整組張力一起放進來考慮。</li>
+</ol>
+<h3>金句</h3>
+<blockquote>
+<p>"A model that hallucinates a recommendation is a nuisance. An agent that acts on it is a liability."(約 00:26)</p>
+</blockquote>
+<p>他要全場記住的一句,也是把 LLM 風險與 agent 風險分開的分界線。</p>
+<blockquote>
+<p>"If we cannot audit the chain of actions that led to a certain outcome, we have failed."(約 00:30)</p>
+</blockquote>
+<p>受監管領域對 accountability 的底線標準。</p>
+<blockquote>
+<p>"The more interesting research question is how we make level two and level three work for us better."(約 00:33)</p>
+</blockquote>
+<p>對「自主等級競賽」的一次降溫:價值在中間層,不在終點。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>The thesis</strong>: "A model that hallucinates a recommendation is a nuisance. An agent that acts on it is a liability." Classical ML and LLMs both leave room to interrupt, detect, and correct. Autonomous agents remove that room — and the blast radius runs from a wrong calendar entry to a wiped inbox to a deleted production database.</li>
+<li><strong>Agent-specific failure modes</strong> (six on the slide, five covered live): compounding error (95% per-step accuracy drops below 60% over 10 steps); <strong>indirect</strong> prompt injection, where tool-call results carry malicious instructions and those results are the agent's next input; goal drift, where optimizing decomposed subtasks pulls the agent away from the final goal; inter-agent manipulation and collusion; and unauthorized tool invocation, where the flexible schemas we design for capability make auditing harder.</li>
+<li><strong>The three properties we want actively conflict</strong>: privacy vs auditability (the detailed logs auditing requires expose exactly what privacy protects); autonomy vs accountability (accountability requires human intervention points, which cut autonomy); robustness vs autonomy (robustness requires the ability to halt a drifting agent, which also cuts autonomy).</li>
+<li><strong>Conclusion</strong>: stop asking how to push everything to L4; ask <strong>how to make L2 and L3 work better for us</strong>. Regulated domains surface failure modes other domains never see, and trustworthiness has to be designed as a systems property.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Three generations of failure: from nuisance to liability (~00:26–00:27)</h4>
+<p>The line he asked the room to remember is also the talk's spine:</p>
+<blockquote>
+<p>A model that hallucinates a recommendation is a nuisance. An agent that acts on it is a liability.</p>
+</blockquote>
+<p>Tracing it across three generations:</p>
+<table>
+<thead>
+<tr>
+<th>Generation</th>
+<th>Output</th>
+<th>What goes wrong</th>
+<th>Room to recover?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classical ML</td>
+<td>probability / rank / label</td>
+<td>wrong label, probability error, wrong ranking</td>
+<td><strong>Yes</strong> — you can interrupt the model flow and intervene</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>unstructured text</td>
+<td>hallucination, wrong information</td>
+<td><strong>Yes</strong> — you can detect and correct</td>
+</tr>
+<tr>
+<td>Autonomous agent</td>
+<td>actions</td>
+<td>"the sky is the limit"</td>
+<td><strong>No</strong></td>
+</tr>
+</tbody>
+</table>
+<p>His escalation for that last row: <strong>a wrong calendar entry → a wiped inbox → a deleted production database.</strong></p>
+<h4>Five agent-specific failure modes (~00:27–00:30)</h4>
+<ol>
+<li><strong>Compounding error.</strong> A long-horizon agent takes many steps. At <strong>95% per-step accuracy</strong>, under some assumptions, <strong>accuracy after 10 steps falls below 60%</strong>.</li>
+<li><strong>Indirect prompt injection.</strong> He was careful to separate this from LLM prompt injection: an agent running autonomously receives <strong>tool-call results that can themselves embed malicious instructions, and those outputs become the agent's inputs</strong>. The same applies to any content the agent retrieves.</li>
+<li><strong>Goal drift.</strong> Long-horizon agents decompose a final goal into subtasks; once they start optimizing for the subtasks, they can end up misaligned with the goal that generated them.</li>
+<li><strong>Inter-agent manipulation and agent collusion.</strong> As a research area, the dynamics of multi-agent systems are genuinely interesting — but <strong>in production this has to be taken seriously</strong>, because depending on the orchestration, a malicious agent may convince other agents to do its bidding.</li>
+<li><strong>Unauthorized tool invocation.</strong> When designing autonomous systems we make schemas flexible, whether for tool calling or inter-agent communication. <strong>Flexible schemas make auditing harder</strong> and open room for behaviour nobody wants.</li>
+</ol>
+<h4>The three properties, and how they fight (~00:30–00:32)</h4>
+<p>A trustworthy agentic system needs three things at a high level:</p>
+<ul>
+<li><strong>Robustness</strong> — the agent survives long-horizon tasks, containing the compounding error above.</li>
+<li><strong>Privacy</strong> — agents in a live environment routinely touch sensitive private data, and that data's privacy has to hold.</li>
+<li><strong>Accountability</strong> — you must be able to <strong>audit the agent's actions</strong>: "if we cannot audit the chain of actions that led to a certain outcome, we have failed."</li>
+</ul>
+<p>This is what makes multi-agent systems different from standalone models: <strong>properties that are fine in isolation interfere once composed.</strong></p>
+<ul>
+<li><strong>Privacy ↔ auditability.</strong> Auditing a multi-agent system requires detailed logs; detailed logs expose the very information you are trying to protect.</li>
+<li><strong>Autonomy ↔ accountability.</strong> Autonomy by definition means agents proceed without interruption — so who is accountable? Assigning accountability requires a human in the loop and points at which humans can intervene, and that reduces autonomy.</li>
+<li><strong>Robustness ↔ autonomy.</strong> Building robust systems means being able to halt an agent that is drifting or not doing what you wanted. Halting reduces autonomy — but robustness requires it.</li>
+</ul>
+<h4>Autonomy levels, and the question actually worth asking (~00:32–00:33)</h4>
+<p>He noted the slide closely resembled <strong>one Vincent had shown the previous day</strong>, and that from conversations across the summit, everyone is converging on the self-driving-car framing for agent autonomy — naturally enough, since autonomy is the same concept.</p>
+<ul>
+<li><strong>Level 0</strong>: AI only advises; humans decide whether to take or act on the advice.</li>
+<li><strong>Level 4</strong> at the far end: fully autonomous, humans only observe the output.</li>
+</ul>
+<p>His position:</p>
+<blockquote>
+<p>The more interesting research question isn't how we make everything more autonomous or move everything toward L4. It's <strong>how we make level two and level three work for us better</strong> — how we make sure L2 and L3 systems are useful, safe, and <strong>provably compliant</strong>, so we can take as much work off our plate as possible while still making sure what's deployed is trustworthy.</p>
+</blockquote>
+<h4>Two takeaways (~00:34)</h4>
+<ol>
+<li><strong>Regulated domains such as finance and healthcare expose failure modes that are unique both to those domains and to agentic systems.</strong></li>
+<li><strong>Trustworthiness in agentic AI has to be treated as a systems property, not a standalone model property</strong> — because these properties keep interacting and contradicting each other, and the design has to hold the whole tension set at once.</li>
+</ol>
+<h3>Quotes</h3>
+<blockquote>
+<p>"A model that hallucinates a recommendation is a nuisance. An agent that acts on it is a liability." (~00:26)</p>
+</blockquote>
+<p>The line he asked the room to remember, and the boundary between LLM risk and agent risk.</p>
+<blockquote>
+<p>"If we cannot audit the chain of actions that led to a certain outcome, we have failed." (~00:30)</p>
+</blockquote>
+<p>The accountability floor for regulated deployment.</p>
+<blockquote>
+<p>"The more interesting research question is how we make level two and level three work for us better." (~00:33)</p>
+</blockquote>
+<p>A deliberate cooling of the autonomy-level race: the value is in the middle tiers, not the endpoint.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自主分級 L0–L4 / Autonomy levels L0–L4</td>
+<td>借用自駕車分級來描述 agent 自主程度</td>
+<td>Self-driving-car style levels applied to agent autonomy</td>
+<td>講者提到與 Vincent 前一天的投影片高度相似</td>
+</tr>
+<tr>
+<td>Compounding error</td>
+<td>每步 95% 準確 × 10 步 → 低於 60%</td>
+<td>95% per-step accuracy over 10 steps drops below 60%</td>
+<td>講者現場的算術示例</td>
+</tr>
+<tr>
+<td>Indirect prompt injection</td>
+<td>工具回傳結果夾帶惡意指令,再成為 agent 輸入</td>
+<td>Malicious instructions embedded in tool-call results that become agent inputs</td>
+<td>與 LLM 層的 prompt injection 明確區分</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Love Depot / Love Deep</td>
+<td>Lovedeep (Gondara)</td>
+</tr>
+<tr>
+<td>codeesign</td>
+<td>co-design</td>
+</tr>
+<tr>
+<td>aentic / aging AI</td>
+<td>agentic AI</td>
+</tr>
+<tr>
+<td>multi- aent</td>
+<td>multi-agent</td>
+</tr>
+<tr>
+<td>syphency</td>
+<td>sycophancy</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>第六個失效模式</strong>:他說投影片上有六個,但「為了時間只講其中幾個」,實際只講了五個(compounding error、indirect prompt injection、goal drift、inter-agent manipulation &amp; collusion、unauthorized tool invocation);第六個需看投影片。/ He said six failure modes were on the slide but covered only five; the sixth needs the slides.</li>
+<li><strong>"Vincent"</strong>:指前一天演講的 Vincent(依議程最可能是 Vincent Vanhoucke),但講者只稱名不稱姓,無法從逐字稿確認。/ He referred only to "Vincent" from the previous day; most likely Vincent Vanhoucke, but not confirmable from the transcript.</li>
+<li><strong>compounding error 的假設條件</strong>:他說「in that case of course I'm assuming a few things here」但未列出假設。/ He flagged that the 95%→60% arithmetic rests on assumptions he did not enumerate.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/lovedeep-gondara--trustworthy-agentic-ai-in-regulated-domains.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

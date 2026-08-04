@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>How Agentic AI Is Rewriting the Rules of AI Infrastructure · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Today&#x27;s inference serving stacks were built for the chatbot era — one model at a time, static execution paths, independent requests, homogeneous hardware — while agentic workloads bring dynamism an…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/tushar-krishna--how-agentic-ai-is-rewriting-the-rules-of-ai-infrastructure.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How Agentic AI Is Rewriting the Rules of AI Infrastructure · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Today&#x27;s inference serving stacks were built for the chatbot era — one model at a time, static execution paths, independent requests, homogeneous hardware — while agentic workloads bring dynamism an…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/tushar-krishna--how-agentic-ai-is-rewriting-the-rules-of-ai-infrastructure.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="tushar-krishna--how-agentic-ai-is-rewriting-the-rules-of-ai-infrastructure">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="How Agentic AI Is Rewriting the Rules of AI Infrastructure" data-title-zh="Agentic AI 如何改寫 AI 基礎設施的規則">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="dialog__session">Session 2: AI Systems</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">How Agentic AI Is Rewriting the Rules of AI Infrastructure</span><span class="lang-zh">Agentic AI 如何改寫 AI 基礎設施的規則</span></h1>
+        <p class="dialog__speaker"><strong>Tushar Krishna</strong> — Associate Professor, Georgia Tech; CEO, InfraVana</p>
+        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:48:03–00:53:01 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=2883s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:48:03</span><span class="lang-zh">從 00:48:03 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Today&#x27;s inference serving stacks were built for the chatbot era — one model at a time, static execution paths, independent requests, homogeneous hardware — while agentic workloads bring dynamism and heterogeneity that open up trillions of cross-dependent choices where the odds of choosing wrong are high and the cost of choosing wrong is higher; the only way out is optimizing across the whole stack, which first requires being able to measure it.</span><span class="lang-zh">今天的推論服務堆疊是為 chatbot 時代造的——單模型、靜態執行路徑、請求彼此獨立、硬體同質;而 agentic 工作負載帶來的 dynamism 與 heterogeneity 讓整個堆疊出現「兆級的選擇組合」,選錯的機率極高、代價更高,唯一的出路是跨全棧一起最佳化,而前提是先能量測。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>TL;DR</h3>
+<ul>
+<li><strong>現有推論堆疊是 chatbot 時代的產物</strong>:一次跑一個模型、為靜態執行路徑最佳化、假設每個請求彼此獨立、硬體基本同質(GPU)。Agentic 工作負載打破了每一條假設。</li>
+<li><strong>兩個不可逆的趨勢:dynamism 與 heterogeneity</strong>。前者是多模型、tool call、動態波動的需求、互相依賴的任務、以及工作流層級的最佳化;後者是 CPU 加上各種為不同任務段最佳化的專用硬體。而 agentic 工作流的運算量比非 agentic <strong>高出 10 到 100 倍</strong>——所以中間那層軟體堆疊只會更關鍵。</li>
+<li><strong>兆級選擇 + 快速演化的元件 = 幾乎一定會選錯</strong>。一端是 agent 應用在意的 end-to-end SLO,另一端是資料中心的 infra 目標,中間是跨層相依的巨大選擇空間。他的結論:<strong>只優化堆疊的一部分不會有用,唯一的路是跨全棧最佳化</strong>——而 "you can't optimize what you cannot measure",所以 benchmark 與模擬工具(Chakra、ASTRA-sim)是前置條件。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>Tokenomics:軟體堆疊為什麼變成瓶頸(約 00:48:03–00:49:30)</h4>
+<p>Tushar Krishna 開場先自嘲:「現在是 1:45,官方上這個 session 已經該結束了,但我身為教授的超能力就是能在 5 分鐘內衝完任意數量的投影片。」</p>
+<p>他的框架是 <strong>tokenomics</strong> 的新時代(約 00:48:35):我們把 AI 工作流餵進 AI 系統,產出的是 token。於是大家開始在意 <strong>tokens per second、tokens per watt、tokens per dollar</strong>。在這個生態裡,一端是工作流、另一端是硬體,而<strong>夾在中間的軟體堆疊,對 token efficiency 變得極其關鍵</strong>。</p>
+<p>問題是,今天在外面跑的那些推論服務堆疊,基本上都是<strong>為 chatbot 時代打造的</strong>(約 00:49:02),特徵很一致:</p>
+<ul>
+<li>通常<strong>一次只跑一個模型</strong>;</li>
+<li>針對<strong>靜態執行路徑</strong>做最佳化;</li>
+<li>假設<strong>每個請求彼此獨立</strong>;</li>
+<li>大量 kernel 層最佳化;</li>
+<li>硬體<strong>基本上是同質的</strong>(絕大多數是 GPU)。</li>
+</ul>
+<h4>Agent 改變了什麼:兩個不可逆的趨勢(約 00:49:30–00:50:30)</h4>
+<ol>
+<li><strong>Dynamism</strong>(約 00:49:33):多個模型、tool call、動態波動的需求、互相依賴的任務,以及大量<strong>工作流層級</strong>的最佳化機會。</li>
+<li><strong>Heterogeneity</strong>(約 00:49:49):他特別點名前面幾位講者也談得很好——現在已經大量使用 <strong>CPU</strong> 處理任何非 LLM 的部分,除此之外還有各式各樣為任務不同段落而特化、最佳化的硬體。</li>
+</ol>
+<p>再加上一個放大係數(約 00:50:11):他引用前一天 Google 的一場演講,<strong>agentic 工作流的運算量比非 agentic 工作流高出 10 到 100 倍</strong>。所以中間那層軟體堆疊只會<strong>更加關鍵</strong>。</p>
+<h4>兆級的選擇空間,以及「量不到就優化不了」(約 00:50:30–00:52:30)</h4>
+<p>把整件事拆開看:從 workload 一路往下到 model layer、software、hardware,<strong>每一層都有大量的選擇與最佳化機會</strong>。抽象之後,一端是 end-to-end 的 <strong>SLO</strong>(agent 應用在意什麼就是什麼),另一端是資料中心高效運作所需的 <strong>infra 層目標</strong>。</p>
+<p>於是你面對的是:<strong>跨層相依的空間、兆級的選擇、多樣的 SLO、以及快速演化中的元件</strong>(約 00:51:00)。他的判斷很直接——<strong>在這種條件下選錯幾乎是必然的,選錯的機率非常高,而選錯的代價更高。</strong></p>
+<p>那要怎麼在這麼複雜的生態裡榨出 token efficiency?他引用那句名言:「<strong>you can't optimize what you cannot measure</strong>」(約 00:51:22)。過去多年,他與學術界和產業界密切合作,把 AI 系統從硬體到軟體到工作負載的端到端堆疊摸清楚;也與 benchmark 與標準化組織合作制定 API,讓各種 benchmark 與工具可以互換使用,並因此獲得廣泛採用。他特別點名兩個成果:</p>
+<ul>
+<li><strong>Chakra</strong>(約 00:51:51):與 <strong>MLCommons</strong> 一起啟動的計畫,幾週前剛在 <strong>MLSys</strong> 發表——這是一套<strong>針對分散式 AI 平台的 benchmark 方法論</strong>。</li>
+<li><strong>ASTRA-sim</strong>(約 00:52:02):研究分散式 AI 網路的<strong>模擬平台</strong>。</li>
+</ul>
+<p>而從 hyperscaler、硬體廠商、OEM 到測試廠商,一路合作下來反覆浮現的同一個結論是:<strong>取得效率的唯一方法是跨全棧最佳化;只優化堆疊的一部分不會有用。</strong></p>
+<h4>收尾:InfraVana(約 00:52:30–00:53:01)</h4>
+<p>這也帶到他個人現在最興奮的事:他們剛創立 <strong>InfraVana</strong>,做的是一個<strong>自動化、同時感知 agent 與硬體的全棧最佳化器</strong>。他說相對於目前市面上最先進的推論框架,<strong>已經看到大幅的加速</strong>,更多細節等他們走出 stealth 再說。</p>
+<p>最後他歡迎大家在會場找他或寫信,並「正式宣布這個 session 結束」。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"You can't optimize what you cannot measure."(約 00:51:22)</p>
+</blockquote>
+<p>他整套 benchmark / 模擬工作的出發點,也是為什麼 Chakra 與 ASTRA-sim 是前置條件而不是副產品。</p>
+<blockquote>
+<p>"It's kind of almost inevitable that you would go wrong when you pick something, and the chances of going wrong are actually very high and the cost of going wrong is even higher."(約 00:51:05)</p>
+</blockquote>
+<p>兆級選擇空間裡,「選對」不是靠經驗,而必須靠系統化的搜尋與量測。</p>
+<blockquote>
+<p>"The only way to get efficiency is optimizing across the stack — optimizing just parts of the stack will not work."(約 00:52:15)</p>
+</blockquote>
+<p>從 hyperscaler 到 OEM 一致回饋的結論,也是 InfraVana 的立論基礎。</p></section>
+        <section class="lang-en"><h3>TL;DR</h3>
+<ul>
+<li><strong>Today's inference stacks are chatbot-era artifacts</strong>: one model at a time, optimized for static execution paths, each request assumed independent, hardware essentially homogeneous. Agentic workloads break every one of those assumptions.</li>
+<li><strong>Two inevitable trends: dynamism and heterogeneity.</strong> Dynamism means many models, tool calls, fluctuating demand, interdependent tasks, and workflow-level optimization; heterogeneity means CPUs plus a growing set of hardware specialized for different parts of the task. And agentic workflows involve <strong>10–100× more computation</strong> than non-agentic ones — which makes the middle software layer more decisive, not less.</li>
+<li><strong>Trillions of choices plus rapidly evolving components means you will pick wrong.</strong> End-to-end SLOs on one side, infrastructure objectives on the other, and a cross-dependent choice space in between. His conclusion: <strong>optimizing parts of the stack will not work; only full-stack optimization does</strong> — and since "you can't optimize what you cannot measure," benchmarking and simulation tooling (Chakra, ASTRA-sim) are prerequisites rather than by-products.</li>
+</ul>
+<h3>Key Points</h3>
+<h4>Tokenomics and why the software stack became the bottleneck (~00:48:03–00:49:30)</h4>
+<p>Krishna opened by acknowledging the clock: "We're at 1:45, I know it's officially the end of this session — my superpower as a professor is I can rush through any number of slides in 5 minutes."</p>
+<p>His frame is the era of <strong>tokenomics</strong> (~00:48:35): we feed AI workflows into AI systems and tokens come out, so the metrics that matter have become <strong>tokens per second, tokens per watt, tokens per dollar</strong>. In an ecosystem with a workflow on one end and hardware on the other, <strong>the software stack in the middle becomes crucial to token efficiency</strong>.</p>
+<p>The problem is that most inference serving stacks in production today were built <strong>for the chatbot era</strong> (~00:49:02), and share a consistent profile:</p>
+<ul>
+<li>typically <strong>one model at a time</strong>;</li>
+<li>optimized for <strong>static execution paths</strong>;</li>
+<li>each request assumed <strong>independent</strong>;</li>
+<li>heavy kernel-level optimization;</li>
+<li><strong>primarily homogeneous hardware</strong> — GPUs, for the most part.</li>
+</ul>
+<h4>What agents change: two inevitable trends (~00:49:30–00:50:30)</h4>
+<ol>
+<li><strong>Dynamism</strong> (~00:49:33): many models, tool calls, dynamically fluctuating demand, interdependent tasks, and a lot of <strong>workflow-level</strong> optimization opportunity.</li>
+<li><strong>Heterogeneity</strong> (~00:49:49): he credited earlier speakers for covering this well — there is already heavy use of <strong>CPUs</strong> for anything that isn't an LLM, plus a range of hardware specialized and optimized for different parts of the task.</li>
+</ol>
+<p>Then the amplifier (~00:50:11): citing a Google talk from the previous day, <strong>agentic workflows involve 10–100× more computation</strong> than non-agentic ones. Which makes the software stack in the middle matter even more.</p>
+<h4>Trillions of choices, and "you can't optimize what you cannot measure" (~00:50:30–00:52:30)</h4>
+<p>Demystify the picture and you find, all the way down from workload to model layer to software to hardware, <strong>enormous numbers of choices and optimization opportunities at every level</strong>. Abstracted, one end is end-to-end <strong>SLOs</strong> — whatever the agent application cares about — and the other is <strong>infrastructure-level objectives</strong> for running data centers efficiently.</p>
+<p>What you actually face is a <strong>cross-dependent space, trillions of choices, diverse SLOs, and rapidly evolving components</strong> (~00:51:00). His read is blunt: under those conditions <strong>going wrong is close to inevitable, the chances of going wrong are very high, and the cost of going wrong is higher still.</strong></p>
+<p>So how do you extract token efficiency from that ecosystem? He reached for the standard line: <strong>"You can't optimize what you cannot measure"</strong> (~00:51:22). Over many years he has worked with academic and industry partners to understand the end-to-end AI systems stack from hardware to software to workloads, and worked closely with benchmarking and standardization bodies to define APIs so that benchmarks and tools interoperate — which has driven wide adoption. Two results he called out:</p>
+<ul>
+<li><strong>Chakra</strong> (~00:51:51), an initiative started with <strong>MLCommons</strong> and released a few weeks earlier at <strong>MLSys</strong>: a benchmarking methodology for distributed AI platforms.</li>
+<li><strong>ASTRA-sim</strong> (~00:52:02): a simulation platform for studying distributed AI networks.</li>
+</ul>
+<p>Across everyone he has worked with — hyperscalers, hardware vendors, OEMs, test vendors — the same finding keeps surfacing: <strong>the only way to get efficiency is optimizing across the stack; optimizing just parts of it will not work.</strong></p>
+<h4>Closing: InfraVana (~00:52:30–00:53:01)</h4>
+<p>That leads to what he is personally most excited about: they have just started <strong>InfraVana</strong>, building an automated, <strong>agent-aware and hardware-aware full-stack optimizer</strong>. He reports already seeing massive speedups over state-of-the-art inference frameworks, with more to come once they emerge from stealth.</p>
+<p>He closed by inviting questions at the conference or by email, and officially called the session to a close.</p>
+<h3>Quotes</h3>
+<blockquote>
+<p>"You can't optimize what you cannot measure." (~00:51:22)</p>
+</blockquote>
+<p>The premise behind all of his benchmarking and simulation work, and why Chakra and ASTRA-sim are prerequisites rather than side projects.</p>
+<blockquote>
+<p>"It's kind of almost inevitable that you would go wrong when you pick something, and the chances of going wrong are actually very high and the cost of going wrong is even higher." (~00:51:05)</p>
+</blockquote>
+<p>In a trillion-choice space, picking correctly stops being a matter of experience and becomes a matter of systematic search and measurement.</p>
+<blockquote>
+<p>"The only way to get efficiency is optimizing across the stack — optimizing just parts of the stack will not work." (~00:52:15)</p>
+</blockquote>
+<p>The consistent finding from hyperscalers through OEMs, and the thesis InfraVana is built on.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chakra (MLCommons)</td>
+<td>分散式 AI 平台的 benchmark 方法論,以標準化 execution trace 為核心</td>
+<td>Benchmarking methodology for distributed AI platforms, built on standardized execution traces</td>
+<td>已查證:MLCommons Chakra,2026 年 5 月 MLSys 發表(arXiv 2605.11333)</td>
+</tr>
+<tr>
+<td>ASTRA-sim</td>
+<td>研究分散式 AI 網路的開源模擬平台,原生支援 Chakra trace</td>
+<td>Open-source simulator for distributed AI networks, with native support for Chakra traces</td>
+<td>已查證:Georgia Tech 主導的分散式 AI 模擬器</td>
+</tr>
+<tr>
+<td>InfraVana</td>
+<td>講者新創:自動化、agent 與硬體雙感知的全棧最佳化器</td>
+<td>His new company: an automated, agent-aware and hardware-aware full-stack optimizer</td>
+<td>演講時仍在 stealth,公開資料有限 / still in stealth, little public information</td>
+</tr>
+<tr>
+<td>Tokenomics</td>
+<td>用來描述「工作流進、token 出」的新時代與其指標體系</td>
+<td>Framing for the "workflows in, tokens out" era and its metrics</td>
+<td>tokens/second、tokens/watt、tokens/dollar</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Duchar Krishna</td>
+<td>Tushar Krishna</td>
+</tr>
+<tr>
+<td>Infana / Infraana</td>
+<td>InfraVana</td>
+</tr>
+<tr>
+<td>tokconomics</td>
+<td>tokenomics</td>
+</tr>
+<tr>
+<td>hetrogenity</td>
+<td>heterogeneity</td>
+</tr>
+<tr>
+<td>Astrasim</td>
+<td>ASTRA-sim</td>
+</tr>
+<tr>
+<td>MLS</td>
+<td>MLSys</td>
+</tr>
+<tr>
+<td>SLOs's</td>
+<td>SLOs</td>
+</tr>
+<tr>
+<td>cross-d dependent</td>
+<td>cross-dependent</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>「agentic 工作流比非 agentic 多 10–100 倍運算量」的來源:講者說是前一天 Google 的一場演講,未指明講者或場次。/ Source for the 10–100× compute claim — he attributed it to a Google talk the previous day without naming the speaker or session.</li>
+<li>「已看到相對於 state-of-the-art 推論框架的大幅加速」未給具體數字或對照對象。/ No concrete numbers or named baselines for InfraVana's claimed speedups.</li>
+<li>演講中提到「幾週前在 MLSys 發表 Chakra」——需確認指的是 Chakra 的哪一版或哪一篇成果。/ Which Chakra release or paper the MLSys mention refers to.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/tushar-krishna--how-agentic-ai-is-rewriting-the-rules-of-ai-infrastructure.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

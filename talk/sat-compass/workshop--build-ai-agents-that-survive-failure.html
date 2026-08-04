@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
+  <base href="../../" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Build AI Agents That Survive Failure · Agentic AI Summit ’26 Notes</title>
+  <meta name="description" content="Put the agent&#x27;s business flow in a workflow, wrap every non-deterministic thing that can fail — LLM calls, APIs, database queries — in an activity, and Temporal keeps the history, retries indefinit…" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/workshop--build-ai-agents-that-survive-failure.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Build AI Agents That Survive Failure · Agentic AI Summit ’26 Notes" />
+  <meta property="og:description" content="Put the agent&#x27;s business flow in a workflow, wrap every non-deterministic thing that can fail — LLM calls, APIs, database queries — in an activity, and Temporal keeps the history, retries indefinit…" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/workshop--build-ai-agents-that-survive-failure.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 Notes" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="sat-compass" data-talk="workshop--build-ai-agents-that-survive-failure">
+  <main id="page">
+    <article class="talkdoc" id="talkdoc" data-item
+             data-title-en="Build AI Agents That Survive Failure" data-title-zh="打造能從失敗中活下來的 AI Agent">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--workshop"><span class="lang-en">Workshop</span><span class="lang-zh">工作坊</span></span>
+          <span class="dialog__session">Session 2: Frameworks &amp; Dev Platforms</span>
+        </p>
+        <h1 class="talkdoc__title"><span class="lang-en">Build AI Agents That Survive Failure</span><span class="lang-zh">打造能從失敗中活下來的 AI Agent</span></h1>
+        <p class="dialog__speaker"><strong>Nikolay Advolodkin</strong> — Senior Staff Developer Advocate, Temporal</p>
+        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 00:59:44–02:00:02 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=3584s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            <span class="lang-en">Watch from 00:59:44</span><span class="lang-zh">從 00:59:44 開始觀看</span>
+          </a>
+          <a class="btn-ghost" href="sat-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+          </a>
+        </div>
+        <p class="talkdoc__summary"><span class="lang-en">Put the agent&#x27;s business flow in a workflow, wrap every non-deterministic thing that can fail — LLM calls, APIs, database queries — in an activity, and Temporal keeps the history, retries indefinitely, and resumes as though the failure never happened. Demonstrated live by pulling the plug on the weather API.</span><span class="lang-zh">把 agent 的商業流程放進 workflow、把所有會失敗的非確定性動作(LLM 呼叫、API、DB 查詢)包成 activity,Temporal 就會替你記住歷史、無限重試、並在故障排除後像什麼都沒發生過一樣接著跑下去——現場直接拔掉 weather API 給大家看。</span></p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="lang-zh"><h3>開場:先讓整個房間站起來(約 01:04:39–01:06)</h3>
+<p>在連聽了好幾場 AI 演講之後,Advolodkin 一上台先請全場站起來,找兩個人擊掌、看著對方的眼睛說「你超棒的」,然後拍了一段全場歡呼的自拍影片(第一次他嫌太冷淡,要大家再來一次、聲量五倍)。自我介紹:Temporal 的 developer advocate、狗爸爸、直排輪玩家,狗叫 Mia。</p>
+<p>他說明工作坊的哲學:<strong>動手做才會記得住,被動聽留不下東西</strong>。原訂四個主題——agentic AI 系統的基礎(並實作一個)、用 agentic framework(OpenAI Agents SDK)蓋、human in the loop、以及 orchestrate micro-agents——他一開始就坦白「大概講不完,但沒關係,結束後我會給你們 GitHub repo」。</p>
+<h3>主題一:什麼是 agentic loop(約 01:07)</h3>
+<p>LLM 能對我們給它的 context 進行推理,<strong>但它缺的是「資訊不夠時自己去採取行動」的能力</strong>。agent loop 提供的就是這個:讓 LLM 能夠在自身之外行動。</p>
+<p>流程是:給定 instruction 與目標(他的例子:「你是旅遊助理,幫我找一班去邁阿密的班機,訂票付款前先跟我確認」)→ 把 context 交給 decision maker(也就是 LLM)→ <strong>LLM 判斷:我的資訊夠不夠?</strong>夠就給最終答案,不夠就呼叫工具。工具由 harness 定義、有時由你定義;<strong>你只負責告訴 LLM 這些工具存在,由 LLM 決定什麼時候用</strong>。拿到工具輸出後再判斷一次,不夠就繼續這個蒐集資訊的迴圈,直到能安心給出答案。</p>
+<p>他也現場做了一輪投票,問大家對 Temporal 的熟悉程度——結果大多數人<strong>沒聽過,或聽過但沒用過</strong>。他笑說「那這場對很多人會偏進階」,但承諾會盡量帶。</p>
+<h3>主題二:Temporal 的心智模型(約 01:10:47–01:13)</h3>
+<p>一句話:<strong>Temporal 讓你「寫程式時假裝失敗不存在」。</strong></p>
+<ul>
+<li>你專注在 agent / 分散式系統的<strong>商業邏輯</strong>(他強調:<strong>agent 就是分散式系統</strong>),把它放進一個 <strong>workflow</strong>——也就是你想執行的一連串步驟。</li>
+<li>然後把<strong>非確定性的步驟</strong>——API 呼叫、LLM 呼叫、資料庫查詢——抽出來,放進所謂的 <strong>activity</strong>。</li>
+<li>用 SDK 包住這些 activity 之後(Python、TypeScript、Java、Go、Ruby 等主流語言都支援),Temporal 會建立一份<strong>到目前為止所有已執行動作的 history</strong>。</li>
+<li>一旦發生任何失敗,<strong>它就停在 history 的那個點等待</strong>,等失敗被解決——可能是幾秒、幾分鐘,<strong>也可以是好幾年</strong>。解決之後,它會<strong>像失敗從未發生過一樣</strong>繼續執行後面的操作。</li>
+<li>而且<strong>這段等待不消耗你的資源</strong>,因為狀態全都記在 history 裡。他提到 Temporal 有 <strong>six nines 的可靠度</strong>。</li>
+</ul>
+<p>那什麼會失敗?幾乎所有東西:LLM 呼叫因網路問題失敗(他說<strong>當天早上才被 OpenAI 回了一個 429 rate limit</strong>)、API 呼叫失敗、rate limit、服務掛掉、AWS 掛掉。<strong>把這些包進 activity,Temporal 就能在故障解除後接手。</strong></p>
+<h3>主題三:動手做——第一個 workflow(約 01:13–01:25)</h3>
+<p>環境是一個虛擬 lab(免安裝、Docker 容器,開機約 90 秒),分頁包含 worker 終端機、starter 終端機、<strong>Temporal UI</strong>、一個可以<strong>模擬網路故障的 network control panel</strong>,以及程式編輯器。學員在 <code>exercise/</code> 資料夾工作,<code>solution/</code> 有相同結構的解答。現場有三位 TA 加上後方的 Melanie 支援。</p>
+<p><strong>練習內容</strong>:在 <code>exercise/tools/workflow.py</code> 裡把 agent 的建構取消註解。用的是 OpenAI Agents SDK 整合——給名字、給 system prompt、選模型(他說這題用 GPT-4o 就夠了)、給工具。工具本身只是幾個 web request(取座標、取 IP 位置資訊、取天氣),但它們是<strong>以 activity 的形式傳入</strong>,因此自動獲得 Temporal 的 durability。</p>
+<p><strong>執行</strong>:先啟動 <strong>worker</strong>(他解釋 worker 是負責<strong>輪詢 task queue、決定要執行哪些工作</strong>的程序),再跑 starter,送出「What is the weather in Tokyo?」。</p>
+<p><strong>成果</strong>:到 Temporal UI 重新整理,workflow 已完成。他強調這是他自己最喜歡 Temporal 的地方——<strong>可見性</strong>:整條 timeline 一目了然(invoke model activity → get coordinates → invoke model activity → get weather → invoke model activity),每一步都能點進去看 header、輸入與輸出。最後答案是東京 79.6°F、微風。</p>
+<h3>主題四:把它弄壞——durability 的現場證明(約 01:25–01:28)</h3>
+<p>這是整場最核心的示範。到 <strong>network control panel 把 weather API 關掉</strong>(他舉的情境:你的網路擋掉了、企業政策不准、API 本身掛了、或 AWS 掛了所以連帶掛了),然後重跑「What is the weather in London?」。</p>
+<p>在 Temporal UI 裡:</p>
+<ul>
+<li>workflow 進入 <strong>Running</strong> 狀態,而且<strong>會一直維持 Running 直到問題解決</strong>。</li>
+<li>那個 activity <strong>持續重試</strong>。因為他們沒有明確指定 retry policy,用的是預設值,所以<strong>會永遠重試下去</strong>;而且內建 <strong>automatic backoff 與 backoff coefficient</strong>。他順帶解釋為什麼需要 backoff:你不會希望 LLM 一直狂打 OpenAI API,那很燒資源;打 10 次失敗就等 10 秒,再失敗就等 30 秒——這就是 exponential backoff,<strong>沒有 Temporal 的話這段邏輯得自己寫,而且會寫得很醜</strong>。</li>
+<li>錯誤訊息顯示 <strong>503 service unavailable</strong>。</li>
+</ul>
+<p>接著把 weather API 打開:「想像 AWS 的故障排除了」。幾個瞬間之後 workflow <strong>自動恢復,像失敗從未發生過</strong>——<strong>不需要動任何程式碼</strong>,從失敗發生的那一點精確接續,沒有額外資源被消耗,workflow 正確結束,終端機拿到倫敦的天氣。</p>
+<h3>主題五:自己寫 loop vs 用 SDK(約 01:28–01:30)</h3>
+<p>他順帶拆穿了 agentic framework 的神祕感:<strong>很多框架把 agentic loop 藏在背後,但它本質上就是一個 <code>while True</code> 迴圈</strong>——等待使用者輸入、判斷資訊是否足夠、不夠就呼叫工具或做別的事。</p>
+<p>自己寫大概 <strong>50 行</strong>;用 OpenAI Agents SDK 就是 <strong><code>runner.run</code> 一行</strong>,loop 由 SDK 處理。而 <code>activity_as_tool</code> 這類包裝則負責替所有被呼叫的工具提供 durability。</p>
+<h3>主題六:為什麼要拆成多個 agent(約 01:36–01:38)</h3>
+<p>中途他讓現場投票決定接下來講 human in the loop 還是 multi-agent orchestration,<strong>現場選了 multi-agent</strong>,human in the loop 因此跳過(他解釋 human-in-the-loop 就是一個「詢問並等待人類回饋」的工具,可以等核准也可以等資訊——「<strong>ChatGPT 本身就是一種 human in the loop</strong>,它會等你回應才繼續」)。</p>
+<p>拆分的理由是 context 的四種病:<strong>context poisoning、distraction、context clash、confusion</strong>。小 workflow 還好,但<strong>流程愈大、資料愈多、塞進去的東西愈多,LLM 就愈難推理</strong>。</p>
+<h3>主題七:三種呼叫 sub-agent 的方式與 Nexus(約 01:38–01:43)</h3>
+<p>架構是:<strong>personal assistant agent 作為整個流程的入口</strong>(他類比為你的 ChatGPT),由它決定要呼叫 weather agent、F1 agent,或兩個都叫。</p>
+<p>呼叫 sub-agent 有三種做法:</p>
+<ol>
+<li><strong>當成 activity 呼叫</strong>。</li>
+<li><strong>當成 child workflow 呼叫</strong>——主 workflow 啟動一個子 workflow,兩者綁在一起;適合把決策邏輯放進另一個流程。</li>
+<li><strong>透過 Nexus</strong>——Temporal 的另一項技術,可依<strong>團隊領域、地區、安全性考量、程式碼需求</strong>做切分,例如你希望某個 agent 用和別的 agent 不同的頻率部署。</li>
+</ol>
+<p>他對 Nexus 的解釋是:<strong>把它想成一個 API</strong>。你決定要向另一個團隊或另一個組織暴露哪些 endpoint,對方只能呼叫那些;呼叫方提供 endpoint 與 service 名稱就能呼叫,<strong>背後怎麼實作可以隨時改(升到 v2 之類),而契約不變,呼叫方不必改程式碼</strong>。</p>
+<h3>主題八:多 agent 實作與再次弄壞它(約 01:44–01:52)</h3>
+<p><strong>Demo 5 的架構</strong>:personal assistant workflow 收到「下一場 F1 比賽在哪、那裡現在天氣如何?」→ 透過 <strong>Nexus operation</strong> 呼叫 F1 agent(跑在不同檔案、不同 task queue,最終呼叫他們自架的 <strong>F1 MCP server</strong>,再打到 F1 API)→ 資訊回到 personal assistant → 它判斷「還缺天氣」→ 以 <strong>child workflow</strong> 呼叫 weather agent(內部再呼叫 get coordinates 與 get weather 兩個 activity,就是公開 HTTP 請求)→ 彙整後給出最終答案。</p>
+<p>實跑結果:下一場是 <strong>8 月 23 日的荷蘭大獎賽</strong>,當地 <strong>64.7°F</strong>。在 Temporal UI 中可以看到兩個 workflow 同時執行,而且 <strong>Nexus link 是可以點進去的</strong>——點進去就是 F1 expert 那個獨立 workflow 的完整執行紀錄。</p>
+<p>然後他又把 weather API 關掉重跑:兩個 workflow 都不會完成,<strong>卡點精準落在 weather agent workflow 的 <code>get_coordinates</code></strong>,持續失敗直到問題解決。打開之後兩者都成功結束——他提醒<strong>恢復時間取決於 retry policy 與 exponential backoff</strong>,等久了可能要多等幾秒才會重試。</p>
+<h3>主題九:隨堂測驗與收尾(約 01:31–01:36、01:52–01:59)</h3>
+<p>他穿插了手機搶答測驗與排行榜,前三名送周邊。幾個值得記的答案:</p>
+<table>
+<thead>
+<tr>
+<th>問題</th>
+<th>答案要點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>誰決定下一步要做什麼動作?</td>
+<td><strong>LLM 是 decision maker</strong>。我們給 context、告訴它有哪些工具,由它決定資訊夠不夠、接下來要不要再呼叫工具</td>
+</tr>
+<tr>
+<td>Demo 2 裡的 loop 是誰寫的?</td>
+<td>我們沒寫 loop,<strong>用的是 OpenAI Agents SDK,loop 在 <code>runner.run</code> 裡面</strong></td>
+</tr>
+<tr>
+<td>如果 workflow 有了但工具沒加進 tools 物件會怎樣?</td>
+<td><strong>workflow 照樣啟動、activity 照樣跑</strong>,只是沒有工具可呼叫,所以會回一個無效的答案</td>
+</tr>
+<tr>
+<td>為什麼 LLM 呼叫要包在 activity 裡?</td>
+<td><strong>因為它們是非確定性的</strong>。非確定性的程式碼放 activity 才能被 replay;確定性的商業流程留在 workflow</td>
+</tr>
+<tr>
+<td>Nexus 相對於在程式碼裡直接 import,多給了什麼?</td>
+<td>它是 <strong>API 契約</strong>;但它<strong>不會</strong>幫你處理額外的操作,namespace 一致性也仍是開發者的責任</td>
+</tr>
+</tbody>
+</table>
+<p><strong>收尾</strong>(約 01:58–01:59):時間到被請下台,他只要求兩件事——到 LinkedIn 追蹤他(所有內容會放上去)、以及在 lab 的 feedback 分頁留下<strong>可以據以改進的</strong>回饋(「你可以說我很爛,沒問題,但請告訴我為什麼很爛」)。測驗前三名是 Anton、Henrik、Ming,周邊在後排領。有問題也可以去 Temporal 的 Slack 社群。</p></section>
+        <section class="lang-en"><h3>Opening: get the whole room on its feet (~01:04:39–01:06)</h3>
+<p>After a long block of AI talks, Advolodkin opened by asking everyone to stand, high-five two people, look them in the eye, and tell them they're amazing — then filmed a selfie video of the room cheering (he made them redo it "5x louder"). Introductions: developer advocate at Temporal, dog dad, roller skater, dog named Mia.</p>
+<p>His framing: <strong>you retain far more by being hands-on than by listening passively.</strong> The plan was four topics — foundations of agentic AI systems (and building one), building with an agentic framework (OpenAI Agents SDK), human in the loop, and orchestrating micro-agents — and he said upfront they probably wouldn't get through all of it, but the GitHub repo would follow.</p>
+<h3>Topic 1: what an agentic loop is (~01:07)</h3>
+<p>An LLM can reason about the context you give it. <strong>What it lacks is the ability to take action when it doesn't have enough information.</strong> The agent loop supplies exactly that: the capability to act outside itself.</p>
+<p>Start with instructions and goals — his example: "you're a travel assistant, find a flight to Miami, ask for confirmation before booking payments." Pass that context to the decision maker, the LLM. <strong>The LLM decides whether it has enough information</strong>: if yes, final answer; if no, call a tool. Tools are defined by the harness or by you; you tell the LLM they exist and <strong>the LLM decides when to use them</strong>. It evaluates the output, and keeps looping to gather information until it can comfortably answer.</p>
+<p>A live poll on Temporal familiarity showed most of the room had <strong>never heard of it, or heard of it but never used it</strong> — so he flagged the session as advanced for many attendees and promised to walk them through.</p>
+<h3>Topic 2: the Temporal mental model (~01:10:47–01:13)</h3>
+<p>In one line: <strong>Temporal lets you write code as though failures don't exist.</strong></p>
+<ul>
+<li>You focus on the <strong>business logic</strong> of your agents and distributed systems — and he was explicit that <strong>agents are distributed systems</strong>. That goes into a <strong>workflow</strong>: the sequence of steps you want to execute.</li>
+<li>You pull out the <strong>non-deterministic steps</strong> — API calls, LLM calls, database queries — into <strong>activities</strong>.</li>
+<li>Wrapping those activities in the SDKs (Python, TypeScript, Java, Go, Ruby, and more) creates a <strong>history</strong> of everything performed up to a given point.</li>
+<li>When any failure occurs, Temporal <strong>pauses at that point in the history and waits</strong> for the failure to be resolved — seconds, minutes, or <strong>years</strong>. When it is, execution proceeds <strong>as though the failure never happened</strong>.</li>
+<li>Waiting <strong>costs no resources</strong>, because it's all recorded in the history. He cited <strong>six nines of reliability</strong>.</li>
+</ul>
+<p>What can fail? Nearly everything: LLM calls due to network reliability (<strong>he got a 429 rate limit from OpenAI that very morning</strong>), API calls, rate limits, services going down, AWS going down. <strong>Wrapped in an activity, Temporal picks up once they're resolved.</strong></p>
+<h3>Topic 3: hands-on — the first workflow (~01:13–01:25)</h3>
+<p>The environment was a browser-based virtual lab: no setup, a Docker container with a ~90-second boot. Tabs for a worker terminal, a starter terminal, the <strong>Temporal UI</strong>, a <strong>network control panel for simulating network failures</strong>, and a code editor. Attendees worked out of <code>exercise/</code>, with a mirrored <code>solution/</code> folder. Three TAs up front, plus Melanie at the back.</p>
+<p><strong>The exercise</strong>: uncomment the agent construction in <code>exercise/tools/workflow.py</code>. It uses the OpenAI Agents SDK integration — give it a name, a system prompt, a model (GPT-4o "is good enough for this one"), and tools. The tools are just web requests (get coordinates, get IP location info, get weather), but they're passed in <strong>as activity tools</strong>, so they inherit Temporal's durability.</p>
+<p><strong>Running it</strong>: start the <strong>worker</strong> — the process that polls the task queue to decide what work to perform — then run the starter, which asks "What is the weather in Tokyo?"</p>
+<p><strong>The payoff</strong>: refresh the Temporal UI and the workflow has already completed. This is what he says he loves most about Temporal — <strong>visibility</strong>. The whole timeline is laid out (invoke model activity → get coordinates → invoke model activity → get weather → invoke model activity), and every step can be opened to inspect headers, inputs, and outputs. The answer: 79.6°F in Tokyo with light wind.</p>
+<h3>Topic 4: break it — durability demonstrated live (~01:25–01:28)</h3>
+<p>The centerpiece demo. In the <strong>network control panel, turn off the weather API</strong> — imagine your network blocks it, your enterprise won't allow it, the API is down, or AWS is down so the API is down. Then rerun with "What is the weather in London?"</p>
+<p>In the Temporal UI:</p>
+<ul>
+<li>The workflow goes to <strong>Running</strong> and <strong>stays Running until the problem is resolved</strong>.</li>
+<li>The activity <strong>keeps retrying</strong>. Since no retry policy was specified explicitly, the default applies, which <strong>retries forever</strong>, with <strong>automatic backoff and backoff coefficients</strong> built in. He explained why you want that: you don't want an LLM hammering the OpenAI API, because it costs you resources — 10 calls, wait 10 seconds, 10 more failures, wait 30 seconds. That's exponential backoff, and <strong>without Temporal you'd be writing that logic yourself, and it gets hairy</strong>.</li>
+<li>The last failure reads <strong>503 service unavailable</strong>.</li>
+</ul>
+<p>Then turn the weather API back on — "let's imagine AWS had an outage, it's back up." Within moments the workflow recovers <strong>as though no failure ever occurred</strong>: <strong>no code touched</strong>, resumption from exactly where the failure happened, no extra resources consumed, and the terminal gets London's weather.</p>
+<h3>Topic 5: rolling your own loop versus the SDK (~01:28–01:30)</h3>
+<p>He demystified agentic frameworks along the way: <strong>most hide the agentic loop, but it's ultimately a <code>while True</code> loop</strong> — wait for user input, decide whether you have enough information to make a decision, call tools if you don't.</p>
+<p>Writing it yourself is roughly <strong>50 lines</strong>; with the OpenAI Agents SDK it's <strong>one line of <code>runner.run</code></strong>, with the SDK handling the loop. Wrapping tools as activities is what supplies durability to everything the agent calls.</p>
+<h3>Topic 6: why split into multiple agents (~01:36–01:38)</h3>
+<p>He put the next section to a vote — human in the loop or multi-agent orchestration — and <strong>the room picked multi-agent</strong>, so human in the loop got skipped. (His one-line version: human-in-the-loop is a tool that asks and waits for human feedback, whether an approval or information — "<strong>ChatGPT is a human-in-the-loop type of thing</strong>," waiting for you to respond before proceeding.)</p>
+<p>The reason to split: <strong>context poisoning, distraction, context clash, and confusion</strong>, all caused by too much context. It's fine for a small workflow, but <strong>the larger the workflow and the more data you provide, the harder it is for LLMs to reason</strong>.</p>
+<h3>Topic 7: three ways to call a sub-agent, and Nexus (~01:38–01:43)</h3>
+<p>The architecture: a <strong>personal assistant agent as the entry point</strong> to the whole process — your ChatGPT — which decides whether to call the weather agent, the F1 agent, both, or more.</p>
+<p>Three ways to invoke sub-agents:</p>
+<ol>
+<li><strong>As an activity.</strong></li>
+<li><strong>As a child workflow</strong> — the main workflow starts a child workflow and the two are tied together; good for putting decision-making logic into its own process.</li>
+<li><strong>Via Nexus</strong> — Temporal's other technology, which segregates by <strong>team domain, region, security concerns, or code requirements</strong> — for instance when you want one agent deployed at a different cadence than another.</li>
+</ol>
+<p>His framing of Nexus: <strong>think of it as an API.</strong> You expose only the endpoints you choose to another team or organization, and they can call only those. The caller supplies the endpoint and service name; <strong>whatever happens behind the scenes can change — move to v2, whatever — while the contract stays the same and the caller never changes their code.</strong></p>
+<h3>Topic 8: the multi-agent build, and breaking it again (~01:44–01:52)</h3>
+<p><strong>Demo 5's architecture</strong>: the personal assistant workflow takes "when is the next F1 race and what's the weather there right now?" → calls the F1 agent through a <strong>Nexus operation</strong> (a separate file on a separate task queue, which calls an <strong>F1 MCP server</strong> they host, which calls the F1 APIs) → the result comes back → the assistant decides it still needs weather → calls the weather agent as a <strong>child workflow</strong> (which calls get-coordinates and get-weather activities, both plain public HTTP requests) → assembles the final answer.</p>
+<p>The live result: the <strong>Dutch Grand Prix on August 23</strong>, with <strong>64.7°F</strong> on site. The Temporal UI showed two workflows executing, and the <strong>Nexus link is clickable</strong> — following it lands you inside the F1 expert's own workflow with its complete execution record.</p>
+<p>Then he killed the weather API again. Neither workflow completes; the failure lands precisely on <strong><code>get_coordinates</code> inside the weather agent workflow</strong> and keeps failing until resolved. Turn it back on and both complete — with the caveat that <strong>restart timing depends on the retry policy and exponential backoff</strong>, so after a long wait it may take extra seconds before the next retry.</p>
+<h3>Topic 9: quizzes and wrap-up (~01:31–01:36, 01:52–01:59)</h3>
+<p>He ran phone-based quizzes with a leaderboard, swag for the top three. The answers worth keeping:</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Key answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who decides which action to perform next?</td>
+<td><strong>The LLM is the decision maker.</strong> We pass context and declare tools; it decides whether it has enough information and what to do next</td>
+</tr>
+<tr>
+<td>Who wrote the loop in demo 2?</td>
+<td>Nobody — <strong>the OpenAI Agents SDK writes it, inside <code>runner.run</code></strong></td>
+</tr>
+<tr>
+<td>What happens if the workflow exists but tools weren't added to the tools object?</td>
+<td><strong>The workflow still starts and the activity still runs</strong> — there are just no tools to call, so it returns invalid information</td>
+</tr>
+<tr>
+<td>Why wrap LLM calls in activities?</td>
+<td><strong>Because they're non-deterministic.</strong> Non-deterministic code goes in activities so it can be replayed; the deterministic business flow stays in the workflow</td>
+</tr>
+<tr>
+<td>What does Nexus give you that direct imports don't?</td>
+<td>It's an <strong>API contract</strong> — but it does <strong>not</strong> give you extra operations, and namespace consistency is still the developer's job</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wrap-up</strong> (~01:58–01:59): out of time and being kicked off stage, he asked for two things — follow him on LinkedIn, where all the content will be posted, and leave feedback in the lab's feedback tab, <strong>feedback he can act on</strong> ("you can tell me I suck, no big deal, but please tell me why I suck"). Quiz winners: Anton, Henrik, and Ming, with swag at the back of the room. The Temporal Slack community is there for follow-up questions.</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temporal workflow / activity</td>
+<td>workflow 放確定性的商業流程,activity 放非確定性、會失敗的步驟(LLM、API、DB)</td>
+<td>Workflows hold deterministic business flow; activities hold non-deterministic, failure-prone steps (LLM, API, DB)</td>
+<td>工作坊的核心心智模型 / the core mental model</td>
+</tr>
+<tr>
+<td>Temporal worker / task queue</td>
+<td>worker 輪詢 task queue、決定要執行哪些待辦工作</td>
+<td>The worker polls the task queue to decide what backlog work to execute</td>
+<td></td>
+</tr>
+<tr>
+<td>Temporal UI</td>
+<td>逐步檢視 workflow timeline、每個 activity 的輸入輸出與 header</td>
+<td>Step-by-step timeline with per-activity inputs, outputs, and headers</td>
+<td>講者最推薦的賣點 / his favorite feature</td>
+</tr>
+<tr>
+<td>Temporal Nexus</td>
+<td>以 API 契約形式跨團隊/地區/安全邊界呼叫其他 workflow</td>
+<td>Calling other workflows across team, region, or security boundaries as an API contract</td>
+<td>UI 中的 Nexus link 可點進被呼叫的 workflow</td>
+</tr>
+<tr>
+<td>OpenAI Agents SDK</td>
+<td>工作坊使用的 agent 框架,<code>runner.run</code> 內含 agentic loop</td>
+<td>The agent framework used; the agentic loop lives inside <code>runner.run</code></td>
+<td>與 Temporal 有官方整合</td>
+</tr>
+<tr>
+<td>F1 MCP server</td>
+<td>由 Temporal 代管、供 F1 agent 呼叫的 MCP server,底層打 F1 API</td>
+<td>Temporal-hosted MCP server the F1 agent calls, which in turn hits the F1 APIs</td>
+<td>demo 5 使用</td>
+</tr>
+<tr>
+<td>Network control panel</td>
+<td>lab 內建的網路故障模擬器,可關閉 geolocation / weather 等 API</td>
+<td>Built-in lab tool to simulate network failures by disabling APIs</td>
+<td>durability 示範的關鍵道具</td>
+</tr>
+<tr>
+<td>Temporal Slack community</td>
+<td>後續提問管道</td>
+<td>Follow-up channel for questions</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nikolai Lotkin</td>
+<td>Nikolay Advolodkin</td>
+</tr>
+<tr>
+<td>temp using temporal</td>
+<td>Temporal</td>
+</tr>
+<tr>
+<td>agenda loop / gentic loop</td>
+<td>agentic loop</td>
+</tr>
+<tr>
+<td>GPT40</td>
+<td>GPT-4o</td>
+</tr>
+<tr>
+<td>task Q</td>
+<td>task queue</td>
+</tr>
+<tr>
+<td>activity this tool</td>
+<td><code>activity_as_tool</code>(推定 / inferred)</td>
+</tr>
+<tr>
+<td>codeex / cla / cloth code</td>
+<td>Codex / Claude / Claude Code</td>
+</tr>
+<tr>
+<td>runner.run run</td>
+<td><code>runner.run</code></td>
+</tr>
+<tr>
+<td>get coco coordinates</td>
+<td>get coordinates</td>
+</tr>
+<tr>
+<td>six nines(字幕正確)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>虛擬 lab 平台字幕作 "instruct environment",聽起來像 <strong>Instruqt</strong>,需確認。/ The lab platform was transcribed as "instruct environment", plausibly <strong>Instruqt</strong> — to confirm.</li>
+<li>工作坊 GitHub repo 與 lab 網址在字幕中只以口頭「navigate to that URL」帶過,未出現實際網址。/ The workshop repo and lab URLs were only pointed at on screen; no URL appears in the captions.</li>
+<li>他說 Temporal 有 "six nines of reliability",指的是雲端服務 SLA 還是別的指標,現場未說明。/ He cited "six nines of reliability" without specifying whether that's the cloud SLA or another measure.</li>
+<li>包裝工具用的 API 字幕作 "activity this tool",推定為 <code>activity_as_tool</code>,需對照 repo 確認。/ The tool-wrapping API was transcribed as "activity this tool", inferred here as <code>activity_as_tool</code> — check against the repo.</li>
+<li>現場提到的 TA 名字 "Melanie" 僅為聽寫,未查證。/ The TA name "Melanie" is as transcribed only.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/workshop--build-ai-agents-that-survive-failure.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+      </p>
+    </article>
+  </main>
+
+  <script src="data/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
