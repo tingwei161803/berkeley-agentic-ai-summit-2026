@@ -37,6 +37,7 @@
 berkeley-agentic-ai-summit-2026/
 ├── index.html            # 網站入口(總覽頁)
 ├── sat-*.html sun-*.html # 7 個場次日子頁(週六/週日 × 舞台)
+├── talk/                 # 147 個站內完整筆記頁(由筆記自動產生)
 ├── assets/               # styles.css(編輯風設計)、shell.js(共用 chrome)、app.js(頁面引擎)
 ├── data/data.js          # 網站資料層(由筆記自動產生)
 ├── notes/
@@ -74,8 +75,9 @@ uv run python -m http.server 4173
 ### 更新筆記後重建網站資料
 
 ```bash
-uv run python scripts/build_site_data.py   # 筆記 → data/data.js
-uv run python scripts/build_index.py       # 重建筆記索引與待確認清單
+uv run python scripts/build_site_data.py                  # 筆記 → data/data.js
+uv run --with markdown python scripts/build_talk_pages.py # 筆記 → talk/ 完整筆記頁
+uv run python scripts/build_index.py                      # 重建筆記索引與待確認清單
 ```
 
 ---
