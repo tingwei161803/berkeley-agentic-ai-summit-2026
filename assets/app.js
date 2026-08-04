@@ -72,6 +72,20 @@
     var main = document.getElementById("page");
     if (!page || !main) return;
 
+    /* ---------- talk-note pages: static content, just wire language ---------- */
+    var talkDoc = document.getElementById("talkdoc");
+    if (document.body.hasAttribute("data-talk") && talkDoc) {
+      var applyTalkLang = function () {
+        document.documentElement.dataset.lang = LDW.state.lang;
+        var title = LDW.state.lang === "zh"
+          ? talkDoc.getAttribute("data-title-zh") : talkDoc.getAttribute("data-title-en");
+        if (title) document.title = title + " · " + t(LDW.meta.title);
+      };
+      applyTalkLang();
+      LDW.onLang(applyTalkLang);
+      return;
+    }
+
     function ui(key) { return (I18N[LDW.state.lang] || I18N.en)[key]; }
     function typeLabel(type) { return ui("types")[type] || ui("types").misc; }
     function fmt(str, map) {
@@ -312,9 +326,9 @@
           '<a class="btn-primary" href="' + esc(tk.video) + '" target="_blank" rel="noopener">' +
             '<span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>' +
             esc(fmt(ui("watch"), { t: tk.start || "00:00" })) + "</a>" +
-          '<a class="btn-ghost" href="' + esc(tk.note) + '" target="_blank" rel="noopener">' +
+          '<a class="btn-ghost" href="' + esc(tk.noteHref) + '">' +
             '<span class="material-symbols-rounded" aria-hidden="true">description</span>' +
-            esc(ui("notes")) + " ↗</a>" +
+            esc(ui("notes")) + " →</a>" +
         "</div>" +
         '<p class="dialog__summary">' + esc(t(tk.summary)) + "</p>";
       if (bullets.length) {

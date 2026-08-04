@@ -140,6 +140,7 @@ def parse_note(path, page_slug):
         "tldrKind": kind,
         "tags": fm.get("tags", []) if isinstance(fm.get("tags"), list) else [],
         "video": fm.get("video", ""),
+        "noteHref": f"talk/{page_slug}/{path.stem}.html",
         "note": f"{NOTE_BASE}/{path.parent.name}/{path.name}",
     }
 

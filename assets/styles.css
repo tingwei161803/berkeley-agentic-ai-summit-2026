@@ -660,6 +660,127 @@ body > * { position: relative; z-index: 1; }
 .footer__link { color: var(--ink-2); }
 .footer__link:hover { color: var(--ink); }
 
+/* ---------- talk-note page (full note content) ---------- */
+[data-lang="en"] .lang-zh { display: none; }
+[data-lang="zh"] .lang-en { display: none; }
+[data-lang="zh"] .talkdoc__title,
+[data-lang="zh"] .prose h2, [data-lang="zh"] .prose h3, [data-lang="zh"] .prose h4 {
+  font-family: var(--font-serif);
+}
+
+.talkdoc { max-width: 780px; margin: 0 auto; padding-top: 52px; }
+.talkdoc__head { border-bottom: 1px solid var(--hairline-strong); padding-bottom: 26px; }
+.talkdoc__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 4.6vw, 2.9rem);
+  line-height: 1.14;
+  letter-spacing: -0.022em;
+  margin: 16px 0 12px;
+}
+.talkdoc__summary {
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  line-height: 1.55;
+  margin: 24px 0 0;
+}
+.talkdoc__body { padding-top: 8px; }
+.talkdoc__shared { border-top: 1px solid var(--hairline-strong); margin-top: 40px; padding-top: 8px; }
+.talkdoc__source {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+.talkdoc__source a {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.03em;
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-decoration-color: var(--hairline-strong);
+  text-underline-offset: 4px;
+}
+.talkdoc__source a:hover { color: var(--ink); text-decoration-color: var(--gold); }
+
+/* prose: converted markdown */
+.prose { font-size: 0.97rem; line-height: 1.75; }
+.prose h1 { display: none; }               /* the note's own H1 duplicates our header */
+.prose h1 + p { display: none; }           /* …and its 一句話總結 line duplicates the summary */
+.prose h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.55rem;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 46px 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--hairline);
+}
+.prose h3 {
+  font-weight: 650;
+  font-size: 1.18rem;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin: 34px 0 10px;
+}
+.prose h4 { font-weight: 600; font-size: 1.02rem; margin: 26px 0 8px; }
+.prose p { margin: 0 0 14px; }
+.prose ul, .prose ol { margin: 0 0 16px; padding-left: 22px; }
+.prose li { margin-bottom: 7px; }
+.prose li::marker { color: var(--gold-ink); }
+.prose blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.08rem;
+  margin: 22px 0 12px;
+  padding: 2px 0 2px 18px;
+  border-left: 2px solid var(--gold);
+  color: var(--ink);
+}
+.prose blockquote p { margin: 0 0 6px; }
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.84em;
+  background: var(--surface-2);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+.prose pre {
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+}
+.prose pre code { background: none; padding: 0; }
+.prose hr { border: none; border-top: 1px solid var(--hairline); margin: 34px 0; }
+.prose a { color: var(--accent-ink); text-decoration-color: var(--hairline-strong); text-underline-offset: 3px; }
+.prose a:hover { text-decoration-color: var(--gold); }
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 8px 0 22px;
+  font-size: 0.88rem;
+}
+.prose th, .prose td {
+  text-align: left;
+  padding: 8px 14px 8px 0;
+  border-bottom: 1px solid var(--hairline);
+  vertical-align: top;
+  min-width: 90px;
+}
+.prose th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--hairline-strong);
+}
+.prose strong { font-weight: 650; }
+
 /* material symbols sizing guard (before font loads) */
 .material-symbols-rounded {
   font-variation-settings: "opsz" 24, "wght" 400, "FILL" 0, "GRAD" 0;
