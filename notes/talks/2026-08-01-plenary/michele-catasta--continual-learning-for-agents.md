@@ -1,0 +1,231 @@
+---
+title: "Continual Learning for Agents"
+title_zh: "Agent 的持續學習"
+speaker: "Michele Catasta"
+affiliation: "President, Replit"
+type: talk
+stage: Plenary
+date: 2026-08-01
+session: "Session 2: Future of Software Engineering"
+video: "https://www.youtube.com/watch?v=gKdeLQd_LIQ&t=10620s"
+video_range: "02:57:00–03:05:55"
+transcript: "tmp/[English (auto-generated)] Plenary Stage - August 1st - Morning Session [DownSub.com].srt"
+status: draft
+tags: [continual-learning, evaluation, harness, production-traces, replit]
+---
+
+# Agent 的持續學習(Continual Learning for Agents)
+
+**一句話總結**:用不到權重也能做持續學習——把 production traces 分群、讓前沿模型分析異常群集、自動產生修 harness 的 PR,讓 evaluation 從「上線前的最後一道關卡」變成「每天讓 agent 變好的引擎」。
+**One-line summary**: You can do continual learning without touching weights — cluster production traces, let frontier models analyze the anomalous clusters, and auto-generate PRs against the harness, turning evaluation from a last gate before shipping into an engine that ships a better agent every day.
+
+## 中文筆記
+
+### TL;DR
+
+- **權重動不了,就動 harness。** 持續學習通常被連結到模型訓練,但多數公司用的是 closed-weights 模型;Replit 的做法是直接把手放在 agent 周邊的 harness 與生態系上。
+- **Eval 很好但太窄,production traces 才是金礦。** 他們用兩根支柱:evaluation + 持續 A/B testing 與即時 trace 分析。**production 的 long-tail 事件才是黃金**——那是使用者把產品推到邊界、也正是你原本以為會動的東西壞掉的地方。
+- **流程:分群 → 前沿模型分析異常 trace → 自動生成 PR → 人做取捨。** 這條 pipeline 原則上很早就能蓋,但**前沿模型是最近半年左右才好到能分析 trace**。
+
+### 重點整理
+
+#### 前提:你碰不到權重,但你碰得到 harness(約 02:58–02:59)
+
+Continual learning 是研究界追了很久的聖杯:**我們不要靜態的 AI 系統,我們要會從使用中學習的系統。** 但現實是**大量公司使用 closed-weights 模型——碰不到權重,要怎麼讓系統真的演化?**
+
+他的答案:**還有另一條路,而那正是 Replit 這幾個月一直在做的事——把手直接放在 agent 周邊的 harness 與生態系上。**
+
+至於做法,他先誠實評價 eval 的位置:**產業長期依賴 evaluation,benchmark 也很棒,他很尊敬做這件事的人——輸出極度乾淨:跑一次 eval、拿到一個數字、判斷 harness 的改動是進步還是退步。** 但**eval 按定義就是窄的,只涵蓋你 agent 能力的一個子集,大量訊號在那裡流失了。**
+
+而**一旦達到 product-market fit,平台承接的純粹用量本身就是一座資料金礦**。這座金礦常被直接聯想到「拿去訓模型」,但**能做的遠不只如此**:分析 traces 可以學到什麼有效、什麼無效、使用者為什麼被你的 agent 惹毛,以及其他很多事。
+
+所以他們的架構是**兩根支柱**:一根仍然重度依賴 evaluation;另一根是**持續跑 A/B testing + 即時分析 traces**,直接從資料理解什麼真的在運作、什麼該立刻改。
+
+#### 為什麼 long-tail 才是重點(約 02:59–03:00)
+
+他強調 continual learning 的原因與**訊號量的量級差**有關:**流量越大,收到的訊號與固定尺寸的 eval 之間的差距就是好幾個數量級。**
+
+- 他們最近推出自己的 benchmark(端到端 vibe coding 評測,規模是數十個應用)。**尺寸固定,所以他們早就精確知道自己的 agent 在上面會怎麼表現。**
+- 但 production 系統每天遇到的是**一連串無法預測的 long-tail 事件**。**「那些 long-tail 事件才是黃金」**——它們告訴你使用者正在怎麼推擠產品的邊界,而且通常正是那些**把你原本設計成能正常運作的行為弄壞掉的情境**。
+
+#### A/B test 不是銀彈(約 03:00–03:01)
+
+他直接吐槽:做過 A/B test 的人都知道,**結果往往長成「沒有明確結論」的樣子**——你操作了 harness 的某個環節,結果**有些追蹤指標上升、有些下降**。
+
+- 可能你在優化成本,結果 agent 能力掉了。
+- 可能你在優化速度,結果使用者情緒變了。
+
+**你幾乎不會拿到一個乾淨到可以直接出貨的答案。**
+
+#### 實際 pipeline:分群 → 分析 → 自動生成 PR(約 03:01–03:02)
+
+所以正確的做法是**把整批 production workload 拿來處理,但不是逐筆分析**——他們每天有數以百萬計的 trace,逐筆跑會貴到不切實際、也太慢。
+
+1. **先分群(clustering)**。他強調用的是**非常基礎的機器學習技巧**:找 traces 之間的語意相關性。**絕大多數群集會被丟掉,因為那些是預期內的行為;但每天總會有幾個群集冒出來,凸顯出某些他們從未在 agent 上見過的 tail 行為。**
+2. **異常 trace 進分析系統**。分群之後,系統把每一筆異常 trace 丟進他們的分析系統(裡面當然包含前沿模型 / LLM),**理解出了什麼問題,然後立刻生成一個 PR。**
+3. **人做取捨。** 他特別想給大家「AI engineer 的工作依然極度重要」的圖像——**至少未來幾個月內他不認為這會被自動化。** 拿到這串 PR、套用上去之後,你會跑 A/B test,而其中一些會像前面說的那樣**沒有結論**;此時**身為帶 AI 團隊的人,你的工作就是決定哪些改動該進 production、哪些該等、哪些該整個丟掉。**
+   - 也就是說:**harness 的絕大多數改動由 AI 系統自動產生,但人的決策層仍然存在。**
+
+他補充了一個重要的時間點:**這條 pipeline 原則上很早就能蓋,但他是最近幾個月才開始講,因為前沿模型「大約在最近半年」才變得極度擅長分析 trace。** 他的類比:**軟體工程師這邊經歷的「大量程式碼由 agent 撰寫」的革命,在 production workload 這一側也同樣正在發生。**
+
+#### 具體案例:虛擬機開機比 harness 慢(約 03:04–03:05)
+
+為了不流於抽象,他給了一個真實案例:
+
+- Replit **每天為使用者啟動數十萬台虛擬機**,而且是完全透明的。
+- 一個 long-tail bug:**有時候虛擬機完全開機所需的時間,比 agent harness 準備就緒的時間還長。**
+- **而 agent 非常熱衷於 debug**,所以每次發生時,agent 就開始空轉,試圖搞清楚自己為什麼無法執行程式碼、為什麼無法呼叫某些工具。
+- 由於**agent 本質上是非確定性的**,每一筆 trace 呈現的錯誤都不一樣——agent 各自選了不同的 debug 策略——**但它們的共同點都是「虛擬機開機不夠快」。**
+- 關鍵:**光靠人工看 log 絕對不會抓到這個問題;因為是 long-tail,它也不會出現在他們的 Datadog dashboard 上。** 但**分群之後,他們發現這件事發生的頻率足夠高,系統立刻生成了 PR、當場修掉。**
+
+#### 收尾(約 03:05)
+
+**「今天我希望你帶走的一句話是:不要再把 evaluation 當成上線前的最後一道檢查。它不是一個告訴你『這個 PR 能不能出』的布林旗標。應該把它想成一具引擎——一具幫你每天出貨一個更好的 agent 的引擎。」**
+
+### 金句
+
+> "When you don't have access to weights, how do you make your AI system actually evolve?"(約 02:58)
+
+整場的問題設定:closed-weights 時代的持續學習該長什麼樣。
+
+> "Evals are by definition very narrow. They capture only a subset of capabilities."(約 02:59)
+
+benchmark 好用,但它給你的訊號量級遠低於 production。
+
+> "Those long-tail events are actually golden."(約 03:00)
+
+它們同時告訴你使用者在哪裡推擠邊界、以及你哪裡壞了。
+
+> "You never get a crystal clear answer that allows you to immediately ship that change in product."(約 03:01)
+
+A/B test 的真實樣貌:成本、速度、能力、使用者情緒互相拉扯。
+
+> "We would have never spotted this just by analyzing the logs manually. It would have never shown in our Datadog dashboard, because it was a long-tail error."(約 03:05)
+
+傳統可觀測性的盲區,正是 trace 分群要補的位置。
+
+> "Stop thinking about evaluation as just the last check before shipping … think of it as an engine that helps you ship a better agent every single day."(約 03:05)
+
+全場的收束。
+
+## English Notes
+
+### TL;DR
+
+- **If you can't touch the weights, touch the harness.** Continual learning is usually associated with model training, but most companies run closed-weights models. Replit's answer is to put their hands directly on the harness and the ecosystem around the agent.
+- **Evals are good but narrow; production traces are the gold mine.** Two pillars: evaluation, plus continuous A/B testing and real-time trace analysis. **The long-tail events in production are the golden ones** — they show where users push the product's boundaries and where things you assumed worked don't.
+- **The pipeline: cluster → frontier models analyze anomalous traces → auto-generate PRs → humans adjudicate.** In principle this was buildable long ago; in practice **frontier models only got good enough at analyzing traces in roughly the last six months.**
+
+### Key Points
+
+#### The premise: you can't reach the weights, but you can reach the harness (~02:58–02:59)
+
+Continual learning has been a holy grail for the research field for a long time: **we don't want static AI systems, we want systems that learn from usage.** But in practice **a lot of companies use closed-weights models — so with no access to weights, how do you make your AI system actually evolve?**
+
+His answer: **there's another route, and it's exactly what Replit has been doing for many months — putting your hands directly on the harness and the ecosystem around the agent you're running.**
+
+He gave evals a fair hearing first: **as an industry we've relied on evaluation for a long time, and benchmarks are amazing — he genuinely appreciates the people who work on them. The output is crystal clear: run the eval, get a number, decide whether your harness change was progress or a regression.** But **evals are by definition narrow, capturing only a subset of the capabilities your agent is actually exposed to. A lot of signal goes missing.**
+
+Meanwhile, **once you hit product-market fit, the sheer volume of usage your platform receives is itself a gold mine of data.** That gold mine is usually associated immediately with model training, but **far more can be done with it**: analyzing traces teaches you what works, what doesn't, why users are annoyed by your agent, and much else.
+
+Hence two pillars: one still leaning heavily on evaluation, the other **continuously running A/B tests and analyzing traces in real time** to learn from the data what's actually working and what to fix now.
+
+#### Why the long tail is the point (~02:59–03:00)
+
+His emphasis on continual learning comes down to **an order-of-magnitude gap in signal**: the more traffic you receive, the larger the gap between it and a fixed-size eval.
+
+- They recently launched their own benchmark — an end-to-end vibe-coding evaluation on the order of a few tens of applications. **It's fixed in size, so they already know exactly how their agent behaves on it.**
+- What the production system experiences daily is **a stream of long-tail events they can't predict**. **"Those long-tail events are actually golden"** — they tell you how users are pushing the boundaries of your product, and they're usually the behaviors that break what you intended to work.
+
+#### A/B tests are not a silver bullet (~03:00–03:01)
+
+He was blunt: anyone who's run A/B tests knows **they often look like "no clear result."** You manipulate the harness one way and **some metrics improve while others drop.**
+
+- Maybe you're optimizing for cost and agent capability degrades.
+- Maybe you're optimizing for speed and user sentiment shifts.
+
+**You basically never get an answer clean enough to ship on the spot.**
+
+#### The actual pipeline: cluster, analyze, auto-generate PRs (~03:01–03:02)
+
+So the right approach is to take the whole production workload — **but not by analyzing every trace individually.** With millions per day, that would be prohibitively expensive and too slow.
+
+1. **Cluster first.** He stressed this is **very basic machine learning**: find semantic relevance across traces. **The vast majority get discarded as intended behavior, but every day a few clusters pop up highlighting tail behaviors they've never seen from the agent before.**
+2. **Anomalous traces go into analysis.** After clustering, the system runs each anomalous trace through their analytics stack (which of course includes frontier LLMs), **works out what went wrong, and immediately generates a PR.**
+3. **Humans adjudicate.** He wanted to leave a picture of the world where the AI engineer's job is still extremely relevant — **he doesn't think this gets automated in the next few months at least.** Once you have that stream of PRs and apply them, you run A/B tests, and some come back inconclusive. At that point, **as the person leading an AI team, your job is deciding which changes go to production, which wait, and which get dropped entirely.**
+   - In other words: **the vast majority of harness changes are generated by the AI system, but the human decision layer remains.**
+
+An important timing note: **in principle this pipeline was buildable long ago, but he only started talking about it a few months ago because frontier models became extremely good at analyzing traces "only in the last six months or so."** His analogy: **the revolution software engineers are experiencing, where much of the code is written by agents, is happening on the production-workload side too.**
+
+#### The worked example: VMs booting slower than the harness (~03:04–03:05)
+
+- Replit **spawns hundreds of thousands of virtual machines for users every single day**, completely transparently.
+- The long-tail bug: **sometimes the VM took longer to fully boot than the agent harness took to be ready to go.**
+- **Agents are very eager to debug problems**, so on those occasions the agent started spinning its wheels trying to figure out why it couldn't execute code or run certain tools.
+- Because **agents are fundamentally nondeterministic**, no two traces showed the same errors — each agent picked a different debugging strategy — **but all of them had in common that the VM wasn't booting fast enough.**
+- The key point: **they would never have spotted this by reading logs manually, and it would never have shown up on their Datadog dashboard because it was a long-tail error.** After clustering, **they saw it was happening often enough, and the system immediately generated a PR and fixed it on the spot.**
+
+#### Closing (~03:05)
+
+**"Stop thinking about evaluation as just the last check before shipping. It's not a boolean flag that tells you whether to ship your new PR. Think of it as an engine that helps you ship a better agent every single day."**
+
+### Quotes
+
+> "When you don't have access to weights, how do you make your AI system actually evolve?" (~02:58)
+
+The framing question: what continual learning looks like in a closed-weights world.
+
+> "Evals are by definition very narrow. They capture only a subset of capabilities." (~02:59)
+
+Benchmarks are useful, but the signal is orders of magnitude below production.
+
+> "Those long-tail events are actually golden." (~03:00)
+
+They simultaneously mark where users push the boundary and where you break.
+
+> "You never get a crystal clear answer that allows you to immediately ship that change in product." (~03:01)
+
+What A/B tests actually look like: cost, speed, capability, and sentiment pulling against each other.
+
+> "We would have never spotted this just by analyzing the logs manually. It would have never shown in our Datadog dashboard, because it was a long-tail error." (~03:05)
+
+The blind spot in conventional observability that trace clustering is meant to cover.
+
+> "Stop thinking about evaluation as just the last check before shipping … think of it as an engine that helps you ship a better agent every single day." (~03:05)
+
+The talk's closing line.
+
+## 提到的專案與資源 / Projects & Resources
+
+| 名稱 Name | 說明 | Description | 備註 Notes |
+|-----------|------|-------------|------------|
+| ViBench | Replit 自家的端到端 vibe coding 評測 benchmark;講者說規模是「數十個應用」 | Replit's own end-to-end vibe-coding benchmark; he described it as "a few tens of applications" | 字幕聽成 "by bench";名稱經 Replit 官方部落格查證 / caption heard it as "by bench"; name verified against Replit's engineering blog |
+| Replit Agent | 他架構並推出的產品,主持人稱其推動營收成長超過兩個數量級 | The product he architected and launched; the host said it drove revenue up by more than two orders of magnitude | 主持人介紹內容 / from the host's introduction |
+| Trace clustering pipeline | 對每日數百萬筆 production traces 做語意分群,異常群集交給前沿模型分析並自動生成 PR | Semantic clustering over millions of daily production traces; anomalous clusters go to frontier models that auto-generate PRs | 講者未在演講中給這套系統命名 / he did not name the system onstage |
+| Datadog | 他用來說明「long-tail 錯誤不會出現在標準儀表板上」的對照組 | His foil for the point that long-tail errors never surface on standard dashboards | |
+| PaLM | 他在 Google X 帶應用研究時貢獻過其 coding 能力 | He contributed to its coding capabilities while leading applied research at Google X | 主持人介紹內容 / from the host's introduction |
+
+## 逐字稿勘誤 / Transcript Corrections
+
+| 字幕原文 Heard as | 應為 Should be |
+|-------------------|----------------|
+| Mikuel Gatasta | Michele Catasta |
+| Replet / Rabbit / rapid | Replit |
+| by bench | ViBench |
+| by coding | vibe coding |
+| container learning | continual learning |
+| heavy tests | A/B tests |
+| races | traces |
+| realtor machine | virtual machine |
+| previously expensive | prohibitively expensive |
+| data dog | Datadog |
+| hardness | harness |
+| Doten research | postdoc research |
+| Palm | PaLM |
+
+## 待確認 / To Verify
+
+- ViBench 的規模:講者現場說「數十個應用」,Replit 公開資料另有更大的題數說法,兩者的對應關係待釐清(可能是講者只算 Replit 內部使用的子集)。/ ViBench's size: he said "a few tens of applications" onstage, while public material cites a larger task count — the relationship between the two needs clarifying.
+- 那套 trace 分群 / 自動生成 PR 系統在 Replit 內部的正式名稱,演講中未提及。/ The internal name of the trace-clustering and PR-generating system — not mentioned in the talk.
+- 「每天數十萬台虛擬機」與「每天數以百萬計的 trace」為講者口述數字,無投影片可佐證。/ The "hundreds of thousands of VMs per day" and "millions of traces per day" figures are as spoken; no slide reference available.
+- 「前沿模型大約最近六個月才擅長分析 trace」的參照基準(以哪些模型為界)未說明。/ Which models he had in mind when saying frontier models only became good at trace analysis "in the last six months or so."
