@@ -1,0 +1,279 @@
+---
+title: "Omnigent - A Meta Harness for AI Agents"
+title_zh: "Omnigent:AI agent 的 meta harness"
+speaker: "Aravind Segu"
+affiliation: "Software Engineer, Databricks"
+type: workshop
+stage: Atlas
+date: 2026-08-02
+session: "Session 3: AI for Math"
+video: "https://www.youtube.com/watch?v=-7AJJLwYW1Q&t=5444s"
+video_range: "01:30:44–02:12:46"
+transcript: "tmp/[English (auto-generated)] Atlas Stage - August 2nd - Afternoon Session [DownSub.com].srt"
+status: draft
+tags: [workshop, harness, orchestration, policy, sandbox, databricks]
+---
+
+# Omnigent:AI agent 的 meta harness(Omnigent - A Meta Harness for AI Agents)
+
+**一句話總結**:採用 agent 很容易,**營運**它們很難;Databricks 的答案是在 harness 之上再加一層開源的 meta harness——session 存在 server、執行在 runner,於是同一個 session 可以跨 harness 組合、跨人協作、被政策治理,而且關掉筆電也不會停。
+**One-line summary**: Adopting agents is easy; **operating** them is not. Databricks' answer is an open-source layer above the harness — sessions live on a server, work happens on a runner — so one session can compose across harnesses, be co-driven by teammates, be governed by policy, and keep running after you close your laptop.
+
+> 講者:Aravind Segu(Software Engineer, Databricks),與同事 Dhruv 共同主講。形式為投影片講解 + 現場 demo + Q&A。
+
+## 中文筆記
+
+### TL;DR
+
+- **問題不是採用,是營運**。Databricks 有 3,000+ 工程師各用各的 AI 工具,他們歸納出五個痛點:空間**擁擠**(harness × 模型組合無限、每週都有新的)、生態**碎片化**(換 harness 就要重寫 agent、skills、tools、policies)、過度**個人化**(agent 與記憶都在自己筆電上,別人看不到也插不了手)、**難以治理**(企業級花費上限與工具存取規則做不出來)、**被綁在筆電上**(闔上就停工)。
+- **解法是一層新的開放層:meta harness**,叫 **Omnigent**,完全開源。架構刻意簡單,只有兩半:**server**(session 歷史、policies、MCP servers、skills、custom agents 都在這)與 **runner**(agent 實際幹活的地方:筆電、dev box、Kubernetes pod、雲端 sandbox);中間是一套共通 API,終端機、web UI、桌面 app 講的都是它。
+- **三個能力**:**compose**(十幾種 harness 隨插即用、不必遷移;可在同一 session 裡讓一個模型寫、另一個模型 review)、**collaborate**(session 可分享、可共同駕駛,像 Google Docs 一樣對程式碼/markdown/HTML/PDF 留言,按 address all 就送進 agent)、**control**(policy 看得到整個 session,可 allow / deny / 要求人工核准;成本上有 budget 軟性檢查點與 smart routing 自動選模型)。
+- **安全模型值得注意**:**所有 LLM 呼叫都發生在你的筆電上,server 不做任何模型呼叫**;server 只是在多台 host 之間做編排。另有 **Omnibox** 這個內建 OS 層 sandbox,憑證在 proxy 注入,**agent 永遠看不到真實憑證**。
+- **社群數字**:開源第 7 週,約 8,000 stars、3,000 個 PR 已合併、360+ 位社群成員合併過 PR;roadmap 討論、PR review、design doc 全部公開在 GitHub。
+
+### 討論主題
+
+#### 主題一:為什麼需要 harness 之上的一層(約 01:31–01:35)
+
+開場的立論很直白:Claude Code 很棒、每週都有新功能,但**它不是唯一的 harness**,而且**做 harness 這件事很容易**,所以做的人很多。真正的問題出在後面——**採用 agent 很容易,營運它們不容易**。
+
+Databricks 內部 3,000+ 工程師都在用各種不同的 AI 工具,他們想建統一生態系時撞到五面牆:
+
+1. **Crowded**:harness 很多、模型很多,兩者相乘是無限組合,每週還有新的冒出來,根本追不完。
+2. **Fragmented**:每個 harness 把你鎖進它自己的設定;換 harness 就要重寫你的 custom agents、skills、tools、policies,以及所有 harness 專屬設定。
+3. **Personal**:agent 與記憶都活在你的筆電上,沒有人有存取權,別人看不到你的 session、無法介入、也無法貢獻。
+4. **難以治理**:個人可以在自己的 Claude Code 上設政策,但企業級的花費上限、以及 agent 背後工具的存取規則就很難做。
+5. **Tethered**:綁死在筆電上,筆電闔上或沒電就沒了——他形容大家「抱著半開的筆電、手指卡在中間」在會議室之間走動。
+
+他們舉的內部實例很有畫面:用 **Slack 傳 CLAUDE.md 檔案**給同事,說「我的 agent 做了這個,你也加上去然後叫它做別的」;開私有 worktree **commit 偽程式碼**只為了能一起協作;想開始用 Codex 時,得把所有 MCP server 重新設定一次才能接上內部系統。
+
+結論:需要一層**在 harness 之上的新開放層**,他們稱之為 **meta harness**。
+
+#### 主題二:架構(約 01:35–01:36)
+
+模型刻意簡單,兩半:
+
+- **Server**:**session 住的地方**——session 歷史、policies、MCP servers、skills、custom agents 都存在這裡。
+- **Runner**:**agent 實際幹活的地方**——可以是你的筆電、dev box、Kubernetes pod,或雲端 sandbox。
+
+中間是**一套共通 API**,而且**每個介面都講同一套**:終端機、web UI、原生桌面 app。因為 server 坐在中間,**一個 session 不再被綁死在某台機器的某個終端機視窗裡**——你可以闔上筆電、agent 繼續跑、之後從手機接手。
+
+這一個架構選擇直接換來後面三件事。
+
+#### 主題三:Compose(約 01:36–01:37)
+
+Omnigent 開箱支援**十幾種 harness**(Claude Code、Codex、Cursor、OpenCode、Pi 等)。三個重點:
+
+- **不需要遷移**:Omnigent 會撿起你機器上既有的設定——訂閱、MCP servers、skills 都直接沿用。
+- **跨 harness 編排**:如果 Claude Code 明天有個 Codex 沒有的能力,你不必開第二個終端機把 context 複製過去,直接在同一個 session 裡要求;可以讓一個模型寫程式、另一個模型 review。
+- **可擴充**:有 harness plugin SDK,任何人都能在不碰 Omnigent 核心的情況下發布整合。實例:**Atlassian 的人自己做了一個叫 Rovo 的 harness**,完全沒動到 Omnigent 就整合進來了。
+
+**Custom agents 就是一個 YAML 檔**:system prompt、模型、想給它的工具。有趣的是**你可以把其他 agent 當成工具加進來,而那些 agent 可以建在不同的 harness 上**。內建範例兩個:**Polly**——多 agent coding orchestrator,能把任務跨 harness 平行 fan out(Claude Code、Codex、Cursor 同時實作與 review);**Debbie**——辯論型 agent,把同一個 prompt 丟給多個 harness 讓你比較後挑一個。因為 agent 只是 YAML,**可攜性很好**:分享給團隊或發布到整個 server,而且同一套 policy 與 sandbox 一體適用。
+
+#### 主題四:Control(約 01:37–01:40)
+
+大多數工具的 policy 只看**單一動作**:這個指令允不允許?Omnigent 的 policy **看得到整個 session**——進來的資料、被請求的動作,一起看。執行上有三種粒度:**allow / deny / 要求人工核准**。內建一整套 policy library,而 **policy 本身就是 Python**,自己加很容易。實例:**Red Hat 的人寫了偵測 agent 陷入迴圈並停下它的 policy**。
+
+同一套機制也管成本,兩個內建:
+
+- **Budgets**:大多數人有月/週預算,但 session 進行到一半你根本不知道燒了多少。budget policy 給你**軟性檢查點**——上限 100 美元的話,到 20 美元時提示你「已花 20 美元,要繼續嗎?」。他特別喜歡的一點是**這不必是硬上限**:可以設成 **downgrade gate**——前沿模型燒掉 20 美元後,自動開始降級到更便宜、更小、開源的模型。另有 per-session 版本與 per-user 每日上限,可在 server 層強制。
+- **Smart routing**:他自嘲「我自己就是那個連最小的任務都用最大模型 + 最高 effort 的人」。`auto` 選項會用一個**輕量分類器**看任務,替你挑 harness 與模型:大型設計任務用前沿模型,小修或簡單問題用又快又便宜的。
+
+#### 主題五:Collaborate(約 01:40–01:41)
+
+Dhruv 說這是他自己最常用的功能。任何 session 都能**唯讀或完整編輯**模式分享,別人可以跟你**共同駕駛**。
+
+他們反覆看到的模式跟 on-call 很像:某人花整整一小時跟 agent 建立起某個問題的 context,然後撞牆、需要拉同事進來。**不必把歷史或最後一則 Claude 回應貼到 Slack**,直接把同事拉進 session,所有 context 都在。
+
+還可以對產出的 artifact 留言,**像 Google Docs 編輯那樣,但對象是 agentic 工作**:程式碼、markdown、HTML、PDF 都能留言。留言累積後按 **address all**,它們會被注入成一個 prompt 送給 agent。
+
+#### 主題六:執行環境與沙箱(約 01:41–01:42)
+
+雲端側,Omnigent 用同一套介面接多家 sandbox provider:**Modal、Daytona、E2B、原生 Kubernetes**,以及**在你自己的 Databricks workspace 裡跑 agent 的 Databricks sandbox**。雲端 sandbox 就是「永遠在線」故事的來源:從筆電啟動 session、闔上筆電、從手機在任何地方接手。這些 provider 同樣是 plugin,你可以把自己習慣的 dev box 設定包成 plugin 帶進來,**不需要經過他們的 PR review**。
+
+縱深防禦的部分是 **Omnibox**——內建的 **OS 層 sandbox**,原生支援 Linux、macOS、Windows。**憑證在 proxy 層注入,所以 agent 永遠看不到你真實的憑證或原始 secret**;即使你用的是 Daytona 或 Modal 這類雲端 sandbox,OS 層 sandbox 也一併生效,**blast radius 始終很小**。
+
+#### 主題七:現場 demo 重點(約 01:43–02:02)
+
+demo 的題材是「Claude 花 30 分鐘做出來的」一個 note-taking app repo,上面開了幾個 GitHub issue(加 dark mode、把重要筆記置頂)。
+
+- **入口**:以前打 `claude`,現在打 `omni claude`。它會啟動一個 runner(這台筆電)、連上設定好的 server、開出你熟悉的 Claude 終端機——唯一多的是一個 **Omnigent URL**。點開進入 UI(桌面 app 或 web)。UI 裡有 host picker(筆電或 sandbox)、資料夾與 worktree、以及 harness picker(Claude Code / OpenCode / Codex / Cursor / 或 Polly、Debbie 等 custom agents)。
+- **三個介面同步**:同一個 session 可以在 chat UI、web 終端機 UI、以及你本機的實體終端機三處互動,**內容完全同步**——等於你還是在用原本的 Claude Code,只是多了一層好用得多的 GUI(可翻閱所有 session、用 project 分類)。
+- **`omni setup`** 用來設定各 harness;demo 中設了 Claude、Codex、Cursor、OpenCode 四種。
+- **Polly fan-out**:叫 Polly 去看所有 GitHub issue,用 Claude、Codex、OpenCode、Cursor 當 sub-agent 分頭解。最後結果是 **Claude SDK 當頂層驅動、編排五個 sub-agent**,每個 sub-agent 都有自己可檢視的終端機(Codex 在做 edit notes、Cursor 在做 live search、OpenCode 用的是透過 OpenRouter 的 Kimi)。
+- **內嵌瀏覽器**:直接開 localhost 看 app 的深淺色模式,並**在畫面上對 tooltip 留言**「我不喜歡這個,改成 toggle」,agent 就接手去改。
+- **分享 session**:把 session 分享給 Dhruv 並給予 edit 與 approve 權限;Dhruv 在自己那台機器的「shared with me」看到 session、瀏覽被改過的檔案、留言(demo 用的是「this code is slop, please fix」),按 address all,訊息就送到**跑在 Aravind 筆電上的 agent**。沒有 GitHub、沒有 Slack。
+- **Smart routing**:把 Polly 的主 harness 改成 `auto`。問「法國的首都是什麼」→ 判定為簡單任務 → 選 **GPT-5 Nano**;問「解釋整個 codebase 並畫出架構圖」→ 判定為複雜任務 → 選 **Opus**。
+- **Policies**:session 跑到一半才加上 **10 美分的 session 成本預算**,下一次呼叫就被 policy 擋下並提示已達上限。UI 上可加的 policy 類型包括:限制每 session 的 tool call 數、封鎖特定 skills、強制 sandbox、拒絕 PII、預算。可設在 session 層或 server 層。
+- **Automations panel**:在任一 host 或 sandbox 上排程執行任務——給 prompt、給頻率、指定 host(或「當時在線的任一 host」)。他們自己在用的:每天早上掃過所有 PR 並留言的 PR sweep、以及每天/每週的公司新聞摘要。
+- **Sandbox**:切到 Databricks 的 server 展示 Databricks sandbox——吃一個 GitHub repo、已配好 GitHub 憑證,**整段跑在 sandbox 而非筆電上**,所以可以闔上筆電、換到手機繼續跟同一個 agent 對話。
+
+#### 主題八:Q&A 重點(約 02:02–02:12)
+
+- **能不能在公司層級強制 policy?** 可以。admin 在設定 server 時可以設 **server-wide policies**,套用到每一位使用者、每一個 session;只要用同一台 server,不論在哪台 host 都會生效。
+- **harness 設定的自我改進怎麼做?** 他們在**向 Pi 學習**其擴充性設計——harness、sandbox、smart routing 都應該讓你能帶自己的 plugin 進來。他坦承「還沒到 Pi 的擴充性水準,但那是我們的北極星」。
+- **Databricks 內部規模?** 3,000+ 使用者、每天都在用、**每天數千個 session**。他說「一掛掉,大家 ping 我們的速度比 PagerDuty 還快」。
+- **brains/hands 分離架構怎麼看?** 他們**把 harness 跑在跟指令執行同一台 host/sandbox 上**,而不是把 LLM loop 放 server、指令放另一個 sandbox。安全性靠 **Omnibox 的 OS 層防護**加上**在每個 harness 上掛 tool hook**——harness 執行前先跑你的 policy,確認符合該 session 的規範。目前沒有做 harness 層級的最佳化。
+- **長跑 session 的 context / compaction 怎麼辦?** **compaction 完全交給各 harness 原生機制**:Claude session 用 Claude 的壓縮邏輯,Codex 用 Codex 的(而且 Codex 壓縮得更頻繁);因為 demo 裡 Polly 的頂層 harness 是 Claude,所以頂層 agent 也照 Claude 的邏輯壓縮,但你可以把 Polly 的主 harness 換成 Codex。Omnigent **不做自己的 compaction 或 clear**。另一半是:**server 會存下對話**,agent 掛掉要重啟時,他們從資料庫 rehydrate 整個 session。提問者接著指出真正的風險——反覆壓縮會造成 context rot,而**你未必看得出被產出的程式碼已經出問題**,而這件事又不在 harness 的控制之內;雙方同意會後再談。
+- **資料邊界與隱私?** 這題答得最明確:**所有模型呼叫都發生在你自己的筆電上,server 不做任何 LLM 呼叫**;憑證是在 `omni setup` 時設在本機的。server 的角色只是**編排不同 host**——筆電對 server 開一條 WebSocket,server 知道自己在哪個 pod、該撥回哪台筆電。至於 server 架在哪,**取決於你怎麼佈署**,可以是任何多租戶架構或自有基礎設施。
+- **policy 能不能限制可用模型?** 可以——即使用的是某個 harness,也能限制它只能走特定模型。
+- **怎麼做自己的 custom agent、含確定性邏輯?** custom agent 就是 YAML(Polly 本身就長那樣);想要確定性流程就把它包成 tool,跟其他 agent 一樣用。此外 **Omnigent 有 REST API**,可以從你自己的確定性工作流程裡呼叫。
+
+### 金句
+
+> "Adopting agents is pretty easy, but operating them is not."(約 01:32)
+
+整場的問題陳述。
+
+> "Each harness locks you in into its own code, and switching harnesses means rewriting your custom agents, your skills, your tools, your policies."(約 01:32)
+
+碎片化的具體代價。
+
+> "Policies in most tools look at one action in isolation … In Omnigent, policies see the whole session."(約 01:38)
+
+治理層級從單一動作提升到整個 session,是他們最實質的設計差異。
+
+> "The server does not make any LLM calls. It's all on laptop."(約 02:10)
+
+回答企業最在意的資料邊界問題。
+
+## English Notes
+
+### TL;DR
+
+- **The problem isn't adoption, it's operations.** Databricks has 3,000+ engineers on different AI tools and hit five walls: the space is **crowded** (harness × model is a combinatorial explosion, with new entrants weekly), **fragmented** (switching harnesses means rewriting agents, skills, tools, policies), **personal** (agents and memory live on one laptop, invisible to everyone else), **hard to govern** (no enterprise spend caps or tool access rules), and **tethered** (close the laptop, work stops).
+- **The answer is a new open layer above the harness — a meta harness** — called **Omnigent**, fully open source. The architecture is deliberately simple: a **server** where sessions live (history, policies, MCP servers, skills, custom agents) and a **runner** where the agent works (laptop, dev box, Kubernetes pod, cloud sandbox), with one common API that every surface speaks.
+- **Three capabilities**: **composition** (a dozen-plus harnesses with no migration; have one model implement and another review in the same session), **collaboration** (shareable, co-drivable sessions with Google-Docs-style comments on code, markdown, HTML, and PDFs, injected into the agent via "address all"), and **control** (policies that see the whole session and can allow / deny / require human approval, plus budget checkpoints and smart model routing).
+- **The security model is worth noting**: **all LLM calls happen on your laptop — the server makes none**; it only orchestrates hosts. **Omnibox** provides a built-in OS-level sandbox, and credentials are injected at a proxy so agents never see real secrets.
+- **Community numbers**: week seven since open-sourcing — ~8,000 stars, ~3,000 merged PRs, 360+ community members who have merged a PR, with roadmap discussions, PR reviews, and design docs all public on GitHub.
+
+### Discussion Topics
+
+#### Why a layer above the harness (~01:31–01:35)
+
+The opening argument: Claude Code is an excellent harness shipping features every week, but it isn't the only one, and building harnesses is easy — plenty of people have. The real problem shows up afterward: adopting agents is easy, operating them is not.
+
+Databricks saw this firsthand across 3,000+ engineers using different AI tools. Five problems: the space is **crowded** (harnesses times models is an infinite combination, with new ones every week); it's **fragmented** (each harness locks you into its own configuration, so switching means rewriting custom agents, skills, tools, policies, and harness-specific config); it's **personal** (agents and memory live on your laptop; nobody else can see, steer, or contribute to your sessions); it's **hard to govern** (individuals can set local policies, but enterprise-level spend caps and access rules for the tools behind agents are difficult); and it's **tethered** (tied to your laptop — Aravind's image is walking between meeting rooms with your laptop half open and a finger in the middle to keep the session alive).
+
+Their internal anecdotes make it concrete: sending CLAUDE.md files over Slack so a colleague's agent could pick up where yours left off; private worktrees where they committed pseudo-code just to collaborate; and reconfiguring every MCP server to talk to internal systems the moment they wanted to try Codex.
+
+The conclusion: what's needed is a new open layer above the harness level — a **meta harness**.
+
+#### Architecture (~01:35–01:36)
+
+Two halves. The **server** is where sessions live: session history, policies, MCP servers, skills, and custom agents. The **runner** is where the agent actually does its work: a laptop, a dev box, a Kubernetes pod, or a cloud sandbox. Between them sits one common API that every surface speaks — terminal, web UI, native desktop app.
+
+Because the server sits in the middle, a session is no longer trapped in one terminal on one machine: close the laptop, the agent keeps working, pick it back up from your phone. That one architectural choice buys composition, collaboration, and control.
+
+#### Composition (~01:36–01:37)
+
+Omnigent speaks with over a dozen harnesses out of the box — Claude Code, Codex, Cursor, OpenCode, Pi, and others. Three things matter. **No migration**: Omnigent picks up the setup already on your machine, so subscriptions, MCP servers, and skills come along ready to go. **Orchestration across harnesses**: if Claude Code has a capability tomorrow that Codex doesn't, you don't open a second terminal and copy context — you ask for it from the same session, and you can have one model implement while another reviews. **Extensibility**: a harness plugin SDK lets anyone ship an integration without touching the core package — Atlassian built their own harness, Rovo, and integrated it without touching Omnigent at all.
+
+Custom agents are just YAML files: a system prompt, a model, some tools. The interesting part is that other agents can be added as tools, and those agents can be built on different harnesses. Two ship as examples: **Polly**, a multi-agent coding orchestrator that fans tasks out across harnesses in parallel, and **Debbie**, a debating agent that runs the same prompt across multiple harnesses so you can compare. Because agents are plain YAML they're portable — share with your team or publish server-wide, with the same policies and sandboxing applying throughout.
+
+#### Control (~01:37–01:40)
+
+Policies in most tools look at one action in isolation: is this command allowed, yes or no? In Omnigent, policies see the whole session — the data that has come in and the action being requested, together. Enforcement is granular: allow, deny, or ask for human approval. A library of built-ins ships with the tool, and policies are plain Python, so adding your own is easy — Red Hat engineers wrote policies to detect agents stuck in loops and stop them.
+
+The same machinery watches cost. **Budgets** give you soft checkpoints: with a $100 limit, at $20 it prompts you to confirm you want to keep going. Dhruv's favorite detail is that this need not be a hard limit — it can be configured as a **downgrade gate**, so after $20 on frontier models you start routing to cheaper, smaller, open-source ones. There are per-session versions and per-user daily caps enforceable server-wide. **Smart routing** adds an `auto` option with a lightweight classifier that picks the harness and model for you — a frontier model for a big design task, something fast and cheap for a small fix. (Dhruv admits he's "completely guilty of picking the biggest model at the highest effort level for even the smallest task.")
+
+#### Collaboration (~01:40–01:41)
+
+The feature Dhruv personally uses most. Any session can be shared read-only or in full edit mode, and someone can co-drive with you.
+
+The pattern they keep seeing mirrors on-call: someone spends an hour building context with an agent, hits a blocker, and needs a teammate. Instead of pasting history or a final response into Slack, you pull the teammate into the session with all the context already in place. You can also comment on the artifacts the agents produce — code, markdown, HTML, PDFs — almost like Google Docs editing but for agentic work. Once comments pile up, hitting "address all" injects them into a prompt for the agent.
+
+#### Runtime and sandboxes (~01:41–01:42)
+
+On the cloud side, Omnigent connects to sandbox providers through one interface: Modal, Daytona, E2B, plain Kubernetes, and a Databricks sandbox that runs the agent inside your Databricks workspace. Cloud sandboxes are what give the always-on story — kick off a session from your laptop, close it, check in from your phone. Providers are plugins too, so an existing dev box setup can be brought in without needing PR reviews from the Omnigent team.
+
+For defense in depth there's **Omnibox**, their built-in OS sandbox, native to Linux, macOS, and Windows. Credentials are injected at a proxy, so agents never see real credentials or raw secrets. This applies inside cloud sandboxes as well, so even on Daytona or Modal there's an OS-level sandbox and the blast radius stays small.
+
+#### Live demo highlights (~01:43–02:02)
+
+The demo subject is a note-taking app repo "Claude made in 30 minutes," with GitHub issues filed against it (add dark mode, pin important notes).
+
+Instead of running `claude`, you run `omni claude`: it starts a runner (the laptop), connects to the configured server, and opens the familiar Claude terminal plus an Omnigent URL. In the UI (desktop app or web) there's a host picker, a folder and worktree selector, and a harness picker covering Claude Code, OpenCode, Codex, Cursor, and custom agents like Polly and Debbie. The same session can be driven from three synced surfaces — the chat UI, the web terminal, and your actual local terminal — so you're still using Claude Code, just with a much better GUI over your sessions and projects.
+
+`omni setup` configures harnesses (four in the demo: Claude, Codex, Cursor, OpenCode). Polly was then pointed at the repo's GitHub issues and told to use Claude, Codex, OpenCode, and Cursor sub-agents. The result: Claude SDK as the top-level driver orchestrating five sub-agents, each with its own inspectable terminal — Codex on the edit-notes PR, Cursor on live search, OpenCode running Kimi via OpenRouter.
+
+The embedded browser opened the app on localhost, showed dark and light mode, and let him comment directly on the UI ("I don't like this, let's change it to a toggle"), which the agent picked up. He then shared the session with Dhruv with edit and approve access; Dhruv opened it under "shared with me" on his own machine, browsed the changed files, left comments, and hit "address all" — sending a message to the agent running live on Aravind's laptop. No GitHub, no Slack.
+
+Smart routing with `auto`: "What is the capital of France?" was classified as simple and routed to **GPT-5 Nano**; "explain this complete codebase and give me a diagram" was classified as complex and routed to **Opus**. For policies, he added a 10-cent session cost budget mid-session and the next call was denied by policy once the budget was hit; the UI also offers tool-call limits per session, blocking specific skills, enforcing a sandbox, and denying PII, settable at session or server level.
+
+The **automations panel** schedules recurring tasks on any host or sandbox — a prompt, a frequency, and a host (or whichever host is online). Theirs include a morning PR sweep that reviews PRs and leaves comments, and a company news digest. Finally, the Databricks sandbox: it takes a GitHub repo, comes preconfigured with GitHub credentials, and runs entirely off the laptop, so you can close the lid and continue with the same agent from your phone.
+
+#### Q&A highlights (~02:02–02:12)
+
+**Company-wide policy enforcement?** Yes — an admin configuring the server can set server-wide policies that apply to every user and every session, on any host connected to that server.
+
+**Self-improvement and harness optimization?** They're learning from **Pi**'s approach to extensibility — harnesses, sandboxes, and smart routing should all accept your own plugins. He's candid that they're not at Pi's level of extensibility yet, but that's the gold star.
+
+**Scale inside Databricks?** 3,000+ users, everyone uses it daily, thousands of sessions per day. "As soon as it goes down, people are pinging us faster than PagerDuty."
+
+**Brains/hands separation?** They run the harness on the same host or sandbox as the commands, rather than splitting the LLM loop onto a server. Safety comes from Omnibox's OS-level protections plus a tool hook on every harness that runs your policies before the harness executes. No harness-level optimizations yet.
+
+**Context and compaction over long-running sessions?** Compaction is left entirely to each harness's native mechanism — a Claude session compacts with Claude's algorithm, Codex with its own (and Codex compacts more frequently). Since Polly is built on Claude in the demo, the top-level agent compacts with Claude's logic, but you can swap Polly's main harness to Codex. Omnigent adds no compaction or clearing of its own. The server does store conversations, so if an agent dies they rehydrate the session from their database. The questioner pressed on the real risk — repeated compaction causes context rot, and you may not be able to tell that the code produced has issues, which sits outside the harness's control. Both sides agreed to continue offline.
+
+**Data privacy boundaries?** The clearest answer of the session: **all model calls happen on your local laptop; the server makes no LLM calls.** Credentials are configured locally via `omni setup`. The server's job is to orchestrate hosts — the laptop opens a WebSocket to the server, and the server knows which pod it's in and which laptop to dial. Where the server itself runs is up to you: any multi-tenant architecture or your own infrastructure.
+
+**Can policies restrict which models a harness may use?** Yes.
+
+**Custom agents with deterministic logic, or agents calling agents?** Custom agents are YAML, exactly as Polly is; wrap deterministic workflows as tools like you would with any other agent. There's also a **REST API** for Omnigent you can call from your own deterministic workloads.
+
+### Quotes
+
+> "Adopting agents is pretty easy, but operating them is not." (~01:32)
+
+The problem statement for the whole workshop.
+
+> "Each harness locks you in into its own code, and switching harnesses means rewriting your custom agents, your skills, your tools, your policies." (~01:32)
+
+The concrete cost of fragmentation.
+
+> "Policies in most tools look at one action in isolation … In Omnigent, policies see the whole session." (~01:38)
+
+Moving governance from a single action to the whole session is their most substantive design difference.
+
+> "The server does not make any LLM calls. It's all on laptop." (~02:10)
+
+The answer to the question enterprises care about most.
+
+## 提到的專案與資源 / Projects & Resources
+
+| 名稱 Name | 說明 | Description | 備註 Notes |
+|-----------|------|-------------|------------|
+| Omnigent | Databricks 開源的 meta harness,server + runner + 共通 API | Databricks' open-source meta harness: server, runner, one common API | omnigent.ai;Discord: discord.gg/omnigent |
+| Polly | 內建的多 agent coding orchestrator,可跨 harness 平行 fan out | Built-in multi-agent coding orchestrator that fans out across harnesses in parallel | demo 中以 Claude SDK 驅動五個 sub-agent / drove five sub-agents via Claude SDK in the demo |
+| Debbie | 內建的辯論型 agent,同一 prompt 跑多個 harness 供比較 | Built-in debating agent: same prompt across multiple harnesses for comparison | 拼寫待確認 / spelling to verify |
+| Omnibox | 內建 OS 層 sandbox,憑證於 proxy 注入 | Built-in OS-level sandbox with credentials injected at a proxy | 原生支援 Linux / macOS / Windows |
+| 支援的 harness / Supported harnesses | Claude Code、Codex、Cursor、OpenCode、Pi 等十餘種 | Claude Code, Codex, Cursor, OpenCode, Pi, and a dozen-plus others | 另有 harness plugin SDK / plus a harness plugin SDK |
+| Rovo (Atlassian) | 外部團隊自建並整合進 Omnigent 的 harness | A harness built by an outside team and integrated without touching Omnigent core | 擴充性的實證案例 / the proof point for extensibility |
+| Sandbox providers | Modal、Daytona、E2B、Kubernetes、Databricks sandbox | Modal, Daytona, E2B, Kubernetes, and a Databricks sandbox | 皆為 plugin / all are plugins |
+| Automations panel | 在任一 host/sandbox 上排程執行的 agent 任務 | Scheduled agent tasks on any host or sandbox | 他們自用:PR sweep、公司新聞摘要 / their own: PR sweep, news digest |
+| Omnigent REST API | 供確定性工作流程呼叫 Omnigent | Lets deterministic workloads call into Omnigent | Q&A 中提及 / mentioned in Q&A |
+
+## 逐字稿勘誤 / Transcript Corrections
+
+| 字幕原文 Heard as | 應為 Should be |
+|-------------------|----------------|
+| Arvind / Arvin / Irvin | Aravind Segu |
+| Drew | Dhruv(共同主講者)/ co-presenter |
+| Omnigen / Omni Cloud | Omnigent / `omni claude` |
+| cloud code / Cloud Code / Cloud Terminal | Claude Code / Claude terminal |
+| Cloud MD files | CLAUDE.md files |
+| Claude's SDK / Cloud SDK | Claude Agent SDK |
+| Pie / Py | Pi(一種 harness)/ a harness |
+| Kimmy | Kimi |
+| Poly | Polly |
+| omnigen.ai | omnigent.ai |
+| work trees | worktrees |
+| OS sandbox「Omnibox」 | 正確,無需更正 / correct as heard |
+
+## 待確認 / To Verify
+
+- 共同主講者 Dhruv 的全名與職稱——官網議程僅列 Aravind Segu。/ Dhruv's full name and title; the agenda lists only Aravind Segu.
+- 內建 agent 名稱的正式拼法:Polly 或 Poly、Debbie 或 Debby。/ Official spellings of the built-in agents: Polly/Poly and Debbie/Debby.
+- 社群數字(約 8,000 stars、3,000 PRs merged、360+ 貢獻者)為演講當下的快照,現值請以 GitHub 為準。/ The community numbers are a snapshot as of the talk; check GitHub for current values.
+- 「支援十幾種 harness」的完整清單——講者刻意跳過不逐一唸出。/ The full harness list — he deliberately skipped reading it out.
+- 官網議程將此 workshop 列於 14:15,而影片內開始時間為 01:30:44(設備架設耗時約 6 分鐘)。/ The agenda lists this workshop at 14:15; in-video start is 01:30:44 after roughly six minutes of setup.
