@@ -1,0 +1,10735 @@
+1
+00:00:00,000 --> 00:00:02,680
+So, we're very excited about the power
+
+2
+00:00:02,680 --> 00:00:05,240
+of AI agents. Uh more particularly in
+
+3
+00:00:05,240 --> 00:00:08,600
+particular is we started in June 2026.
+
+4
+00:00:08,600 --> 00:00:13,200
+And our interest was driven by this some
+
+5
+00:00:13,200 --> 00:00:15,520
+recent papers from DeepMind
+
+6
+00:00:15,520 --> 00:00:18,480
+uh FunSearch which demonstrated
+
+7
+00:00:18,480 --> 00:00:23,520
+early on that you can use AI to
+
+8
+00:00:23,520 --> 00:00:25,360
+uh improve the state-of-the-art
+
+9
+00:00:25,360 --> 00:00:27,160
+performance of
+
+10
+00:00:27,160 --> 00:00:30,200
+uh algorithms and then was followed by
+
+11
+00:00:30,200 --> 00:00:32,599
+uh Alpha Evolve uh showing that coding
+
+12
+00:00:32,599 --> 00:00:35,560
+agents uh can be used to improve the
+
+13
+00:00:35,560 --> 00:00:38,280
+SOTA of for some
+
+14
+00:00:38,280 --> 00:00:40,320
+uh you know, existing systems and
+
+15
+00:00:40,320 --> 00:00:41,920
+techniques.
+
+16
+00:00:41,920 --> 00:00:43,880
+And then Open Evolve was an open-source
+
+17
+00:00:43,880 --> 00:00:46,920
+version of uh Alpha Evolve which was
+
+18
+00:00:46,920 --> 00:00:49,240
+released around the same time. And
+
+19
+00:00:49,240 --> 00:00:50,880
+obviously, we have all these kind of
+
+20
+00:00:50,880 --> 00:00:53,920
+agents coding agents like Claude, Codex,
+
+21
+00:00:53,920 --> 00:00:56,360
+and Cursor.
+
+22
+00:00:56,360 --> 00:00:58,160
+Uh so,
+
+23
+00:00:58,160 --> 00:00:59,880
+you know,
+
+24
+00:00:59,880 --> 00:01:03,240
+triggered by this kind of events, um we
+
+25
+00:01:03,240 --> 00:01:05,640
+started to run a special seminar over
+
+26
+00:01:05,640 --> 00:01:09,120
+the summer last summer at Berkeley and
+
+27
+00:01:09,120 --> 00:01:12,080
+where the students uh system students
+
+28
+00:01:12,080 --> 00:01:14,720
+were using this uh AI
+
+29
+00:01:14,720 --> 00:01:17,640
+uh evolutionary uh agents
+
+30
+00:01:17,640 --> 00:01:20,200
+to apply as they applied to their own
+
+31
+00:01:20,200 --> 00:01:22,600
+system to their own research.
+
+32
+00:01:22,600 --> 00:01:25,400
+And in particular, we went all through
+
+33
+00:01:25,400 --> 00:01:29,280
+12 uh different projects.
+
+34
+00:01:29,280 --> 00:01:32,600
+And uh the results were quite impressive
+
+35
+00:01:32,600 --> 00:01:35,040
+or better than expected. So, these two
+
+36
+00:01:35,040 --> 00:01:40,240
+12 projects included um around seven uh
+
+37
+00:01:40,240 --> 00:01:43,080
+published work uh by the students in top
+
+38
+00:01:43,080 --> 00:01:47,080
+conferences in systems or AI um included
+
+39
+00:01:47,080 --> 00:01:50,840
+also some work in progress and um
+
+40
+00:01:50,840 --> 00:01:53,560
+some publications some some research
+
+41
+00:01:53,560 --> 00:01:56,400
+just published on archive.
+
+42
+00:01:56,400 --> 00:02:01,360
+And in 10 out of these 12 cases, we got
+
+43
+00:02:01,360 --> 00:02:03,920
+results which are better than SOTA. And
+
+44
+00:02:03,920 --> 00:02:06,840
+not only that, but it was very cheap to
+
+45
+00:02:06,840 --> 00:02:09,000
+use,
+
+46
+00:02:09,000 --> 00:02:12,680
+you know, the best models and Gemini and
+
+47
+00:02:12,680 --> 00:02:15,680
+OpenAI ChatGPT to get the results. So,
+
+48
+00:02:15,680 --> 00:02:19,040
+it was quite cheap and quite fast.
+
+49
+00:02:19,040 --> 00:02:22,640
+So, this a lot of excitement
+
+50
+00:02:22,640 --> 00:02:25,680
+and also since then,
+
+51
+00:02:25,680 --> 00:02:28,800
+we done a lot of work in the space.
+
+52
+00:02:28,800 --> 00:02:30,760
+In particular, we taught two graduate
+
+53
+00:02:30,760 --> 00:02:32,840
+classes, courses
+
+54
+00:02:32,840 --> 00:02:35,600
+the previous two semesters.
+
+55
+00:02:35,600 --> 00:02:38,520
+We wrote position papers. We launched
+
+56
+00:02:38,520 --> 00:02:42,200
+the ADRS blog series where ADRS stands
+
+57
+00:02:42,200 --> 00:02:45,840
+for AI-driven research for systems.
+
+58
+00:02:45,840 --> 00:02:48,720
+And of course, we like we are from
+
+59
+00:02:48,720 --> 00:02:53,320
+academia, so we published and we built a
+
+60
+00:02:53,320 --> 00:02:55,600
+bunch of systems and published a bunch
+
+61
+00:02:55,600 --> 00:02:58,440
+of papers.
+
+62
+00:02:58,560 --> 00:03:00,840
+So, everything started with very with
+
+63
+00:03:00,840 --> 00:03:03,360
+great expectations and the expectation
+
+64
+00:03:03,360 --> 00:03:05,640
+was that AI will disrupt the system
+
+65
+00:03:05,640 --> 00:03:08,040
+research the way we know it.
+
+66
+00:03:08,040 --> 00:03:09,840
+So, what happened actually with over the
+
+67
+00:03:09,840 --> 00:03:12,840
+past year? What was our experience?
+
+68
+00:03:12,840 --> 00:03:14,680
+So, what was the reality?
+
+69
+00:03:14,680 --> 00:03:16,000
+Well,
+
+70
+00:03:16,000 --> 00:03:18,680
+it is true that AI did improve our
+
+71
+00:03:18,680 --> 00:03:20,840
+research productivity.
+
+72
+00:03:20,840 --> 00:03:24,720
+It's great. It's been great for research
+
+73
+00:03:24,720 --> 00:03:27,440
+some providing some ideas, of course,
+
+74
+00:03:27,440 --> 00:03:28,440
+for
+
+75
+00:03:28,440 --> 00:03:31,360
+speeding up some paper writing.
+
+76
+00:03:31,360 --> 00:03:33,400
+So, no question has a very positive
+
+77
+00:03:33,400 --> 00:03:35,840
+impact on our productivity.
+
+78
+00:03:35,840 --> 00:03:38,080
+It did also become a big part of our
+
+79
+00:03:38,080 --> 00:03:39,840
+research agenda.
+
+80
+00:03:39,840 --> 00:03:43,480
+Like I just mentioned earlier on.
+
+81
+00:03:43,480 --> 00:03:45,800
+However, did it really disrupt the way
+
+82
+00:03:45,800 --> 00:03:48,800
+we do do the research? Did it allow us
+
+83
+00:03:48,800 --> 00:03:50,880
+to build new production systems in a
+
+84
+00:03:50,880 --> 00:03:53,520
+fraction of time we used to do.
+
+85
+00:03:53,520 --> 00:03:55,960
+Um did it allow us to come with new
+
+86
+00:03:55,960 --> 00:03:58,280
+research through truly new research
+
+87
+00:03:58,280 --> 00:04:02,080
+ideas? Well, the answer to those No, not
+
+88
+00:04:02,080 --> 00:04:03,240
+yet.
+
+89
+00:04:03,240 --> 00:04:06,320
+So, this talk is about trying to
+
+90
+00:04:06,320 --> 00:04:08,000
+understand why.
+
+91
+00:04:08,000 --> 00:04:10,040
+Uh what are what are the limitation we
+
+92
+00:04:10,040 --> 00:04:11,560
+encountered?
+
+93
+00:04:11,560 --> 00:04:14,240
+And I would say this is not only our
+
+94
+00:04:14,240 --> 00:04:16,239
+story, but the story of many other
+
+95
+00:04:16,239 --> 00:04:18,079
+people we talked
+
+96
+00:04:18,079 --> 00:04:19,880
+with uh
+
+97
+00:04:19,880 --> 00:04:24,000
+for the past uh several months.
+
+98
+00:04:24,000 --> 00:04:25,880
+Now, if you take a step back, the key
+
+99
+00:04:25,880 --> 00:04:29,280
+goal of an AI coding agent is to develop
+
+100
+00:04:29,280 --> 00:04:32,120
+a software system that meets a certain
+
+101
+00:04:32,120 --> 00:04:34,880
+level of assurance with acceptable
+
+102
+00:04:34,880 --> 00:04:37,680
+levels of risk as fast as possible and
+
+103
+00:04:37,680 --> 00:04:40,000
+as cheaply as possible.
+
+104
+00:04:40,000 --> 00:04:42,160
+Uh here the software assurance is an
+
+105
+00:04:42,160 --> 00:04:44,960
+ongoing process to establish
+
+106
+00:04:44,960 --> 00:04:46,520
+uh and maintain some justified
+
+107
+00:04:46,520 --> 00:04:48,280
+confidence
+
+108
+00:04:48,280 --> 00:04:50,440
+which is supported by credible credible
+
+109
+00:04:50,440 --> 00:04:52,680
+evidence from running the software that
+
+110
+00:04:52,680 --> 00:04:54,440
+the software system
+
+111
+00:04:54,440 --> 00:04:56,960
+um will satisfy some specific claims,
+
+112
+00:04:56,960 --> 00:05:00,400
+will have some specific properties and
+
+113
+00:05:00,400 --> 00:05:05,320
+in its deployment environment.
+
+114
+00:05:05,960 --> 00:05:08,919
+So, fundamentally you need to do that by
+
+115
+00:05:08,919 --> 00:05:11,240
+using the resources at your disposal.
+
+116
+00:05:11,240 --> 00:05:14,520
+And the resources come in three forms.
+
+117
+00:05:14,520 --> 00:05:18,520
+It's humans, agents, AI agents, and of
+
+118
+00:05:18,520 --> 00:05:21,720
+course compute. So, the question is how
+
+119
+00:05:21,720 --> 00:05:24,480
+to achieve our goal by best using these
+
+120
+00:05:24,480 --> 00:05:27,480
+resources. And if you think about this
+
+121
+00:05:27,480 --> 00:05:30,120
+as a framework
+
+122
+00:05:30,120 --> 00:05:33,919
+um or as a system, then the key question
+
+123
+00:05:33,919 --> 00:05:35,200
+to answer
+
+124
+00:05:35,200 --> 00:05:37,760
+is about what are the bottlenecks.
+
+125
+00:05:37,760 --> 00:05:39,200
+And then once you identify the
+
+126
+00:05:39,200 --> 00:05:41,720
+bottlenecks, you alleviate them or you
+
+127
+00:05:41,720 --> 00:05:43,720
+remove them if you can, and then you are
+
+128
+00:05:43,720 --> 00:05:47,120
+going to speed up the development.
+
+129
+00:05:47,120 --> 00:05:49,240
+So, let me give some of the motivating
+
+130
+00:05:49,240 --> 00:05:52,000
+examples. So, this is
+
+131
+00:05:52,000 --> 00:05:54,160
+a work we done recently, and the goal
+
+132
+00:05:54,160 --> 00:05:56,720
+here is to synthesize a key-value
+
+133
+00:05:56,720 --> 00:05:59,680
+storage system from scratch.
+
+134
+00:05:59,680 --> 00:06:03,320
+Um and you know, as everyone knows, it's
+
+135
+00:06:03,320 --> 00:06:05,240
+a pretty simple system, pretty simple
+
+136
+00:06:05,240 --> 00:06:07,960
+interface actually, where you associate
+
+137
+00:06:07,960 --> 00:06:11,480
+a key with a value, and you put that
+
+138
+00:06:11,480 --> 00:06:14,920
+pair key-value in the storage, and then
+
+139
+00:06:14,920 --> 00:06:17,080
+you can given the key, you can retrieve
+
+140
+00:06:17,080 --> 00:06:18,400
+the value.
+
+141
+00:06:18,400 --> 00:06:20,160
+And in this particular case, it was a
+
+142
+00:06:20,160 --> 00:06:22,520
+pretty simple setting. We We have only
+
+143
+00:06:22,520 --> 00:06:24,680
+one server, so no distributed
+
+144
+00:06:24,680 --> 00:06:27,760
+environment. Uh although the server was
+
+145
+00:06:27,760 --> 00:06:29,560
+a server was multi-threaded, so you have
+
+146
+00:06:29,560 --> 00:06:31,040
+concurrency.
+
+147
+00:06:31,040 --> 00:06:33,000
+The So, basically, you store the data on
+
+148
+00:06:33,000 --> 00:06:36,480
+the disk, and you cache in memory to um
+
+149
+00:06:36,480 --> 00:06:39,000
+retrieve it faster. And the goal was to
+
+150
+00:06:39,000 --> 00:06:42,520
+maximize the throughput, and
+
+151
+00:06:42,520 --> 00:06:45,320
+to evaluate it, we use this YCSB, which
+
+152
+00:06:45,320 --> 00:06:47,320
+is a well-known benchmark for such
+
+153
+00:06:47,320 --> 00:06:48,800
+workloads.
+
+154
+00:06:48,800 --> 00:06:50,760
+So, now in the process of using this
+
+155
+00:06:50,760 --> 00:06:55,040
+evolutionary AI agents to uh synthesize
+
+156
+00:06:55,040 --> 00:06:58,280
+a solution, we got one solution at some
+
+157
+00:06:58,280 --> 00:07:00,320
+point, which was six times faster than
+
+158
+00:07:00,320 --> 00:07:02,200
+all the previous solutions, a huge
+
+159
+00:07:02,200 --> 00:07:05,400
+improvement. So, why was that? Right? Of
+
+160
+00:07:05,400 --> 00:07:07,640
+course, you are curious to understand
+
+161
+00:07:07,640 --> 00:07:10,720
+what led to such a big improvement.
+
+162
+00:07:10,720 --> 00:07:15,280
+Well, it turns out that these benchmarks
+
+163
+00:07:15,280 --> 00:07:18,360
+generated values in a predictable way.
+
+164
+00:07:18,360 --> 00:07:20,280
+So, when you generate the value in the
+
+165
+00:07:20,280 --> 00:07:22,240
+benchmark, you know, you need to to say
+
+166
+00:07:22,240 --> 00:07:23,680
+what the value it is. And in this
+
+167
+00:07:23,680 --> 00:07:26,040
+particular case, it generated the value
+
+168
+00:07:26,040 --> 00:07:29,000
+by hashing from the key associated with
+
+169
+00:07:29,000 --> 00:07:31,200
+that value and a seed.
+
+170
+00:07:31,200 --> 00:07:34,680
+Now, the agent found this out. So, and
+
+171
+00:07:34,680 --> 00:07:37,400
+instead of storing the values, it
+
+172
+00:07:37,400 --> 00:07:40,720
+basically computed the values using this
+
+173
+00:07:40,720 --> 00:07:42,840
+predictive
+
+174
+00:07:42,840 --> 00:07:44,760
+function on the fly.
+
+175
+00:07:44,760 --> 00:07:46,880
+Which means that because you don't need
+
+176
+00:07:46,880 --> 00:07:49,440
+to store up the values, you only store
+
+177
+00:07:49,440 --> 00:07:51,760
+need to store up only the keys, you can
+
+178
+00:07:51,760 --> 00:07:54,280
+store a lot of more items in memory, so
+
+179
+00:07:54,280 --> 00:07:56,520
+the retrieve is going to be much faster,
+
+180
+00:07:56,520 --> 00:07:59,480
+hence the improvement we see.
+
+181
+00:07:59,480 --> 00:08:02,920
+Now, everyone knows this is kind of, you
+
+182
+00:08:02,920 --> 00:08:04,640
+know, reward hacking.
+
+183
+00:08:04,640 --> 00:08:06,280
+So, if you look about this reward
+
+184
+00:08:06,280 --> 00:08:07,440
+hacking,
+
+185
+00:08:07,440 --> 00:08:09,560
+you see it generate is actually is due
+
+186
+00:08:09,560 --> 00:08:12,240
+to two gaps, and this is the main topics
+
+187
+00:08:12,240 --> 00:08:15,640
+of my talks. One go gap, we call it
+
+188
+00:08:15,640 --> 00:08:17,560
+requirement gap.
+
+189
+00:08:17,560 --> 00:08:20,840
+So, you see in this case, the agent in
+
+190
+00:08:20,840 --> 00:08:22,800
+the specification were required to
+
+191
+00:08:22,800 --> 00:08:26,520
+return a value which was put associated
+
+192
+00:08:26,520 --> 00:08:29,480
+with a particular key. However, the user
+
+193
+00:08:29,480 --> 00:08:31,440
+intends the stakeholders, we are going
+
+194
+00:08:31,440 --> 00:08:34,599
+to call intent, was to store that value.
+
+195
+00:08:34,599 --> 00:08:37,440
+Right? Not only to return the value. So,
+
+196
+00:08:37,440 --> 00:08:40,120
+here is a gap. And then there is a model
+
+197
+00:08:40,120 --> 00:08:41,840
+gap in this particular based on the
+
+198
+00:08:41,840 --> 00:08:43,840
+workload
+
+199
+00:08:43,840 --> 00:08:46,120
+in the development versus deployment
+
+200
+00:08:46,120 --> 00:08:48,200
+environment. In the benchmarking, the
+
+201
+00:08:48,200 --> 00:08:49,920
+development environment contains
+
+202
+00:08:49,920 --> 00:08:53,120
+predictable values. However, in the real
+
+203
+00:08:53,120 --> 00:08:54,960
+world the deployment,
+
+204
+00:08:54,960 --> 00:08:57,360
+you have arbitrary values. So, here is
+
+205
+00:08:57,360 --> 00:08:58,880
+another gap.
+
+206
+00:08:58,880 --> 00:09:01,000
+So, now how is the solution typically
+
+207
+00:09:01,000 --> 00:09:02,320
+working
+
+208
+00:09:02,320 --> 00:09:04,280
+um in this case? So, let just take a
+
+209
+00:09:04,280 --> 00:09:06,880
+step back here. So, you have a bunch of
+
+210
+00:09:06,880 --> 00:09:09,320
+requirements, which basically describe
+
+211
+00:09:09,320 --> 00:09:10,640
+the system needs to be built,
+
+212
+00:09:10,640 --> 00:09:13,320
+performance goals, and so forth. And you
+
+213
+00:09:13,320 --> 00:09:15,480
+have a model,
+
+214
+00:09:15,480 --> 00:09:16,960
+which tries to abstract away the
+
+215
+00:09:16,960 --> 00:09:19,360
+deployment environment, and this is is
+
+216
+00:09:19,360 --> 00:09:21,839
+about where in the environment you are
+
+217
+00:09:21,839 --> 00:09:24,520
+going to be target the deployment, the
+
+218
+00:09:24,520 --> 00:09:25,839
+workload which you think is
+
+219
+00:09:25,839 --> 00:09:28,000
+representative of the real workload,
+
+220
+00:09:28,000 --> 00:09:29,560
+kind of the failures and things like
+
+221
+00:09:29,560 --> 00:09:32,920
+that. And now, the developer or an AI
+
+222
+00:09:32,920 --> 00:09:35,839
+agents take these requirements and the a
+
+223
+00:09:35,839 --> 00:09:38,080
+and generates a program, and then this
+
+224
+00:09:38,080 --> 00:09:40,520
+program is evaluated, right? And
+
+225
+00:09:40,520 --> 00:09:42,600
+evaluated you can have unit test,
+
+226
+00:09:42,600 --> 00:09:44,600
+end-to-end test, integration test, or
+
+227
+00:09:44,600 --> 00:09:46,160
+you can have contracts or formal
+
+228
+00:09:46,160 --> 00:09:47,440
+methods.
+
+229
+00:09:47,440 --> 00:09:50,160
+Now, if it passes this evaluation, or if
+
+230
+00:09:50,160 --> 00:09:52,640
+it is a evaluation, sorry, doesn't pass,
+
+231
+00:09:52,640 --> 00:09:54,720
+then you provide the feedback to the
+
+232
+00:09:54,720 --> 00:09:57,560
+developer and to the AI agents, and then
+
+233
+00:09:57,560 --> 00:09:59,880
+you are going to continue in a loop
+
+234
+00:09:59,880 --> 00:10:02,880
+until the program passes the evaluation,
+
+235
+00:10:02,880 --> 00:10:05,600
+and then you are going to deploy it.
+
+236
+00:10:05,600 --> 00:10:07,280
+The problem is again that the
+
+237
+00:10:07,280 --> 00:10:09,280
+requirements and the models are an
+
+238
+00:10:09,280 --> 00:10:11,320
+abstractions.
+
+239
+00:10:11,320 --> 00:10:14,080
+On one hand of the user intent, what the
+
+240
+00:10:14,080 --> 00:10:17,280
+user wanted the system to do, and the
+
+241
+00:10:17,280 --> 00:10:19,440
+real world where the system is going to
+
+242
+00:10:19,440 --> 00:10:22,000
+be deployed. And these are the delta
+
+243
+00:10:22,000 --> 00:10:24,520
+between those are the requirement gaps
+
+244
+00:10:24,520 --> 00:10:27,160
+you are talking about.
+
+245
+00:10:27,160 --> 00:10:29,160
+So, more being a little bit more
+
+246
+00:10:29,160 --> 00:10:32,040
+specific, the requirement gap is there
+
+247
+00:10:32,040 --> 00:10:34,960
+because the intent of the users is
+
+248
+00:10:34,960 --> 00:10:37,320
+broader than the requirement. And here
+
+249
+00:10:37,320 --> 00:10:39,800
+are some examples. There are omissions,
+
+250
+00:10:39,800 --> 00:10:42,120
+things that the system should do, but is
+
+251
+00:10:42,120 --> 00:10:44,160
+not specified, like store arbitrary
+
+252
+00:10:44,160 --> 00:10:46,480
+client values. There are exclusions,
+
+253
+00:10:46,480 --> 00:10:49,240
+like system things system should not do
+
+254
+00:10:49,240 --> 00:10:51,440
+and are not specified, like never expose
+
+255
+00:10:51,440 --> 00:10:53,640
+customer data. Trade-offs, like for
+
+256
+00:10:53,640 --> 00:10:56,280
+instance, a search has a 200-millisecond
+
+257
+00:10:56,280 --> 00:11:00,000
+SLA. If this SLA is exceed if this
+
+258
+00:11:00,000 --> 00:11:01,920
+deadline is exceeded, should you wait?
+
+259
+00:11:01,920 --> 00:11:03,160
+Should Should it Should Should you
+
+260
+00:11:03,160 --> 00:11:04,920
+return partial results or you should it
+
+261
+00:11:04,920 --> 00:11:07,240
+run a failure? And there are conflicts
+
+262
+00:11:07,240 --> 00:11:08,880
+which are not specified how to be
+
+263
+00:11:08,880 --> 00:11:10,680
+solved, like for instance, you want
+
+264
+00:11:10,680 --> 00:11:12,520
+personalization, but this needs chat
+
+265
+00:11:12,520 --> 00:11:15,720
+history, but privacy rules prohibit
+
+266
+00:11:15,720 --> 00:11:17,560
+retaining the chat history. How you are
+
+267
+00:11:17,560 --> 00:11:19,680
+going to resolve this trade-off it has
+
+268
+00:11:19,680 --> 00:11:22,600
+to be specified. Now, the model gap is
+
+269
+00:11:22,600 --> 00:11:24,200
+is the same
+
+270
+00:11:24,200 --> 00:11:25,920
+you have for the same reason because the
+
+271
+00:11:25,920 --> 00:11:28,680
+real real world is broader than the
+
+272
+00:11:28,680 --> 00:11:30,480
+model. So, the model gap is there. So,
+
+273
+00:11:30,480 --> 00:11:31,920
+other examples are the workload
+
+274
+00:11:31,920 --> 00:11:33,160
+predictable,
+
+275
+00:11:33,160 --> 00:11:35,400
+for instance, the workloads
+
+276
+00:11:35,400 --> 00:11:37,600
+have predictable benchmarks during the
+
+277
+00:11:37,600 --> 00:11:40,280
+development versus arbitrary development
+
+278
+00:11:40,280 --> 00:11:42,440
+arbitrary values during the deployment.
+
+279
+00:11:42,440 --> 00:11:45,000
+You have failures like fail stop test in
+
+280
+00:11:45,000 --> 00:11:47,560
+during the testing and Byzantine false
+
+281
+00:11:47,560 --> 00:11:49,120
+during the deployment. You have
+
+282
+00:11:49,120 --> 00:11:52,160
+dependencies like set table marks versus
+
+283
+00:11:52,160 --> 00:11:55,920
+changing the APIs in the physical
+
+284
+00:11:55,920 --> 00:11:58,160
+in in the deployment case. And you or
+
+285
+00:11:58,160 --> 00:12:00,160
+you can have adversary and drift and new
+
+286
+00:12:00,160 --> 00:12:02,720
+attacks or workloads
+
+287
+00:12:02,720 --> 00:12:05,440
+which happens after release.
+
+288
+00:12:05,440 --> 00:12:08,040
+So, these two gaps are responsible for
+
+289
+00:12:08,040 --> 00:12:09,720
+the reward hacking and the reward
+
+290
+00:12:09,720 --> 00:12:12,640
+hacking is arguably responsible for many
+
+291
+00:12:12,640 --> 00:12:14,800
+of the things you have seen recently in
+
+292
+00:12:14,800 --> 00:12:17,600
+the news like this agents escaping their
+
+293
+00:12:17,600 --> 00:12:19,840
+environments and going route.
+
+294
+00:12:19,840 --> 00:12:22,920
+Um it's also they are you can trace back
+
+295
+00:12:22,920 --> 00:12:26,960
+them to alignments and or misalignments
+
+296
+00:12:26,960 --> 00:12:30,800
+and hallucinations.
+
+297
+00:12:30,800 --> 00:12:33,440
+And a key challenge here is about under
+
+298
+00:12:33,440 --> 00:12:34,920
+representation.
+
+299
+00:12:34,920 --> 00:12:37,040
+Um so
+
+300
+00:12:37,040 --> 00:12:38,640
+and um
+
+301
+00:12:38,640 --> 00:12:40,760
+you know, because you can only judge
+
+302
+00:12:40,760 --> 00:12:44,280
+from available evidence and the evidence
+
+303
+00:12:44,280 --> 00:12:47,200
+is often incomplete. New evidence might
+
+304
+00:12:47,200 --> 00:12:49,520
+invalidate acceptance of a program P
+
+305
+00:12:49,520 --> 00:12:51,480
+during deployment. Examples are
+
+306
+00:12:51,480 --> 00:12:53,760
+implementation P developed
+
+307
+00:12:53,760 --> 00:12:58,240
+I I is an implementation developed in um
+
+308
+00:12:58,240 --> 00:13:00,600
+and you know, under the model
+
+309
+00:13:00,600 --> 00:13:02,960
+M which assume fail stop failures, then
+
+310
+00:13:02,960 --> 00:13:05,440
+you deploy this in practice and as long
+
+311
+00:13:05,440 --> 00:13:07,560
+as you have only fail stop failures in
+
+312
+00:13:07,560 --> 00:13:09,040
+the deployment environment, you are
+
+313
+00:13:09,040 --> 00:13:11,200
+good. The stakeholder accept the
+
+314
+00:13:11,200 --> 00:13:12,880
+implementation, but once you get a
+
+315
+00:13:12,880 --> 00:13:14,839
+failure like a Byzantine failure like a
+
+316
+00:13:14,839 --> 00:13:16,920
+corrupted memory, that's no longer
+
+317
+00:13:16,920 --> 00:13:18,960
+acceptable.
+
+318
+00:13:18,960 --> 00:13:21,560
+Now, why is closing these requirements
+
+319
+00:13:21,560 --> 00:13:23,560
+so you know,
+
+320
+00:13:23,560 --> 00:13:25,520
+gaps are hard.
+
+321
+00:13:25,520 --> 00:13:27,880
+So, first of all, intent might be
+
+322
+00:13:27,880 --> 00:13:29,000
+tacit,
+
+323
+00:13:29,000 --> 00:13:31,840
+contested, or changing. Fundamentally,
+
+324
+00:13:31,840 --> 00:13:34,120
+you don't know what you don't know,
+
+325
+00:13:34,120 --> 00:13:35,880
+right? You cannot think about all the
+
+326
+00:13:35,880 --> 00:13:38,280
+corner or future cases until you see
+
+327
+00:13:38,280 --> 00:13:41,160
+them, right? And this has been noticed
+
+328
+00:13:41,160 --> 00:13:44,280
+for the past decades in many
+
+329
+00:13:44,280 --> 00:13:47,680
+domains, software engineering, AI,
+
+330
+00:13:47,680 --> 00:13:50,480
+economics, with contracts, politics, and
+
+331
+00:13:50,480 --> 00:13:51,800
+so forth.
+
+332
+00:13:51,800 --> 00:13:53,840
+Um and you can also think about this
+
+333
+00:13:53,840 --> 00:13:57,000
+like from a pure solution perspective.
+
+334
+00:13:57,000 --> 00:13:58,480
+If you think about how you can close
+
+335
+00:13:58,480 --> 00:14:00,360
+them. Well, one way is to ask people
+
+336
+00:14:00,360 --> 00:14:02,880
+whenever there is many material change
+
+337
+00:14:02,880 --> 00:14:05,120
+on the deployment, you can ask people is
+
+338
+00:14:05,120 --> 00:14:07,840
+this good or not, or you can
+
+339
+00:14:07,840 --> 00:14:09,480
+create an oracle, a model, or a
+
+340
+00:14:09,480 --> 00:14:11,600
+simulator that predicts every material
+
+341
+00:14:11,600 --> 00:14:13,280
+judgment of the status of the
+
+342
+00:14:13,280 --> 00:14:14,840
+stakeholder.
+
+343
+00:14:14,840 --> 00:14:17,880
+Um the same story is a model. The model,
+
+344
+00:14:17,880 --> 00:14:19,840
+if you really think about you want a
+
+345
+00:14:19,840 --> 00:14:22,520
+good model, you need to prove that every
+
+346
+00:14:22,520 --> 00:14:24,480
+omitted aspect
+
+347
+00:14:24,480 --> 00:14:28,000
+wins from that real world in the model,
+
+348
+00:14:28,000 --> 00:14:30,240
+what what the model is missing, is
+
+349
+00:14:30,240 --> 00:14:31,960
+irrelevant for
+
+350
+00:14:31,960 --> 00:14:34,520
+um accept accept the validity of that
+
+351
+00:14:34,520 --> 00:14:37,560
+implementation. And you keep the claim
+
+352
+00:14:37,560 --> 00:14:39,800
+and the other one, this has to the
+
+353
+00:14:39,800 --> 00:14:43,160
+claims have to be valid
+
+354
+00:14:43,160 --> 00:14:44,400
+as the
+
+355
+00:14:44,400 --> 00:14:47,440
+as the world changes.
+
+356
+00:14:47,440 --> 00:14:49,920
+Okay? And again, has been a lot of work
+
+357
+00:14:49,920 --> 00:14:52,440
+here over the past decade pointing out
+
+358
+00:14:52,440 --> 00:14:54,120
+with this point and this kind of
+
+359
+00:14:54,120 --> 00:14:57,040
+fundamental gap between the model
+
+360
+00:14:57,040 --> 00:14:59,640
+using development and the real world.
+
+361
+00:14:59,640 --> 00:15:03,040
+Okay? So, again, here to illustrate why
+
+362
+00:15:03,040 --> 00:15:05,320
+it's hard, you can ask people, for
+
+363
+00:15:05,320 --> 00:15:07,760
+instance, to every time only the
+
+364
+00:15:07,760 --> 00:15:10,200
+changing environment to say, "Okay, is
+
+365
+00:15:10,200 --> 00:15:13,800
+this change materially important for the
+
+366
+00:15:13,800 --> 00:15:16,240
+model you are going to have?" Or you can
+
+367
+00:15:16,240 --> 00:15:17,800
+predict, you can simulate the real
+
+368
+00:15:17,800 --> 00:15:20,760
+world, right? But obviously, all these
+
+369
+00:15:20,760 --> 00:15:23,520
+direct giving the user direct access and
+
+370
+00:15:23,520 --> 00:15:25,400
+to or complete having complete
+
+371
+00:15:25,400 --> 00:15:27,760
+simulations are not feasible. Actually,
+
+372
+00:15:27,760 --> 00:15:29,800
+even if you have the direct access is
+
+373
+00:15:29,800 --> 00:15:32,560
+it's on one hand the cost and latency
+
+374
+00:15:32,560 --> 00:15:34,720
+can be prohibitive, but on the other
+
+375
+00:15:34,720 --> 00:15:38,400
+hand is like you cannot only can reason
+
+376
+00:15:38,400 --> 00:15:40,280
+for the existing evidence. You cannot
+
+377
+00:15:40,280 --> 00:15:42,120
+reason for things you have never seen
+
+378
+00:15:42,120 --> 00:15:44,880
+it. You haven't thought about. And
+
+379
+00:15:44,880 --> 00:15:47,640
+obviously for the model for the for the
+
+380
+00:15:47,640 --> 00:15:50,120
+deployment for the real world, you can
+
+381
+00:15:50,120 --> 00:15:51,880
+have a complete simulation. You can
+
+382
+00:15:51,880 --> 00:15:53,960
+think to have a simulation, but if you
+
+383
+00:15:53,960 --> 00:15:55,800
+want to have the simulation, that's
+
+384
+00:15:55,800 --> 00:15:57,400
+another model. So, you are back in
+
+385
+00:15:57,400 --> 00:15:58,680
+square one because you need to
+
+386
+00:15:58,680 --> 00:16:01,080
+demonstrate that the simulation there is
+
+387
+00:16:01,080 --> 00:16:05,360
+no gap between that simulation and
+
+388
+00:16:05,360 --> 00:16:07,280
+and the real world.
+
+389
+00:16:07,280 --> 00:16:10,040
+Now, the other thing I want to make and
+
+390
+00:16:10,040 --> 00:16:12,440
+is that Now, why we are talking about
+
+391
+00:16:12,440 --> 00:16:15,360
+this? Because we are we we have been
+
+392
+00:16:15,360 --> 00:16:17,560
+you know, like I like I said, these gaps
+
+393
+00:16:17,560 --> 00:16:20,400
+are there and have been there for
+
+394
+00:16:20,400 --> 00:16:22,560
+decades. People identify them, recognize
+
+395
+00:16:22,560 --> 00:16:24,480
+them. Well, one reason we are
+
+396
+00:16:24,480 --> 00:16:27,120
+emphasizing this because agents amplify
+
+397
+00:16:27,120 --> 00:16:29,200
+the gaps. And this are for several
+
+398
+00:16:29,200 --> 00:16:31,080
+reasons. It's context asymmetry. A
+
+399
+00:16:31,080 --> 00:16:33,480
+developer typically has more local and
+
+400
+00:16:33,480 --> 00:16:35,960
+system and organizational context about
+
+401
+00:16:35,960 --> 00:16:38,880
+a task than the agent the agent which
+
+402
+00:16:38,880 --> 00:16:41,200
+brings broader context but has less
+
+403
+00:16:41,200 --> 00:16:42,560
+specific
+
+404
+00:16:42,560 --> 00:16:44,720
+context about that task.
+
+405
+00:16:44,720 --> 00:16:46,800
+The other one which is very important,
+
+406
+00:16:46,800 --> 00:16:50,640
+AI there is much faster under fixed
+
+407
+00:16:50,640 --> 00:16:52,680
+requirements model and a fixed
+
+408
+00:16:52,680 --> 00:16:55,320
+evaluator, which means they discover and
+
+409
+00:16:55,320 --> 00:16:58,440
+exploit exploitation
+
+410
+00:16:58,440 --> 00:17:01,320
+much faster. Actually,
+
+411
+00:17:01,320 --> 00:17:03,560
+you know, the developers typically give
+
+412
+00:17:03,560 --> 00:17:04,959
+up or they are not
+
+413
+00:17:04,959 --> 00:17:06,360
+you know, to find any of these
+
+414
+00:17:06,360 --> 00:17:08,480
+exploitation even if they want, but the
+
+415
+00:17:08,480 --> 00:17:10,439
+model it because AI agent is much
+
+416
+00:17:10,439 --> 00:17:12,640
+faster, they are going to find it what
+
+417
+00:17:12,640 --> 00:17:14,480
+humans will never find.
+
+418
+00:17:14,480 --> 00:17:16,480
+And is deployment scale especially if
+
+419
+00:17:16,480 --> 00:17:19,160
+you are going now to have an automatic
+
+420
+00:17:19,160 --> 00:17:22,000
+deployment of this of this
+
+421
+00:17:22,000 --> 00:17:22,760
+uh
+
+422
+00:17:22,760 --> 00:17:25,520
+programs in production.
+
+423
+00:17:25,520 --> 00:17:28,360
+Um let me skip. Now, I want to say about
+
+424
+00:17:28,360 --> 00:17:30,880
+there is a third gap and
+
+425
+00:17:30,880 --> 00:17:33,760
+um I'll um and which I want to mention
+
+426
+00:17:33,760 --> 00:17:36,160
+is is and this is between the evaluator
+
+427
+00:17:36,160 --> 00:17:38,400
+and the requirement on one side and
+
+428
+00:17:38,400 --> 00:17:40,640
+requirement and model on the other side.
+
+429
+00:17:40,640 --> 00:17:43,720
+So, the question this gaps, uh you know,
+
+430
+00:17:43,720 --> 00:17:45,880
+it's uh illustrate it by
+
+431
+00:17:45,880 --> 00:17:48,040
+illustrate this gap is that you have an
+
+432
+00:17:48,040 --> 00:17:50,240
+evaluator. So, but passing this
+
+433
+00:17:50,240 --> 00:17:51,640
+evaluator
+
+434
+00:17:51,640 --> 00:17:54,240
+does it guarantee that the
+
+435
+00:17:54,240 --> 00:17:57,680
+implementation is going to
+
+436
+00:17:57,680 --> 00:17:58,720
+um
+
+437
+00:17:58,720 --> 00:18:00,800
+satisfy all
+
+438
+00:18:00,800 --> 00:18:04,120
+requirements under model, right, in all
+
+439
+00:18:04,120 --> 00:18:06,480
+possible executions? And in general, the
+
+440
+00:18:06,480 --> 00:18:08,120
+answer is no because, for instance,
+
+441
+00:18:08,120 --> 00:18:10,160
+you're you use kind of unit test and so
+
+442
+00:18:10,160 --> 00:18:12,680
+forth, so it's only a subset of test.
+
+443
+00:18:12,680 --> 00:18:15,120
+You can points you can show that for
+
+444
+00:18:15,120 --> 00:18:17,080
+these points, for these data points, for
+
+445
+00:18:17,080 --> 00:18:18,560
+these values, you satisfy the
+
+446
+00:18:18,560 --> 00:18:22,440
+requirements under RAM. But,
+
+447
+00:18:22,440 --> 00:18:24,680
+actually, there are ways you can do it
+
+448
+00:18:24,680 --> 00:18:26,640
+and you close the gap and this is formal
+
+449
+00:18:26,640 --> 00:18:27,920
+methods.
+
+450
+00:18:27,920 --> 00:18:28,600
+Um
+
+451
+00:18:28,600 --> 00:18:30,560
+and that's why we are not focusing as
+
+452
+00:18:30,560 --> 00:18:32,760
+much on this gap right now. However, the
+
+453
+00:18:32,760 --> 00:18:34,520
+reason I'm mentioning this gap is
+
+454
+00:18:34,520 --> 00:18:38,280
+because the using the formal specs
+
+455
+00:18:38,280 --> 00:18:40,680
+actually can widen requirements and
+
+456
+00:18:40,680 --> 00:18:43,880
+model gaps because of formal specs are
+
+457
+00:18:43,880 --> 00:18:45,480
+going
+
+458
+00:18:45,480 --> 00:18:48,480
+to be less expressive than kind of
+
+459
+00:18:48,480 --> 00:18:50,520
+natural language written requirements
+
+460
+00:18:50,520 --> 00:18:52,600
+and the models.
+
+461
+00:18:52,600 --> 00:18:53,640
+Um
+
+462
+00:18:53,640 --> 00:18:56,120
+So, finally, you know, like like I will
+
+463
+00:18:56,120 --> 00:18:58,640
+say, you know, does narrowing these gaps
+
+464
+00:18:58,640 --> 00:18:59,880
+help?
+
+465
+00:18:59,880 --> 00:19:02,240
+Uh yes, most actually most successful
+
+466
+00:19:02,240 --> 00:19:04,360
+report is so far are in domains with
+
+467
+00:19:04,360 --> 00:19:07,640
+narrower gaps. And there are um a
+
+468
+00:19:07,640 --> 00:19:10,560
+significantly work ongoing work to
+
+469
+00:19:10,560 --> 00:19:12,560
+narrow gaps in other domains. And here
+
+470
+00:19:12,560 --> 00:19:14,640
+are some examples. Formal mathematics.
+
+471
+00:19:14,640 --> 00:19:17,040
+In formal mathematics, model gap is
+
+472
+00:19:17,040 --> 00:19:18,440
+closed because
+
+473
+00:19:18,440 --> 00:19:20,360
+uh there you have formal semantics, you
+
+474
+00:19:20,360 --> 00:19:23,320
+have axiomatic systems which fully
+
+475
+00:19:23,320 --> 00:19:27,240
+defined your the world in which
+
+476
+00:19:27,240 --> 00:19:29,320
+the properties have to be spec- you
+
+477
+00:19:29,320 --> 00:19:31,280
+know, are going to to needs to be true.
+
+478
+00:19:31,280 --> 00:19:33,040
+The theorem has to be true. The
+
+479
+00:19:33,040 --> 00:19:34,760
+requirement gap still remains because
+
+480
+00:19:34,760 --> 00:19:36,880
+informal to formal translation still
+
+481
+00:19:36,880 --> 00:19:39,240
+remains. Capturing what is your intent
+
+482
+00:19:39,240 --> 00:19:41,360
+in a in a uh you know,
+
+483
+00:19:41,360 --> 00:19:44,040
+in a theorem and so forth. Uh hardware
+
+484
+00:19:44,040 --> 00:19:46,320
+systems. You know, for hardware system,
+
+485
+00:19:46,320 --> 00:19:48,000
+you have instructions at architecture,
+
+486
+00:19:48,000 --> 00:19:50,240
+you have RTL which bound the relevant
+
+487
+00:19:50,240 --> 00:19:52,800
+behavior. Of course, this doesn't close
+
+488
+00:19:52,800 --> 00:19:54,600
+a gap to physical effects which are
+
+489
+00:19:54,600 --> 00:19:56,760
+remaining outside the model.
+
+490
+00:19:56,760 --> 00:19:58,680
+Uh strong verification also might close
+
+491
+00:19:58,680 --> 00:20:01,400
+the evaluation gap. System optimization.
+
+492
+00:20:01,400 --> 00:20:02,920
+We are talking about system optimization
+
+493
+00:20:02,920 --> 00:20:05,480
+versus system synthesis. With system op-
+
+494
+00:20:05,480 --> 00:20:07,240
+optimization, you you are going to be
+
+495
+00:20:07,240 --> 00:20:10,400
+anchored of you know, code. And in this
+
+496
+00:20:10,400 --> 00:20:12,640
+code, it's going to capture the
+
+497
+00:20:12,640 --> 00:20:15,360
+interfaces, HKI, this functionality. So,
+
+498
+00:20:15,360 --> 00:20:17,560
+it's kind of narrowing model and
+
+499
+00:20:17,560 --> 00:20:19,480
+requirement gaps as compared with the
+
+500
+00:20:19,480 --> 00:20:21,480
+system synthesis, it really lacks this
+
+501
+00:20:21,480 --> 00:20:24,160
+anchor and must infer more from
+
+502
+00:20:24,160 --> 00:20:27,040
+incomplete requirements and models.
+
+503
+00:20:27,040 --> 00:20:29,120
+And finally, world models. Right? What
+
+504
+00:20:29,120 --> 00:20:31,400
+world models try to achieve is to narrow
+
+505
+00:20:31,400 --> 00:20:33,560
+the model gap by learning
+
+506
+00:20:33,560 --> 00:20:35,520
+the model's part of the model by
+
+507
+00:20:35,520 --> 00:20:39,000
+interacting with the deployment work.
+
+508
+00:20:39,000 --> 00:20:40,960
+Okay. So,
+
+509
+00:20:40,960 --> 00:20:43,280
+2 more minutes and I'll be done. Um
+
+510
+00:20:43,280 --> 00:20:45,760
+so, you know, so how can you close this
+
+511
+00:20:45,760 --> 00:20:47,680
+gap in general? Well, to close this gap
+
+512
+00:20:47,680 --> 00:20:49,640
+in general, you need another loop which
+
+513
+00:20:49,640 --> 00:20:51,840
+actually includes the intent, the user
+
+514
+00:20:51,840 --> 00:20:54,560
+intent, and the real world. And this is
+
+515
+00:20:54,560 --> 00:20:56,520
+the first step here is to have obs- to
+
+516
+00:20:56,520 --> 00:21:01,680
+observe and try to to de- to detect um
+
+517
+00:21:01,680 --> 00:21:04,360
+what are kind of the issues, unexpected
+
+518
+00:21:04,360 --> 00:21:06,640
+issues, misbehaviors. Then you need to
+
+519
+00:21:06,640 --> 00:21:09,800
+diagnose them, then you need to revise,
+
+520
+00:21:09,800 --> 00:21:11,960
+and you are going to revise the
+
+521
+00:21:11,960 --> 00:21:13,480
+requirements of fully improve some
+
+522
+00:21:13,480 --> 00:21:15,080
+requirements, improve the models,
+
+523
+00:21:15,080 --> 00:21:17,280
+improve the evaluators, which will
+
+524
+00:21:17,280 --> 00:21:20,400
+reduce the gaps. And you do this until
+
+525
+00:21:20,400 --> 00:21:24,240
+you are going to achieve you are assured
+
+526
+00:21:24,240 --> 00:21:28,320
+your level of assurance and risks.
+
+527
+00:21:28,320 --> 00:21:30,920
+And let me give back because I'm so you
+
+528
+00:21:30,920 --> 00:21:31,880
+know,
+
+529
+00:21:31,880 --> 00:21:33,920
+um
+
+530
+00:21:34,200 --> 00:21:36,960
+skip a few slides. Um so we've done
+
+531
+00:21:36,960 --> 00:21:39,680
+quite a bit of work in this area, and
+
+532
+00:21:39,680 --> 00:21:41,320
+but of course much more remains to be
+
+533
+00:21:41,320 --> 00:21:43,760
+done. And here are some pieces of work
+
+534
+00:21:43,760 --> 00:21:46,040
+we've done for instance for
+
+535
+00:21:46,040 --> 00:21:47,520
+the loop for development loop
+
+536
+00:21:47,520 --> 00:21:50,600
+evolutionary loop for AI agents uh for
+
+537
+00:21:50,600 --> 00:21:54,640
+reducing uh the evaluation gap um
+
+538
+00:21:54,640 --> 00:21:56,360
+for diagnosing
+
+539
+00:21:56,360 --> 00:21:59,760
+you know, tracing uh the intent of and
+
+540
+00:21:59,760 --> 00:22:02,280
+from the traces which represents a user
+
+541
+00:22:02,280 --> 00:22:04,000
+interaction with the systems or the
+
+542
+00:22:04,000 --> 00:22:06,160
+agent uh interaction with the real
+
+543
+00:22:06,160 --> 00:22:07,240
+world.
+
+544
+00:22:07,240 --> 00:22:11,400
+And uh obviously uh directly trying to
+
+545
+00:22:11,400 --> 00:22:15,440
+um um to reduce the um
+
+546
+00:22:15,440 --> 00:22:17,840
+to narrow the requirements and the model
+
+547
+00:22:17,840 --> 00:22:21,400
+gaps. So what are the takeaways? So here
+
+548
+00:22:21,400 --> 00:22:23,480
+the takeaways
+
+549
+00:22:23,480 --> 00:22:25,760
+from this presentation.
+
+550
+00:22:25,760 --> 00:22:28,120
+First, the model and requirement gaps
+
+551
+00:22:28,120 --> 00:22:31,000
+are fundamental and cannot be certified
+
+552
+00:22:31,000 --> 00:22:33,360
+as closed in an open and changing
+
+553
+00:22:33,360 --> 00:22:35,120
+environment. Again, because you don't
+
+554
+00:22:35,120 --> 00:22:36,640
+know what you don't know.
+
+555
+00:22:36,640 --> 00:22:40,320
+So therefore you can only narrow them.
+
+556
+00:22:40,320 --> 00:22:42,440
+The second one is like the humans will
+
+557
+00:22:42,440 --> 00:22:45,040
+remain in the assurance loop because
+
+558
+00:22:45,040 --> 00:22:46,960
+they are needed at least to narrow the
+
+559
+00:22:46,960 --> 00:22:49,120
+requirement gap because they own the
+
+560
+00:22:49,120 --> 00:22:51,880
+intent. And likely because they are
+
+561
+00:22:51,880 --> 00:22:53,920
+going to be in the in the assurance
+
+562
+00:22:53,920 --> 00:22:55,360
+loop, they are going to be the
+
+563
+00:22:55,360 --> 00:22:58,160
+bottleneck.
+
+564
+00:22:58,160 --> 00:23:00,880
+And the evaluation gap can be closed
+
+565
+00:23:00,880 --> 00:23:03,600
+using formal method, but the cost can be
+
+566
+00:23:03,600 --> 00:23:06,320
+increasing the modern requirement gaps
+
+567
+00:23:06,320 --> 00:23:07,960
+because a lack or the limited
+
+568
+00:23:07,960 --> 00:23:10,040
+expressivity
+
+569
+00:23:10,040 --> 00:23:12,280
+of the specification which are needed by
+
+570
+00:23:12,280 --> 00:23:15,320
+the formal method.
+
+571
+00:23:15,920 --> 00:23:18,840
+Finally, these are not new problems,
+
+572
+00:23:18,840 --> 00:23:21,040
+like I mentioned.
+
+573
+00:23:21,040 --> 00:23:24,360
+However, AI agent exacerbate them
+
+574
+00:23:24,360 --> 00:23:26,600
+because of the context asymmetry, speed,
+
+575
+00:23:26,600 --> 00:23:29,240
+and scale. They are going to find
+
+576
+00:23:29,240 --> 00:23:33,480
+and exploit this kind of gaps
+
+577
+00:23:33,480 --> 00:23:37,160
+much better, much faster than humans.
+
+578
+00:23:37,160 --> 00:23:39,520
+So, therefore, what what do we need to
+
+579
+00:23:39,520 --> 00:23:42,160
+do? We need to use the best practices in
+
+580
+00:23:42,160 --> 00:23:45,080
+software engineering and security and to
+
+581
+00:23:45,080 --> 00:23:47,200
+do to need to be more cautious and
+
+582
+00:23:47,200 --> 00:23:49,520
+meticulous than ever before. And of
+
+583
+00:23:49,520 --> 00:23:51,400
+course, do a lot of more and interesting
+
+584
+00:23:51,400 --> 00:23:56,680
+research to close these gaps. Thank you.
+
+585
+00:24:06,240 --> 00:24:08,760
+>> Thank you so much for starting us off.
+
+586
+00:24:08,760 --> 00:24:12,080
+What a wonderful talk. Uh next we have
+
+587
+00:24:12,080 --> 00:24:14,080
+Nick Harris. He's founder, CEO of
+
+588
+00:24:14,080 --> 00:24:15,840
+Lightmatter, and he'll be talking on
+
+589
+00:24:15,840 --> 00:24:20,160
+photonics is the future of computing.
+
+590
+00:24:29,240 --> 00:24:30,160
+>> All right, looks like we're getting
+
+591
+00:24:30,160 --> 00:24:32,400
+slides up. Uh great to be here at the uh
+
+592
+00:24:32,400 --> 00:24:35,280
+Agentyc AI Summit here at Berkeley. My
+
+593
+00:24:35,280 --> 00:24:36,920
+first visit to Berkeley. I'm I went to
+
+594
+00:24:36,920 --> 00:24:40,080
+MIT. Lots of love for Berkeley, but uh
+
+595
+00:24:40,080 --> 00:24:41,520
+yeah, good to be here. So, today I'm
+
+596
+00:24:41,520 --> 00:24:42,400
+going to be telling you about
+
+597
+00:24:42,400 --> 00:24:43,720
+Lightmatter and and some of the stuff
+
+598
+00:24:43,720 --> 00:24:44,960
+that we're doing.
+
+599
+00:24:44,960 --> 00:24:49,040
+Uh 10 minutes, so let's jump in.
+
+600
+00:24:49,240 --> 00:24:50,800
+If you zoom out on what's happening in
+
+601
+00:24:50,800 --> 00:24:53,160
+AI, and especially with the advent of
+
+602
+00:24:53,160 --> 00:24:54,880
+Agentyc AI workloads, which I remember
+
+603
+00:24:54,880 --> 00:24:56,240
+hearing about starting in, you know,
+
+604
+00:24:56,240 --> 00:24:59,760
+'25, which felt pretty early. Um really
+
+605
+00:24:59,760 --> 00:25:01,840
+what's going on is the world is under
+
+606
+00:25:01,840 --> 00:25:04,400
+undergoing a massive AI build out. We're
+
+607
+00:25:04,400 --> 00:25:07,200
+building data centers in Texas and
+
+608
+00:25:07,200 --> 00:25:09,160
+British Columbia that are using as much
+
+609
+00:25:09,160 --> 00:25:11,920
+power as the biggest cities on Earth. Uh
+
+610
+00:25:11,920 --> 00:25:13,400
+think about New York City, something
+
+611
+00:25:13,400 --> 00:25:15,360
+like 7 gigawatts. That's going to be a
+
+612
+00:25:15,360 --> 00:25:17,320
+pretty average data center in Texas in
+
+613
+00:25:17,320 --> 00:25:18,440
+Abilene.
+
+614
+00:25:18,440 --> 00:25:19,200
+Uh
+
+615
+00:25:19,200 --> 00:25:20,720
+you know, and why is this happening?
+
+616
+00:25:20,720 --> 00:25:22,080
+Like what's the motivation behind
+
+617
+00:25:22,080 --> 00:25:24,320
+building these uh energy consuming
+
+618
+00:25:24,320 --> 00:25:26,680
+objects that have, you know, 100 times
+
+619
+00:25:26,680 --> 00:25:28,840
+the density of a city? Why are we doing
+
+620
+00:25:28,840 --> 00:25:31,280
+this?
+
+621
+00:25:31,360 --> 00:25:34,000
+We can go to the next slide here.
+
+622
+00:25:34,000 --> 00:25:35,920
+My clicker is not clicking.
+
+623
+00:25:35,920 --> 00:25:37,280
+There we go.
+
+624
+00:25:37,280 --> 00:25:39,760
+So, here's why. Uh if you look over the
+
+625
+00:25:39,760 --> 00:25:42,720
+past several years at the run time for
+
+626
+00:25:42,720 --> 00:25:45,400
+AI models, how long can they uh run
+
+627
+00:25:45,400 --> 00:25:48,120
+given a complex task and have a 50%
+
+628
+00:25:48,120 --> 00:25:50,560
+chance of completing that task? That's
+
+629
+00:25:50,560 --> 00:25:52,720
+been growing obviously exponentially.
+
+630
+00:25:52,720 --> 00:25:54,640
+So, now we're at a spot where the latest
+
+631
+00:25:54,640 --> 00:25:57,040
+AI models can run for something like 24
+
+632
+00:25:57,040 --> 00:26:00,000
+hours and have a 50% chance of of
+
+633
+00:26:00,000 --> 00:26:02,360
+getting a problem solved. I don't know
+
+634
+00:26:02,360 --> 00:26:04,560
+anybody who can work for 24 hours
+
+635
+00:26:04,560 --> 00:26:06,920
+non-stop and have a 50% chance at
+
+636
+00:26:06,920 --> 00:26:08,840
+solving a hard technical problem.
+
+637
+00:26:08,840 --> 00:26:10,800
+Certainly I can't do it. And so, we're
+
+638
+00:26:10,800 --> 00:26:13,160
+on this trajectory uh I can't see any
+
+639
+00:26:13,160 --> 00:26:15,280
+saturation in the data, to be clear.
+
+640
+00:26:15,280 --> 00:26:16,920
+We're on this trajectory where AI models
+
+641
+00:26:16,920 --> 00:26:18,360
+are going to be solving harder and
+
+642
+00:26:18,360 --> 00:26:21,400
+harder, longer time horizon problems all
+
+643
+00:26:21,400 --> 00:26:23,520
+in one go. Uh so, it's a pretty
+
+644
+00:26:23,520 --> 00:26:25,480
+incredible capability that we're
+
+645
+00:26:25,480 --> 00:26:28,000
+unlocking. And this is what's underlying
+
+646
+00:26:28,000 --> 00:26:29,680
+the build out, the amount of energy that
+
+647
+00:26:29,680 --> 00:26:31,640
+we're going to spend, all the buildings,
+
+648
+00:26:31,640 --> 00:26:34,560
+the GPUs, the custom AI ASICs that are
+
+649
+00:26:34,560 --> 00:26:36,080
+going to be going into these buildings.
+
+650
+00:26:36,080 --> 00:26:37,600
+This is what underlies it. We're
+
+651
+00:26:37,600 --> 00:26:40,720
+starting to be able to have machines
+
+652
+00:26:40,720 --> 00:26:43,640
+perform calculations and solve problems
+
+653
+00:26:43,640 --> 00:26:45,880
+that are incredibly hard for humans, and
+
+654
+00:26:45,880 --> 00:26:47,880
+we're compressing the amount of time it
+
+655
+00:26:47,880 --> 00:26:52,840
+takes to do very hard and valuable work.
+
+656
+00:26:53,240 --> 00:26:55,520
+So, there's one backdrop here that to
+
+657
+00:26:55,520 --> 00:26:57,160
+keep in mind. Uh I'm in the hardware
+
+658
+00:26:57,160 --> 00:26:58,800
+space. Light matter is building photonic
+
+659
+00:26:58,800 --> 00:27:00,640
+interconnects that link up AI
+
+660
+00:27:00,640 --> 00:27:02,200
+supercomputers.
+
+661
+00:27:02,200 --> 00:27:03,960
+Um and one of the things we're tracking
+
+662
+00:27:03,960 --> 00:27:06,280
+is the amount of power that's being used
+
+663
+00:27:06,280 --> 00:27:08,400
+uh for building these systems. And you
+
+664
+00:27:08,400 --> 00:27:10,600
+can see in the white curve, this is the
+
+665
+00:27:10,600 --> 00:27:13,720
+Frontier AI uh model power consumption
+
+666
+00:27:13,720 --> 00:27:17,080
+curve versus the US energy grid growth
+
+667
+00:27:17,080 --> 00:27:19,400
+rate. You're something like you know um
+
+668
+00:27:19,400 --> 00:27:21,880
+a few percent per year growth in energy
+
+669
+00:27:21,880 --> 00:27:24,080
+coming online in the US. And AI is
+
+670
+00:27:24,080 --> 00:27:26,360
+really going to smash through uh what
+
+671
+00:27:26,360 --> 00:27:27,920
+the US energy grid is going to be able
+
+672
+00:27:27,920 --> 00:27:29,760
+to bring online. There's a lot of work
+
+673
+00:27:29,760 --> 00:27:32,360
+on uh nuclear reactors. They'll have 10
+
+674
+00:27:32,360 --> 00:27:35,120
+100 MW nuclear reactors per gigawatt
+
+675
+00:27:35,120 --> 00:27:37,080
+data center. I just want to think about
+
+676
+00:27:37,080 --> 00:27:39,360
+a gigawatt with you for a second. Um a
+
+677
+00:27:39,360 --> 00:27:41,800
+house is a few kilowatts. A rack is
+
+678
+00:27:41,800 --> 00:27:43,960
+starting to be a megawatt. A thousand
+
+679
+00:27:43,960 --> 00:27:46,120
+racks is a gigawatt. This room could
+
+680
+00:27:46,120 --> 00:27:48,400
+hold a few hundred racks. So, you think
+
+681
+00:27:48,400 --> 00:27:49,960
+about the energy density of what we're
+
+682
+00:27:49,960 --> 00:27:52,120
+talking about. It's pretty incredible.
+
+683
+00:27:52,120 --> 00:27:53,520
+So, how are we going to close this gap?
+
+684
+00:27:53,520 --> 00:27:55,640
+How are we going to let AI continue on
+
+685
+00:27:55,640 --> 00:27:57,400
+this progress curve?
+
+686
+00:27:57,400 --> 00:27:59,360
+Uh I've got an idea and I'll tell you
+
+687
+00:27:59,360 --> 00:28:01,560
+all about it.
+
+688
+00:28:01,560 --> 00:28:03,360
+So, it turns out that interconnect is
+
+689
+00:28:03,360 --> 00:28:05,320
+actually the principal challenge. How
+
+690
+00:28:05,320 --> 00:28:07,880
+you allow GPUs and XPUs to communicate
+
+691
+00:28:07,880 --> 00:28:10,440
+is the principal challenge today in uh
+
+692
+00:28:10,440 --> 00:28:13,240
+enabling this roadmap uh for driving
+
+693
+00:28:13,240 --> 00:28:16,160
+agentic AI workloads and enabling growth
+
+694
+00:28:16,160 --> 00:28:17,920
+in the amount of computation that we can
+
+695
+00:28:17,920 --> 00:28:18,840
+do.
+
+696
+00:28:18,840 --> 00:28:20,320
+And that comes from first principles,
+
+697
+00:28:20,320 --> 00:28:22,480
+but I'm going to jump to the conclusion
+
+698
+00:28:22,480 --> 00:28:25,000
+uh first here given a 10-minute talk.
+
+699
+00:28:25,000 --> 00:28:26,880
+With ultrafast interconnects, at
+
+700
+00:28:26,880 --> 00:28:28,360
+Lightmatter, we use light to connect
+
+701
+00:28:28,360 --> 00:28:31,560
+GPUs and chips. We have single uh single
+
+702
+00:28:31,560 --> 00:28:35,040
+wave guides that transmit 1.6 uh terabit
+
+703
+00:28:35,040 --> 00:28:37,160
+per second per optical fiber. That's
+
+704
+00:28:37,160 --> 00:28:39,840
+1,600 homes worth of bandwidth in a
+
+705
+00:28:39,840 --> 00:28:42,080
+single optical fiber. What we're able to
+
+706
+00:28:42,080 --> 00:28:45,160
+do is improve time to train by 3x.
+
+707
+00:28:45,160 --> 00:28:47,880
+So, the same number of GPUs running the
+
+708
+00:28:47,880 --> 00:28:50,520
+same workload, three times faster time
+
+709
+00:28:50,520 --> 00:28:52,520
+to train. So, your data center finishes
+
+710
+00:28:52,520 --> 00:28:54,280
+that training job for the next fabled
+
+711
+00:28:54,280 --> 00:28:56,480
+model in 1/3 the time, and you can
+
+712
+00:28:56,480 --> 00:28:58,160
+train, you know, maybe the next two
+
+713
+00:28:58,160 --> 00:28:59,880
+versions over that that month that you
+
+714
+00:28:59,880 --> 00:29:02,160
+were planning to do. Uh significant
+
+715
+00:29:02,160 --> 00:29:04,120
+improvements in pre-fill and decode.
+
+716
+00:29:04,120 --> 00:29:06,920
+These are phases of inference, 3x for uh
+
+717
+00:29:06,920 --> 00:29:09,720
+pre-fill, and 11x interactivity, tokens
+
+718
+00:29:09,720 --> 00:29:12,480
+per second per user, for decode.
+
+719
+00:29:12,480 --> 00:29:14,440
+Um so, linking uh computer chips
+
+720
+00:29:14,440 --> 00:29:16,920
+together, these XPUs, these GPUs using
+
+721
+00:29:16,920 --> 00:29:19,000
+light, is going to deliver an enormous
+
+722
+00:29:19,000 --> 00:29:21,080
+per- performance uplift for AI
+
+723
+00:29:21,080 --> 00:29:22,720
+workloads.
+
+724
+00:29:22,720 --> 00:29:25,080
+And why is this happening? What's the
+
+725
+00:29:25,080 --> 00:29:26,440
+What's the fundamental thing that we're
+
+726
+00:29:26,440 --> 00:29:29,080
+driving towards? Uh what is the photonic
+
+727
+00:29:29,080 --> 00:29:30,520
+technology that we build at Lightmatter
+
+728
+00:29:30,520 --> 00:29:33,480
+enable? It enables you to build gigantic
+
+729
+00:29:33,480 --> 00:29:35,600
+computer systems that behave as a single
+
+730
+00:29:35,600 --> 00:29:38,280
+brain. These are strong scaling systems
+
+731
+00:29:38,280 --> 00:29:39,680
+in computer science, if you want to talk
+
+732
+00:29:39,680 --> 00:29:41,440
+about it that way. Strong scaling
+
+733
+00:29:41,440 --> 00:29:44,600
+systems. So, normally, uh you've got two
+
+734
+00:29:44,600 --> 00:29:46,040
+computer chips, and you'd like them to
+
+735
+00:29:46,040 --> 00:29:48,080
+run a workload together, and you'd like
+
+736
+00:29:48,080 --> 00:29:49,920
+to get two units of performance. And if
+
+737
+00:29:49,920 --> 00:29:51,360
+I have a thousand, I'd like a thousand
+
+738
+00:29:51,360 --> 00:29:53,280
+units of performance. The challenge is
+
+739
+00:29:53,280 --> 00:29:54,840
+that most workloads are not
+
+740
+00:29:54,840 --> 00:29:56,560
+embarrassingly parallel. You can't run
+
+741
+00:29:56,560 --> 00:29:58,280
+them in parallel like that. They need
+
+742
+00:29:58,280 --> 00:29:59,800
+synchronization. They need to share
+
+743
+00:29:59,800 --> 00:30:01,800
+parts of the operation. And so, how do
+
+744
+00:30:01,800 --> 00:30:04,400
+you build a computer that acts over a
+
+745
+00:30:04,400 --> 00:30:07,960
+thousand chips like a single chip? Well,
+
+746
+00:30:07,960 --> 00:30:09,640
+at the limit, you want to have zero
+
+747
+00:30:09,640 --> 00:30:12,480
+latency in communicating between GPUs,
+
+748
+00:30:12,480 --> 00:30:14,280
+and you want to have infinite bandwidth.
+
+749
+00:30:14,280 --> 00:30:16,520
+If you had zero latency and infinite
+
+750
+00:30:16,520 --> 00:30:17,800
+bandwidth, well, there's really no
+
+751
+00:30:17,800 --> 00:30:20,240
+difference between these uh GPUs that
+
+752
+00:30:20,240 --> 00:30:22,880
+are many meters away. So, so that's what
+
+753
+00:30:22,880 --> 00:30:24,400
+we do at Lightmatter. We build
+
+754
+00:30:24,400 --> 00:30:26,120
+interconnects that are so blazingly
+
+755
+00:30:26,120 --> 00:30:29,120
+fast. We already have chips that are 114
+
+756
+00:30:29,120 --> 00:30:31,920
+terabit per second. State of the art is
+
+757
+00:30:31,920 --> 00:30:34,400
+about 10 terabit per second. Uh we have
+
+758
+00:30:34,400 --> 00:30:37,160
+fibers that are 1.6 terabit per second.
+
+759
+00:30:37,160 --> 00:30:40,360
+State of the art is 0.2. There's 10x's
+
+760
+00:30:40,360 --> 00:30:42,440
+all over the place. What we're doing is
+
+761
+00:30:42,440 --> 00:30:44,520
+we are approximating this perfect
+
+762
+00:30:44,520 --> 00:30:46,680
+interconnect and this perfectly strong
+
+763
+00:30:46,680 --> 00:30:49,080
+scaling supercomputer. Over the next 2
+
+764
+00:30:49,080 --> 00:30:50,200
+years, you're going to see the first
+
+765
+00:30:50,200 --> 00:30:53,600
+systems with a thousand GPUs or XPUs
+
+766
+00:30:53,600 --> 00:30:56,200
+communicating and acting as a single
+
+767
+00:30:56,200 --> 00:30:59,000
+giant GPU or XPU. And this is going to
+
+768
+00:30:59,000 --> 00:31:00,760
+drive those inference and training
+
+769
+00:31:00,760 --> 00:31:04,160
+results that I talked about earlier.
+
+770
+00:31:04,240 --> 00:31:06,120
+So, this is what the tech looks like.
+
+771
+00:31:06,120 --> 00:31:08,240
+This is one of our chips, M1000. It's
+
+772
+00:31:08,240 --> 00:31:11,040
+the fastest optical communication device
+
+773
+00:31:11,040 --> 00:31:14,560
+in the world, 114 terabit per second.
+
+774
+00:31:14,560 --> 00:31:16,120
+You can see the optical fibers on the
+
+775
+00:31:16,120 --> 00:31:18,320
+top and bottom. Each one of those fibers
+
+776
+00:31:18,320 --> 00:31:21,440
+is moving 1.6 terabit per second of
+
+777
+00:31:21,440 --> 00:31:25,840
+data. Uh 1.6 ter- 1600 houses. This chip
+
+778
+00:31:25,840 --> 00:31:27,640
+moves 114,000
+
+779
+00:31:27,640 --> 00:31:30,200
+houses worth of bandwidth.
+
+780
+00:31:30,200 --> 00:31:32,200
+That's That's how fast it is. The cables
+
+781
+00:31:32,200 --> 00:31:34,360
+that connect North America to Europe are
+
+782
+00:31:34,360 --> 00:31:37,040
+about 200 terabits. That's less than two
+
+783
+00:31:37,040 --> 00:31:39,000
+of these chips. This is what's coming
+
+784
+00:31:39,000 --> 00:31:40,840
+and this is what's going to enable these
+
+785
+00:31:40,840 --> 00:31:42,960
+very large AI supercomputers that act
+
+786
+00:31:42,960 --> 00:31:45,760
+like a single chip.
+
+787
+00:31:45,760 --> 00:31:47,560
+And I'll leave you with this. This is
+
+788
+00:31:47,560 --> 00:31:49,720
+kind of what the systems look like. On
+
+789
+00:31:49,720 --> 00:31:52,040
+the left, we're showing one of our M1000
+
+790
+00:31:52,040 --> 00:31:54,640
+racks. This single rack is several
+
+791
+00:31:54,640 --> 00:31:57,440
+petabit per second of IO. So, the entire
+
+792
+00:31:57,440 --> 00:31:59,760
+world's traffic, internet traffic, is a
+
+793
+00:31:59,760 --> 00:32:01,800
+single rack from Lightmatter
+
+794
+00:32:01,800 --> 00:32:04,360
+M1000 there on the left. And we build
+
+795
+00:32:04,360 --> 00:32:05,880
+out data centers today because one of
+
+796
+00:32:05,880 --> 00:32:07,720
+the big challenges in computer science
+
+797
+00:32:07,720 --> 00:32:09,440
+and scaling these
+
+798
+00:32:09,440 --> 00:32:11,240
+AI workloads and AI platforms is
+
+799
+00:32:11,240 --> 00:32:13,640
+reliability. You have, let's say, a
+
+800
+00:32:13,640 --> 00:32:15,880
+hundred thousand GPUs in a data center
+
+801
+00:32:15,880 --> 00:32:17,720
+and 10 million connections that are
+
+802
+00:32:17,720 --> 00:32:19,640
+linking them together. Those 10 million
+
+803
+00:32:19,640 --> 00:32:21,360
+connections, they better not have any
+
+804
+00:32:21,360 --> 00:32:23,200
+errors. If there are errors, they're
+
+805
+00:32:23,200 --> 00:32:24,920
+going to freeze the AI training workload
+
+806
+00:32:24,920 --> 00:32:26,320
+run, they're going to crash your
+
+807
+00:32:26,320 --> 00:32:28,800
+inference workload. We have to make sure
+
+808
+00:32:28,800 --> 00:32:30,920
+that these these systems are extremely
+
+809
+00:32:30,920 --> 00:32:32,840
+reliable. And at Lightmatter, we build
+
+810
+00:32:32,840 --> 00:32:35,120
+out entire validation data centers where
+
+811
+00:32:35,120 --> 00:32:36,800
+we're operating hundreds to thousands of
+
+812
+00:32:36,800 --> 00:32:38,720
+these platforms and proving that they
+
+813
+00:32:38,720 --> 00:32:39,960
+just won't crash. They're going to be
+
+814
+00:32:39,960 --> 00:32:42,520
+rock-solid as they transport the kind of
+
+815
+00:32:42,520 --> 00:32:44,520
+data on the scale of, you know, the
+
+816
+00:32:44,520 --> 00:32:46,800
+internet between the continents.
+
+817
+00:32:46,800 --> 00:32:49,120
+And so, with that, I'll thank you guys
+
+818
+00:32:49,120 --> 00:32:51,080
+for for the time and I hope you enjoy
+
+819
+00:32:51,080 --> 00:32:53,760
+the day today.
+
+820
+00:32:54,192 --> 00:32:56,212
+>> [applause]
+
+821
+00:33:07,840 --> 00:33:10,720
+>> Thank you so much for that talk, Nick.
+
+822
+00:33:10,720 --> 00:33:13,880
+Now we have Grace A. Steiner, IBM
+
+823
+00:33:13,880 --> 00:33:16,160
+Fellow, IBM Research, to talk beyond the
+
+824
+00:33:16,160 --> 00:33:18,440
+harnesses, platform solutions, and agent
+
+825
+00:33:18,440 --> 00:33:22,920
+reliability, security, and efficiency.
+
+826
+00:33:26,160 --> 00:33:27,720
+>> Thank you very much. It's great to be
+
+827
+00:33:27,720 --> 00:33:28,720
+here.
+
+828
+00:33:28,720 --> 00:33:31,080
+Um
+
+829
+00:33:31,880 --> 00:33:33,960
+I believe we're entering the new the
+
+830
+00:33:33,960 --> 00:33:35,800
+next wave of platform application
+
+831
+00:33:35,800 --> 00:33:37,440
+platform evolution.
+
+832
+00:33:37,440 --> 00:33:39,760
+Uh the first wave being when we
+
+833
+00:33:39,760 --> 00:33:41,800
+separated hardware from software and
+
+834
+00:33:41,800 --> 00:33:43,680
+developed the first um
+
+835
+00:33:43,680 --> 00:33:46,120
+high-level programming languages.
+
+836
+00:33:46,120 --> 00:33:47,960
+The second being cloud computing when we
+
+837
+00:33:47,960 --> 00:33:49,160
+started creating distributed
+
+838
+00:33:49,160 --> 00:33:50,880
+applications across the data center and
+
+839
+00:33:50,880 --> 00:33:52,120
+the globe.
+
+840
+00:33:52,120 --> 00:33:54,840
+Uh both of these uh waves resulted in
+
+841
+00:33:54,840 --> 00:33:57,320
+creating a new operating system. And by
+
+842
+00:33:57,320 --> 00:33:59,960
+operating system, I mean a foundation
+
+843
+00:33:59,960 --> 00:34:02,920
+that separates application from uh
+
+844
+00:34:02,920 --> 00:34:04,720
+hardware from from infrastructure
+
+845
+00:34:04,720 --> 00:34:06,960
+through a layer of abstraction, but also
+
+846
+00:34:06,960 --> 00:34:08,320
+foundation that offers certain
+
+847
+00:34:08,320 --> 00:34:11,240
+primitives that applications can rely on
+
+848
+00:34:11,240 --> 00:34:15,320
+to achieve resiliency, scalability,
+
+849
+00:34:15,320 --> 00:34:18,040
+and efficiency.
+
+850
+00:34:18,040 --> 00:34:20,159
+AI applications are without any doubt
+
+851
+00:34:20,159 --> 00:34:22,800
+the most non- the most non-deterministic
+
+852
+00:34:22,800 --> 00:34:24,720
+and unreliable component that has ever
+
+853
+00:34:24,720 --> 00:34:26,679
+been introduced in enterprise
+
+854
+00:34:26,679 --> 00:34:28,600
+architectures. And I believe they will
+
+855
+00:34:28,600 --> 00:34:30,760
+require a new foundation, a new
+
+856
+00:34:30,760 --> 00:34:34,159
+operating system, as well.
+
+857
+00:34:34,320 --> 00:34:36,399
+Now, AI applications are applications
+
+858
+00:34:36,399 --> 00:34:38,080
+that they can run on existing
+
+859
+00:34:38,080 --> 00:34:40,159
+foundation. The problem really is that
+
+860
+00:34:40,159 --> 00:34:42,399
+this foundation doesn't really do much
+
+861
+00:34:42,399 --> 00:34:44,600
+to help solve the novel challenges that
+
+862
+00:34:44,600 --> 00:34:45,679
+are
+
+863
+00:34:45,679 --> 00:34:47,360
+occurring with these applications. And I
+
+864
+00:34:47,360 --> 00:34:50,040
+personally like characterizing these
+
+865
+00:34:50,040 --> 00:34:52,000
+challenges in two groups. They're
+
+866
+00:34:52,000 --> 00:34:54,360
+structural and semantic.
+
+867
+00:34:54,360 --> 00:34:57,080
+Uh structural challenges are because
+
+868
+00:34:57,080 --> 00:34:59,680
+these applications have open-ended
+
+869
+00:34:59,680 --> 00:35:01,480
+instruction set.
+
+870
+00:35:01,480 --> 00:35:03,200
+By instruction set, I mean the set of
+
+871
+00:35:03,200 --> 00:35:06,640
+operations that an agent can execute on
+
+872
+00:35:06,640 --> 00:35:09,320
+an external world. They decide which of
+
+873
+00:35:09,320 --> 00:35:11,840
+these instructions to use at run time,
+
+874
+00:35:11,840 --> 00:35:13,920
+and they order them at run time. Now,
+
+875
+00:35:13,920 --> 00:35:16,800
+that breaks a few very important
+
+876
+00:35:16,800 --> 00:35:18,520
+assumptions that existing platforms
+
+877
+00:35:18,520 --> 00:35:21,080
+make. Zero-trust security becomes very
+
+878
+00:35:21,080 --> 00:35:24,000
+difficult because zero-trust security
+
+879
+00:35:24,000 --> 00:35:26,840
+depends on understanding interaction
+
+880
+00:35:26,840 --> 00:35:28,840
+patterns between applications a priori
+
+881
+00:35:28,840 --> 00:35:31,640
+at configuration time.
+
+882
+00:35:31,640 --> 00:35:34,320
+Uh recovery becomes very difficult
+
+883
+00:35:34,320 --> 00:35:36,480
+because traditional techniques like
+
+884
+00:35:36,480 --> 00:35:39,000
+compensations and rollback become
+
+885
+00:35:39,000 --> 00:35:41,000
+intractable to implement. And of course,
+
+886
+00:35:41,000 --> 00:35:42,800
+these applications are not fully
+
+887
+00:35:42,800 --> 00:35:45,440
+testable in pre-deployment.
+
+888
+00:35:45,440 --> 00:35:47,760
+Um another problem is the lack of
+
+889
+00:35:47,760 --> 00:35:49,760
+separation of instructions and data in
+
+890
+00:35:49,760 --> 00:35:52,080
+the context, which is what agents are
+
+891
+00:35:52,080 --> 00:35:54,320
+working off. That's why we are seeing so
+
+892
+00:35:54,320 --> 00:35:56,960
+many novel security threats associated
+
+893
+00:35:56,960 --> 00:35:59,320
+with agents. And agents communicate
+
+894
+00:35:59,320 --> 00:36:02,440
+exchanging in context, so we are losing
+
+895
+00:36:02,440 --> 00:36:04,600
+execution separation between different
+
+896
+00:36:04,600 --> 00:36:06,560
+agents. And that essentially means that
+
+897
+00:36:06,560 --> 00:36:08,880
+controlling blast radius of resiliency
+
+898
+00:36:08,880 --> 00:36:11,040
+and security issues becomes very
+
+899
+00:36:11,040 --> 00:36:13,080
+difficult. And now there comes this
+
+900
+00:36:13,080 --> 00:36:15,600
+entire semantic side that Ion Stoica has
+
+901
+00:36:15,600 --> 00:36:19,520
+been talking about. Um that we are not
+
+902
+00:36:19,520 --> 00:36:21,880
+able to fully specify agent goals. It's
+
+903
+00:36:21,880 --> 00:36:23,920
+very difficult to express what agents
+
+904
+00:36:23,920 --> 00:36:26,320
+should do in the in the in the
+
+905
+00:36:26,320 --> 00:36:28,400
+narrative, but it's even harder to
+
+906
+00:36:28,400 --> 00:36:30,840
+specify what agent shouldn't do. And we
+
+907
+00:36:30,840 --> 00:36:33,560
+still lack any formal methods of
+
+908
+00:36:33,560 --> 00:36:35,080
+expressing
+
+909
+00:36:35,080 --> 00:36:37,520
+agent's goals and validating agent's
+
+910
+00:36:37,520 --> 00:36:38,840
+goals.
+
+911
+00:36:38,840 --> 00:36:41,320
+It doesn't help that
+
+912
+00:36:41,320 --> 00:36:43,720
+AI models, the agents, are not good in
+
+913
+00:36:43,720 --> 00:36:45,640
+reporting on their own status. We
+
+914
+00:36:45,640 --> 00:36:47,720
+essentially do not have any reliable
+
+915
+00:36:47,720 --> 00:36:49,840
+error codes. All this means that
+
+916
+00:36:49,840 --> 00:36:52,320
+understanding if agent is working
+
+917
+00:36:52,320 --> 00:36:54,240
+correctly, if it's succeeding, detecting
+
+918
+00:36:54,240 --> 00:36:56,560
+its failure, and understanding its
+
+919
+00:36:56,560 --> 00:36:58,400
+liveliness, so if it's making progress,
+
+920
+00:36:58,400 --> 00:37:00,040
+if it's converging towards the goal or
+
+921
+00:37:00,040 --> 00:37:01,960
+not hanging, all of these problems
+
+922
+00:37:01,960 --> 00:37:04,000
+become very difficult. And if we cannot
+
+923
+00:37:04,000 --> 00:37:05,920
+determine
+
+924
+00:37:05,920 --> 00:37:07,960
+what the problem is, we cannot recover
+
+925
+00:37:07,960 --> 00:37:10,240
+from from this either. And of course,
+
+926
+00:37:10,240 --> 00:37:12,840
+there is also a semantic gap between how
+
+927
+00:37:12,840 --> 00:37:15,120
+agent is thinking and
+
+928
+00:37:15,120 --> 00:37:17,240
+and designing what it should be doing,
+
+929
+00:37:17,240 --> 00:37:19,240
+and the and the
+
+930
+00:37:19,240 --> 00:37:21,960
+schema-based nature of a real-world
+
+931
+00:37:21,960 --> 00:37:25,920
+interfaces that with constantly changing
+
+932
+00:37:25,920 --> 00:37:28,160
+interfaces leads to leads to
+
+933
+00:37:28,160 --> 00:37:30,320
+mismatch and new errors being
+
+934
+00:37:30,320 --> 00:37:33,080
+introduced.
+
+935
+00:37:33,640 --> 00:37:36,160
+So,
+
+936
+00:37:37,120 --> 00:37:38,760
+how do we address these problems today?
+
+937
+00:37:38,760 --> 00:37:40,840
+Well, all of this is done in a bespoke
+
+938
+00:37:40,840 --> 00:37:43,160
+manner in the application layer. So, we
+
+939
+00:37:43,160 --> 00:37:44,720
+develop frameworks, we develop
+
+940
+00:37:44,720 --> 00:37:46,920
+harnesses, and we have plenty of them.
+
+941
+00:37:46,920 --> 00:37:50,400
+Every few months we see a new powerful
+
+942
+00:37:50,400 --> 00:37:53,480
+type of agent or harness being developed
+
+943
+00:37:53,480 --> 00:37:55,720
+that tries to tries to address these
+
+944
+00:37:55,720 --> 00:37:57,240
+problems and
+
+945
+00:37:57,240 --> 00:37:58,080
+and
+
+946
+00:37:58,080 --> 00:38:00,200
+and prove
+
+947
+00:38:00,200 --> 00:38:01,880
+provide proof of existence that the that
+
+948
+00:38:01,880 --> 00:38:03,680
+the solution exists.
+
+949
+00:38:03,680 --> 00:38:05,160
+Um but that creates a lot of
+
+950
+00:38:05,160 --> 00:38:06,680
+fragmentation. These harnesses are
+
+951
+00:38:06,680 --> 00:38:08,120
+actually very hard to develop. You need
+
+952
+00:38:08,120 --> 00:38:11,080
+to have a lot of expertise. Now, we are
+
+953
+00:38:11,080 --> 00:38:13,440
+clearly in the experimentation phase.
+
+954
+00:38:13,440 --> 00:38:15,640
+And when you look at the history, we see
+
+955
+00:38:15,640 --> 00:38:17,320
+that in the previous waves of innovation
+
+956
+00:38:17,320 --> 00:38:19,080
+the same thing happened. At the
+
+957
+00:38:19,080 --> 00:38:21,160
+beginning we have multiple versions of
+
+958
+00:38:21,160 --> 00:38:24,280
+of Unix. When container and cloud native
+
+959
+00:38:24,280 --> 00:38:26,320
+era started, we had lots of versions of
+
+960
+00:38:26,320 --> 00:38:27,800
+containers, lots of container
+
+961
+00:38:27,800 --> 00:38:30,760
+orchestration platforms, and entire
+
+962
+00:38:30,760 --> 00:38:33,640
+divergent ecosystems around that. But
+
+963
+00:38:33,640 --> 00:38:37,000
+eventually, the industry has identified
+
+964
+00:38:37,000 --> 00:38:39,560
+common patterns, standardized on them,
+
+965
+00:38:39,560 --> 00:38:42,480
+and consolidated. So, we ended up with
+
+966
+00:38:42,480 --> 00:38:45,560
+Unix and POSIX semantics for in the
+
+967
+00:38:45,560 --> 00:38:47,560
+first wave, and the Kubernetes and the
+
+968
+00:38:47,560 --> 00:38:49,200
+ecosystem around Kubernetes in the
+
+969
+00:38:49,200 --> 00:38:51,280
+second wave. We believe something like
+
+970
+00:38:51,280 --> 00:38:54,920
+this will need to happen in the AI era
+
+971
+00:38:54,920 --> 00:38:56,880
+as well.
+
+972
+00:38:56,880 --> 00:38:59,040
+So, that's what we and my research group
+
+973
+00:38:59,040 --> 00:39:02,040
+are exploring.
+
+974
+00:39:02,400 --> 00:39:04,560
+And the way we approach it is by looking
+
+975
+00:39:04,560 --> 00:39:06,280
+at the types of agents that we are
+
+976
+00:39:06,280 --> 00:39:08,000
+running in our organization. And we
+
+977
+00:39:08,000 --> 00:39:10,160
+essentially have three types of agents.
+
+978
+00:39:10,160 --> 00:39:11,720
+We have those that we have implemented
+
+979
+00:39:11,720 --> 00:39:14,960
+ourselves using our some framework or a
+
+980
+00:39:14,960 --> 00:39:17,480
+some SDK, so we have complete control
+
+981
+00:39:17,480 --> 00:39:18,600
+over them.
+
+982
+00:39:18,600 --> 00:39:21,000
+We have agents that are, you know,
+
+983
+00:39:21,000 --> 00:39:23,480
+well-known harnesses that we can control
+
+984
+00:39:23,480 --> 00:39:25,680
+via hooks and plugins.
+
+985
+00:39:25,680 --> 00:39:27,680
+And we have black-box agents that we
+
+986
+00:39:27,680 --> 00:39:29,680
+cannot do anything about. Those we can
+
+987
+00:39:29,680 --> 00:39:30,960
+only
+
+988
+00:39:30,960 --> 00:39:32,520
+control by observing them on the
+
+989
+00:39:32,520 --> 00:39:33,960
+outside.
+
+990
+00:39:33,960 --> 00:39:35,680
+So, what we are building is a layer of
+
+991
+00:39:35,680 --> 00:39:39,160
+interception that can interact integrate
+
+992
+00:39:39,160 --> 00:39:41,960
+with all of these styles of agents in a
+
+993
+00:39:41,960 --> 00:39:45,440
+and provides a uniform way to observe
+
+994
+00:39:45,440 --> 00:39:48,120
+and modify all interactions that these
+
+995
+00:39:48,120 --> 00:39:49,680
+agents are making with the external
+
+996
+00:39:49,680 --> 00:39:50,880
+world.
+
+997
+00:39:50,880 --> 00:39:54,040
+Using that layer of abstraction, we are
+
+998
+00:39:54,040 --> 00:39:57,160
+adding control functions to manage how
+
+999
+00:39:57,160 --> 00:40:00,720
+agents are behaving. Our first approach
+
+1000
+00:40:00,720 --> 00:40:02,960
+first problem that we've tackled has
+
+1001
+00:40:02,960 --> 00:40:04,400
+been security, and particularly the
+
+1002
+00:40:04,400 --> 00:40:06,560
+zero-trust security,
+
+1003
+00:40:06,560 --> 00:40:08,640
+implementing multi-tier, multi-layer
+
+1004
+00:40:08,640 --> 00:40:11,480
+permission system to control how agents
+
+1005
+00:40:11,480 --> 00:40:14,320
+are what agents are allowed to do. This
+
+1006
+00:40:14,320 --> 00:40:18,600
+included uh implementing um identity use
+
+1007
+00:40:18,600 --> 00:40:20,600
+and using that identity to implement
+
+1008
+00:40:20,600 --> 00:40:22,960
+delegation flows with authorization,
+
+1009
+00:40:22,960 --> 00:40:24,760
+then policy-based access, and then
+
+1010
+00:40:24,760 --> 00:40:28,040
+finally, intent-based access to evaluate
+
+1011
+00:40:28,040 --> 00:40:29,520
+if what agent is doing is actually
+
+1012
+00:40:29,520 --> 00:40:31,720
+aligned with user's objectives.
+
+1013
+00:40:31,720 --> 00:40:33,640
+We have moved since to also start
+
+1014
+00:40:33,640 --> 00:40:35,440
+looking into the semantic layer of
+
+1015
+00:40:35,440 --> 00:40:38,320
+agents. So, can we in this business
+
+1016
+00:40:38,320 --> 00:40:40,480
+logic-independent way, outside of
+
+1017
+00:40:40,480 --> 00:40:43,240
+agents, uh control the context and
+
+1018
+00:40:43,240 --> 00:40:46,240
+manage manage context that agents are
+
+1019
+00:40:46,240 --> 00:40:49,120
+using? Uh can we manage the correctness
+
+1020
+00:40:49,120 --> 00:40:51,840
+of tool calls? And
+
+1021
+00:40:51,840 --> 00:40:54,240
+do data flow analysis to to understand
+
+1022
+00:40:54,240 --> 00:40:56,080
+how data is flowing and and control
+
+1023
+00:40:56,080 --> 00:40:57,560
+that.
+
+1024
+00:40:57,560 --> 00:40:59,440
+We are pursuing this in the project
+
+1025
+00:40:59,440 --> 00:41:02,000
+called called Rosso Rosso CTL. Our web
+
+1026
+00:41:02,000 --> 00:41:04,320
+pages contain more information and also
+
+1027
+00:41:04,320 --> 00:41:06,160
+contain
+
+1028
+00:41:06,160 --> 00:41:07,840
+deeper results of various benchmarks and
+
+1029
+00:41:07,840 --> 00:41:10,320
+experiments. And my colleague Maya has a
+
+1030
+00:41:10,320 --> 00:41:12,120
+poster that she's going to present
+
+1031
+00:41:12,120 --> 00:41:14,440
+today, so I encourage you to stop by and
+
+1032
+00:41:14,440 --> 00:41:17,200
+learn more about what we have done. Now,
+
+1033
+00:41:17,200 --> 00:41:19,480
+crucially, we are not inventing we are
+
+1034
+00:41:19,480 --> 00:41:21,880
+not replacing the existing platform. All
+
+1035
+00:41:21,880 --> 00:41:22,560
+of
+
+1036
+00:41:22,560 --> 00:41:24,040
+all of the things that we are doing are
+
+1037
+00:41:24,040 --> 00:41:26,200
+built on existing cloud platform. We
+
+1038
+00:41:26,200 --> 00:41:28,160
+leverage existing standards and extend
+
+1039
+00:41:28,160 --> 00:41:29,080
+them.
+
+1040
+00:41:29,080 --> 00:41:31,600
+Uh so, standards like OAuth 2, SPIFFE
+
+1041
+00:41:31,600 --> 00:41:33,840
+for identity,
+
+1042
+00:41:33,840 --> 00:41:35,800
+known policy languages. We are
+
+1043
+00:41:35,800 --> 00:41:38,840
+orchestrating this on Kubernetes.
+
+1044
+00:41:38,840 --> 00:41:41,560
+And our gateway-based approaches are
+
+1045
+00:41:41,560 --> 00:41:44,040
+originally based on Envoy proxy, but now
+
+1046
+00:41:44,040 --> 00:41:46,200
+we are moving to a more efficient
+
+1047
+00:41:46,200 --> 00:41:48,760
+Rust-based proxy implementation based on
+
+1048
+00:41:48,760 --> 00:41:50,840
+project Praxis.
+
+1049
+00:41:50,840 --> 00:41:53,400
+Um we have encouraging results.
+
+1050
+00:41:53,400 --> 00:41:55,320
+Uh we can demonstrate cost reduction
+
+1051
+00:41:55,320 --> 00:41:57,320
+even with state-of-the-art agents from
+
+1052
+00:41:57,320 --> 00:41:59,480
+context compaction. We can demonstrate
+
+1053
+00:41:59,480 --> 00:42:01,640
+consistent improvements to
+
+1054
+00:42:01,640 --> 00:42:03,440
+tool calling accuracy, which translate
+
+1055
+00:42:03,440 --> 00:42:05,920
+into improvement to agent quality. And
+
+1056
+00:42:05,920 --> 00:42:07,360
+we can certainly demonstrate that we can
+
+1057
+00:42:07,360 --> 00:42:10,000
+transparently do permissioning for these
+
+1058
+00:42:10,000 --> 00:42:12,400
+agents.
+
+1059
+00:42:12,400 --> 00:42:14,760
+Um another important part of the
+
+1060
+00:42:14,760 --> 00:42:16,560
+evolution of the
+
+1061
+00:42:16,560 --> 00:42:18,960
+platform or evolution of applications is
+
+1062
+00:42:18,960 --> 00:42:21,160
+of course application patterns. And we
+
+1063
+00:42:21,160 --> 00:42:22,680
+believe that for agents, the right
+
+1064
+00:42:22,680 --> 00:42:24,760
+application pattern is serverless.
+
+1065
+00:42:24,760 --> 00:42:27,160
+Serverless pattern separates agent loop
+
+1066
+00:42:27,160 --> 00:42:30,560
+as a stateless component uh from
+
+1067
+00:42:30,560 --> 00:42:32,960
+durable session lock where the context
+
+1068
+00:42:32,960 --> 00:42:35,520
+is being managed and
+
+1069
+00:42:35,520 --> 00:42:38,120
+execution tier uh provided by diverse
+
+1070
+00:42:38,120 --> 00:42:40,560
+set of sandboxes.
+
+1071
+00:42:40,560 --> 00:42:42,640
+I would believe that leads to better
+
+1072
+00:42:42,640 --> 00:42:45,280
+resiliency, better accuracy, better
+
+1073
+00:42:45,280 --> 00:42:47,000
+better better performance, and better
+
+1074
+00:42:47,000 --> 00:42:48,560
+scalability.
+
+1075
+00:42:48,560 --> 00:42:51,600
+And again, um we have um encouraging
+
+1076
+00:42:51,600 --> 00:42:53,480
+results. We can save a lot on
+
+1077
+00:42:53,480 --> 00:42:55,120
+infrastructure cost, particularly for
+
+1078
+00:42:55,120 --> 00:42:56,960
+agents that are
+
+1079
+00:42:56,960 --> 00:42:59,720
+uh that are model bound. We can flexibly
+
+1080
+00:42:59,720 --> 00:43:02,960
+allocate sandboxes, so not all agents
+
+1081
+00:43:02,960 --> 00:43:04,880
+not all agents require most expensive
+
+1082
+00:43:04,880 --> 00:43:06,480
+sandboxes, and they can be quite
+
+1083
+00:43:06,480 --> 00:43:08,560
+expensive. And we can also reuse
+
+1084
+00:43:08,560 --> 00:43:10,440
+sandboxes for certain type uh certain
+
+1085
+00:43:10,440 --> 00:43:12,320
+types of agents where
+
+1086
+00:43:12,320 --> 00:43:15,200
+security policy allows that. So, to
+
+1087
+00:43:15,200 --> 00:43:17,760
+summarize that, um we do believe there
+
+1088
+00:43:17,760 --> 00:43:19,800
+is a new wave of platform that is going
+
+1089
+00:43:19,800 --> 00:43:21,400
+to be built. We've started on that
+
+1090
+00:43:21,400 --> 00:43:24,360
+journey. Uh we are very interested to I
+
+1091
+00:43:24,360 --> 00:43:25,880
+am very interested in talking to you
+
+1092
+00:43:25,880 --> 00:43:27,960
+about this if you agree or disagree. And
+
+1093
+00:43:27,960 --> 00:43:29,920
+certainly if you work on any project in
+
+1094
+00:43:29,920 --> 00:43:31,400
+this direction,
+
+1095
+00:43:31,400 --> 00:43:33,240
+um I would like to know about it, and we
+
+1096
+00:43:33,240 --> 00:43:35,280
+would like to partner with you. Thank
+
+1097
+00:43:35,280 --> 00:43:37,410
+you.
+
+1098
+00:43:37,410 --> 00:43:39,430
+>> [applause]
+
+1099
+00:43:49,600 --> 00:43:52,600
+>> All righty, and now we have Tim Hockin
+
+1100
+00:43:52,600 --> 00:43:54,760
+with a distinguished engineer for Google
+
+1101
+00:43:54,760 --> 00:43:57,520
+speaking is Kubernetes good for agents,
+
+1102
+00:43:57,520 --> 00:43:58,960
+infrastructure solutions for
+
+1103
+00:43:58,960 --> 00:44:02,360
+agent-shaped problems.
+
+1104
+00:44:13,480 --> 00:44:16,880
+>> Hello. Oh, there I am.
+
+1105
+00:44:17,480 --> 00:44:20,120
+Thank you all for coming out today. I
+
+1106
+00:44:20,120 --> 00:44:21,320
+didn't realize this conference was on a
+
+1107
+00:44:21,320 --> 00:44:22,880
+weekend when I signed up for it. So, I
+
+1108
+00:44:22,880 --> 00:44:25,440
+really appreciate you all coming out
+
+1109
+00:44:25,440 --> 00:44:27,840
+instead of getting a day off work. My
+
+1110
+00:44:27,840 --> 00:44:30,760
+name is Tim. You may be familiar with
+
+1111
+00:44:30,760 --> 00:44:32,120
+some of my previous projects,
+
+1112
+00:44:32,120 --> 00:44:35,040
+Kubernetes. If so, I apologize in
+
+1113
+00:44:35,040 --> 00:44:36,800
+advance.
+
+1114
+00:44:36,800 --> 00:44:39,240
+Given my background, I tend to look at
+
+1115
+00:44:39,240 --> 00:44:41,040
+this Agentyc AI problem as an
+
+1116
+00:44:41,040 --> 00:44:42,680
+infrastructure problem. I see it from
+
+1117
+00:44:42,680 --> 00:44:44,280
+the bottom up.
+
+1118
+00:44:44,280 --> 00:44:46,800
+The customers that I talk with come to
+
+1119
+00:44:46,800 --> 00:44:47,680
+me and they say, "We've got these
+
+1120
+00:44:47,680 --> 00:44:48,760
+agents."
+
+1121
+00:44:48,760 --> 00:44:51,040
+Like your explanations of the breadth of
+
+1122
+00:44:51,040 --> 00:44:53,320
+agents was exactly on point. There's a
+
+1123
+00:44:53,320 --> 00:44:55,640
+million kinds of agents, but they all
+
+1124
+00:44:55,640 --> 00:44:58,600
+come to us with similar problems
+
+1125
+00:44:58,600 --> 00:45:00,400
+saying, "We need to run them. We need to
+
+1126
+00:45:00,400 --> 00:45:01,720
+run a lot of them. We need the
+
+1127
+00:45:01,720 --> 00:45:04,720
+efficiencies that we're not getting."
+
+1128
+00:45:04,720 --> 00:45:05,280
+Um
+
+1129
+00:45:05,280 --> 00:45:07,000
+Agents, Agentyc workloads are very
+
+1130
+00:45:07,000 --> 00:45:10,720
+different from traditional applications,
+
+1131
+00:45:10,720 --> 00:45:12,120
+which is really it's caused people to
+
+1132
+00:45:12,120 --> 00:45:13,720
+ask whether Kubernetes is the right
+
+1133
+00:45:13,720 --> 00:45:16,280
+platform to run these things. It warms
+
+1134
+00:45:16,280 --> 00:45:17,920
+my heart to see Kubernetes mentioned on
+
+1135
+00:45:17,920 --> 00:45:20,040
+other people's slides,
+
+1136
+00:45:20,040 --> 00:45:22,040
+but I think it's a fair question.
+
+1137
+00:45:22,040 --> 00:45:23,880
+And so, given this audience, I'm not
+
+1138
+00:45:23,880 --> 00:45:25,960
+going to go too deeply into how agents
+
+1139
+00:45:25,960 --> 00:45:27,720
+are different. Touch on it just a little
+
+1140
+00:45:27,720 --> 00:45:30,160
+bit. I apologize for racing through this
+
+1141
+00:45:30,160 --> 00:45:31,760
+material. I'm happy to do it again in
+
+1142
+00:45:31,760 --> 00:45:33,440
+the halls or talk whenever, you know,
+
+1143
+00:45:33,440 --> 00:45:36,520
+after we're here for the next 2 days. Um
+
+1144
+00:45:36,520 --> 00:45:38,240
+So, let's let's look at a couple of
+
+1145
+00:45:38,240 --> 00:45:41,160
+things that make agents interesting.
+
+1146
+00:45:41,160 --> 00:45:43,560
+Agents are very bursty. They tend to
+
+1147
+00:45:43,560 --> 00:45:45,560
+work in in very short spurts and then go
+
+1148
+00:45:45,560 --> 00:45:47,640
+idle for a long time, minutes, hours,
+
+1149
+00:45:47,640 --> 00:45:50,440
+even days, weeks at a time. This means a
+
+1150
+00:45:50,440 --> 00:45:52,480
+lot of idle resources if you approach it
+
+1151
+00:45:52,480 --> 00:45:53,960
+naively.
+
+1152
+00:45:53,960 --> 00:45:57,600
+Um agent workloads generally untrusted.
+
+1153
+00:45:57,600 --> 00:45:59,080
+I think it's a pretty well understood at
+
+1154
+00:45:59,080 --> 00:46:00,360
+this point.
+
+1155
+00:46:00,360 --> 00:46:01,800
+Because of that, they have to run in
+
+1156
+00:46:01,800 --> 00:46:03,600
+sandboxes, and we're always looking at
+
+1157
+00:46:03,600 --> 00:46:05,560
+new kinds of sandboxing. Um, and they
+
+1158
+00:46:05,560 --> 00:46:07,720
+have to run single-tenant cuz you can't
+
+1159
+00:46:07,720 --> 00:46:09,120
+share a sandbox. That would kind of
+
+1160
+00:46:09,120 --> 00:46:11,280
+defeat the purpose. Um, that means we
+
+1161
+00:46:11,280 --> 00:46:13,520
+miss out on a ton of opportunities for
+
+1162
+00:46:13,520 --> 00:46:15,320
+optimizations, specifically the
+
+1163
+00:46:15,320 --> 00:46:17,720
+amortization of overheads.
+
+1164
+00:46:17,720 --> 00:46:19,720
+Um, and lastly, they tend to have humans
+
+1165
+00:46:19,720 --> 00:46:21,040
+in the loop, which makes them very
+
+1166
+00:46:21,040 --> 00:46:23,760
+sensitive to the perceived latency of
+
+1167
+00:46:23,760 --> 00:46:26,000
+these systems.
+
+1168
+00:46:26,000 --> 00:46:28,360
+Taken together, uh, this kind of makes
+
+1169
+00:46:28,360 --> 00:46:29,560
+it problematic to run them on
+
+1170
+00:46:29,560 --> 00:46:31,560
+Kubernetes. Kubernetes was built for
+
+1171
+00:46:31,560 --> 00:46:34,840
+things that run for a long time and tend
+
+1172
+00:46:34,840 --> 00:46:36,840
+to be, uh, scale out, horizontally
+
+1173
+00:46:36,840 --> 00:46:38,280
+scalable, and you can amortize your
+
+1174
+00:46:38,280 --> 00:46:40,400
+costs. Um, so before jumping to a
+
+1175
+00:46:40,400 --> 00:46:42,360
+solution, I'm going to touch on the
+
+1176
+00:46:42,360 --> 00:46:44,520
+state of the art, what we've observed,
+
+1177
+00:46:44,520 --> 00:46:46,000
+um, at Google and in the Kubernetes
+
+1178
+00:46:46,000 --> 00:46:48,640
+world, of how people tend to run agents
+
+1179
+00:46:48,640 --> 00:46:49,880
+on Kubernetes. And there's really only
+
+1180
+00:46:49,880 --> 00:46:52,520
+two patterns with a few variations. Um,
+
+1181
+00:46:52,520 --> 00:46:54,880
+so first is the obvious way. So
+
+1182
+00:46:54,880 --> 00:46:57,280
+Kubernetes has this idea of a runtime
+
+1183
+00:46:57,280 --> 00:46:59,440
+class, which lets you define a kind of
+
+1184
+00:46:59,440 --> 00:47:01,520
+sandbox. So the default runtime class is
+
+1185
+00:47:01,520 --> 00:47:03,280
+a Docker-style container, an OCI
+
+1186
+00:47:03,280 --> 00:47:05,960
+container. Um, but we also have runtime
+
+1187
+00:47:05,960 --> 00:47:08,640
+classes for gVisor and for microVMs, and
+
+1188
+00:47:08,640 --> 00:47:10,120
+it is an extension point for Kubernetes.
+
+1189
+00:47:10,120 --> 00:47:11,520
+So people can, you know, do interesting
+
+1190
+00:47:11,520 --> 00:47:13,280
+research around that.
+
+1191
+00:47:13,280 --> 00:47:16,000
+Some event causes the need for a new
+
+1192
+00:47:16,000 --> 00:47:17,680
+instance of an agent. So, for example, a
+
+1193
+00:47:17,680 --> 00:47:19,720
+user starts a chat session.
+
+1194
+00:47:19,720 --> 00:47:21,320
+Uh, this obviously requires
+
+1195
+00:47:21,320 --> 00:47:23,640
+instantiating their agent, a special
+
+1196
+00:47:23,640 --> 00:47:25,680
+dedicated single-tenant instance just
+
+1197
+00:47:25,680 --> 00:47:27,760
+for them, and each of those runs inside
+
+1198
+00:47:27,760 --> 00:47:30,640
+of an agent, uh, a sandbox pod. Now,
+
+1199
+00:47:30,640 --> 00:47:32,640
+there's some cost. Starting up a pod on
+
+1200
+00:47:32,640 --> 00:47:34,720
+Kubernetes is not the thing that
+
+1201
+00:47:34,720 --> 00:47:37,200
+Kubernetes does the fastest. It's not
+
+1202
+00:47:37,200 --> 00:47:38,480
+optimized for that. It's not built for
+
+1203
+00:47:38,480 --> 00:47:41,680
+that. It's fast, seconds usually, but
+
+1204
+00:47:41,680 --> 00:47:43,720
+that's not fast enough. Um, and so
+
+1205
+00:47:43,720 --> 00:47:45,200
+depending on what that agent does at
+
+1206
+00:47:45,200 --> 00:47:47,240
+startup, it could take a long time, and
+
+1207
+00:47:47,240 --> 00:47:48,960
+we've seen agents that load runtime
+
+1208
+00:47:48,960 --> 00:47:51,560
+environments that can take 10s or 15
+
+1209
+00:47:51,560 --> 00:47:54,480
+seconds or more. Browsers, like all
+
+1210
+00:47:54,480 --> 00:47:56,520
+sorts of things.
+
+1211
+00:47:56,520 --> 00:47:58,360
+Eventually, that pod becomes ready and
+
+1212
+00:47:58,360 --> 00:48:00,520
+the user can chat with it and they send
+
+1213
+00:48:00,520 --> 00:48:02,120
+their message to the pod and it comes
+
+1214
+00:48:02,120 --> 00:48:05,920
+back and one turn is done, right? And
+
+1215
+00:48:05,920 --> 00:48:07,200
+now what?
+
+1216
+00:48:07,200 --> 00:48:10,000
+So, because pod startup isn't free, what
+
+1217
+00:48:10,000 --> 00:48:11,440
+people tend to do is they wait for
+
+1218
+00:48:11,440 --> 00:48:13,720
+another event. And how long should they
+
+1219
+00:48:13,720 --> 00:48:16,200
+wait? Well, that really depends on what
+
+1220
+00:48:16,200 --> 00:48:17,720
+your agent is doing and what the startup
+
+1221
+00:48:17,720 --> 00:48:19,160
+cost was and you have to do some math
+
+1222
+00:48:19,160 --> 00:48:21,440
+and it's different for everybody. Um
+
+1223
+00:48:21,440 --> 00:48:23,200
+we've seen this range from tens of
+
+1224
+00:48:23,200 --> 00:48:25,280
+seconds at the low end to tens of
+
+1225
+00:48:25,280 --> 00:48:27,880
+minutes at the high end. And during
+
+1226
+00:48:27,880 --> 00:48:30,040
+those tens of minutes, your your agent
+
+1227
+00:48:30,040 --> 00:48:31,760
+is sitting there consuming resources
+
+1228
+00:48:31,760 --> 00:48:34,680
+that can't be used by anybody else.
+
+1229
+00:48:34,680 --> 00:48:35,800
+Eventually, and this of course this
+
+1230
+00:48:35,800 --> 00:48:37,600
+might happen multiple times, right? At 9
+
+1231
+00:48:37,600 --> 00:48:39,480
+minutes and 59 seconds the next turn
+
+1232
+00:48:39,480 --> 00:48:40,960
+might happen and you start the whole
+
+1233
+00:48:40,960 --> 00:48:42,280
+process over again.
+
+1234
+00:48:42,280 --> 00:48:43,280
+Um
+
+1235
+00:48:43,280 --> 00:48:45,400
+so eventually you get a timeout and
+
+1236
+00:48:45,400 --> 00:48:47,920
+you're deemed idle and either you're
+
+1237
+00:48:47,920 --> 00:48:50,920
+discarded entirely or we save your state
+
+1238
+00:48:50,920 --> 00:48:53,040
+somehow and then we terminate the pod,
+
+1239
+00:48:53,040 --> 00:48:54,480
+right? This is the standard Kubernetes
+
+1240
+00:48:54,480 --> 00:48:56,360
+life cycle. Now, keep in mind this is
+
+1241
+00:48:56,360 --> 00:48:58,440
+happening for every instance of every
+
+1242
+00:48:58,440 --> 00:49:01,080
+agent for every user that is happening
+
+1243
+00:49:01,080 --> 00:49:02,720
+on your system.
+
+1244
+00:49:02,720 --> 00:49:04,400
+There are tricks we can play with warm
+
+1245
+00:49:04,400 --> 00:49:05,840
+pools and there's
+
+1246
+00:49:05,840 --> 00:49:07,280
+uh tricks we can play with suspend and
+
+1247
+00:49:07,280 --> 00:49:08,680
+resume, um
+
+1248
+00:49:08,680 --> 00:49:10,080
+but Kubernetes doesn't support those
+
+1249
+00:49:10,080 --> 00:49:11,960
+things natively and so you're kind of
+
+1250
+00:49:11,960 --> 00:49:13,840
+working around the system and it's
+
+1251
+00:49:13,840 --> 00:49:17,160
+difficult to justify at this scale.
+
+1252
+00:49:17,160 --> 00:49:19,760
+The second approach is uh for people to
+
+1253
+00:49:19,760 --> 00:49:22,520
+build a DIY system on top of Kubernetes.
+
+1254
+00:49:22,520 --> 00:49:24,120
+Um basically this looks like a giant
+
+1255
+00:49:24,120 --> 00:49:26,040
+workload per machine inside that
+
+1256
+00:49:26,040 --> 00:49:28,440
+workload is a manager application. Uh a
+
+1257
+00:49:28,440 --> 00:49:30,840
+bespoke control plane is responsible for
+
+1258
+00:49:30,840 --> 00:49:33,000
+scheduling things into those that that
+
+1259
+00:49:33,000 --> 00:49:35,280
+mega sandbox. Uh the manager manages the
+
+1260
+00:49:35,280 --> 00:49:36,960
+life cycle. Everything's opaque.
+
+1261
+00:49:36,960 --> 00:49:38,680
+Kubernetes doesn't know what it's doing.
+
+1262
+00:49:38,680 --> 00:49:40,240
+You end up reinventing large parts of
+
+1263
+00:49:40,240 --> 00:49:42,320
+Kubernetes. It's fairly complicated to
+
+1264
+00:49:42,320 --> 00:49:45,120
+build. It can be very efficient. Um it's
+
+1265
+00:49:45,120 --> 00:49:46,600
+difficult to operate for smaller
+
+1266
+00:49:46,600 --> 00:49:49,200
+companies, especially startups. Now, I'm
+
+1267
+00:49:49,200 --> 00:49:50,680
+a huge fan of open and
+
+1268
+00:49:50,680 --> 00:49:51,960
+Maybe you can tell because I work in
+
+1269
+00:49:51,960 --> 00:49:54,520
+Kubernetes for the last 12 years. Um
+
+1270
+00:49:54,520 --> 00:49:56,440
+I have a deeply held belief that when it
+
+1271
+00:49:56,440 --> 00:49:58,520
+comes to infrastructure, open always
+
+1272
+00:49:58,520 --> 00:49:59,800
+wins.
+
+1273
+00:49:59,800 --> 00:50:01,600
+And so earlier this year we set out to
+
+1274
+00:50:01,600 --> 00:50:03,600
+build something new that takes the best
+
+1275
+00:50:03,600 --> 00:50:05,760
+parts of both of these models, leverages
+
+1276
+00:50:05,760 --> 00:50:08,040
+Kubernetes where it can cuz almost
+
+1277
+00:50:08,040 --> 00:50:09,800
+everybody has some Kubernetes in their
+
+1278
+00:50:09,800 --> 00:50:12,080
+fleet, um and builds new components
+
+1279
+00:50:12,080 --> 00:50:13,720
+where we have to. Um now I'm not going
+
+1280
+00:50:13,720 --> 00:50:14,800
+to pretend that we've discovered
+
+1281
+00:50:14,800 --> 00:50:16,320
+anything new. We have not done any
+
+1282
+00:50:16,320 --> 00:50:18,000
+earth-shaking research here. What we've
+
+1283
+00:50:18,000 --> 00:50:19,760
+done is take some of the best ideas from
+
+1284
+00:50:19,760 --> 00:50:21,600
+all of our customers and our users and
+
+1285
+00:50:21,600 --> 00:50:23,120
+try to glue them together into a way
+
+1286
+00:50:23,120 --> 00:50:25,360
+that everybody can use. In the same way
+
+1287
+00:50:25,360 --> 00:50:27,400
+that you put Kubernetes up on the slides
+
+1288
+00:50:27,400 --> 00:50:29,560
+as the the middle box, I'm would like to
+
+1289
+00:50:29,560 --> 00:50:32,440
+fill in the uh the the right-hand second
+
+1290
+00:50:32,440 --> 00:50:34,240
+box for you.
+
+1291
+00:50:34,240 --> 00:50:36,680
+So, Agent Substrate, and thank you for
+
+1292
+00:50:36,680 --> 00:50:38,200
+mentioning it, um
+
+1293
+00:50:38,200 --> 00:50:40,280
+is a project that we began earlier this
+
+1294
+00:50:40,280 --> 00:50:42,080
+year um and have open sourced it. You
+
+1295
+00:50:42,080 --> 00:50:43,320
+can go to this URL, it'll take you to
+
+1296
+00:50:43,320 --> 00:50:45,880
+our GitHub. Um it's uh from a very high
+
+1297
+00:50:45,880 --> 00:50:47,080
+level, the model is pretty
+
+1298
+00:50:47,080 --> 00:50:49,080
+straightforward. We don't want idle
+
+1299
+00:50:49,080 --> 00:50:51,360
+resources. We want to use suspend and
+
+1300
+00:50:51,360 --> 00:50:54,920
+resume and cloud storage to uh multiplex
+
+1301
+00:50:54,920 --> 00:50:57,840
+agents onto pre-warmed runners um and
+
+1302
+00:50:57,840 --> 00:50:59,560
+aggressively suspend and resume agents
+
+1303
+00:50:59,560 --> 00:51:01,680
+to take those 5 10 seconds to 10 minutes
+
+1304
+00:51:01,680 --> 00:51:03,600
+of idle and drive it down to a single
+
+1305
+00:51:03,600 --> 00:51:06,040
+second or even less.
+
+1306
+00:51:06,040 --> 00:51:08,400
+So, let's talk about the goals. Um
+
+1307
+00:51:08,400 --> 00:51:10,280
+we're Google, so we tend to see things
+
+1308
+00:51:10,280 --> 00:51:12,560
+from the large-scale point of view. Um
+
+1309
+00:51:12,560 --> 00:51:14,520
+we're shooting for very large
+
+1310
+00:51:14,520 --> 00:51:15,920
+deployments. We're looking at billions
+
+1311
+00:51:15,920 --> 00:51:17,200
+of sessions under management. We're
+
+1312
+00:51:17,200 --> 00:51:18,840
+looking at thousands of tens of
+
+1313
+00:51:18,840 --> 00:51:20,880
+thousands of activations per second, and
+
+1314
+00:51:20,880 --> 00:51:22,680
+we're looking at driving the wake-up
+
+1315
+00:51:22,680 --> 00:51:24,520
+time down into the
+
+1316
+00:51:24,520 --> 00:51:27,080
+low three-digit milliseconds.
+
+1317
+00:51:27,080 --> 00:51:29,520
+Quickly, I'll introduce some terms. Um
+
+1318
+00:51:29,520 --> 00:51:31,440
+we have an actor, which is sort of a
+
+1319
+00:51:31,440 --> 00:51:33,960
+stand-in term for agent or sandbox or
+
+1320
+00:51:33,960 --> 00:51:36,960
+thing that acts like an agent.
+
+1321
+00:51:36,960 --> 00:51:39,440
+We have an actor template. Uh if an
+
+1322
+00:51:39,440 --> 00:51:40,960
+actor is a cookie, the actor template is
+
+1323
+00:51:40,960 --> 00:51:42,720
+the cookie cutter. Uh it includes
+
+1324
+00:51:42,720 --> 00:51:44,600
+details like what kind of sandbox tech
+
+1325
+00:51:44,600 --> 00:51:46,920
+is it? A gVisor or a microVM? Um
+
+1326
+00:51:46,920 --> 00:51:48,200
+notably, there can be many different
+
+1327
+00:51:48,200 --> 00:51:50,840
+templates inside of a single substrate.
+
+1328
+00:51:50,840 --> 00:51:52,840
+We have a worker, which is usually a pod
+
+1329
+00:51:52,840 --> 00:51:54,600
+running in a Kubernetes cluster. This is
+
+1330
+00:51:54,600 --> 00:51:55,880
+the thing that actually consumes
+
+1331
+00:51:55,880 --> 00:51:59,040
+resources. It waits for an assignment of
+
+1332
+00:51:59,040 --> 00:52:01,040
+an actor, and then it runs that actor.
+
+1333
+00:52:01,040 --> 00:52:03,480
+It can run many of them in serial, um,
+
+1334
+00:52:03,480 --> 00:52:05,760
+and a cluster can have many workers.
+
+1335
+00:52:05,760 --> 00:52:07,800
+Um, and then Eightlet is sort of our per
+
+1336
+00:52:07,800 --> 00:52:09,760
+node manager for all of the workers on
+
+1337
+00:52:09,760 --> 00:52:11,840
+that node. We need this for reasons
+
+1338
+00:52:11,840 --> 00:52:13,360
+around networking.
+
+1339
+00:52:13,360 --> 00:52:14,920
+Um, and then lastly, Eightnet is our
+
+1340
+00:52:14,920 --> 00:52:16,640
+enlightened proxy, which will trigger
+
+1341
+00:52:16,640 --> 00:52:18,840
+wake-ups on receipt of traffic. Let's
+
+1342
+00:52:18,840 --> 00:52:20,840
+see how those fit together.
+
+1343
+00:52:20,840 --> 00:52:22,320
+Start with a Kubernetes cluster. Any
+
+1344
+00:52:22,320 --> 00:52:23,880
+modern cluster should work. We support
+
+1345
+00:52:23,880 --> 00:52:25,440
+running in kind, so you can run it on
+
+1346
+00:52:25,440 --> 00:52:27,360
+your laptop. Uh, the cluster admin
+
+1347
+00:52:27,360 --> 00:52:29,600
+deploys an instance of agent substrate,
+
+1348
+00:52:29,600 --> 00:52:32,160
+which includes an API server and storage
+
+1349
+00:52:32,160 --> 00:52:33,480
+layer,
+
+1350
+00:52:33,480 --> 00:52:35,520
+a uh, controller, which synchronizes
+
+1351
+00:52:35,520 --> 00:52:38,360
+data in and out of Kubernetes,
+
+1352
+00:52:38,360 --> 00:52:40,200
+uh, one or more worker pools, which
+
+1353
+00:52:40,200 --> 00:52:42,480
+create deployments, which create pods to
+
+1354
+00:52:42,480 --> 00:52:44,720
+run your workloads in,
+
+1355
+00:52:44,720 --> 00:52:47,360
+Eightlets to manage all those workers,
+
+1356
+00:52:47,360 --> 00:52:48,760
+the Eightnet proxy, which knows how to
+
+1357
+00:52:48,760 --> 00:52:50,640
+pass traffic from the outside world to
+
+1358
+00:52:50,640 --> 00:52:52,720
+the inside world.
+
+1359
+00:52:52,720 --> 00:52:54,760
+And then the substrate admin can create
+
+1360
+00:52:54,760 --> 00:52:56,280
+one or more actor templates. And the
+
+1361
+00:52:56,280 --> 00:52:57,960
+controller sees these and does some prep
+
+1362
+00:52:57,960 --> 00:52:59,800
+work. Specifically, it spins the actor
+
+1363
+00:52:59,800 --> 00:53:01,560
+template up, takes a snapshot of it, we
+
+1364
+00:53:01,560 --> 00:53:03,320
+call it the golden snapshot, stores that
+
+1365
+00:53:03,320 --> 00:53:05,960
+somewhere, so we can use it later.
+
+1366
+00:53:05,960 --> 00:53:08,040
+Now, shifting view quickly to the
+
+1367
+00:53:08,040 --> 00:53:09,680
+substrate layer, which sits on top of
+
+1368
+00:53:09,680 --> 00:53:11,600
+all this, I'll warn you, some of this is
+
+1369
+00:53:11,600 --> 00:53:13,640
+aspirational, we're still working on it.
+
+1370
+00:53:13,640 --> 00:53:15,760
+Um, we have our API server, router, and
+
+1371
+00:53:15,760 --> 00:53:16,840
+workers.
+
+1372
+00:53:16,840 --> 00:53:18,640
+Um, someone, a higher-order system,
+
+1373
+00:53:18,640 --> 00:53:21,400
+creates an actor from that template.
+
+1374
+00:53:21,400 --> 00:53:23,720
+Uh, for example, uh, the same chat
+
+1375
+00:53:23,720 --> 00:53:24,800
+agent.
+
+1376
+00:53:24,800 --> 00:53:27,400
+Um, the chat app does whatever front-end
+
+1377
+00:53:27,400 --> 00:53:28,600
+work it needs to do, authorize, or
+
+1378
+00:53:28,600 --> 00:53:30,840
+whatever, and then it creates an actor.
+
+1379
+00:53:30,840 --> 00:53:33,840
+Note, creating an actor doesn't run the
+
+1380
+00:53:33,840 --> 00:53:35,200
+actor.
+
+1381
+00:53:35,200 --> 00:53:36,760
+Um, in this hypothetical app, the user
+
+1382
+00:53:36,760 --> 00:53:39,160
+talks first. So, the user sends a
+
+1383
+00:53:39,160 --> 00:53:41,840
+prompt, which is received and routed to
+
+1384
+00:53:41,840 --> 00:53:43,600
+the 8net proxy,
+
+1385
+00:53:43,600 --> 00:53:46,320
+uh it wakes up the actor, assigns it to
+
+1386
+00:53:46,320 --> 00:53:48,160
+a worker by sending a message through
+
+1387
+00:53:48,160 --> 00:53:49,280
+the router,
+
+1388
+00:53:49,280 --> 00:53:51,400
+uh and then talks to
+
+1389
+00:53:51,400 --> 00:53:52,960
+the um
+
+1390
+00:53:52,960 --> 00:53:55,200
+worker on a on a uh
+
+1391
+00:53:55,200 --> 00:53:57,440
+private connection. Um since this is a
+
+1392
+00:53:57,440 --> 00:53:58,680
+new actor, it wakes it up from the
+
+1393
+00:53:58,680 --> 00:54:01,400
+golden snapshot. The 8net proxy forwards
+
+1394
+00:54:01,400 --> 00:54:04,120
+the message on to the now running actor.
+
+1395
+00:54:04,120 --> 00:54:05,840
+Um and the cool part is this happens in
+
+1396
+00:54:05,840 --> 00:54:07,160
+a couple hundred milliseconds and we're
+
+1397
+00:54:07,160 --> 00:54:09,040
+working on that optimization still.
+
+1398
+00:54:09,040 --> 00:54:10,480
+Um as soon as that turn is done, the
+
+1399
+00:54:10,480 --> 00:54:12,880
+actor is probably idle, so we can uh
+
+1400
+00:54:12,880 --> 00:54:15,040
+tell it to go back to sleep and suspend
+
+1401
+00:54:15,040 --> 00:54:16,880
+it. We call it pause. Uh if we pause,
+
+1402
+00:54:16,880 --> 00:54:19,160
+take the snapshot and shuffle the data
+
+1403
+00:54:19,160 --> 00:54:21,160
+off and now the worker is unassigned.
+
+1404
+00:54:21,160 --> 00:54:22,960
+It's available for use by another actor.
+
+1405
+00:54:22,960 --> 00:54:26,120
+All of that can happen as fast as your
+
+1406
+00:54:26,120 --> 00:54:27,760
+um API operation or your agent
+
+1407
+00:54:27,760 --> 00:54:30,160
+transaction happen. Um again, if another
+
+1408
+00:54:30,160 --> 00:54:31,600
+agent if another prompt comes in, we'll
+
+1409
+00:54:31,600 --> 00:54:33,680
+start the cycle again. Um
+
+1410
+00:54:33,680 --> 00:54:35,440
+and eventually no more messages are
+
+1411
+00:54:35,440 --> 00:54:38,320
+received and we will shuffle the data
+
+1412
+00:54:38,320 --> 00:54:39,640
+off to cloud storage and it'll go to
+
+1413
+00:54:39,640 --> 00:54:41,640
+sleep for the night. Um looking at the
+
+1414
+00:54:41,640 --> 00:54:43,400
+whole thing from the highest level, a
+
+1415
+00:54:43,400 --> 00:54:44,960
+Kubernetes cluster can be a one-node
+
+1416
+00:54:44,960 --> 00:54:46,240
+cluster on your laptop or it could be
+
+1417
+00:54:46,240 --> 00:54:48,480
+200,000 nodes in the cloud. Each of
+
+1418
+00:54:48,480 --> 00:54:50,960
+those nodes can run multiple workers. Um
+
+1419
+00:54:50,960 --> 00:54:54,840
+each of those agents are idle 99.999%
+
+1420
+00:54:54,840 --> 00:54:56,520
+of the time, so you can do the math and
+
+1421
+00:54:56,520 --> 00:54:58,360
+see we're driving up to those billions
+
+1422
+00:54:58,360 --> 00:54:59,920
+of numbers. Um
+
+1423
+00:54:59,920 --> 00:55:00,720
+Whew.
+
+1424
+00:55:00,720 --> 00:55:02,160
+Agent Substrate is an open source
+
+1425
+00:55:02,160 --> 00:55:04,760
+project. Uh it is still pre-production
+
+1426
+00:55:04,760 --> 00:55:06,240
+grade, but we're working really hard to
+
+1427
+00:55:06,240 --> 00:55:08,240
+get it out uh into a workable state by
+
+1428
+00:55:08,240 --> 00:55:09,800
+the end of this uh
+
+1429
+00:55:09,800 --> 00:55:12,280
+fall and come take a look at it if
+
+1430
+00:55:12,280 --> 00:55:13,840
+you're interested in it. Take a look at
+
+1431
+00:55:13,840 --> 00:55:15,360
+what we've done. Bring us your feedback.
+
+1432
+00:55:15,360 --> 00:55:16,640
+The most useful thing that we can get
+
+1433
+00:55:16,640 --> 00:55:18,000
+from people is experience and
+
+1434
+00:55:18,000 --> 00:55:19,760
+requirements and context about what
+
+1435
+00:55:19,760 --> 00:55:21,360
+you're doing with agents. We'd love to
+
+1436
+00:55:21,360 --> 00:55:25,200
+hear from you. Thank you, everybody.
+
+1437
+00:55:25,473 --> 00:55:27,493
+>> [applause]
+
+1438
+00:55:36,760 --> 00:55:38,480
+>> Thank you for the fantastic set of
+
+1439
+00:55:38,480 --> 00:55:40,680
+talks. We now are going to have a
+
+1440
+00:55:40,680 --> 00:55:43,120
+workshop on why your agent needs a
+
+1441
+00:55:43,120 --> 00:55:47,000
+wallet, agentic commerce on Arc with
+
+1442
+00:55:47,000 --> 00:55:50,320
+USDC and nano payments with Harsh Il
+
+1443
+00:55:50,320 --> 00:55:52,560
+Bengali leading the way.
+
+1444
+00:55:52,560 --> 00:55:54,120
+Uh if you'll allow a little bit of time
+
+1445
+00:55:54,120 --> 00:55:57,080
+to get the session set up, uh we will be
+
+1446
+00:55:57,080 --> 00:56:00,320
+underway in just a minute or two.
+
+1447
+01:01:23,960 --> 01:01:26,400
+>> Oh, yeah. Yeah.
+
+1448
+01:02:16,000 --> 01:02:18,840
+>> Good morning, everyone.
+
+1449
+01:02:18,840 --> 01:02:21,600
+Uh nice to see so many of you here on a
+
+1450
+01:02:21,600 --> 01:02:25,800
+Saturday. Um yeah, really excited to uh
+
+1451
+01:02:25,800 --> 01:02:28,080
+showcase the work that Circle's doing uh
+
+1452
+01:02:28,080 --> 01:02:31,520
+in the agent AI space. So, my name is
+
+1453
+01:02:31,520 --> 01:02:33,200
+Harshal, and I'm a staff software
+
+1454
+01:02:33,200 --> 01:02:35,120
+engineer at Circle.
+
+1455
+01:02:35,120 --> 01:02:38,400
+So, often times um when I'm meeting AI
+
+1456
+01:02:38,400 --> 01:02:41,680
+developers at meetups and conferences, I
+
+1457
+01:02:41,680 --> 01:02:43,760
+get asked this question, um so you're
+
+1458
+01:02:43,760 --> 01:02:45,000
+with Circle,
+
+1459
+01:02:45,000 --> 01:02:47,600
+isn't Circle a stablecoin company?
+
+1460
+01:02:47,600 --> 01:02:50,880
+Yes. Um and why is uh
+
+1461
+01:02:50,880 --> 01:02:54,720
+what's Circle's role in the agent AI era
+
+1462
+01:02:54,720 --> 01:02:57,120
+and agent AI space?
+
+1463
+01:02:57,120 --> 01:02:59,720
+It's a fair question, but the answer is
+
+1464
+01:02:59,720 --> 01:03:03,000
+fairly straightforward uh because Circle
+
+1465
+01:03:03,000 --> 01:03:07,240
+issues USDC, and USDC is the world's
+
+1466
+01:03:07,240 --> 01:03:10,320
+largest regulated digital dollar.
+
+1467
+01:03:10,320 --> 01:03:13,640
+And turns out that
+
+1468
+01:03:13,640 --> 01:03:16,720
+the thing that your agents get stuck at
+
+1469
+01:03:16,720 --> 01:03:20,840
+is payments. And we have spent many
+
+1470
+01:03:20,840 --> 01:03:23,440
+years making payments faster and
+
+1471
+01:03:23,440 --> 01:03:24,600
+cheaper.
+
+1472
+01:03:24,600 --> 01:03:26,760
+Uh and this is the gap that we're sort
+
+1473
+01:03:26,760 --> 01:03:28,440
+of going to look at today
+
+1474
+01:03:28,440 --> 01:03:30,520
+in this workshop.
+
+1475
+01:03:30,520 --> 01:03:31,560
+So,
+
+1476
+01:03:31,560 --> 01:03:34,240
+when we are often talk about making AI
+
+1477
+01:03:34,240 --> 01:03:37,320
+agents powerful and autonomous, we are
+
+1478
+01:03:37,320 --> 01:03:38,600
+thinking of
+
+1479
+01:03:38,600 --> 01:03:42,840
+powerful models, more tools, um better
+
+1480
+01:03:42,840 --> 01:03:45,280
+uh you know, better quality eval
+
+1481
+01:03:45,280 --> 01:03:46,280
+and
+
+1482
+01:03:46,280 --> 01:03:48,320
+those are the right things to look at,
+
+1483
+01:03:48,320 --> 01:03:49,400
+but
+
+1484
+01:03:49,400 --> 01:03:52,400
+one of the things that happens is
+
+1485
+01:03:52,400 --> 01:03:54,480
+these days the models are strong enough
+
+1486
+01:03:54,480 --> 01:03:56,960
+that they can plan your task for you,
+
+1487
+01:03:56,960 --> 01:03:59,680
+they can write code for you, but the
+
+1488
+01:03:59,680 --> 01:04:03,080
+moment they face a paywall uh or the
+
+1489
+01:04:03,080 --> 01:04:04,880
+moment they are asked to like log in or
+
+1490
+01:04:04,880 --> 01:04:06,800
+sign up on behalf of you,
+
+1491
+01:04:06,800 --> 01:04:10,240
+they give the control back to you and
+
+1492
+01:04:10,240 --> 01:04:12,960
+that's the that's the gap.
+
+1493
+01:04:12,960 --> 01:04:15,040
+So, what we'll look
+
+1494
+01:04:15,040 --> 01:04:17,760
+uh in this workshop and I'd want all of
+
+1495
+01:04:17,760 --> 01:04:20,880
+you to participate uh is
+
+1496
+01:04:20,880 --> 01:04:24,560
+how an agent is empowered the moment you
+
+1497
+01:04:24,560 --> 01:04:27,680
+provide it with a wallet and
+
+1498
+01:04:27,680 --> 01:04:29,840
+empower it with the ability to pay for
+
+1499
+01:04:29,840 --> 01:04:30,880
+it
+
+1500
+01:04:30,880 --> 01:04:33,000
+all the things that it needs on the go
+
+1501
+01:04:33,000 --> 01:04:35,360
+and how to do it in a secure way.
+
+1502
+01:04:35,360 --> 01:04:38,880
+So, let's get started.
+
+1503
+01:04:38,880 --> 01:04:41,840
+Let's talk about like how
+
+1504
+01:04:41,840 --> 01:04:44,240
+Um let's see.
+
+1505
+01:04:44,240 --> 01:04:47,840
+Issues with this slide.
+
+1506
+01:04:50,160 --> 01:04:51,200
+Um
+
+1507
+01:04:51,200 --> 01:04:54,960
+let's start mirroring again.
+
+1508
+01:05:00,000 --> 01:05:01,280
+Uh
+
+1509
+01:05:01,280 --> 01:05:02,960
+Yep. Uh
+
+1510
+01:05:02,960 --> 01:05:05,400
+there seems to be an issue with the
+
+1511
+01:05:05,400 --> 01:05:07,880
+mirror.
+
+1512
+01:05:08,360 --> 01:05:09,680
+I think the
+
+1513
+01:05:09,680 --> 01:05:13,120
+Yeah, I'll get up.
+
+1514
+01:05:17,760 --> 01:05:18,920
+Come on.
+
+1515
+01:05:18,920 --> 01:05:20,320
+Give it a second.
+
+1516
+01:05:20,320 --> 01:05:21,800
+All right, there we go. Awesome. Thank
+
+1517
+01:05:21,800 --> 01:05:23,000
+you.
+
+1518
+01:05:23,000 --> 01:05:26,480
+So, uh let's sort of like look at
+
+1519
+01:05:26,480 --> 01:05:28,600
+where we were in uh a couple of years
+
+1520
+01:05:28,600 --> 01:05:31,800
+ago, right? In 2023, mostly we were uh
+
+1521
+01:05:31,800 --> 01:05:35,760
+interacting with LLMs uh via ChatGPT uh
+
+1522
+01:05:35,760 --> 01:05:37,560
+and just like prompting.
+
+1523
+01:05:37,560 --> 01:05:40,520
+Uh 2024, things got a bit more advanced.
+
+1524
+01:05:40,520 --> 01:05:43,600
+We started like running some evals, um
+
+1525
+01:05:43,600 --> 01:05:45,200
+the getting a better understanding of
+
+1526
+01:05:45,200 --> 01:05:47,800
+how uh our agents work.
+
+1527
+01:05:47,800 --> 01:05:51,840
+2025 was all about MCPs, uh skills,
+
+1528
+01:05:51,840 --> 01:05:54,160
+orchestrating agents. So, having an
+
+1529
+01:05:54,160 --> 01:05:56,960
+agent manage a fleet of other agents
+
+1530
+01:05:56,960 --> 01:05:58,000
+uh and
+
+1531
+01:05:58,000 --> 01:05:59,800
+doing more powerful work.
+
+1532
+01:05:59,800 --> 01:06:03,560
+And in 2026, we believe that
+
+1533
+01:06:03,560 --> 01:06:04,360
+um
+
+1534
+01:06:04,360 --> 01:06:06,160
+that's the year of
+
+1535
+01:06:06,160 --> 01:06:09,560
+where agents will go pay for things and
+
+1536
+01:06:09,560 --> 01:06:12,440
+pay each other, and the agentic economy
+
+1537
+01:06:12,440 --> 01:06:16,680
+is truly here and it's about to stay.
+
+1538
+01:06:16,680 --> 01:06:19,600
+And the early numbers are quite
+
+1539
+01:06:19,600 --> 01:06:21,800
+promising. So, if you look at the
+
+1540
+01:06:21,800 --> 01:06:23,200
+numbers um
+
+1541
+01:06:23,200 --> 01:06:25,920
+in the last 30 days alone,
+
+1542
+01:06:25,920 --> 01:06:28,640
+agents paid for 24 million dollars worth
+
+1543
+01:06:28,640 --> 01:06:31,960
+of information on the internet.
+
+1544
+01:06:31,960 --> 01:06:33,720
+And 98.8%
+
+1545
+01:06:33,720 --> 01:06:36,880
+of it was settled in USDC.
+
+1546
+01:06:36,880 --> 01:06:39,800
+Now, when you think about
+
+1547
+01:06:39,800 --> 01:06:42,280
+just traditional finance numbers, 24
+
+1548
+01:06:42,280 --> 01:06:45,600
+million is not a lot. But, uh
+
+1549
+01:06:45,600 --> 01:06:48,800
+it's projected by
+
+1550
+01:06:48,800 --> 01:06:51,640
+2030 that the agentic economy will be 5
+
+1551
+01:06:51,640 --> 01:06:53,320
+trillion dollars.
+
+1552
+01:06:53,320 --> 01:06:54,960
+And
+
+1553
+01:06:54,960 --> 01:06:56,600
+now the question is,
+
+1554
+01:06:56,600 --> 01:06:59,080
+why do agents get stuck?
+
+1555
+01:06:59,080 --> 01:07:02,360
+Um so, when let's sort of like
+
+1556
+01:07:02,360 --> 01:07:05,400
+look back at how the internet was built.
+
+1557
+01:07:05,400 --> 01:07:06,840
+So,
+
+1558
+01:07:06,840 --> 01:07:08,880
+the internet for the last 30 years
+
+1559
+01:07:08,880 --> 01:07:11,040
+catered for one type of customer, which
+
+1560
+01:07:11,040 --> 01:07:13,760
+is humans. So, all the payment rails,
+
+1561
+01:07:13,760 --> 01:07:15,080
+the
+
+1562
+01:07:15,080 --> 01:07:18,280
+the monetization schemes, everything was
+
+1563
+01:07:18,280 --> 01:07:20,000
+custom-made for this one type of
+
+1564
+01:07:20,000 --> 01:07:22,640
+customer, which is humans. So, you you
+
+1565
+01:07:22,640 --> 01:07:24,880
+had your sign-up flows, your
+
+1566
+01:07:24,880 --> 01:07:27,600
+subscription models, your paywalls,
+
+1567
+01:07:27,600 --> 01:07:30,000
+and ads, right?
+
+1568
+01:07:30,000 --> 01:07:31,160
+But now,
+
+1569
+01:07:31,160 --> 01:07:33,320
+there's this new type of customer, which
+
+1570
+01:07:33,320 --> 01:07:36,640
+is the AI agent. And the AI agent does
+
+1571
+01:07:36,640 --> 01:07:39,720
+not interact with the internet or
+
+1572
+01:07:39,720 --> 01:07:42,280
+behave in the same way as a human does.
+
+1573
+01:07:42,280 --> 01:07:46,400
+Their ability to consume information is
+
+1574
+01:07:46,400 --> 01:07:48,480
+orders of magnitude higher than any
+
+1575
+01:07:48,480 --> 01:07:49,480
+human.
+
+1576
+01:07:49,480 --> 01:07:51,920
+And you can prove it, right? Like you
+
+1577
+01:07:51,920 --> 01:07:54,760
+run a simple like deep research query
+
+1578
+01:07:54,760 --> 01:07:56,760
+with your Claude, and you'll see that
+
+1579
+01:07:56,760 --> 01:07:58,840
+like it's able to like read through like
+
+1580
+01:07:58,840 --> 01:08:02,160
+hundreds of pages of information in a
+
+1581
+01:08:02,160 --> 01:08:03,560
+few seconds.
+
+1582
+01:08:03,560 --> 01:08:06,360
+Now, some of those pages some of those
+
+1583
+01:08:06,360 --> 01:08:08,640
+articles on the internet
+
+1584
+01:08:08,640 --> 01:08:10,320
+behind a paywall.
+
+1585
+01:08:10,320 --> 01:08:12,240
+Rightly so, because you know, the
+
+1586
+01:08:12,240 --> 01:08:14,600
+merchants are like, "Okay, this is
+
+1587
+01:08:14,600 --> 01:08:17,240
+premium content. I want a human to pay
+
+1588
+01:08:17,240 --> 01:08:19,640
+for it." So, once they hit a paywall,
+
+1589
+01:08:19,640 --> 01:08:21,799
+they can't go ahead and access it, and
+
+1590
+01:08:21,799 --> 01:08:23,880
+the quality of your research
+
+1591
+01:08:23,880 --> 01:08:26,000
+just sort of like is that
+
+1592
+01:08:26,000 --> 01:08:29,319
+degrades because it cannot reach that
+
+1593
+01:08:29,319 --> 01:08:31,600
+premium resource.
+
+1594
+01:08:31,600 --> 01:08:32,759
+So,
+
+1595
+01:08:32,759 --> 01:08:34,560
+then on the other side, you have the
+
+1596
+01:08:34,560 --> 01:08:36,680
+merchants. And
+
+1597
+01:08:36,680 --> 01:08:38,279
+the merchants build these paywalls
+
+1598
+01:08:38,279 --> 01:08:40,359
+because you they wanted to monetize
+
+1599
+01:08:40,359 --> 01:08:41,440
+content.
+
+1600
+01:08:41,440 --> 01:08:44,000
+But now they're realizing that there is
+
+1601
+01:08:44,000 --> 01:08:46,240
+this new customer base, and instead of
+
+1602
+01:08:46,240 --> 01:08:48,560
+like charging them a subscription fee, I
+
+1603
+01:08:48,560 --> 01:08:49,799
+can just
+
+1604
+01:08:49,799 --> 01:08:51,839
+charge a fraction of an amount for the
+
+1605
+01:08:51,839 --> 01:08:53,960
+agent, so that they can just pay for
+
+1606
+01:08:53,960 --> 01:08:56,480
+that specific piece of article or that
+
+1607
+01:08:56,480 --> 01:08:57,600
+piece of
+
+1608
+01:08:57,600 --> 01:08:59,440
+you know, data or some
+
+1609
+01:08:59,440 --> 01:09:02,880
+inference, and make money off it.
+
+1610
+01:09:02,880 --> 01:09:06,640
+So, why uh just like why not monetize
+
+1611
+01:09:06,640 --> 01:09:09,319
+this? And agents are increasingly uh the
+
+1612
+01:09:09,319 --> 01:09:10,880
+the traffic is actually going up
+
+1613
+01:09:10,880 --> 01:09:13,080
+compared to like humans. So, there's
+
+1614
+01:09:13,080 --> 01:09:15,880
+this opportunity for merchants to
+
+1615
+01:09:15,880 --> 01:09:18,480
+monetize their uh premium content and
+
+1616
+01:09:18,480 --> 01:09:19,680
+resources.
+
+1617
+01:09:19,680 --> 01:09:22,200
+And they do that by just offering the
+
+1618
+01:09:22,200 --> 01:09:25,480
+same services for a fraction of a
+
+1619
+01:09:25,480 --> 01:09:26,120
+uh
+
+1620
+01:09:26,120 --> 01:09:27,839
+of a price for
+
+1621
+01:09:27,839 --> 01:09:30,279
+uh a traditional subscription.
+
+1622
+01:09:30,279 --> 01:09:31,359
+And
+
+1623
+01:09:31,359 --> 01:09:33,960
+that's the the the whole problem.
+
+1624
+01:09:33,960 --> 01:09:35,160
+Uh but
+
+1625
+01:09:35,160 --> 01:09:38,400
+then you you might ask, "Okay, um
+
+1626
+01:09:38,400 --> 01:09:41,120
+why not just have my agent manage my
+
+1627
+01:09:41,120 --> 01:09:44,120
+subscriptions or give it a credit card?"
+
+1628
+01:09:44,120 --> 01:09:45,759
+Well, um
+
+1629
+01:09:45,759 --> 01:09:48,200
+it works. You could give your agent like
+
+1630
+01:09:48,200 --> 01:09:50,759
+a few uh subscriptions and API keys to
+
+1631
+01:09:50,759 --> 01:09:52,279
+manage. Uh
+
+1632
+01:09:52,279 --> 01:09:53,279
+but
+
+1633
+01:09:53,279 --> 01:09:55,880
+does it scale? Because today you want uh
+
+1634
+01:09:55,880 --> 01:09:57,760
+task X, tomorrow you want something
+
+1635
+01:09:57,760 --> 01:09:58,960
+else, and
+
+1636
+01:09:58,960 --> 01:10:02,360
+uh how can you um pay or subscribe for
+
+1637
+01:10:02,360 --> 01:10:04,040
+something that the agent just discovered
+
+1638
+01:10:04,040 --> 01:10:05,760
+as part of its research and is like,
+
+1639
+01:10:05,760 --> 01:10:07,640
+"Oh, I want to access this resource. I
+
+1640
+01:10:07,640 --> 01:10:09,840
+think it's valuable." Uh and now it
+
+1641
+01:10:09,840 --> 01:10:14,520
+stalls. So, that's the challenge. And
+
+1642
+01:10:14,520 --> 01:10:15,560
+then
+
+1643
+01:10:15,560 --> 01:10:17,160
+you can say, "Sure, like let's just use
+
+1644
+01:10:17,160 --> 01:10:19,760
+credit cards." Well, um
+
+1645
+01:10:19,760 --> 01:10:21,880
+that's fine if you're okay giving your
+
+1646
+01:10:21,880 --> 01:10:24,080
+agent your credit card information,
+
+1647
+01:10:24,080 --> 01:10:26,880
+but the economics don't work either.
+
+1648
+01:10:26,880 --> 01:10:29,640
+Because as I mentioned earlier, uh
+
+1649
+01:10:29,640 --> 01:10:31,960
+merchants are exposing these um end
+
+1650
+01:10:31,960 --> 01:10:33,960
+points or these resources to agents at a
+
+1651
+01:10:33,960 --> 01:10:36,360
+fraction of a cost. So, if an agent,
+
+1652
+01:10:36,360 --> 01:10:38,680
+which is making these high-frequency API
+
+1653
+01:10:38,680 --> 01:10:42,160
+calls for premium content, has to pay 1
+
+1654
+01:10:42,160 --> 01:10:44,720
+cent, and he has to uh the agent has to
+
+1655
+01:10:44,720 --> 01:10:48,640
+like then pay 3% or 2.5% of credit card
+
+1656
+01:10:48,640 --> 01:10:51,560
+fees, the economics just do not work.
+
+1657
+01:10:51,560 --> 01:10:54,160
+Right? So, so that's why uh traditional
+
+1658
+01:10:54,160 --> 01:10:57,960
+payment rails aren't the best way of uh
+
+1659
+01:10:57,960 --> 01:11:00,400
+way for AI agents to like pay uh as they
+
+1660
+01:11:00,400 --> 01:11:01,640
+go.
+
+1661
+01:11:01,640 --> 01:11:05,760
+What agents need is payments that work
+
+1662
+01:11:05,760 --> 01:11:07,240
+like the internet.
+
+1663
+01:11:07,240 --> 01:11:09,160
+Payments that are real-time,
+
+1664
+01:11:09,160 --> 01:11:13,880
+low cost, programmable, and always on.
+
+1665
+01:11:13,880 --> 01:11:15,200
+And that's why
+
+1666
+01:11:15,200 --> 01:11:17,840
+Circle built the Circle agent stack. So,
+
+1667
+01:11:17,840 --> 01:11:19,680
+it's a full-stack platform for the agent
+
+1668
+01:11:19,680 --> 01:11:21,000
+tech economy.
+
+1669
+01:11:21,000 --> 01:11:22,880
+And
+
+1670
+01:11:22,880 --> 01:11:24,480
+let's look at it
+
+1671
+01:11:24,480 --> 01:11:26,760
+by visiting agents.circle.com.
+
+1672
+01:11:26,760 --> 01:11:29,560
+And from here, like if folks
+
+1673
+01:11:29,560 --> 01:11:31,840
+have their laptops on, we can start sort
+
+1674
+01:11:31,840 --> 01:11:33,880
+of the workshop where
+
+1675
+01:11:33,880 --> 01:11:35,720
+we'll have like a few colleagues of mine
+
+1676
+01:11:35,720 --> 01:11:37,720
+over here who are probably collecting
+
+1677
+01:11:37,720 --> 01:11:40,880
+emails, and we'll be distributing some
+
+1678
+01:11:40,880 --> 01:11:44,720
+USDC for you to like try this as we go
+
+1679
+01:11:44,720 --> 01:11:47,440
+on an interactive journey where we try
+
+1680
+01:11:47,440 --> 01:11:49,400
+to like build a
+
+1681
+01:11:49,400 --> 01:11:51,600
+a business. So, let's see
+
+1682
+01:11:51,600 --> 01:11:53,600
+how our agents can,
+
+1683
+01:11:53,600 --> 01:11:55,200
+you know,
+
+1684
+01:11:55,200 --> 01:11:57,120
+build something for us when they're
+
+1685
+01:11:57,120 --> 01:12:00,360
+empowered with a wallet.
+
+1686
+01:12:00,840 --> 01:12:02,480
+So, let's look at
+
+1687
+01:12:02,480 --> 01:12:04,320
+agents.circle.com.
+
+1688
+01:12:04,320 --> 01:12:05,480
+So, what's
+
+1689
+01:12:05,480 --> 01:12:07,840
+agents.circle.com? So,
+
+1690
+01:12:07,840 --> 01:12:10,840
+you have a single place where your agent
+
+1691
+01:12:10,840 --> 01:12:13,200
+can hit a pay day API. All you need to
+
+1692
+01:12:13,200 --> 01:12:16,520
+do now is just copy this prompt in one
+
+1693
+01:12:16,520 --> 01:12:18,120
+click, and
+
+1694
+01:12:18,120 --> 01:12:20,560
+use your Claude, Cursor, or favorite
+
+1695
+01:12:20,560 --> 01:12:23,160
+like agent coding tool,
+
+1696
+01:12:23,160 --> 01:12:24,760
+and then
+
+1697
+01:12:24,760 --> 01:12:26,080
+let it run.
+
+1698
+01:12:26,080 --> 01:12:27,600
+So,
+
+1699
+01:12:27,600 --> 01:12:29,800
+it will install a CLI. It will generate
+
+1700
+01:12:29,800 --> 01:12:31,320
+a wallet. The setup instructions are
+
+1701
+01:12:31,320 --> 01:12:32,960
+very simple.
+
+1702
+01:12:32,960 --> 01:12:35,600
+My colleagues can help you out if you
+
+1703
+01:12:35,600 --> 01:12:37,600
+run into any issues.
+
+1704
+01:12:37,600 --> 01:12:40,520
+But, let's also look at the marketplace
+
+1705
+01:12:40,520 --> 01:12:43,680
+because I talked about,
+
+1706
+01:12:43,680 --> 01:12:46,200
+you know, agents being able to like pay
+
+1707
+01:12:46,200 --> 01:12:49,080
+for things as they go, but what do they
+
+1708
+01:12:49,080 --> 01:12:51,960
+pay for? What are the services? And then
+
+1709
+01:12:51,960 --> 01:12:54,000
+there's the question of discoverability.
+
+1710
+01:12:54,000 --> 01:12:56,000
+Like how do they discover
+
+1711
+01:12:56,000 --> 01:12:58,880
+what services are out there? And that's
+
+1712
+01:12:58,880 --> 01:13:01,000
+where our agent marketplace comes into
+
+1713
+01:13:01,000 --> 01:13:03,600
+the picture. And the discoverability
+
+1714
+01:13:03,600 --> 01:13:06,280
+layer. So the CLI, once you download and
+
+1715
+01:13:06,280 --> 01:13:08,760
+set it up, you're able to it's able to
+
+1716
+01:13:08,760 --> 01:13:11,200
+like discover these paid services. And
+
+1717
+01:13:11,200 --> 01:13:13,440
+you have around
+
+1718
+01:13:13,440 --> 01:13:15,120
+a thousand endpoints from various
+
+1719
+01:13:15,120 --> 01:13:16,400
+providers
+
+1720
+01:13:16,400 --> 01:13:20,000
+spanning a wide range of
+
+1721
+01:13:20,000 --> 01:13:22,080
+categories,
+
+1722
+01:13:22,080 --> 01:13:24,200
+which is you have
+
+1723
+01:13:24,200 --> 01:13:25,960
+endpoints for image generation, for
+
+1724
+01:13:25,960 --> 01:13:27,480
+example,
+
+1725
+01:13:27,480 --> 01:13:30,000
+which just cost like 2 cents
+
+1726
+01:13:30,000 --> 01:13:31,600
+per image.
+
+1727
+01:13:31,600 --> 01:13:33,360
+You no longer need to have subscription
+
+1728
+01:13:33,360 --> 01:13:36,120
+for a specific image generation model.
+
+1729
+01:13:36,120 --> 01:13:39,480
+Then let's look at some financial
+
+1730
+01:13:39,480 --> 01:13:41,120
+analysis tools.
+
+1731
+01:13:41,120 --> 01:13:42,880
+You you have like access to, for
+
+1732
+01:13:42,880 --> 01:13:46,040
+example, crypto prices. And prediction
+
+1733
+01:13:46,040 --> 01:13:47,560
+market. Prediction markets are fun. You
+
+1734
+01:13:47,560 --> 01:13:50,560
+can like have your agent, you know, uh
+
+1735
+01:13:50,560 --> 01:13:52,920
+give give it some funds and like make
+
+1736
+01:13:52,920 --> 01:13:55,120
+bets on the prediction market.
+
+1737
+01:13:55,120 --> 01:13:56,640
+And
+
+1738
+01:13:56,640 --> 01:13:58,760
+that's one thing. Social intelligence.
+
+1739
+01:13:58,760 --> 01:14:00,840
+So if you if you want to like plan some
+
+1740
+01:14:00,840 --> 01:14:02,720
+GTM motions or want to like do some
+
+1741
+01:14:02,720 --> 01:14:04,640
+sales motions, so how do you do that?
+
+1742
+01:14:04,640 --> 01:14:05,640
+Like
+
+1743
+01:14:05,640 --> 01:14:07,760
+just pay as you go
+
+1744
+01:14:07,760 --> 01:14:11,320
+for the content that you need. And it's
+
+1745
+01:14:11,320 --> 01:14:13,560
+one of the favorite things I use is the
+
+1746
+01:14:13,560 --> 01:14:15,760
+Reddit endpoint. So I just I'm just able
+
+1747
+01:14:15,760 --> 01:14:16,960
+to like
+
+1748
+01:14:16,960 --> 01:14:19,840
+query some Reddit information for just
+
+1749
+01:14:19,840 --> 01:14:21,200
+like 2 cents.
+
+1750
+01:14:21,200 --> 01:14:23,200
+And
+
+1751
+01:14:23,200 --> 01:14:26,520
+and then there's your web search. So
+
+1752
+01:14:26,520 --> 01:14:29,680
+uh better quality web search for your
+
+1753
+01:14:29,680 --> 01:14:32,080
+agents for a fraction of a cost.
+
+1754
+01:14:32,080 --> 01:14:34,120
+So with that, um
+
+1755
+01:14:34,120 --> 01:14:37,400
+if folks are ready, I'm going to give
+
+1756
+01:14:37,400 --> 01:14:38,840
+I'm going to pause for a couple of
+
+1757
+01:14:38,840 --> 01:14:41,280
+minutes here. So if folks are want to
+
+1758
+01:14:41,280 --> 01:14:44,240
+like start the workshop with me and
+
+1759
+01:14:44,240 --> 01:14:46,000
+install the the
+
+1760
+01:14:46,000 --> 01:14:49,920
+and then we can take it from there.
+
+1761
+01:15:51,280 --> 01:15:53,560
+So, um
+
+1762
+01:15:53,560 --> 01:15:56,880
+if folks need
+
+1763
+01:15:56,880 --> 01:15:59,600
+to install the CLI, all you got to do is
+
+1764
+01:15:59,600 --> 01:16:02,840
+just go to agents.circle.com
+
+1765
+01:16:02,840 --> 01:16:06,040
+and click on find your agent in one
+
+1766
+01:16:06,040 --> 01:16:09,920
+prompt. It copies a prompt, and now I'm
+
+1767
+01:16:09,920 --> 01:16:12,240
+here in cursor. I already have the CLI
+
+1768
+01:16:12,240 --> 01:16:15,240
+installed, but uh you can just run this
+
+1769
+01:16:15,240 --> 01:16:17,360
+command, which will set up the skill and
+
+1770
+01:16:17,360 --> 01:16:18,960
+the CLI for you.
+
+1771
+01:16:18,960 --> 01:16:22,120
+And then it will prompt you for an OTP,
+
+1772
+01:16:22,120 --> 01:16:25,040
+and you can log in.
+
+1773
+01:16:34,920 --> 01:16:37,240
+And um just
+
+1774
+01:16:37,240 --> 01:16:39,200
+to walk you through my setup over here,
+
+1775
+01:16:39,200 --> 01:16:41,200
+uh you don't have to do do same thing. I
+
+1776
+01:16:41,200 --> 01:16:43,400
+have two terminals running here because
+
+1777
+01:16:43,400 --> 01:16:45,880
+on my left-hand side, I have a what I
+
+1778
+01:16:45,880 --> 01:16:47,960
+call a vanilla agent. So, it's an agent
+
+1779
+01:16:47,960 --> 01:16:50,400
+that does not have access to a wallet.
+
+1780
+01:16:50,400 --> 01:16:53,080
+And on the right-hand side, I have my
+
+1781
+01:16:53,080 --> 01:16:55,840
+agent which has the Circle CLI installed
+
+1782
+01:16:55,840 --> 01:16:58,880
+and can pay for things as we go. Uh and
+
+1783
+01:16:58,880 --> 01:17:01,520
+the task that uh I'm trying to do today
+
+1784
+01:17:01,520 --> 01:17:02,360
+uh
+
+1785
+01:17:02,360 --> 01:17:05,280
+with you all is uh I've always dreamt of
+
+1786
+01:17:05,280 --> 01:17:07,160
+I love coffee. So, I've always dreamt of
+
+1787
+01:17:07,160 --> 01:17:09,600
+like, you know, uh owning my own uh
+
+1788
+01:17:09,600 --> 01:17:11,560
+coffee grocery. So, what we're going to
+
+1789
+01:17:11,560 --> 01:17:14,680
+do today is see uh what we need to set
+
+1790
+01:17:14,680 --> 01:17:16,960
+one up, what's the business plan, and
+
+1791
+01:17:16,960 --> 01:17:18,480
+can we do some
+
+1792
+01:17:18,480 --> 01:17:20,080
+um you know, uh
+
+1793
+01:17:20,080 --> 01:17:22,120
+some tasks associated with that. It's
+
+1794
+01:17:22,120 --> 01:17:23,440
+going to be a fun
+
+1795
+01:17:23,440 --> 01:17:24,240
+uh
+
+1796
+01:17:24,240 --> 01:17:28,000
+small uh activity and you you guys can
+
+1797
+01:17:28,000 --> 01:17:29,600
+do the same thing or like, pick
+
+1798
+01:17:29,600 --> 01:17:33,400
+something that you'll like as well. So,
+
+1799
+01:17:33,400 --> 01:17:35,680
+yeah, I'll give it 30 more seconds and
+
+1800
+01:17:35,680 --> 01:17:38,880
+then we can get started.
+
+1801
+01:18:47,040 --> 01:18:50,200
+>> All right. Um
+
+1802
+01:18:50,200 --> 01:18:52,800
+Cool. So, let's get started. Um so,
+
+1803
+01:18:52,800 --> 01:18:54,880
+yeah, the first prompt is fairly basic,
+
+1804
+01:18:54,880 --> 01:18:57,240
+which is okay, I want to start a coffee
+
+1805
+01:18:57,240 --> 01:18:59,160
+roastery in San Francisco. So, can you
+
+1806
+01:18:59,160 --> 01:19:02,240
+come up with five names and look, uh you
+
+1807
+01:19:02,240 --> 01:19:04,560
+know, if if I want to build a website,
+
+1808
+01:19:04,560 --> 01:19:05,960
+uh I want to know if the domains are
+
+1809
+01:19:05,960 --> 01:19:07,320
+available. So,
+
+1810
+01:19:07,320 --> 01:19:09,920
+uh let's see what uh uh
+
+1811
+01:19:09,920 --> 01:19:11,720
+agent without a wallet on the left-hand
+
+1812
+01:19:11,720 --> 01:19:13,680
+side does and the agent with a wallet on
+
+1813
+01:19:13,680 --> 01:19:16,120
+the right-hand side. So, you'll start
+
+1814
+01:19:16,120 --> 01:19:18,400
+seeing that um
+
+1815
+01:19:18,400 --> 01:19:21,400
+the results as we uh start doing
+
+1816
+01:19:21,400 --> 01:19:23,480
+slightly more complicated things, the
+
+1817
+01:19:23,480 --> 01:19:25,480
+results uh will show a difference in
+
+1818
+01:19:25,480 --> 01:19:29,760
+quality. So, let's let's look at this.
+
+1819
+01:19:31,560 --> 01:19:34,960
+So, uh the left left-hand side one is uh
+
+1820
+01:19:34,960 --> 01:19:37,640
+just running through Whois to see um
+
+1821
+01:19:37,640 --> 01:19:38,960
+uh if the particular domain is
+
+1822
+01:19:38,960 --> 01:19:41,680
+available.
+
+1823
+01:19:49,560 --> 01:19:50,800
+And
+
+1824
+01:19:50,800 --> 01:19:52,640
+on the right-hand side, uh you can see
+
+1825
+01:19:52,640 --> 01:19:53,840
+that
+
+1826
+01:19:53,840 --> 01:19:56,160
+you know, the agent is first checking
+
+1827
+01:19:56,160 --> 01:19:58,280
+whether there are funds, what's the
+
+1828
+01:19:58,280 --> 01:20:01,600
+budget, and it's making uh API calls to
+
+1829
+01:20:01,600 --> 01:20:04,560
+the CircleCI via the CircleCI
+
+1830
+01:20:04,560 --> 01:20:07,560
+listing the wallets,
+
+1831
+01:20:07,560 --> 01:20:10,000
+and checking the balance, and then is uh
+
+1832
+01:20:10,000 --> 01:20:12,600
+looking through the marketplace to see
+
+1833
+01:20:12,600 --> 01:20:15,520
+what uh endpoint do I have uh to
+
+1834
+01:20:15,520 --> 01:20:17,040
+essentially
+
+1835
+01:20:17,040 --> 01:20:17,840
+uh
+
+1836
+01:20:17,840 --> 01:20:20,320
+look for domains. So, you have one,
+
+1837
+01:20:20,320 --> 01:20:22,920
+which is stable domains, and it's the
+
+1838
+01:20:22,920 --> 01:20:25,360
+description uh it was able to like
+
+1839
+01:20:25,360 --> 01:20:27,680
+browse through the marketplace to see
+
+1840
+01:20:27,680 --> 01:20:30,160
+what matches my requirement, and now
+
+1841
+01:20:30,160 --> 01:20:31,800
+it's uh because it matched this
+
+1842
+01:20:31,800 --> 01:20:33,560
+description, it's actually inspecting
+
+1843
+01:20:33,560 --> 01:20:36,640
+that and now it's going to give us
+
+1844
+01:20:36,640 --> 01:20:39,560
+the result. So,
+
+1845
+01:20:41,360 --> 01:20:44,120
+So, you can see like some domain is
+
+1846
+01:20:44,120 --> 01:20:48,320
+already taken. So, it's all
+
+1847
+01:20:48,320 --> 01:20:52,480
+The left agent already finished. So,
+
+1848
+01:20:57,200 --> 01:21:00,520
+Yeah, obviously it's flagging that there
+
+1849
+01:21:00,520 --> 01:21:03,320
+could be some IP issues with Carl and
+
+1850
+01:21:03,320 --> 01:21:06,120
+everything. So,
+
+1851
+01:21:06,520 --> 01:21:10,720
+we'll wait for this agent to finish.
+
+1852
+01:21:16,040 --> 01:21:18,560
+You see like this agent actually made an
+
+1853
+01:21:18,560 --> 01:21:21,240
+API call for 10 cents.
+
+1854
+01:21:21,240 --> 01:21:23,560
+Sorry, 1 cent to
+
+1855
+01:21:23,560 --> 01:21:24,840
+check
+
+1856
+01:21:24,840 --> 01:21:27,480
+if the domain actually is taken or not
+
+1857
+01:21:27,480 --> 01:21:30,760
+and how much it's going to cost to
+
+1858
+01:21:30,760 --> 01:21:33,040
+actually purchase an available domain.
+
+1859
+01:21:33,040 --> 01:21:35,200
+So, this information
+
+1860
+01:21:35,200 --> 01:21:36,640
+I think you can find the same
+
+1861
+01:21:36,640 --> 01:21:38,520
+information
+
+1862
+01:21:38,520 --> 01:21:40,520
+with a free web search, but it's not as
+
+1863
+01:21:40,520 --> 01:21:42,160
+accurate obviously and this one is
+
+1864
+01:21:42,160 --> 01:21:44,800
+definitely true like, okay, because it
+
+1865
+01:21:44,800 --> 01:21:46,680
+was able to like query a registry and
+
+1866
+01:21:46,680 --> 01:21:49,040
+figure out, okay, it needs 20 bucks a
+
+1867
+01:21:49,040 --> 01:21:51,200
+year for me to like purchase a specific
+
+1868
+01:21:51,200 --> 01:21:52,160
+domain.
+
+1869
+01:21:52,160 --> 01:21:54,320
+So,
+
+1870
+01:21:54,320 --> 01:21:55,560
+um
+
+1871
+01:21:55,560 --> 01:21:57,120
+let's
+
+1872
+01:21:57,120 --> 01:21:59,200
+um okay, it's
+
+1873
+01:21:59,200 --> 01:22:01,440
+picking Sutro Roasters. So, I'm just
+
+1874
+01:22:01,440 --> 01:22:02,520
+going to
+
+1875
+01:22:02,520 --> 01:22:05,720
+uh give it and say
+
+1876
+01:22:05,720 --> 01:22:08,320
+let's go with
+
+1877
+01:22:08,320 --> 01:22:09,520
+I like
+
+1878
+01:22:09,520 --> 01:22:11,440
+Bay Area's Coffee.
+
+1879
+01:22:11,440 --> 01:22:14,840
+Um I'm hoping there's
+
+1880
+01:22:14,840 --> 01:22:17,800
+and I'm just going to copy it here and
+
+1881
+01:22:17,800 --> 01:22:19,720
+let the two agents run.
+
+1882
+01:22:19,720 --> 01:22:20,760
+So,
+
+1883
+01:22:20,760 --> 01:22:23,280
+once that's finalized, the second task I
+
+1884
+01:22:23,280 --> 01:22:25,000
+want to do is
+
+1885
+01:22:25,000 --> 01:22:27,880
+Okay, now I essentially want to know the
+
+1886
+01:22:27,880 --> 01:22:31,080
+competition. I want to know uh
+
+1887
+01:22:31,080 --> 01:22:32,920
+it's essentially a task about market
+
+1888
+01:22:32,920 --> 01:22:35,600
+research. So, what do I need to do to
+
+1889
+01:22:35,600 --> 01:22:38,200
+stand out amongst my competitors?
+
+1890
+01:22:38,200 --> 01:22:42,360
+Uh and I want some quality like uh
+
+1891
+01:22:42,360 --> 01:22:46,720
+access uh to some uh journals and how to
+
+1892
+01:22:46,720 --> 01:22:49,120
+like roast the best beans and which
+
+1893
+01:22:49,120 --> 01:22:50,760
+beans to import and
+
+1894
+01:22:50,760 --> 01:22:53,000
+some information like that. So, let's
+
+1895
+01:22:53,000 --> 01:22:55,440
+That's my next task. So,
+
+1896
+01:22:55,440 --> 01:22:57,480
+let's
+
+1897
+01:22:57,480 --> 01:22:59,720
+start with that.
+
+1898
+01:22:59,720 --> 01:23:03,440
+And I shall
+
+1899
+01:23:04,000 --> 01:23:06,280
+So, yeah, it asked a follow-up question,
+
+1900
+01:23:06,280 --> 01:23:07,520
+which is like, okay, check for
+
+1901
+01:23:07,520 --> 01:23:11,760
+trademarks, etc. So, I'll just save this
+
+1902
+01:23:11,760 --> 01:23:15,120
+for now and
+
+1903
+01:23:15,600 --> 01:23:17,240
+and let's start.
+
+1904
+01:23:17,240 --> 01:23:19,840
+Um yeah, also the other thing I did was
+
+1905
+01:23:19,840 --> 01:23:23,200
+um I've updated the Claude.md file from
+
+1906
+01:23:23,200 --> 01:23:25,760
+uh in my agent over here to always give
+
+1907
+01:23:25,760 --> 01:23:29,080
+a very specific summary for the uh
+
+1908
+01:23:29,080 --> 01:23:32,240
+uh as part of each step here so that
+
+1909
+01:23:32,240 --> 01:23:34,360
+everyone understands like what happened
+
+1910
+01:23:34,360 --> 01:23:37,280
+and how much was spent uh as part of
+
+1911
+01:23:37,280 --> 01:23:39,520
+that particular step. So, if you see
+
+1912
+01:23:39,520 --> 01:23:42,200
+like it spent like 12 cents
+
+1913
+01:23:42,200 --> 01:23:45,440
+uh total. So,
+
+1914
+01:23:46,880 --> 01:23:49,560
+let's begin the next task.
+
+1915
+01:23:49,560 --> 01:23:51,640
+Any questions thus far like while the
+
+1916
+01:23:51,640 --> 01:23:53,720
+agents run, I'm happy to like take any
+
+1917
+01:23:53,720 --> 01:23:56,320
+questions.
+
+1918
+01:23:57,160 --> 01:23:58,680
+Okay.
+
+1919
+01:23:58,680 --> 01:24:00,880
+All right.
+
+1920
+01:24:13,800 --> 01:24:16,560
+So, uh again, on the left-hand side, the
+
+1921
+01:24:16,560 --> 01:24:18,480
+agent is just doing your regular web
+
+1922
+01:24:18,480 --> 01:24:20,560
+search and it's finding everything
+
+1923
+01:24:20,560 --> 01:24:22,880
+that's uh available on the internet for
+
+1924
+01:24:22,880 --> 01:24:24,200
+free.
+
+1925
+01:24:24,200 --> 01:24:26,600
+On the right-hand side, it's the agent
+
+1926
+01:24:26,600 --> 01:24:28,680
+specifically calling a Google Scholar
+
+1927
+01:24:28,680 --> 01:24:31,640
+API for and
+
+1928
+01:24:31,640 --> 01:24:34,840
+then figuring out
+
+1929
+01:24:37,600 --> 01:24:40,240
+how to actually
+
+1930
+01:24:40,240 --> 01:24:42,760
+fetch those
+
+1931
+01:24:42,760 --> 01:24:44,800
+paywalled articles, find quality
+
+1932
+01:24:44,800 --> 01:24:47,000
+research, and yeah, take it from there.
+
+1933
+01:24:47,000 --> 01:24:49,360
+Yes.
+
+1934
+01:24:49,560 --> 01:24:52,160
+Oh, sorry.
+
+1935
+01:24:52,240 --> 01:24:54,640
+Yeah.
+
+1936
+01:25:03,440 --> 01:25:05,760
+Yeah.
+
+1937
+01:25:05,760 --> 01:25:08,160
+Yeah.
+
+1938
+01:25:14,920 --> 01:25:17,040
+Yeah, that's a great question. So, we
+
+1939
+01:25:17,040 --> 01:25:20,160
+right now curate our marketplace
+
+1940
+01:25:20,160 --> 01:25:22,360
+with So, we have actually like looking
+
+1941
+01:25:22,360 --> 01:25:24,800
+at the endpoints and testing it out
+
+1942
+01:25:24,800 --> 01:25:26,920
+to ensure that, you know, the
+
+1943
+01:25:26,920 --> 01:25:29,120
+marketplace it's not just like anyone
+
+1944
+01:25:29,120 --> 01:25:31,920
+registering their endpoints.
+
+1945
+01:25:31,920 --> 01:25:32,920
+And
+
+1946
+01:25:32,920 --> 01:25:35,800
+the other thing you bring up great point
+
+1947
+01:25:35,800 --> 01:25:37,560
+about security.
+
+1948
+01:25:37,560 --> 01:25:38,960
+And I'm going to talk about like
+
+1949
+01:25:38,960 --> 01:25:41,480
+security of your funds, right?
+
+1950
+01:25:41,480 --> 01:25:43,520
+I was talking about how you could
+
+1951
+01:25:43,520 --> 01:25:45,960
+potentially give your credit card to an
+
+1952
+01:25:45,960 --> 01:25:47,360
+agent, right?
+
+1953
+01:25:47,360 --> 01:25:49,360
+That's dangerous.
+
+1954
+01:25:49,360 --> 01:25:52,080
+With Circle CLI and Circle wallets, what
+
+1955
+01:25:52,080 --> 01:25:54,200
+you can do is you're not essential
+
+1956
+01:25:54,200 --> 01:25:56,360
+you're not giving your wallet or your
+
+1957
+01:25:56,360 --> 01:25:59,360
+fund to your agent. You're essentially
+
+1958
+01:25:59,360 --> 01:26:02,320
+creating a wallet for it for it for the
+
+1959
+01:26:02,320 --> 01:26:04,840
+agent itself. And it's their funds. So,
+
+1960
+01:26:04,840 --> 01:26:08,360
+you're you're managing funds for
+
+1961
+01:26:08,360 --> 01:26:09,400
+you know,
+
+1962
+01:26:09,400 --> 01:26:11,160
+the agent itself. And you can have a
+
+1963
+01:26:11,160 --> 01:26:12,800
+fleet of different agents and you can
+
+1964
+01:26:12,800 --> 01:26:15,720
+assign specific budgets to each of them.
+
+1965
+01:26:15,720 --> 01:26:18,320
+And even now in the CLI itself, you can
+
+1966
+01:26:18,320 --> 01:26:19,680
+enforce
+
+1967
+01:26:19,680 --> 01:26:22,840
+the max spends and limits on
+
+1968
+01:26:22,840 --> 01:26:24,800
+hey, how many how much can I spend per
+
+1969
+01:26:24,800 --> 01:26:27,120
+session? How much can I spend per
+
+1970
+01:26:27,120 --> 01:26:28,640
+specific website? Or how much can I
+
+1971
+01:26:28,640 --> 01:26:30,360
+spend it in a day? So, these are
+
+1972
+01:26:30,360 --> 01:26:32,200
+thresholds and these are policies which
+
+1973
+01:26:32,200 --> 01:26:35,400
+are enforced cryptographically
+
+1974
+01:26:35,400 --> 01:26:37,320
+and you can then
+
+1975
+01:26:37,320 --> 01:26:41,240
+be assured that your agent will act
+
+1976
+01:26:41,240 --> 01:26:43,800
+within those guardrails and your funds
+
+1977
+01:26:43,800 --> 01:26:46,360
+are safe. So, uh then you should be able
+
+1978
+01:26:46,360 --> 01:26:48,080
+to like freely
+
+1979
+01:26:48,080 --> 01:26:49,840
+fund your agent.
+
+1980
+01:26:49,840 --> 01:26:52,040
+I hope like that answers the question
+
+1981
+01:26:52,040 --> 01:26:55,760
+from the fund side.
+
+1982
+01:26:56,280 --> 01:26:58,960
+Sorry. Uh
+
+1983
+01:27:09,760 --> 01:27:12,000
+Yeah.
+
+1984
+01:27:14,200 --> 01:27:16,680
+>> Um you said like a formal logic or a
+
+1985
+01:27:16,680 --> 01:27:18,960
+formal verification mechanism at the
+
+1986
+01:27:18,960 --> 01:27:22,320
+back end to um
+
+1987
+01:27:22,320 --> 01:27:24,480
+I guess for the guardrails and the
+
+1988
+01:27:24,480 --> 01:27:26,880
+verification aspect for such agents.
+
+1989
+01:27:26,880 --> 01:27:28,760
+>> Um are you talking with regards to like
+
+1990
+01:27:28,760 --> 01:27:31,240
+just spending?
+
+1991
+01:27:31,240 --> 01:27:33,360
+>> Yeah, just managing the whole thing
+
+1992
+01:27:33,360 --> 01:27:34,800
+basically. I mean, for example, you're
+
+1993
+01:27:34,800 --> 01:27:36,480
+running this prompt and the whole
+
+1994
+01:27:36,480 --> 01:27:37,640
+process of it.
+
+1995
+01:27:37,640 --> 01:27:37,920
+>> Yeah.
+
+1996
+01:27:37,920 --> 01:27:40,480
+>> Uh what plan it generates, how it's
+
+1997
+01:27:40,480 --> 01:27:42,320
+verified, like how it's spending. I
+
+1998
+01:27:42,320 --> 01:27:43,960
+mean, yes, of course, spending is the
+
+1999
+01:27:43,960 --> 01:27:45,400
+final input.
+
+2000
+01:27:45,400 --> 01:27:48,760
+>> Yeah. So, I think like this is obviously
+
+2001
+01:27:48,760 --> 01:27:50,760
+a question that
+
+2002
+01:27:50,760 --> 01:27:53,080
+we we are actively working on
+
+2003
+01:27:53,080 --> 01:27:56,240
+and also some of the things that
+
+2004
+01:27:56,240 --> 01:27:58,400
+I can talk about
+
+2005
+01:27:58,400 --> 01:28:00,840
+with regards to like malicious spending,
+
+2006
+01:28:00,840 --> 01:28:02,160
+again, is
+
+2007
+01:28:02,160 --> 01:28:04,160
+we have like
+
+2008
+01:28:04,160 --> 01:28:05,800
+blacklists and
+
+2009
+01:28:05,800 --> 01:28:07,720
+you know, you cannot like transact with
+
+2010
+01:28:07,720 --> 01:28:09,200
+like sanctioned addresses and stuff like
+
+2011
+01:28:09,200 --> 01:28:10,440
+that.
+
+2012
+01:28:10,440 --> 01:28:12,840
+I with regards to like what the model
+
+2013
+01:28:12,840 --> 01:28:15,720
+essentially does. Um it's again like
+
+2014
+01:28:15,720 --> 01:28:18,320
+that depends on the model harness and we
+
+2015
+01:28:18,320 --> 01:28:20,680
+need to like do continuous evaluations
+
+2016
+01:28:20,680 --> 01:28:22,320
+and we are doing on our end like
+
+2017
+01:28:22,320 --> 01:28:24,480
+evaluations on how our skills and how we
+
+2018
+01:28:24,480 --> 01:28:26,600
+can better improve those skills that we
+
+2019
+01:28:26,600 --> 01:28:29,720
+install uh we provide uh to make like
+
+2020
+01:28:29,720 --> 01:28:31,200
+better judgments.
+
+2021
+01:28:31,200 --> 01:28:33,200
+So, yeah.
+
+2022
+01:28:33,200 --> 01:28:33,600
+Question?
+
+2023
+01:28:33,600 --> 01:28:35,240
+>> Yes. Yeah. Um
+
+2024
+01:28:35,240 --> 01:28:37,760
+so, my son is in high school and I also
+
+2025
+01:28:37,760 --> 01:28:39,560
+give him a wallet similar to this.
+
+2026
+01:28:39,560 --> 01:28:40,040
+>> Yeah.
+
+2027
+01:28:40,040 --> 01:28:41,760
+>> spend my credit card correctly.
+
+2028
+01:28:41,760 --> 01:28:42,160
+>> Yeah.
+
+2029
+01:28:42,160 --> 01:28:44,080
+>> Uh but what I learned is
+
+2030
+01:28:44,080 --> 01:28:46,280
+you also need to teach him like the
+
+2031
+01:28:46,280 --> 01:28:48,480
+concept of money and then
+
+2032
+01:28:48,480 --> 01:28:50,320
+making money is hard so he need to spend
+
+2033
+01:28:50,320 --> 01:28:51,120
+smartly.
+
+2034
+01:28:51,120 --> 01:28:51,800
+>> Yeah.
+
+2035
+01:28:51,800 --> 01:28:53,880
+>> So, do you do any research for your
+
+2036
+01:28:53,880 --> 01:28:55,920
+agent? I know you have a
+
+2037
+01:28:55,920 --> 01:28:58,280
+skills and careers but that's kind of
+
+2038
+01:28:58,280 --> 01:28:59,920
+like just setting the rules.
+
+2039
+01:28:59,920 --> 01:29:00,520
+>> Yeah.
+
+2040
+01:29:00,520 --> 01:29:02,280
+>> But what to spend the money, how to
+
+2041
+01:29:02,280 --> 01:29:05,040
+invest in like the
+
+2042
+01:29:05,040 --> 01:29:07,080
+like there's multiple websites, which
+
+2043
+01:29:07,080 --> 01:29:09,320
+one has a higher value for return?
+
+2044
+01:29:09,320 --> 01:29:12,000
+>> Yeah, so right now I think we've not
+
+2045
+01:29:12,000 --> 01:29:14,640
+enforced like such
+
+2046
+01:29:14,640 --> 01:29:18,240
+sort of like guardrails or like rules
+
+2047
+01:29:18,240 --> 01:29:21,000
+into the CLI that look for the cheapest
+
+2048
+01:29:21,000 --> 01:29:23,640
+one or something. It's obviously like
+
+2049
+01:29:23,640 --> 01:29:28,200
+based on uh your use case. Um and
+
+2050
+01:29:28,200 --> 01:29:29,640
+it can
+
+2051
+01:29:29,640 --> 01:29:31,600
+the CLI is flexible enough where like
+
+2052
+01:29:31,600 --> 01:29:33,280
+you can sort of like add additional
+
+2053
+01:29:33,280 --> 01:29:36,680
+skills within your project and set up to
+
+2054
+01:29:36,680 --> 01:29:38,720
+sort of say that hey, if you're if you
+
+2055
+01:29:38,720 --> 01:29:41,120
+need to like um
+
+2056
+01:29:41,120 --> 01:29:43,720
+uh spend more than like $5 like now
+
+2057
+01:29:43,720 --> 01:29:46,120
+we're nearing my budget limit so like
+
+2058
+01:29:46,120 --> 01:29:47,480
+start looking for like cheaper end
+
+2059
+01:29:47,480 --> 01:29:49,720
+points, right? Like similar to like how
+
+2060
+01:29:49,720 --> 01:29:52,200
+you would like if your monthly AI usage
+
+2061
+01:29:52,200 --> 01:29:53,640
+is like
+
+2062
+01:29:53,640 --> 01:29:56,720
+coming to the limit, you you resolve to
+
+2063
+01:29:56,720 --> 01:29:59,440
+like using cheaper models. So, something
+
+2064
+01:29:59,440 --> 01:30:01,080
+like that. So, you can always like do
+
+2065
+01:30:01,080 --> 01:30:02,840
+that but right now we do not have like
+
+2066
+01:30:02,840 --> 01:30:05,480
+specific rules around like hey, which
+
+2067
+01:30:05,480 --> 01:30:07,000
+one to select. The
+
+2068
+01:30:07,000 --> 01:30:08,640
+you will actually like
+
+2069
+01:30:08,640 --> 01:30:10,960
+as as I was doing a trial run yesterday
+
+2070
+01:30:10,960 --> 01:30:13,080
+for this and I was observing how the
+
+2071
+01:30:13,080 --> 01:30:16,440
+model was thinking, it did
+
+2072
+01:30:16,440 --> 01:30:19,040
+the next in the next next task it I
+
+2073
+01:30:19,040 --> 01:30:21,040
+asked it to like generate a logo and it
+
+2074
+01:30:21,040 --> 01:30:22,200
+was able to like just make an
+
+2075
+01:30:22,200 --> 01:30:24,480
+intelligent decision saying
+
+2076
+01:30:24,480 --> 01:30:25,480
+you know
+
+2077
+01:30:25,480 --> 01:30:27,560
+you're designing a logo for a company so
+
+2078
+01:30:27,560 --> 01:30:29,680
+it has to be of great quality. So I'd
+
+2079
+01:30:29,680 --> 01:30:32,680
+rather spend on the more expensive
+
+2080
+01:30:32,680 --> 01:30:36,400
+agent which is good sort of like image
+
+2081
+01:30:36,400 --> 01:30:38,760
+generation model than a cheaper one
+
+2082
+01:30:38,760 --> 01:30:41,160
+because the the price difference is just
+
+2083
+01:30:41,160 --> 01:30:43,720
+a few cents. So I think it's make the
+
+2084
+01:30:43,720 --> 01:30:45,720
+agent is making that
+
+2085
+01:30:45,720 --> 01:30:47,800
+sort of like decision intelligently and
+
+2086
+01:30:47,800 --> 01:30:50,200
+you can always like tune it the way to
+
+2087
+01:30:50,200 --> 01:30:53,320
+your liking. But I do really like the
+
+2088
+01:30:53,320 --> 01:30:55,400
+analogy that you gave of
+
+2089
+01:30:55,400 --> 01:30:57,080
+you know having a wallet for your son
+
+2090
+01:30:57,080 --> 01:30:59,240
+because that is exactly like
+
+2091
+01:30:59,240 --> 01:31:01,200
+how I think of this as a mental model
+
+2092
+01:31:01,200 --> 01:31:02,920
+like you have
+
+2093
+01:31:02,920 --> 01:31:04,120
+you know a
+
+2094
+01:31:04,120 --> 01:31:06,360
+sort of like your
+
+2095
+01:31:06,360 --> 01:31:08,720
+almost like agents that you're managing
+
+2096
+01:31:08,720 --> 01:31:10,040
+and you're just like funding them
+
+2097
+01:31:10,040 --> 01:31:11,520
+independently
+
+2098
+01:31:11,520 --> 01:31:12,560
+and
+
+2099
+01:31:12,560 --> 01:31:15,440
+and and in a secure manner so yeah.
+
+2100
+01:31:15,440 --> 01:31:16,680
+So
+
+2101
+01:31:16,680 --> 01:31:18,320
+thank you for the great questions, yeah.
+
+2102
+01:31:18,320 --> 01:31:19,680
+>> Yeah, real quick I don't want to take up
+
+2103
+01:31:19,680 --> 01:31:20,800
+a ton of your time but have you
+
+2104
+01:31:20,800 --> 01:31:22,960
+considered opening up the ability to
+
+2105
+01:31:22,960 --> 01:31:25,120
+register idle GPUs and agents to pay for
+
+2106
+01:31:25,120 --> 01:31:26,440
+their own compute?
+
+2107
+01:31:26,440 --> 01:31:29,320
+>> Yes, so there are endpoints actually
+
+2108
+01:31:29,320 --> 01:31:31,280
+which allow you to like pay for
+
+2109
+01:31:31,280 --> 01:31:33,600
+inference so within the marketplace. So
+
+2110
+01:31:33,600 --> 01:31:36,240
+you can you should explore that and
+
+2111
+01:31:36,240 --> 01:31:38,680
+if you are if there are enterprises
+
+2112
+01:31:38,680 --> 01:31:41,520
+if anyone's over here that that wants to
+
+2113
+01:31:41,520 --> 01:31:44,480
+like expose their endpoints, we we have
+
+2114
+01:31:44,480 --> 01:31:45,680
+folks
+
+2115
+01:31:45,680 --> 01:31:48,080
+at the booth here for the next two days.
+
+2116
+01:31:48,080 --> 01:31:50,000
+Please come talk to us.
+
+2117
+01:31:50,000 --> 01:31:50,960
+Yeah,
+
+2118
+01:31:50,960 --> 01:31:52,400
+the marketplace will thrive when
+
+2119
+01:31:52,400 --> 01:31:54,360
+enterprises and builders
+
+2120
+01:31:54,360 --> 01:31:56,720
+understand that like you know there you
+
+2121
+01:31:56,720 --> 01:31:59,280
+can monetize your you know
+
+2122
+01:31:59,280 --> 01:32:02,000
+content and resources for the agent
+
+2123
+01:32:02,000 --> 01:32:03,760
+Akira so yeah.
+
+2124
+01:32:03,760 --> 01:32:05,600
+But great question.
+
+2125
+01:32:05,600 --> 01:32:07,120
+Looks like
+
+2126
+01:32:07,120 --> 01:32:09,080
+yeah, I'm going to
+
+2127
+01:32:09,080 --> 01:32:12,200
+just skip past the research and looks
+
+2128
+01:32:12,200 --> 01:32:17,840
+like it both the agents finished. And
+
+2129
+01:32:17,840 --> 01:32:20,680
+let's just do a quick read through like
+
+2130
+01:32:20,680 --> 01:32:23,840
+okay, yeah, it looked at some
+
+2131
+01:32:23,840 --> 01:32:26,640
+scholarly articles and
+
+2132
+01:32:26,640 --> 01:32:29,400
+it spent about
+
+2133
+01:32:29,400 --> 01:32:30,360
+Yeah.
+
+2134
+01:32:30,360 --> 01:32:32,840
+117 cents
+
+2135
+01:32:32,840 --> 01:32:34,400
+um
+
+2136
+01:32:34,400 --> 01:32:37,080
+to to generate this. I'm actually going
+
+2137
+01:32:37,080 --> 01:32:38,480
+to
+
+2138
+01:32:38,480 --> 01:32:41,280
+just tell the agent to
+
+2139
+01:32:41,280 --> 01:32:44,600
+use the agent
+
+2140
+01:32:54,160 --> 01:32:56,400
+So, I had a couple of wallets and one
+
+2141
+01:32:56,400 --> 01:32:58,200
+ran out of it. So, it's thinking that
+
+2142
+01:32:58,200 --> 01:33:00,520
+it's like nearing its limits. So, it's
+
+2143
+01:33:00,520 --> 01:33:02,960
+spending to answer your question.
+
+2144
+01:33:02,960 --> 01:33:05,720
+It basically like cut down some of the
+
+2145
+01:33:05,720 --> 01:33:08,200
+research because it was
+
+2146
+01:33:08,200 --> 01:33:09,440
+you know
+
+2147
+01:33:09,440 --> 01:33:11,800
+nearing the budget. So, because there's
+
+2148
+01:33:11,800 --> 01:33:13,520
+only like 7 cents remaining in my
+
+2149
+01:33:13,520 --> 01:33:15,000
+wallet. So,
+
+2150
+01:33:15,000 --> 01:33:17,360
+I just prompted it to like
+
+2151
+01:33:17,360 --> 01:33:18,680
+essentially
+
+2152
+01:33:18,680 --> 01:33:21,360
+use the wallet with more funding.
+
+2153
+01:33:21,360 --> 01:33:24,360
+Now, let's look at um
+
+2154
+01:33:24,360 --> 01:33:26,400
+yeah, the task that I was
+
+2155
+01:33:26,400 --> 01:33:28,600
+suggesting uh
+
+2156
+01:33:28,600 --> 01:33:30,960
+in the earlier conversation and that
+
+2157
+01:33:30,960 --> 01:33:34,440
+uh oh, I couldn't copy this.
+
+2158
+01:33:34,440 --> 01:33:39,800
+Let's design a logo for our roastery.
+
+2159
+01:33:47,280 --> 01:33:50,680
+So, over here what you'll see is the
+
+2160
+01:33:50,680 --> 01:33:54,320
+agent is going to now leverage a
+
+2161
+01:33:54,320 --> 01:33:55,560
+model
+
+2162
+01:33:55,560 --> 01:33:58,440
+which is specialized in generating
+
+2163
+01:33:58,440 --> 01:33:59,760
+images.
+
+2164
+01:33:59,760 --> 01:34:01,280
+Um and my
+
+2165
+01:34:01,280 --> 01:34:03,680
+currently my cursor setup does not have
+
+2166
+01:34:03,680 --> 01:34:06,040
+any image generation models. So, what
+
+2167
+01:34:06,040 --> 01:34:07,960
+you'll see on the left-hand side is the
+
+2168
+01:34:07,960 --> 01:34:10,800
+agent uh will try to essentially come up
+
+2169
+01:34:10,800 --> 01:34:13,280
+with a logo using
+
+2170
+01:34:13,280 --> 01:34:16,240
+uh whatever skills it has. Whereas, the
+
+2171
+01:34:16,240 --> 01:34:18,440
+right-hand side model will just pay a
+
+2172
+01:34:18,440 --> 01:34:21,720
+few cents and call the appropriate
+
+2173
+01:34:21,720 --> 01:34:25,360
+specialist model and get uh a logo
+
+2174
+01:34:25,360 --> 01:34:29,160
+generated. So, let's see how that goes.
+
+2175
+01:34:32,000 --> 01:34:35,440
+Quick time check. Okay.
+
+2176
+01:34:42,600 --> 01:34:45,040
+So,
+
+2177
+01:34:45,640 --> 01:34:47,840
+this is what the uh
+
+2178
+01:34:47,840 --> 01:34:50,360
+agent does. Uh
+
+2179
+01:34:50,360 --> 01:34:51,400
+Again,
+
+2180
+01:34:51,400 --> 01:34:53,440
+it does an estimate. Uh there's an
+
+2181
+01:34:53,440 --> 01:34:55,680
+estimate call which tries to estimate,
+
+2182
+01:34:55,680 --> 01:34:57,120
+"Hey, uh
+
+2183
+01:34:57,120 --> 01:35:00,240
+for my uh like logo, like what's the
+
+2184
+01:35:00,240 --> 01:35:03,440
+price?" And it comes back like saying,
+
+2185
+01:35:03,440 --> 01:35:07,200
+"You need 6 cents for this." And
+
+2186
+01:35:07,200 --> 01:35:09,240
+yeah, and now let's
+
+2187
+01:35:09,240 --> 01:35:13,760
+wait for the image generation to happen.
+
+2188
+01:35:14,080 --> 01:35:17,120
+Okay. Look at Let's look at
+
+2189
+01:35:17,120 --> 01:35:18,640
+uh
+
+2190
+01:35:18,640 --> 01:35:21,560
+this agent on the left-hand side.
+
+2191
+01:35:21,560 --> 01:35:24,200
+It says, "Okay, it verified
+
+2192
+01:35:24,200 --> 01:35:25,360
+uh
+
+2193
+01:35:25,360 --> 01:35:27,960
+level
+
+2194
+01:35:33,600 --> 01:35:36,720
+I'll just ask it to
+
+2195
+01:35:36,720 --> 01:35:38,640
+Looks good.
+
+2196
+01:35:38,640 --> 01:35:39,920
+Uh sh
+
+2197
+01:35:39,920 --> 01:35:42,720
+build the logo.
+
+2198
+01:35:44,040 --> 01:35:45,840
+And
+
+2199
+01:35:45,840 --> 01:35:47,880
+so, now it just paid like
+
+2200
+01:35:47,880 --> 01:35:51,200
+65 cents to GPT image 2.
+
+2201
+01:35:51,200 --> 01:35:53,800
+and
+
+2202
+01:35:54,120 --> 01:35:56,160
+because uh the image generation can take
+
+2203
+01:35:56,160 --> 01:35:58,760
+some time, so you'll see that the agent
+
+2204
+01:35:58,760 --> 01:36:01,480
+itself is actually just pulling uh
+
+2205
+01:36:01,480 --> 01:36:02,440
+because
+
+2206
+01:36:02,440 --> 01:36:04,160
+you call the
+
+2207
+01:36:04,160 --> 01:36:06,600
+image generation API and then you wait
+
+2208
+01:36:06,600 --> 01:36:09,320
+for the result, so it's uh it just
+
+2209
+01:36:09,320 --> 01:36:11,480
+pulled for a few seconds uh
+
+2210
+01:36:11,480 --> 01:36:13,120
+because it set a time out of
+
+2211
+01:36:13,120 --> 01:36:16,440
+240 seconds and now uh now that the
+
+2212
+01:36:16,440 --> 01:36:17,880
+agent
+
+2213
+01:36:17,880 --> 01:36:19,440
+has returned, this is the logo that it
+
+2214
+01:36:19,440 --> 01:36:21,040
+generated for
+
+2215
+01:36:21,040 --> 01:36:24,240
+let's see, 65 cents.
+
+2216
+01:36:24,240 --> 01:36:26,120
+How was that?
+
+2217
+01:36:26,120 --> 01:36:29,640
+And oh, um yeah, not even I'm sorry, not
+
+2218
+01:36:29,640 --> 01:36:31,960
+even 65 cents, it's 6 cents. My bad,
+
+2219
+01:36:31,960 --> 01:36:33,680
+I've been like oh,
+
+2220
+01:36:33,680 --> 01:36:36,160
+uh you know,
+
+2221
+01:36:36,440 --> 01:36:38,200
+using
+
+2222
+01:36:38,200 --> 01:36:40,480
+missed out on the cost there.
+
+2223
+01:36:40,480 --> 01:36:41,680
+So,
+
+2224
+01:36:41,680 --> 01:36:43,600
+on the left-hand side, the agent is
+
+2225
+01:36:43,600 --> 01:36:45,280
+still
+
+2226
+01:36:45,280 --> 01:36:46,720
+because it's not an image generation
+
+2227
+01:36:46,720 --> 01:36:49,400
+model, I think it will uh still come up
+
+2228
+01:36:49,400 --> 01:36:51,160
+with a logo, but it'll take a lot of
+
+2229
+01:36:51,160 --> 01:36:53,480
+time and it'll just uh sort of build an
+
+2230
+01:36:53,480 --> 01:36:54,960
+HTML
+
+2231
+01:36:54,960 --> 01:36:59,320
+uh thing and we'll wait for it uh it.
+
+2232
+01:37:12,080 --> 01:37:13,640
+And
+
+2233
+01:37:13,640 --> 01:37:16,880
+since the agent on the left has already
+
+2234
+01:37:16,880 --> 01:37:20,520
+completed its task, I'm just going to
+
+2235
+01:37:20,520 --> 01:37:22,080
+go and
+
+2236
+01:37:22,080 --> 01:37:25,160
+go ahead and tell it that
+
+2237
+01:37:25,160 --> 01:37:26,760
+I want you to make a flyer for my
+
+2238
+01:37:26,760 --> 01:37:28,360
+launch, so
+
+2239
+01:37:28,360 --> 01:37:30,960
+do that. So, embed my logo, build a
+
+2240
+01:37:30,960 --> 01:37:33,560
+flyer, and the next task that we'll do
+
+2241
+01:37:33,560 --> 01:37:35,800
+and where you'll see that the
+
+2242
+01:37:35,800 --> 01:37:37,680
+uh agent without a wallet will fail is
+
+2243
+01:37:37,680 --> 01:37:39,720
+I'm going to ask it to just, you know,
+
+2244
+01:37:39,720 --> 01:37:41,480
+email me all the details and then give
+
+2245
+01:37:41,480 --> 01:37:43,840
+me a phone call and explain what the
+
+2246
+01:37:43,840 --> 01:37:45,640
+research was done. The
+
+2247
+01:37:45,640 --> 01:37:48,000
+regular models uh without a wallet just
+
+2248
+01:37:48,000 --> 01:37:50,160
+do not have that capability. And let's
+
+2249
+01:37:50,160 --> 01:37:51,640
+see if you're able to like accomplish
+
+2250
+01:37:51,640 --> 01:37:53,400
+that in the next
+
+2251
+01:37:53,400 --> 01:37:56,240
+10 minutes.
+
+2252
+01:38:02,200 --> 01:38:05,080
+Um while the agents are
+
+2253
+01:38:05,080 --> 01:38:07,800
+running, any more questions that
+
+2254
+01:38:07,800 --> 01:38:10,160
+Yes.
+
+2255
+01:38:15,640 --> 01:38:16,360
+>> Uh
+
+2256
+01:38:16,360 --> 01:38:19,360
+non-related question at Circle
+
+2257
+01:38:19,360 --> 01:38:21,440
+with this infrastructure, are you guys
+
+2258
+01:38:21,440 --> 01:38:22,600
+also
+
+2259
+01:38:22,600 --> 01:38:25,320
+looking into the commerce use case like
+
+2260
+01:38:25,320 --> 01:38:28,080
+let's say buying shoes uh using the
+
+2261
+01:38:28,080 --> 01:38:28,760
+agent?
+
+2262
+01:38:28,760 --> 01:38:30,960
+>> Um we are actually Yeah, we're
+
+2263
+01:38:30,960 --> 01:38:32,240
+trying to like
+
+2264
+01:38:32,240 --> 01:38:37,160
+work with enterprises again to um
+
+2265
+01:38:37,160 --> 01:38:38,480
+sort of
+
+2266
+01:38:38,480 --> 01:38:40,280
+come up with
+
+2267
+01:38:40,280 --> 01:38:42,320
+use cases, right? Like we we want to
+
+2268
+01:38:42,320 --> 01:38:44,520
+like work with enterprises to educate
+
+2269
+01:38:44,520 --> 01:38:45,840
+them that hey, there's a use case for
+
+2270
+01:38:45,840 --> 01:38:48,280
+this. Uh now you're if you're a shoe
+
+2271
+01:38:48,280 --> 01:38:51,640
+company, you could essentially like
+
+2272
+01:38:51,640 --> 01:38:52,320
+um
+
+2273
+01:38:52,320 --> 01:38:55,120
+expose or curate an endpoint such that
+
+2274
+01:38:55,120 --> 01:38:57,440
+an agent I can do that from my own
+
+2275
+01:38:57,440 --> 01:39:00,000
+cursor. I don't really have to like go
+
+2276
+01:39:00,000 --> 01:39:02,760
+to the website and do something. Um so
+
+2277
+01:39:02,760 --> 01:39:05,240
+yeah, we are encouraging and we're
+
+2278
+01:39:05,240 --> 01:39:07,680
+actually trying to like work with
+
+2279
+01:39:07,680 --> 01:39:10,480
+companies that and it's not just like uh
+
+2280
+01:39:10,480 --> 01:39:12,280
+shoes, any
+
+2281
+01:39:12,280 --> 01:39:14,360
+entity, any commodity that can be
+
+2282
+01:39:14,360 --> 01:39:16,240
+purchased on the internet by a human
+
+2283
+01:39:16,240 --> 01:39:18,960
+should be uh purchasable by an agent,
+
+2284
+01:39:18,960 --> 01:39:20,800
+right? So that's that's sort of like the
+
+2285
+01:39:20,800 --> 01:39:22,360
+end goal.
+
+2286
+01:39:22,360 --> 01:39:24,200
+Yeah.
+
+2287
+01:39:24,200 --> 01:39:26,840
+And yeah.
+
+2288
+01:39:28,600 --> 01:39:31,360
+>> Uh so
+
+2289
+01:39:31,360 --> 01:39:34,240
+how does the payment collection work in
+
+2290
+01:39:34,240 --> 01:39:36,320
+in the agentic flow?
+
+2291
+01:39:36,320 --> 01:39:39,160
+Uh for example, are you guys like fully
+
+2292
+01:39:39,160 --> 01:39:42,560
+integrated with the ACH uh payment
+
+2293
+01:39:42,560 --> 01:39:43,560
+methods.
+
+2294
+01:39:43,560 --> 01:39:44,040
+>> Um
+
+2295
+01:39:44,040 --> 01:39:44,800
+>> Uh
+
+2296
+01:39:44,800 --> 01:39:48,000
+no. Uh so, we are using uh stable coins.
+
+2297
+01:39:48,000 --> 01:39:50,320
+Uh are you familiar with stable coins?
+
+2298
+01:39:50,320 --> 01:39:52,320
+So, yeah, the wallets these wallets are
+
+2299
+01:39:52,320 --> 01:39:55,840
+crypto wallets. And uh once you fund the
+
+2300
+01:39:55,840 --> 01:39:59,160
+wallet, uh you can on-ramp uh USDC has
+
+2301
+01:39:59,160 --> 01:40:01,800
+many on-ramping uh
+
+2302
+01:40:01,800 --> 01:40:03,480
+avenues. So, you can essentially like
+
+2303
+01:40:03,480 --> 01:40:06,200
+on-ramp into your wallet, and then sort
+
+2304
+01:40:06,200 --> 01:40:08,200
+of fund your agent's wallet. And then
+
+2305
+01:40:08,200 --> 01:40:11,880
+the seller is the way um maybe
+
+2306
+01:40:11,880 --> 01:40:14,640
+uh sorry, while the agent works.
+
+2307
+01:40:14,640 --> 01:40:17,280
+Uh I'll explain like uh how this whole
+
+2308
+01:40:17,280 --> 01:40:20,600
+agent uh interacts with the other uh
+
+2309
+01:40:20,600 --> 01:40:22,800
+enterprises and other agents.
+
+2310
+01:40:22,800 --> 01:40:23,960
+Um so,
+
+2311
+01:40:23,960 --> 01:40:26,040
+for the last like 30-plus years, ever
+
+2312
+01:40:26,040 --> 01:40:28,400
+since like the uh internet started like
+
+2313
+01:40:28,400 --> 01:40:30,280
+with HTTP/2, the
+
+2314
+01:40:30,280 --> 01:40:31,280
+uh
+
+2315
+01:40:31,280 --> 01:40:33,040
+the own
+
+2316
+01:40:33,040 --> 01:40:35,680
+the authors of the HTTP protocol, they
+
+2317
+01:40:35,680 --> 01:40:37,360
+had envisioned that payments would
+
+2318
+01:40:37,360 --> 01:40:40,960
+happen over HTTP. So, they they had this
+
+2319
+01:40:40,960 --> 01:40:44,360
+status code 402 uh within the initial
+
+2320
+01:40:44,360 --> 01:40:46,680
+spec, but it was kind of like dormant
+
+2321
+01:40:46,680 --> 01:40:48,760
+until now because
+
+2322
+01:40:48,760 --> 01:40:50,680
+uh there was just no means to like, you
+
+2323
+01:40:50,680 --> 01:40:53,520
+know, do that. Uh so, but with the rise
+
+2324
+01:40:53,520 --> 01:40:55,880
+of like blockchains and stable coins,
+
+2325
+01:40:55,880 --> 01:40:57,600
+that has become theoretically possible
+
+2326
+01:40:57,600 --> 01:41:00,680
+because what can happen now is
+
+2327
+01:41:00,680 --> 01:41:02,560
+uh you
+
+2328
+01:41:02,560 --> 01:41:04,960
+a seller can instead of like uh
+
+2329
+01:41:04,960 --> 01:41:06,440
+preventing you from just accessing
+
+2330
+01:41:06,440 --> 01:41:08,440
+something can return
+
+2331
+01:41:08,440 --> 01:41:11,920
+uh a 402 payment header and says payment
+
+2332
+01:41:11,920 --> 01:41:14,240
+required and provide the credential or
+
+2333
+01:41:14,240 --> 01:41:16,800
+the details. And it essentially says,
+
+2334
+01:41:16,800 --> 01:41:18,280
+"Send me
+
+2335
+01:41:18,280 --> 01:41:21,520
+uh X amount of USDC on this particular
+
+2336
+01:41:21,520 --> 01:41:24,400
+like blockchain address." Now, uh the
+
+2337
+01:41:24,400 --> 01:41:28,160
+agent, uh because it has the CLI, is now
+
+2338
+01:41:28,160 --> 01:41:30,240
+able to interpret that and realize,
+
+2339
+01:41:30,240 --> 01:41:32,520
+"Okay, I need to pay 2 cents for this
+
+2340
+01:41:32,520 --> 01:41:34,640
+image generation endpoint, right?" And
+
+2341
+01:41:34,640 --> 01:41:35,640
+now,
+
+2342
+01:41:35,640 --> 01:41:38,000
+it signs an authorization.
+
+2343
+01:41:38,000 --> 01:41:42,040
+It's a EIP-3009 authorization. And
+
+2344
+01:41:42,040 --> 01:41:44,120
+which essentially says
+
+2345
+01:41:44,120 --> 01:41:46,000
+I authorize
+
+2346
+01:41:46,000 --> 01:41:47,280
+to pay
+
+2347
+01:41:47,280 --> 01:41:49,880
+specific address the said amount. And it
+
+2348
+01:41:49,880 --> 01:41:52,960
+signs it with the key and attaches it
+
+2349
+01:41:52,960 --> 01:41:55,320
+and re-requests that same endpoint. And
+
+2350
+01:41:55,320 --> 01:41:56,960
+from there,
+
+2351
+01:41:56,960 --> 01:42:00,120
+once the seller is actually receiving
+
+2352
+01:42:00,120 --> 01:42:03,240
+that second request with that new
+
+2353
+01:42:03,240 --> 01:42:04,480
+header
+
+2354
+01:42:04,480 --> 01:42:07,960
+it it processes it it processes it it
+
+2355
+01:42:07,960 --> 01:42:10,080
+figures out, okay, the payment is made
+
+2356
+01:42:10,080 --> 01:42:12,480
+or at least has been authorized and I
+
+2357
+01:42:12,480 --> 01:42:15,960
+can now release the said resource. Um so
+
+2358
+01:42:15,960 --> 01:42:17,320
+now
+
+2359
+01:42:17,320 --> 01:42:18,760
+because these transactions happen on
+
+2360
+01:42:18,760 --> 01:42:20,240
+chain,
+
+2361
+01:42:20,240 --> 01:42:21,360
+they
+
+2362
+01:42:21,360 --> 01:42:23,720
+essentially get settled. So, there's no
+
+2363
+01:42:23,720 --> 01:42:26,120
+ACH involved in in this. Does that
+
+2364
+01:42:26,120 --> 01:42:27,040
+answer your question?
+
+2365
+01:42:27,040 --> 01:42:29,640
+>> Yeah. So, would these transaction can
+
+2366
+01:42:29,640 --> 01:42:32,840
+also be like integrated with the ADK or
+
+2367
+01:42:32,840 --> 01:42:34,160
+MCP
+
+2368
+01:42:34,160 --> 01:42:35,040
+from from the
+
+2369
+01:42:35,040 --> 01:42:35,360
+>> Yes.
+
+2370
+01:42:35,360 --> 01:42:36,040
+>> point of view?
+
+2371
+01:42:36,040 --> 01:42:36,480
+>> Yes.
+
+2372
+01:42:36,480 --> 01:42:36,760
+>> Okay.
+
+2373
+01:42:36,760 --> 01:42:38,440
+>> Yes.
+
+2374
+01:42:38,440 --> 01:42:39,720
+>> Sorry, let's hope.
+
+2375
+01:42:39,720 --> 01:42:45,000
+>> Uh yeah, this is back. Okay, and
+
+2376
+01:42:46,120 --> 01:42:49,720
+Oh, all right. So
+
+2377
+01:42:49,960 --> 01:42:52,320
+Oops, this is still not
+
+2378
+01:42:52,320 --> 01:42:54,720
+>> visible.
+
+2379
+01:42:54,720 --> 01:42:56,920
+>> Sorry, I'm having some
+
+2380
+01:42:56,920 --> 01:42:58,000
+>> hello.
+
+2381
+01:42:58,000 --> 01:42:58,880
+>> Yeah.
+
+2382
+01:42:58,880 --> 01:43:01,560
+>> Yeah, hey. Yeah. So, I have a question.
+
+2383
+01:43:01,560 --> 01:43:02,960
+So, I
+
+2384
+01:43:02,960 --> 01:43:06,520
+does this agent have the capability of
+
+2385
+01:43:06,520 --> 01:43:09,760
+memory for the cases like
+
+2386
+01:43:09,760 --> 01:43:13,680
+you ask a specific questions that needs
+
+2387
+01:43:13,680 --> 01:43:14,840
+a
+
+2388
+01:43:14,840 --> 01:43:18,120
+very specific rules or law to follow and
+
+2389
+01:43:18,120 --> 01:43:21,400
+then you asked exact same question or
+
+2390
+01:43:21,400 --> 01:43:23,720
+very similar question and it can
+
+2391
+01:43:23,720 --> 01:43:25,760
+retrieve and
+
+2392
+01:43:25,760 --> 01:43:28,320
+be reliable enough to generate the same
+
+2393
+01:43:28,320 --> 01:43:30,680
+or similar answer for the the type of
+
+2394
+01:43:30,680 --> 01:43:32,200
+query.
+
+2395
+01:43:32,200 --> 01:43:35,680
+>> Yeah, so again, that will depend on the
+
+2396
+01:43:35,680 --> 01:43:38,240
+agent harness that you're using. So, if
+
+2397
+01:43:38,240 --> 01:43:41,280
+you're using say cursor or cloud code,
+
+2398
+01:43:41,280 --> 01:43:42,880
+it should just
+
+2399
+01:43:42,880 --> 01:43:44,360
+and you're asking it from the same
+
+2400
+01:43:44,360 --> 01:43:45,800
+session,
+
+2401
+01:43:45,800 --> 01:43:47,920
+even if you're writing to the memory
+
+2402
+01:43:47,920 --> 01:43:49,440
+like you're updating constantly your
+
+2403
+01:43:49,440 --> 01:43:51,640
+agents.md, it should be able to like
+
+2404
+01:43:51,640 --> 01:43:53,680
+look it up because Circle CLI is
+
+2405
+01:43:53,680 --> 01:43:55,400
+essentially just think of it as just
+
+2406
+01:43:55,400 --> 01:43:57,480
+another like connector on the by side,
+
+2407
+01:43:57,480 --> 01:43:59,000
+right? Like
+
+2408
+01:43:59,000 --> 01:44:02,080
+just like your you have an ability to
+
+2409
+01:44:02,080 --> 01:44:05,600
+query Google Docs using a Google MCP,
+
+2410
+01:44:05,600 --> 01:44:08,000
+Circle CLI essentially
+
+2411
+01:44:08,000 --> 01:44:09,520
+like allows
+
+2412
+01:44:09,520 --> 01:44:12,040
+an agent to pay for things. So, the
+
+2413
+01:44:12,040 --> 01:44:15,440
+memory aspect and all of those are again
+
+2414
+01:44:15,440 --> 01:44:17,480
+a function of the agent harness that
+
+2415
+01:44:17,480 --> 01:44:19,520
+you're using. So, your cursor and cloud
+
+2416
+01:44:19,520 --> 01:44:23,520
+code. Does that answer your question?
+
+2417
+01:44:25,320 --> 01:44:27,240
+Um okay, so
+
+2418
+01:44:27,240 --> 01:44:28,560
+>> I I have one more question.
+
+2419
+01:44:28,560 --> 01:44:29,840
+>> Yeah.
+
+2420
+01:44:29,840 --> 01:44:32,640
+>> Um you mentioned at the beginning the
+
+2421
+01:44:32,640 --> 01:44:34,520
+idea that agents will need high
+
+2422
+01:44:34,520 --> 01:44:36,160
+frequency
+
+2423
+01:44:36,160 --> 01:44:37,880
+settlement for
+
+2424
+01:44:37,880 --> 01:44:40,600
+for the transactions and also a low cost
+
+2425
+01:44:40,600 --> 01:44:42,320
+that they can pay.
+
+2426
+01:44:42,320 --> 01:44:43,320
+Um
+
+2427
+01:44:43,320 --> 01:44:45,400
+I understand this is this is a POC, but
+
+2428
+01:44:45,400 --> 01:44:48,480
+how far are we from having these kind of
+
+2429
+01:44:48,480 --> 01:44:51,840
+capabilities in in the payment layer?
+
+2430
+01:44:51,840 --> 01:44:54,520
+>> Oh, it's I'd argue it's no longer a POC
+
+2431
+01:44:54,520 --> 01:44:56,840
+because as I mentioned in my earlier
+
+2432
+01:44:56,840 --> 01:44:58,000
+slides,
+
+2433
+01:44:58,000 --> 01:45:00,320
+we have like at least like around like
+
+2434
+01:45:00,320 --> 01:45:02,360
+24 million plus
+
+2435
+01:45:02,360 --> 01:45:05,600
+in volume by as of in the last 30 days
+
+2436
+01:45:05,600 --> 01:45:07,560
+itself. So,
+
+2437
+01:45:07,560 --> 01:45:09,720
+the whole X402 protocol as I was
+
+2438
+01:45:09,720 --> 01:45:13,400
+explaining, the way agents enter pay for
+
+2439
+01:45:13,400 --> 01:45:15,000
+these resources,
+
+2440
+01:45:15,000 --> 01:45:16,880
+you can you can go online and like if
+
+2441
+01:45:16,880 --> 01:45:18,400
+you see the volumes, they are
+
+2442
+01:45:18,400 --> 01:45:20,880
+increasing. Like it started like I think
+
+2443
+01:45:20,880 --> 01:45:24,920
+um late or early last year and now it
+
+2444
+01:45:24,920 --> 01:45:26,920
+has picked up and
+
+2445
+01:45:26,920 --> 01:45:29,000
+even though like it does not have the
+
+2446
+01:45:29,000 --> 01:45:31,520
+same uh volume as traditional payment
+
+2447
+01:45:31,520 --> 01:45:33,000
+rails, it
+
+2448
+01:45:33,000 --> 01:45:34,680
+it's a start and it's a very promising
+
+2449
+01:45:34,680 --> 01:45:35,640
+start
+
+2450
+01:45:35,640 --> 01:45:37,960
+because now you're just able to like and
+
+2451
+01:45:37,960 --> 01:45:40,200
+even on our side
+
+2452
+01:45:40,200 --> 01:45:41,880
+I can speak for one of our customers
+
+2453
+01:45:41,880 --> 01:45:43,320
+recently like you know they were able to
+
+2454
+01:45:43,320 --> 01:45:45,600
+like make
+
+2455
+01:45:45,600 --> 01:45:50,080
+request payments for 0.00005
+
+2456
+01:45:50,440 --> 01:45:54,720
+cents. So it's like one micro like five
+
+2457
+01:45:54,720 --> 01:45:56,920
+micro cents per API call.
+
+2458
+01:45:56,920 --> 01:46:00,320
+>> But the the the the fee for settling
+
+2459
+01:46:00,320 --> 01:46:02,280
+that that transaction is
+
+2460
+01:46:02,280 --> 01:46:06,200
+>> zero because I can I can walk because
+
+2461
+01:46:06,200 --> 01:46:08,440
+you raise a good point
+
+2462
+01:46:08,440 --> 01:46:11,880
+that an actual blockchain itself like
+
+2463
+01:46:11,880 --> 01:46:14,200
+even on the most economical blockchains
+
+2464
+01:46:14,200 --> 01:46:16,160
+the settlement fee or the gas fees can
+
+2465
+01:46:16,160 --> 01:46:17,920
+be a bit high
+
+2466
+01:46:17,920 --> 01:46:20,000
+like compared to this like number that I
+
+2467
+01:46:20,000 --> 01:46:21,560
+just stated which is like five micro
+
+2468
+01:46:21,560 --> 01:46:24,360
+cent. So that's why we as part of the
+
+2469
+01:46:24,360 --> 01:46:26,520
+Circle agent stack we've also built
+
+2470
+01:46:26,520 --> 01:46:29,080
+another solution called nano payments
+
+2471
+01:46:29,080 --> 01:46:31,280
+which is
+
+2472
+01:46:31,280 --> 01:46:33,560
+which is on top of which essentially
+
+2473
+01:46:33,560 --> 01:46:36,720
+allows you to make these like low sub
+
+2474
+01:46:36,720 --> 01:46:40,040
+cent transactions at high frequency in a
+
+2475
+01:46:40,040 --> 01:46:42,360
+gas free manner. So what you end up
+
+2476
+01:46:42,360 --> 01:46:44,600
+doing is you essentially um
+
+2477
+01:46:44,600 --> 01:46:47,800
+and this is a bit more technical but uh
+
+2478
+01:46:47,800 --> 01:46:51,240
+you deposit funds into the gateway smart
+
+2479
+01:46:51,240 --> 01:46:52,840
+contract which is what
+
+2480
+01:46:52,840 --> 01:46:57,080
+you we did here and then from there
+
+2481
+01:46:57,080 --> 01:46:58,920
+you're just signing these authorizations
+
+2482
+01:46:58,920 --> 01:47:00,680
+and instead of like settling that
+
+2483
+01:47:00,680 --> 01:47:02,800
+authorization on chain directly, what
+
+2484
+01:47:02,800 --> 01:47:04,880
+the seller does is it calls Circle's
+
+2485
+01:47:04,880 --> 01:47:06,120
+endpoints
+
+2486
+01:47:06,120 --> 01:47:09,080
+and from there what we do is we
+
+2487
+01:47:09,080 --> 01:47:10,560
+immediately like look at the buyer's
+
+2488
+01:47:10,560 --> 01:47:12,800
+balance because the funds were deposited
+
+2489
+01:47:12,800 --> 01:47:15,120
+in Circle's smart contract and we're
+
+2490
+01:47:15,120 --> 01:47:16,880
+able to like deduct and reserve that
+
+2491
+01:47:16,880 --> 01:47:19,160
+balance and from there
+
+2492
+01:47:19,160 --> 01:47:21,960
+we instantly like return in a few like
+
+2493
+01:47:21,960 --> 01:47:23,680
+50-100
+
+2494
+01:47:23,680 --> 01:47:25,480
+milliseconds a
+
+2495
+01:47:25,480 --> 01:47:27,720
+success or a failure based on you know
+
+2496
+01:47:27,720 --> 01:47:30,040
+the balance. And then we
+
+2497
+01:47:30,040 --> 01:47:32,440
+gather hundreds and thousands of these
+
+2498
+01:47:32,440 --> 01:47:34,320
+authorizations
+
+2499
+01:47:34,320 --> 01:47:36,680
+and actually batch them and net them
+
+2500
+01:47:36,680 --> 01:47:38,200
+together in a trusted execution
+
+2501
+01:47:38,200 --> 01:47:40,560
+environment and then broadcast them on
+
+2502
+01:47:40,560 --> 01:47:43,280
+chain as one single transaction. So,
+
+2503
+01:47:43,280 --> 01:47:45,560
+that's how we scale and we actually like
+
+2504
+01:47:45,560 --> 01:47:48,400
+prevent like logging the blockchain
+
+2505
+01:47:48,400 --> 01:47:50,480
+network with with hundreds and thousands
+
+2506
+01:47:50,480 --> 01:47:51,640
+of these like very very low
+
+2507
+01:47:51,640 --> 01:47:53,400
+sub-transactions.
+
+2508
+01:47:53,400 --> 01:47:55,240
+And I'll I'm happy to like go deeper
+
+2509
+01:47:55,240 --> 01:47:56,880
+into this like
+
+2510
+01:47:56,880 --> 01:47:59,560
+after the talk. Yeah. Yeah.
+
+2511
+01:47:59,560 --> 01:48:02,240
+A great question though. So,
+
+2512
+01:48:02,240 --> 01:48:05,800
+And yeah, so now that our agent like I
+
+2513
+01:48:05,800 --> 01:48:08,720
+said, so the agent was able to like
+
+2514
+01:48:08,720 --> 01:48:09,880
+make
+
+2515
+01:48:09,880 --> 01:48:10,520
+a
+
+2516
+01:48:10,520 --> 01:48:12,160
+fairly good
+
+2517
+01:48:12,160 --> 01:48:15,600
+flyer. Now I'm just going to ask it to
+
+2518
+01:48:15,600 --> 01:48:19,200
+email this and give me a call on my
+
+2519
+01:48:19,200 --> 01:48:22,120
+phone and just like walk me through the
+
+2520
+01:48:22,120 --> 01:48:23,880
+research that it did and let's see what
+
+2521
+01:48:23,880 --> 01:48:25,360
+happens. So,
+
+2522
+01:48:25,360 --> 01:48:26,680
+and let's see if the call goes through.
+
+2523
+01:48:26,680 --> 01:48:27,640
+So,
+
+2524
+01:48:27,640 --> 01:48:29,720
+let me just combine the final two
+
+2525
+01:48:29,720 --> 01:48:30,960
+prompts
+
+2526
+01:48:30,960 --> 01:48:34,920
+in the interest of time and
+
+2527
+01:48:36,520 --> 01:48:39,560
+I hope like this essentially like
+
+2528
+01:48:39,560 --> 01:48:42,320
+gives a
+
+2529
+01:48:42,320 --> 01:48:43,600
+people
+
+2530
+01:48:43,600 --> 01:48:46,360
+an idea that if you
+
+2531
+01:48:46,360 --> 01:48:47,840
+uh
+
+2532
+01:48:47,840 --> 01:48:50,640
+you know equip your agent with a wallet,
+
+2533
+01:48:50,640 --> 01:48:52,520
+there's a lot more a lot of
+
+2534
+01:48:52,520 --> 01:48:55,400
+possibilities that it unlocks. So, and
+
+2535
+01:48:55,400 --> 01:48:57,840
+we'll see like the agent without a
+
+2536
+01:48:57,840 --> 01:49:00,880
+wallet just say that it just cannot do
+
+2537
+01:49:00,880 --> 01:49:03,520
+this. So,
+
+2538
+01:49:05,200 --> 01:49:06,200
+Yeah.
+
+2539
+01:49:06,200 --> 01:49:07,880
+Two things I can't do from here which is
+
+2540
+01:49:07,880 --> 01:49:10,360
+send the email or place a call. So, I'll
+
+2541
+01:49:10,360 --> 01:49:12,960
+hand you both as things
+
+2542
+01:49:12,960 --> 01:49:16,680
+you can execute in one step. So,
+
+2543
+01:49:18,560 --> 01:49:21,600
+I had added my email and phone number as
+
+2544
+01:49:21,600 --> 01:49:23,320
+environment variable, so it's able to
+
+2545
+01:49:23,320 --> 01:49:25,280
+like fetch that.
+
+2546
+01:49:25,280 --> 01:49:27,080
+And
+
+2547
+01:49:27,080 --> 01:49:28,440
+let's
+
+2548
+01:49:28,440 --> 01:49:31,720
+have it run and
+
+2549
+01:49:36,840 --> 01:49:39,440
+So, the left the agent on the left-hand
+
+2550
+01:49:39,440 --> 01:49:42,160
+side is essentially just going to draft
+
+2551
+01:49:42,160 --> 01:49:44,360
+something and then hand it over to me
+
+2552
+01:49:44,360 --> 01:49:46,840
+and say, you know, go send this email.
+
+2553
+01:49:46,840 --> 01:49:49,640
+But, the one on the right will
+
+2554
+01:49:49,640 --> 01:49:54,720
+sort of like go the whole route. So,
+
+2555
+01:49:59,680 --> 01:50:02,200
+So, you see like it says like stable
+
+2556
+01:50:02,200 --> 01:50:05,200
+email sends at two two cents, stable
+
+2557
+01:50:05,200 --> 01:50:07,680
+phone at 54 cents. So, let me check the
+
+2558
+01:50:07,680 --> 01:50:11,520
+schemas and see what I can do.
+
+2559
+01:50:18,120 --> 01:50:22,560
+Okay, it's running into size.
+
+2560
+01:50:26,880 --> 01:50:31,400
+Okay, I'll stop it from
+
+2561
+01:50:36,000 --> 01:50:37,360
+Okay, it's actually going to compress
+
+2562
+01:50:37,360 --> 01:50:40,600
+the image, so let it Let's let it do Let
+
+2563
+01:50:40,600 --> 01:50:44,680
+it do its thing and um
+
+2564
+01:50:46,240 --> 01:50:47,920
+Any questions I can answer in the
+
+2565
+01:50:47,920 --> 01:50:50,440
+meantime.
+
+2566
+01:50:52,560 --> 01:50:54,840
+Yes.
+
+2567
+01:50:54,840 --> 01:50:56,040
+>> Thanks. Um
+
+2568
+01:50:56,040 --> 01:50:57,280
+I noticed you're running it on low and
+
+2569
+01:50:57,280 --> 01:50:59,120
+fast. Have you played with like Someone
+
+2570
+01:50:59,120 --> 01:51:00,840
+asked about its understanding of money
+
+2571
+01:51:00,840 --> 01:51:01,920
+and budgets. Have you played with
+
+2572
+01:51:01,920 --> 01:51:03,320
+different reasoning levels and see what
+
+2573
+01:51:03,320 --> 01:51:04,680
+it does with budget and stuff like
+
+2574
+01:51:04,680 --> 01:51:06,720
+>> Yeah. Yeah, that's a that's a great
+
+2575
+01:51:06,720 --> 01:51:09,280
+question. And again, as you probably
+
+2576
+01:51:09,280 --> 01:51:12,080
+noticed it it's like Opus 5 with low
+
+2577
+01:51:12,080 --> 01:51:13,440
+thinking and fast in the interest of
+
+2578
+01:51:13,440 --> 01:51:14,680
+time because
+
+2579
+01:51:14,680 --> 01:51:17,360
+if you run it like with even like
+
+2580
+01:51:17,360 --> 01:51:19,720
+your regular models, it it can take some
+
+2581
+01:51:19,720 --> 01:51:22,720
+time. So, it's it's essentially
+
+2582
+01:51:22,720 --> 01:51:24,560
+I tried to like do this the other day
+
+2583
+01:51:24,560 --> 01:51:25,880
+with
+
+2584
+01:51:25,880 --> 01:51:29,760
+I think was it Fable or Sonic? So, it it
+
+2585
+01:51:29,760 --> 01:51:31,480
+it built something so spectacular, but
+
+2586
+01:51:31,480 --> 01:51:34,280
+it it took a really long time. So,
+
+2587
+01:51:34,280 --> 01:51:37,000
+and for the lower um
+
+2588
+01:51:37,000 --> 01:51:39,800
+I The other thing I also noticed was for
+
+2589
+01:51:39,800 --> 01:51:41,160
+some of the
+
+2590
+01:51:41,160 --> 01:51:41,760
+um
+
+2591
+01:51:41,760 --> 01:51:43,760
+the lower models um
+
+2592
+01:51:43,760 --> 01:51:45,080
+they are able to like make all of these
+
+2593
+01:51:45,080 --> 01:51:47,040
+calls just right, but sometimes it's
+
+2594
+01:51:47,040 --> 01:51:49,760
+just like the decisions and you know,
+
+2595
+01:51:49,760 --> 01:51:51,440
+the summary you can you can see the
+
+2596
+01:51:51,440 --> 01:51:53,880
+difference in like what it decides to
+
+2597
+01:51:53,880 --> 01:51:55,480
+call. So, that's the difference you'll
+
+2598
+01:51:55,480 --> 01:51:56,400
+see,
+
+2599
+01:51:56,400 --> 01:51:58,960
+but it it's just a CLI at the end of the
+
+2600
+01:51:58,960 --> 01:52:01,200
+day and it can like, you know, say call
+
+2601
+01:52:01,200 --> 01:52:04,800
+that okay uh find me what can I discover
+
+2602
+01:52:04,800 --> 01:52:07,880
+and then it's a something that even the
+
+2603
+01:52:07,880 --> 01:52:09,480
+cheapest of models understand, right?
+
+2604
+01:52:09,480 --> 01:52:13,120
+So, um CLI being this age-old thing that
+
+2605
+01:52:13,120 --> 01:52:15,800
+every model actually understands. So,
+
+2606
+01:52:15,800 --> 01:52:17,600
+Okay, so looks like the email was
+
+2607
+01:52:17,600 --> 01:52:21,400
+delivered. Um and let me actually pull
+
+2608
+01:52:21,400 --> 01:52:23,080
+up my
+
+2609
+01:52:23,080 --> 01:52:26,800
+oops, work email.
+
+2610
+01:52:33,400 --> 01:52:36,320
+Not yet.
+
+2611
+01:52:37,080 --> 01:52:39,240
+Well,
+
+2612
+01:52:42,960 --> 01:52:45,920
+let's check in a couple of minutes.
+
+2613
+01:52:45,920 --> 01:52:49,280
+But, let's also wait for
+
+2614
+01:52:49,280 --> 01:52:51,320
+my a phone call.
+
+2615
+01:52:51,320 --> 01:52:53,360
+Uh
+
+2616
+01:52:56,680 --> 01:52:59,880
+And there you go. So, now let's I'm
+
+2617
+01:52:59,880 --> 01:53:03,560
+going to put it on speaker and
+
+2618
+01:53:03,640 --> 01:53:04,680
+Hello.
+
+2619
+01:53:04,680 --> 01:53:06,600
+>> Hi, it's your Hi, it's your research
+
+2620
+01:53:06,600 --> 01:53:08,440
+assistant calling about Bear Ice Coffee,
+
+2621
+01:53:08,440 --> 01:53:10,560
+got 2 minutes for the launch plan?
+
+2622
+01:53:10,560 --> 01:53:13,040
+>> Yeah, sure.
+
+2623
+01:53:13,040 --> 01:53:15,360
+>> Great. So, bears.coffee.com is available
+
+2624
+01:53:15,360 --> 01:53:17,680
+for $20 a year, and your logo and launch
+
+2625
+01:53:17,680 --> 01:53:19,640
+flyer are already in the inbox. The
+
+2626
+01:53:19,640 --> 01:53:21,880
+differentiator is development time, not
+
+2627
+01:53:21,880 --> 01:53:23,080
+roast level. A
+
+2628
+01:53:23,080 --> 01:53:26,760
+>> Okay, sorry. Can you
+
+2629
+01:53:26,760 --> 01:53:29,080
+Can you actually just tell me Can you
+
+2630
+01:53:29,080 --> 01:53:31,880
+just tell me which beans should I buy?
+
+2631
+01:53:31,880 --> 01:53:34,080
+Should they be
+
+2632
+01:53:34,080 --> 01:53:36,200
+And from which of which roasters? I just
+
+2633
+01:53:36,200 --> 01:53:39,280
+need that information.
+
+2634
+01:53:39,560 --> 01:53:41,840
+>> For sourcing, Royal Coffee in Oakland
+
+2635
+01:53:41,840 --> 01:53:44,440
+has Crown Jewel microlots at 22-lb
+
+2636
+01:53:44,440 --> 01:53:47,800
+boxes, 220 to 455, about 1160 a pound
+
+2637
+01:53:47,800 --> 01:53:48,280
+green.
+
+2638
+01:53:48,280 --> 01:53:52,880
+>> Um great. And did you actually send
+
+2639
+01:53:52,880 --> 01:53:53,640
+Um
+
+2640
+01:53:53,640 --> 01:53:54,840
+Yeah, thank you.
+
+2641
+01:53:54,840 --> 01:53:56,120
+And I'll
+
+2642
+01:53:56,120 --> 01:53:58,000
+just grab the rest of the information
+
+2643
+01:53:58,000 --> 01:54:01,600
+from the email. So, thank you so much.
+
+2644
+01:54:03,640 --> 01:54:05,280
+>> Sounds good. Do you want me to register
+
+2645
+01:54:05,280 --> 01:54:06,960
+the domain or run a trademark check
+
+2646
+01:54:06,960 --> 01:54:08,080
+before I go?
+
+2647
+01:54:08,080 --> 01:54:09,720
+>> Uh no, I think that should be all. Thank
+
+2648
+01:54:09,720 --> 01:54:11,840
+you so much.
+
+2649
+01:54:11,840 --> 01:54:14,080
+>> All right, talk soon.
+
+2650
+01:54:14,080 --> 01:54:16,480
+>> And that was
+
+2651
+01:54:16,480 --> 01:54:17,080
+uh
+
+2652
+01:54:17,080 --> 01:54:18,800
+Yeah, that's how like you can
+
+2653
+01:54:18,800 --> 01:54:21,720
+essentially like equip your agent and
+
+2654
+01:54:21,720 --> 01:54:24,320
+make it more autonomous. So, yeah, that
+
+2655
+01:54:24,320 --> 01:54:27,200
+was the end of the demo, and
+
+2656
+01:54:27,200 --> 01:54:29,560
+I do want to like still see like if the
+
+2657
+01:54:29,560 --> 01:54:31,880
+email landed, but if not,
+
+2658
+01:54:31,880 --> 01:54:35,160
+let me just show you an email from uh
+
+2659
+01:54:35,160 --> 01:54:37,080
+dry run. I don't know if it is in my
+
+2660
+01:54:37,080 --> 01:54:40,080
+spam, but um yeah.
+
+2661
+01:54:40,080 --> 01:54:44,000
+It There's a dry run email that I had
+
+2662
+01:54:44,000 --> 01:54:47,280
+earlier this morning. So, um yeah.
+
+2663
+01:54:47,280 --> 01:54:49,280
+So,
+
+2664
+01:54:49,280 --> 01:54:50,800
+with um
+
+2665
+01:54:50,800 --> 01:54:53,200
+agents.circle.com,
+
+2666
+01:54:53,200 --> 01:54:55,520
+the final pitches Yeah, if you are a
+
+2667
+01:54:55,520 --> 01:54:58,400
+seller if you are an enterprise that
+
+2668
+01:54:58,400 --> 01:55:00,760
+wants to actually build,
+
+2669
+01:55:00,760 --> 01:55:04,000
+um you can as a developer even like wrap
+
+2670
+01:55:04,000 --> 01:55:06,640
+and monetize your endpoints in just a
+
+2671
+01:55:06,640 --> 01:55:09,320
+couple of lines of code and you know,
+
+2672
+01:55:09,320 --> 01:55:12,360
+list it on the marketplace. And yeah,
+
+2673
+01:55:12,360 --> 01:55:13,920
+this is just the start.
+
+2674
+01:55:13,920 --> 01:55:16,080
+There's a lot more to come and if you
+
+2675
+01:55:16,080 --> 01:55:17,320
+found this
+
+2676
+01:55:17,320 --> 01:55:19,400
+useful and insightful, please come talk
+
+2677
+01:55:19,400 --> 01:55:21,600
+to us. We're here
+
+2678
+01:55:21,600 --> 01:55:23,600
+at the booth. We have a booth.
+
+2679
+01:55:23,600 --> 01:55:25,640
+Yeah. And that was that. Thank you so
+
+2680
+01:55:25,640 --> 01:55:28,080
+much.
+
+2681
+01:55:29,324 --> 01:55:31,344
+>> [applause]
+
+2682
+01:55:33,800 --> 01:55:36,000
+>> All right, and now is time for lunch and
+
+2683
+01:55:36,000 --> 01:55:38,560
+we'll have speakers again at 1:30. Enjoy
+
+2684
+01:55:38,560 --> 01:55:41,400
+the lunch time.

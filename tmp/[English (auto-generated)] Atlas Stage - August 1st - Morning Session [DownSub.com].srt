@@ -1,0 +1,8743 @@
+1
+00:01:05,840 --> 00:01:07,920
+All right, good morning everyone.
+
+2
+00:01:07,920 --> 00:01:10,159
+Welcome to the event. This is the Atlas
+
+3
+00:01:10,159 --> 00:01:12,799
+stage. I'm Travis Fraser. I'm the stage
+
+4
+00:01:12,799 --> 00:01:14,479
+manager for Atlas. So, if there's
+
+5
+00:01:14,479 --> 00:01:16,080
+anything you need over this weekend,
+
+6
+00:01:16,080 --> 00:01:17,680
+please come to me. And I'd like to
+
+7
+00:01:17,680 --> 00:01:20,320
+introduce our first guest. It's Jen Ga
+
+8
+00:01:20,320 --> 00:01:25,000
+with Microsoft. So, come on up, Jen.
+
+9
+00:01:43,119 --> 00:01:46,280
+I'll start.
+
+10
+00:01:50,880 --> 00:01:53,439
+Hi, good morning. Uh, I'm Jen Hun from
+
+11
+00:01:53,439 --> 00:01:56,000
+Microsoft Research.
+
+12
+00:01:56,000 --> 00:01:58,960
+I'm very glad to uh have this
+
+13
+00:01:58,960 --> 00:02:00,799
+opportunity to present some of our
+
+14
+00:02:00,799 --> 00:02:04,159
+recent work. Um, I pick a few projects
+
+15
+00:02:04,159 --> 00:02:06,960
+around the topic called agenting
+
+16
+00:02:06,960 --> 00:02:09,200
+modeling. As I show you in the title of
+
+17
+00:02:09,200 --> 00:02:12,480
+the talk, right? This can see this.
+
+18
+00:02:12,480 --> 00:02:14,480
+Okay. Okay. Any modeling by
+
+19
+00:02:14,480 --> 00:02:18,000
+internalization aging harness. So before
+
+20
+00:02:18,000 --> 00:02:20,879
+I go into details, I want to give some
+
+21
+00:02:20,879 --> 00:02:22,400
+definition
+
+22
+00:02:22,400 --> 00:02:24,879
+uh regarding the three terminologies I
+
+23
+00:02:24,879 --> 00:02:27,520
+use in the title. Analytic modeling,
+
+24
+00:02:27,520 --> 00:02:29,200
+internalization
+
+25
+00:02:29,200 --> 00:02:31,840
+and agent harness
+
+26
+00:02:31,840 --> 00:02:34,319
+and agit modeling actually aim to
+
+27
+00:02:34,319 --> 00:02:37,360
+transfer large scale language models uh
+
+28
+00:02:37,360 --> 00:02:40,560
+into autonomous agent capability of
+
+29
+00:02:40,560 --> 00:02:42,959
+performing complex tasks by interacting
+
+30
+00:02:42,959 --> 00:02:45,440
+with the environment. We all know that
+
+31
+00:02:45,440 --> 00:02:47,280
+the portray the large scale language
+
+32
+00:02:47,280 --> 00:02:51,040
+model is mainly a talker. It seems that
+
+33
+00:02:51,040 --> 00:02:52,959
+the model knows everything but it's
+
+34
+00:02:52,959 --> 00:02:56,000
+really difficult if you ask about do
+
+35
+00:02:56,000 --> 00:02:59,440
+something for you. So agentic modeling
+
+36
+00:02:59,440 --> 00:03:02,879
+is the process where we want to turn
+
+37
+00:03:02,879 --> 00:03:06,400
+this talker to a doer
+
+38
+00:03:06,400 --> 00:03:09,360
+and uh the so-called Asian honey I think
+
+39
+00:03:09,360 --> 00:03:12,000
+everyone familiar with the uh uh with
+
+40
+00:03:12,000 --> 00:03:16,239
+the terminology. Okay. And usually it uh
+
+41
+00:03:16,239 --> 00:03:18,640
+because the larger language model cannot
+
+42
+00:03:18,640 --> 00:03:21,040
+do a lot of things. It's just a talker.
+
+43
+00:03:21,040 --> 00:03:23,360
+So in order to make the language model
+
+44
+00:03:23,360 --> 00:03:25,440
+to do some to perform some real world
+
+45
+00:03:25,440 --> 00:03:28,640
+task, you need to coupled with the large
+
+46
+00:03:28,640 --> 00:03:31,360
+language models sort of an an aging
+
+47
+00:03:31,360 --> 00:03:34,560
+harness. So when we talk about uh AI
+
+48
+00:03:34,560 --> 00:03:36,799
+agents, usually it's the combination of
+
+49
+00:03:36,799 --> 00:03:38,640
+the language model, probably multiple
+
+50
+00:03:38,640 --> 00:03:41,840
+language models and the aging harness.
+
+51
+00:03:41,840 --> 00:03:44,159
+In some sense, a harness is a bunch of
+
+52
+00:03:44,159 --> 00:03:48,080
+code. It can handle a lot of things that
+
+53
+00:03:48,080 --> 00:03:49,680
+the current language model cannot
+
+54
+00:03:49,680 --> 00:03:53,200
+handle. Well, internalization refers to
+
+55
+00:03:53,200 --> 00:03:56,400
+a process of distillering agentic
+
+56
+00:03:56,400 --> 00:03:59,040
+capabilities from the harness to
+
+57
+00:03:59,040 --> 00:04:00,480
+language model. What are these
+
+58
+00:04:00,480 --> 00:04:04,720
+capabilities? A great example is the
+
+59
+00:04:04,720 --> 00:04:08,879
+memory of contest management to use and
+
+60
+00:04:08,879 --> 00:04:10,959
+planning.
+
+61
+00:04:10,959 --> 00:04:14,799
+Uh typically this is achieved by mid
+
+62
+00:04:14,799 --> 00:04:17,040
+training and post training large
+
+63
+00:04:17,040 --> 00:04:18,799
+language models through supervised
+
+64
+00:04:18,799 --> 00:04:22,000
+learning or reinforce learning.
+
+65
+00:04:22,000 --> 00:04:25,000
+Okay.
+
+66
+00:04:27,120 --> 00:04:30,560
+Uh this figure shows the some key
+
+67
+00:04:30,560 --> 00:04:34,080
+components that are needed for engineic
+
+68
+00:04:34,080 --> 00:04:37,919
+modeling. There are three of them. Uh I
+
+69
+00:04:37,919 --> 00:04:40,800
+I I use different colors. Uh in the left
+
+70
+00:04:40,800 --> 00:04:45,120
+hand side, this part is the aging. For
+
+71
+00:04:45,120 --> 00:04:49,120
+example, we we assume that our lab is
+
+72
+00:04:49,120 --> 00:04:51,199
+not building a new large language model
+
+73
+00:04:51,199 --> 00:04:54,880
+because it is so uh resource intensive.
+
+74
+00:04:54,880 --> 00:04:57,759
+uh Microsoft has a dedicated team called
+
+75
+00:04:57,759 --> 00:04:59,919
+MAI and they are responsible for
+
+76
+00:04:59,919 --> 00:05:02,240
+building uh in-house large scale
+
+77
+00:05:02,240 --> 00:05:05,120
+language models such as MAI. Uh I think
+
+78
+00:05:05,120 --> 00:05:08,720
+they released uh a dozens of models um
+
+79
+00:05:08,720 --> 00:05:13,440
+recently helps Microsoft stocks. Okay.
+
+80
+00:05:13,440 --> 00:05:17,440
+Uh again we have deals contracts with
+
+81
+00:05:17,440 --> 00:05:20,720
+other companies such as open AI they
+
+82
+00:05:20,720 --> 00:05:24,160
+provide us and frontier models and we
+
+83
+00:05:24,160 --> 00:05:27,280
+have a store uh Asia foundry which can
+
+84
+00:05:27,280 --> 00:05:30,960
+host uh hundreds to thousands of uh open
+
+85
+00:05:30,960 --> 00:05:35,199
+source uh language models. Yeah. But the
+
+86
+00:05:35,199 --> 00:05:38,720
+focus of the lab actually is to develop
+
+87
+00:05:38,720 --> 00:05:42,240
+uh enabling technologies
+
+88
+00:05:42,240 --> 00:05:45,680
+to help develop uh the aging harness.
+
+89
+00:05:45,680 --> 00:05:48,080
+Aging harness can be viewed as a
+
+90
+00:05:48,080 --> 00:05:51,280
+hardcoded modules and the layers.
+
+91
+00:05:51,280 --> 00:05:52,960
+They're not models by themselves but
+
+92
+00:05:52,960 --> 00:05:55,360
+they are they're modules. Most of them
+
+93
+00:05:55,360 --> 00:05:57,120
+are hardcoded.
+
+94
+00:05:57,120 --> 00:06:00,080
+Uh these layers can do things that the
+
+95
+00:06:00,080 --> 00:06:02,400
+current language model cannot do. Well,
+
+96
+00:06:02,400 --> 00:06:05,039
+for example, the information layer
+
+97
+00:06:05,039 --> 00:06:08,800
+consists of the uh ma memory and the
+
+98
+00:06:08,800 --> 00:06:11,280
+context measurement and contains a lot
+
+99
+00:06:11,280 --> 00:06:13,680
+of tools and the scales for the language
+
+100
+00:06:13,680 --> 00:06:17,120
+model to call. And the execution layer
+
+101
+00:06:17,120 --> 00:06:20,160
+uh consists of a prompt builder
+
+102
+00:06:20,160 --> 00:06:22,880
+action par
+
+103
+00:06:22,880 --> 00:06:25,520
+deco composition modules uh and some
+
+104
+00:06:25,520 --> 00:06:29,280
+some arrow recovering mechanisms and
+
+105
+00:06:29,280 --> 00:06:32,080
+most importantly the feedback layer uh
+
+106
+00:06:32,080 --> 00:06:35,840
+which helps uh the system to collect all
+
+107
+00:06:35,840 --> 00:06:39,199
+the trajectories generated by the agents
+
+108
+00:06:39,199 --> 00:06:42,479
+and these trajectories can be used to
+
+109
+00:06:42,479 --> 00:06:46,080
+refine uh the underlying model the area
+
+110
+00:06:46,080 --> 00:06:48,240
+by post training. This actually is the
+
+111
+00:06:48,240 --> 00:06:52,240
+key of the uh agent modeling. Okay,
+
+112
+00:06:52,240 --> 00:06:54,479
+that's the first part. Second part is
+
+113
+00:06:54,479 --> 00:06:56,560
+the environment
+
+114
+00:06:56,560 --> 00:07:00,000
+and in some sense the environment
+
+115
+00:07:00,000 --> 00:07:02,319
+sometimes people call this reinforcement
+
+116
+00:07:02,319 --> 00:07:05,680
+learning environment or RE.
+
+117
+00:07:05,680 --> 00:07:08,800
+and where the AI agents can interact
+
+118
+00:07:08,800 --> 00:07:11,520
+with the external world to perform tasks
+
+119
+00:07:11,520 --> 00:07:14,319
+while generating trajectories.
+
+120
+00:07:14,319 --> 00:07:17,120
+And the last component is the yellow
+
+121
+00:07:17,120 --> 00:07:20,160
+one. It's the trainer. It's a model
+
+122
+00:07:20,160 --> 00:07:23,039
+trainer. Uh where the generated
+
+123
+00:07:23,039 --> 00:07:26,960
+trajectories are used to input larger
+
+124
+00:07:26,960 --> 00:07:29,840
+language models agentic capabilities by
+
+125
+00:07:29,840 --> 00:07:32,160
+post training and m training. Some of
+
+126
+00:07:32,160 --> 00:07:35,520
+the for example most important training
+
+127
+00:07:35,520 --> 00:07:37,759
+methods are reinforce learning and
+
+128
+00:07:37,759 --> 00:07:41,520
+expirations such as on policy distlation
+
+129
+00:07:41,520 --> 00:07:45,199
+uh reverse care divergence algorithms uh
+
+130
+00:07:45,199 --> 00:07:48,400
+actually here for the China the cost
+
+131
+00:07:48,400 --> 00:07:52,160
+efficiency uh is the key. So it's not
+
+132
+00:07:52,160 --> 00:07:56,000
+only that we require the model to be uh
+
+133
+00:07:56,000 --> 00:07:59,280
+served in a cost effective way.
+
+134
+00:07:59,280 --> 00:08:01,199
+More importantly we hope that the model
+
+135
+00:08:01,199 --> 00:08:04,240
+training uh is very sample efficient
+
+136
+00:08:04,240 --> 00:08:06,879
+meaning that probably we don't need a
+
+137
+00:08:06,879 --> 00:08:09,919
+lot of samples to train the model.
+
+138
+00:08:09,919 --> 00:08:12,879
+Uh putting together we witness a new
+
+139
+00:08:12,879 --> 00:08:16,240
+paradigm of AI modeling where harness is
+
+140
+00:08:16,240 --> 00:08:19,280
+like the training data to analytic
+
+141
+00:08:19,280 --> 00:08:23,199
+modeling just like the internet data to
+
+142
+00:08:23,199 --> 00:08:26,560
+model per training right as AI industry
+
+143
+00:08:26,560 --> 00:08:30,160
+and the community are building many many
+
+144
+00:08:30,160 --> 00:08:32,479
+uh AI agents and harness almost every
+
+145
+00:08:32,479 --> 00:08:36,159
+day then we can we actually witness an
+
+146
+00:08:36,159 --> 00:08:39,760
+emergence of a new data flywheel
+
+147
+00:08:39,760 --> 00:08:43,919
+uh where distating uh agent capabilities
+
+148
+00:08:43,919 --> 00:08:47,200
+from harness leads to AI models that are
+
+149
+00:08:47,200 --> 00:08:51,200
+more capable of doing things and which
+
+150
+00:08:51,200 --> 00:08:53,600
+these models can help us build even
+
+151
+00:08:53,600 --> 00:08:57,760
+better AI agents that can generate uh
+
+152
+00:08:57,760 --> 00:09:01,440
+more sophisticated uh uh trajectory data
+
+153
+00:09:01,440 --> 00:09:04,480
+and by solving uh more sophisticated
+
+154
+00:09:04,480 --> 00:09:08,640
+tasks. And again uh this process
+
+155
+00:09:08,640 --> 00:09:12,160
+continue as we advance both the harness
+
+156
+00:09:12,160 --> 00:09:15,519
+and the models. Okay. So many of the
+
+157
+00:09:15,519 --> 00:09:18,480
+ongoing uh AI research projects at the
+
+158
+00:09:18,480 --> 00:09:22,480
+MSR can be grouped uh into these three
+
+159
+00:09:22,480 --> 00:09:26,880
+categories as I outlined here. Uh and
+
+160
+00:09:26,880 --> 00:09:29,200
+for example the modeling technology as
+
+161
+00:09:29,200 --> 00:09:32,160
+in the green box. Yeah. to facilitate
+
+162
+00:09:32,160 --> 00:09:34,560
+harness engineering such as memory
+
+163
+00:09:34,560 --> 00:09:38,959
+management and test time learning and uh
+
+164
+00:09:38,959 --> 00:09:42,080
+the the the environment service as show
+
+165
+00:09:42,080 --> 00:09:46,160
+in the blue box and to host in parallel
+
+166
+00:09:46,160 --> 00:09:49,440
+many reinforced learning uh environments
+
+167
+00:09:49,440 --> 00:09:52,240
+where agents perform tasks that generate
+
+168
+00:09:52,240 --> 00:09:53,839
+trajectories
+
+169
+00:09:53,839 --> 00:09:56,080
+and uh actually this is the source of
+
+170
+00:09:56,080 --> 00:09:59,200
+the training data for agent modeling and
+
+171
+00:09:59,200 --> 00:10:01,440
+the yellow box the trainer
+
+172
+00:10:01,440 --> 00:10:04,440
+So
+
+173
+00:10:05,760 --> 00:10:08,399
+yeah in work for also I will present for
+
+174
+00:10:08,399 --> 00:10:12,080
+each group an ongoing research project
+
+175
+00:10:12,080 --> 00:10:14,399
+we recently released to the public or
+
+176
+00:10:14,399 --> 00:10:17,040
+we're about to release it. Uh on the
+
+177
+00:10:17,040 --> 00:10:18,800
+environment side I will present our
+
+178
+00:10:18,800 --> 00:10:21,279
+chart which is a opensource engine model
+
+179
+00:10:21,279 --> 00:10:25,200
+framework for research. Uh as for aging
+
+180
+00:10:25,200 --> 00:10:28,240
+harness, I will describe a new test time
+
+181
+00:10:28,240 --> 00:10:31,519
+learning framework called evolve lab
+
+182
+00:10:31,519 --> 00:10:34,000
+which allows large scale language models
+
+183
+00:10:34,000 --> 00:10:36,959
+to accumulate, reuse and involve
+
+184
+00:10:36,959 --> 00:10:40,640
+knowledge across a sequence of tasks.
+
+185
+00:10:40,640 --> 00:10:42,959
+And on the model trainer, I will present
+
+186
+00:10:42,959 --> 00:10:45,600
+GRO IO which is a new reinforcement
+
+187
+00:10:45,600 --> 00:10:49,279
+learning measure which I really hope can
+
+188
+00:10:49,279 --> 00:10:52,640
+provide an alternative to the dominating
+
+189
+00:10:52,640 --> 00:10:56,720
+ROI meas such as GP or PO because this
+
+190
+00:10:56,720 --> 00:11:00,240
+new method unlock the great diversity
+
+191
+00:11:00,240 --> 00:11:02,160
+and turns out to be a more cost
+
+192
+00:11:02,160 --> 00:11:06,040
+effective training method.
+
+193
+00:11:08,640 --> 00:11:10,320
+Okay.
+
+194
+00:11:10,320 --> 00:11:14,399
+Now this is the overall is a summary one
+
+195
+00:11:14,399 --> 00:11:16,320
+one one slide summary of the orchard
+
+196
+00:11:16,320 --> 00:11:20,079
+project and I I I believe the paper and
+
+197
+00:11:20,079 --> 00:11:23,519
+the code code and data will be released
+
+198
+00:11:23,519 --> 00:11:27,200
+sometime next week. Um we know that
+
+199
+00:11:27,200 --> 00:11:32,160
+despite the rapid progress in in in AI
+
+200
+00:11:32,160 --> 00:11:35,120
+aging the open research on agitic
+
+201
+00:11:35,120 --> 00:11:37,760
+modeling remains constrained by
+
+202
+00:11:37,760 --> 00:11:41,120
+infrastructure gaps early days when we
+
+203
+00:11:41,120 --> 00:11:44,880
+are doing this training oh the as long
+
+204
+00:11:44,880 --> 00:11:47,920
+as you have access to internet
+
+205
+00:11:47,920 --> 00:11:50,079
+there's a no lack of trend data you can
+
+206
+00:11:50,079 --> 00:11:53,360
+you can gra grab trend data from the web
+
+207
+00:11:53,360 --> 00:11:56,240
+but agent modeling different. You need
+
+208
+00:11:56,240 --> 00:11:58,160
+an environment
+
+209
+00:11:58,160 --> 00:12:02,240
+to run hundreds of thousands of uh
+
+210
+00:12:02,240 --> 00:12:05,200
+agents simultaneously so that they can
+
+211
+00:12:05,200 --> 00:12:07,440
+generate a lot of trajectory data and
+
+212
+00:12:07,440 --> 00:12:10,160
+then you can use this trajectory data to
+
+213
+00:12:10,160 --> 00:12:14,240
+train your model. So it's not there yet.
+
+214
+00:12:14,240 --> 00:12:16,880
+In the research community, people have
+
+215
+00:12:16,880 --> 00:12:19,519
+been focusing on uh infrastructure
+
+216
+00:12:19,519 --> 00:12:22,399
+mainly designed to improve the harness
+
+217
+00:12:22,399 --> 00:12:25,920
+itself but not the environment that can
+
+218
+00:12:25,920 --> 00:12:29,680
+host uh different agents different
+
+219
+00:12:29,680 --> 00:12:32,959
+agents to run uh in parallel. So to
+
+220
+00:12:32,959 --> 00:12:35,680
+narrow the gap we prevent uh present our
+
+221
+00:12:35,680 --> 00:12:38,320
+chart which is a open source ecosystem
+
+222
+00:12:38,320 --> 00:12:41,600
+for scalable agenting modeling. At the
+
+223
+00:12:41,600 --> 00:12:44,320
+core of the orchards is a sing coet
+
+224
+00:12:44,320 --> 00:12:46,880
+native environment service that provide
+
+225
+00:12:46,880 --> 00:12:50,560
+a reusable primitives of sandbox life
+
+226
+00:12:50,560 --> 00:12:52,880
+cycle environment.
+
+227
+00:12:52,880 --> 00:12:55,120
+It's called
+
+228
+00:12:55,120 --> 00:12:58,399
+ultra ev
+
+229
+00:12:58,399 --> 00:13:01,600
+uh ultra environment in some sense the
+
+230
+00:13:01,600 --> 00:13:05,040
+ultra environment is like an operating
+
+231
+00:13:05,040 --> 00:13:08,959
+system runtime for AI agents. It acts as
+
+232
+00:13:08,959 --> 00:13:11,680
+orchestration and the virtualization
+
+233
+00:13:11,680 --> 00:13:15,200
+layer that manage the container images
+
+234
+00:13:15,200 --> 00:13:18,399
+inside the sandbox that expose a clean
+
+235
+00:13:18,399 --> 00:13:22,079
+interface for the AI agents to run.
+
+236
+00:13:22,079 --> 00:13:24,880
+Intuitively speaking, what this does is
+
+237
+00:13:24,880 --> 00:13:26,880
+provide the environment. It's just like
+
+238
+00:13:26,880 --> 00:13:28,399
+the
+
+239
+00:13:28,399 --> 00:13:31,040
+uh organizer of this workshop organized
+
+240
+00:13:31,040 --> 00:13:33,360
+this conference, right? The operating
+
+241
+00:13:33,360 --> 00:13:36,320
+system in this contest is like the the
+
+242
+00:13:36,320 --> 00:13:38,800
+this building. Okay. It provides all the
+
+243
+00:13:38,800 --> 00:13:42,560
+electronicities facilities to us to host
+
+244
+00:13:42,560 --> 00:13:45,120
+a lot of workshops. If we view each
+
+245
+00:13:45,120 --> 00:13:47,920
+workshop as a agent, then the organizer
+
+246
+00:13:47,920 --> 00:13:50,480
+of this of this conference did a great
+
+247
+00:13:50,480 --> 00:13:53,760
+job to put each workshop in a particular
+
+248
+00:13:53,760 --> 00:13:57,839
+room. This is like a uh uh reinforce
+
+249
+00:13:57,839 --> 00:14:01,279
+learning environment many rece or or pod
+
+250
+00:14:01,279 --> 00:14:04,720
+in in in this context. And after all
+
+251
+00:14:04,720 --> 00:14:06,639
+these workshops
+
+252
+00:14:06,639 --> 00:14:10,480
+and the organizer will again collect all
+
+253
+00:14:10,480 --> 00:14:12,720
+the results of this workshop and share
+
+254
+00:14:12,720 --> 00:14:16,800
+the results with us in some sense the uh
+
+255
+00:14:16,800 --> 00:14:20,320
+or chart Evar is the organizer of this
+
+256
+00:14:20,320 --> 00:14:23,839
+uh the whole conference. Okay. Then in
+
+257
+00:14:23,839 --> 00:14:26,800
+order to demonstrate the effectiveness
+
+258
+00:14:26,800 --> 00:14:32,880
+of this environment we build three uh uh
+
+259
+00:14:32,880 --> 00:14:36,079
+a modeling recipes on top of that as a
+
+260
+00:14:36,079 --> 00:14:39,760
+demonstration. Okay. First is uh okra
+
+261
+00:14:39,760 --> 00:14:43,519
+eval or first is okra swing. This is
+
+262
+00:14:43,519 --> 00:14:45,760
+target to the software engineering
+
+263
+00:14:45,760 --> 00:14:49,519
+aging. what we did is we distill about
+
+264
+00:14:49,519 --> 00:14:51,440
+100,000
+
+265
+00:14:51,440 --> 00:14:55,519
+uh trajectories uh from from from from
+
+266
+00:14:55,519 --> 00:15:00,079
+the models and then and it's
+
+267
+00:15:00,079 --> 00:15:02,880
+interestingly we see that we got a very
+
+268
+00:15:02,880 --> 00:15:06,959
+good results 70 73% if you you know this
+
+269
+00:15:06,959 --> 00:15:09,360
+benchmark pretty well this we bench
+
+270
+00:15:09,360 --> 00:15:13,199
+verified and this result all already
+
+271
+00:15:13,199 --> 00:15:16,000
+supports a lot of open source models uh
+
+272
+00:15:16,000 --> 00:15:18,079
+regardless of the of the small size of
+
+273
+00:15:18,079 --> 00:15:22,000
+the model. Then we also uh take two
+
+274
+00:15:22,000 --> 00:15:24,320
+other examples
+
+275
+00:15:24,320 --> 00:15:29,360
+the the uh which is ultra uh GUI. GUI is
+
+276
+00:15:29,360 --> 00:15:31,760
+for navigation. The other is crow. Crawl
+
+277
+00:15:31,760 --> 00:15:35,639
+is for personal assistant.
+
+278
+00:15:37,199 --> 00:15:40,639
+Now the uh this is I I want to give a
+
+279
+00:15:40,639 --> 00:15:43,279
+quick update of of this project. It's
+
+280
+00:15:43,279 --> 00:15:44,880
+test time running learning within
+
+281
+00:15:44,880 --> 00:15:47,120
+involving libraries
+
+282
+00:15:47,120 --> 00:15:50,480
+and memory is important but typically we
+
+283
+00:15:50,480 --> 00:15:54,720
+view a memory uh as a storage of raw
+
+284
+00:15:54,720 --> 00:15:56,320
+experience
+
+285
+00:15:56,320 --> 00:16:00,320
+and but this experience is not learning
+
+286
+00:16:00,320 --> 00:16:03,440
+this exper
+
+287
+00:16:03,440 --> 00:16:05,680
+I collect a lot of experience previously
+
+288
+00:16:05,680 --> 00:16:07,440
+I I have no idea how to use this
+
+289
+00:16:07,440 --> 00:16:11,360
+experience to solve new tasks but human
+
+290
+00:16:11,360 --> 00:16:15,040
+learning is different. I never recall
+
+291
+00:16:15,040 --> 00:16:16,800
+all the details of my previous
+
+292
+00:16:16,800 --> 00:16:19,440
+experience. I only remember what
+
+293
+00:16:19,440 --> 00:16:21,759
+matters, right? The the the the the
+
+294
+00:16:21,759 --> 00:16:24,399
+failures I try to avoid, the new skills
+
+295
+00:16:24,399 --> 00:16:27,279
+I learned once and hopefully can apply
+
+296
+00:16:27,279 --> 00:16:30,880
+multiple times in the future. So this
+
+297
+00:16:30,880 --> 00:16:35,040
+algorithm uh is developed to simulate
+
+298
+00:16:35,040 --> 00:16:37,680
+the human learning.
+
+299
+00:16:37,680 --> 00:16:42,639
+Now the last project I want to uh
+
+300
+00:16:42,639 --> 00:16:47,279
+give an overview is uh is GRO I am. The
+
+301
+00:16:47,279 --> 00:16:49,040
+difference between this and the
+
+302
+00:16:49,040 --> 00:16:52,000
+traditional approach like the GPO is
+
+303
+00:16:52,000 --> 00:16:56,000
+that this in this uh reinforce learning
+
+304
+00:16:56,000 --> 00:16:59,440
+setting we define policy learning as
+
+305
+00:16:59,440 --> 00:17:02,480
+distribution matching rather than maxim
+
+306
+00:17:02,480 --> 00:17:04,959
+uh reward maximization. The key
+
+307
+00:17:04,959 --> 00:17:06,640
+difference is that now using this
+
+308
+00:17:06,640 --> 00:17:11,280
+algorithm we can sample uh trajectories
+
+309
+00:17:11,280 --> 00:17:15,280
+sample uh solutions proportional to the
+
+310
+00:17:15,280 --> 00:17:19,039
+reward they uh toward uh proportion to
+
+311
+00:17:19,039 --> 00:17:23,039
+the reward they got assigned. Okay.
+
+312
+00:17:23,039 --> 00:17:26,319
+Uh yeah I have to stop here. If you have
+
+313
+00:17:26,319 --> 00:17:28,400
+any questions feel free to to reach out
+
+314
+00:17:28,400 --> 00:17:33,320
+to me in offline manner. Thank you.
+
+315
+00:17:42,160 --> 00:17:45,520
+Thank you, Jang. Appreciate that.
+
+316
+00:17:45,520 --> 00:17:49,360
+All right. Next up, we have Sonia
+
+317
+00:17:49,360 --> 00:17:53,000
+Diddler with Nvidia.
+
+318
+00:17:55,840 --> 00:17:59,320
+I'll put it here.
+
+319
+00:18:01,200 --> 00:18:03,520
+>> All right. Can you hear me? I'm tall.
+
+320
+00:18:03,520 --> 00:18:06,320
+Um, yeah. Hi, I'm Sonia. I actually no
+
+321
+00:18:06,320 --> 00:18:08,160
+longer invidia. I just announced it
+
+322
+00:18:08,160 --> 00:18:11,120
+yesterday. Recently left. Um, but the
+
+323
+00:18:11,120 --> 00:18:12,799
+video has been really kind and actually
+
+324
+00:18:12,799 --> 00:18:14,720
+allowed me to take my slide deck with me
+
+325
+00:18:14,720 --> 00:18:16,799
+or at least quite a lot of the material.
+
+326
+00:18:16,799 --> 00:18:18,400
+So, I'll be talking about the Nvidia
+
+327
+00:18:18,400 --> 00:18:20,559
+work today. But, uh, today I'm a
+
+328
+00:18:20,559 --> 00:18:22,960
+civilian University of Toronto and I'll
+
+329
+00:18:22,960 --> 00:18:25,840
+let you speculate about my next steps.
+
+330
+00:18:25,840 --> 00:18:28,000
+Um, all right. So I'm not really going
+
+331
+00:18:28,000 --> 00:18:30,080
+to talk about you know agentic AI today
+
+332
+00:18:30,080 --> 00:18:31,919
+but I'm going to talk about world models
+
+333
+00:18:31,919 --> 00:18:33,760
+which is really something very exciting
+
+334
+00:18:33,760 --> 00:18:36,480
+to me really for the last six six years
+
+335
+00:18:36,480 --> 00:18:39,360
+but now this technology is is maturing
+
+336
+00:18:39,360 --> 00:18:42,480
+is is around the corner. All right. So,
+
+337
+00:18:42,480 --> 00:18:44,320
+um, you know, we've been working on
+
+338
+00:18:44,320 --> 00:18:47,039
+physical AI for quite a few years and
+
+339
+00:18:47,039 --> 00:18:48,960
+the world has been working on robots for
+
+340
+00:18:48,960 --> 00:18:51,840
+for for decades, right? Um, but if you
+
+341
+00:18:51,840 --> 00:18:54,000
+look at kind of this evolution of AI,
+
+342
+00:18:54,000 --> 00:18:57,440
+Chad GPT 2022 kind of the entire world
+
+343
+00:18:57,440 --> 00:18:59,440
+knew about AI. It was the first time
+
+344
+00:18:59,440 --> 00:19:01,520
+that really reached the masses. You
+
+345
+00:19:01,520 --> 00:19:04,480
+know, my mom knew about Chad GPT, right?
+
+346
+00:19:04,480 --> 00:19:06,880
+Um, right now we are in the era of
+
+347
+00:19:06,880 --> 00:19:09,600
+agentic AI. Everyone is using agents. I
+
+348
+00:19:09,600 --> 00:19:11,440
+don't need to explain what it is. I
+
+349
+00:19:11,440 --> 00:19:13,520
+cannot imagine my life actually without
+
+350
+00:19:13,520 --> 00:19:16,480
+using agents. And the next break point
+
+351
+00:19:16,480 --> 00:19:18,640
+that is coming perhaps you know in the
+
+352
+00:19:18,640 --> 00:19:20,640
+next decade maybe more depending on the
+
+353
+00:19:20,640 --> 00:19:22,240
+kind of robot we're going to looking for
+
+354
+00:19:22,240 --> 00:19:24,320
+is physical AI where all this
+
+355
+00:19:24,320 --> 00:19:26,240
+intelligence come to the edge comes to
+
+356
+00:19:26,240 --> 00:19:28,320
+the robots you know in many different
+
+357
+00:19:28,320 --> 00:19:32,640
+roles in many different industries.
+
+358
+00:19:32,640 --> 00:19:34,559
+All right. So at Invidia we were at
+
+359
+00:19:34,559 --> 00:19:36,960
+least my group was more focused on one
+
+360
+00:19:36,960 --> 00:19:38,640
+particular robot that was autonomous
+
+361
+00:19:38,640 --> 00:19:40,160
+driving robots. Today we're going to
+
+362
+00:19:40,160 --> 00:19:42,720
+kind of use that as an example. Um but
+
+363
+00:19:42,720 --> 00:19:44,640
+obviously there's many many robots
+
+364
+00:19:44,640 --> 00:19:46,720
+especially general robotics is kind of
+
+365
+00:19:46,720 --> 00:19:48,480
+the hot field that's upcoming and it's
+
+366
+00:19:48,480 --> 00:19:52,000
+the robot that kind of um
+
+367
+00:19:52,000 --> 00:19:54,720
+hearing a lot of echo uh supposed to do
+
+368
+00:19:54,720 --> 00:19:56,799
+many different tasks. Okay. So the
+
+369
+00:19:56,799 --> 00:19:58,880
+evolution of kind of the software to
+
+370
+00:19:58,880 --> 00:20:02,080
+deploy on smart robots for example a car
+
+371
+00:20:02,080 --> 00:20:03,200
+kind of went through different
+
+372
+00:20:03,200 --> 00:20:06,640
+generations. Um you know from very
+
+373
+00:20:06,640 --> 00:20:09,039
+simple AI very simple vision to more
+
+374
+00:20:09,039 --> 00:20:11,440
+hardcoding rules around how could I be
+
+375
+00:20:11,440 --> 00:20:14,000
+driving around to machine learning in
+
+376
+00:20:14,000 --> 00:20:16,160
+every single steps both in perception
+
+377
+00:20:16,160 --> 00:20:18,320
+but then also prediction and planning
+
+378
+00:20:18,320 --> 00:20:19,840
+and how I'm going to actually drive the
+
+379
+00:20:19,840 --> 00:20:23,280
+car. um to most recently end to end
+
+380
+00:20:23,280 --> 00:20:25,200
+systems where I'm just taking sensor
+
+381
+00:20:25,200 --> 00:20:27,919
+data and outcomes basically a planning
+
+382
+00:20:27,919 --> 00:20:30,159
+trajectory that drives the robot drives
+
+383
+00:20:30,159 --> 00:20:33,360
+the car um to perhaps you know the new
+
+384
+00:20:33,360 --> 00:20:35,520
+generation that's coming which is
+
+385
+00:20:35,520 --> 00:20:37,360
+leveraging this big foundation model
+
+386
+00:20:37,360 --> 00:20:40,080
+pre-trained on massive amount of data
+
+387
+00:20:40,080 --> 00:20:42,240
+that come with this you know vast
+
+388
+00:20:42,240 --> 00:20:44,000
+knowledge about how the world works
+
+389
+00:20:44,000 --> 00:20:46,159
+around all the corner cases that is so
+
+390
+00:20:46,159 --> 00:20:48,080
+hard to collect in the real world and
+
+391
+00:20:48,080 --> 00:20:50,640
+also know how to reason so people really
+
+392
+00:20:50,640 --> 00:20:52,320
+think kind of know this foundation model
+
+393
+00:20:52,320 --> 00:20:54,480
+is kind of gamecher to really kind of
+
+394
+00:20:54,480 --> 00:20:57,280
+that last mile to solve the corner case
+
+395
+00:20:57,280 --> 00:20:59,840
+u uh in robotics or in a navy as a first
+
+396
+00:20:59,840 --> 00:21:02,240
+complex example
+
+397
+00:21:02,240 --> 00:21:03,760
+all right today I'm not really going to
+
+398
+00:21:03,760 --> 00:21:05,280
+talk about so much about the software
+
+399
+00:21:05,280 --> 00:21:06,799
+that goes on the robot but about the
+
+400
+00:21:06,799 --> 00:21:08,320
+infrastructure
+
+401
+00:21:08,320 --> 00:21:10,960
+um particularly simulation right so if
+
+402
+00:21:10,960 --> 00:21:13,600
+you think about LLMs during development
+
+403
+00:21:13,600 --> 00:21:15,200
+people train a lot of different models
+
+404
+00:21:15,200 --> 00:21:18,080
+and you need to somehow evaluate um how
+
+405
+00:21:18,080 --> 00:21:19,679
+good they are which means sampling
+
+406
+00:21:19,679 --> 00:21:21,360
+something from the model, get some text,
+
+407
+00:21:21,360 --> 00:21:22,880
+you know, and have some some way of
+
+408
+00:21:22,880 --> 00:21:25,440
+evaluating how good it is. Sometime even
+
+409
+00:21:25,440 --> 00:21:26,960
+interacts with a human, right? If you
+
+410
+00:21:26,960 --> 00:21:29,200
+want to measure conversation. So
+
+411
+00:21:29,200 --> 00:21:31,679
+something like that in robotics actually
+
+412
+00:21:31,679 --> 00:21:34,880
+needs to be deployed um on a real robot
+
+413
+00:21:34,880 --> 00:21:37,919
+in closed loop, right? Meaning I have a
+
+414
+00:21:37,919 --> 00:21:40,000
+software, the brain of the robot, I
+
+415
+00:21:40,000 --> 00:21:42,159
+deploy it on a real robot. This robot
+
+416
+00:21:42,159 --> 00:21:44,400
+starts performing some tasks. Here I
+
+417
+00:21:44,400 --> 00:21:46,159
+have some video from Skilled AI that I
+
+418
+00:21:46,159 --> 00:21:48,320
+pulled from the internet. real robot
+
+419
+00:21:48,320 --> 00:21:50,240
+doing pick and place, you know, running
+
+420
+00:21:50,240 --> 00:21:52,320
+this policy which we'll develop in
+
+421
+00:21:52,320 --> 00:21:54,720
+neural environment and then you know the
+
+422
+00:21:54,720 --> 00:21:56,320
+human is kind of observing how good this
+
+423
+00:21:56,320 --> 00:22:00,799
+robot is doing right an alternative is
+
+424
+00:22:00,799 --> 00:22:02,799
+to actually have a robot do this in
+
+425
+00:22:02,799 --> 00:22:05,919
+entirely virtual world right on the
+
+426
+00:22:05,919 --> 00:22:08,159
+cloud. So it's a virtual robot in a
+
+427
+00:22:08,159 --> 00:22:11,120
+digital twin also doing pick and place
+
+428
+00:22:11,120 --> 00:22:13,360
+right and we can also evaluate how this
+
+429
+00:22:13,360 --> 00:22:15,440
+virtual robot is doing and that can also
+
+430
+00:22:15,440 --> 00:22:17,280
+give us a really good signal about which
+
+431
+00:22:17,280 --> 00:22:19,039
+which policy that we developed is
+
+432
+00:22:19,039 --> 00:22:21,039
+actually better right and we can also
+
+433
+00:22:21,039 --> 00:22:23,679
+train that way much more scalably. So if
+
+434
+00:22:23,679 --> 00:22:26,799
+you look at on the light left side
+
+435
+00:22:26,799 --> 00:22:28,799
+the development is kind of bounded by
+
+436
+00:22:28,799 --> 00:22:30,960
+deploying on the robot which runs with
+
+437
+00:22:30,960 --> 00:22:33,360
+physical time you know we cannot in the
+
+438
+00:22:33,360 --> 00:22:35,200
+real world we cannot run faster than the
+
+439
+00:22:35,200 --> 00:22:37,679
+physical time right so if you want to
+
+440
+00:22:37,679 --> 00:22:39,360
+scale and evaluate many many different
+
+441
+00:22:39,360 --> 00:22:41,280
+scenarios we need to buy many many
+
+442
+00:22:41,280 --> 00:22:43,120
+different robots
+
+443
+00:22:43,120 --> 00:22:45,039
+on the cloud on the other hand we're
+
+444
+00:22:45,039 --> 00:22:47,600
+bounded by compute time computers are
+
+445
+00:22:47,600 --> 00:22:49,760
+getting you know better and better we
+
+446
+00:22:49,760 --> 00:22:52,480
+can actually run faster than real time
+
+447
+00:22:52,480 --> 00:22:55,280
+and we just scale across GPUs, right,
+
+448
+00:22:55,280 --> 00:22:56,799
+instead of robots. So, it's a much much
+
+449
+00:22:56,799 --> 00:22:59,360
+much more scalable pipeline. So,
+
+450
+00:22:59,360 --> 00:23:00,799
+simulation is really kind of
+
+451
+00:23:00,799 --> 00:23:02,400
+foundational infrastructure for
+
+452
+00:23:02,400 --> 00:23:04,320
+robotics. I really don't think you can
+
+453
+00:23:04,320 --> 00:23:06,000
+develop robotics without really really
+
+454
+00:23:06,000 --> 00:23:08,880
+good simulation.
+
+455
+00:23:08,880 --> 00:23:12,799
+I skip this slide and um talking about
+
+456
+00:23:12,799 --> 00:23:15,039
+simulation, it has kind of gone through
+
+457
+00:23:15,039 --> 00:23:18,159
+different stages, right? So, you know,
+
+458
+00:23:18,159 --> 00:23:20,480
+traditionally this was done by graphics.
+
+459
+00:23:20,480 --> 00:23:22,159
+artists would carve out, you know,
+
+460
+00:23:22,159 --> 00:23:25,679
+create 3D assets, write behavior models,
+
+461
+00:23:25,679 --> 00:23:27,760
+write all the ray tracing equations and
+
+462
+00:23:27,760 --> 00:23:29,120
+then you would get out, you know, a
+
+463
+00:23:29,120 --> 00:23:31,280
+particular scenario.
+
+464
+00:23:31,280 --> 00:23:32,960
+It kind of worked, but at the same time
+
+465
+00:23:32,960 --> 00:23:35,280
+was so time consuming. If I wanted to
+
+466
+00:23:35,280 --> 00:23:37,039
+test my car at some streak in San
+
+467
+00:23:37,039 --> 00:23:38,960
+Francisco, you know, that goes one or
+
+468
+00:23:38,960 --> 00:23:40,880
+two months of actually artist time to
+
+469
+00:23:40,880 --> 00:23:44,400
+create that digital twin.
+
+470
+00:23:44,400 --> 00:23:47,200
+Then around 2020 a new technology came
+
+471
+00:23:47,200 --> 00:23:49,600
+along called nerf agotion splats that
+
+472
+00:23:49,600 --> 00:23:52,640
+completely changed the game and the the
+
+473
+00:23:52,640 --> 00:23:54,720
+game changer was that now you can go
+
+474
+00:23:54,720 --> 00:23:56,559
+from a recording from a real world
+
+475
+00:23:56,559 --> 00:23:58,640
+recording that you capture on a real
+
+476
+00:23:58,640 --> 00:24:02,080
+robot to a simulation environment with
+
+477
+00:24:02,080 --> 00:24:04,240
+some restrictions because it was all
+
+478
+00:24:04,240 --> 00:24:06,400
+done by reconstruction. So it's kind of
+
+479
+00:24:06,400 --> 00:24:09,039
+limited um with what you actually saw in
+
+480
+00:24:09,039 --> 00:24:11,279
+that recording but it was a game
+
+481
+00:24:11,279 --> 00:24:13,520
+changer. Suddenly the content problem
+
+482
+00:24:13,520 --> 00:24:15,919
+was solved. You could go from real world
+
+483
+00:24:15,919 --> 00:24:18,720
+capture to a simulation environment,
+
+484
+00:24:18,720 --> 00:24:20,480
+deploy a new version of your software
+
+485
+00:24:20,480 --> 00:24:22,240
+and make you know new closed loop
+
+486
+00:24:22,240 --> 00:24:24,400
+rollouts and actually test you know new
+
+487
+00:24:24,400 --> 00:24:26,799
+policies in this environment.
+
+488
+00:24:26,799 --> 00:24:28,480
+How did this work? You know it was all
+
+489
+00:24:28,480 --> 00:24:30,400
+reconstruction based. You have your
+
+490
+00:24:30,400 --> 00:24:32,240
+capture, you get your surface
+
+491
+00:24:32,240 --> 00:24:34,559
+reconstruction for collision checking
+
+492
+00:24:34,559 --> 00:24:37,279
+and then unifor splat this kind of
+
+493
+00:24:37,279 --> 00:24:40,080
+little appearance blobs in space that
+
+494
+00:24:40,080 --> 00:24:41,440
+tell you how to render different
+
+495
+00:24:41,440 --> 00:24:44,440
+viewpoints.
+
+496
+00:24:44,799 --> 00:24:46,799
+Complete game changer. At Nvidia, we
+
+497
+00:24:46,799 --> 00:24:48,720
+were doing two million simulations per
+
+498
+00:24:48,720 --> 00:24:53,640
+day testing autonomous driving software.
+
+499
+00:24:53,919 --> 00:24:56,080
+All right. So, is that enough or what's
+
+500
+00:24:56,080 --> 00:24:58,559
+coming next? Like I said, there was a
+
+501
+00:24:58,559 --> 00:24:59,919
+lot of limitations of how you
+
+502
+00:24:59,919 --> 00:25:01,679
+reconstruct the environment, what kind
+
+503
+00:25:01,679 --> 00:25:04,159
+of environment you can actually handle.
+
+504
+00:25:04,159 --> 00:25:06,159
+Plus, at the same time, it's only
+
+505
+00:25:06,159 --> 00:25:09,200
+bounded by what you have recorded and we
+
+506
+00:25:09,200 --> 00:25:11,039
+talked about the robotics is going to
+
+507
+00:25:11,039 --> 00:25:13,200
+hit the long tail, which is stuff that
+
+508
+00:25:13,200 --> 00:25:15,440
+you it's so hard to see and you actually
+
+509
+00:25:15,440 --> 00:25:16,880
+need to test and train in those
+
+510
+00:25:16,880 --> 00:25:18,880
+environments. So, it's all about
+
+511
+00:25:18,880 --> 00:25:22,320
+imagining those hard cases as well. And
+
+512
+00:25:22,320 --> 00:25:24,159
+this is where you know world models or
+
+513
+00:25:24,159 --> 00:25:27,360
+generative world models come in right
+
+514
+00:25:27,360 --> 00:25:30,480
+this is AI purely trained on data it's
+
+515
+00:25:30,480 --> 00:25:32,480
+completely datadriven you know there's
+
+516
+00:25:32,480 --> 00:25:35,919
+no more human in human crafting content
+
+517
+00:25:35,919 --> 00:25:37,600
+um so the limit is the data and we have
+
+518
+00:25:37,600 --> 00:25:39,760
+learning LLMs that's basically you know
+
+519
+00:25:39,760 --> 00:25:42,720
+the way to go and suddenly you can
+
+520
+00:25:42,720 --> 00:25:44,720
+hallucinate new scenarios you can write
+
+521
+00:25:44,720 --> 00:25:47,679
+you know whatever new hard edge case you
+
+522
+00:25:47,679 --> 00:25:51,440
+you you imagine and uh very kind of hard
+
+523
+00:25:51,440 --> 00:25:54,240
+dynamic scenarios,
+
+524
+00:25:54,240 --> 00:25:56,159
+lots of progress on this front, right?
+
+525
+00:25:56,159 --> 00:25:58,799
+Especially in the last year. Uh, now we
+
+526
+00:25:58,799 --> 00:26:01,279
+can generate, you know, really crazy
+
+527
+00:26:01,279 --> 00:26:03,200
+hard scenarios.
+
+528
+00:26:03,200 --> 00:26:07,360
+Um, what's kind of like hard weather and
+
+529
+00:26:07,360 --> 00:26:09,120
+no one got hurt in that video. It was
+
+530
+00:26:09,120 --> 00:26:11,440
+completely generated accident. Just
+
+531
+00:26:11,440 --> 00:26:12,799
+really kind of those cases where you
+
+532
+00:26:12,799 --> 00:26:15,440
+want to test the software.
+
+533
+00:26:15,440 --> 00:26:17,279
+Here we can even change the viewpoint
+
+534
+00:26:17,279 --> 00:26:19,120
+which is similar to basically changing
+
+535
+00:26:19,120 --> 00:26:21,360
+embodiment you know going from you know
+
+536
+00:26:21,360 --> 00:26:24,880
+lower car sports car to a truck. Super
+
+537
+00:26:24,880 --> 00:26:26,320
+important. So you can actually test
+
+538
+00:26:26,320 --> 00:26:28,559
+across different vehicles.
+
+539
+00:26:28,559 --> 00:26:30,000
+And the last really important thing
+
+540
+00:26:30,000 --> 00:26:31,679
+that's very easy to do with generative
+
+541
+00:26:31,679 --> 00:26:33,840
+models but a little harder with a
+
+542
+00:26:33,840 --> 00:26:37,279
+reconstruction tag uh is editing. You
+
+543
+00:26:37,279 --> 00:26:39,039
+know just text from and suddenly you can
+
+544
+00:26:39,039 --> 00:26:42,559
+edit scenario in different ways.
+
+545
+00:26:42,559 --> 00:26:45,840
+All right. There's a specific um um
+
+546
+00:26:45,840 --> 00:26:47,600
+architecture that I have in mind when I
+
+547
+00:26:47,600 --> 00:26:50,320
+talk about world models today and it's
+
+548
+00:26:50,320 --> 00:26:52,720
+interactive. So it's not just I'm
+
+549
+00:26:52,720 --> 00:26:54,559
+getting text, I'm getting out a video,
+
+550
+00:26:54,559 --> 00:26:57,600
+five seconds of video. Uh it there's a
+
+551
+00:26:57,600 --> 00:27:00,320
+there's a user or a robotic software in
+
+552
+00:27:00,320 --> 00:27:03,039
+the loop here. My favorite human at was
+
+553
+00:27:03,039 --> 00:27:05,440
+actually our first user. As soon as we
+
+554
+00:27:05,440 --> 00:27:07,039
+developed the model went to his office
+
+555
+00:27:07,039 --> 00:27:09,039
+and he was the one trying it with a real
+
+556
+00:27:09,039 --> 00:27:12,000
+steering wheel. So in this case it was a
+
+557
+00:27:12,000 --> 00:27:14,960
+user driving and every single frame that
+
+558
+00:27:14,960 --> 00:27:17,360
+you saw was completely generated by the
+
+559
+00:27:17,360 --> 00:27:19,440
+world model and that's what I mean by
+
+560
+00:27:19,440 --> 00:27:22,159
+world model in this presentation and uh
+
+561
+00:27:22,159 --> 00:27:23,919
+that's by being interactive. You know
+
+562
+00:27:23,919 --> 00:27:26,960
+there's a robot or a human in the loop
+
+563
+00:27:26,960 --> 00:27:29,600
+and that model that uh uh we develop was
+
+564
+00:27:29,600 --> 00:27:32,640
+called omnidreams uh and the bonus is
+
+565
+00:27:32,640 --> 00:27:35,279
+that it runs real time. Does simulation
+
+566
+00:27:35,279 --> 00:27:38,240
+need to run real time? Not necessarily.
+
+567
+00:27:38,240 --> 00:27:39,600
+It just needs to have really high
+
+568
+00:27:39,600 --> 00:27:41,600
+throughput, but real time is a great
+
+569
+00:27:41,600 --> 00:27:44,600
+bonus.
+
+570
+00:27:44,640 --> 00:27:46,960
+All right, so I'll just go do a quick
+
+571
+00:27:46,960 --> 00:27:49,120
+glance of how we actually develop this
+
+572
+00:27:49,120 --> 00:27:51,039
+today. Obviously, in the future, this is
+
+573
+00:27:51,039 --> 00:27:53,120
+going to be a lot maybe simplified and
+
+574
+00:27:53,120 --> 00:27:55,200
+so on. But right now, everyone started
+
+575
+00:27:55,200 --> 00:27:57,600
+with a base model. This is a pre-trained
+
+576
+00:27:57,600 --> 00:28:00,559
+video generation model. Um, typically
+
+577
+00:28:00,559 --> 00:28:02,559
+based on diffusion. So, you have a few,
+
+578
+00:28:02,559 --> 00:28:04,159
+you know, like a noisy frames and you
+
+579
+00:28:04,159 --> 00:28:06,080
+den noiseise them into, you know, a few
+
+580
+00:28:06,080 --> 00:28:08,640
+second of video. This is what I mean by
+
+581
+00:28:08,640 --> 00:28:12,080
+birectional uh attention model.
+
+582
+00:28:12,080 --> 00:28:13,760
+Now we typically do domain post
+
+583
+00:28:13,760 --> 00:28:15,600
+training. This was pre-trained typically
+
+584
+00:28:15,600 --> 00:28:18,080
+you know on vast amount of uh publicly
+
+585
+00:28:18,080 --> 00:28:20,640
+available internet data. Now you need to
+
+586
+00:28:20,640 --> 00:28:22,880
+go to a specific robotic domain for
+
+587
+00:28:22,880 --> 00:28:25,039
+example AV and you need to posturing
+
+588
+00:28:25,039 --> 00:28:27,279
+such suddenly I can start generating
+
+589
+00:28:27,279 --> 00:28:30,000
+stuff that happens on the road right and
+
+590
+00:28:30,000 --> 00:28:32,000
+not just stuff that happens on the road
+
+591
+00:28:32,000 --> 00:28:34,159
+stuff that c is captured by a robot
+
+592
+00:28:34,159 --> 00:28:36,080
+which is typically more than just one
+
+593
+00:28:36,080 --> 00:28:37,919
+single camera it can be many different
+
+594
+00:28:37,919 --> 00:28:39,760
+cameras
+
+595
+00:28:39,760 --> 00:28:41,520
+then we need to train this architecture
+
+596
+00:28:41,520 --> 00:28:42,720
+right we said we need to make it
+
+597
+00:28:42,720 --> 00:28:45,200
+interactive so we actually change to
+
+598
+00:28:45,200 --> 00:28:47,440
+have this causal architecture right so I
+
+599
+00:28:47,440 --> 00:28:49,279
+need to generate frame by frame it's
+
+600
+00:28:49,279 --> 00:28:51,760
+like not short snippets of video at a
+
+601
+00:28:51,760 --> 00:28:54,720
+time with action in the loop. We need to
+
+602
+00:28:54,720 --> 00:28:56,559
+make it efficient. Typically in this
+
+603
+00:28:56,559 --> 00:28:58,399
+diffusion models you do many steps of
+
+604
+00:28:58,399 --> 00:29:00,720
+distillation which makes it slow but you
+
+605
+00:29:00,720 --> 00:29:02,399
+need to distill it into just a few step
+
+606
+00:29:02,399 --> 00:29:04,480
+of the distillation. So it can actually
+
+607
+00:29:04,480 --> 00:29:07,120
+be much faster and then you do all the
+
+608
+00:29:07,120 --> 00:29:08,720
+tricks in the book to actually have a
+
+609
+00:29:08,720 --> 00:29:10,960
+real-time implementation and this is
+
+610
+00:29:10,960 --> 00:29:13,440
+flash dreams we uh released it and you
+
+611
+00:29:13,440 --> 00:29:14,880
+can plug it on different architectures
+
+612
+00:29:14,880 --> 00:29:17,679
+of world models and then the world model
+
+613
+00:29:17,679 --> 00:29:20,240
+comes out. So here you have someone
+
+614
+00:29:20,240 --> 00:29:22,159
+driving. On the right side is a steering
+
+615
+00:29:22,159 --> 00:29:24,080
+wheel that's being operated. Every
+
+616
+00:29:24,080 --> 00:29:26,159
+single frame here is not the real world
+
+617
+00:29:26,159 --> 00:29:28,799
+is completely generated by the world
+
+618
+00:29:28,799 --> 00:29:31,799
+model.
+
+619
+00:29:32,480 --> 00:29:34,320
+And here we have very simple physics.
+
+620
+00:29:34,320 --> 00:29:37,279
+It's just physics on the ground. So we
+
+621
+00:29:37,279 --> 00:29:39,360
+make sure that the car stays always on
+
+622
+00:29:39,360 --> 00:29:42,480
+the ground, goes over speed bumps. Um
+
+623
+00:29:42,480 --> 00:29:44,159
+but you can actually go through a
+
+624
+00:29:44,159 --> 00:29:46,480
+restaurant no problem. So we didn't have
+
+625
+00:29:46,480 --> 00:29:49,919
+collision checking on on more complex
+
+626
+00:29:49,919 --> 00:29:51,760
+comp complex part of the scene than the
+
+627
+00:29:51,760 --> 00:29:53,760
+road.
+
+628
+00:29:53,760 --> 00:29:56,080
+All right. Um I wanted to show this
+
+629
+00:29:56,080 --> 00:29:57,840
+because I think it's really showing the
+
+630
+00:29:57,840 --> 00:30:00,960
+trajectory of where this is going. Um
+
+631
+00:30:00,960 --> 00:30:03,200
+March 2025
+
+632
+00:30:03,200 --> 00:30:07,200
+we were generating 5-second clips typic
+
+633
+00:30:07,200 --> 00:30:10,640
+five minutes or so. 5 seconds 5 minutes
+
+634
+00:30:10,640 --> 00:30:13,200
+of GPU time. Okay. It was clearly not
+
+635
+00:30:13,200 --> 00:30:16,559
+practical. on the right side March 2026
+
+636
+00:30:16,559 --> 00:30:19,760
+this was fast forward one year real time
+
+637
+00:30:19,760 --> 00:30:21,520
+interactive
+
+638
+00:30:21,520 --> 00:30:23,679
+okay so this is how fast this technology
+
+639
+00:30:23,679 --> 00:30:26,000
+is uh evolving this is why I mean it's
+
+640
+00:30:26,000 --> 00:30:28,320
+around the corner
+
+641
+00:30:28,320 --> 00:30:30,320
+um at CVPR which was basically two
+
+642
+00:30:30,320 --> 00:30:32,320
+months later this was June we even made
+
+643
+00:30:32,320 --> 00:30:35,120
+it work on RTX uh 5090 which is
+
+644
+00:30:35,120 --> 00:30:37,760
+basically a consumer grade GPU which is
+
+645
+00:30:37,760 --> 00:30:40,000
+awesome it's literally a game engine
+
+646
+00:30:40,000 --> 00:30:42,960
+that you can have in a backpack
+
+647
+00:30:42,960 --> 00:30:45,120
+um just some examples results.
+
+648
+00:30:45,120 --> 00:30:46,880
+Everything here you see is completely
+
+649
+00:30:46,880 --> 00:30:49,440
+generated and you know it's just giving
+
+650
+00:30:49,440 --> 00:30:52,240
+it a text from or a first frame and you
+
+651
+00:30:52,240 --> 00:30:54,000
+get a desired scene which much more
+
+652
+00:30:54,000 --> 00:30:55,679
+complex. There's no way that this can be
+
+653
+00:30:55,679 --> 00:30:58,080
+done by graphics engine. It's just too
+
+654
+00:30:58,080 --> 00:31:00,320
+much or too too many different phenomena
+
+655
+00:31:00,320 --> 00:31:02,960
+going on and it's very hard for the
+
+656
+00:31:02,960 --> 00:31:04,640
+construction tech to actually generate
+
+657
+00:31:04,640 --> 00:31:07,200
+this as well. So,
+
+658
+00:31:07,200 --> 00:31:08,960
+and this is basically showing what you
+
+659
+00:31:08,960 --> 00:31:10,640
+need to do in the end, which is generate
+
+660
+00:31:10,640 --> 00:31:12,559
+multiple different sensors that you have
+
+661
+00:31:12,559 --> 00:31:15,840
+on the robot.
+
+662
+00:31:15,840 --> 00:31:18,080
+And this is pretty cool uh because here
+
+663
+00:31:18,080 --> 00:31:19,520
+we're actually editing the same
+
+664
+00:31:19,520 --> 00:31:21,360
+environments. We can change the weather,
+
+665
+00:31:21,360 --> 00:31:23,600
+the lighting conditions, and that little
+
+666
+00:31:23,600 --> 00:31:26,080
+green trajectory that you see, that's
+
+667
+00:31:26,080 --> 00:31:28,720
+actually the robots policy driving in
+
+668
+00:31:28,720 --> 00:31:30,640
+this world. I was actually super excited
+
+669
+00:31:30,640 --> 00:31:32,799
+about this result because we plugged it
+
+670
+00:31:32,799 --> 00:31:35,039
+in in the production policy and was
+
+671
+00:31:35,039 --> 00:31:37,120
+driving in this world. It's it's
+
+672
+00:31:37,120 --> 00:31:39,120
+confusing this simulated world with the
+
+673
+00:31:39,120 --> 00:31:40,960
+real world which is basically means that
+
+674
+00:31:40,960 --> 00:31:43,919
+you're that your quality bar is at the
+
+675
+00:31:43,919 --> 00:31:47,279
+level that you actually need.
+
+676
+00:31:47,279 --> 00:31:49,039
+Yeah. And I asked my guys to generate
+
+677
+00:31:49,039 --> 00:31:51,120
+some some cool examples. And this is
+
+678
+00:31:51,120 --> 00:31:53,120
+basically just saying that you still
+
+679
+00:31:53,120 --> 00:31:54,799
+capture that you know internet
+
+680
+00:31:54,799 --> 00:31:57,120
+knowledge. So even though Invidia has
+
+681
+00:31:57,120 --> 00:31:59,440
+never hap captured an elephant on the
+
+682
+00:31:59,440 --> 00:32:01,519
+road, we can actually generate it which
+
+683
+00:32:01,519 --> 00:32:04,720
+is proving the point on that long tail.
+
+684
+00:32:04,720 --> 00:32:06,320
+Yeah. And then maybe just kind of end
+
+685
+00:32:06,320 --> 00:32:09,840
+here with uh the interactive demo. Um
+
+686
+00:32:09,840 --> 00:32:11,440
+just so that you see it actually runs
+
+687
+00:32:11,440 --> 00:32:13,519
+real time. On the left side is a person
+
+688
+00:32:13,519 --> 00:32:15,360
+really driving it. Every single frame is
+
+689
+00:32:15,360 --> 00:32:17,039
+generated. On the right side you see
+
+690
+00:32:17,039 --> 00:32:19,679
+that wheel rotating. That's actually the
+
+691
+00:32:19,679 --> 00:32:21,760
+robotic software operating that wheel
+
+692
+00:32:21,760 --> 00:32:24,640
+and driving in this like three camera uh
+
+693
+00:32:24,640 --> 00:32:26,799
+world model.
+
+694
+00:32:26,799 --> 00:32:31,399
+So thank you very much. I'll stop here.
+
+695
+00:32:31,922 --> 00:32:33,942
+[applause]
+
+696
+00:32:36,559 --> 00:32:38,080
+All right. Thank you Sonia. I appreciate
+
+697
+00:32:38,080 --> 00:32:40,880
+that. Next up we have Gian Batista
+
+698
+00:32:40,880 --> 00:32:46,760
+Parisand Doyo or GB with OpenAI.
+
+699
+00:32:49,607 --> 00:32:51,627
+>> [applause]
+
+700
+00:32:53,039 --> 00:32:56,279
+>> There you go.
+
+701
+00:33:05,360 --> 00:33:07,840
+Okay. In the meantime,
+
+702
+00:33:07,840 --> 00:33:09,360
+uh there's this saying that there's
+
+703
+00:33:09,360 --> 00:33:12,080
+nothing more stale than yesterday's
+
+704
+00:33:12,080 --> 00:33:14,720
+newspaper. Well, these slides are five
+
+705
+00:33:14,720 --> 00:33:17,120
+years old. Every single one is from four
+
+706
+00:33:17,120 --> 00:33:20,399
+to five years old. So, um
+
+707
+00:33:20,399 --> 00:33:24,279
+well, if we get the slides,
+
+708
+00:33:36,240 --> 00:33:38,640
+okay, so why are these slides old? Um
+
+709
+00:33:38,640 --> 00:33:42,080
+I'm basically going to show you the some
+
+710
+00:33:42,080 --> 00:33:44,880
+of the earliest presentations that we
+
+711
+00:33:44,880 --> 00:33:47,200
+had internally at OpenAI when we started
+
+712
+00:33:47,200 --> 00:33:48,880
+work on reasoning. So this is talking
+
+713
+00:33:48,880 --> 00:33:51,519
+not it's not about the future. Um the
+
+714
+00:33:51,519 --> 00:33:52,880
+slides are also really ugly because
+
+715
+00:33:52,880 --> 00:33:54,399
+these were never meant to be presented
+
+716
+00:33:54,399 --> 00:33:56,720
+in any occasion like this one. So these
+
+717
+00:33:56,720 --> 00:33:59,200
+are just slides for our teams from a
+
+718
+00:33:59,200 --> 00:34:01,440
+long time ago. So think about it as more
+
+719
+00:34:01,440 --> 00:34:04,159
+as a whatever time traveling and seeing
+
+720
+00:34:04,159 --> 00:34:06,080
+what was like to work on reasoning a
+
+721
+00:34:06,080 --> 00:34:08,720
+while ago. Okay. So, first what is
+
+722
+00:34:08,720 --> 00:34:11,119
+reasoning? Um, again, these are the the
+
+723
+00:34:11,119 --> 00:34:12,800
+old slides. So, maybe one way to think
+
+724
+00:34:12,800 --> 00:34:15,359
+about it is to say there's a big space
+
+725
+00:34:15,359 --> 00:34:18,399
+of problems of all kinds of subjects.
+
+726
+00:34:18,399 --> 00:34:20,399
+And then you could think of this
+
+727
+00:34:20,399 --> 00:34:22,560
+colorful wheel as all of the different
+
+728
+00:34:22,560 --> 00:34:25,200
+things you could be thinking about. Uh,
+
+729
+00:34:25,200 --> 00:34:27,679
+so there's AI and math and physics and
+
+730
+00:34:27,679 --> 00:34:30,639
+biology. Um, and then let's say the the
+
+731
+00:34:30,639 --> 00:34:33,919
+central radial axis is difficulty. So,
+
+732
+00:34:33,919 --> 00:34:35,359
+as you move the angle, you change the
+
+733
+00:34:35,359 --> 00:34:36,399
+subject. as you move away from the
+
+734
+00:34:36,399 --> 00:34:38,159
+center, you change the difficulty. And
+
+735
+00:34:38,159 --> 00:34:39,679
+so the main thing we were having at the
+
+736
+00:34:39,679 --> 00:34:41,119
+time is that we were pre-training all of
+
+737
+00:34:41,119 --> 00:34:45,040
+these models like GPT um two and three
+
+738
+00:34:45,040 --> 00:34:48,159
+and four and then the circle of problems
+
+739
+00:34:48,159 --> 00:34:50,000
+they could solve would expand from the
+
+740
+00:34:50,000 --> 00:34:51,520
+middle and they would kind of cover all
+
+741
+00:34:51,520 --> 00:34:53,359
+of the subjects uh a little bit and
+
+742
+00:34:53,359 --> 00:34:54,560
+solve slightly harder and harder
+
+743
+00:34:54,560 --> 00:34:57,520
+problems as we went. Um then the main
+
+744
+00:34:57,520 --> 00:35:00,079
+issue is when were we going to solve the
+
+745
+00:35:00,079 --> 00:35:01,599
+really hard problems and then if you
+
+746
+00:35:01,599 --> 00:35:04,320
+think about some of the human experts in
+
+747
+00:35:04,320 --> 00:35:06,560
+different subjects for example uh Andrea
+
+748
+00:35:06,560 --> 00:35:08,640
+Wilds who solved for mass theorem well
+
+749
+00:35:08,640 --> 00:35:09,920
+this guy thought about this problem for
+
+750
+00:35:09,920 --> 00:35:12,160
+for seven years but it's not like he
+
+751
+00:35:12,160 --> 00:35:14,800
+could solve everything uh at the same
+
+752
+00:35:14,800 --> 00:35:16,480
+time that took seven years to solve he
+
+753
+00:35:16,480 --> 00:35:17,920
+could solve one problem that took seven
+
+754
+00:35:17,920 --> 00:35:19,680
+years and most of the hard problems are
+
+755
+00:35:19,680 --> 00:35:21,839
+like that and so in some way there was
+
+756
+00:35:21,839 --> 00:35:23,200
+something about this process of just
+
+757
+00:35:23,200 --> 00:35:24,640
+pre-training models to be better at
+
+758
+00:35:24,640 --> 00:35:26,560
+general knowledge that seemed unlikely
+
+759
+00:35:26,560 --> 00:35:28,560
+to eventually expand the circle all the
+
+760
+00:35:28,560 --> 00:35:31,359
+way to cover all the hardest problems.
+
+761
+00:35:31,359 --> 00:35:34,000
+So what do we do as humans? We we think
+
+762
+00:35:34,000 --> 00:35:36,560
+we reason. So can we give models the
+
+763
+00:35:36,560 --> 00:35:38,560
+same capabilities?
+
+764
+00:35:38,560 --> 00:35:40,160
+Okay. So now we're going to do something
+
+765
+00:35:40,160 --> 00:35:41,520
+uh a little fancy. We're going to move
+
+766
+00:35:41,520 --> 00:35:44,640
+this wheel in 3D. So we're going to tilt
+
+767
+00:35:44,640 --> 00:35:46,400
+it this way. So pay attention because
+
+768
+00:35:46,400 --> 00:35:49,280
+it's only going to happen once. Um okay.
+
+769
+00:35:49,280 --> 00:35:50,720
+So now it's on the side and we're going
+
+770
+00:35:50,720 --> 00:35:52,640
+to move it to the side of the screen.
+
+771
+00:35:52,640 --> 00:35:54,480
+And now we can add the third axis which
+
+772
+00:35:54,480 --> 00:35:57,119
+didn't exist before which is uh time. So
+
+773
+00:35:57,119 --> 00:35:59,200
+thinking time. And then the question
+
+774
+00:35:59,200 --> 00:36:03,040
+becomes how do we expand these cylinders
+
+775
+00:36:03,040 --> 00:36:05,200
+that don't really cover anything else
+
+776
+00:36:05,200 --> 00:36:07,680
+given more time. Uh maybe it might look
+
+777
+00:36:07,680 --> 00:36:09,599
+a bit ridiculous today but there was a
+
+778
+00:36:09,599 --> 00:36:10,960
+time where you would give a model more
+
+779
+00:36:10,960 --> 00:36:12,160
+time to think and it would give you the
+
+780
+00:36:12,160 --> 00:36:13,920
+exact same answer because after a few
+
+781
+00:36:13,920 --> 00:36:15,200
+milliseconds you would get the answer
+
+782
+00:36:15,200 --> 00:36:17,280
+and it would know uh it would not not
+
+783
+00:36:17,280 --> 00:36:19,520
+know what to do with the extra time. And
+
+784
+00:36:19,520 --> 00:36:21,520
+so so thinking was this idea of well can
+
+785
+00:36:21,520 --> 00:36:24,320
+we can we expand this cone over time um
+
+786
+00:36:24,320 --> 00:36:25,839
+and not all at once again you have to
+
+787
+00:36:25,839 --> 00:36:28,800
+pick one uh little thing to focus on and
+
+788
+00:36:28,800 --> 00:36:32,160
+then discover that and so uh there were
+
+789
+00:36:32,160 --> 00:36:33,760
+lots of practical problems I'm not going
+
+790
+00:36:33,760 --> 00:36:37,359
+to talk about almost any of them um but
+
+791
+00:36:37,359 --> 00:36:39,520
+the thing to also think about is well
+
+792
+00:36:39,520 --> 00:36:41,200
+how long is this reasoning because again
+
+793
+00:36:41,200 --> 00:36:42,880
+Andrew Wild thought about this for seven
+
+794
+00:36:42,880 --> 00:36:46,079
+years and so in terms of um our models
+
+795
+00:36:46,079 --> 00:36:47,599
+well at the time they only had a context
+
+796
+00:36:47,599 --> 00:36:49,920
+of a few thousand tokens maybe 8,000
+
+797
+00:36:49,920 --> 00:36:52,160
+tokens and then what can you do with
+
+798
+00:36:52,160 --> 00:36:54,640
+8,000 tokens? Well, at most a few
+
+799
+00:36:54,640 --> 00:36:56,480
+seconds of reasoning and so there were
+
+800
+00:36:56,480 --> 00:36:57,599
+lots of interesting questions of you
+
+801
+00:36:57,599 --> 00:36:59,680
+know even if we get to them to reason
+
+802
+00:36:59,680 --> 00:37:02,720
+that how is this going to happen? Okay,
+
+803
+00:37:02,720 --> 00:37:05,040
+now um the other issue was we didn't
+
+804
+00:37:05,040 --> 00:37:07,920
+know what reasoning would use as a
+
+805
+00:37:07,920 --> 00:37:09,680
+substrate. There were lots of different
+
+806
+00:37:09,680 --> 00:37:11,119
+ways you could spend test time compute,
+
+807
+00:37:11,119 --> 00:37:12,720
+right? You could do you can have a
+
+808
+00:37:12,720 --> 00:37:14,320
+recurring network and do lots of steps
+
+809
+00:37:14,320 --> 00:37:17,440
+internally. Um what turns out the text
+
+810
+00:37:17,440 --> 00:37:19,520
+works really well and so um again these
+
+811
+00:37:19,520 --> 00:37:21,520
+are some very old slides. This is a
+
+812
+00:37:21,520 --> 00:37:22,720
+actually was of my first project when I
+
+813
+00:37:22,720 --> 00:37:24,720
+joined OpenAI and I'm just going to show
+
+814
+00:37:24,720 --> 00:37:27,680
+you um like a like a little exploration
+
+815
+00:37:27,680 --> 00:37:30,000
+of what models could do but just asking
+
+816
+00:37:30,000 --> 00:37:31,599
+them to think when they were not ever
+
+817
+00:37:31,599 --> 00:37:33,680
+trained to think. Um and this is one of
+
+818
+00:37:33,680 --> 00:37:35,520
+the pieces that gave us confidence to
+
+819
+00:37:35,520 --> 00:37:38,320
+scale things up. And so okay again these
+
+820
+00:37:38,320 --> 00:37:40,400
+are the old slides. Um the pitch was
+
+821
+00:37:40,400 --> 00:37:41,680
+what if we just asked them all to think
+
+822
+00:37:41,680 --> 00:37:45,200
+about it. Um, and so I had a bunch of
+
+823
+00:37:45,200 --> 00:37:46,160
+examples. We're going to go through
+
+824
+00:37:46,160 --> 00:37:48,400
+them. Again, they're very silly for
+
+825
+00:37:48,400 --> 00:37:50,240
+today's standards, but it's good to see
+
+826
+00:37:50,240 --> 00:37:52,000
+how far we went in such a short amount
+
+827
+00:37:52,000 --> 00:37:53,280
+of time and where we used to be at the
+
+828
+00:37:53,280 --> 00:37:55,760
+time. So, uh, at the time, you could ask
+
+829
+00:37:55,760 --> 00:37:57,359
+GPT3
+
+830
+00:37:57,359 --> 00:37:59,200
+uh, a simple math problem. There are 29
+
+831
+00:37:59,200 --> 00:38:02,960
+bags of potatoes and then um, 17 more
+
+832
+00:38:02,960 --> 00:38:04,720
+and there's plenty of bags and the model
+
+833
+00:38:04,720 --> 00:38:06,560
+would say that there's 46 kilos of
+
+834
+00:38:06,560 --> 00:38:08,160
+potatoes which obviously completely
+
+835
+00:38:08,160 --> 00:38:09,920
+wrong. And so one of the first
+
+836
+00:38:09,920 --> 00:38:12,000
+exploration was to just add let's think
+
+837
+00:38:12,000 --> 00:38:14,000
+about it before getting the answer. Then
+
+838
+00:38:14,000 --> 00:38:15,040
+the thing you would get is you wouldn't
+
+839
+00:38:15,040 --> 00:38:16,400
+get an answer right away. The model
+
+840
+00:38:16,400 --> 00:38:18,640
+would start to output some extra text.
+
+841
+00:38:18,640 --> 00:38:19,920
+But then eventually you would get the
+
+842
+00:38:19,920 --> 00:38:21,359
+right answer. And of course not all the
+
+843
+00:38:21,359 --> 00:38:23,200
+time, but at least sometimes compared to
+
+844
+00:38:23,200 --> 00:38:26,240
+never. Okay. So then we uh kept going.
+
+845
+00:38:26,240 --> 00:38:28,400
+Um a bunch of questions. I have a
+
+846
+00:38:28,400 --> 00:38:30,000
+clarinet, a piano, a dog. How many
+
+847
+00:38:30,000 --> 00:38:31,920
+musical instruments do I have? Malo said
+
+848
+00:38:31,920 --> 00:38:35,280
+one. Um that's of course wrong. Uh
+
+849
+00:38:35,280 --> 00:38:36,800
+clarinet and pianos are both
+
+850
+00:38:36,800 --> 00:38:38,720
+instruments. You would break it down. to
+
+851
+00:38:38,720 --> 00:38:40,160
+think about it step by step and then you
+
+852
+00:38:40,160 --> 00:38:41,760
+would get you know dog is a music it's
+
+853
+00:38:41,760 --> 00:38:43,760
+not a musical instrument a clarinet is a
+
+854
+00:38:43,760 --> 00:38:45,599
+musical instrument but a piano is not so
+
+855
+00:38:45,599 --> 00:38:49,119
+it's still one um and so then you try to
+
+856
+00:38:49,119 --> 00:38:50,720
+think okay well if this only thought a
+
+857
+00:38:50,720 --> 00:38:53,119
+little longer and so you add well also
+
+858
+00:38:53,119 --> 00:38:55,200
+break it down step by step and then say
+
+859
+00:38:55,200 --> 00:38:57,200
+well you know first we have a dog is not
+
+860
+00:38:57,200 --> 00:38:59,359
+a musical instrument and then via piano
+
+861
+00:38:59,359 --> 00:39:02,800
+is musical instrument um a client is um
+
+862
+00:39:02,800 --> 00:39:05,359
+and so then you get the right answer um
+
+863
+00:39:05,359 --> 00:39:07,920
+here's one more example there's a chair
+
+864
+00:39:07,920 --> 00:39:09,760
+amp and oven lots of sub lots of things
+
+865
+00:39:09,760 --> 00:39:11,440
+and then the model would say 20 and the
+
+866
+00:39:11,440 --> 00:39:14,400
+answer is 14. Uh back in the days you
+
+867
+00:39:14,400 --> 00:39:15,920
+could check what was the probability of
+
+868
+00:39:15,920 --> 00:39:17,920
+getting the answer 14 out of the model
+
+869
+00:39:17,920 --> 00:39:20,240
+and the answer the probability was uh
+
+870
+00:39:20,240 --> 00:39:23,520
+2%. So basically almost never. Um then
+
+871
+00:39:23,520 --> 00:39:24,880
+again you add let's think about it break
+
+872
+00:39:24,880 --> 00:39:26,720
+it down step by step and then you get
+
+873
+00:39:26,720 --> 00:39:28,320
+this long list when the model counts one
+
+874
+00:39:28,320 --> 00:39:30,240
+by one and somehow you get a better
+
+875
+00:39:30,240 --> 00:39:32,720
+answer. Okay so this intuition is seems
+
+876
+00:39:32,720 --> 00:39:33,760
+good. And how do we make it
+
+877
+00:39:33,760 --> 00:39:35,359
+quantitative? And this was one of the
+
+878
+00:39:35,359 --> 00:39:37,040
+first plots about what happens if we get
+
+879
+00:39:37,040 --> 00:39:39,359
+this model to think for longer. And so
+
+880
+00:39:39,359 --> 00:39:40,560
+these are the last two plots I have to
+
+881
+00:39:40,560 --> 00:39:43,599
+show you. This is just if you do this
+
+882
+00:39:43,599 --> 00:39:44,800
+trick of asking the model, well, think
+
+883
+00:39:44,800 --> 00:39:46,160
+step by step and then think step by
+
+884
+00:39:46,160 --> 00:39:48,640
+step, break it down and um keep adding
+
+885
+00:39:48,640 --> 00:39:50,480
+sentences to say, look, I really want
+
+886
+00:39:50,480 --> 00:39:52,720
+you to do all the work and show all your
+
+887
+00:39:52,720 --> 00:39:54,160
+work and make sure there are no
+
+888
+00:39:54,160 --> 00:39:56,320
+mistakes. Um and so we went from this
+
+889
+00:39:56,320 --> 00:39:58,079
+model that could barely solve problems
+
+890
+00:39:58,079 --> 00:40:00,480
+to by just adding things um get to
+
+891
+00:40:00,480 --> 00:40:01,839
+models that could solve more and more
+
+892
+00:40:01,839 --> 00:40:03,839
+problems by by thinking longer. And so
+
+893
+00:40:03,839 --> 00:40:06,240
+the last plot I want to add is this one
+
+894
+00:40:06,240 --> 00:40:07,599
+which should have gone with the other
+
+895
+00:40:07,599 --> 00:40:10,000
+one. Um and this is the average length
+
+896
+00:40:10,000 --> 00:40:12,000
+of the solutions generated by the model
+
+897
+00:40:12,000 --> 00:40:13,760
+when you asked to solve a problem. And
+
+898
+00:40:13,760 --> 00:40:15,119
+so again at the beginning you would get
+
+899
+00:40:15,119 --> 00:40:16,400
+almost nothing if you just asked to
+
+900
+00:40:16,400 --> 00:40:18,720
+solve and then as you kept adding
+
+901
+00:40:18,720 --> 00:40:20,160
+instruction and you know you had to use
+
+902
+00:40:20,160 --> 00:40:21,920
+this trick of saying first comma so the
+
+903
+00:40:21,920 --> 00:40:23,920
+model wouldn't again just try to answer
+
+904
+00:40:23,920 --> 00:40:25,520
+and get into this mindset of okay it's
+
+905
+00:40:25,520 --> 00:40:26,880
+going to be a long list of things I need
+
+906
+00:40:26,880 --> 00:40:29,359
+to do. So you know first this something
+
+907
+00:40:29,359 --> 00:40:30,560
+something then there must be a second
+
+908
+00:40:30,560 --> 00:40:32,480
+and a third and so let's try to output a
+
+909
+00:40:32,480 --> 00:40:34,400
+lot of text and so as the amount of text
+
+910
+00:40:34,400 --> 00:40:36,000
+the model was outputting was increasing
+
+911
+00:40:36,000 --> 00:40:38,079
+then the accuracy of the model was going
+
+912
+00:40:38,079 --> 00:40:42,560
+up. Um yeah and so since then um lots of
+
+913
+00:40:42,560 --> 00:40:44,880
+other people worked on this we did a big
+
+914
+00:40:44,880 --> 00:40:47,359
+project and then uh lots of other
+
+915
+00:40:47,359 --> 00:40:49,760
+components we can't talk about yet but
+
+916
+00:40:49,760 --> 00:40:52,720
+um yeah very humble beginnings uh one of
+
+917
+00:40:52,720 --> 00:40:54,800
+many and I thought it was interesting
+
+918
+00:40:54,800 --> 00:40:56,880
+maybe for you guys to see this in uh in
+
+919
+00:40:56,880 --> 00:40:59,200
+the midst of this talks about the future
+
+920
+00:40:59,200 --> 00:41:02,079
+all right that's all thank All
+
+921
+00:41:12,880 --> 00:41:15,680
+right, thank you GB. All right, next up
+
+922
+00:41:15,680 --> 00:41:21,200
+we have Adit Grover with Inception Labs.
+
+923
+00:41:21,200 --> 00:41:24,599
+Welcome up.
+
+924
+00:41:37,680 --> 00:41:40,640
+All right. Um, hello everyone. Uh, my
+
+925
+00:41:40,640 --> 00:41:42,800
+name is Adita. Uh, I'm one of the
+
+926
+00:41:42,800 --> 00:41:45,680
+co-founders and the CTO at Inception.
+
+927
+00:41:45,680 --> 00:41:47,359
+And today what I'm going to talk about
+
+928
+00:41:47,359 --> 00:41:49,359
+is actually going to take a lot of
+
+929
+00:41:49,359 --> 00:41:51,839
+elements from what we just heard in the
+
+930
+00:41:51,839 --> 00:41:54,800
+previous talks into defining what I
+
+931
+00:41:54,800 --> 00:41:56,800
+believe will be the new foundation for
+
+932
+00:41:56,800 --> 00:41:58,880
+generative AI. something that's
+
+933
+00:41:58,880 --> 00:42:01,920
+extremely fast and efficient and builds
+
+934
+00:42:01,920 --> 00:42:04,720
+on ideas from diffusion.
+
+935
+00:42:04,720 --> 00:42:08,920
+So, uh to
+
+936
+00:42:10,319 --> 00:42:13,640
+to take
+
+937
+00:42:23,599 --> 00:42:27,119
+Okay, maybe it's
+
+938
+00:42:27,119 --> 00:42:30,960
+so uh to take a trip down um memory
+
+939
+00:42:30,960 --> 00:42:33,920
+lane. Um, I think there have been a few
+
+940
+00:42:33,920 --> 00:42:37,599
+fundamental advances that have defined
+
+941
+00:42:37,599 --> 00:42:40,319
+uh what AI looks today and what I
+
+942
+00:42:40,319 --> 00:42:42,079
+believe AI is going to look like in the
+
+943
+00:42:42,079 --> 00:42:44,560
+future. And at the heart of all of these
+
+944
+00:42:44,560 --> 00:42:46,880
+advances is the idea that
+
+945
+00:42:46,880 --> 00:42:49,520
+parallelization is a fundamental concept
+
+946
+00:42:49,520 --> 00:42:51,280
+for computer science, fundamental
+
+947
+00:42:51,280 --> 00:42:54,400
+concept for AI and fundamental belief
+
+948
+00:42:54,400 --> 00:42:57,280
+that will also guide towards the future.
+
+949
+00:42:57,280 --> 00:42:59,920
+So if you think about the late 90s uh
+
+950
+00:42:59,920 --> 00:43:02,319
+the idea that we finally had hardware
+
+951
+00:43:02,319 --> 00:43:05,280
+which could execute a very simple but
+
+952
+00:43:05,280 --> 00:43:06,960
+basic operation called matrix
+
+953
+00:43:06,960 --> 00:43:10,000
+multiplication in parallel was turned
+
+954
+00:43:10,000 --> 00:43:11,920
+out to be the defining moment for what
+
+955
+00:43:11,920 --> 00:43:15,119
+we see in today's generative AI world.
+
+956
+00:43:15,119 --> 00:43:18,319
+uh a few years later we realized that
+
+957
+00:43:18,319 --> 00:43:19,839
+there's also something that could be
+
+958
+00:43:19,839 --> 00:43:22,480
+done in terms of architectures when we
+
+959
+00:43:22,480 --> 00:43:24,960
+had the transformer itself as the
+
+960
+00:43:24,960 --> 00:43:28,000
+fundamental neural architecture which
+
+961
+00:43:28,000 --> 00:43:30,720
+could be used to train AI models in
+
+962
+00:43:30,720 --> 00:43:33,760
+parallel and this was how from the world
+
+963
+00:43:33,760 --> 00:43:36,079
+of RNNs and LSTMs which were
+
+964
+00:43:36,079 --> 00:43:37,839
+fundamentally bottlenecked by how much
+
+965
+00:43:37,839 --> 00:43:40,079
+they could learn with every dollar of
+
+966
+00:43:40,079 --> 00:43:42,319
+compute spent we went into a new era
+
+967
+00:43:42,319 --> 00:43:44,640
+where we could train massive language
+
+968
+00:43:44,640 --> 00:43:47,760
+age models using the transformer
+
+969
+00:43:47,760 --> 00:43:50,000
+architecture.
+
+970
+00:43:50,000 --> 00:43:52,880
+Within all of this um we also have
+
+971
+00:43:52,880 --> 00:43:55,280
+started thinking about how this ideas
+
+972
+00:43:55,280 --> 00:43:57,359
+could then also be applied on the
+
+973
+00:43:57,359 --> 00:44:00,240
+algorithm side and that's where there
+
+974
+00:44:00,240 --> 00:44:02,800
+were fundamental advances in vision that
+
+975
+00:44:02,800 --> 00:44:04,240
+continue to be the state-of-the-art
+
+976
+00:44:04,240 --> 00:44:07,359
+today. So we have diffusion which
+
+977
+00:44:07,359 --> 00:44:09,680
+replaced what was at that time the
+
+978
+00:44:09,680 --> 00:44:12,640
+dominant paradigm based on GANs to
+
+979
+00:44:12,640 --> 00:44:14,319
+become the dominant way in which we
+
+980
+00:44:14,319 --> 00:44:17,760
+generate images and videos extremely
+
+981
+00:44:17,760 --> 00:44:20,800
+efficiently and with very high fidelity.
+
+982
+00:44:20,800 --> 00:44:24,079
+Now this was something which um works
+
+983
+00:44:24,079 --> 00:44:27,359
+extremely well even today but so far
+
+984
+00:44:27,359 --> 00:44:29,200
+most of the state-of-the-art
+
+985
+00:44:29,200 --> 00:44:31,599
+demonstrations of diffusion have been
+
+986
+00:44:31,599 --> 00:44:35,359
+limited to images but there has been a
+
+987
+00:44:35,359 --> 00:44:38,079
+recent fave of work now taking in the
+
+988
+00:44:38,079 --> 00:44:40,640
+same ideas and applying it to the field
+
+989
+00:44:40,640 --> 00:44:46,000
+of text. Now why is text hard? So uh to
+
+990
+00:44:46,000 --> 00:44:47,839
+understand why text is very different
+
+991
+00:44:47,839 --> 00:44:50,480
+from images, it simply boils down to the
+
+992
+00:44:50,480 --> 00:44:53,440
+fact that the notion of diffusion was
+
+993
+00:44:53,440 --> 00:44:56,000
+invented for continuous modalities. So
+
+994
+00:44:56,000 --> 00:44:58,000
+if you think about modalities such as
+
+995
+00:44:58,000 --> 00:45:01,119
+images, there's a very natural notion of
+
+996
+00:45:01,119 --> 00:45:04,079
+what it means to add noise and then a
+
+997
+00:45:04,079 --> 00:45:06,560
+good mathematical theory to what it
+
+998
+00:45:06,560 --> 00:45:09,760
+means to do a principal denoising of it.
+
+999
+00:45:09,760 --> 00:45:12,160
+Text on the other hand happens to be
+
+1000
+00:45:12,160 --> 00:45:14,480
+discrete which makes it fundamentally
+
+1001
+00:45:14,480 --> 00:45:16,480
+very hard to think about what are good
+
+1002
+00:45:16,480 --> 00:45:18,880
+notions of noising and dnoising which
+
+1003
+00:45:18,880 --> 00:45:21,280
+can be trained at scale.
+
+1004
+00:45:21,280 --> 00:45:24,240
+So at inception what we've been doing is
+
+1005
+00:45:24,240 --> 00:45:26,160
+trying to build a new generation of
+
+1006
+00:45:26,160 --> 00:45:30,960
+language models which apply this idea to
+
+1007
+00:45:30,960 --> 00:45:34,720
+long range uh text sequences. And how it
+
+1008
+00:45:34,720 --> 00:45:36,960
+basically works is that instead of
+
+1009
+00:45:36,960 --> 00:45:40,480
+generating tokens sequentially one token
+
+1010
+00:45:40,480 --> 00:45:43,200
+at a time which is what practically all
+
+1011
+00:45:43,200 --> 00:45:45,520
+language models of today do that's the
+
+1012
+00:45:45,520 --> 00:45:47,839
+auto reggressive paradigm that you see
+
+1013
+00:45:47,839 --> 00:45:50,480
+at the bottom. What we are now doing is
+
+1014
+00:45:50,480 --> 00:45:52,400
+we are coming up with a way in which you
+
+1015
+00:45:52,400 --> 00:45:54,960
+can den noiseise text. So you could
+
+1016
+00:45:54,960 --> 00:45:56,560
+start with something that's extremely
+
+1017
+00:45:56,560 --> 00:46:00,000
+gibberish and then pass it through a
+
+1018
+00:46:00,000 --> 00:46:01,520
+neural network. This can be any
+
+1019
+00:46:01,520 --> 00:46:04,160
+architecture. we use transformers
+
+1020
+00:46:04,160 --> 00:46:06,800
+uh and through this transformer neural
+
+1021
+00:46:06,800 --> 00:46:09,440
+network, you're now training it to fix
+
+1022
+00:46:09,440 --> 00:46:12,800
+the noise in its input. So that's how
+
+1023
+00:46:12,800 --> 00:46:15,280
+you can then find structure within text
+
+1024
+00:46:15,280 --> 00:46:16,960
+and generate something extremely
+
+1025
+00:46:16,960 --> 00:46:19,839
+coherent in much shorter amount of time
+
+1026
+00:46:19,839 --> 00:46:21,920
+because now you're trying to predict all
+
+1027
+00:46:21,920 --> 00:46:25,359
+the D noiseis tokens in parallel.
+
+1028
+00:46:25,359 --> 00:46:27,680
+So this is tracing down the history of
+
+1029
+00:46:27,680 --> 00:46:32,319
+text diffusion. Um so in 2019 is when uh
+
+1030
+00:46:32,319 --> 00:46:34,319
+denoising diffusion started taking off
+
+1031
+00:46:34,319 --> 00:46:37,920
+for images. So this was the time when
+
+1032
+00:46:37,920 --> 00:46:40,880
+companies like midjourney um as well as
+
+1033
+00:46:40,880 --> 00:46:44,240
+from other labs including Google openai
+
+1034
+00:46:44,240 --> 00:46:47,200
+were coming up with uh very large scale
+
+1035
+00:46:47,200 --> 00:46:50,160
+demonstrations of how diffusion can uh
+
+1036
+00:46:50,160 --> 00:46:53,200
+generate extremely high quality images.
+
+1037
+00:46:53,200 --> 00:46:56,160
+uh it took many years and work of the
+
+1038
+00:46:56,160 --> 00:46:58,400
+entire research community to come up
+
+1039
+00:46:58,400 --> 00:47:00,560
+with ideas which eventually led us to
+
+1040
+00:47:00,560 --> 00:47:02,560
+the point where there was a breakthrough
+
+1041
+00:47:02,560 --> 00:47:05,280
+from one of my co-founders lab where we
+
+1042
+00:47:05,280 --> 00:47:07,920
+were able to then design a diffusion
+
+1043
+00:47:07,920 --> 00:47:10,079
+model for text that achieved parity with
+
+1044
+00:47:10,079 --> 00:47:11,599
+GPT2.
+
+1045
+00:47:11,599 --> 00:47:14,800
+Now, of course, in 2024, uh, GPD2 was no
+
+1046
+00:47:14,800 --> 00:47:17,200
+longer the bar for success in language
+
+1047
+00:47:17,200 --> 00:47:19,440
+and that's when we decided to form this
+
+1048
+00:47:19,440 --> 00:47:22,640
+company called Inception and really take
+
+1049
+00:47:22,640 --> 00:47:26,000
+this idea at scale. A few months later,
+
+1050
+00:47:26,000 --> 00:47:28,319
+uh we launched Mercury, which is the
+
+1051
+00:47:28,319 --> 00:47:29,920
+first commercial scale diffusion
+
+1052
+00:47:29,920 --> 00:47:33,280
+language model and uh it was able to
+
+1053
+00:47:33,280 --> 00:47:37,359
+generate text uh for at very good scales
+
+1054
+00:47:37,359 --> 00:47:39,280
+and do a lot of good tasks including
+
+1055
+00:47:39,280 --> 00:47:42,480
+code editing, code generation, uh
+
+1056
+00:47:42,480 --> 00:47:45,119
+mathematical problem solving, common
+
+1057
+00:47:45,119 --> 00:47:48,880
+sense at scale and extremely fast. And
+
+1058
+00:47:48,880 --> 00:47:50,560
+this of course also caught the attention
+
+1059
+00:47:50,560 --> 00:47:53,839
+of a lot of notable folks in the field
+
+1060
+00:47:53,839 --> 00:47:56,480
+uh both in academia and industry.
+
+1061
+00:47:56,480 --> 00:47:59,200
+Very quickly a few months later many
+
+1062
+00:47:59,200 --> 00:48:02,800
+different labs from Google to Nvidia to
+
+1063
+00:48:02,800 --> 00:48:05,119
+Alibaba followed up with their own
+
+1064
+00:48:05,119 --> 00:48:08,319
+efforts in building the fusion LMS. And
+
+1065
+00:48:08,319 --> 00:48:10,319
+earlier this year we launched the second
+
+1066
+00:48:10,319 --> 00:48:12,880
+iteration of our model Mercury 2 which
+
+1067
+00:48:12,880 --> 00:48:14,880
+now also had capabilities to do
+
+1068
+00:48:14,880 --> 00:48:16,560
+reasoning.
+
+1069
+00:48:16,560 --> 00:48:19,920
+And unlike other LLMs, uh, diffusion
+
+1070
+00:48:19,920 --> 00:48:23,839
+reasoning looks very different from how
+
+1071
+00:48:23,839 --> 00:48:26,559
+uh, it works for auto reggressive LLMs.
+
+1072
+00:48:26,559 --> 00:48:28,400
+And the best way to illustrate that is
+
+1073
+00:48:28,400 --> 00:48:30,559
+through this chart. So this is a chart
+
+1074
+00:48:30,559 --> 00:48:33,280
+from artificial analysis uh, which is
+
+1075
+00:48:33,280 --> 00:48:36,720
+comparing Mercury with uh, the
+
+1076
+00:48:36,720 --> 00:48:38,800
+state-of-the-art LLMs for the speed
+
+1077
+00:48:38,800 --> 00:48:41,839
+optimized regime from different labs. So
+
+1078
+00:48:41,839 --> 00:48:45,040
+on the x-axis you see the speed that's
+
+1079
+00:48:45,040 --> 00:48:47,440
+measured by tokens per second. So higher
+
+1080
+00:48:47,440 --> 00:48:49,839
+is better. And on the y-axis you're
+
+1081
+00:48:49,839 --> 00:48:51,920
+looking at some kind of quality index.
+
+1082
+00:48:51,920 --> 00:48:53,760
+In this case it's the one that's defined
+
+1083
+00:48:53,760 --> 00:48:56,480
+by artificial analysis across a wide
+
+1084
+00:48:56,480 --> 00:48:59,359
+range of agentic benchmarks.
+
+1085
+00:48:59,359 --> 00:49:02,800
+And what you see here is that mercury
+
+1086
+00:49:02,800 --> 00:49:06,400
+gets you similar quality as
+
+1087
+00:49:06,400 --> 00:49:12,000
+um as as you would see for models of
+
+1088
+00:49:12,000 --> 00:49:14,559
+similar uh size. So if you think about
+
+1089
+00:49:14,559 --> 00:49:16,640
+your claude haikus, you think about the
+
+1090
+00:49:16,640 --> 00:49:19,280
+GPD 5 minis. So these are all the speed
+
+1091
+00:49:19,280 --> 00:49:22,559
+optimized models from Frontier Labs. And
+
+1092
+00:49:22,559 --> 00:49:25,440
+it gets you similar quality while being
+
+1093
+00:49:25,440 --> 00:49:27,760
+much much faster. And that's because
+
+1094
+00:49:27,760 --> 00:49:30,240
+it's denoising tokens in parallel. It's
+
+1095
+00:49:30,240 --> 00:49:31,920
+breaking away from the paradigm of
+
+1096
+00:49:31,920 --> 00:49:35,359
+generating tokens sequentially.
+
+1097
+00:49:35,359 --> 00:49:38,559
+So uh this has now been commercialized
+
+1098
+00:49:38,559 --> 00:49:41,119
+as well. So we provide a drop-in
+
+1099
+00:49:41,119 --> 00:49:44,400
+replacement for existing language models
+
+1100
+00:49:44,400 --> 00:49:47,520
+and uh there's a lot of different
+
+1101
+00:49:47,520 --> 00:49:49,440
+applications that are being built on top
+
+1102
+00:49:49,440 --> 00:49:52,079
+of these models. So a lot of them are
+
+1103
+00:49:52,079 --> 00:49:55,599
+ones where speed is extremely critical
+
+1104
+00:49:55,599 --> 00:49:58,240
+uh along with also concerns of cost and
+
+1105
+00:49:58,240 --> 00:50:00,480
+all of this has to be done at a desired
+
+1106
+00:50:00,480 --> 00:50:03,359
+level of quality. So some of the domains
+
+1107
+00:50:03,359 --> 00:50:05,760
+where we are seeing a lot of success is
+
+1108
+00:50:05,760 --> 00:50:09,200
+in voice and coding and search. Just to
+
+1109
+00:50:09,200 --> 00:50:11,440
+show you a few case studies of how this
+
+1110
+00:50:11,440 --> 00:50:14,720
+has come to the real world. So in for
+
+1111
+00:50:14,720 --> 00:50:17,440
+voice and support agents what you can
+
+1112
+00:50:17,440 --> 00:50:19,920
+see is that what you really care about
+
+1113
+00:50:19,920 --> 00:50:22,800
+is not just intelligence alone you care
+
+1114
+00:50:22,800 --> 00:50:25,359
+about intelligence as well as the time
+
+1115
+00:50:25,359 --> 00:50:28,400
+for response. So in particular the time
+
+1116
+00:50:28,400 --> 00:50:30,880
+to first token is extremely important
+
+1117
+00:50:30,880 --> 00:50:33,760
+for any kind of customer support voice
+
+1118
+00:50:33,760 --> 00:50:35,680
+kind of applications
+
+1119
+00:50:35,680 --> 00:50:38,000
+and for these kinds of applications if
+
+1120
+00:50:38,000 --> 00:50:39,520
+you look at these charts what it's
+
+1121
+00:50:39,520 --> 00:50:42,559
+really showing is that Mercury defines a
+
+1122
+00:50:42,559 --> 00:50:44,880
+different kind of frontier where it gets
+
+1123
+00:50:44,880 --> 00:50:48,000
+you extremely good intelligence at a
+
+1124
+00:50:48,000 --> 00:50:52,079
+very small time to first token. In fact,
+
+1125
+00:50:52,079 --> 00:50:55,040
+uh, compared to even non-reasoning
+
+1126
+00:50:55,040 --> 00:50:58,079
+models such as GPD 4.1, which is in
+
+1127
+00:50:58,079 --> 00:50:59,599
+production at most of the voice
+
+1128
+00:50:59,599 --> 00:51:02,400
+companies, Mercury 2 can do reasoning
+
+1129
+00:51:02,400 --> 00:51:06,480
+and still be faster than a GPT model. So
+
+1130
+00:51:06,480 --> 00:51:09,280
+that's what speed buys you where you can
+
+1131
+00:51:09,280 --> 00:51:11,920
+actually deploy reasoning models at the
+
+1132
+00:51:11,920 --> 00:51:14,079
+speed uh or even better than
+
+1133
+00:51:14,079 --> 00:51:16,880
+non-reasoning models. So extremely good
+
+1134
+00:51:16,880 --> 00:51:20,720
+quality at a fraction of the speed.
+
+1135
+00:51:20,720 --> 00:51:24,319
+Now um one thing also notable in this is
+
+1136
+00:51:24,319 --> 00:51:27,200
+all of our deployments are on Nvidia
+
+1137
+00:51:27,200 --> 00:51:30,640
+hardware. So this is coming purely
+
+1138
+00:51:30,640 --> 00:51:33,359
+because of the fact that we have trained
+
+1139
+00:51:33,359 --> 00:51:36,079
+these models using diffusion and we're
+
+1140
+00:51:36,079 --> 00:51:38,400
+generating tokens in parallel. So any of
+
+1141
+00:51:38,400 --> 00:51:40,480
+these complimentary advantages such as
+
+1142
+00:51:40,480 --> 00:51:42,400
+those that could arise from modern
+
+1143
+00:51:42,400 --> 00:51:44,880
+hardware like Cerebras and Grock could
+
+1144
+00:51:44,880 --> 00:51:47,040
+pair up potentially very well with
+
+1145
+00:51:47,040 --> 00:51:49,920
+having a diffusion model for text on top
+
+1146
+00:51:49,920 --> 00:51:52,400
+of it.
+
+1147
+00:51:52,400 --> 00:51:55,200
+Um this is another case study for
+
+1148
+00:51:55,200 --> 00:51:58,000
+search. In this case uh you not only
+
+1149
+00:51:58,000 --> 00:51:59,839
+care about speed, you also care about
+
+1150
+00:51:59,839 --> 00:52:02,960
+cost. So these two plots are showing how
+
+1151
+00:52:02,960 --> 00:52:05,119
+accuracy varies with each of these
+
+1152
+00:52:05,119 --> 00:52:07,359
+factors. And again you see a similar
+
+1153
+00:52:07,359 --> 00:52:10,079
+kind of trend where the models that you
+
+1154
+00:52:10,079 --> 00:52:12,640
+can actually deploy in production should
+
+1155
+00:52:12,640 --> 00:52:15,200
+have a good combination of all three and
+
+1156
+00:52:15,200 --> 00:52:17,359
+mercury strikes a really good balance in
+
+1157
+00:52:17,359 --> 00:52:20,160
+this space as well.
+
+1158
+00:52:20,160 --> 00:52:23,280
+uh coding is another space of course um
+
+1159
+00:52:23,280 --> 00:52:25,200
+I can't imagine my life now without
+
+1160
+00:52:25,200 --> 00:52:28,319
+using coding agents and what you see
+
+1161
+00:52:28,319 --> 00:52:31,119
+with coding agents is again that you
+
+1162
+00:52:31,119 --> 00:52:32,720
+might have a primary agent that's
+
+1163
+00:52:32,720 --> 00:52:36,720
+extremely verbose uh or might use a lot
+
+1164
+00:52:36,720 --> 00:52:39,359
+of tokens uh but that's not always what
+
+1165
+00:52:39,359 --> 00:52:41,680
+you need in order to drive down the
+
+1166
+00:52:41,680 --> 00:52:43,760
+token economics towards something that's
+
+1167
+00:52:43,760 --> 00:52:46,880
+sustainable so companies like augment
+
+1168
+00:52:46,880 --> 00:52:49,280
+code are using mercury in conjunction
+
+1169
+00:52:49,280 --> 00:52:51,520
+with some of the more heavyweight models
+
+1170
+00:52:51,520 --> 00:52:54,640
+like opus to get a very good balance
+
+1171
+00:52:54,640 --> 00:52:58,720
+reduce latency as well as cost zero
+
+1172
+00:52:58,720 --> 00:53:01,359
+and um I I would end with this slide
+
+1173
+00:53:01,359 --> 00:53:03,680
+where if you think about the frontier of
+
+1174
+00:53:03,680 --> 00:53:06,000
+intelligence uh we have reached a point
+
+1175
+00:53:06,000 --> 00:53:07,760
+where we have extremely good
+
+1176
+00:53:07,760 --> 00:53:10,559
+intelligence for a lot of applications
+
+1177
+00:53:10,559 --> 00:53:13,200
+but now what's really important is as we
+
+1178
+00:53:13,200 --> 00:53:16,079
+build value for everyone around us is to
+
+1179
+00:53:16,079 --> 00:53:17,520
+think about the new currency of
+
+1180
+00:53:17,520 --> 00:53:19,839
+intelligence per watt and the fusion
+
+1181
+00:53:19,839 --> 00:53:22,160
+LLMs seem like a really good bet to
+
+1182
+00:53:22,160 --> 00:53:27,079
+redefining that frontier. Thank you.
+
+1183
+00:53:31,839 --> 00:53:34,400
+>> All right, thank you Adita. Next up we
+
+1184
+00:53:34,400 --> 00:53:37,280
+have a a workshop from Daytona and it's
+
+1185
+00:53:37,280 --> 00:53:38,960
+going to be an hour session and after
+
+1186
+00:53:38,960 --> 00:53:41,280
+that's going to be lunch. So welcome up
+
+1187
+00:53:41,280 --> 00:53:44,280
+Daytona.
+
+1188
+00:53:51,119 --> 00:53:54,200
+All right.
+
+1189
+00:53:57,119 --> 00:53:58,160
+All right. You want to see if you can
+
+1190
+00:53:58,160 --> 00:54:00,000
+plug in right here. So, this is this is
+
+1191
+00:54:00,000 --> 00:54:03,400
+the main one.
+
+1192
+00:54:22,559 --> 00:54:26,119
+You want to go
+
+1193
+00:54:36,800 --> 00:54:39,800
+else?
+
+1194
+00:54:41,119 --> 00:54:44,920
+running. I think he's probably
+
+1195
+00:54:51,520 --> 00:54:55,160
+giving me a signal here.
+
+1196
+00:55:10,480 --> 00:55:14,200
+Go straight into the HDMI.
+
+1197
+00:55:38,559 --> 00:55:42,599
+Can you choose the mirror?
+
+1198
+00:56:22,720 --> 00:56:25,799
+That's it.
+
+1199
+00:56:48,559 --> 00:56:51,880
+Just have a turn.
+
+1200
+00:57:00,480 --> 00:57:03,480
+remember
+
+1201
+00:57:27,040 --> 00:57:29,200
+my
+
+1202
+00:57:31,280 --> 00:57:34,440
+this morning.
+
+1203
+00:57:42,240 --> 00:57:44,000
+>> See mine works. Do you want to Is it
+
+1204
+00:57:44,000 --> 00:57:47,480
+possible to transfer
+
+1205
+00:57:58,000 --> 00:57:59,760
+I know that's working,
+
+1206
+00:57:59,760 --> 00:58:03,480
+>> but his isn't working.
+
+1207
+00:58:39,040 --> 00:58:43,400
+should be shown here. I don't know why.
+
+1208
+00:58:57,280 --> 00:59:00,079
+Your application
+
+1209
+00:59:33,280 --> 00:59:36,760
+We would see it here.
+
+1210
+01:00:19,359 --> 01:00:22,760
+That will go
+
+1211
+01:00:36,480 --> 01:00:39,480
+understand
+
+1212
+01:00:53,920 --> 01:00:55,200
+Sorry about that. We're having some
+
+1213
+01:00:55,200 --> 01:00:58,680
+technical difficulties.
+
+1214
+01:01:26,880 --> 01:01:30,119
+So it's
+
+1215
+01:02:36,079 --> 01:02:39,079
+He's
+
+1216
+01:02:52,079 --> 01:02:55,480
+ready for that.
+
+1217
+01:03:23,760 --> 01:03:28,200
+Yeah. Can we try to look at
+
+1218
+01:03:52,319 --> 01:03:56,000
+Let me plug my computer in just to
+
+1219
+01:03:56,000 --> 01:03:59,960
+>> This is very odd.
+
+1220
+01:04:35,920 --> 01:04:39,079
+Oh yeah.
+
+1221
+01:04:49,920 --> 01:04:52,319
+overact.
+
+1222
+01:04:58,319 --> 01:05:01,319
+Serious.
+
+1223
+01:05:35,680 --> 01:05:38,839
+I Obviously,
+
+1224
+01:06:12,880 --> 01:06:16,200
+I don't know why.
+
+1225
+01:06:34,000 --> 01:06:37,079
+I guess
+
+1226
+01:06:51,039 --> 01:06:54,280
+you're all good.
+
+1227
+01:06:55,200 --> 01:06:58,359
+I'm sure
+
+1228
+01:07:11,200 --> 01:07:13,440
+I just don't know how to like think
+
+1229
+01:07:13,440 --> 01:07:16,760
+about it.
+
+1230
+01:07:27,039 --> 01:07:30,200
+I want
+
+1231
+01:07:43,760 --> 01:07:47,160
+>> Yeah. One second.
+
+1232
+01:07:49,839 --> 01:07:54,280
+I can write the paper on it.
+
+1233
+01:08:13,797 --> 01:08:15,440
+>> [laughter]
+
+1234
+01:08:15,440 --> 01:08:18,760
+>> Okay, cool.
+
+1235
+01:08:28,719 --> 01:08:31,719
+>> Like
+
+1236
+01:08:33,040 --> 01:08:35,040
+All right, everyone. We've got it solved
+
+1237
+01:08:35,040 --> 01:08:36,799
+and Daytona is going to present their
+
+1238
+01:08:36,799 --> 01:08:38,159
+workshop. Sorry about the technical
+
+1239
+01:08:38,159 --> 01:08:41,040
+difficulties. Thank you.
+
+1240
+01:08:41,040 --> 01:08:42,960
+>> Thank you. Um, sorry about that. Yeah,
+
+1241
+01:08:42,960 --> 01:08:46,239
+thank you to everyone who stayed um for
+
+1242
+01:08:46,239 --> 01:08:49,759
+being patient and stuff. Okay,
+
+1243
+01:08:49,759 --> 01:08:52,759
+cool.
+
+1244
+01:08:53,440 --> 01:08:57,027
+Okay. All right. So,
+
+1245
+01:08:57,027 --> 01:08:57,759
+[clears throat] hey everyone. I'm
+
+1246
+01:08:57,759 --> 01:08:59,040
+Muhammad. I'm a developer relations
+
+1247
+01:08:59,040 --> 01:09:02,880
+engineer at Daytona. Um at Daytona, for
+
+1248
+01:09:02,880 --> 01:09:03,920
+those of you who don't know, we build
+
+1249
+01:09:03,920 --> 01:09:06,640
+infrastructure for running agents and
+
+1250
+01:09:06,640 --> 01:09:09,839
+their workloads. Um so we basically
+
+1251
+01:09:09,839 --> 01:09:10,960
+provide computers you can create through
+
+1252
+01:09:10,960 --> 01:09:13,040
+an API and compose uh you know choose
+
+1253
+01:09:13,040 --> 01:09:15,120
+their operating system, choose however
+
+1254
+01:09:15,120 --> 01:09:18,080
+many CPUs, how much RAM, uh disk, etc.
+
+1255
+01:09:18,080 --> 01:09:21,600
+And the two primary use cases um why
+
+1256
+01:09:21,600 --> 01:09:23,520
+people use this are for running agents
+
+1257
+01:09:23,520 --> 01:09:25,199
+in the background or on the cloud and
+
+1258
+01:09:25,199 --> 01:09:29,120
+also um for reinforcement learning. Um
+
+1259
+01:09:29,120 --> 01:09:32,080
+and so like to kind of understand that
+
+1260
+01:09:32,080 --> 01:09:33,839
+is like when you train an agent, the
+
+1261
+01:09:33,839 --> 01:09:35,600
+model learns by doing the task. Um and
+
+1262
+01:09:35,600 --> 01:09:37,120
+coding agents or computer use agents,
+
+1263
+01:09:37,120 --> 01:09:38,719
+they need a compute environment to
+
+1264
+01:09:38,719 --> 01:09:40,719
+perform those tasks. And so um our
+
+1265
+01:09:40,719 --> 01:09:41,839
+infrastructure happens to be pretty well
+
+1266
+01:09:41,839 --> 01:09:45,520
+suited um for that use case. And um
+
+1267
+01:09:45,520 --> 01:09:49,040
+yeah, the uh the talk or the workshop is
+
+1268
+01:09:49,040 --> 01:09:51,440
+kind of about how we came to this point
+
+1269
+01:09:51,440 --> 01:09:53,040
+like how exactly we went from you know
+
+1270
+01:09:53,040 --> 01:09:56,159
+chat bots to today's agents. Um, you
+
+1271
+01:09:56,159 --> 01:09:58,400
+know, a few years ago,
+
+1272
+01:09:58,400 --> 01:10:01,280
+uh, the state of the art was like an LLM
+
+1273
+01:10:01,280 --> 01:10:04,320
+that you, um, sort of treated as like a
+
+1274
+01:10:04,320 --> 01:10:05,600
+question and answer assistant. It would
+
+1275
+01:10:05,600 --> 01:10:08,640
+sometimes be helpful. Um, but I couldn't
+
+1276
+01:10:08,640 --> 01:10:10,400
+actually do anything, but now they they
+
+1277
+01:10:10,400 --> 01:10:13,280
+can they can act. And so,
+
+1278
+01:10:13,280 --> 01:10:16,880
+um, yeah, I that's going to be the
+
+1279
+01:10:16,880 --> 01:10:19,440
+presentation essentially. Um, so the
+
+1280
+01:10:19,440 --> 01:10:21,520
+first half I'm going to be kind of going
+
+1281
+01:10:21,520 --> 01:10:23,760
+over the history, how we got to the
+
+1282
+01:10:23,760 --> 01:10:25,600
+current point. And the second half my
+
+1283
+01:10:25,600 --> 01:10:27,440
+colleague Lou is going to be going over
+
+1284
+01:10:27,440 --> 01:10:29,040
+kind of like where Daytona fits into
+
+1285
+01:10:29,040 --> 01:10:31,360
+this and some of the more modern
+
+1286
+01:10:31,360 --> 01:10:35,280
+techniques um that uh our infrastructure
+
+1287
+01:10:35,280 --> 01:10:38,760
+shines in.
+
+1288
+01:10:39,199 --> 01:10:42,640
+Um, cool. So I think like um you know
+
+1289
+01:10:42,640 --> 01:10:44,719
+everyone is probably somewhat familiar
+
+1290
+01:10:44,719 --> 01:10:47,440
+with this like the classic uh you know
+
+1291
+01:10:47,440 --> 01:10:49,600
+terminal agent. Um this is an example of
+
+1292
+01:10:49,600 --> 01:10:51,679
+Kimmy K3.
+
+1293
+01:10:51,679 --> 01:10:53,360
+Um
+
+1294
+01:10:53,360 --> 01:10:55,760
+you know you give it a prompt to fix a
+
+1295
+01:10:55,760 --> 01:10:58,320
+bug you know uh implement a feature and
+
+1296
+01:10:58,320 --> 01:11:00,880
+it starts running a bunch of commands
+
+1297
+01:11:00,880 --> 01:11:06,480
+writing files etc. Um now I want you to
+
+1298
+01:11:06,480 --> 01:11:08,320
+consider let me see if I can go to the
+
+1299
+01:11:08,320 --> 01:11:10,640
+next slide.
+
+1300
+01:11:10,640 --> 01:11:12,800
+This is the same model um given the same
+
+1301
+01:11:12,800 --> 01:11:16,159
+you know tools um all LLS SQL or not the
+
+1302
+01:11:16,159 --> 01:11:18,640
+same model same harness same tools uh
+
+1303
+01:11:18,640 --> 01:11:20,640
+but it's GPT2 so this is a model from
+
+1304
+01:11:20,640 --> 01:11:22,239
+seven years ago and so when you send the
+
+1305
+01:11:22,239 --> 01:11:25,920
+same prompt um it just it just breaks it
+
+1306
+01:11:25,920 --> 01:11:29,440
+doesn't know what to do and um yeah
+
+1307
+01:11:29,440 --> 01:11:30,880
+that's kind of the main point is
+
+1308
+01:11:30,880 --> 01:11:33,600
+understanding you know how the
+
+1309
+01:11:33,600 --> 01:11:37,040
+difference between these two slides um
+
+1310
+01:11:37,040 --> 01:11:40,560
+and kind of the I guess the short answer
+
+1311
+01:11:40,560 --> 01:11:43,520
+is reinforcement learning. Um
+
+1312
+01:11:43,520 --> 01:11:46,960
+but what's interesting is like there was
+
+1313
+01:11:46,960 --> 01:11:49,440
+sort of two uh developments happening at
+
+1314
+01:11:49,440 --> 01:11:51,840
+the same time. One is um you know people
+
+1315
+01:11:51,840 --> 01:11:55,280
+kind of uh reinforcement learning is not
+
+1316
+01:11:55,280 --> 01:11:58,159
+a new thing. It's been
+
+1317
+01:11:58,159 --> 01:12:01,199
+um been a thing for multiple decades.
+
+1318
+01:12:01,199 --> 01:12:02,960
+Really just what changes kind of the the
+
+1319
+01:12:02,960 --> 01:12:06,159
+model behind it and um what get what
+
+1320
+01:12:06,159 --> 01:12:09,440
+gets rewarded. And so this is sort of a
+
+1321
+01:12:09,440 --> 01:12:11,199
+timeline of um what I'll be talking
+
+1322
+01:12:11,199 --> 01:12:13,040
+about.
+
+1323
+01:12:13,040 --> 01:12:17,760
+And it's helpful to also understand like
+
+1324
+01:12:17,760 --> 01:12:22,000
+um how an LLM works
+
+1325
+01:12:22,000 --> 01:12:24,719
+and to kind of get a uh to get a better
+
+1326
+01:12:24,719 --> 01:12:25,840
+understanding later on when we talk
+
+1327
+01:12:25,840 --> 01:12:28,640
+about like what gets rewarded, how does
+
+1328
+01:12:28,640 --> 01:12:30,080
+you know a model actually learn, what
+
+1329
+01:12:30,080 --> 01:12:32,800
+does learning really mean? Um, and so
+
+1330
+01:12:32,800 --> 01:12:35,440
+like this is kind of the the most basic
+
+1331
+01:12:35,440 --> 01:12:40,080
+um example of an LLM. So you have like
+
+1332
+01:12:40,080 --> 01:12:42,320
+you know it's writing a sentence and the
+
+1333
+01:12:42,320 --> 01:12:45,280
+next token is calculated by sampling
+
+1334
+01:12:45,280 --> 01:12:47,280
+from a probability distribution. And so
+
+1335
+01:12:47,280 --> 01:12:52,080
+like at each step you know you have um
+
+1336
+01:12:52,080 --> 01:12:53,520
+a certain amount of tokens to choose
+
+1337
+01:12:53,520 --> 01:12:54,640
+from. Some are more likely, some are
+
+1338
+01:12:54,640 --> 01:12:56,719
+less likely. Um sometimes the least
+
+1339
+01:12:56,719 --> 01:12:59,600
+likely one that gets picked. Um
+
+1340
+01:12:59,600 --> 01:13:01,679
+and so yeah, I think this architecture
+
+1341
+01:13:01,679 --> 01:13:06,320
+is not um probably super new to most
+
+1342
+01:13:06,320 --> 01:13:10,400
+people, but um yeah, that's that's sort
+
+1343
+01:13:10,400 --> 01:13:14,239
+of the motivation behind uh or the
+
+1344
+01:13:14,239 --> 01:13:16,320
+background behind like what what
+
+1345
+01:13:16,320 --> 01:13:19,520
+pre-training is. Um so you want to make
+
+1346
+01:13:19,520 --> 01:13:22,320
+the model output
+
+1347
+01:13:22,320 --> 01:13:24,800
+u the whatever you're training it on. So
+
+1348
+01:13:24,800 --> 01:13:26,560
+if you're training it to be a helpful
+
+1349
+01:13:26,560 --> 01:13:29,760
+assistant or um maybe it's just like
+
+1350
+01:13:29,760 --> 01:13:33,760
+completing a Wikipedia page entry,
+
+1351
+01:13:33,760 --> 01:13:35,920
+you kind of let the model, you know,
+
+1352
+01:13:35,920 --> 01:13:39,600
+output what it thinks is the most likely
+
+1353
+01:13:39,600 --> 01:13:41,679
+next token and then grade it based on
+
+1354
+01:13:41,679 --> 01:13:44,320
+the actual ground truth. Um so this is
+
+1355
+01:13:44,320 --> 01:13:49,840
+sort of a example of um see sort of a
+
+1356
+01:13:49,840 --> 01:13:52,400
+like a zooming in on how it works. So
+
+1357
+01:13:52,400 --> 01:13:56,400
+you have at the top is the ground truth
+
+1358
+01:13:56,400 --> 01:13:58,880
+of what the model is being graded on and
+
+1359
+01:13:58,880 --> 01:14:00,480
+then the bottom is each token that I
+
+1360
+01:14:00,480 --> 01:14:03,199
+outputed and so you can kind of go
+
+1361
+01:14:03,199 --> 01:14:04,800
+through each step. So like right now
+
+1362
+01:14:04,800 --> 01:14:06,480
+we'll just look at this token at the end
+
+1363
+01:14:06,480 --> 01:14:10,239
+crew. Um
+
+1364
+01:14:10,239 --> 01:14:12,480
+we see that like
+
+1365
+01:14:12,480 --> 01:14:17,360
+the so when the model was
+
+1366
+01:14:17,360 --> 01:14:20,719
+sorry when the model was um you know
+
+1367
+01:14:20,719 --> 01:14:23,280
+prior to this step where its weights got
+
+1368
+01:14:23,280 --> 01:14:25,120
+updated
+
+1369
+01:14:25,120 --> 01:14:28,640
+um the probability at the time was
+
+1370
+01:14:28,640 --> 01:14:33,840
+um 61% and then you know when the loss
+
+1371
+01:14:33,840 --> 01:14:36,480
+gets calculated which the loss is just
+
+1372
+01:14:36,480 --> 01:14:38,080
+um
+
+1373
+01:14:38,080 --> 01:14:40,800
+the negative log probability that step
+
+1374
+01:14:40,800 --> 01:14:43,040
+gets applied to its weights and then all
+
+1375
+01:14:43,040 --> 01:14:45,920
+the kind of previous tokens uh the
+
+1376
+01:14:45,920 --> 01:14:49,120
+weights get updated to be uh to match
+
+1377
+01:14:49,120 --> 01:14:52,239
+the ground truth more often. Um so you
+
+1378
+01:14:52,239 --> 01:14:54,560
+can kind of go you know you can see each
+
+1379
+01:14:54,560 --> 01:14:56,159
+one. It's a little bit cluttered slide.
+
+1380
+01:14:56,159 --> 01:14:58,400
+Hopefully something you guys can read it
+
+1381
+01:14:58,400 --> 01:15:00,400
+but yeah you can see exactly how the
+
+1382
+01:15:00,400 --> 01:15:02,159
+weights and uh the probabilities got
+
+1383
+01:15:02,159 --> 01:15:05,159
+updated.
+
+1384
+01:15:05,760 --> 01:15:07,840
+Um,
+
+1385
+01:15:07,840 --> 01:15:11,280
+and so you know after you kind of had
+
+1386
+01:15:11,280 --> 01:15:13,520
+like models that just completed a
+
+1387
+01:15:13,520 --> 01:15:15,760
+sentence and a pattern that kind of
+
+1388
+01:15:15,760 --> 01:15:18,719
+emerged from that is you could show it a
+
+1389
+01:15:18,719 --> 01:15:23,520
+um pattern where let's say you have like
+
+1390
+01:15:23,520 --> 01:15:25,360
+for example this is a sort of a a toy
+
+1391
+01:15:25,360 --> 01:15:28,800
+pattern but um I guess more realistic
+
+1392
+01:15:28,800 --> 01:15:30,719
+example would be
+
+1393
+01:15:30,719 --> 01:15:33,679
+if you had a you know a list of Python
+
+1394
+01:15:33,679 --> 01:15:35,120
+functions and then you wanted it to fill
+
+1395
+01:15:35,120 --> 01:15:37,679
+in like the fourth one, then it would
+
+1396
+01:15:37,679 --> 01:15:40,560
+know somehow that uh it would learn from
+
+1397
+01:15:40,560 --> 01:15:42,080
+the three patterns that you showed it in
+
+1398
+01:15:42,080 --> 01:15:44,880
+the input and then like um pretty
+
+1399
+01:15:44,880 --> 01:15:46,320
+accurately predict what the fourth one
+
+1400
+01:15:46,320 --> 01:15:47,840
+would look like based on that pattern
+
+1401
+01:15:47,840 --> 01:15:50,320
+that you showed it. Um and that's all
+
+1402
+01:15:50,320 --> 01:15:52,159
+you know just in the prompts. You don't
+
+1403
+01:15:52,159 --> 01:15:54,800
+that didn't require any like um you know
+
+1404
+01:15:54,800 --> 01:15:56,400
+teaching the model to do that. It just
+
+1405
+01:15:56,400 --> 01:15:58,560
+saw the pattern and and kind of learned.
+
+1406
+01:15:58,560 --> 01:16:00,239
+Um
+
+1407
+01:16:00,239 --> 01:16:01,520
+and so like the point is like nobody
+
+1408
+01:16:01,520 --> 01:16:04,880
+really this is kind of a emergent
+
+1409
+01:16:04,880 --> 01:16:08,560
+property that fell out like no one um
+
+1410
+01:16:08,560 --> 01:16:10,400
+kind of like built that pattern into the
+
+1411
+01:16:10,400 --> 01:16:11,920
+weights. It just fell out of next word
+
+1412
+01:16:11,920 --> 01:16:14,920
+prediction.
+
+1413
+01:16:15,520 --> 01:16:18,719
+And we noticed that like if you take
+
+1414
+01:16:18,719 --> 01:16:21,280
+that same concept and you just apply it
+
+1415
+01:16:21,280 --> 01:16:23,280
+to a larger model, it gets a lot better
+
+1416
+01:16:23,280 --> 01:16:26,320
+at um
+
+1417
+01:16:26,320 --> 01:16:30,960
+uh following those patterns.
+
+1418
+01:16:30,960 --> 01:16:33,280
+And
+
+1419
+01:16:33,280 --> 01:16:34,880
+there was this kind of a few years ago
+
+1420
+01:16:34,880 --> 01:16:37,280
+this paper about thinking step by step.
+
+1421
+01:16:37,280 --> 01:16:41,440
+And um basically you can kind of see and
+
+1422
+01:16:41,440 --> 01:16:43,840
+some some of you might remember how when
+
+1423
+01:16:43,840 --> 01:16:45,840
+you would prompt like GPT and you
+
+1424
+01:16:45,840 --> 01:16:49,360
+explicitly told it to kind of uh you
+
+1425
+01:16:49,360 --> 01:16:51,199
+know think more systematically, think
+
+1426
+01:16:51,199 --> 01:16:54,000
+more carefully, it got the right answer,
+
+1427
+01:16:54,000 --> 01:16:57,120
+um it would it would be able to you know
+
+1428
+01:16:57,120 --> 01:16:59,040
+kind of quoteunquote reason about the
+
+1429
+01:16:59,040 --> 01:17:00,960
+problem and arrive at the right answer
+
+1430
+01:17:00,960 --> 01:17:05,080
+more often uh than not.
+
+1431
+01:17:07,360 --> 01:17:10,640
+And um
+
+1432
+01:17:10,640 --> 01:17:13,360
+so the the way that I was kind of
+
+1433
+01:17:13,360 --> 01:17:15,520
+showing up until this point mostly just
+
+1434
+01:17:15,520 --> 01:17:17,360
+models that completed the sentence,
+
+1435
+01:17:17,360 --> 01:17:20,719
+whatever you uh gave it as input. Um but
+
+1436
+01:17:20,719 --> 01:17:22,640
+I think most people remember models
+
+1437
+01:17:22,640 --> 01:17:24,719
+behaving as assistants. But in order for
+
+1438
+01:17:24,719 --> 01:17:25,840
+it to get to that point, it kind of had
+
+1439
+01:17:25,840 --> 01:17:27,679
+to learn the pattern of being an
+
+1440
+01:17:27,679 --> 01:17:30,000
+assistant. U and so the way that that
+
+1441
+01:17:30,000 --> 01:17:31,760
+happened was just you show it a bunch of
+
+1442
+01:17:31,760 --> 01:17:33,920
+question and answer samples and it
+
+1443
+01:17:33,920 --> 01:17:36,159
+learns that pattern. Um it kind of
+
+1444
+01:17:36,159 --> 01:17:39,520
+understands okay um depending on the
+
+1445
+01:17:39,520 --> 01:17:42,560
+question you want to be like a helpful
+
+1446
+01:17:42,560 --> 01:17:46,480
+assistant to the user. And so
+
+1447
+01:17:46,480 --> 01:17:48,560
+um that was another kind of like major
+
+1448
+01:17:48,560 --> 01:17:51,600
+shift. And yeah, this is, you know, an
+
+1449
+01:17:51,600 --> 01:17:53,760
+example of
+
+1450
+01:17:53,760 --> 01:17:57,040
+uh a query you might ask um one of those
+
+1451
+01:17:57,040 --> 01:17:59,199
+assistant models like the answer would
+
+1452
+01:17:59,199 --> 01:18:00,960
+be something that that is hopefully
+
+1453
+01:18:00,960 --> 01:18:02,640
+helpful.
+
+1454
+01:18:02,640 --> 01:18:06,320
+I don't know if we'll be able to
+
+1455
+01:18:06,320 --> 01:18:07,600
+Yeah, this is kind of the the same
+
+1456
+01:18:07,600 --> 01:18:11,280
+concept earlier where
+
+1457
+01:18:11,280 --> 01:18:14,080
+you kind of like update the weights so
+
+1458
+01:18:14,080 --> 01:18:16,880
+that the model learns how to behave more
+
+1459
+01:18:16,880 --> 01:18:20,880
+like an assistant more often.
+
+1460
+01:18:22,320 --> 01:18:24,159
+Sorry.
+
+1461
+01:18:24,159 --> 01:18:26,400
+Um, yeah, I think these slides are kind
+
+1462
+01:18:26,400 --> 01:18:31,159
+of repeating that concept more or less.
+
+1463
+01:18:33,840 --> 01:18:35,679
+Um
+
+1464
+01:18:35,679 --> 01:18:39,440
+and so the the I guess some limitation
+
+1465
+01:18:39,440 --> 01:18:41,280
+was reached uh that's kind of like
+
+1466
+01:18:41,280 --> 01:18:44,320
+fundamentally limited in that like you
+
+1467
+01:18:44,320 --> 01:18:47,920
+can teach it to imitate patterns but um
+
+1468
+01:18:47,920 --> 01:18:50,800
+really like if you
+
+1469
+01:18:50,800 --> 01:18:52,320
+let's say you had a data set from a math
+
+1470
+01:18:52,320 --> 01:18:56,719
+textbook and all you did was
+
+1471
+01:18:56,719 --> 01:19:00,080
+uh kind of like reward it based on
+
+1472
+01:19:00,080 --> 01:19:01,600
+whatever tokens
+
+1473
+01:19:01,600 --> 01:19:04,640
+would lead to um would lead to the final
+
+1474
+01:19:04,640 --> 01:19:06,960
+answer.
+
+1475
+01:19:06,960 --> 01:19:08,480
+That's
+
+1476
+01:19:08,480 --> 01:19:11,520
+in a way like prescribing how the model
+
+1477
+01:19:11,520 --> 01:19:14,719
+should behave to get to the answer. And
+
+1478
+01:19:14,719 --> 01:19:16,480
+um this will sort of make sense later
+
+1479
+01:19:16,480 --> 01:19:20,000
+on. It's limited in that we don't know
+
+1480
+01:19:20,000 --> 01:19:22,880
+exactly like I guess what the best way
+
+1481
+01:19:22,880 --> 01:19:25,280
+is to arrive at that answer inherently.
+
+1482
+01:19:25,280 --> 01:19:29,120
+And so um what kind what kind of
+
+1483
+01:19:29,120 --> 01:19:30,640
+motivates like reinforcement learning is
+
+1484
+01:19:30,640 --> 01:19:34,560
+that all you do is you know reward the
+
+1485
+01:19:34,560 --> 01:19:37,600
+final answer and then hopefully
+
+1486
+01:19:37,600 --> 01:19:39,920
+uh which um it did turn out to be true.
+
+1487
+01:19:39,920 --> 01:19:42,640
+The model would um kind of the reasoning
+
+1488
+01:19:42,640 --> 01:19:44,719
+from the model would emerge from that
+
+1489
+01:19:44,719 --> 01:19:47,440
+point as opposed to you know having um
+
+1490
+01:19:47,440 --> 01:19:49,840
+humans kind of like tell it how to
+
+1491
+01:19:49,840 --> 01:19:52,840
+reason.
+
+1492
+01:19:53,040 --> 01:19:55,040
+Um and yeah this kind of a basic diagram
+
+1493
+01:19:55,040 --> 01:19:57,520
+of reinforcement line every year agent
+
+1494
+01:19:57,520 --> 01:19:58,719
+it acts on an environment and then
+
+1495
+01:19:58,719 --> 01:20:01,679
+receives a reward.
+
+1496
+01:20:01,679 --> 01:20:04,560
+Um and
+
+1497
+01:20:04,560 --> 01:20:07,520
+so one thing before even getting to um
+
+1498
+01:20:07,520 --> 01:20:10,800
+reasoning I think
+
+1499
+01:20:10,800 --> 01:20:13,920
+uh there was this like
+
+1500
+01:20:13,920 --> 01:20:15,920
+concept of
+
+1501
+01:20:15,920 --> 01:20:18,320
+um human feedback
+
+1502
+01:20:18,320 --> 01:20:20,400
+uh you know which which response would
+
+1503
+01:20:20,400 --> 01:20:24,640
+you prefer to hear when you uh when when
+
+1504
+01:20:24,640 --> 01:20:27,679
+you receive that response. Um, you might
+
+1505
+01:20:27,679 --> 01:20:29,760
+remember using GPT and like giving two
+
+1506
+01:20:29,760 --> 01:20:32,080
+different responses. Not sure if they
+
+1507
+01:20:32,080 --> 01:20:34,400
+still do this, but um, yeah, you kind of
+
+1508
+01:20:34,400 --> 01:20:36,719
+choose what you prefer.
+
+1509
+01:20:36,719 --> 01:20:39,199
+And then based on that, a reward model
+
+1510
+01:20:39,199 --> 01:20:43,760
+gets trained that kind of makes the
+
+1511
+01:20:43,760 --> 01:20:47,440
+underlying LLM more
+
+1512
+01:20:47,440 --> 01:20:50,800
+aligned to whatever humans prefer.
+
+1513
+01:20:50,800 --> 01:20:53,199
+Um, and so
+
+1514
+01:20:53,199 --> 01:20:54,640
+this is getting a little bit I think
+
+1515
+01:20:54,640 --> 01:20:56,400
+I'll probably have to skip some of these
+
+1516
+01:20:56,400 --> 01:20:59,679
+slides for the sake of time, but um,
+
+1517
+01:20:59,679 --> 01:21:02,960
+this is the objective that, uh,
+
+1518
+01:21:02,960 --> 01:21:05,199
+is optimized when doing a reinforcement
+
+1519
+01:21:05,199 --> 01:21:08,640
+learning with human feedback.
+
+1520
+01:21:08,640 --> 01:21:11,120
+And so, yeah, sort of a an example of
+
+1521
+01:21:11,120 --> 01:21:14,840
+what I've been talking about.
+
+1522
+01:21:16,320 --> 01:21:18,480
+Let's get these.
+
+1523
+01:21:18,480 --> 01:21:20,480
+And so yeah, going back to what I was
+
+1524
+01:21:20,480 --> 01:21:23,920
+saying earlier, you know, if if we know
+
+1525
+01:21:23,920 --> 01:21:28,239
+that reasoning helps um then why
+
+1526
+01:21:28,239 --> 01:21:30,320
+why do we try to teach it to imitate a
+
+1527
+01:21:30,320 --> 01:21:32,800
+written solution? Um you know why not
+
+1528
+01:21:32,800 --> 01:21:35,120
+just reward it based on the finalizer
+
+1529
+01:21:35,120 --> 01:21:37,679
+and then see kind of what comes out of
+
+1530
+01:21:37,679 --> 01:21:40,080
+that. So
+
+1531
+01:21:40,080 --> 01:21:41,120
+that's [clears throat] where
+
+1532
+01:21:41,120 --> 01:21:42,560
+reinforcement learning with verifiable
+
+1533
+01:21:42,560 --> 01:21:46,480
+words came uh or kind of showed that
+
+1534
+01:21:46,480 --> 01:21:49,840
+um a model can without even being told
+
+1535
+01:21:49,840 --> 01:21:51,760
+how to arrive at the final answer
+
+1536
+01:21:51,760 --> 01:21:53,360
+necessarily
+
+1537
+01:21:53,360 --> 01:21:55,040
+if it just gets rewarded based on its
+
+1538
+01:21:55,040 --> 01:21:57,840
+final answer um it'll learn to reason
+
+1539
+01:21:57,840 --> 01:21:59,280
+better and that'll transfer to other
+
+1540
+01:21:59,280 --> 01:22:01,280
+problems.
+
+1541
+01:22:01,280 --> 01:22:04,960
+And so this is kind of a fast forwarded
+
+1542
+01:22:04,960 --> 01:22:06,639
+um
+
+1543
+01:22:06,639 --> 01:22:09,920
+fast forwarded output of deepse R1. And
+
+1544
+01:22:09,920 --> 01:22:12,800
+so like
+
+1545
+01:22:12,800 --> 01:22:15,679
+instead of you know going back and
+
+1546
+01:22:15,679 --> 01:22:18,239
+seeing did it reason correctly? Did
+
+1547
+01:22:18,239 --> 01:22:21,679
+every token up until the final answer
+
+1548
+01:22:21,679 --> 01:22:24,239
+um match what was in my data set? All we
+
+1549
+01:22:24,239 --> 01:22:28,040
+do is check the final answer.
+
+1550
+01:22:32,080 --> 01:22:34,880
+Um
+
+1551
+01:22:34,880 --> 01:22:37,120
+and so
+
+1552
+01:22:37,120 --> 01:22:39,520
+uh one thing that sort of one problem
+
+1553
+01:22:39,520 --> 01:22:43,280
+that emerges from that is if you have a
+
+1554
+01:22:43,280 --> 01:22:45,920
+you know really long reasoning chain and
+
+1555
+01:22:45,920 --> 01:22:47,280
+it does get the final answer or it gets
+
+1556
+01:22:47,280 --> 01:22:48,400
+it incorrect you know how do you know
+
+1557
+01:22:48,400 --> 01:22:51,280
+which which tokens in that trajectory
+
+1558
+01:22:51,280 --> 01:22:55,199
+like earn that reward? Um maybe some
+
+1559
+01:22:55,199 --> 01:22:56,560
+maybe the model was going down a path
+
+1560
+01:22:56,560 --> 01:23:00,080
+that was reasonable and you know later
+
+1561
+01:23:00,080 --> 01:23:02,000
+on let's say like a few thousand tokens
+
+1562
+01:23:02,000 --> 01:23:04,560
+in it took a bad path. Uh maybe you
+
+1563
+01:23:04,560 --> 01:23:06,960
+don't want to you know penalize the
+
+1564
+01:23:06,960 --> 01:23:11,040
+quoteunquote good tokens. Um
+
+1565
+01:23:11,040 --> 01:23:12,960
+and like
+
+1566
+01:23:12,960 --> 01:23:16,400
+the I guess the answer to that at the
+
+1567
+01:23:16,400 --> 01:23:19,840
+time was having a critic model. um which
+
+1568
+01:23:19,840 --> 01:23:22,800
+kind of like guesses like okay is this
+
+1569
+01:23:22,800 --> 01:23:26,480
+token that was predicted um
+
+1570
+01:23:26,480 --> 01:23:31,159
+you know better than expected as in
+
+1571
+01:23:31,280 --> 01:23:35,440
+was it already very likely to um you
+
+1572
+01:23:35,440 --> 01:23:38,080
+know output this token because in that
+
+1573
+01:23:38,080 --> 01:23:39,679
+case it probably doesn't deserve to be
+
+1574
+01:23:39,679 --> 01:23:41,600
+rewarded as highly as other unlikely
+
+1575
+01:23:41,600 --> 01:23:43,600
+tokens. Um hopefully that makes a little
+
+1576
+01:23:43,600 --> 01:23:47,040
+bit sense but um that sort of required
+
+1577
+01:23:47,040 --> 01:23:50,800
+like you know training in tandem uh
+
+1578
+01:23:50,800 --> 01:23:54,080
+another model.
+
+1579
+01:23:54,080 --> 01:23:57,679
+Um but this other
+
+1580
+01:23:57,679 --> 01:24:00,639
+uh the solution to that at the time that
+
+1581
+01:24:00,639 --> 01:24:03,199
+kind of like changed um changed things
+
+1582
+01:24:03,199 --> 01:24:04,480
+and made made things a lot more
+
+1583
+01:24:04,480 --> 01:24:06,159
+efficient than having to you know train
+
+1584
+01:24:06,159 --> 01:24:11,440
+another model is um this other policy
+
+1585
+01:24:11,440 --> 01:24:13,360
+optimization group relative policy
+
+1586
+01:24:13,360 --> 01:24:16,400
+optimization. Um
+
+1587
+01:24:16,400 --> 01:24:19,040
+so instead of like
+
+1588
+01:24:19,040 --> 01:24:21,520
+doing one sample and then grading every
+
+1589
+01:24:21,520 --> 01:24:24,000
+token in that trajectory, you sample a
+
+1590
+01:24:24,000 --> 01:24:27,520
+group and then you sort of use
+
+1591
+01:24:27,520 --> 01:24:30,960
+uh you sort of use the
+
+1592
+01:24:30,960 --> 01:24:34,560
+having multiple rollouts as a proxy to
+
+1593
+01:24:34,560 --> 01:24:37,760
+like uh which rewards are more deserving
+
+1594
+01:24:37,760 --> 01:24:40,000
+of credit. So
+
+1595
+01:24:40,000 --> 01:24:42,480
+um as an example,
+
+1596
+01:24:42,480 --> 01:24:45,840
+let's say you have uh on one task four
+
+1597
+01:24:45,840 --> 01:24:47,600
+rollouts or four attempts at that task
+
+1598
+01:24:47,600 --> 01:24:49,840
+and like most of them pass uh but one of
+
+1599
+01:24:49,840 --> 01:24:52,480
+them fail. So that means like the one
+
+1600
+01:24:52,480 --> 01:24:56,159
+that failed was pretty unexpected or
+
+1601
+01:24:56,159 --> 01:24:58,320
+like unlikely. And so we really really
+
+1602
+01:24:58,320 --> 01:25:02,560
+want to make sure those tokens are um
+
+1603
+01:25:02,560 --> 01:25:05,199
+penalized harder than the other ones are
+
+1604
+01:25:05,199 --> 01:25:06,320
+rewarded because it's already pretty
+
+1605
+01:25:06,320 --> 01:25:08,960
+likely to get the correct answer. And if
+
+1606
+01:25:08,960 --> 01:25:11,920
+we don't really take care of this like
+
+1607
+01:25:11,920 --> 01:25:14,480
+relative um
+
+1608
+01:25:14,480 --> 01:25:17,679
+reward, if we reward everything equally
+
+1609
+01:25:17,679 --> 01:25:21,040
+um then you can imagine like
+
+1610
+01:25:21,040 --> 01:25:24,800
+the model converge towards one kind of
+
+1611
+01:25:24,800 --> 01:25:26,560
+way of doing things.
+
+1612
+01:25:26,560 --> 01:25:28,239
+Um so that's kind of the motivation
+
+1613
+01:25:28,239 --> 01:25:31,360
+behind like why we want to assign credit
+
+1614
+01:25:31,360 --> 01:25:35,000
+um particularly
+
+1615
+01:25:35,679 --> 01:25:39,520
+um and this is a yeah so this is sort of
+
+1616
+01:25:39,520 --> 01:25:41,120
+a
+
+1617
+01:25:41,120 --> 01:25:43,360
+example of
+
+1618
+01:25:43,360 --> 01:25:44,560
+what I showed in the previous slide. So
+
+1619
+01:25:44,560 --> 01:25:47,040
+like we have four
+
+1620
+01:25:47,040 --> 01:25:49,760
+trajectories here. One of them received
+
+1621
+01:25:49,760 --> 01:25:52,000
+here. There you go. You know, two of
+
+1622
+01:25:52,000 --> 01:25:55,199
+them received the low reward to receive
+
+1623
+01:25:55,199 --> 01:25:57,760
+the high reward. And I'll just go
+
+1624
+01:25:57,760 --> 01:26:01,400
+quickly over like
+
+1625
+01:26:03,840 --> 01:26:07,280
+what it might look like. Um so you know,
+
+1626
+01:26:07,280 --> 01:26:09,600
+you calculate the advantage based on the
+
+1627
+01:26:09,600 --> 01:26:12,639
+mean reward and then use that to
+
+1628
+01:26:12,639 --> 01:26:13,920
+calculate the loss. And then that sort
+
+1629
+01:26:13,920 --> 01:26:17,679
+of um updates all the weights.
+
+1630
+01:26:17,679 --> 01:26:21,880
+Um and yeah,
+
+1631
+01:26:22,320 --> 01:26:24,385
+and so like
+
+1632
+01:26:24,385 --> 01:26:25,520
+[clears throat] we still haven't really
+
+1633
+01:26:25,520 --> 01:26:27,679
+answered like how how did we get to the
+
+1634
+01:26:27,679 --> 01:26:28,800
+point where models could actually do
+
+1635
+01:26:28,800 --> 01:26:31,440
+things, right? Um
+
+1636
+01:26:31,440 --> 01:26:33,920
+you know to for a model to write code
+
+1637
+01:26:33,920 --> 01:26:36,400
+ideally it could test that code that way
+
+1638
+01:26:36,400 --> 01:26:38,000
+like you know at least you know that it
+
+1639
+01:26:38,000 --> 01:26:40,560
+failed before you know pasting that into
+
+1640
+01:26:40,560 --> 01:26:44,000
+your editor. And so
+
+1641
+01:26:44,000 --> 01:26:46,800
+this is a this is kind of where the
+
+1642
+01:26:46,800 --> 01:26:49,920
+concept of tool calling came where a
+
+1643
+01:26:49,920 --> 01:26:52,560
+model can output certain tokens and
+
+1644
+01:26:52,560 --> 01:26:56,159
+those will get parsed as um kind of a
+
+1645
+01:26:56,159 --> 01:26:57,600
+almost like a function execution
+
+1646
+01:26:57,600 --> 01:27:01,679
+essentially you look at the I think I
+
+1647
+01:27:01,679 --> 01:27:02,639
+have an example on the next slide
+
+1648
+01:27:02,639 --> 01:27:03,679
+actually that'll just make things a
+
+1649
+01:27:03,679 --> 01:27:06,880
+little bit clearer.
+
+1650
+01:27:06,880 --> 01:27:08,880
+No, never mind. So yeah, um essentially
+
+1651
+01:27:08,880 --> 01:27:10,480
+you
+
+1652
+01:27:10,480 --> 01:27:13,199
+look at
+
+1653
+01:27:13,199 --> 01:27:15,440
+special tokens that the model outputs
+
+1654
+01:27:15,440 --> 01:27:17,679
+for
+
+1655
+01:27:17,679 --> 01:27:20,080
+um depending on how you might want to
+
+1656
+01:27:20,080 --> 01:27:22,400
+train it,
+
+1657
+01:27:22,400 --> 01:27:24,639
+you teach it to output tool calls on a
+
+1658
+01:27:24,639 --> 01:27:28,080
+certain format and then um it learns to
+
+1659
+01:27:28,080 --> 01:27:29,840
+you sort of like reward it to output in
+
+1660
+01:27:29,840 --> 01:27:32,000
+the format and then reward it to use
+
+1661
+01:27:32,000 --> 01:27:34,000
+that more often when solving any
+
+1662
+01:27:34,000 --> 01:27:36,560
+problems it might be uh it might be
+
+1663
+01:27:36,560 --> 01:27:37,440
+given.
+
+1664
+01:27:37,440 --> 01:27:40,000
+And then it learns to, you know, when it
+
+1665
+01:27:40,000 --> 01:27:41,440
+uh thinks it needs to call a tool, it
+
+1666
+01:27:41,440 --> 01:27:43,920
+outputs those tokens, wraps whatever it
+
+1667
+01:27:43,920 --> 01:27:46,800
+needs to run. So in this case, um this
+
+1668
+01:27:46,800 --> 01:27:48,800
+model I'm using wanted to run this
+
+1669
+01:27:48,800 --> 01:27:51,040
+command. And so there's a parser not
+
+1670
+01:27:51,040 --> 01:27:54,480
+shown here that waits for an output that
+
+1671
+01:27:54,480 --> 01:27:57,440
+looks like that from a model um
+
+1672
+01:27:57,440 --> 01:27:59,840
+uh that's wrapped around
+
+1673
+01:27:59,840 --> 01:28:03,120
+special um special tokens.
+
+1674
+01:28:03,120 --> 01:28:05,760
+And when it sees that, yeah, kind of
+
+1675
+01:28:05,760 --> 01:28:09,639
+executes that in an environment.
+
+1676
+01:28:10,639 --> 01:28:14,239
+Um, but one tool call isn't really an
+
+1677
+01:28:14,239 --> 01:28:16,880
+agent. An agent is, you know, like we
+
+1678
+01:28:16,880 --> 01:28:18,639
+know them today. They keep on acting
+
+1679
+01:28:18,639 --> 01:28:21,920
+until uh and observing until the task is
+
+1680
+01:28:21,920 --> 01:28:23,360
+done or until it, you know, thinks it's
+
+1681
+01:28:23,360 --> 01:28:25,040
+done.
+
+1682
+01:28:25,040 --> 01:28:27,360
+And um
+
+1683
+01:28:27,360 --> 01:28:30,560
+this is sort of like
+
+1684
+01:28:30,560 --> 01:28:34,239
+uh sort of the evolution that we well
+
+1685
+01:28:34,239 --> 01:28:36,080
+it's a little bit outdated
+
+1686
+01:28:36,080 --> 01:28:38,159
+not not super outdated but um yeah you
+
+1687
+01:28:38,159 --> 01:28:39,440
+guys probably remember at first it was
+
+1688
+01:28:39,440 --> 01:28:42,159
+like you know GitHub co-pilot and then
+
+1689
+01:28:42,159 --> 01:28:43,840
+the agent actually like lived in your
+
+1690
+01:28:43,840 --> 01:28:45,040
+editor and now like we use terminal
+
+1691
+01:28:45,040 --> 01:28:47,679
+agents um or some people might still use
+
+1692
+01:28:47,679 --> 01:28:51,120
+editors or other UIs but yeah and so
+
+1693
+01:28:51,120 --> 01:28:55,679
+like the point is that the the
+
+1694
+01:28:55,679 --> 01:28:58,320
+environment um that we think of like
+
+1695
+01:28:58,320 --> 01:29:00,239
+when we think of reinforcement learning
+
+1696
+01:29:00,239 --> 01:29:02,400
+became a computer because you know these
+
+1697
+01:29:02,400 --> 01:29:05,120
+agents coding agents they need to call
+
+1698
+01:29:05,120 --> 01:29:07,600
+tools that you know file editing tool
+
+1699
+01:29:07,600 --> 01:29:09,920
+code execution tool has to be executed
+
+1700
+01:29:09,920 --> 01:29:13,360
+in some compute environment and so like
+
+1701
+01:29:13,360 --> 01:29:15,920
+training an agent now
+
+1702
+01:29:15,920 --> 01:29:17,920
+you know you have to deal this was the
+
+1703
+01:29:17,920 --> 01:29:20,080
+case previously but now it's like at a
+
+1704
+01:29:20,080 --> 01:29:22,320
+larger scale you sort of like have to
+
+1705
+01:29:22,320 --> 01:29:23,840
+deal a lot with cloud
+
+1706
+01:29:23,840 --> 01:29:25,679
+infrastructure and handling that. Um
+
+1707
+01:29:25,679 --> 01:29:29,120
+that's sort of um like I said earlier,
+
+1708
+01:29:29,120 --> 01:29:31,760
+yeah, one of the reasons why um people
+
+1709
+01:29:31,760 --> 01:29:34,560
+use Daytona for reinforce reinforcement
+
+1710
+01:29:34,560 --> 01:29:38,400
+learning. Um, and actually to make that
+
+1711
+01:29:38,400 --> 01:29:39,840
+more concrete, my teammate at is
+
+1712
+01:29:39,840 --> 01:29:41,280
+going to come up and kind of show you
+
+1713
+01:29:41,280 --> 01:29:44,320
+guys some uh go over how our
+
+1714
+01:29:44,320 --> 01:29:45,920
+infrastructure fits in, what role we
+
+1715
+01:29:45,920 --> 01:29:49,440
+play, and um some modern techniques and
+
+1716
+01:29:49,440 --> 01:29:51,360
+examples
+
+1717
+01:29:51,360 --> 01:29:53,440
+that um you know, hopefully is helpful
+
+1718
+01:29:53,440 --> 01:29:56,159
+in understanding like now now that
+
+1719
+01:29:56,159 --> 01:29:57,440
+you've kind of got a grasp of the
+
+1720
+01:29:57,440 --> 01:29:59,040
+history like what does it actually look
+
+1721
+01:29:59,040 --> 01:30:01,840
+like today. Um so yeah, thank you all
+
+1722
+01:30:01,840 --> 01:30:03,360
+for listening. Um, again, apologies for
+
+1723
+01:30:03,360 --> 01:30:05,120
+the technical difficulties earlier, but
+
+1724
+01:30:05,120 --> 01:30:06,719
+um,
+
+1725
+01:30:06,719 --> 01:30:10,920
+uh, yeah, hope you guys enjoyed.
+
+1726
+01:30:14,320 --> 01:30:17,360
+Yeah, thanks Muhammad. Um, so yeah, I'm
+
+1727
+01:30:17,360 --> 01:30:20,400
+going to like show some, you know,
+
+1728
+01:30:20,400 --> 01:30:26,320
+specific examples of um, yeah, like
+
+1729
+01:30:26,320 --> 01:30:30,159
+RL training runs which use a sandbox. Um
+
+1730
+01:30:30,159 --> 01:30:32,960
+and yeah also like examine okay so so
+
+1731
+01:30:32,960 --> 01:30:34,880
+like what does modern reinforcement
+
+1732
+01:30:34,880 --> 01:30:38,000
+learning look like? um you know like
+
+1733
+01:30:38,000 --> 01:30:39,679
+there's a lot of we don't like
+
+1734
+01:30:39,679 --> 01:30:41,520
+necessarily know we don't really know
+
+1735
+01:30:41,520 --> 01:30:44,080
+like how the open AI models that have
+
+1736
+01:30:44,080 --> 01:30:45,679
+solved you know all these open
+
+1737
+01:30:45,679 --> 01:30:48,480
+mathematical problems have been trained
+
+1738
+01:30:48,480 --> 01:30:50,880
+but we do know like a lot of about at
+
+1739
+01:30:50,880 --> 01:30:56,719
+least Chinese models Kimmy K2 um GLM and
+
+1740
+01:30:56,719 --> 01:30:59,360
+then also into west the composer too
+
+1741
+01:30:59,360 --> 01:31:01,360
+which is also based on Kim but yeah so
+
+1742
+01:31:01,360 --> 01:31:03,920
+like we do know some things about you
+
+1743
+01:31:03,920 --> 01:31:07,440
+know how the modern an RL is done and
+
+1744
+01:31:07,440 --> 01:31:09,520
+you know one thing that we do know is
+
+1745
+01:31:09,520 --> 01:31:13,520
+that you know it's done in sandboxes um
+
+1746
+01:31:13,520 --> 01:31:17,120
+which means you know every uh you know
+
+1747
+01:31:17,120 --> 01:31:21,040
+agent gets an isolated computer in which
+
+1748
+01:31:21,040 --> 01:31:26,239
+it you know does a certain task um and
+
+1749
+01:31:26,239 --> 01:31:28,080
+then it's graded based on some
+
+1750
+01:31:28,080 --> 01:31:30,639
+verifiable criterion I mean there's also
+
+1751
+01:31:30,639 --> 01:31:32,880
+like more things that come to it and
+
+1752
+01:31:32,880 --> 01:31:35,840
+we're going to see some of them Um but
+
+1753
+01:31:35,840 --> 01:31:38,000
+overall yeah that's that's kind of the
+
+1754
+01:31:38,000 --> 01:31:39,920
+standard right now which is you know
+
+1755
+01:31:39,920 --> 01:31:44,320
+just um roll outs in their sandboxes. Um
+
+1756
+01:31:44,320 --> 01:31:46,400
+and that's also kind of a side effect of
+
+1757
+01:31:46,400 --> 01:31:49,440
+nowadays coding being the biggest uh
+
+1758
+01:31:49,440 --> 01:31:53,120
+biggest application of these models. Um
+
+1759
+01:31:53,120 --> 01:31:55,679
+so yeah um we're gonna see like a
+
+1760
+01:31:55,679 --> 01:31:58,880
+specific training run on quen 38
+
+1761
+01:31:58,880 --> 01:32:02,639
+billion. Um we're just doing some
+
+1762
+01:32:02,639 --> 01:32:05,440
+standard Python things in a terminal
+
+1763
+01:32:05,440 --> 01:32:08,239
+basically and you know we're just going
+
+1764
+01:32:08,239 --> 01:32:10,080
+to like examine what happened during
+
+1765
+01:32:10,080 --> 01:32:12,480
+that run. Um some things might
+
+1766
+01:32:12,480 --> 01:32:15,120
+generalize like big training runs some
+
+1767
+01:32:15,120 --> 01:32:18,000
+might not. Uh but yeah um and yeah for
+
+1768
+01:32:18,000 --> 01:32:20,560
+this example we're going to be using uh
+
+1769
+01:32:20,560 --> 01:32:26,159
+sky RL for like the trainer part and um
+
+1770
+01:32:26,159 --> 01:32:29,600
+harbor for the environments and rollout
+
+1771
+01:32:29,600 --> 01:32:32,320
+part and uh the environment is going to
+
+1772
+01:32:32,320 --> 01:32:34,719
+be daton sandboxes basically uh but I
+
+1773
+01:32:34,719 --> 01:32:37,520
+mean it's a it could be run in any kind
+
+1774
+01:32:37,520 --> 01:32:43,719
+of sandbox um so yeah and it's a
+
+1775
+01:32:44,000 --> 01:32:46,000
+I mean this kind of points to one thing
+
+1776
+01:32:46,000 --> 01:32:49,040
+that is like maybe worth mentioning
+
+1777
+01:32:49,040 --> 01:32:51,679
+which is that you know in RL you
+
+1778
+01:32:51,679 --> 01:32:54,320
+basically have two parts. One is the
+
+1779
+01:32:54,320 --> 01:32:57,520
+part that generates your rollouts um and
+
+1780
+01:32:57,520 --> 01:32:59,600
+the other is the trainer which updates
+
+1781
+01:32:59,600 --> 01:33:02,719
+the weights and you know they nowadays
+
+1782
+01:33:02,719 --> 01:33:04,560
+you know usually you have like different
+
+1783
+01:33:04,560 --> 01:33:07,040
+libraries dealing with each of them and
+
+1784
+01:33:07,040 --> 01:33:08,719
+then you have like some different
+
+1785
+01:33:08,719 --> 01:33:12,159
+sandbox substrate. Um so yeah that
+
+1786
+01:33:12,159 --> 01:33:15,600
+that's uh one kind of distinction worth
+
+1787
+01:33:15,600 --> 01:33:20,880
+keeping in mind. Um so this is one uh
+
+1788
+01:33:20,880 --> 01:33:23,840
+this is kind of the the case study of
+
+1789
+01:33:23,840 --> 01:33:26,000
+reinforcement learning run. It's quent
+
+1790
+01:33:26,000 --> 01:33:27,920
+38 billion
+
+1791
+01:33:27,920 --> 01:33:31,840
+um you know run on eight H100s over four
+
+1792
+01:33:31,840 --> 01:33:35,360
+hours um starting with about 30%
+
+1793
+01:33:35,360 --> 01:33:40,080
+accuracy or rather the the 0.3 reward
+
+1794
+01:33:40,080 --> 01:33:41,840
+but that is basically because this is
+
+1795
+01:33:41,840 --> 01:33:44,880
+the binary reward that that corresponds
+
+1796
+01:33:44,880 --> 01:33:47,679
+to the accuracy and solving these coding
+
+1797
+01:33:47,679 --> 01:33:49,360
+tasks.
+
+1798
+01:33:49,360 --> 01:33:55,679
+um you know four hours over which 1440
+
+1799
+01:33:55,679 --> 01:34:00,000
+rollouts happened um you rather it tried
+
+1800
+01:34:00,000 --> 01:34:02,320
+to solve that many problems of course
+
+1801
+01:34:02,320 --> 01:34:04,400
+some of them repeating
+
+1802
+01:34:04,400 --> 01:34:07,840
+um so yeah we're going to just
+
+1803
+01:34:07,840 --> 01:34:10,800
+hop into this different slide where
+
+1804
+01:34:10,800 --> 01:34:13,679
+we're basically going to see
+
+1805
+01:34:13,679 --> 01:34:17,600
+that training run sped up um sped up
+
+1806
+01:34:17,600 --> 01:34:21,760
+like 60 times here. Um, so here we can
+
+1807
+01:34:21,760 --> 01:34:25,280
+see it GPU utilization which is going to
+
+1808
+01:34:25,280 --> 01:34:29,520
+be a bit jumpy. Um, in some like uh
+
+1809
+01:34:29,520 --> 01:34:32,080
+super optimized uh setups you wouldn't
+
+1810
+01:34:32,080 --> 01:34:35,600
+like have it super jumpy but here there
+
+1811
+01:34:35,600 --> 01:34:38,880
+like some downtime as the sandboxes
+
+1812
+01:34:38,880 --> 01:34:42,880
+start up um and as the episodes wind
+
+1813
+01:34:42,880 --> 01:34:45,440
+down basically. Uh but yeah basically
+
+1814
+01:34:45,440 --> 01:34:48,800
+you can see so this is like going at 60
+
+1815
+01:34:48,800 --> 01:34:51,120
+times. So each second represents like
+
+1816
+01:34:51,120 --> 01:34:55,679
+one second of the training run. Um here
+
+1817
+01:34:55,679 --> 01:34:59,040
+you can see so each step involves eight
+
+1818
+01:34:59,040 --> 01:35:01,360
+tasks four rollouts for each of those
+
+1819
+01:35:01,360 --> 01:35:04,080
+tasks. Some of them fail some of them
+
+1820
+01:35:04,080 --> 01:35:08,560
+succeed. U sandboxes are getting created
+
+1821
+01:35:08,560 --> 01:35:12,719
+all the time. uh in each step 32 of them
+
+1822
+01:35:12,719 --> 01:35:17,760
+then torn down um the reward is like
+
+1823
+01:35:17,760 --> 01:35:22,080
+slowly climbing up um over this time.
+
+1824
+01:35:22,080 --> 01:35:24,320
+You can also see like the breakdown here
+
+1825
+01:35:24,320 --> 01:35:27,040
+of like okay so each individual step in
+
+1826
+01:35:27,040 --> 01:35:30,800
+this training run how much does each of
+
+1827
+01:35:30,800 --> 01:35:34,560
+its like subcomponents take? Um and you
+
+1828
+01:35:34,560 --> 01:35:37,199
+know usually it is in in RL training
+
+1829
+01:35:37,199 --> 01:35:39,760
+runs that like most of the time you
+
+1830
+01:35:39,760 --> 01:35:43,600
+spend on um an on actual roll out so
+
+1831
+01:35:43,600 --> 01:35:47,199
+like the model acting um you know
+
+1832
+01:35:47,199 --> 01:35:50,000
+generating its turns etc. But then you
+
+1833
+01:35:50,000 --> 01:35:53,600
+also have the where like you know doing
+
+1834
+01:35:53,600 --> 01:35:55,760
+the backwards pass which can also be
+
+1835
+01:35:55,760 --> 01:35:58,239
+like kind of a non-trivial part of it.
+
+1836
+01:35:58,239 --> 01:36:01,760
+Um and you also have the the weight
+
+1837
+01:36:01,760 --> 01:36:05,600
+syncing. Uh so after you you've updated
+
+1838
+01:36:05,600 --> 01:36:08,320
+the weights, you want to like the so in
+
+1839
+01:36:08,320 --> 01:36:12,080
+your trainer part, you want your uh roll
+
+1840
+01:36:12,080 --> 01:36:15,120
+out generator parts to get new weights
+
+1841
+01:36:15,120 --> 01:36:18,400
+or other new policy. Um yeah, this is an
+
+1842
+01:36:18,400 --> 01:36:21,679
+example of like a completely synchronous
+
+1843
+01:36:21,679 --> 01:36:25,840
+reinforcement learning run. Um so that
+
+1844
+01:36:25,840 --> 01:36:28,480
+yeah you just do one step you update the
+
+1845
+01:36:28,480 --> 01:36:31,840
+weights you u update the policy or
+
+1846
+01:36:31,840 --> 01:36:35,600
+update more update the weights um and
+
+1847
+01:36:35,600 --> 01:36:38,159
+then you do the next step the future
+
+1848
+01:36:38,159 --> 01:36:40,159
+rollouts with completely new weights
+
+1849
+01:36:40,159 --> 01:36:43,280
+updated um so this is like one of the
+
+1850
+01:36:43,280 --> 01:36:45,679
+things that's done a bit differently in
+
+1851
+01:36:45,679 --> 01:36:48,560
+in the name of like uh efficiency
+
+1852
+01:36:48,560 --> 01:36:51,600
+nowadays um there's like a few
+
+1853
+01:36:51,600 --> 01:36:53,199
+optimizations we are going to see and
+
+1854
+01:36:53,199 --> 01:36:55,520
+that are like used in like these big
+
+1855
+01:36:55,520 --> 01:36:59,920
+training runs such as Gimme K3 and GLM
+
+1856
+01:36:59,920 --> 01:37:03,040
+runs. Um but yeah, this is like wrapping
+
+1857
+01:37:03,040 --> 01:37:06,880
+up slowly. Um this training run I mean
+
+1858
+01:37:06,880 --> 01:37:11,760
+sped up 60 times. Um but yeah, the the
+
+1859
+01:37:11,760 --> 01:37:15,199
+kind of the thing to notice here is yeah
+
+1860
+01:37:15,199 --> 01:37:17,760
+just there's like this whole cycle. Some
+
+1861
+01:37:17,760 --> 01:37:20,719
+of it involves the weight. Some of it is
+
+1862
+01:37:20,719 --> 01:37:24,159
+uh related to sandboxes which spawn for
+
+1863
+01:37:24,159 --> 01:37:29,280
+uh for individual rollouts in each step.
+
+1864
+01:37:29,280 --> 01:37:30,800
+Yeah.
+
+1865
+01:37:30,800 --> 01:37:36,719
+Um so yeah one kind of thing that um you
+
+1866
+01:37:36,719 --> 01:37:38,159
+know I think it's kind of interesting
+
+1867
+01:37:38,159 --> 01:37:40,480
+about reinforcement learning is that you
+
+1868
+01:37:40,480 --> 01:37:43,040
+know in some ways it can be more
+
+1869
+01:37:43,040 --> 01:37:46,320
+interpretable than like pre-training.
+
+1870
+01:37:46,320 --> 01:37:48,320
+um because
+
+1871
+01:37:48,320 --> 01:37:50,080
+usually like the volume of the of data
+
+1872
+01:37:50,080 --> 01:37:52,400
+is smaller and you can just look at the
+
+1873
+01:37:52,400 --> 01:37:54,800
+trajectories and see you know what the
+
+1874
+01:37:54,800 --> 01:37:58,560
+model found that worked um
+
+1875
+01:37:58,560 --> 01:38:00,320
+just you know like kind of analyze them
+
+1876
+01:38:00,320 --> 01:38:03,040
+there's a there's a much smaller amount
+
+1877
+01:38:03,040 --> 01:38:04,960
+of data basically so in this previous
+
+1878
+01:38:04,960 --> 01:38:08,480
+run uh so model went from you know like
+
+1879
+01:38:08,480 --> 01:38:11,760
+let's say 30% success to approximately
+
+1880
+01:38:11,760 --> 01:38:15,440
+60% success um but kind of an
+
+1881
+01:38:15,440 --> 01:38:17,520
+interesting ing thing is just to notice
+
+1882
+01:38:17,520 --> 01:38:20,159
+what it kind of learned. It didn't learn
+
+1883
+01:38:20,159 --> 01:38:23,520
+some new insights about algorithms and
+
+1884
+01:38:23,520 --> 01:38:26,320
+such thingies, but it just learn to
+
+1885
+01:38:26,320 --> 01:38:28,960
+format, you know, what it wrote better.
+
+1886
+01:38:28,960 --> 01:38:31,040
+So, it didn't do like double quoting
+
+1887
+01:38:31,040 --> 01:38:33,119
+inside double quotes when it wrote
+
+1888
+01:38:33,119 --> 01:38:36,560
+things to a Python file to a text file.
+
+1889
+01:38:36,560 --> 01:38:40,400
+Um, it didn't uh, you know, one of the
+
+1890
+01:38:40,400 --> 01:38:42,239
+things that tripped it up. So it
+
+1891
+01:38:42,239 --> 01:38:44,880
+happened in about a quarter of rollouts
+
+1892
+01:38:44,880 --> 01:38:48,719
+at the start was it would output the you
+
+1893
+01:38:48,719 --> 01:38:51,920
+know the literal new line character
+
+1894
+01:38:51,920 --> 01:38:55,119
+rather than actual new line and so so
+
+1895
+01:38:55,119 --> 01:38:57,280
+like that's those are the things that
+
+1896
+01:38:57,280 --> 01:38:58,800
+the model kind of actually learned
+
+1897
+01:38:58,800 --> 01:39:01,920
+during this training run and it kind of
+
+1898
+01:39:01,920 --> 01:39:04,719
+connects to that um you know whole
+
+1899
+01:39:04,719 --> 01:39:08,320
+debate like whether RL actually teaches
+
+1900
+01:39:08,320 --> 01:39:10,480
+the model new things or does it just
+
+1901
+01:39:10,480 --> 01:39:12,400
+like reinforcing things that were
+
+1902
+01:39:12,400 --> 01:39:16,159
+thought to it during pre-training. Um,
+
+1903
+01:39:16,159 --> 01:39:18,400
+and I mean at least in this example, you
+
+1904
+01:39:18,400 --> 01:39:20,000
+know, we we could just say that the
+
+1905
+01:39:20,000 --> 01:39:23,840
+model mostly learn to like deal with the
+
+1906
+01:39:23,840 --> 01:39:28,400
+format of things like that to to um deal
+
+1907
+01:39:28,400 --> 01:39:32,320
+with it with harness uh rather than
+
+1908
+01:39:32,320 --> 01:39:35,119
+learning some like new algorithmic
+
+1909
+01:39:35,119 --> 01:39:40,400
+thingies. uh uh so yeah um in each roll
+
+1910
+01:39:40,400 --> 01:39:43,199
+out you basically only train on the
+
+1911
+01:39:43,199 --> 01:39:45,520
+agent tokens you'll have al also like
+
+1912
+01:39:45,520 --> 01:39:47,760
+dual results etc etc so I mean this is a
+
+1913
+01:39:47,760 --> 01:39:50,080
+bit of a
+
+1914
+01:39:50,080 --> 01:39:51,840
+a bit of a technical thing about on
+
+1915
+01:39:51,840 --> 01:39:54,159
+which tokens to actually train but yeah
+
+1916
+01:39:54,159 --> 01:39:56,719
+let's go into the meat of like okay so
+
+1917
+01:39:56,719 --> 01:39:59,440
+what happened during like some of these
+
+1918
+01:39:59,440 --> 01:40:03,119
+big recent training runs um yeah kic
+
+1919
+01:40:03,119 --> 01:40:04,320
+there's like a lot of a lot of
+
+1920
+01:40:04,320 --> 01:40:06,400
+interesting details in their tech
+
+1921
+01:40:06,400 --> 01:40:10,080
+report. Um, and you know that they do
+
+1922
+01:40:10,080 --> 01:40:13,040
+state exactly that they used 51 million
+
+1923
+01:40:13,040 --> 01:40:16,320
+sandboxes. Um,
+
+1924
+01:40:16,320 --> 01:40:20,400
+uh, they also like used microVMs for it.
+
+1925
+01:40:20,400 --> 01:40:24,159
+Um, and in particular there's like one
+
+1926
+01:40:24,159 --> 01:40:26,080
+one interesting
+
+1927
+01:40:26,080 --> 01:40:28,560
+uh feature of like microVM. So they like
+
+1928
+01:40:28,560 --> 01:40:31,199
+used the pause feature a lot because
+
+1929
+01:40:31,199 --> 01:40:34,480
+Kimmy like tends to think a lot between
+
+1930
+01:40:34,480 --> 01:40:37,920
+turns and so so basically what this
+
+1931
+01:40:37,920 --> 01:40:40,320
+means is that you can like pause the
+
+1932
+01:40:40,320 --> 01:40:44,719
+sandbox between the turns um while it's
+
+1933
+01:40:44,719 --> 01:40:47,280
+doing the thinking so it's not using up
+
+1934
+01:40:47,280 --> 01:40:50,960
+the compute resources. Um so yeah
+
+1935
+01:40:50,960 --> 01:40:53,760
+there's like um
+
+1936
+01:40:53,760 --> 01:40:56,239
+uh like a lot of interesting details.
+
+1937
+01:40:56,239 --> 01:40:58,719
+One of them is like how did they prepare
+
+1938
+01:40:58,719 --> 01:41:02,320
+the model to like be ready for you know
+
+1939
+01:41:02,320 --> 01:41:04,639
+any hardness that could be thrown to at
+
+1940
+01:41:04,639 --> 01:41:07,760
+it like so it works at Kimmy Schmi code
+
+1941
+01:41:07,760 --> 01:41:10,560
+but it also you know works at cloud
+
+1942
+01:41:10,560 --> 01:41:14,320
+codecs etc etc and what they did what
+
+1943
+01:41:14,320 --> 01:41:17,920
+they did was like a a dynamic harness
+
+1944
+01:41:17,920 --> 01:41:21,119
+where they like basically have a config
+
+1945
+01:41:21,119 --> 01:41:23,280
+which turns off and on various like
+
+1946
+01:41:23,280 --> 01:41:25,840
+aspects of harness like system prompts
+
+1947
+01:41:25,840 --> 01:41:29,520
+sub agents, memories, skills, etc. And
+
+1948
+01:41:29,520 --> 01:41:32,320
+like doing that, they kind of like use
+
+1949
+01:41:32,320 --> 01:41:36,960
+this as a data augmentation access. Um,
+
+1950
+01:41:36,960 --> 01:41:39,280
+so they like get
+
+1951
+01:41:39,280 --> 01:41:41,040
+data augmentation. They they they
+
+1952
+01:41:41,040 --> 01:41:43,199
+prepared the model for like all the
+
+1953
+01:41:43,199 --> 01:41:45,040
+current hardnesses, but also like
+
+1954
+01:41:45,040 --> 01:41:47,840
+probably some future ones because it's
+
+1955
+01:41:47,840 --> 01:41:50,960
+um it's trained on many permutations of
+
+1956
+01:41:50,960 --> 01:41:53,280
+features of the harness.
+
+1957
+01:41:53,280 --> 01:41:55,760
+Um yeah that's that's kind of a
+
+1958
+01:41:55,760 --> 01:41:58,560
+interesting contrast with the composer 2
+
+1959
+01:41:58,560 --> 01:42:01,199
+approach because composer 2 which is
+
+1960
+01:42:01,199 --> 01:42:04,480
+cursor's um model they basically like
+
+1961
+01:42:04,480 --> 01:42:06,880
+specifically trained it on the harness
+
+1962
+01:42:06,880 --> 01:42:12,239
+for for cursor. So like like um Kimy's
+
+1963
+01:42:12,239 --> 01:42:15,199
+approach is basically diversity harness
+
+1964
+01:42:15,199 --> 01:42:17,520
+diversity and achieving robustness to
+
+1965
+01:42:17,520 --> 01:42:19,920
+anything you could throw at it. while
+
+1966
+01:42:19,920 --> 01:42:23,199
+the composer to approach from cursor was
+
+1967
+01:42:23,199 --> 01:42:25,679
+like let's get this model really ready
+
+1968
+01:42:25,679 --> 01:42:31,119
+for for cursor. Um so that is kind of a
+
+1969
+01:42:31,119 --> 01:42:33,119
+quite a different approach to to
+
+1970
+01:42:33,119 --> 01:42:36,800
+preparing the model for it agentic work.
+
+1971
+01:42:36,800 --> 01:42:41,600
+Um so yeah um here's like a couple of
+
+1972
+01:42:41,600 --> 01:42:43,840
+other kind of interesting aspects of
+
+1973
+01:42:43,840 --> 01:42:47,199
+Kimik training. Um I mean this is about
+
+1974
+01:42:47,199 --> 01:42:49,679
+how they taught it different reasoning
+
+1975
+01:42:49,679 --> 01:42:52,960
+levels. Um they were basically just you
+
+1976
+01:42:52,960 --> 01:42:56,560
+know for a given reasoning level
+
+1977
+01:42:56,560 --> 01:42:58,800
+give some token budget which is also
+
+1978
+01:42:58,800 --> 01:43:02,239
+like problem dependent. Uh and then also
+
+1979
+01:43:02,239 --> 01:43:04,320
+like just if the model went over the
+
+1980
+01:43:04,320 --> 01:43:06,880
+token budget, they would just um you
+
+1981
+01:43:06,880 --> 01:43:11,199
+know just give it minus one reward. Um
+
+1982
+01:43:11,199 --> 01:43:14,159
+irregard irregardless of where it was
+
+1983
+01:43:14,159 --> 01:43:17,040
+right actually. Um
+
+1984
+01:43:17,040 --> 01:43:18,960
+and yeah, so like the final model
+
+1985
+01:43:18,960 --> 01:43:21,360
+actually comp was composed of nine
+
+1986
+01:43:21,360 --> 01:43:25,440
+reinforcement learning learning runs. um
+
+1987
+01:43:25,440 --> 01:43:29,040
+which are then you know we then on
+
+1988
+01:43:29,040 --> 01:43:31,600
+policy distilled onto the final model.
+
+1989
+01:43:31,600 --> 01:43:34,639
+Um and so so they do did like nine
+
+1990
+01:43:34,639 --> 01:43:39,679
+models. Uh so the matrix one model for
+
+1991
+01:43:39,679 --> 01:43:43,199
+each reasoning level low, high and max
+
+1992
+01:43:43,199 --> 01:43:46,960
+but also they had like general model
+
+1993
+01:43:46,960 --> 01:43:49,600
+like general conversations the agent
+
+1994
+01:43:49,600 --> 01:43:53,199
+agentic model and a coding model. Um so
+
+1995
+01:43:53,199 --> 01:43:55,040
+there was like nine separate
+
+1996
+01:43:55,040 --> 01:43:57,840
+reinforcement learning runs and then all
+
+1997
+01:43:57,840 --> 01:44:00,239
+of them got distilled into the final
+
+1998
+01:44:00,239 --> 01:44:04,239
+model. So I mean they did verifiably did
+
+1999
+01:44:04,239 --> 01:44:09,199
+some distillation. Um we just uh we just
+
+2000
+01:44:09,199 --> 01:44:11,280
+don't know if it was also on some other
+
+2001
+01:44:11,280 --> 01:44:13,600
+models but this like kind of approach of
+
+2002
+01:44:13,600 --> 01:44:16,080
+training expert models and then
+
+2003
+01:44:16,080 --> 01:44:18,159
+distilling them onto your kind of main
+
+2004
+01:44:18,159 --> 01:44:21,440
+model. Um so yeah the on policy
+
+2005
+01:44:21,440 --> 01:44:24,560
+distillation is kind of a technique
+
+2006
+01:44:24,560 --> 01:44:27,119
+that's now nowadays used a lot and it
+
+2007
+01:44:27,119 --> 01:44:28,960
+kind of composes nicely with
+
+2008
+01:44:28,960 --> 01:44:32,320
+reinforcement learning in general. Um so
+
+2009
+01:44:32,320 --> 01:44:35,679
+basically as in this Kim K3 example they
+
+2010
+01:44:35,679 --> 01:44:38,320
+had like you know let's say say some you
+
+2011
+01:44:38,320 --> 01:44:41,440
+know coding expert model and then they
+
+2012
+01:44:41,440 --> 01:44:45,760
+would generate rollouts with their you
+
+2013
+01:44:45,760 --> 01:44:48,320
+know generalist model
+
+2014
+01:44:48,320 --> 01:44:50,159
+um which is not to be confused with the
+
+2015
+01:44:50,159 --> 01:44:53,119
+general um
+
+2016
+01:44:53,119 --> 01:44:55,199
+general model in the previous slide but
+
+2017
+01:44:55,199 --> 01:44:57,600
+just like their final model. they would
+
+2018
+01:44:57,600 --> 01:44:59,920
+generate rollouts with it and they would
+
+2019
+01:44:59,920 --> 01:45:03,679
+score its tokens with the expert model.
+
+2020
+01:45:03,679 --> 01:45:06,639
+Um and that way they would like you know
+
+2021
+01:45:06,639 --> 01:45:10,320
+they would distill all these models um
+
+2022
+01:45:10,320 --> 01:45:12,400
+you know kind of impart part of their
+
+2023
+01:45:12,400 --> 01:45:15,280
+wisdom into the final model. Um and this
+
+2024
+01:45:15,280 --> 01:45:18,080
+is like a pretty versatile technique.
+
+2025
+01:45:18,080 --> 01:45:20,239
+You need to you know you need to access
+
+2026
+01:45:20,239 --> 01:45:22,639
+to the model so you can get its full log
+
+2027
+01:45:22,639 --> 01:45:25,679
+props for for every token. But yeah, if
+
+2028
+01:45:25,679 --> 01:45:29,040
+you do it's um it's pretty powerful for
+
+2029
+01:45:29,040 --> 01:45:31,840
+you know distilling or going from a from
+
+2030
+01:45:31,840 --> 01:45:35,679
+a teacher to a stu student model.
+
+2031
+01:45:35,679 --> 01:45:38,560
+Um and yeah another kind of like
+
+2032
+01:45:38,560 --> 01:45:40,560
+interesting thing nowadays is that yeah
+
+2033
+01:45:40,560 --> 01:45:43,360
+you need like a lot of environments um
+
+2034
+01:45:43,360 --> 01:45:45,760
+and that's like a pretty big industry
+
+2035
+01:45:45,760 --> 01:45:50,320
+nowadays. Um but Kimikry and GM at least
+
+2036
+01:45:50,320 --> 01:45:52,800
+like do share some details about how
+
+2037
+01:45:52,800 --> 01:45:55,440
+they actually make synthetic
+
+2038
+01:45:55,440 --> 01:45:57,360
+environments with their with their
+
+2039
+01:45:57,360 --> 01:46:00,000
+agents. Um
+
+2040
+01:46:00,000 --> 01:46:02,320
+so like there like a lot of variety
+
+2041
+01:46:02,320 --> 01:46:06,960
+there. Um and uh Kimik3 actually has
+
+2042
+01:46:06,960 --> 01:46:10,880
+like this big directed cyclic graph of
+
+2043
+01:46:10,880 --> 01:46:13,360
+like the internet where like they try to
+
+2044
+01:46:13,360 --> 01:46:16,080
+like cover every area with some
+
+2045
+01:46:16,080 --> 01:46:20,159
+synthetic environment. Um and just yeah
+
+2046
+01:46:20,159 --> 01:46:22,639
+the the
+
+2047
+01:46:22,639 --> 01:46:25,679
+kind of the environments is a new form
+
+2048
+01:46:25,679 --> 01:46:27,760
+of data so to say. So so previously
+
+2049
+01:46:27,760 --> 01:46:29,840
+would like try to increase your data set
+
+2050
+01:46:29,840 --> 01:46:32,480
+as much as as you could. Nowadays like
+
+2051
+01:46:32,480 --> 01:46:34,239
+there's a lot decent amount of
+
+2052
+01:46:34,239 --> 01:46:36,400
+pre-training data on the internet but
+
+2053
+01:46:36,400 --> 01:46:38,560
+there's like not that many environments
+
+2054
+01:46:38,560 --> 01:46:42,560
+and the environments are the currently
+
+2055
+01:46:42,560 --> 01:46:46,560
+actually valuable part of the kind of
+
+2056
+01:46:46,560 --> 01:46:49,520
+the data stack and then you know you
+
+2057
+01:46:49,520 --> 01:46:51,760
+want to employ your models into building
+
+2058
+01:46:51,760 --> 01:46:54,159
+better and better environments.
+
+2059
+01:46:54,159 --> 01:46:55,679
+Um
+
+2060
+01:46:55,679 --> 01:46:58,080
+so yeah um
+
+2061
+01:46:58,080 --> 01:47:00,400
+one other thing that's like pretty
+
+2062
+01:47:00,400 --> 01:47:02,639
+prominent with the current models is
+
+2063
+01:47:02,639 --> 01:47:05,280
+like the prevalence of reward hacking
+
+2064
+01:47:05,280 --> 01:47:06,880
+which is basically when a model does
+
+2065
+01:47:06,880 --> 01:47:10,239
+something that kind of on the paper
+
+2066
+01:47:10,239 --> 01:47:13,520
+satisfies your reward satisfy your
+
+2067
+01:47:13,520 --> 01:47:16,159
+verifier but it doesn't like actually
+
+2068
+01:47:16,159 --> 01:47:18,880
+correspond to the actual thing that was
+
+2069
+01:47:18,880 --> 01:47:22,320
+um supposed to be done. So there's like
+
+2070
+01:47:22,320 --> 01:47:25,360
+this very famous illustration of reward
+
+2071
+01:47:25,360 --> 01:47:29,119
+hacking from 2016 from OpenAI from like
+
+2072
+01:47:29,119 --> 01:47:31,440
+a very simplistic game where the model
+
+2073
+01:47:31,440 --> 01:47:34,320
+was you know it was supposed to learn
+
+2074
+01:47:34,320 --> 01:47:36,320
+this game but it just like learned to
+
+2075
+01:47:36,320 --> 01:47:38,480
+spin in a circle and collect these kind
+
+2076
+01:47:38,480 --> 01:47:43,280
+of score packets. Um and yeah so what
+
+2077
+01:47:43,280 --> 01:47:45,199
+one says with LLMs is you know something
+
+2078
+01:47:45,199 --> 01:47:47,280
+like this but just a lot more
+
+2079
+01:47:47,280 --> 01:47:49,679
+sophisticated because you know your kind
+
+2080
+01:47:49,679 --> 01:47:52,800
+of policy is actually
+
+2081
+01:47:52,800 --> 01:47:54,960
+you know an intelligent agent which is
+
+2082
+01:47:54,960 --> 01:47:57,119
+you know actually trying to and you know
+
+2083
+01:47:57,119 --> 01:48:00,400
+now as we know actually um reward
+
+2084
+01:48:00,400 --> 01:48:03,520
+hacking has like kind of become literal
+
+2085
+01:48:03,520 --> 01:48:07,520
+um it has you know has literally become
+
+2086
+01:48:07,520 --> 01:48:10,800
+hacking nowadays um at least in in some
+
+2087
+01:48:10,800 --> 01:48:15,119
+cases. Um so yeah, there's like Kimmy
+
+2088
+01:48:15,119 --> 01:48:18,080
+and GLM at least talk like a lot about
+
+2089
+01:48:18,080 --> 01:48:20,080
+um you know these specific measures that
+
+2090
+01:48:20,080 --> 01:48:22,560
+they took. So for various kind of en
+
+2091
+01:48:22,560 --> 01:48:24,639
+environments they do different
+
+2092
+01:48:24,639 --> 01:48:27,040
+interventions that prevent uh that you
+
+2093
+01:48:27,040 --> 01:48:30,960
+know supposed to prevent or amilarate um
+
+2094
+01:48:30,960 --> 01:48:33,040
+reward hacking and like for example
+
+2095
+01:48:33,040 --> 01:48:36,480
+writing kernels is like one of the
+
+2096
+01:48:36,480 --> 01:48:38,880
+environments in which there's like a lot
+
+2097
+01:48:38,880 --> 01:48:42,239
+of ways to hack. So, um
+
+2098
+01:48:42,239 --> 01:48:44,960
+there's a there's like a lot of effort
+
+2099
+01:48:44,960 --> 01:48:47,679
+needed to expand to make sure that your
+
+2100
+01:48:47,679 --> 01:48:50,400
+reward is actually a real one and then
+
+2101
+01:48:50,400 --> 01:48:55,239
+not a not a kind of a
+
+2102
+01:48:56,320 --> 01:48:58,960
+just a quirk of your verifier so to say.
+
+2103
+01:48:58,960 --> 01:49:02,239
+Um so yeah um what has actually so I
+
+2104
+01:49:02,239 --> 01:49:05,040
+talked a little bit about this before on
+
+2105
+01:49:05,040 --> 01:49:10,639
+that like live rather sped up run um so
+
+2106
+01:49:10,639 --> 01:49:13,360
+where does the you know in a single step
+
+2107
+01:49:13,360 --> 01:49:15,199
+in reinforcement learning where does the
+
+2108
+01:49:15,199 --> 01:49:19,040
+time go and I mean it's mostly uh inter
+
+2109
+01:49:19,040 --> 01:49:21,199
+rollouts because yeah models take a lot
+
+2110
+01:49:21,199 --> 01:49:23,920
+of time to think they possibly execute
+
+2111
+01:49:23,920 --> 01:49:25,760
+actions which take a long time to
+
+2112
+01:49:25,760 --> 01:49:30,480
+execute um and so that that's kind the
+
+2113
+01:49:30,480 --> 01:49:34,400
+part that costs you the most. Um, and in
+
+2114
+01:49:34,400 --> 01:49:37,520
+particular in like the fully synchronous
+
+2115
+01:49:37,520 --> 01:49:39,360
+reinforcement learning, you're
+
+2116
+01:49:39,360 --> 01:49:42,639
+constrained by your longest rollouts
+
+2117
+01:49:42,639 --> 01:49:44,639
+roll out so that you know you're just
+
+2118
+01:49:44,639 --> 01:49:47,119
+waiting on all the episodes to finish so
+
+2119
+01:49:47,119 --> 01:49:49,360
+you can go to your, you know, backwards
+
+2120
+01:49:49,360 --> 01:49:54,560
+pass to your weight syncing part. Um and
+
+2121
+01:49:54,560 --> 01:49:56,960
+yeah so so you just you're waiting
+
+2122
+01:49:56,960 --> 01:49:59,920
+possibly a long time for a single roll
+
+2123
+01:49:59,920 --> 01:50:02,560
+out to finish. Um and that's actually
+
+2124
+01:50:02,560 --> 01:50:04,719
+you know one thing that's yeah not much
+
+2125
+01:50:04,719 --> 01:50:06,800
+time so I'm going to speed through a bit
+
+2126
+01:50:06,800 --> 01:50:08,320
+through a couple of these slides but
+
+2127
+01:50:08,320 --> 01:50:13,360
+basically um you know you can just try
+
+2128
+01:50:13,360 --> 01:50:16,000
+to generate as many rollouts as you can
+
+2129
+01:50:16,000 --> 01:50:18,639
+not wait for some specific ones to
+
+2130
+01:50:18,639 --> 01:50:20,960
+finish and just wait for a certain
+
+2131
+01:50:20,960 --> 01:50:23,280
+number of them to finish
+
+2132
+01:50:23,280 --> 01:50:25,280
+and then immediately you know update
+
+2133
+01:50:25,280 --> 01:50:28,960
+your policy update your weights. Um so
+
+2134
+01:50:28,960 --> 01:50:31,600
+that's the asynchronous reinforcement
+
+2135
+01:50:31,600 --> 01:50:33,520
+learning and it's you know quite popular
+
+2136
+01:50:33,520 --> 01:50:36,800
+nowadays for maximizing throughput. Um
+
+2137
+01:50:36,800 --> 01:50:39,360
+but yeah there like some you know you
+
+2138
+01:50:39,360 --> 01:50:42,800
+get you know rollouts generated by stale
+
+2139
+01:50:42,800 --> 01:50:46,400
+policy and you know that's kind of it
+
+2140
+01:50:46,400 --> 01:50:50,480
+you know both breaks some of the
+
+2141
+01:50:50,480 --> 01:50:53,360
+like the theoretical assumptions of uh
+
+2142
+01:50:53,360 --> 01:50:54,480
+you know reinforcement learning
+
+2143
+01:50:54,480 --> 01:50:57,840
+algorithms but also it you know just
+
+2144
+01:50:57,840 --> 01:50:59,679
+makes the whole thing more unstable and
+
+2145
+01:50:59,679 --> 01:51:01,600
+reinforcement learning is like already
+
+2146
+01:51:01,600 --> 01:51:05,440
+kind of notoriously unstable. Um so yeah
+
+2147
+01:51:05,440 --> 01:51:09,679
+you you you kind of do that as a sort of
+
+2148
+01:51:09,679 --> 01:51:12,719
+a trick and Kim Kitri actually did like
+
+2149
+01:51:12,719 --> 01:51:14,800
+something between synchronous and
+
+2150
+01:51:14,800 --> 01:51:17,040
+asynchronous reinforcement learning
+
+2151
+01:51:17,040 --> 01:51:19,360
+which is that you know they collected
+
+2152
+01:51:19,360 --> 01:51:21,920
+like a certain amount of rollouts they
+
+2153
+01:51:21,920 --> 01:51:24,960
+would pause but they would like then
+
+2154
+01:51:24,960 --> 01:51:29,520
+pause the rollouts for the next um
+
+2155
+01:51:29,520 --> 01:51:32,159
+for the next weight sync. So, so they
+
+2156
+01:51:32,159 --> 01:51:35,119
+would like uh it's a bit of a less
+
+2157
+01:51:35,119 --> 01:51:38,320
+extreme version of the asynchronous
+
+2158
+01:51:38,320 --> 01:51:41,360
+reinforcement learning. Um fully
+
+2159
+01:51:41,360 --> 01:51:43,679
+asynchronous, yeah, the policy moves on
+
+2160
+01:51:43,679 --> 01:51:46,159
+and it just um
+
+2161
+01:51:46,159 --> 01:51:48,719
+you get a lot of staleness of it which
+
+2162
+01:51:48,719 --> 01:51:51,040
+can hurt you in some non-trivial ways
+
+2163
+01:51:51,040 --> 01:51:54,960
+during the training process. Um
+
+2164
+01:51:54,960 --> 01:51:58,560
+yeah, so that's more or less it. So
+
+2165
+01:51:58,560 --> 01:52:02,400
+we've seen that yeah the the kind of
+
+2166
+01:52:02,400 --> 01:52:04,480
+like the API of modern reinforcement
+
+2167
+01:52:04,480 --> 01:52:07,119
+learning is pretty standardized now. You
+
+2168
+01:52:07,119 --> 01:52:09,280
+have you know your trainer your rollout
+
+2169
+01:52:09,280 --> 01:52:10,960
+generator and you have you know
+
+2170
+01:52:10,960 --> 01:52:14,560
+somewhere where your sandboxes are run.
+
+2171
+01:52:14,560 --> 01:52:17,280
+Um and yeah that's what we've seen in
+
+2172
+01:52:17,280 --> 01:52:19,760
+the tunnel like a lot of demand for
+
+2173
+01:52:19,760 --> 01:52:23,920
+sandboxes specifically in reposting.
+
+2174
+01:52:23,920 --> 01:52:26,719
+So yeah that's it. There's like a repo
+
+2175
+01:52:26,719 --> 01:52:29,920
+which you can find if you want to um
+
+2176
+01:52:29,920 --> 01:52:31,760
+like look at the code that generated
+
+2177
+01:52:31,760 --> 01:52:33,280
+some of these things in the in the
+
+2178
+01:52:33,280 --> 01:52:35,119
+presentation.
+
+2179
+01:52:35,119 --> 01:52:36,880
+Um
+
+2180
+01:52:36,880 --> 01:52:42,199
+and that's it. Thank you all.
+
+2181
+01:52:49,360 --> 01:52:51,840
+All right. Thank you, Daytona. We have
+
+2182
+01:52:51,840 --> 01:52:55,119
+lunchtime now uh outside in Lower Sprawl
+
+2183
+01:52:55,119 --> 01:52:57,199
+Plaza. There'll be lunch and at the
+
+2184
+01:52:57,199 --> 01:52:59,040
+first floor we have our posters and and
+
+2185
+01:52:59,040 --> 01:53:02,159
+sponsors. So, we'll be back at 1:30. So,
+
+2186
+01:53:02,159 --> 01:53:06,119
+enjoy lunch. Thank you.
