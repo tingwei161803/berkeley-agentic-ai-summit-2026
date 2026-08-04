@@ -195,6 +195,61 @@
     }
 
     /* =====================================================================
+       DIGEST (daily synthesis with links into the talk notes)
+       ===================================================================== */
+    function findRefTalk(ref) {
+      for (var i = 0; i < LDW.pages.length; i++) {
+        var p = LDW.pages[i];
+        if (p.slug !== ref.page || !p.sessions) continue;
+        for (var j = 0; j < p.sessions.length; j++) {
+          var talks = p.sessions[j].talks;
+          for (var k = 0; k < talks.length; k++) {
+            if (talks[k].slug === ref.slug) return { talk: talks[k], stage: p.stage };
+          }
+        }
+      }
+      return null;
+    }
+
+    function refLabel(tk) {
+      /* talks/keynotes read best as the speaker's name; panels, firesides and
+         workshops as their (bilingual) title */
+      if (tk.type === "talk" || tk.type === "keynote") return tk.speaker;
+      return t(tk.title);
+    }
+
+    function renderDigest() {
+      var html = '<header class="hero hero--digest reveal">' +
+        '<p class="kicker">' + esc(t(page.hero.kicker)) + "</p>" +
+        "<h1>" + esc(t(page.hero.heading)) + "</h1>" +
+        '<p class="hero__lede">' + esc(t(page.hero.lede)) + "</p>" +
+        "</header>";
+
+      page.days.forEach(function (day) {
+        html += '<div class="sectionhead reveal"><h2>' + esc(t(day.label)) + "</h2></div>" +
+          '<p class="digest__intro reveal">' + esc(t(day.intro)) + "</p>";
+        day.themes.forEach(function (theme) {
+          html += '<section class="theme reveal" data-item>' +
+            '<h3 class="theme__title">' + esc(t(theme.title)) + "</h3>" +
+            '<p class="theme__body">' + esc(t(theme.body)) + "</p>" +
+            '<div class="theme__refs">';
+          theme.refs.forEach(function (ref) {
+            var hit = findRefTalk(ref);
+            if (!hit) return;
+            html += '<a class="refchip" href="talk/' + esc(ref.page) + "/" + esc(ref.slug) + '.html" ' +
+              'title="' + esc(t(hit.talk.title)) + '">' +
+              '<span class="refchip__stage stage-dot--' + esc(hit.stage.toLowerCase()) + '"></span>' +
+              esc(refLabel(hit.talk)) + "</a>";
+          });
+          html += "</div></section>";
+        });
+      });
+
+      main.innerHTML = html;
+      observeReveals(main);
+    }
+
+    /* =====================================================================
        DAY PAGE
        ===================================================================== */
     var allTalks = [];
@@ -360,6 +415,7 @@
     function renderPage() {
       teardown();
       if (page.layout === "hub") renderHub();
+      else if (page.layout === "digest") renderDigest();
       else renderDay();
     }
 

@@ -17,6 +17,8 @@ FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox
 PAGES = [
     ("index", "home", "Agentic AI Summit ’26 Notes",
      "Bilingual field notes on all 147 talks, panels and workshops from Berkeley RDI's Agentic AI Summit 2026 — TL;DRs, key takeaways and time-stamped livestream links."),
+    ("digest", "digest", "Daily Digest — Agentic AI Summit ’26 Notes",
+     "The two days of the Agentic AI Summit 2026, distilled: recurring themes per day with links to every related talk note."),
     ("sat-plenary", "sat-plenary", "Plenary · Saturday — Agentic AI Summit ’26 Notes",
      "Notes on every Plenary Stage talk from Saturday, August 1 at the Agentic AI Summit 2026."),
     ("sat-atlas", "sat-atlas", "Atlas · Saturday — Agentic AI Summit ’26 Notes",

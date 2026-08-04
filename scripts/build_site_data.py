@@ -5,7 +5,11 @@ Usage: uv run python scripts/build_site_data.py
 """
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from digest_content import DIGEST  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 TALKS = ROOT / "notes" / "talks"
@@ -297,7 +301,17 @@ def main():
         "repo": REPO,
     }
 
-    pages_out = [hub] + site_pages
+    # digest page: validate every theme ref resolves to a real talk, then
+    # convert ref tuples to {page, slug} objects for the renderer
+    valid = {(p["slug"], tk["slug"]) for p in site_pages for s in p["sessions"] for tk in s["talks"]}
+    digest = json.loads(json.dumps(DIGEST))  # deep copy, tuples -> lists
+    for day in digest["days"]:
+        for theme in day["themes"]:
+            for ref in theme["refs"]:
+                assert tuple(ref) in valid, f"digest ref not found: {ref}"
+            theme["refs"] = [{"page": r[0], "slug": r[1]} for r in theme["refs"]]
+
+    pages_out = [hub, digest] + site_pages
     js = ("/* Data layer built from notes/talks/ by scripts/build_site_data.py — do not edit by hand. */\n"
           "window.SITE_META = " + json.dumps(meta, ensure_ascii=False) + ";\n"
           "window.SITE_PAGES = " + json.dumps(pages_out, ensure_ascii=False) + ";\n")
