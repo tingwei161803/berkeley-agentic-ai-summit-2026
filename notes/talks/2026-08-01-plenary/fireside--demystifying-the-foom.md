@@ -6,7 +6,7 @@ affiliation: "Dawn Song — Professor, UC Berkeley; Co-Director, Berkeley RDI; V
 type: fireside
 stage: Plenary
 date: 2026-08-01
-session: "Session 2: Future of Software Engineering"
+session: "Fireside Chat"
 video: "https://www.youtube.com/watch?v=gKdeLQd_LIQ&t=7087s"
 video_range: "01:58:07–02:31:05"
 transcript: "tmp/[English (auto-generated)] Plenary Stage - August 1st - Morning Session [DownSub.com].srt"
