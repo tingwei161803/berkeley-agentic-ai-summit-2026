@@ -32,8 +32,7 @@
 </head>
 <body data-page="sun-compass" data-talk="jongryool-kim--disaggregated-llm-serving-with-shared-memory-kv-cache">
   <main id="page">
-    <article class="talkdoc" id="talkdoc" data-item
-             data-title-en="Disaggregated LLM Serving with Shared Memory KV Cache at Rack-Scale" data-title-zh="以機櫃級共享記憶體 KV Cache 實現分離式 LLM 服務">
+<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Disaggregated LLM Serving with Shared Memory KV Cache at Rack-Scale" data-title-zh="以機櫃級共享記憶體 KV Cache 實現分離式 LLM 服務">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
           <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
@@ -52,7 +51,7 @@
             <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">Put a physically disaggregated memory pool in the middle of the rack so multiple nodes see the *same* address space, and the KV cache no longer has to be shuttled between nodes over RDMA — prefill writes once, decode reads directly, the old KV cache stays in the pool for the next request&#x27;s reuse, and GPU HBM is freed immediately while PCIe contention disappears.</span><span class="lang-zh">把一台實體上獨立的記憶體池放進機櫃中央,讓多個節點看到同一段位址空間,KV cache 就不必再靠 RDMA 在節點間搬來搬去——prefill 寫一次、decode 直接讀,舊的 KV cache 順便留在池裡供下次重用,同時立刻釋放 GPU HBM 並消除 PCIe 爭用。</span></p>
+        <p class="talkdoc__summary"><span class="lang-en">Put a physically disaggregated memory pool in the middle of the rack so multiple nodes see the *same* address space, and the KV cache no longer has to be shuttled between nodes over RDMA — prefill writes once, decode reads directly, the old KV cache stays in the pool for the next request's reuse, and GPU HBM is freed immediately while PCIe contention disappears.</span><span class="lang-zh">把一台實體上獨立的記憶體池放進機櫃中央,讓多個節點看到同一段位址空間,KV cache 就不必再靠 RDMA 在節點間搬來搬去——prefill 寫一次、decode 直接讀,舊的 KV cache 順便留在池裡供下次重用,同時立刻釋放 GPU HBM 並消除 PCIe 爭用。</span></p>
       </header>
       <div class="talkdoc__body prose">
         <section class="lang-zh"><h3>TL;DR</h3>
@@ -270,7 +269,7 @@
         <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/jongryool-kim--disaggregated-llm-serving-with-shared-memory-kv-cache.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
       </p>
     </article>
-  </main>
+</main>
 
   <script src="data/data.js"></script>
   <script src="assets/shell.js"></script>
