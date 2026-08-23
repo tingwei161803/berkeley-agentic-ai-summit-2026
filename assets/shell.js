@@ -2,19 +2,19 @@
    multipage · shell.js   (vanilla, no build)
 
    The SHARED CHROME for every page: app bar, cross-page nav, footer and the
-   detail <dialog>. It also owns global state (language + theme) and exposes a
-   tiny toolkit on window.LDW that each page's app.js reuses.
+   detail <dialog>. It also owns the theme and exposes a tiny toolkit on
+   window.LDW that each page's app.js reuses.
 
    Loaded on EVERY page BEFORE app.js. It:
-     1. reads persisted lang/theme (localStorage, sandbox-safe),
+     1. reads the page's language from <html lang> and the theme from localStorage,
      2. injects app bar + nav + footer + dialog around <main id="page">,
-     3. wires the language / theme toggles,
-     4. highlights the current page (from <body data-page="...">),
-     5. lets app.js register an onLang() callback so a language switch repaints
-        BOTH the chrome AND the page body — nothing is ever left in one language.
+     3. wires the theme toggle and points the language link at the twin page,
+     4. highlights the current page (from <body data-page="...">).
 
-   Cross-page persistence is automatic: lang/theme live in localStorage (an
-   origin-wide store), so navigating to another .html restores the same state.
+   Language is decided by the URL, not by a stored preference: English lives at
+   the site root and 中文 under /zh-Hant/, each page in one language only. So the
+   language link is a real <a href> — a crawler, and anyone without JavaScript,
+   can walk from one language to the other. Only the theme persists across pages.
    ========================================================================= */
 (function () {
   "use strict";
@@ -33,10 +33,23 @@
   function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* ignore */ } }
 
   /* ---------- global state ---------- */
+  var TWIN_DIR = "zh-Hant";                 // where the 中文 copy of the site lives
   var state = {
-    lang:  lsGet("lang")  || "en",
+    lang:  (document.documentElement.getAttribute("lang") || "en")
+             .toLowerCase().indexOf("zh") === 0 ? "zh" : "en",
     theme: lsGet("theme") || "light"
   };
+
+  var otherCode = state.lang === "en" ? "zh-Hant" : "en";
+
+  /* The same page in the other language. Talk notes and overview pages alike
+     mirror one-for-one, so it is the same path with the prefix added/removed. */
+  function altHref() {
+    var p = location.pathname;
+    return p.indexOf("/" + TWIN_DIR + "/") === 0
+      ? (p.slice(TWIN_DIR.length + 1) || "/")
+      : "/" + TWIN_DIR + p;
+  }
 
   /* ---------- helpers shared with app.js ---------- */
   function t(obj) {
@@ -52,17 +65,16 @@
   }
   function r(n) { return Math.round(n * 100) / 100; }
 
-  function pageHref(p) { return p.slug === "home" ? "index.html" : p.slug + ".html"; }
+  /* Overview pages sit at their language's root; talk notes two levels below it
+     (talk/<page>/<slug>.html), so links out of a note have to climb back up. */
+  var UP = document.body.hasAttribute("data-talk") ? "../../" : "";
+  function pageHref(p) { return UP + (p.slug === "home" ? "index.html" : p.slug + ".html"); }
   function currentSlug() { return document.body.getAttribute("data-page") || "home"; }
   function currentPage() {
     var slug = currentSlug();
     for (var i = 0; i < PAGES.length; i++) if (PAGES[i].slug === slug) return PAGES[i];
     return PAGES[0] || null;
   }
-
-  /* ---------- onLang callback registry (app.js plugs in here) ---------- */
-  var langSubscribers = [];
-  function onLang(fn) { if (typeof fn === "function") langSubscribers.push(fn); }
 
   /* =======================================================================
      CHROME INJECTION — app bar, nav, footer, dialog around <main id="page">
@@ -92,16 +104,18 @@
       : '';
     appbar.innerHTML =
       '<div class="appbar__inner">' +
-        '<a class="brand" href="index.html">' +
+        '<a class="brand" href="' + UP + 'index.html">' +
           '<span class="material-symbols-rounded brand__logo">auto_stories</span>' +
           '<span class="brand__name" id="brandName"></span>' +
         '</a>' +
         '<div class="appbar__actions">' +
           starHtml +
-          '<button class="icon-btn" id="langToggle" type="button" title="Language" aria-label="Toggle language / 切換語言">' +
+          '<a class="icon-btn" id="langToggle" href="' + altHref() + '"' +
+            ' hreflang="' + otherCode + '" rel="alternate" lang="' + otherCode + '"' +
+            ' title="Language" aria-label="' + (state.lang === "en" ? "切換到中文" : "Switch to English") + '">' +
             '<span class="material-symbols-rounded">translate</span>' +
-            '<span class="icon-btn__txt" id="langLabel">EN</span>' +
-          '</button>' +
+            '<span class="icon-btn__txt" id="langLabel">' + (state.lang === "en" ? "中" : "EN") + '</span>' +
+          '</a>' +
           '<button class="icon-btn" id="themeToggle" type="button" title="Theme" aria-label="Toggle theme / 切換主題">' +
             '<span class="material-symbols-rounded" id="themeIcon">dark_mode</span>' +
           '</button>' +
@@ -171,13 +185,16 @@
     }
   }
 
-  /* ---------- chrome text in the active language ---------- */
+  /* ---------- chrome text in the page's language ---------- */
   function refreshChrome() {
-    document.documentElement.setAttribute("lang", state.lang);
     var page = currentPage();
     var siteTitle = t(META.title);
     var pageTitle = page ? t(page.title) : "";
-    document.title = pageTitle ? pageTitle + " · " + siteTitle : siteTitle;
+    /* a talk note carries its own <title>; <body data-page> names the day page
+       it belongs to, which is not what the tab should say */
+    if (!document.body.hasAttribute("data-talk")) {
+      document.title = pageTitle ? pageTitle + " · " + siteTitle : siteTitle;
+    }
 
     var brand = document.getElementById("brandName");
     if (brand) brand.textContent = siteTitle;
@@ -193,7 +210,7 @@
   }
 
   /* =======================================================================
-     THEME + LANGUAGE
+     THEME
      ===================================================================== */
   function applyTheme() {
     document.documentElement.setAttribute("data-theme", state.theme);
@@ -201,22 +218,11 @@
     if (icon) icon.textContent = state.theme === "dark" ? "light_mode" : "dark_mode";
     lsSet("theme", state.theme);
   }
-  function applyLangChrome() {
-    var label = document.getElementById("langLabel");
-    if (label) label.textContent = state.lang === "en" ? "EN" : "中";
-    lsSet("lang", state.lang);
-  }
 
   function wire() {
     document.getElementById("themeToggle").addEventListener("click", function () {
       state.theme = state.theme === "dark" ? "light" : "dark";
       applyTheme();
-    });
-    document.getElementById("langToggle").addEventListener("click", function () {
-      state.lang = state.lang === "en" ? "zh" : "en";
-      applyLangChrome();
-      refreshChrome();
-      langSubscribers.forEach(function (fn) { try { fn(state.lang); } catch (e) {} });
     });
   }
 
@@ -230,7 +236,6 @@
     lsGet: lsGet, lsSet: lsSet,
     pages: PAGES, meta: META,
     currentPage: currentPage, currentSlug: currentSlug, pageHref: pageHref,
-    onLang: onLang,
     refreshChrome: refreshChrome,
     dialog: function () { return document.getElementById("dialog"); }
   };
@@ -261,7 +266,6 @@
     injectChrome();
     loadStars();
     applyTheme();
-    applyLangChrome();
     refreshChrome();
     wire();
     window.LDW.ready = true;
