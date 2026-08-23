@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Mindful Agents: Human-Inspired Memories for Long-Horizon Tasks · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="Agents have no storage constraint, and that is exactly why they never learned to distill; Microsoft&#x27;s Fabric AI team borrows the human memory life cycle — ingest, consolidate, forget, retrieve, rec…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/doga-kerestecioglu--mindful-agents-human-inspired-memories-for-long-horizon-tasks.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/doga-kerestecioglu--mindful-agents-human-inspired-memories-for-long-horizon-tasks.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-compass/doga-kerestecioglu--mindful-agents-human-inspired-memories-for-long-horizon-tasks.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/doga-kerestecioglu--mindful-agents-human-inspired-memories-for-long-horizon-tasks.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Mindful Agents: Human-Inspired Memories for Long-Horizon Tasks · Agentic AI Summit ’26 Notes" />
@@ -28,80 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sat-compass" data-talk="doga-kerestecioglu--mindful-agents-human-inspired-memories-for-long-horizon-tasks">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Mindful Agents: Human-Inspired Memories for Long-Horizon Tasks" data-title-zh="Mindful Agents:給長程任務的人類啟發式記憶">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 3: Foundational Capabilities</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">Mindful Agents: Human-Inspired Memories for Long-Horizon Tasks</span><span class="lang-zh">Mindful Agents:給長程任務的人類啟發式記憶</span></h1>
+        <h1 class="talkdoc__title">Mindful Agents: Human-Inspired Memories for Long-Horizon Tasks</h1>
         <p class="dialog__speaker"><strong>Doga Kerestecioglu</strong> — Principal Applied Scientist, Microsoft Corporation</p>
-        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 02:00:02–02:10:10 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Saturday, August 1 · Compass Stage · 02:00:02–02:10:10 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=7202s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 02:00:02</span><span class="lang-zh">從 02:00:02 開始觀看</span>
+            Watch from 02:00:02
           </a>
-          <a class="btn-ghost" href="sat-compass.html">
+          <a class="btn-ghost" href="../../sat-compass.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+            Back to Compass · Sat
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">Agents have no storage constraint, and that is exactly why they never learned to distill; Microsoft's Fabric AI team borrows the human memory life cycle — ingest, consolidate, forget, retrieve, reconsolidate — to build memory for long-running agents over high-volume streaming data, and argues such systems need three distinct layers of evaluation: retention, retrieval, and task completion.</span><span class="lang-zh">Agent 沒有人類的儲存限制,反而喪失了「蒸餾記憶」的能力;Microsoft Fabric AI 團隊借用人腦的記憶生命週期(攝取 → 固化 → 遺忘 → 檢索 → 再固化)為長時間執行的串流資料 agent 建記憶,並主張這類系統必須用「保留 / 檢索 / 任務完成」三層 eval 才測得準。</span></p>
+        <p class="talkdoc__summary">Agents have no storage constraint, and that is exactly why they never learned to distill; Microsoft's Fabric AI team borrows the human memory life cycle — ingest, consolidate, forget, retrieve, reconsolidate — to build memory for long-running agents over high-volume streaming data, and argues such systems need three distinct layers of evaluation: retention, retrieval, and task completion.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>人類記憶好用是因為有限制</strong>:坐火車經過無盡的田野,我們不會記得每一根草,只記得「有意思」的東西——這種蒸餾能力是儲存限制逼出來的演化結果。Agent 沒有這個壓力,於是把所有 trace 都記下來、再摘要摘要再摘要,在需要精確回溯時就崩了。</li>
-<li><strong>記憶不是儲存,是一條回饋迴路</strong>:ingestion → consolidation(去重合併,類似睡眠)→ forgetting(衰減與干擾)→ retrieval(冷儲存圖譜 + 即時串流混合)→ maturation / reconsolidation(處理新舊記憶衝突)。關鍵是 consolidation 的節奏是<strong>領域相關而非固定時間</strong>的。</li>
-<li><strong>記憶系統要分三層測</strong>:retention(留下來的東西真的重要嗎,需要標註)、retrieval(建好的記憶能不能撈得出來)、task completion(最貴但最重要——記憶再好,agent 在 harness 裡選擇忽略它就沒用)。</li>
-</ul>
-<h3>重點整理</h3>
-<h4>問題設定:agent 的記憶跟人不一樣(約 02:00–02:02)</h4>
-<p>講者來自 <strong>Microsoft Fabric AI 團隊</strong>,做的是 real-time intelligence 場景下的長時間執行 agent——資料是高流量的串流資料。</p>
-<p>她用一個對照切入:人類有儲存限制,而這個限制<strong>讓我們更擅長蒸餾記憶</strong>。她最近在歐洲搭火車,窗外是無止盡的田野、風車、吃草的動物;我們沒有能力記住每一根草,但我們很擅長只留下可能跟自己有關的有趣片段——這是演化訓練出來的能力。</p>
-<p>Agent 沒有這個問題:儲存相對便宜,可以記下每一個 bit、每一條 trace。目前的常見做法是「capture → retrieve → 摘要 → 保留摘要」,於是最後拿在手上的是<strong>摘要的摘要的摘要</strong>。多數情況下堪用,但一旦要檢索非常具體的東西就會失效——而他們要的正是能主動(proactive)處理大量資料的 agent。</p>
-<h4>記憶生命週期:一條回饋迴路(約 02:02–02:05)</h4>
-<p>他們把記憶做成一個 <strong>memory life cycle feedback loop</strong>:</p>
-<ol>
-<li><strong>Ingestion</strong>:從 observability substrate 攝取全部資料。</li>
-<li><strong>Consolidation</strong>:去重、合併,把記憶整理成穩定的候選——概念上類似人的睡眠。但關鍵差異是:<strong>agent 的固化週期是領域相關的,不一定跟時間對齊</strong>。她舉 Formula 1 的例子:比賽當下的 telemetry、賽後、休賽週、整個賽季,四種節奏完全不同。所以「不必然是每天固化一次,但一定要以某種 batch、某種 cadence 處理」。</li>
-<li><strong>Forgetting</strong>:透過 decay 與 interference,確保重要的留下、不重要的盡量被忘掉。</li>
-<li><strong>Retrieval</strong>:混合式——已知領域的穩定記憶放冷儲存並組織成 graph,同時還有即時進來的串流資料;agent 必須能同時存取兩者,並判斷此刻該用哪一段記憶。</li>
-<li><strong>Maturation / Reconsolidation</strong>:檢索時<strong>一定會遇到衝突</strong>(新事件牴觸已固化的舊記憶)。這時要決定:更新圖上的既有 entity、新增一個 entity(確實是重要新資訊)、還是直接丟棄這筆即時資料(它是錯的)。不能無腦一直往圖裡加,否則圖會難以檢索。</li>
-</ol>
-<h4>評估:天花板、地板,與三層 eval(約 02:05–02:09)</h4>
-<p>她給了兩個評估案例,分別代表最好與最壞的情境:</p>
-<ul>
-<li><strong>Retention benchmark(較確定性的一端)</strong>:系統對「什麼重要」有清楚標註。他們調的是固化的頻率與批量,結果在<strong>大約 200 個事件一批</strong>時開始穩定;再疊上遺忘機制,precision 會更好。</li>
-<li><strong>Retrieval benchmark(較困難的一端)</strong>:用 <strong>LongMemEval</strong>,對話資料、沒有重要性標註——這其實不是他們最理想的場景(他們的假設是「重複執行任務的領域專家」能學出什麼重要),但仍可用來調「壓縮多少 / 最佳儲存大小是多少而不破壞資訊」,本質是壓縮率與準確率的取捨。</li>
-</ul>
-<p>由此歸納出記憶系統需要的<strong>三種 eval</strong>:</p>
-<ol>
-<li><strong>Retention</strong>:留下的東西是不是真的重要?可以做成快速、確定性的 eval,但需要標籤(他們也有很多工作在改善標籤品質)。</li>
-<li><strong>Retrieval</strong>:記憶建得好,還要撈得出來。難以導航的記憶體系「必要但不充分」。</li>
-<li><strong>Task completion</strong>:離使用者最近,<strong>最重要也最貴</strong>。你可能給了 agent 最好的記憶,但取決於它在 harness 裡怎麼被暴露,agent 仍可能選擇忽略、任務照樣失敗。長程 agent 的這類 eval 建置與執行成本都很高。</li>
-</ol>
-<h4>結論與下一步(約 02:09)</h4>
-<ul>
-<li><strong>Logs are not memories.</strong> 長程 agent 需要的不只是可取用的 trace;在這種資料量下要有效率,就必須決定什麼留、什麼不留。</li>
-<li><strong>領域很重要,而且需要事先宣告</strong>。runtime 才推斷領域會直接影響效率與準確率。</li>
-<li>下一步:與 <strong>Microsoft Foundry</strong> 團隊合作做端到端 eval;以及 domain learning 與 <strong>graph ontology</strong> ——他們發現圖結構與 ontology 的設計方式,對準確率的影響不亞於前述各個元件。</li>
-</ul>
-<h3>金句</h3>
-<blockquote>
-<p>"Logs are not memories."(約 02:08)</p>
-</blockquote>
-<p>一句話戳破「把所有 trace 存下來就等於有記憶」的錯覺。</p>
-<blockquote>
-<p>"You might give the best memory to the agent and depending on how it's exposed to the agent in your harness, the agent might choose to ignore it and still might not accomplish the task."(約 02:08)</p>
-</blockquote>
-<p>這就是為什麼 task completion eval 貴也得做——記憶品質與任務成功之間並不是等號。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>Human memory works <em>because</em> it is constrained.</strong> On a train through endless European fields you don't remember every blade of grass — you remember what might matter to you. That distillation is an evolved response to a storage limit. Agents have no such limit, so they log everything and then summarize summaries of summaries, which breaks down the moment you need something specific.</li>
 <li><strong>Memory is a feedback loop, not a store</strong>: ingestion → consolidation (dedup/merge, the "sleep" analogue) → forgetting (decay and interference) → retrieval (cold-storage graph <em>plus</em> live stream) → maturation/reconsolidation to resolve conflicts. Crucially, consolidation cadence is <strong>domain-dependent, not necessarily temporal</strong>.</li>
@@ -221,13 +175,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/doga-kerestecioglu--mindful-agents-human-inspired-memories-for-long-horizon-tasks.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/doga-kerestecioglu--mindful-agents-human-inspired-memories-for-long-horizon-tasks.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sat-compass/doga-kerestecioglu--mindful-agents-human-inspired-memories-for-long-horizon-tasks.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>

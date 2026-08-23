@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Opportunities and Challenges for Long-Horizon Agents · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="What stops RL from pushing agents from 12 hours to 12 months isn&#x27;t money — it&#x27;s that a single reward over a long trajectory makes the learning signal decay quadratically in horizon length, compound…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/jerry-tworek--opportunities-and-challenges-for-long-horizon-agents.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/jerry-tworek--opportunities-and-challenges-for-long-horizon-agents.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-plenary/jerry-tworek--opportunities-and-challenges-for-long-horizon-agents.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/jerry-tworek--opportunities-and-challenges-for-long-horizon-agents.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Opportunities and Challenges for Long-Horizon Agents · Agentic AI Summit ’26 Notes" />
@@ -28,107 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sat-plenary" data-talk="jerry-tworek--opportunities-and-challenges-for-long-horizon-agents">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Opportunities and Challenges for Long-Horizon Agents" data-title-zh="長程 Agent 的機會與挑戰">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 3: Agentic AI Foundational Capabilities</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">Opportunities and Challenges for Long-Horizon Agents</span><span class="lang-zh">長程 Agent 的機會與挑戰</span></h1>
+        <h1 class="talkdoc__title">Opportunities and Challenges for Long-Horizon Agents</h1>
         <p class="dialog__speaker"><strong>Jerry Tworek</strong> — CEO, Core Automation; Former VP of Research at OpenAI</p>
-        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 01:10:45–01:23:10 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Saturday, August 1 · Plenary Stage · 01:10:45–01:23:10 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=Tcn5Yb2K0h4&amp;t=4245s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 01:10:45</span><span class="lang-zh">從 01:10:45 開始觀看</span>
+            Watch from 01:10:45
           </a>
-          <a class="btn-ghost" href="sat-plenary.html">
+          <a class="btn-ghost" href="../../sat-plenary.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+            Back to Plenary · Sat
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">What stops RL from pushing agents from 12 hours to 12 months isn't money — it's that a single reward over a long trajectory makes the learning signal decay quadratically in horizon length, compounded by getting only two gradient steps a day; value functions and continual learning are the two plausible ways out.</span><span class="lang-zh">RL 之所以還沒把 agent 的工作時長從 12 小時推到 12 個月,不是因為錢不夠,而是因為單一 reward 配上長軌跡讓學習訊號隨 horizon 平方衰減,加上一天只跑得出兩個 gradient step——這才是長程 agent 真正的瓶頸,而 value function 與 continual learning 是兩條可能的出路。</span></p>
+        <p class="talkdoc__summary">What stops RL from pushing agents from 12 hours to 12 months isn't money — it's that a single reward over a long trajectory makes the learning signal decay quadratically in horizon length, compounded by getting only two gradient steps a day; value functions and continual learning are the two plausible ways out.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>問題的起點是一個很具體的觀察</strong>:他自己 Codex session 的中位數大約 10 分鐘、平均約 20 分鐘。「為什麼不能更久?」——這是今天 AI 研究者最該問的問題之一。</li>
-<li><strong>我們才剛進入 agent 時代一年多</strong>。他認為 <strong>o3 是第一個真正 agentic 的模型</strong>,去年四月才發布;模型自那時起進步巨大,但可改進的空間更大。</li>
-<li><strong>RL 解決了「軌跡越長、出錯機率指數上升」的老問題</strong>:規模化 RL 後找到的配方讓模型能從自己的錯誤中恢復、在自己的軌跡上訓練,於是「想得越久、表現越好」——test-time compute 與 token maxing 的時代。今天最好的前沿模型讀數大約是<strong>能連續工作 12 到 16 小時</strong>。</li>
-<li><strong>但繼續砸錢不會自動延長到無限</strong>,有兩個硬障礙:</li>
-<li><strong>經濟學是平方級的</strong>:採樣長度 n 的軌跡成本正比於 n(有 quadratic attention 還更高),而現代 RL 只給整條軌跡一個 reward、幾乎沒有 token 級的 credit assignment,所以<strong>每個 token 拿到的資訊約 1/n</strong>——學習訊號隨 horizon 平方衰減。線性還好,平方很殘酷。</li>
-<li><strong>延遲</strong>:採一條 12 小時軌跡就要 12 小時,一天做得出兩個 gradient step,一週約 14 個、一個月約 60 個。<strong>這不是一個快的訓練方法,而現在沒有人有時間。</strong></li>
-<li><strong>今天的長程能力大多是 harness 黏出來的</strong>(<code>/goal</code>、plan mode、sub-agents),而這些<strong>不是模型原生的、無法被反向傳播、也沒有被訓練</strong>——「機器學習的歷史一向是:能被 backprop 的東西會贏過不能的」。</li>
-<li><strong>兩條出路</strong>:value function(如果有人做出來,長程問題就解了,但他抱持相當程度的懷疑——找到好的 value function 常常比解原問題還難)與 <strong>continual learning</strong>(從另一端解:七年的迴圈每天重跑,但每天跑的不是同一個模型)。</li>
-</ul>
-<h3>重點整理</h3>
-<h4>從「我的 Codex session 只有 10 分鐘」開始(約 01:10–01:12)</h4>
-<p>長程 agent 顯然是當下 AI 研究的前沿之一。他的切入點非常具體:<strong>看自己 Codex session 的統計,中位數大約 10 分鐘,平均值大約 20 分鐘。為什麼不是更久?為什麼 agent 沒辦法幫我工作更長的時間?</strong> 他認為這是今天 AI 研究者非常值得問的問題。</p>
-<p>先說明顯的部分:<strong>我們已經活在 agent 時代,但非常早期。</strong> 在他心中,<strong>o3 是第一個真正 agentic 的模型,而那是去年四月才發布的</strong>——所以我們才剛進入 agent 時代一年多一點。模型很早期,自 o3 以來進步巨大,但<strong>還有更多改進空間</strong>;產品在進步、採用在來、很多事情都還沒搞清楚。而這正是這個美好時代給我們的機會:去把這些事情弄清楚,供後面幾十年的 agent 普及使用。</p>
-<p><strong>什麼構成一個 agent?</strong> 這是個很模糊的詞,他列了幾個組件:agent <strong>使用工具</strong>(因為 agent 應該能代表我行動);agent 多半是 <strong>async</strong> 的(我交代一件事,它就去做);agent 通常是 <strong>goal-oriented</strong>(你給高階目標,agent 把空白填起來);agent 通常<strong>跨越長時間</strong>工作(不是每五分鐘來回一次)。</p>
-<h4>RL 如何解掉「指數失敗率」(約 01:12–01:15)</h4>
-<p>一旦拉長 agent 的工作時間,就會撞上一個很明顯的觀察:<strong>我們訓練的神經網路每一步都是機率性的、都會犯錯,所以隨著軌跡長度增加,出錯的機率是指數成長的。</strong> 這正是多年來我們做不出 agent 的一大原因——神經網路會脫軌。這也是 RL 文獻裡的經典假設,以及<strong>我們為什麼需要 RL</strong>。</p>
-<p>轉捩點發生在他和團隊<strong>把 RL 規模化到越來越大的算力</strong>時,終於找到一個配方,能訓練模型<strong>從自己的錯誤中恢復、在自己的軌跡上訓練</strong>——模型突然開始能解越來越難的任務。他們看到兩件事:</p>
-<ol>
-<li>顯而易見的:<strong>投入越多算力,能力就在演算法圖上等比例提升</strong>。</li>
-<li>更關鍵、也是近年機器學習最重要的心智轉變之一:<strong>模型想得越久、花在任務上的 token 越多,表現就越好</strong>。也就是說,RL 訓出來的模型不只沒有掉進「軌跡越長失敗率越高」的陷阱、能從中恢復,還能<strong>有生產力地持續思考更久</strong>。本質上:<strong>軌跡越長,結果越好</strong>。我們進入了 test-time compute 與 token maxing 的時代。</li>
-</ol>
-<p>接著是那張大家都很熟的圖:<strong>agent 能替我們工作多久</strong>。自從開始規模化 RL,這條線不斷創新高,<strong>今天最好的前沿模型讀數大約在 12 小時、16 小時</strong>。</p>
-<h4>為什麼「繼續砸錢」不會自動成立(約 01:15–01:18)</h4>
-<p>那問題來了:<strong>也許就這樣了?我們有了 RL,它有效,砸很多錢繼續 scale,就能得到想要工作多久就多久的 agent?</strong> 他的答案是:不幸的是有問題,我們還沒完成。</p>
-<p><strong>障礙一:經濟學是平方級的。</strong>
-- 採樣一條長度為 n 的軌跡,成本大致正比於 n(有 quadratic attention 的話甚至更高一點,但先當作每個 token 成本固定、線性看待)。
-- 但今天的 RL 演算法怎麼運作?<strong>它給整條軌跡指派單一 reward</strong>——現代 RL 幾乎沒有把 reward 分配到特定 token 的 credit assignment 方法。
-- 所以你用一個 reward 涵蓋 n 個 token 的軌跡,<strong>每個 token 得到的資訊量大約是 1/n,而這條軌跡的成本是 n</strong>——<strong>學習訊號隨著 horizon 長度平方衰減</strong>。
-- 如果是線性的,那還算合理:「要 agent 工作兩倍久,就多花兩倍錢」,這個交易可以接受。<strong>但如果是平方的,就相當殘酷。</strong> 大實驗室今天很擅長砸大錢訓練模型,但這個平方成本讓 scaling 比乍看之下困難得多。</p>
-<p><strong>障礙二:延遲,而且更難。</strong> 因為即使 AI 領域湧入越來越多投資,<strong>沒有人有時間</strong>。想像你要採一條 12 小時的 agent 軌跡:採樣就要 12 小時,然後你走一個 gradient step 去強化成功的軌跡,拿到更新後的權重,再採下一條 12 小時軌跡——<strong>一天做得出兩個 gradient step,一週大約 14 個,一個月大約 60 個。這不是一個快的訓練方法。</strong> 所以針對非常長的軌跡與長程思考做訓練,<strong>比很多人以為的要難得多</strong>。</p>
-<h4>現在的長程能力,其實是 harness 黏出來的(約 01:18–01:19)</h4>
-<p>領域裡大部分的進展、以及我們之所以有能長時間思考的 agent,通常是因為<strong>我們在模型上面套了某種 harness</strong>:既然 agent 很擅長短程任務,而事實上<strong>很多長程工作可以由一連串更小的事情成功地黏起來</strong>。</p>
-<ul>
-<li>Codex 和 Claude Code 裡都有的 <strong><code>/goal</code></strong>——非常強大:我們設一個固定目標,模型盡可能跑久,然後回頭檢視自己、繼續做下去。</li>
-<li>還有 <strong>plan mode</strong>、<strong>sub-agents</strong>,各式各樣的方式。</li>
-</ul>
-<p>但關鍵在於:<strong>這些都不是模型原生的,沒有被反向傳播,也沒有被訓練進去</strong>——它們只是利用了模型處理短期目標的能力,再堆疊出更長的時間跨度。你可以做得很成功,<strong>但機器學習的歷史一向是:能被 backprop 的東西,終究會贏過不能被 backprop 的東西。</strong></p>
-<p><strong>Auto-research 就是現成的反例。</strong> 幾乎每一次 auto-research rollout 的故事都是:<strong>早期進展很快,越往後走就停滯、就卡住</strong>。他說到目前為止,<strong>用今天的模型還沒看過任何特別成功的 auto-research rollout</strong>。研究本質上就是高度序列、長程的任務,而今天的模型很難把小尺度的思考黏成大尺度的研究專案——auto-research 正是最能看見這個侷限的地方。</p>
-<h4>人類是怎麼學會長程的?(約 01:19–01:21)</h4>
-<p>他反過來問:<strong>人類是怎麼掌握追求長程目標的?</strong> 最有名的例子是 <strong>Andrew Wiles 花了七年只做一件事——證明費馬最後定理</strong>,而且成功了。<strong>我們要怎麼訓練模型去做七年的專案?</strong></p>
-<p>他順手問了 ChatGPT:人類是從哪個時刻開始發展長期規劃的?得到的答案是——從我們能做任何有意義的長期規劃至今,<strong>大約經過 10,000 個世代的人類,期間大約有 1,200 億人</strong>。所以也許答案就是:<strong>10,000 個 gradient step、1,200 億條軌跡</strong>,這就是讓長程規劃優化到人類水準所需要的量。而且<strong>梯度下降比演化更 sample-efficient</strong>,所以我們或許還有餘裕——這是值得思考、值得回頭檢視的事。</p>
-<h4>兩條研究出路(約 01:21–01:23)</h4>
-<p><strong>(1) Value function。</strong> 這絕對是能幫上忙的方向:<strong>如果我們有了好的 AI research value function,會非常有幫助。</strong> 但他也給了誠實的評估:在對大型語言模型做 RL 時,我們基本上<strong>把 value function 丟掉了,而大家發現這樣也一樣有效</strong>。Value function 是非常非常難的問題,他對這方面能有多少進展<strong>抱持相當程度的懷疑</strong>——<strong>很多時候,找到一個好的 value function 比解掉你原本想解的問題還難</strong>。但如果有人真的把 value function 搞定了,<strong>那我們就沒問題了,想解多長的長程問題都可以。</strong></p>
-<p><strong>(2) Continual learning。</strong> 這是從另一端攻進同一個問題:<strong>我們在迴圈中更新模型</strong>。如果有一個七年的長迴圈——「來證明這個定理」——你每天重複同一件事,<strong>但你不是用同一個模型在重複</strong>:模型會在新資料上更新,每天學到東西、變得更好。他認為 <strong>continual learning 很有機會把我們帶過這一關</strong>。問題在於怎麼做——<strong>這是一個未解問題,也是一個值得解的問題。</strong></p>
-<h4>收尾:值得投入的方向(約 01:22–01:23)</h4>
-<p>如果你在找「此時此刻該做什麼研究」,他認為<strong>長程 agent 絕對是有效選項之一</strong>。當我們拿到這項技術,就能<strong>讓 agent 去解困難的研究問題,也能讓 agent 去經營公司</strong>——那是非常長程、也非常有經濟價值的任務。而從使用者的角度:<strong>如果我要把事情委派給一個 agent,我不想每 30 分鐘就得告訴它該做什麼;我要它能長時間代表我行動。</strong></p>
-<p>研究還沒做完,還有非常多工作要做,而目標是:<strong>能為我們持續跑下去、並隨時間持續變好的 agent。</strong></p>
-<h3>金句</h3>
-<blockquote>
-<p>"If I look at my Codex session, my median is around 10 minutes. If I look at the mean, it's around 20. Why is it not more?"(約 01:10)</p>
-</blockquote>
-<p>整場演講從一個極其具體的個人統計出發。</p>
-<blockquote>
-<p>"o3 was the first really agentic model, and that model was released in April last year. So we are just barely more than a year in the era of agents."(約 01:11)</p>
-</blockquote>
-<p>給這個時代一個明確的起算點。</p>
-<blockquote>
-<p>"You get one reward for a trajectory of n tokens … which means your learning signal decays quadratically in the length of your trajectory."(約 01:16)</p>
-</blockquote>
-<p>長程 agent 最核心的技術障礙,一句話說完。</p>
-<blockquote>
-<p>"You were able to do full two gradient steps in a day. … That means like 60 gradient steps a month. It is not a very fast training method."(約 01:17)</p>
-</blockquote>
-<p>延遲問題比成本問題更難繞過。</p>
-<blockquote>
-<p>"The history of machine learning has always been that whatever we can back propagate through wins with things that we cannot."(約 01:18)</p>
-</blockquote>
-<p>對「用 harness 黏出長程能力」這條路的長期判決。</p>
-<blockquote>
-<p>"Very often finding a good value function is much harder than solving the problem we are trying to solve."(約 01:21)</p>
-</blockquote>
-<p>他對 value function 路線保持懷疑的理由。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>The talk starts from a very concrete observation</strong>: his own Codex sessions have a median of about 10 minutes and a mean of about 20. "Why is it not more?" is, he argues, one of the most worthwhile questions for AI researchers today.</li>
 <li><strong>We are barely a year into the era of agents.</strong> In his view <strong>o3 was the first genuinely agentic model</strong>, released last April; models have improved vastly since, with far more still to come.</li>
@@ -305,13 +232,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/jerry-tworek--opportunities-and-challenges-for-long-horizon-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/jerry-tworek--opportunities-and-challenges-for-long-horizon-agents.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sat-plenary/jerry-tworek--opportunities-and-challenges-for-long-horizon-agents.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>

@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Information Retrieval in the Age of Agentic AI · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="The unit of work in retrieval has moved from a lookup to an ongoing conversation with the world — yet we still grade the final answer with BLEU and ROUGE. Evaluation has to move to the trace: the c…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/tanya-roosta--information-retrieval-in-the-age-of-agentic-ai.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/tanya-roosta--information-retrieval-in-the-age-of-agentic-ai.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-compass/tanya-roosta--information-retrieval-in-the-age-of-agentic-ai.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/tanya-roosta--information-retrieval-in-the-age-of-agentic-ai.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Information Retrieval in the Age of Agentic AI · Agentic AI Summit ’26 Notes" />
@@ -28,59 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sat-compass" data-talk="tanya-roosta--information-retrieval-in-the-age-of-agentic-ai">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Information Retrieval in the Age of Agentic AI" data-title-zh="Agentic AI 時代的資訊檢索">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 2: Frameworks &amp; Dev Platforms</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">Information Retrieval in the Age of Agentic AI</span><span class="lang-zh">Agentic AI 時代的資訊檢索</span></h1>
+        <h1 class="talkdoc__title">Information Retrieval in the Age of Agentic AI</h1>
         <p class="dialog__speaker"><strong>Tanya Roosta</strong> — Director of AI, AMD; Berkeley alumna</p>
-        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 00:29:58–00:37:19 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Saturday, August 1 · Compass Stage · 00:29:58–00:37:19 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=1798s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 00:29:58</span><span class="lang-zh">從 00:29:58 開始觀看</span>
+            Watch from 00:29:58
           </a>
-          <a class="btn-ghost" href="sat-compass.html">
+          <a class="btn-ghost" href="../../sat-compass.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+            Back to Compass · Sat
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">The unit of work in retrieval has moved from a lookup to an ongoing conversation with the world — yet we still grade the final answer with BLEU and ROUGE. Evaluation has to move to the trace: the correctness of every hop, whether each hop was adequate, and the cost in tokens and latency.</span><span class="lang-zh">檢索的工作單位已經從「查一次」變成「和世界持續對話」——但我們的評估方式還停在拿 BLEU / ROUGE 打最終答案的分數;要跟上,就得改成評估整條 trace:每一跳的正確性、是否足以回答問題,以及 token 與延遲的成本。</span></p>
+        <p class="talkdoc__summary">The unit of work in retrieval has moved from a lookup to an ongoing conversation with the world — yet we still grade the final answer with BLEU and ROUGE. Evaluation has to move to the trace: the correctness of every hop, whether each hop was adequate, and the cost in tokens and latency.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>典範轉移</strong>:從傳統 IR / classic RAG 的直線流程(query → 取文件 → 排序 → rerank → 給使用者一份清單),轉向 agentic flow(planning → 判斷 query intent → 搜尋 → 蒐集 → 分析 → critique → 給出最終結果)。<strong>工作單位從 lookup 變成「與世界的持續對話」</strong>,而且動輒 20 turns 以上、變成 multi-hop。</li>
-<li><strong>令人不安的落差</strong>:互動已經是多輪、有時間性、須有證據支撐的,<strong>但評估還停在看最終答案、用 BLEU / ROUGE 打分</strong>。這對 agentic IR 根本不管用。</li>
-<li><strong>該怎麼做</strong>:改看 <strong>trace</strong>——逐跳評估正確性、每一跳是否足以回答使用者的問題,以及 token 數與 latency 這類成本指標。</li>
-<li><strong>領域走向</strong>:reasoning-aware retrieval(用 agent 的推理 trace 而非只有 query keywords)、multi-turn / hop-aware benchmark(如 <strong>MTRAG</strong>)、graph RAG、self-RAG(抑制幻覺)、adaptive RAG(依複雜度與成本路由 query),以及把 <strong>token 用量本身當成一個 IR 指標</strong>。</li>
-</ul>
-<h3>重點整理</h3>
-<h4>從 classic RAG 到 agentic IR(約 00:32–00:34)</h4>
-<p>Roosta 用一組對照開場。<strong>傳統資訊檢索 / classic RAG</strong> 是一條直線:使用者送出 query → 搜尋引擎取回文件 → 產生排序清單 → rerank → 把清單呈現給使用者。</p>
-<p><strong>Agentic flow</strong> 則不同:agent 會做 planning、試著弄清楚這個 query 的 intent、執行搜尋、蒐集結果、分析、critique,最後才給出結論。她的總結是:<strong>工作單位已經從「查詢」變成「與世界持續進行的一場對話」</strong>。</p>
-<p>這件事最明顯地體現在 deep research agent 上。她舉的例子是一個關於膽固醇藥物的問題:agent 先理解問題意圖,然後用各種工具去蒐集網站資料、價格資訊、藥物交互作用等等,再把答案<strong>扎根在檢索到的證據上</strong>,最後呈現給使用者——省下人類自己翻文件與部落格文章的好幾個小時。她提到現在這類 agentic IR <strong>常常跑到 20 個 turn 左右,已經是 multi-hop 的東西</strong>。</p>
-<h4>落差:評估方法還停在單輪時代(約 00:34–00:35)</h4>
-<p>「但這裡有一個令人不安的落差。」我們要評估 agentic IR 時,<strong>仍然傾向只看最終答案</strong>,用 BLEU、ROUGE 這類分數判斷答案對不對。可是現在的資訊尋求是<strong>互動的、多輪的、有時間面向的、而且必須是 evidence-driven</strong>——單看最終答案根本測不準。</p>
-<p>她的處方是<strong>回到 trace</strong>:逐跳去評估每一步的正確性、每一跳是否<strong>足以</strong>回答使用者的問題,以及成本面——用了多少 token、延遲多少。</p>
-<h4>領域正在往哪走(約 00:36)</h4>
-<p>她列出幾條正在成形的方向:</p>
-<ul>
-<li><strong>Reasoning-aware retrieval</strong>:檢索訊號不再只有 query 的關鍵字,而是納入 <strong>agent 的推理 trace</strong>。</li>
-<li><strong>Multi-turn / hop-aware benchmark</strong>:如 <strong>MTRAG</strong> 這類專為多輪對話式 RAG 設計的評估集。</li>
-<li><strong>Graph RAG</strong>:讓檢索看得到實體之間的關係。</li>
-<li><strong>Self-RAG</strong>:用來削掉一部分幻覺。</li>
-<li><strong>Adaptive RAG</strong>:依 query 的複雜度與所需投入來路由。</li>
-<li><strong>把 token 用量當指標</strong>:實際計算並最佳化用掉多少 token,把它視為資訊檢索的一項評估指標。</li>
-</ul>
-<p><strong>收尾</strong>:我們尋求資訊的方式已經改變,agent 改變了我們取得資訊的方法;那麼<strong>我們評估「這些 agent 有沒有做對事、有沒有達成它設定的目標」的方式,也必須跟著改變</strong>。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>The shift</strong>: from traditional IR / classic RAG as a straight line (query → fetch documents → ranked list → rerank → hand the user a list) to an agentic flow (plan → infer intent → search → gather → analyze → critique → present). <strong>The unit of work moved from a lookup to an ongoing conversation with the world</strong>, often running 20 turns and going multi-hop.</li>
 <li><strong>The uncomfortable gap</strong>: information seeking is now interactive, multi-turn, temporal, and evidence-driven, <strong>but we still grade the final answer with BLEU and ROUGE</strong>. That doesn't work for agentic IR.</li>
@@ -191,13 +166,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/tanya-roosta--information-retrieval-in-the-age-of-agentic-ai.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/tanya-roosta--information-retrieval-in-the-age-of-agentic-ai.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sat-compass/tanya-roosta--information-retrieval-in-the-age-of-agentic-ai.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>

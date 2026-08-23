@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Robot Foundation Models · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="Robots fail at prompts like &quot;I&#x27;ve got guests coming tonight&quot; not because their motor skills are lacking, but because they lack the test-time reasoning to decompose an unfamiliar job into familiar s…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/sergey-levine--robot-foundation-models.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/sergey-levine--robot-foundation-models.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-plenary/sergey-levine--robot-foundation-models.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-plenary/sergey-levine--robot-foundation-models.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Robot Foundation Models · Agentic AI Summit ’26 Notes" />
@@ -28,73 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sat-plenary" data-talk="sergey-levine--robot-foundation-models">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Robot Foundation Models" data-title-zh="機器人基礎模型">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 4: Robotics &amp; World Models</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">Robot Foundation Models</span><span class="lang-zh">機器人基礎模型</span></h1>
+        <h1 class="talkdoc__title">Robot Foundation Models</h1>
         <p class="dialog__speaker"><strong>Sergey Levine</strong> — Co-Founder, Physical Intelligence; Professor, UC Berkeley</p>
-        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Plenary Stage · 02:11:24–02:21:16 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Saturday, August 1 · Plenary Stage · 02:11:24–02:21:16 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=Tcn5Yb2K0h4&amp;t=7884s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 02:11:24</span><span class="lang-zh">從 02:11:24 開始觀看</span>
+            Watch from 02:11:24
           </a>
-          <a class="btn-ghost" href="sat-plenary.html">
+          <a class="btn-ghost" href="../../sat-plenary.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Plenary · Sat</span><span class="lang-zh">回 Plenary · 週六</span>
+            Back to Plenary · Sat
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">Robots fail at prompts like "I've got guests coming tonight" not because their motor skills are lacking, but because they lack the test-time reasoning to decompose an unfamiliar job into familiar steps — and that reasoning does not have to happen in language; thinking in images is often the right modality for the physical world.</span><span class="lang-zh">機器人做不到「我今晚有客人要來」這種指令,不是因為動作不夠好,而是因為缺少把陌生工作拆解成熟悉步驟的「思考」——而這個思考不一定要用語言,用影像當中介思考往往更貼合物理世界。</span></p>
+        <p class="talkdoc__summary">Robots fail at prompts like "I've got guests coming tonight" not because their motor skills are lacking, but because they lack the test-time reasoning to decompose an unfamiliar job into familiar steps — and that reasoning does not have to happen in language; thinking in images is often the right modality for the physical world.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>真正的落差在「prompt 的層級」</strong>:研究界的 benchmark 任務是「把玉米放進鍋子」這種 atomic task,但人真正想下的指令是「我今晚有客人要來」——那是一整份工作,需要 grounding、規劃與跨情境泛化。</li>
-<li><strong>Test-time compute 對機器人有第二個好處</strong>:除了「想久一點解更難的題」,它還能把陌生問題拆成訓練分佈內的熟悉片段(「我沒抓過這個東西,但我在 web-scale 預訓練時定位過影像中的物體」);再用 RL 優化這些 thought,讓拆解出來的子指令是機器人真的做得到的。</li>
-<li><strong>思考不必用語言</strong>:煮菜照食譜適合語言,攀岩則否。Physical Intelligence 的 <strong>π0.7</strong> 在決策流程中內建輕量 world model,同時用語言與影像思考再落地成動作——沒訓練過的氣炸鍋也能靠「口頭教學」學會操作。</li>
-</ul>
-<h3>重點整理</h3>
-<h4>問題:從 atomic task 到 whole job(約 02:12)</h4>
-<p>開場是個玩笑:他前一晚下班回家很累,請最愛的 LLM 幫忙打掃、摺衣服、做晚餐——結果 LLM 只回了一堆「你應該自己動手做」的建議。他想要的是坐在機器人裡、真的能動手的 embodied foundation model。</p>
-<p>Robot foundation model 是個年輕但成長極快的領域。Physical Intelligence 做了兩年多,已有像是機器人連續 13 小時用義式咖啡機沖咖啡、在工廠組裝紙箱這樣的成果;學界與其他公司也有很多好結果。但他刻意不做成果展示,而是聚焦一個技術問題:<strong>既然結果這麼好,為什麼我們身邊還沒有能聽任意 prompt 做事的機器人?</strong></p>
-<p>答案在 prompt 的層級。研究用的任務長這樣:「put the corn in the pot」(來自 bridge dataset),機器人做到了,但那不是我們要的。我們要的是「我今晚有客人要來」——這句話指定的是<strong>一整份工作而非一個原子任務</strong>,而且它高度依賴脈絡:機器人要知道你是誰、你家長什麼樣,才知道這句話該怎麼解讀。中間有大量 grounding 與問題拆解。</p>
-<h4>Test-time compute 與用 RL 優化 thought(約 02:14–02:17)</h4>
-<p>Test-time compute 在 LLM 世界的作用大家都熟:多生成 token、想更久,解更難的題。但它還有個比較不明顯的好處:<strong>把不熟悉的問題拆成熟悉的片段</strong>。機器人可以說:「你要我拿起這個東西,我沒做過;但我在 web-scale 預訓練裡定位過影像中的物體,那就先定位再說。」</p>
-<p>範例是一個刻意設計來隔離這個問題的研究級任務:「讓藍色積木成為盤子上唯一的東西」。盤子上現在放著壽司(玩具壽司)。正確的反應不只要有效,還要語意上合理——不能把壽司丟到桌上,那不衛生;壽司該進一個語意適當的容器。模型的 reasoning trace 不只處理了這件事,還判斷出壽司對它來說可能是陌生物體,於是決定<strong>輸出空間座標</strong>而不是直接依賴 action head,藉此吸收視覺上的 distribution shift。執行時 thinking trace 每幾秒依現場狀況更新一次。</p>
-<p>Thinking model 最強的時候是 thought 被 RL 優化過的時候。這裡 RL 扮演雙重角色:<strong>它會改寫任務描述,把它變成更接近機器人訓練分佈的樣子</strong>。做法是提出多組不同的文字指令來拆解高階 prompt,選機器人最可能成功的那一組。</p>
-<p>例子:命令機器人「把鎚子放到盤子上」——高度 out-of-distribution。用現成的 vision-language model(這裡是 Gemini),它不知道機器人會什麼、不會什麼,就直接說「好啊,把鎚子放到盤子上」,機器人不知道鎚子是什麼、怎麼放,結果失敗。經過 RL 之後,模型會<strong>把任務「餵到嘴邊」</strong>:「往左移一點,對準鎚子」——到這一步再說「放到盤子上」,就只剩一種做法,做對的機率大增。RL 在這裡填補的是 distribution gap。</p>
-<h4>多模態思考與 π0.7(約 02:17–02:20)</h4>
-<p>照食譜煮菜適合用語言逐步思考;但攀岩時你不會想「我要把手臂往左移 37 公分」,你是用空間、用「等一下看起來會是什麼樣子」在思考。所以機器人基礎模型也可以<strong>用別的模態思考</strong>。早期一個研究工作是:把指令拆解成中介<strong>影像</strong>而非文字——想像「往目標推進一步之後畫面會長怎樣」,那張圖就是 thought,以它為條件再產生動作就容易多了。這招之所以有效,是因為影像生成可以在網路規模資料上預訓練,學會語言與影像的對應,機器人才有辦法「想像」子步驟。</p>
-<p>最後是 Physical Intelligence 近期的大規模工作:<strong>π0.7</strong>,一個大型 vision-language-action 模型,在決策流程中<strong>內建輕量 world model</strong>,先用語言與影像推理任務,再把這一切落地成動作。</p>
-<p>Demo:Lucy 教機器人使用氣炸鍋——<strong>刻意沒有拿氣炸鍋訓練過</strong>,是完全沒見過的家電。直接叫它「氣炸這顆地瓜」,它會成功,但很慢、摸索很久。若給一點額外監督就會可靠得多,而關鍵是:<strong>這個監督不是動作</strong>。Lucy 用講話的方式一步步口頭教學,產生的是「影像 + 語言」的新資料,動作全部是機器人自己做的、不是 ground truth。這批資料只用來 fine-tune 思考流程——本質上是在<strong>教機器人怎麼想</strong>。教完之後,螢幕上會同時看到模型自己生成的語言 thought 與影像 thought,任務就做得相當流暢了。</p>
-<h4>Takeaways(約 02:20)</h4>
-<ul>
-<li>思考 / 推理模型能讓機器人泛化得更好、聽懂更複雜的 prompt。長期來看這很重要,因為我們最終會想下這種指令:「你是管家機器人,晚上六點打掃、準備晚餐、星期六洗衣服。」——那就是<strong>一句 prompt</strong>,而機器人可能要花好幾週才能完整執行完。</li>
-<li><strong>思考不必是文字</strong>。物理世界很複雜,該用哪個模態就用哪個。</li>
-<li>甚至可以<strong>同時用多個模態</strong>,在對的抽象層級上思考:照食譜煮菜用語言,搞懂新家電則需要想像手該放哪裡去按按鈕、開容器。</li>
-<li>這同時給了兩件事:解更難問題的方法,以及<strong>把其他模態中的知識更有效地轉移進來</strong>的方法。</li>
-</ul>
-<h3>金句</h3>
-<blockquote>
-<p>"Why is it that with all these really nice results, we aren't seeing robots that can follow arbitrary prompts all around us today?"(約 02:12:30)</p>
-</blockquote>
-<p>整場演講的問題意識——不是問「還能做出什麼 demo」,而是問「為什麼 demo 沒有變成日常」。</p>
-<blockquote>
-<p>"Break down an unfamiliar problem into more familiar steps."(約 02:15)</p>
-</blockquote>
-<p>Test-time compute 對機器人真正的價值:不只是想更久,而是把 out-of-distribution 拉回 in-distribution。</p>
-<blockquote>
-<p>"The thinking doesn't have to be in text. The physical world is complex and you should use the right modality for the job."(約 02:20:30)</p>
-</blockquote>
-<p>對「一切都用語言 chain-of-thought」的直接反駁。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>The real gap is the level of the prompt.</strong> Research benchmarks ask for atomic tasks ("put the corn in the pot"); what people actually want to say is "I've got guests coming tonight" — an entire job that requires grounding, planning, and generalization to new context.</li>
 <li><strong>Test-time compute buys robots a second, less obvious benefit.</strong> Beyond solving harder problems by thinking longer, it decomposes unfamiliar problems into pieces that sit inside the training distribution ("I've never grasped this, but web-scale pretraining taught me to localize objects in images"). RL on top curates the decomposition so the sub-instructions are ones the robot can actually execute.</li>
@@ -213,13 +174,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/sergey-levine--robot-foundation-models.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-plenary/sergey-levine--robot-foundation-models.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sat-plenary/sergey-levine--robot-foundation-models.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>

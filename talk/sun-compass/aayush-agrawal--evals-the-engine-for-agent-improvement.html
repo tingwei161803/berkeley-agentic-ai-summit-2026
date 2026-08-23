@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Evals: The Engine for Agent Improvement · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="Every agent team rationally decides to ship first and think about evals later, and every one of them ends up trapped in a loop of retrofitting evals and forensically reconstructing why the agent br…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/aayush-agrawal--evals-the-engine-for-agent-improvement.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/aayush-agrawal--evals-the-engine-for-agent-improvement.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sun-compass/aayush-agrawal--evals-the-engine-for-agent-improvement.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/aayush-agrawal--evals-the-engine-for-agent-improvement.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Evals: The Engine for Agent Improvement · Agentic AI Summit ’26 Notes" />
@@ -28,109 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sun-compass" data-talk="aayush-agrawal--evals-the-engine-for-agent-improvement">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Evals: The Engine for Agent Improvement" data-title-zh="Eval:驅動 Agent 改善的引擎">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 4: Agent Evaluation &amp; Benchmarks</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">Evals: The Engine for Agent Improvement</span><span class="lang-zh">Eval:驅動 Agent 改善的引擎</span></h1>
+        <h1 class="talkdoc__title">Evals: The Engine for Agent Improvement</h1>
         <p class="dialog__speaker"><strong>Aayush Agrawal</strong> — Product Lead, Uber</p>
-        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 03:00:54–03:07:22 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Sunday, August 2 · Compass Stage · 03:00:54–03:07:22 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=10854s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 03:00:54</span><span class="lang-zh">從 03:00:54 開始觀看</span>
+            Watch from 03:00:54
           </a>
-          <a class="btn-ghost" href="sun-compass.html">
+          <a class="btn-ghost" href="../../sun-compass.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+            Back to Compass · Sun
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">Every agent team rationally decides to ship first and think about evals later, and every one of them ends up trapped in a loop of retrofitting evals and forensically reconstructing why the agent broke. Uber's platform team spent a year making evals the default — tracing on from day one, starter-kit evaluators pushed into Slack, CLI experiences that let product teams own the process — and replaced the question "is your eval above 90%?" with "do you actually trust your eval?"</span><span class="lang-zh">每個 agent 團隊都理性地決定「先上線,eval 之後再說」,結果全都被困在事後補 eval、事後查為什麼壞掉的迴圈裡;Uber 平台團隊花一年把 eval 變成預設值——tracing 從第一天就開、starter kit 直接送到 Slack、用 CLI 讓產品團隊也能擁有 eval——並且把提問從「你的 eval 有沒有 90%?」換成「你真的信任你的 eval 嗎?」</span></p>
+        <p class="talkdoc__summary">Every agent team rationally decides to ship first and think about evals later, and every one of them ends up trapped in a loop of retrofitting evals and forensically reconstructing why the agent broke. Uber's platform team spent a year making evals the default — tracing on from day one, starter-kit evaluators pushed into Slack, CLI experiences that let product teams own the process — and replaced the question "is your eval above 90%?" with "do you actually trust your eval?"</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>問題不是團隊不想做 eval,是摩擦力</strong>:每個團隊都想要高品質的 production agent,但都選擇「先把 agent 上線,eval 之後再想」——這在要驗證 PMF 的當下是<strong>完全理性的決定</strong>。代價是掉進「事後補 eval + 事後查為什麼壞掉」的無盡迴圈。平台團隊的工作就是把這些摩擦點一個個消掉。</li>
-<li><strong>四個介入手段</strong>:(1) 第一天就在<strong>每個環境</strong>開 tracing;(2) 用 agent 的建構脈絡與文件自動推薦 <strong>starter kit evaluator</strong>,並直接推播到 <strong>Slack</strong>;(3) 用 <strong>CLI 與 skills</strong> 把 eval 從工程專屬變成產品團隊也能擁有的東西;(4) <strong>換掉敘事</strong>——這一項沒有工具可以解。</li>
-<li><strong>最好的說服素材是一個失敗案例</strong>:語音叫車的離線 eval 有 95%+,但 production eval 顯示<strong>每個 session 的輪數異常偏高</strong>。追下去發現:乘客要去 SFO,<strong>背景有人說了一句「我想吃 pizza」</strong>,agent 把它當成輸入,開始把人導向最近的 pizza 店。</li>
-<li><strong>終點是把 eval 從「分數」變成「引擎」</strong>:traces → 失敗被<strong>自動分類</strong> → 自動提出對 agent 與 evaluator 的修改建議 → 團隊只要 accept / reject。<strong>分數是你已經知道的事;引擎是持續讓 agent 往客戶在乎的方向靠攏。</strong></li>
-</ul>
-<h3>重點整理</h3>
-<h4>開場的三個舉手題(約 03:01)</h4>
-<p>Aayush Agrawal 是當天 Compass Stage 的壓軸。他先用三個問題暖場:</p>
-<ol>
-<li>今天有誰搭過 Uber?(少數人舉手)</li>
-<li><strong>更重要的:誰真的為 production 的 agent 寫過 eval?</strong>(他稱這些人為 real builders)</li>
-<li><strong>最後一題,你要為這件事感到驕傲:那些 eval 有沒有告訴你什麼、進而改變了你出貨產品的方式?</strong></li>
-</ol>
-<p>他要指出的正是這條分界線:<strong>把 eval 當成一個打勾項目,和 eval 真的改變你的產品方向,是兩件事。</strong> 而讓每一個 agent 團隊都能做到後者,<strong>正是 Uber 花了一年多在做的事</strong>。</p>
-<h4>背景:Uber 的 agent platform(約 03:02)</h4>
-<p>Uber 正在整個生態系中出貨 agent——<strong>對外</strong>(例如用語音叫車)與<strong>對內</strong>都有。在企業規模上支撐這一切的,是他所管理的 <strong>Uber agent platform</strong>,底下有一系列元件,讓 agent 團隊不必操心基礎設施。這場談的是其中的 eval。</p>
-<h4>診斷:一個理性的決定,一個必然的迴圈(約 03:02–03:03)</h4>
-<p>他觀察到跨團隊的共同模式:<strong>每個團隊都想要高品質的 production agent,但每個團隊都做了同一件事——「我先把 agent 上線,eval 之後再說。」</strong></p>
-<p>他很公允地指出<strong>這是非常理性的決定</strong>:他們當下要證明的是 product-market fit,他們只想知道這東西到底行不行。</p>
-<p><strong>但代價是:他們接著就被困在一個無情的迴圈裡——事後補 eval,事後回頭拼湊那個 agent 到底為什麼壞掉。</strong></p>
-<p>平台團隊的結論是:存在<strong>真實的摩擦點</strong>,阻止團隊更早進入有 eval 的狀態。<strong>那就把它變成零摩擦。</strong></p>
-<h4>四個介入:讓 eval 成為預設值(約 03:03–03:05)</h4>
-<p><strong>1. Tracing 從第一天、每個環境開始</strong></p>
-<p>(他也提到這點當天很多講者都講過。)只要開發一啟動,<strong>每個環境</strong>就都有 tracing。這給了團隊建立後續評估的<strong>地基</strong>:你可以就這樣把 agent 蓋起來、跟它 vibe 一下、丟出去,而<strong>它一路怎麼變化的所有資訊都已經在那裡了</strong>,不是之後要回頭補的東西。</p>
-<p><strong>2. Starter kit evaluator,直接送到 Slack</strong></p>
-<p>有了資料之後,新的卡點是:<strong>團隊不知道怎麼開始寫 eval</strong>——不知道最好的寫法是什麼,也不知道該寫在哪裡。</p>
-<p>平台的做法是:利用<strong>這個 agent 是怎麼被建構的脈絡、以及它的文件</strong>,推導出<strong>最適合的 starter kit evaluator</strong>,然後<strong>把這些洞見直接推播給 builder 的 Slack</strong>。</p>
-<p>他舉的例子很具體:「我不知道 LLM judge 是什麼,<strong>但我知道 tool contradiction 是什麼意思,而且我可以因此做出修改。</strong>」</p>
-<p><strong>3. CLI:把 eval 從工程手上釋放出來</strong></p>
-<p>他點出一個關鍵差異:<strong>agent 的 eval 和 QA 測試非常不同,它們不是純工程的東西。</strong></p>
-<p>但必須把這個落差補起來,好讓<strong>離客戶最近的團隊——產品與客服團隊——有能力理解這些 eval</strong>。<strong>CLI 體驗真正民主化了這件事</strong>:透過<strong>建構管理 eval 的 skills</strong>,他們看到<strong>產品團隊能夠擁有整個流程</strong>。</p>
-<p><strong>4. 換掉敘事(這一項沒有工具可以解)</strong></p>
-<p>最後一項是他明說「我們沒辦法用工具繞過」的:<strong>改變大家對「eval 是要做什麼用的」的認知。</strong></p>
-<p>他們把團隊的提問從「<strong>你的 eval 有沒有 90% 以上?</strong>」換成:</p>
-<ul>
-<li><strong>你真的信任你的 eval 嗎?</strong></li>
-<li><strong>因為 eval 告訴你的事,你對 roadmap 做了什麼改變?</strong></li>
-<li><strong>你更新資料集的速度有多快?你的資料集是不是已經五個月沒動、跟現在的產品早就對不上了?</strong></li>
-</ul>
-<p><strong>成果:出貨更快,而且在產品生命週期中更早抓到問題。</strong></p>
-<h4>案例:語音叫車與那份 pizza(約 03:05–03:06)</h4>
-<p>Uber 即將推出<strong>乘客語音叫車</strong>。他們的 eval 抓到了這樣一件事:</p>
-<ul>
-<li><strong>離線 eval 分數是 95% 以上</strong>,看起來很好。</li>
-<li>但 <strong>production eval 顯示:每個 session 的輪數(turns per session)遠高於平均。</strong></li>
-</ul>
-<p>深入追查後發現:有一位乘客正要叫車去 <strong>SFO</strong>,但<strong>背景有人說了一句「欸我想吃 pizza」</strong>——<strong>agent 把這句話當成了輸入,開始把乘客改導向最近的 pizza 店。</strong></p>
-<p>由此他們意識到:<strong>agent 必須理解真正的意圖(true intent),並且要有 no-op——在不該聽的時候就不要聽。</strong></p>
-<p>他強調這個發現之所以可能,是因為<strong>同時有 eval,也有產品團隊在迴圈裡。</strong></p>
-<h4>終局:從 eval-as-default 到 eval-as-engine(約 03:06)</h4>
-<p>Uber 的演進路徑是:透過上述介入讓 <strong>eval 成為預設值</strong>,而現在他們正往下一階段走——<strong>eval 是一台引擎</strong>:</p>
-<p><strong>traces → 失敗被自動分類 → 自動提出對 agent 與對 evaluator 的修改建議 → 團隊 accept / reject → 改善回饋迴圈。</strong></p>
-<p>他的結尾對比很清楚:</p>
-<blockquote>
-<p><strong>一邊是一個 eval metric——一個關於你已經知道的事情的分數;另一邊是一台引擎,持續幫你把 agent 調校到客戶真正在乎的方向。</strong></p>
-</blockquote>
-<p>「這就是讓你在 Uber 的每一趟行程都感覺神奇的原因。」</p>
-<h3>金句</h3>
-<blockquote>
-<p>"That's the difference between having eval as a checkbox versus an eval actually changing your product direction."(約 03:01)</p>
-</blockquote>
-<p>開場三個舉手題要問出來的那條線。</p>
-<blockquote>
-<p>"They said that, hey, let me just ship the agent and I'll think about eval. And it was a very rational decision."(約 03:02)</p>
-</blockquote>
-<p>他不責怪團隊——他把它當成平台要解的摩擦力問題。</p>
-<blockquote>
-<p>"We changed teams' narratives from 'hey, is your eval 90% plus?' to 'do you actually trust your eval?'"(約 03:04)</p>
-</blockquote>
-<p>唯一一個沒有工具可以解的介入。</p>
-<blockquote>
-<p>"Is your data set five months old and not really up to date with your product?"(約 03:05)</p>
-</blockquote>
-<p>Eval 資料集會腐爛,而腐爛的資料集會給你一個令人安心的假分數。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>The problem isn't that teams don't want evals — it's friction.</strong> Every team wanted high-quality production agents, and every team said "let me just ship the agent and I'll think about eval later" — <strong>a perfectly rational call</strong> when you're trying to prove product-market fit. The cost is getting caught in a relentless loop of retrofitting evals and reconstructing why the agent broke. The platform team's job was to remove those friction points one by one.</li>
 <li><strong>Four interventions</strong>: (1) tracing on from day one in <strong>every environment</strong>; (2) automatically derived <strong>starter-kit evaluators</strong> pushed straight into <strong>Slack</strong>; (3) <strong>CLI experiences and skills</strong> that move eval ownership out of engineering and into product teams; (4) <strong>changing the narrative</strong> — the one thing no tool could fix.</li>
@@ -281,13 +206,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/aayush-agrawal--evals-the-engine-for-agent-improvement.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/aayush-agrawal--evals-the-engine-for-agent-improvement.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sun-compass/aayush-agrawal--evals-the-engine-for-agent-improvement.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>
