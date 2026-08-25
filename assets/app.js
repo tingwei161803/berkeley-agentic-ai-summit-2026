@@ -72,19 +72,8 @@
     var main = document.getElementById("page");
     if (!page || !main) return;
 
-    /* ---------- talk-note pages: static content, just wire language ---------- */
-    var talkDoc = document.getElementById("talkdoc");
-    if (document.body.hasAttribute("data-talk") && talkDoc) {
-      var applyTalkLang = function () {
-        document.documentElement.dataset.lang = LDW.state.lang;
-        var title = LDW.state.lang === "zh"
-          ? talkDoc.getAttribute("data-title-zh") : talkDoc.getAttribute("data-title-en");
-        if (title) document.title = title + " · " + t(LDW.meta.title);
-      };
-      applyTalkLang();
-      LDW.onLang(applyTalkLang);
-      return;
-    }
+    /* ---------- talk-note pages: the note is already in the HTML ---------- */
+    if (document.body.hasAttribute("data-talk")) return;
 
     function ui(key) { return (I18N[LDW.state.lang] || I18N.en)[key]; }
     function typeLabel(type) { return ui("types")[type] || ui("types").misc; }
@@ -410,7 +399,7 @@
     }
 
     /* =====================================================================
-       INIT + language switching
+       INIT
        ===================================================================== */
     function renderPage() {
       teardown();
@@ -431,15 +420,5 @@
       window.addEventListener("hashchange", syncFromHash);
       syncFromHash();
     }
-
-    LDW.onLang(function () {
-      renderPage();
-      /* if the dialog is open, re-render its content in the new language */
-      var dialog = LDW.dialog();
-      if (dialog && dialog.open && location.hash) {
-        var slug = decodeURIComponent(location.hash.replace(/^#/, ""));
-        if (findTalk(slug)) openTalk(slug);
-      }
-    });
   });
 })();

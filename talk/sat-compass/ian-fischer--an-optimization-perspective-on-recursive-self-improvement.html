@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>An Optimization Perspective on Recursive Self-Improvement · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="Real recursive self-improvement requires both the *recursive* and the *self* to hold; treating the LLM as one component of a broader system rather than the sole improvement target lets you build se…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/ian-fischer--an-optimization-perspective-on-recursive-self-improvement.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/ian-fischer--an-optimization-perspective-on-recursive-self-improvement.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-compass/ian-fischer--an-optimization-perspective-on-recursive-self-improvement.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-compass/ian-fischer--an-optimization-perspective-on-recursive-self-improvement.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="An Optimization Perspective on Recursive Self-Improvement · Agentic AI Summit ’26 Notes" />
@@ -28,93 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sat-compass" data-talk="ian-fischer--an-optimization-perspective-on-recursive-self-improvement">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="An Optimization Perspective on Recursive Self-Improvement" data-title-zh="從最佳化視角看遞迴自我改進">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 3: Foundational Capabilities</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">An Optimization Perspective on Recursive Self-Improvement</span><span class="lang-zh">從最佳化視角看遞迴自我改進</span></h1>
+        <h1 class="talkdoc__title">An Optimization Perspective on Recursive Self-Improvement</h1>
         <p class="dialog__speaker"><strong>Ian Fischer</strong> — Co-CEO, Poetiq</p>
-        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Compass Stage · 02:10:11–02:21:20 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Saturday, August 1 · Compass Stage · 02:10:11–02:21:20 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=AO0RXP-fVZQ&amp;t=7811s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 02:10:11</span><span class="lang-zh">從 02:10:11 開始觀看</span>
+            Watch from 02:10:11
           </a>
-          <a class="btn-ghost" href="sat-compass.html">
+          <a class="btn-ghost" href="../../sat-compass.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Compass · Sat</span><span class="lang-zh">回 Compass · 週六</span>
+            Back to Compass · Sat
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">Real recursive self-improvement requires both the *recursive* and the *self* to hold; treating the LLM as one component of a broader system rather than the sole improvement target lets you build self-optimizing optimizers whose every RSI step costs one inference run instead of one training run.</span><span class="lang-zh">真正的 RSI 需要「遞迴」與「自我」同時成立;把 LLM 當成系統的一個零件、而非改進的唯一目標,就能用「會自我最佳化的最佳化器」在每一步只花一次 inference(而非一次訓練)的成本下做到真正的複利式自我改進。</span></p>
+        <p class="talkdoc__summary">Real recursive self-improvement requires both the *recursive* and the *self* to hold; treating the LLM as one component of a broader system rather than the sole improvement target lets you build self-optimizing optimizers whose every RSI step costs one inference run instead of one training run.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>RSI 的定義要嚴格</strong>:<em>Recursive</em> = 每一步的改進驅動下一輪改進;<em>Self</em> = 系統改進的是它自己,不是別的目標。兩者缺一不可。常見用法同時「太寬鬆」(把普通的迭代最佳化叫 RSI)又「太嚴苛」(認為只有改 LLM 參數才算 RSI)。</li>
-<li><strong>從 LLM-centric 轉向 systems-oriented</strong>:把 LLM 只當成更大系統中的一個元件,能打開大量原本看不到的改進空間,而且更快更便宜。Poetiq 的迴路每一步只需要一次 inference run,而不是重新訓練一個 LLM。</li>
-<li><strong>Self-optimizing optimizers</strong>:拿一個通用最佳化器(不依賴 gradient 等特化訊號、只要求目標能給出可測量的回饋),先用它最佳化任務目標——那還只是普通迭代最佳化;把它<strong>指向最佳化器自己</strong>,就成了 RSI。條件只有兩個:最佳化器要是通用的,而且要能回報自己的表現。</li>
-<li><strong>結果</strong>:這套 meta system 全自動(零人工介入)在多個公開 benchmark 上刷到 SOTA;其中一半的 benchmark 是用<strong>比前紀錄保持者更舊、更便宜的模型</strong>達成的。他們因此宣稱「benchmarks are dead」——不是說 benchmark 沒用,而是在一個真正會遞迴自我改進的系統面前,靜態 benchmark 的價值有限。</li>
-</ul>
-<h3>重點整理</h3>
-<h4>什麼才算 RSI(約 02:11–02:13)</h4>
-<p>Poetiq 是 Ian Fischer 與共同創辦人約一年半前創立的新創,<strong>整間公司只做遞迴自我改進</strong>——「building AI that improves itself」。團隊 10 位科學家與工程師,主要來自 Google DeepMind,以及 Apple、Microsoft、Amazon、ByteDance。早期成果在 reasoning、knowledge extraction 與 coding 上都刷出 SOTA。</p>
-<p>他對 RSI 三個字逐字拆解:</p>
-<ul>
-<li><strong>Recursive</strong>:每一步產出的改進,要能驅動下一輪的改進。</li>
-<li><strong>Self</strong>:系統改進的對象<strong>就是它自己</strong>,不是某個外部目標。</li>
-<li><strong>Improvement</strong>:這個沒什麼好講的,大家都在做某種形式的 improvement。</li>
-</ul>
-<p>他刻意咬文嚼字,是因為業界對 RSI 的用法同時犯了兩個相反的錯:一邊<strong>太寬鬆</strong>——把單純的迭代改進迴路叫作 RSI;一邊<strong>太嚴苛</strong>——認為只有更新 LLM 參數才算 RSI。後者的問題在於,一個智慧系統裡<strong>還有很多其他零件可以被有效改進</strong>。</p>
-<p>為什麼 RSI 重要?因為真正的 RSI <strong>改進會複利(compound)</strong>,而人類驅動的改進不會——原因很直白:人類不會在改進模型的過程中自己也變得越來越聰明,但 RSI 系統會。</p>
-<h4>版圖:兩軸四象限(約 02:13–02:16)</h4>
-<p>他用兩個軸畫出 RSI 的地景:y 軸是成本(上便宜、下昂貴),x 軸是「是不是真的 RSI」(左邊是普通迭代最佳化,右邊才是 RSI)。</p>
-<ul>
-<li><strong>右下(貴但真 RSI)</strong>:資金最雄厚的一群——Anthropic、OpenAI、Google 都投入大量資源,也就是一般人講 RSI 時想的那種 LLM-centric 路線。是真 RSI,但<strong>每一步都要從頭訓練一個 LLM</strong>。</li>
-<li><strong>右上(便宜且真 RSI)</strong>:Poetiq 自己放在這裡,而且說這不是隨便放的——他們的迴路確實會複利,而每一步 RSI <strong>只要一次 inference run</strong>。鄰居包括 Darwin Gödel Machine 與 SICA(兩者主要針對 coding),以及會用自己生成的資料訓練的 MiniMax harness——都是真 RSI 也都便宜,只是比他們的做法窄。</li>
-</ul>
-<p>換個切法就是:<strong>下半是 LLM-centric,上半是 systems-oriented</strong>——後者把 LLM 只當成一個應該被改進的更大系統的元件。從 LLM-centric 轉到 systems-oriented,會打開大量原本會錯過的改進可能,而且通常更快更便宜。</p>
-<p>他接著點評兩種當紅路線:</p>
-<ul>
-<li><strong>Anthropic 的「AI that builds itself」</strong>:拿一版 Claude 放進 Claude Code,然後「人類 + Claude Code」一起改進 Claude。這是<strong>部分 RSI</strong>——Claude 既是被改進的東西也是改進者的一部分,但迴路裡有人類,他不算(Anthropic 自己也不算)。修法很簡單:<strong>把人拿掉</strong>;他認為 Anthropic 已經在往那走,而且那大概也是他們擔心的事。</li>
-<li><strong>Automated AI scientist / auto research</strong>:生成假設 → 實作 → 量測 → 寫論文 → 論文丟回知識庫。這<strong>通常不是 RSI</strong>,因為它針對的不是自己系統的某個部分。修法也簡單:把最佳化目標指向迴路裡用的那個 LLM——但這樣做會比現在大多數 automated AI scientist 貴得多。</li>
-</ul>
-<h4>Poetiq 的做法:self-optimizing optimizers(約 02:16–02:19)</h4>
-<p>拆成三步:</p>
-<ol>
-<li><strong>從一個通用最佳化器出發</strong>。「通用」的定義是:不依賴 gradient 這類特化訊號,只需要最佳化目標給出<strong>可測量的回饋</strong>。這比 hill climbing 之類的 black-box optimizer 還要更一般,因為回饋甚至不必是量化的。</li>
-<li><strong>拿它去最佳化一個目標</strong>。回饋可以很任意:accuracy、cost 這類標準指標,也可以是 rubric evaluations 或 reasoning targets 這類非典型訊號。到這裡<strong>還不是 RSI</strong>,只是標準的迭代最佳化。</li>
-<li><strong>把這個通用最佳化器指向最佳化器自己</strong>。現在是「最佳化器最佳化著那個正在最佳化目標的最佳化器」——<strong>這才是 RSI</strong>。</li>
-</ol>
-<p>要讓一個最佳化器能最佳化自己,只需要兩個條件:它是通用最佳化器,而且它能提供關於自身表現的回饋。因為起點就是通用最佳化器,而任何最佳化器都能回報自己的表現,所以這裡沒有障礙。他特別澄清:<strong>這跟說「最佳化器是 Adam 或 SGD」完全不同,那樣是行不通的。</strong></p>
-<p>這就是他們稱為 <strong>Poetiq meta system</strong> 的東西:它是 RSI,而且他們用它最佳化一切——meta system 最佳化的每一個任務,都會回過頭幫助它把自己最佳化得更好、成為更強的最佳化器。既然是通用最佳化器,就可以指向 meta system 自身的任何部分,也可以指向任何可量測的任務:benchmark、客戶資料等等。</p>
-<h4>實證結果與「benchmarks are dead」(約 02:19–02:21)</h4>
-<p>他們有一篇 blog post 主張 <strong>benchmarks are dead</strong>。他澄清這不是說 benchmark 沒用,而是:<strong>在一個真正會遞迴自我改進的系統面前,靜態 benchmark 的價值相當有限</strong>——因為他們能全自動地在「每一個他們打開來跑的 benchmark」上拿到 SOTA。全自動意味著<strong>零人工介入</strong>,而且通常很快。</p>
-<p>投影片上的成績表裡,他認為最有意思的一點是:這些 benchmark 橫跨許多他們<strong>從未接觸過的領域</strong>,而其中<strong>一半的 SOTA 是用比前紀錄保持者更舊、更便宜的模型</strong>取得的——而前紀錄通常是 Fable 5。</p>
-<p>接下來的方向是不再聚焦 benchmark,轉向與多個領域的早期客戶合作。他留下的觀點:<strong>AI 的下一次相變,會來自一個能發明自己改進方式的系統</strong>;Poetiq 刻意用「最佳化視角看 RSI、並用它去最佳化一切(包括最佳化器本身)」來為這次相變撒一張非常大的網。</p>
-<h3>金句</h3>
-<blockquote>
-<p>"Recursive means that the new improvements at each step are going to drive the next round of improvements. And self — the system really is going to improve itself, not some other target."(約 02:11)</p>
-</blockquote>
-<p>整場演講的定義基準線,後面所有的分類都建立在這句話上。</p>
-<blockquote>
-<p>"Humans don't become inexorably smarter while improving models, but RSI systems can."(約 02:12)</p>
-</blockquote>
-<p>一句話解釋為什麼 RSI 的改進會複利而人類驅動的不會。</p>
-<blockquote>
-<p>"In the case of Anthropic, we can just get rid of the humans. They've kind of indicated that that's where they're headed and that's maybe something that they're worried about."(約 02:16)</p>
-</blockquote>
-<p>把 Claude Code 迴路變成純 RSI 的「修法」,以及對此的一句冷處理。</p>
-<blockquote>
-<p>"The next phase transition in AI is going to come from a system that invents its own improvements."(約 02:20)</p>
-</blockquote>
-<p>收尾的核心主張。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>Be strict about the definition.</strong> <em>Recursive</em> means each step's improvements drive the next round; <em>self</em> means the system improves itself, not some other target. Common usage is simultaneously too permissive (calling ordinary iterative loops RSI) and too restrictive (insisting only LLM parameter updates count).</li>
 <li><strong>Shift from LLM-centric to systems-oriented.</strong> Treating the LLM as one component of a broader system opens up improvement possibilities you'd otherwise miss — and tends to be faster and cheaper. Poetiq's loop costs one inference run per step, not one training run.</li>
@@ -278,13 +219,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/ian-fischer--an-optimization-perspective-on-recursive-self-improvement.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-compass/ian-fischer--an-optimization-perspective-on-recursive-self-improvement.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sat-compass/ian-fischer--an-optimization-perspective-on-recursive-self-improvement.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>

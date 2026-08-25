@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>AIDaR: AI Data Readiness Evaluations Framework · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="Agents don&#x27;t perform in a vacuum — they run on top of a data layer. When your agent&#x27;s eval scores look bad, the cause is often neither the prompt nor the model but a data layer built for dashboards…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/arindam-sett--aidar-ai-data-readiness-evaluations-framework.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/arindam-sett--aidar-ai-data-readiness-evaluations-framework.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sun-compass/arindam-sett--aidar-ai-data-readiness-evaluations-framework.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/arindam-sett--aidar-ai-data-readiness-evaluations-framework.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="AIDaR: AI Data Readiness Evaluations Framework · Agentic AI Summit ’26 Notes" />
@@ -28,92 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sun-compass" data-talk="arindam-sett--aidar-ai-data-readiness-evaluations-framework">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="AIDaR: AI Data Readiness Evaluations Framework" data-title-zh="AIDaR:AI 資料就緒度評估框架">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 4: Agent Evaluation &amp; Benchmarks</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">AIDaR: AI Data Readiness Evaluations Framework</span><span class="lang-zh">AIDaR:AI 資料就緒度評估框架</span></h1>
+        <h1 class="talkdoc__title">AIDaR: AI Data Readiness Evaluations Framework</h1>
         <p class="dialog__speaker"><strong>Arindam Sett</strong> — Principal ML Engineer, Genentech</p>
-        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 02:49:08–02:54:38 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Sunday, August 2 · Compass Stage · 02:49:08–02:54:38 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=10148s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 02:49:08</span><span class="lang-zh">從 02:49:08 開始觀看</span>
+            Watch from 02:49:08
           </a>
-          <a class="btn-ghost" href="sun-compass.html">
+          <a class="btn-ghost" href="../../sun-compass.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+            Back to Compass · Sun
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">Agents don't perform in a vacuum — they run on top of a data layer. When your agent's eval scores look bad, the cause is often neither the prompt nor the model but a data layer built for dashboards and reporting rather than for agents. So evaluating agents requires evaluating data readiness alongside them.</span><span class="lang-zh">Agent 不是在真空中運作的,它跑在一層資料之上;當你的 agent 評估分數難看,問題往往不在 prompt 也不在模型,而在那層為 dashboard 和報表而生、根本不是為 agent 準備的資料——所以評估 agent 的同時,也必須評估資料層的就緒度。</span></p>
+        <p class="talkdoc__summary">Agents don't perform in a vacuum — they run on top of a data layer. When your agent's eval scores look bad, the cause is often neither the prompt nor the model but a data layer built for dashboards and reporting rather than for agents. So evaluating agents requires evaluating data readiness alongside them.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>單一論點</strong>:在評估 agent 的同時,<strong>必須一併評估底層資料層的就緒度</strong>。這是他整場只想講的一件事。</li>
-<li><strong>Genentech 的真實踩坑過程</strong>:被要求建 agentic 系統 → 選資料集 → 工程師做兩個月 → 一跑 eval 表現很差 → 翻遍各種最佳實踐部落格、調 prompt、期待更好的模型,全都沒用。<strong>最後才發現問題在資料層</strong>——那層資料是為 data warehousing、報表與 dashboard 設計的,不是為 agent 設計的。</li>
-<li><strong>五個維度的評估框架</strong>(他強調仍在演進中):data quality、semantics &amp; metadata、access &amp; governance、structural readiness、generalizability。其中 structural readiness 的具體反例是 <strong>entity-attribute-value(EAV)資料模型</strong>——對在其上跑 agent 非常不友善。</li>
-</ul>
-<h3>重點整理</h3>
-<h4>問題:我們調錯了東西(約 02:50–02:52)</h4>
-<p>Arindam Sett 是 Genentech 的 principal machine learning engineer,專注在 agentic AI、生命科學領域的 scientific AI、AI 資料就緒度,以及 agent 評估。</p>
-<p>他說整場只有<strong>一個論點</strong>:<strong>當我們在評估 agent 的時候,也必須評估底層資料層的就緒度。</strong></p>
-<p>接著他講了一個很多人會有共鳴的過程。在 Genentech,他們被要求建立一套 agentic 系統:選定一些資料集 → ML/AI 工程師投入 → 花了幾個月把框架組起來 → <strong>然後跑評估,表現很差</strong>。</p>
-<p>於是開始找原因:翻遍 LangChain 的部落格、各種框架的部落格,<strong>該套用的最佳實踐都套用了</strong>,還是不行;接著去調 prompt engineering,再接著期待更好的模型出現。</p>
-<p><strong>最後他們才意識到:agent 不是在真空中運作的。它跑在一層資料之上,而那層資料本身也是需要被檢視的東西。</strong></p>
-<p>他給的具體例子:有一個資料層,<strong>它的取向是 dashboard 與報表</strong>。他們在上面架了 agent,表現就是不好——回頭看才發現,<strong>那層資料當初是為 data warehousing、報表與 dashboard 而設計的</strong>,不是為 agent。</p>
-<h4>AIDaR:五個維度(約 02:52–02:53)</h4>
-<p>由此他們發展出這套 <strong>AI 資料就緒度評估框架</strong>(他強調目前仍在演進),包含五個維度:</p>
-<table>
-<thead>
-<tr>
-<th>維度</th>
-<th>檢查什麼</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>1. Data quality</strong></td>
-<td>資料在技術上有多健全——<strong>完整性(completeness)、一致性(consistency)、新鮮度(freshness)</strong></td>
-</tr>
-<tr>
-<td><strong>2. Semantics &amp; metadata</strong></td>
-<td>這個資料集有沒有 metadata?以 PostgreSQL 為例:<strong>有沒有 table 與 column 的註解?有沒有一份承載該資料脈絡的說明?</strong></td>
-</tr>
-<tr>
-<td><strong>3. Access &amp; governance</strong></td>
-<td><strong>agent 到底能不能存取到相關資料?</strong></td>
-</tr>
-<tr>
-<td><strong>4. Structural readiness</strong></td>
-<td>資料模型的結構是否適合 agent。他們踩到的坑是資料模型採用了 <strong>entity-attribute-value(EAV)</strong> 的概念——<strong>對在其上跑 agent 非常不利</strong></td>
-</tr>
-<tr>
-<td><strong>5. Generalizability</strong></td>
-<td>這個資料層是否具有一般性、<strong>能不能撐得住 happy path 以外的情況</strong></td>
-</tr>
-</tbody>
-</table>
-<h4>社群與 workshop(約 02:53–02:54)</h4>
-<p>他們最近有一個 <strong>NeurIPS workshop 在 Paris 獲得接受</strong>(他在台上順道恭喜了 Scale AI 也拿到 workshop——即前面 Chenguang Wang 提到的 Agents in the Wild)。</p>
-<p>workshop 的目的是<strong>把兩群人聚在一起</strong>:正在<strong>為 agentic AI 打造資料基礎設施</strong>的人,以及正在<strong>為 agentic AI 建立評估與 benchmark</strong> 的人。</p>
-<p>他也強調這是一項真正的協作成果——Genentech 內部、加上外部的學界、業界與社群共同促成。</p>
-<h3>金句</h3>
-<blockquote>
-<p>"The agents are not performing in a vacuum. They are working on top of a data layer, and the underlying data layer is something we need to also look at."(約 02:51)</p>
-</blockquote>
-<p>整場唯一的論點,也是他最想留下的一句。</p>
-<blockquote>
-<p>"We went to all the LangChain blogs … hopefully we actually applied the best practices, but it wasn't performing. Then we looked into prompt engineering, we looked for hope for the better models."(約 02:51)</p>
-</blockquote>
-<p>evals 表現差時的標準除錯順序——而他的重點是:這個順序漏掉了最下面那一層。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>A single argument</strong>: while evaluating agents, <strong>you must also evaluate the readiness of the underlying data layer.</strong> That was the whole talk.</li>
 <li><strong>A real Genentech failure loop</strong>: mandated to build an agentic system → pick datasets → engineers work for a couple of months → evals come back poor → read every best-practice blog, tune prompts, hope for better models, none of it helps. <strong>The problem turned out to be the data layer</strong> — built for data warehousing, reporting, and dashboards, not for agents.</li>
@@ -251,13 +193,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/arindam-sett--aidar-ai-data-readiness-evaluations-framework.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/arindam-sett--aidar-ai-data-readiness-evaluations-framework.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sun-compass/arindam-sett--aidar-ai-data-readiness-evaluations-framework.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>

@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Scaling Sidewalk Autonomy with World Models · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="The bottleneck in sidewalk autonomy isn&#x27;t a shortage of models — it&#x27;s having no fair way to evaluate them before deployment; the fix is to treat real-world video as source code, reconstruct it into…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/bolei-zhou--scaling-sidewalk-autonomy-with-world-models.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/bolei-zhou--scaling-sidewalk-autonomy-with-world-models.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-atlas/bolei-zhou--scaling-sidewalk-autonomy-with-world-models.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/bolei-zhou--scaling-sidewalk-autonomy-with-world-models.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Scaling Sidewalk Autonomy with World Models · Agentic AI Summit ’26 Notes" />
@@ -28,82 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sat-atlas" data-talk="bolei-zhou--scaling-sidewalk-autonomy-with-world-models">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Scaling Sidewalk Autonomy with World Models" data-title-zh="用世界模型擴展人行道自主性">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 2: Robotics &amp; World Models</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">Scaling Sidewalk Autonomy with World Models</span><span class="lang-zh">用世界模型擴展人行道自主性</span></h1>
+        <h1 class="talkdoc__title">Scaling Sidewalk Autonomy with World Models</h1>
         <p class="dialog__speaker"><strong>Bolei Zhou</strong> — Associate Professor, UCLA; Chief AI Scientist, Coco Robotics</p>
-        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 01:04:45–01:13:53 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Saturday, August 1 · Atlas Stage · 01:04:45–01:13:53 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=psPzCQbjCCo&amp;t=3885s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 01:04:45</span><span class="lang-zh">從 01:04:45 開始觀看</span>
+            Watch from 01:04:45
           </a>
-          <a class="btn-ghost" href="sat-atlas.html">
+          <a class="btn-ghost" href="../../sat-atlas.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+            Back to Atlas · Sat
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">The bottleneck in sidewalk autonomy isn't a shortage of models — it's having no fair way to evaluate them before deployment; the fix is to treat real-world video as source code, reconstruct it into interactive simulation, and grow many "digital cousins" from a single clip for training and evaluation.</span><span class="lang-zh">人行道自主性的瓶頸不是模型不夠多,而是沒辦法在部署前公平評估它們;而解法是把真實世界的影片當成「原始碼」,重建成可互動的模擬環境,再從一支影片長出多個「數位表親」來訓練與評估。</span></p>
+        <p class="talkdoc__summary">The bottleneck in sidewalk autonomy isn't a shortage of models — it's having no fair way to evaluate them before deployment; the fix is to treat real-world video as source code, reconstruct it into interactive simulation, and grow many "digital cousins" from a single clip for training and evaluation.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>人行道自主性比道路自主性更難的地方在於約束</strong>:單一 RGB 相機、有限算力與電力,卻要處理各種天候光照、與行人及動物做<strong>社交合宜</strong>的互動(例:繞過躺在人行道上的狗而不踩到牠的尾巴)。</li>
-<li><strong>評估才是瓶頸</strong>:sidewalk foundation model 已經很多(他的實驗室與其他實驗室都有),但<strong>部署前要怎麼公平比較?</strong> 他們先做了 <strong>SidewalkBench</strong>(建在 NVIDIA Omniverse / Isaac Sim 上),但圖形引擎的視覺真實感不足,仍有 scene-to-real gap。</li>
-<li><strong>解法是把真實影片當原始碼</strong>:<strong>Vid2Sim</strong>(CVPR)把人行道影片重建成 Gaussian splatting,再放進物理引擎,得到資料驅動的模擬;在其中用 RL 訓練後可<strong>零樣本遷移</strong>到真實世界,因為訓練與部署之間<strong>沒有視覺落差</strong>。</li>
-<li><strong>一支影片不能只長出一個環境</strong>:<strong>UrbanVerse</strong> 從單支影片抽出 <strong>scene graph</strong>,替換不同物件實例,產生多個<strong>digital cousins</strong>(相對於一對一的 digital twin);同時釋出 <strong>10 萬個帶正確尺度的 3D 資產</strong>。</li>
-<li><strong>成果</strong>:<strong>FlowPilot</strong> 用單一 RGB 相機輸出 waypoint 完成真實人行道導航;並且能<strong>跨載體遷移而不必微調</strong>——已在足式機器人上驗證,正在推進輪足機器人與電動輪椅。「未來我們不只能自主外送食物,也能自主載送人。」</li>
-</ul>
-<h3>重點整理</h3>
-<h4>問題:人行道自主性是另一種自主性(約 01:05–01:07)</h4>
-<p>他先開了個玩笑:台上前面幾位分別來自 UC Berkeley、UC San Diego,加上他的 UCLA——「不如來辦一個 UC AI Summit?」</p>
-<p>接著把場景拉開:大家熟悉的是<strong>道路自主性</strong>(前一位講者剛談過),全尺寸車輛在城市裡跑;但都市環境裡還有另一種自主性,他稱為 <strong>sidewalk autonomy</strong>。Coco Robotics 是一家做<strong>最後一哩食物外送</strong>的新創,有<strong>數百台機器人</strong>在跑這個任務。</p>
-<p>跟道路自主性相比,人行道的處境更雜:</p>
-<ul>
-<li>要非常小心地在人行道上導航、避開障礙物碰撞;</li>
-<li>要處理<strong>所有</strong>天候與光照條件;</li>
-<li>人行道<strong>本來就是為人設計的</strong>,所以機器人必須與行人、動物等動態 agent 做<strong>社交合宜</strong>的互動。他放了自己很喜歡的一段影片:一隻狗躺在人行道上,機器人必須非常小心地繞過去、<strong>不能壓到狗的尾巴</strong>,同時完成導航任務。</li>
-</ul>
-<p>而且機器人工作在<strong>算力與電力受限</strong>的環境:「我們只被允許用單一 RGB 相機來做導航。」</p>
-<h4>瓶頸:模型很多,但沒辦法在部署前評估(約 01:07–01:09)</h4>
-<p>近年人行道導航的 AI 模型不少,主要靠<strong>模仿學習</strong>從人類示範中學,他的實驗室與其他實驗室都貢獻了一些;這些模型訓練在影片示範上,跨條件泛化得不錯。</p>
-<p>但問題來了:<strong>面對這麼多不同的 sidewalk foundation model,真實世界部署前要怎麼 benchmark 它們?</strong></p>
-<p>他們的第一步是 <strong>SidewalkBench</strong>:在模擬中評估導航策略,環境用 <strong>NVIDIA Omniverse 與 Isaac Sim</strong> 建。它能比較不同模型如何與人互動、如何避免碰撞。<strong>但仔細看就會發現,圖形引擎建出來的模擬仍然缺乏視覺真實感</strong>——跟真實部署之間存在 scene-to-real gap,而這個 gap 會讓評估不公平。</p>
-<h4>解法一:把真實影片當原始碼(Vid2Sim)(約 01:09–01:10)</h4>
-<p>他們的解法是<strong>從真實世界影片建構世界模擬</strong>:「我們想把真實世界影片當成 source code,用它來建這個評估 benchmark。」</p>
-<p><strong>Vid2Sim</strong>(發表於 CVPR)的流程:拿一段在人行道上行走的影片 → 從影片建 <strong>Gaussian splatting 重建</strong> → 把 splat 放進<strong>物理引擎</strong> → 得到資料驅動的模擬環境 → 在其中訓練與評估人行道機器人。</p>
-<p>他放的 demo 顯示用<strong>強化學習</strong>在其中訓練 agent,訓練完的模型可以<strong>零樣本遷移到真實世界</strong>——原因很直接:<strong>訓練環境與部署環境之間幾乎沒有視覺落差。</strong> 有了這種環境,就能評估各種人行道導航策略在不同情況下的表現。</p>
-<h4>解法二:從一支影片長出多個環境(UrbanVerse)(約 01:10–01:12)</h4>
-<p>但這種影片重建有個限制:<strong>一支影片只能重建出一個環境</strong>。理想上我們希望從同一支影片產生多種變化。</p>
-<p>這是 <strong>UrbanVerse</strong> 的動機:從單支影片產生多個 <strong>digital cousins</strong>。他把兩個概念分清楚:<strong>digital twin</strong> 是一支影片對應一個模擬環境;<strong>digital cousins</strong> 則是同一來源長出的多種變體。做法是用電腦視覺技術從輸入影片中<strong>抽出 scene graph</strong>,再<strong>替換不同的物件實例</strong>,就能生出不同版本的環境,每個都能拿來訓練與評估。</p>
-<p>UrbanVerse 已公開釋出,同時釋出一個<strong>大規模 3D 資產庫:10 萬個帶有正確尺度的資產</strong>。</p>
-<p>他們也建了<strong>用模擬做後訓練</strong>的流程:先用影片以模仿學習訓練模型,再把模型放進模擬環境中做後訓練,<strong>提升它的互動性與反事實推理能力</strong>。</p>
-<h4>成果:FlowPilot 與跨載體遷移(約 01:12–01:13)</h4>
-<p>累積這些進展後的近期成果是 <strong>FlowPilot</strong>:在真實世界用<strong>單一 RGB 相機</strong>完成人行道導航。機器人只有一台 RGB 相機,模型輸出 <strong>waypoint</strong>,控制器執行下一個點。展示中機器人能處理困難的人行道場景——避開障礙物、與行人適當互動。</p>
-<p>另一個他認為很令人興奮的方向是<strong>跨載體(cross-embodiment)遷移或部署</strong>:既然有了人行道導航的 foundation model,他們的研究能<strong>在不微調的情況下</strong>把模型遷移到不同的機器人本體。示範影片顯示模型在<strong>足式機器人</strong>上運作良好;還有許多進行中的研究要遷移到其他人行道機器人,例如<strong>輪足機器人</strong>與<strong>電動輪椅</strong>。</p>
-<p>他的結語:「所以未來我們不只能自主外送食物,<strong>我們也能在人行道上自主載送人。</strong>」benchmark 與程式碼都已在他們的網頁上釋出。</p>
-<h3>金句</h3>
-<blockquote>
-<p>"We want to use real world videos as a source code to build up this evaluation benchmark."(約 01:09)</p>
-</blockquote>
-<p>把影片當「原始碼」,是整場方法論的核心比喻。</p>
-<blockquote>
-<p>"There is no visual gap between the training environment and the deployment."(約 01:10)</p>
-</blockquote>
-<p>零樣本遷移為什麼成立的一句話解釋。</p>
-<blockquote>
-<p>"In the future, not only we can autonomously deliver the food, we can also autonomously deliver the people on the sidewalk."(約 01:13)</p>
-</blockquote>
-<p>跨載體遷移的終點:從外送包裹到載送人。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>What makes sidewalks harder than roads is the constraint budget</strong>: a single RGB camera, limited compute and battery, yet the robot must handle all weather and lighting and interact in a <strong>socially compliant</strong> way with pedestrians and animals — including navigating around a dog lying on the sidewalk without stepping on its tail.</li>
 <li><strong>Evaluation is the bottleneck</strong>, not model supply. Plenty of sidewalk foundation models exist (from his lab and others), but there was no fair way to compare them before deployment. Their first attempt, <strong>SidewalkBench</strong>, is built on NVIDIA Omniverse and Isaac Sim — but graphics-engine simulation still lacks visual realism, leaving a scene-to-real gap.</li>
@@ -260,13 +212,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/bolei-zhou--scaling-sidewalk-autonomy-with-world-models.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/bolei-zhou--scaling-sidewalk-autonomy-with-world-models.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sat-atlas/bolei-zhou--scaling-sidewalk-autonomy-with-world-models.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>

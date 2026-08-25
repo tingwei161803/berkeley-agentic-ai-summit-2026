@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Agent Arena: Causal Evaluations of Agents in the Real World · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="Static benchmarks get overfit and drift away from production, so the only judge that can&#x27;t be gamed is reality — Arena randomizes the model inside millions of weekly organic agentic traces and repo…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/anastasios-angelopoulos--agent-arena-causal-evaluations-of-agents-in-the-real-world.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/anastasios-angelopoulos--agent-arena-causal-evaluations-of-agents-in-the-real-world.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sun-atlas/anastasios-angelopoulos--agent-arena-causal-evaluations-of-agents-in-the-real-world.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/anastasios-angelopoulos--agent-arena-causal-evaluations-of-agents-in-the-real-world.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Agent Arena: Causal Evaluations of Agents in the Real World · Agentic AI Summit ’26 Notes" />
@@ -28,76 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sun-atlas" data-talk="anastasios-angelopoulos--agent-arena-causal-evaluations-of-agents-in-the-real-world">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Agent Arena: Causal Evaluations of Agents in the Real World" data-title-zh="Agent Arena:在真實世界中對 agent 做因果評估">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 2: Agent Evaluation &amp; Benchmarks</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">Agent Arena: Causal Evaluations of Agents in the Real World</span><span class="lang-zh">Agent Arena:在真實世界中對 agent 做因果評估</span></h1>
+        <h1 class="talkdoc__title">Agent Arena: Causal Evaluations of Agents in the Real World</h1>
         <p class="dialog__speaker"><strong>Anastasios N Angelopoulos</strong> — Co-Founder/CEO, LLMArena</p>
-        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Atlas Stage · 00:00:48–00:12:50 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Sunday, August 2 · Atlas Stage · 00:00:48–00:12:50 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=-7AJJLwYW1Q&amp;t=48s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 00:00:48</span><span class="lang-zh">從 00:00:48 開始觀看</span>
+            Watch from 00:00:48
           </a>
-          <a class="btn-ghost" href="sun-atlas.html">
+          <a class="btn-ghost" href="../../sun-atlas.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Atlas · Sun</span><span class="lang-zh">回 Atlas · 週日</span>
+            Back to Atlas · Sun
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">Static benchmarks get overfit and drift away from production, so the only judge that can't be gamed is reality — Arena randomizes the model inside millions of weekly organic agentic traces and reports causal treatment effects, not scores, as its agent leaderboard.</span><span class="lang-zh">靜態 benchmark 會被 overfit、又跟 production 有分佈落差,唯一不能作弊的裁判是現實世界;Arena 用「每週數百萬筆真實 agentic traces + 隨機化模型做因果推論」,把 treatment effect 而不是分數,做成 agent 排行榜。</span></p>
+        <p class="talkdoc__summary">Static benchmarks get overfit and drift away from production, so the only judge that can't be gamed is reality — Arena randomizes the model inside millions of weekly organic agentic traces and reports causal treatment effects, not scores, as its agent leaderboard.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>評估哲學</strong>:「唯一重要的裁判是現實」。Arena 不做靜態 benchmark,而是量測模型在部署後對真實使用者的影響,因為要在現實中得分,你就真的得把別人的工作做完。</li>
-<li><strong>Arena 的基本原理(fundamental principle)</strong>:提供回饋這件事本身必須對使用者有價值。使用者投票給自己偏好的回應後就接著用那個回應繼續對話,所以誠實投票才符合自身利益——這是免費拿到數百萬筆高品質資料的原因。</li>
-<li><strong>兩種資料</strong>:(1) pairwise preference(一個 prompt、兩個回應、投票);(2) <strong>trace mining</strong>——單一回應但橫跨數天數週的長對話,可挖出任務完成、幻覺率、可導引性、錯誤率、使用者稱讚/抱怨等訊號。</li>
-<li><strong>規模</strong>:35M 月訪問量,是 2020 年後成立新創的訪問量前十;28% 的流量是軟體工程,等於「每週一千個 SWE-bench 份量」的真實 coding 資料。</li>
-<li><strong>方法論創新</strong>:agentic thread 中使用者看不到模型,Arena 可以<strong>隨機化模型</strong>來介入系統,因此能做<strong>因果推論</strong>——把 orchestrator / tools 視為 treatment,量測 treatment effect,而不只是相關性排名。</li>
-</ul>
-<h3>重點整理</h3>
-<h4>Arena 的評估哲學:唯一的裁判是現實(約 00:01–00:03)</h4>
-<p>Arena 起源於 Berkeley 的學生專案(他當時師從 Mike Jordan 與 Jitendra Malik,並與 Ion Stoica 合作),後來各家模型實驗室都跑來平台上競爭,才長成一家公司。約 7 週前推出 Agent Arena,已有數百萬使用者在 arena.ai 上使用 agent。</p>
-<p>核心主張:靜態 benchmark 有兩個致命傷——<strong>可以被 overfit</strong>,而且<strong>收集資料的分佈和 production 實際發生的事情有落差</strong>。Arena 的做法反過來:量測模型部署後的真實影響。這個訊號不能被 gaming,因為要在現實中做好,你就必須真的完成別人的工作。</p>
-<h4>兩種資料與「回饋即價值」的飛輪(約 00:03–00:06)</h4>
-<ul>
-<li><strong>Pairwise preference</strong>:一個 prompt、兩個回應、使用者投票。</li>
-<li><strong>Trace mining</strong>:離開對戰機制,一個 prompt 一個回應,但形成橫跨數天數週的多輪長對話。他舉的例子是一位使用者用波斯語進行了 84 輪對話、600+ 次 tool call,建出一個 RAG 財經知識系統,附完整架構流程圖與一組通過的 160 項測試。</li>
-</ul>
-<p>他特別點出一條沒寫在投影片上的「Arena 基本原理」:<strong>提供回饋的動作本身必須把價值還給使用者</strong>。投票之後使用者會帶著自己選的回應繼續聊,所以沒有人有動機亂投——不想毀掉自己的對話,就會誠實投票。這就是不用付錢也能累積數百萬筆高品質資料的原因。</p>
-<p>從這些資料中用自動化 pipeline 挖出的訊號包括:任務完成(使用者明確按鈕告知)、幻覺率、可導引性(steerability)、錯誤率、使用者挫折、稱讚與負面情緒。</p>
-<h4>規模與使用者組成(約 00:05–00:07)</h4>
-<p>以訪問量計,在 2020 年後成立的新創中 Arena 排進前十,比 xAI、Hugging Face、Manus、Genspark 都大,月訪問 3,500 萬。使用者組成:軟體 28%、科學 17%、金融 12%、數學 10%、法律 6%、醫療 6%,都在跑跨供應商的 agentic workflow。他形容 28% 的軟體流量等於「每週一千個 SWE-bench」份量的真實世界 coding 評估資料。</p>
-<h4>Agent Arena 實際長什麼樣(約 00:07–00:09)</h4>
-<p>Demo:使用者輸入「下載 Google 2026 Q1 財報電話會議逐字稿並做成 PowerPoint」→ 平台開一台電腦給 agent 用 → agent 上網找逐字稿、下載到 workspace、用 bash 生成 PPT → 使用者可捲動檢視 → 接著說「把它變成一個更有 Google 品牌感的網站」→ agent 再用 bash 做出網站。最後使用者可以按「Yes, my task was successful」。</p>
-<p><strong>每一則使用者訊息都是一次回饋機會</strong>。他半開玩笑地說,那些「Screw you, I hate that response」是意圖非常明確的高品質負面訊號;而在 20 輪對話後補一句「Thank you, good job」則會因為整段 context 被重送而花掉你 10 美元,提醒大家注意花費。</p>
-<h4>從 Elo 走向因果推論(約 00:09–00:11)</h4>
-<p>早年 Arena 把 Bradley–Terry / Elo 帶進這個領域;這次是另一個「把老牌統計方法帶進 AI 評估」的例子:<strong>因果推論</strong>。</p>
-<p>關鍵在於——在 agentic thread 裡使用者看不到背後是哪個模型,所以 Arena 可以<strong>隨機化模型來介入系統</strong>。有了隨機化,就能把 agent 的 orchestrator 或 tools 當成 <strong>treatment</strong>,量測「換成 Fable 當 orchestrator vs. 用其餘模型的隨機平均當 baseline」的 treatment effect。arena.ai/leaderboard 的預設榜就是這個 agent 榜:本質上是一場跨 agent 各子元件的大型多因子 A/B 實驗。</p>
-<p>榜由多個訊號編成,目前約 25 個,包括:任務完成(明確按鈕)、praise vs complaint 比例、幻覺率(把每一條事實主張抽出來,用一批搜尋模型上網驗證真偽)、steerability(使用者抱怨後模型是一次修對,還是使用者得反覆講同一件事)、bash 錯誤復原(會不會犯錯、犯錯後能不能自己救回來)。他強調這些訊號在 benchmark 上看不到——benchmark 上模型幾乎不犯錯,因為都 overfit 了;放到真實使用情境完全是另一回事。</p>
-<p>每個訊號各自產生一張 causal effect 榜,附以極限定理算出的信賴區間,並以中央那條灰線(baseline)為基準。再用加權平均把多訊號聚合成單一榜——他指出這正是因果方法的另一個好處:<strong>可以把很多訊號合成一個有意義的總結</strong>。也可以按 cost per task、latency 拆解。</p>
-<p>他展示的那版榜(數週前)Fable 在 agent arena 居首,Kimi 緊追。</p>
-<h3>金句</h3>
-<blockquote>
-<p>"Our philosophy on evaluations is that there's only one judge that matters and that's reality."(約 00:02)</p>
-</blockquote>
-<p>現實是唯一無法被 overfit 的評估集。</p>
-<blockquote>
-<p>"The fundamental principle of Arena is that the act of providing feedback should be value back to the user."(約 00:04)</p>
-</blockquote>
-<p>這條原理解釋了為什麼 Arena 不用付錢就能拿到數百萬筆偏好資料——誠實回饋對使用者自己最有利。</p>
-<blockquote>
-<p>"If you go look at any benchmark, models are not making errors at all because they've all overfit to them. But here in reality … it's a very different story."(約 00:10)</p>
-</blockquote>
-<p>benchmark 上的零錯誤率,是 overfit 的產物,不是能力的證明。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>Evaluation philosophy</strong>: "there's only one judge that matters and that's reality." Arena measures post-deployment impact instead of static benchmark scores, and that signal can't be gamed — doing well in reality means actually finishing real people's jobs.</li>
 <li><strong>The fundamental principle of Arena</strong>: giving feedback must itself return value to the user. Voting for the better response means you continue the conversation with it, so honest voting is self-interested — that's how millions of high-quality data points come in for free.</li>
@@ -232,13 +190,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-atlas/anastasios-angelopoulos--agent-arena-causal-evaluations-of-agents-in-the-real-world.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-atlas/anastasios-angelopoulos--agent-arena-causal-evaluations-of-agents-in-the-real-world.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sun-atlas/anastasios-angelopoulos--agent-arena-causal-evaluations-of-agents-in-the-real-world.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>

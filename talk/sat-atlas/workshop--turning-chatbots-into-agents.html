@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Turning Chatbots into Agents: What Modern RL Looks Like · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="Same harness, same tools — GPT-2 falls apart where Kimi K3 fixes your bug, and the difference is reinforcement learning; but modern RL&#x27;s real bottleneck isn&#x27;t the algorithm, it&#x27;s who supplies the t…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/workshop--turning-chatbots-into-agents.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/workshop--turning-chatbots-into-agents.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-atlas/workshop--turning-chatbots-into-agents.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/workshop--turning-chatbots-into-agents.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Turning Chatbots into Agents: What Modern RL Looks Like · Agentic AI Summit ’26 Notes" />
@@ -28,122 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sat-atlas" data-talk="workshop--turning-chatbots-into-agents">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Turning Chatbots into Agents: What Modern RL Looks Like" data-title-zh="把聊天機器人變成 Agent:現代 RL 長什麼樣子">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--workshop"><span class="lang-en">Workshop</span><span class="lang-zh">工作坊</span></span>
+          <span class="badge badge--workshop">Workshop</span>
           <span class="dialog__session">Session 1: Foundational Capabilities</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">Turning Chatbots into Agents: What Modern RL Looks Like</span><span class="lang-zh">把聊天機器人變成 Agent:現代 RL 長什麼樣子</span></h1>
+        <h1 class="talkdoc__title">Turning Chatbots into Agents: What Modern RL Looks Like</h1>
         <p class="dialog__speaker"><strong>Lovre Pesut; Muhammad Hashmi</strong> — AI Engineer, Daytona; DevRel, Daytona</p>
-        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 01:08:33–01:52:45 · <span class="lang-en">morning stream</span><span class="lang-zh">上午場直播</span></p>
+        <p class="dialog__meta">Saturday, August 1 · Atlas Stage · 01:08:33–01:52:45 · morning stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=WeriQic-QW0&amp;t=4113s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 01:08:33</span><span class="lang-zh">從 01:08:33 開始觀看</span>
+            Watch from 01:08:33
           </a>
-          <a class="btn-ghost" href="sat-atlas.html">
+          <a class="btn-ghost" href="../../sat-atlas.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+            Back to Atlas · Sat
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">Same harness, same tools — GPT-2 falls apart where Kimi K3 fixes your bug, and the difference is reinforcement learning; but modern RL's real bottleneck isn't the algorithm, it's who supplies the tens of millions of disposable sandboxes, and the fact that *environments* have become the new training data.</span><span class="lang-zh">同樣的 harness、同樣的工具,GPT-2 會直接崩潰而 Kimi K3 能自己修 bug——中間的差別叫 reinforcement learning;而現代 RL 的真正瓶頸不在演算法,在於「誰來提供幾千萬個一次性沙箱」與「環境本身已經變成新的資料」。</span></p>
+        <p class="talkdoc__summary">Same harness, same tools — GPT-2 falls apart where Kimi K3 fixes your bug, and the difference is reinforcement learning; but modern RL's real bottleneck isn't the algorithm, it's who supplies the tens of millions of disposable sandboxes, and the fact that *environments* have become the new training data.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>開場:Daytona 是誰,為什麼在這裡(約 01:08)</h3>
-<p>Muhammad Hashmi 開場說明:Daytona 做的是<strong>跑 agent 與其 workload 的基礎建設</strong>——透過 API 建立電腦,自選作業系統、CPU 數量、RAM、磁碟。兩個主要使用情境:<strong>在背景/雲端跑 agent</strong>,以及 <strong>reinforcement learning</strong>。理由很直接:訓練 agent 時模型是靠「實際做事」來學,而 coding agent 或 computer-use agent 需要一個計算環境來做這些事。</p>
-<p>而這場 workshop 要回答的問題是:<strong>我們到底怎麼從幾年前那個「有時候有用的問答助理」走到今天會自己動手的 agent?</strong></p>
-<h3>主題一:同樣的 harness,差在哪裡(Muhammad,約 01:10)</h3>
-<p>他先放了一段 <strong>Kimi K3</strong> 的終端 agent:給它一個 prompt 去修 bug 或實作功能,它開始跑一堆指令、寫檔案。然後放下一張——<strong>同樣的 harness、同樣的工具,但模型換成七年前的 GPT-2</strong>。送同樣的 prompt,它直接崩潰,完全不知道該做什麼。</p>
-<p>「理解這兩張投影片的差別,大概就是這場的主軸。簡短的答案是 reinforcement learning。」</p>
-<p>他補充了一個重要的觀察角度:RL 本身不是新東西,已經存在數十年了,<strong>真正改變的是背後的模型,以及什麼東西被獎勵。</strong></p>
-<h3>主題二:從 next-token 到 agent 的一條線(Muhammad,約 01:12–01:29)</h3>
-<p>他用一條時間線把整個演進串起來,重點在「每一步到底獎勵了什麼」:</p>
-<ul>
-<li><strong>Pre-training</strong>:模型從機率分布抽下一個 token;拿 ground truth 算 loss(負對數機率),再把梯度更新回權重。他用逐 token 的機率變化投影片示範某個 token 從 61% 被推上去的過程。</li>
-<li><strong>In-context learning 是掉出來的</strong>:你給模型三個 Python 函式的模式,它就能相當準確地預測第四個——「沒有人把這個模式建進權重裡,它就是從 next-word prediction 掉出來的<strong>湧現性質</strong>」。模型放大之後,這種模式跟隨能力顯著變好。</li>
-<li><strong>「一步步想」</strong>:幾年前那篇 thinking step by step 的論文,以及大家記憶中「明確叫 GPT 想仔細一點,它就更常答對」的體驗。</li>
-<li><strong>從補句子到當助理</strong>:早期模型只是把你的輸入補完;要變成助理,得先讓它<strong>學會「當助理」這個模式</strong>——給它大量問答樣本,它就學到「面對問題要當個有幫助的助理」。這是另一次重大轉折。</li>
-<li><strong>模仿的極限</strong>:如果你拿一本數學課本的資料集,只獎勵那些能通往正解的 token,那其實是<strong>在規定模型該怎麼走到答案</strong>。問題是我們本來就不知道最好的路徑是什麼。</li>
-<li><strong>所以 RL 的動機是</strong>:只獎勵最終答案,然後期待推理能力<strong>自己長出來</strong>——而這件事後來確實成立。</li>
-<li><strong>RLHF</strong>:先出現的是人類偏好——你選哪個回答比較好,再用它訓練 reward model,讓底層 LLM 對齊人類偏好。</li>
-<li><strong>RLVR(可驗證獎勵)</strong>:既然知道推理有用,為什麼還要教它模仿寫好的解法?只獎勵最終答案就好。<strong>DeepSeek-R1</strong> 就是這個路線的示範:不檢查每個 token 是否符合資料集,只檢查最終答案。</li>
-<li><strong>credit assignment 的問題</strong>:推理鏈很長時,怎麼知道哪些 token 該領這份獎勵?模型可能前幾千個 token 走得很合理,後面才走岔。當時的答案是 <strong>critic model</strong>——猜測某個 token 是否「比預期更好」,因為本來就很可能被輸出的 token 不該領太高的獎勵。但這要<strong>同時訓練另一個模型</strong>。</li>
-<li><strong>GRPO(group relative policy optimization)</strong>:不用另訓一個模型,改成一次抽一<strong>組</strong> rollout,用「同一題的多次嘗試」當作 credit 的代理。他的例子:同一題四次嘗試,三次過、一次失敗——那次失敗相當「意外」,所以那些 token 應該被<strong>懲罰得比其他 token 被獎勵得更重</strong>。如果不處理這個相對關係、什麼都平均獎勵,模型就會收斂到單一做事方式。</li>
-<li><strong>Tool calling</strong>:模型要寫程式,理想上它應該能<strong>測試</strong>那段程式,至少在你貼進編輯器之前先知道它會壞。做法是讓模型輸出特殊 token 包住的內容,由一個 parser 認出來、拿去環境裡執行。訓練上就是先獎勵它照格式輸出,再獎勵它更常在解題時使用工具。</li>
-<li><strong>一次 tool call 還不是 agent</strong>:agent 是不斷「行動 → 觀察」直到任務完成或它認為完成。演化路徑是 GitHub Copilot → 住在編輯器裡的 agent → 今天的終端 agent。</li>
-<li><strong>關鍵結論</strong>:<strong>RL 裡的「環境」變成了一台電腦。</strong> Coding agent 必須呼叫檔案編輯工具、程式執行工具,而這些都得在某個計算環境裡執行。所以訓練 agent 現在得處理大量雲端基礎建設——這正是大家用 Daytona 做 RL 的原因。</li>
-</ul>
-<h3>主題三:一次真實的 RL 訓練跑起來長什麼樣(Lovre,約 01:30–01:39)</h3>
-<p>Lovre Pesut 接手,先做一個誠實的框定:<strong>我們不知道 OpenAI 那些解開數學未解問題的模型是怎麼訓的</strong>,但我們對<strong>中國的開源模型</strong>知道很多——<strong>Kimi K2 / K3</strong>、<strong>GLM</strong>,以及 Cursor 的 <strong>Composer 2</strong>(他說 Composer 2 也是基於 Kimi)。這場後半就建立在這些公開技術報告上。</p>
-<p>他先給出現代 RL 的標準形狀:<strong>每個 agent 拿到一個隔離的沙箱,在裡面做任務,再用某種可驗證的標準打分。</strong> 這也是 coding 成為這些模型最大應用的副作用。</p>
-<p><strong>案例:Qwen3 8B 的一次訓練跑</strong></p>
-<ul>
-<li>配置:trainer 用 <strong>SkyRL</strong>,環境與 rollout 用 <strong>Harbor</strong>,沙箱是 Daytona sandboxes(但他強調任何沙箱都可以)。</li>
-<li>這裡帶出一個值得記住的區分:<strong>現代 RL 基本上分兩塊——產生 rollout 的那一半,和更新權重的 trainer;現在通常是不同函式庫各管一塊,再加上某種沙箱底層。</strong></li>
-<li>規模:8 張 H100、4 小時、1440 次 rollout;起始 reward 約 0.3(因為是二元獎勵,等同 30% 正確率)。</li>
-<li>他放了一段 <strong>60 倍速</strong>的訓練過程視覺化:GPU 使用率會抖(沙箱啟動與 episode 收尾時有 downtime,極度優化的設定可以更平順);每個 step 是 8 個任務 × 每題 4 次 rollout = 每 step 建立又銷毀 <strong>32 個沙箱</strong>;reward 緩慢爬升。</li>
-<li><strong>時間都花在哪</strong>:RL 訓練通常<strong>大部分時間花在 rollout</strong>(模型行動、生成回合),其次是 backward pass(也不是可忽略的一塊),再來是 <strong>weight syncing</strong>——trainer 更新完權重後要把新 policy 送給 rollout 產生端。這個案例是完全同步的 RL:跑一步 → 更新權重 → 下一步用全新權重跑。</li>
-</ul>
-<p><strong>最有意思的部分:模型到底學到了什麼</strong></p>
-<p>「RL 在某些方面比 pre-training 更<strong>可解釋</strong>,因為資料量小得多,你可以直接把 trajectory 拿來看模型發現了什麼有效。」</p>
-<p>這一跑把成功率從約 30% 拉到約 60%,但模型學到的<strong>不是什麼演算法新洞見</strong>,而是<strong>把格式寫對</strong>:</p>
-<ul>
-<li>不再在雙引號裡面又用雙引號(寫檔案到 Python / 文字檔時)。</li>
-<li>不再輸出<strong>字面上的 <code>\n</code> 字元</strong>而不是真正的換行——這在一開始大約<strong>四分之一</strong>的 rollout 裡絆倒了它。</li>
-</ul>
-<p>「這正好連到那個老爭論:RL 到底是教會模型新東西,還是只是強化 pre-training 裡已經有的東西?至少在這個例子裡,我們可以說模型主要學會的是處理格式、處理 harness,而不是學會什麼新的演算法。」</p>
-<p>(技術細節:每次 rollout 只在 <strong>agent 的 token</strong> 上訓練,tool 結果等不算。)</p>
-<h3>主題四:大規模訓練跑到底做了什麼(Lovre,約 01:39–01:48)</h3>
-<p><strong>Kimi K3 的技術報告細節</strong></p>
-<ul>
-<li><strong>51 M 沙箱</strong>:他們明確說明訓練用掉 5,100 萬個沙箱。</li>
-<li><strong>microVM 與 pause</strong>:他們用 microVM,而且<strong>大量使用 pause 功能</strong>——因為 Kimi 在回合之間傾向想很久,把沙箱暫停就能在思考期間不佔用計算資源。</li>
-<li><strong>Dynamic harness(他認為最有趣的一點)</strong>:怎麼讓模型準備好面對<strong>任何</strong>可能被丟給它的 harness?他們做了一個<strong>可設定的動態 harness</strong>——用 config 開關各種 harness 面向:system prompt、sub-agents、memories、skills 等等,把它當成一條<strong>資料增強的軸</strong>。這樣模型不只準備好面對現有的所有 harness,連未來的 harness 大概也涵蓋得到,因為它是在 harness 特性的大量排列組合上訓練的。</li>
-<li><strong>對照 Composer 2</strong>:Cursor 的做法正好相反——<strong>專門為 Cursor 自家 harness 訓練</strong>。「Kimi 走的是 harness 多樣性、追求對任何東西都穩健;Composer 2 走的是把模型為 Cursor 準備到極致。」這是兩種很不一樣的 agentic 訓練哲學。</li>
-<li><strong>不同 reasoning 等級</strong>:給定 reasoning 等級就給一個 token 預算(也視題目而定);超出預算就直接給 <strong>−1</strong> 獎勵,不管當時是否正確。</li>
-<li><strong>九次 RL 跑 + on-policy distillation</strong>:最終模型其實由<strong>九次獨立的 RL 訓練</strong>組成——reasoning 等級 low / high / max 各一個,加上 general(一般對話)、agentic、coding 等專家模型——最後<strong>全部蒸餾進最終模型</strong>。</li>
-<li><strong>on-policy distillation 怎麼運作</strong>:拿專家模型(例如 coding 專家),用<strong>通才模型</strong>產生 rollout,再用專家模型去<strong>評分那些 token</strong>。這樣就能把每個專家的一部分智慧灌進最終模型。條件是你要能取得模型每個 token 的完整 log probs;做得到的話,teacher → student 的蒸餾非常有效。</li>
-</ul>
-<p><strong>環境已經變成新的資料</strong></p>
-<p>Kimi K3 與 GLM 都揭露了他們<strong>用自家 agent 合成環境</strong>的做法,而且變化很多。Kimi K3 甚至建了一張<strong>涵蓋整個網際網路的巨大有向圖</strong>,試圖用合成環境覆蓋每一個領域。</p>
-<p>「環境可以說是新的一種資料形式。以前你想盡辦法把資料集做大;現在網路上的 pre-training 資料還算不少,但<strong>環境沒那麼多</strong>,而環境才是現在資料棧裡真正有價值的部分。於是你會想派你的模型去建更多、更好的環境。」</p>
-<p><strong>Reward hacking:從比喻變成字面</strong></p>
-<ul>
-<li>經典圖示:<strong>OpenAI 2016 年</strong>那個賽船遊戲——模型不去比賽,而是學會在原地繞圈撿分數包。</li>
-<li>在 LLM 上是同樣的事,但<strong>精緻得多</strong>,因為你的 policy 本身就是個聰明的 agent。</li>
-<li>「而現在我們知道,reward hacking <strong>已經字面意義上變成 hacking 了</strong>,至少在某些案例裡。」</li>
-<li>Kimi 和 GLM 都花了很多篇幅談他們的具體對策:針對不同環境做不同介入來預防或減輕 reward hacking。例如<strong>寫 kernel</strong> 就是一個特別容易被 hack 的環境,得花很多力氣確保你的 reward 是真的,而不只是 verifier 的一個怪癖。</li>
-</ul>
-<h3>主題五:同步 vs. 非同步 RL(Lovre,約 01:48–01:52)</h3>
-<ul>
-<li><strong>時間都耗在 rollout</strong>:模型要想很久,還可能執行耗時的動作。</li>
-<li><strong>完全同步 RL 的痛點</strong>:你被<strong>最長的那條 rollout</strong> 卡住——所有 episode 跑完才能進 backward pass 與 weight sync。</li>
-<li><strong>非同步 RL</strong>:盡量產生 rollout,不等特定幾條跑完,只等到「夠多條完成」就立刻更新 policy 與權重。現在為了最大化吞吐量非常流行。</li>
-<li><strong>代價</strong>:你會拿到由<strong>過期 policy</strong> 產生的 rollout,這既打破 RL 演算法的一些理論假設,也讓整件事更不穩定——「而 RL 本來就已經是出了名的不穩定。」</li>
-<li><strong>Kimi K3 的折衷</strong>:介於同步與非同步之間——收集到一定量的 rollout 後,把剩下的 rollout <strong>暫停</strong>留到下一次 weight sync。「是非同步 RL 的一個比較不極端的版本。」完全非同步的話 policy 一直往前走,staleness 會以一些不平凡的方式傷到訓練過程。</li>
-</ul>
-<h3>收尾(約 01:52)</h3>
-<p>「現代 reinforcement learning 的 API 現在相當標準化了:你有 trainer、有 rollout generator,還有某個地方在跑你的沙箱。」他補充,Daytona 這邊看到的正是對沙箱本身的大量需求。最後提到有一個 repo 可以找到產生這些圖表的程式碼(未在字幕中報出名稱)。</p>
-<h3>金句</h3>
-<blockquote>
-<p>"Same model, same harness, same tools — but it's GPT-2. So when you send the same prompt, it just breaks. It doesn't know what to do."(約 01:11)</p>
-</blockquote>
-<p>整場的出發點:差別不在鷹架,在模型被獎勵過什麼。</p>
-<blockquote>
-<p>"It didn't learn some new insights about algorithms — it just learned to format what it wrote better."(約 01:38)</p>
-</blockquote>
-<p>RL 到底教了模型什麼?至少在這個小規模跑裡,答案是「學會跟 harness 相處」。</p>
-<blockquote>
-<p>"Reward hacking has literally become hacking nowadays — at least in some cases."(約 01:47)</p>
-<p>"Environments are a new form of data. Previously you would try to increase your dataset as much as you could; nowadays there's a decent amount of pre-training data on the internet, but there's not that many environments — and the environments are currently the actually valuable part of the data stack."(約 01:46)</p>
-</blockquote>
-<p>這場最有觀點的一句話。</p></section>
-        <section class="lang-en"><h3>Setup: who Daytona is and why they're here (~01:08)</h3>
+        <section class="talkdoc__notes"><h3>Setup: who Daytona is and why they're here (~01:08)</h3>
 <p>Muhammad Hashmi opened by explaining that Daytona builds infrastructure for running agents and their workloads: computers you create through an API, choosing OS, CPU count, RAM, and disk. Two primary use cases — running agents in the background or on the cloud, and reinforcement learning. The RL case is direct: when you train an agent, the model learns by <em>doing</em> the task, and coding or computer-use agents need a compute environment to do it in.</p>
 <p>The workshop's question: how exactly did we get from chatbots to today's agents?</p>
 <h3>Theme 1: same harness, different model (Muhammad, ~01:10)</h3>
@@ -352,13 +264,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/workshop--turning-chatbots-into-agents.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/workshop--turning-chatbots-into-agents.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sat-atlas/workshop--turning-chatbots-into-agents.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>

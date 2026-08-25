@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Agent 的社會:從位元到原子,以機器速度建立信任 · Agentic AI Summit ’26 筆記</title>
+  <meta name="description" content="英國 ARIA 用 £50M 的 Scaling Trust 計畫,押注在「不同主人的 agent 如何在對抗環境下、以機器速度、無需中介地互相協調」——並且刻意把這套基礎設施做成開源公共財,因為他們認為技術單一化(monoculture)會讓人類整體對衝擊更脆弱。" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sun-compass/alex-obadia--a-society-of-agents.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/alex-obadia--a-society-of-agents.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sun-compass/alex-obadia--a-society-of-agents.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/alex-obadia--a-society-of-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Agent 的社會:從位元到原子,以機器速度建立信任 · Agentic AI Summit ’26 筆記" />
+  <meta property="og:description" content="英國 ARIA 用 £50M 的 Scaling Trust 計畫,押注在「不同主人的 agent 如何在對抗環境下、以機器速度、無需中介地互相協調」——並且刻意把這套基礎設施做成開源公共財,因為他們認為技術單一化(monoculture)會讓人類整體對衝擊更脆弱。" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sun-compass/alex-obadia--a-society-of-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 筆記" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../assets/styles.css" />
+</head>
+<body data-page="sun-compass" data-talk="alex-obadia--a-society-of-agents">
+  <main id="page">
+<article class="talkdoc" id="talkdoc" data-item="">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk">演講</span>
+          <span class="dialog__session">Session 1: AI Safety</span>
+        </p>
+        <h1 class="talkdoc__title">Agent 的社會:從位元到原子,以機器速度建立信任</h1>
+        <p class="dialog__speaker"><strong>Alex Obadia</strong> — Programme Director, Advanced Research &amp; Invention Agency (ARIA)</p>
+        <p class="dialog__meta">8 月 2 日(日) · Compass Stage · 00:34:57–00:45:11 · 上午場直播</p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=l8GS08n-25Q&amp;t=2097s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            從 00:34:57 開始觀看
+          </a>
+          <a class="btn-ghost" href="../../sun-compass.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            回 Compass · 週日
+          </a>
+        </div>
+        <p class="talkdoc__summary">英國 ARIA 用 £50M 的 Scaling Trust 計畫,押注在「不同主人的 agent 如何在對抗環境下、以機器速度、無需中介地互相協調」——並且刻意把這套基礎設施做成開源公共財,因為他們認為技術單一化(monoculture)會讓人類整體對衝擊更脆弱。</p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
+<ul>
+<li><strong>ARIA 是什麼</strong>:英國版 DARPA,「差別是我們沒有那個 D」——不碰國防,其他都做。成立三年、約 16 個計畫,每個約 £50–70M,涵蓋製造、更好的晶片、從免疫系統不同部位切入的疫苗、神經科技等。</li>
+<li><strong>Scaling Trust 要解的問題</strong>:資助能讓 agent <strong>協調</strong>的研究與基礎設施。協調具體指三件事:<strong>找到交易或互動的對手方、進行複雜的協商、以及執行協議</strong>。前提設定是<strong>對抗性的 multi-agent / multi-principal 環境</strong>——不是單一擁有者底下的多 agent,而是<strong>不同擁有者、代表不同主體</strong>的 agent 互動。</li>
+<li><strong>關鍵設計立場</strong>:要<strong>程式化</strong>(因為要跑在機器速度上,所以規模化時不放人在迴圈裡)、要<strong>人人可用</strong>、要<strong>沒有中介</strong>(明確的目標是限制基礎設施裡的系統性咽喉點),而且要<strong>橫跨數位與實體世界</strong>(agent 也可以是具身的)。技術上押注 programmable cryptography 與安全硬體的近期進展。</li>
+<li><strong>Agent 能做人做不到的事</strong>:兩個 agent 可以靠安全硬體進入一個「房間」,互相揭露資訊,並<strong>承諾若交易不成就從記憶中刪除該資訊</strong>——人類只能用 NDA 近似,agent 可以程式化地做到。</li>
+<li><strong>為什麼堅持開源與 plurality</strong>:避免滑向 monoculture。理由不是「多元本身好」,而是<strong>單一化會讓人類在文化與技術上都對衝擊更不具韌性,並隨時間侵蝕我們的能動性</strong>。</li>
+<li><strong>計畫三塊</strong>:協調堆疊(數位 + 實體,已資助包含 Berkeley 在內的首批團隊)、支撐堆疊的<strong>基礎理論</strong>(自主協定生成、formal AI security、把密碼學根信任搬到實體世界)、以及一個<strong>開放給大眾的大型測試場</strong>,做成競賽,紅隊也互相競爭。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>ARIA 與 Scaling Trust 的框架(約 00:35–00:37)</h4>
+<p>ARIA(Advanced Research + Invention Agency)是英國的 R&amp;D 資助機構,資助全球的 R&amp;D 登月計畫。對照 DARPA 最好懂,不同在於:</p>
+<blockquote>
+<p>The difference with DARPA is we don't have the D. So we don't do anything defence related, but we do everything else.</p>
+</blockquote>
+<p>特徵:以影響力為導向、高風險胃納、每個計畫追一個雄心目標,單一計畫規模約 £50–70M。成立三年,目前約 16 個計畫,橫跨製造、晶片、疫苗(從免疫系統的不同部位切入)、神經科技等領域。Obadia 是 Programme Director,負責其中的 <strong>Scaling Trust</strong>。</p>
+<p>他也直說這場演講的目的有兩層:告訴大家 ARIA 正在資助什麼、以及<strong>想聽聽現場對這個 thesis 的意見</strong>(他在 Q&amp;A 前明講「如果有任何質疑,我很樂意聽」)。</p>
+<p>Scaling Trust 目前是<strong>£50M、為期三年</strong>的計畫。要資助的是讓 agent 能協調的研究與基礎設施,而「協調」被拆成三個具體能力:</p>
+<ol>
+<li>agent 能不能<strong>找到</strong>需要交易、或非交易目的互動的<strong>對手方</strong>?</li>
+<li>能不能進行<strong>足夠複雜的協商</strong>?</li>
+<li>能不能<strong>執行協議</strong>?</li>
+</ol>
+<p>而<strong>「安全地」做這些事</strong>之所以重要,是因為他們設定的場景是<strong>對抗性環境下的 multi-agent、multi-principal 系統</strong>——這裡他劃了一條清楚的界線:<strong>不是單一擁有者底下的多 agent 系統</strong>,而是不同擁有者、代表不同主體(principal)的 agent 彼此互動。所以其中一些 agent 可能是敵對的,可能存在<strong>資訊不對稱</strong>,可能目標不同。</p>
+<h4>四個設計約束(約 00:38–00:39)</h4>
+<ul>
+<li><strong>程式化(programmatically)</strong>:因為希望這件事在<strong>機器速度</strong>上運作,所以規模化之後<strong>不會、也不打算把人放在迴圈裡</strong>。</li>
+<li><strong>人人可用、沒有中介</strong>:他說這其實是一個關於<strong>未來系統拓樸</strong>的主張——<strong>要限制這套基礎設施裡存在的系統性咽喉點(systemic choke points)</strong>。</li>
+<li><strong>橫跨數位與實體</strong>:他們把 agent 也視為可具身的,所以基礎設施必須延伸到實體世界,讓包含實體元素的互動也能安全進行。</li>
+<li><strong>技術賭注</strong>:密碼學與安全硬體的新進展,特別是被稱為 <strong>programmable cryptography</strong> 的趨勢,加上安全硬體與技術堆疊其他部分的最新發展。他明說這些進展<strong>鬆動了前一場演講(Gondara)提到的那些張力</strong>——至少 trade-off 空間變了,我們可以落在空間中不同的點上。</li>
+</ul>
+<h4>為什麼值得做:新市場,以及只有 agent 做得到的事(約 00:39–00:40)</h4>
+<p>他先承認現狀:<strong>今天的 agent 堆疊還不夠成熟,把 agent 放出去替我們做事非常困難</strong>,而且前面幾場已經看過各種攻擊的分類法。</p>
+<p>但他對兩件事很興奮:</p>
+<p><strong>(1) 新市場。</strong> 類比是密碼學在現代數位社會的落地——<strong>它間接讓電子商務這類東西得以存在</strong>,我們今天的數位社會就站在那些建構元件之上。如果協調基礎設施能延伸到實體世界,可能會長出延伸到實體世界的新市場。</p>
+<p><strong>(2) agent 獨有的能力。</strong> 他給的例子非常具體:</p>
+<blockquote>
+<p>兩個 agent 可以靠安全硬體進入一個所謂的「房間」。它們可以彼此揭露資訊,並且<strong>承諾:如果這筆交易沒談成,就把資訊從記憶裡刪掉</strong>。這是我們人類只能用 NDA 之類的東西去<em>近似</em>的事,但 agent 可以<strong>程式化地</strong>做到。</p>
+</blockquote>
+<h4>開源、plurality,與對 monoculture 的警戒(約 00:40–00:41)</h4>
+<p>價值上的堅持有三:<strong>開源、對所有人開放、沒有中介</strong>。目標是讓<strong>多個模型、多種心智能夠共存</strong>——這個概念一般被放在 <strong>pluralism / plurality</strong> 的脈絡下討論。</p>
+<p>他要避免的是<strong>滑向 monoculture</strong>:所有人都用同一套堆疊,而且<strong>我們的偏好也間接被塑造成同一個樣子,社會的多樣性因此減少</strong>。他特別強調這個論證不是「為了多元而多元」:</p>
+<blockquote>
+<p>我們認為那會讓我們作為人類,在<strong>文化上與技術上都更不具備抵禦衝擊的韌性</strong>,而且<strong>隨著時間侵蝕我們的能動性</strong>。</p>
+</blockquote>
+<p>正因如此,他們認為這套東西<strong>應該以公共財的形式被建造</strong>,而這也是 ARIA 願意用 grant 而非其他形式資助的理由。</p>
+<h4>計畫的三層結構(約 00:41–00:44)</h4>
+<p><strong>第一層:協調堆疊(coordination stack)。</strong> 分數位與實體兩側,已經資助了第一批團隊:</p>
+<ul>
+<li>數位側,<strong>包含 Berkeley 的團隊</strong>,研究方向如:agent 如何<strong>推理安全性</strong>、如何<strong>自主生成協定</strong>、如何與複雜的安全系統互動,以及 agent 如何進行<strong>複雜的協商推理</strong>。</li>
+<li>實體側,例如<strong>更容易被 agent 互動、且具防篡改性的新型感測器</strong>——而且已經有人在嘗試破解它們。</li>
+</ul>
+<p><strong>第二層:支撐堆疊的基礎理論。</strong> 他的判斷很直接:</p>
+<blockquote>
+<p>我們看到的很多研究,如果你是從理論計算機科學和資安這些領域出身,會覺得<strong>非常經驗性</strong>。</p>
+</blockquote>
+<p>所以他們要確保那個(可能是由經驗性方式收斂出來的)堆疊,<strong>底下有理論支撐</strong>——把既有的形式化安全思維應用到 AI 這個目前抗拒被完全形式化的新領域。他點名了幾個興奮的方向:<strong>autonomous protocol generation、formal AI security、以及把密碼學概念搬到實體世界</strong>(他提到量子密碼學與 physically unclonable function 這類把信任根從傳統密碼學換到實體世界的嘗試)。</p>
+<p><strong>第三層:開放的大型測試場。</strong> 即使有了堆疊、也有理論保證「沒有一個逼近中的不可能性結果、我們不是在完全的黑暗中工作」,<strong>這仍然需要被測試</strong>——因為這終究是 multi-agent、multi-principal 系統,堆疊必須被壓力測試。</p>
+<ul>
+<li><strong>任何人都可以提交自己的 agent</strong>;可以測他們的堆疊,也可以<strong>帶自己的堆疊</strong>來。</li>
+<li><strong>做成競賽</strong>:參賽者競爭勝出,而<strong>紅隊也在競爭誰是最好的紅隊</strong>。</li>
+<li>要量測的是:<strong>在對抗壓力下,安全 agentic 協調的 state of the art 到哪裡</strong>。</li>
+<li>同時要看<strong>會湧現出什麼</strong>:「我們人類可以決定需要什麼樣的堆疊,但正如我們多次看到的,湧現行為有時會揭露 agent 獨有的新能力」——所以測試場本身與任務都必須<strong>夠開放式(open-ended)</strong>。</li>
+<li>對這條 AI safety 軌道最相關的一點:<strong>理解存在哪些失效模式</strong>。很多這類行為會是 out of distribution,而理解失效模式有助於釐清<strong>需要什麼樣的安全要求,也許還有監管</strong>。</li>
+</ul>
+<p>最後的計畫近況:已經資助了一些團隊,並正與 <strong>Google DeepMind、Cooperative AI Foundation、Schmidt Sciences</strong> 合作一個<strong>於 8 月 8 日截止</strong>的徵案,資助標的包含他提到的沙盒與測試場等。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"The difference with DARPA is we don't have the D."(約 00:36)</p>
+</blockquote>
+<p>一句話講完 ARIA 的定位。</p>
+<blockquote>
+<p>"We don't care about the single owner multi-agent systems. This is about different owner, different agents that are representing different principals."(約 00:37)</p>
+</blockquote>
+<p>整個計畫最關鍵的問題設定:真正困難的是「不同主人的 agent」。</p>
+<blockquote>
+<p>"Two agents can enter a quote-unquote room using secure hardware … they can commit to deleting the information from their memory if the deal doesn't go through. These are things that as humans we can only approximate with, for example, NDAs."(約 00:40)</p>
+</blockquote>
+<p>不是「agent 做得比人快」,而是「agent 做得到人做不到的事」。</p>
+<blockquote>
+<p>"We want to avoid a slide towards monoculture … it makes us as humanity less resilient to shocks both culturally and technologically, and erodes our agency over time."(約 00:41)</p>
+</blockquote>
+<p>把 plurality 從價值觀主張轉成韌性論證。</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARIA (Advanced Research + Invention Agency)</td>
+<td>英國 R&amp;D 資助機構,資助全球登月型研究;約 16 個計畫,每個 £50–70M</td>
+<td>UK R&amp;D funding agency backing moonshots worldwide; ~16 programmes at £50–70M each</td>
+<td>成立三年;不做國防 / three years old, no defence work</td>
+</tr>
+<tr>
+<td>Scaling Trust</td>
+<td>£50M、三年期計畫,資助 agent 安全協調的研究與基礎設施</td>
+<td>£50M three-year programme funding research and infrastructure for secure agent coordination</td>
+<td>官網另有 Scaling Trust Arena(競賽平台)之名,演講中未點名</td>
+</tr>
+<tr>
+<td>開放測試場 / open test bed</td>
+<td>開放公眾提交 agent 的大型競賽式測試場,紅隊同場競技</td>
+<td>Public competition-style test bed; anyone can submit agents, red teams compete too</td>
+<td>演講中稱 "a massive test bed that is open to the public"</td>
+</tr>
+<tr>
+<td>Programmable cryptography</td>
+<td>講者押注的密碼學趨勢,與安全硬體共同鬆動安全 / 自主的 trade-off</td>
+<td>The cryptography trend he's betting on, which with secure hardware shifts the security/autonomy trade-off</td>
+<td>明確回應前一場 Gondara 提到的性質衝突</td>
+</tr>
+<tr>
+<td>Physically unclonable functions</td>
+<td>把信任根從傳統密碼學搬到實體世界的方向之一</td>
+<td>One route to swapping cryptographic roots of trust into physical substrates</td>
+<td>與量子密碼學並列提及</td>
+</tr>
+<tr>
+<td>合作徵案 / joint call</td>
+<td>與 Google DeepMind、Cooperative AI Foundation、Schmidt Sciences 合作,8 月 8 日截止</td>
+<td>Joint call with Google DeepMind, Cooperative AI Foundation, Schmidt Sciences; closes 8 August</td>
+<td>資助沙盒與測試場等</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alex Oadia</td>
+<td>Alex Obadia</td>
+</tr>
+<tr>
+<td>Arya</td>
+<td>ARIA</td>
+</tr>
+<tr>
+<td>Deep Mind</td>
+<td>Google DeepMind</td>
+</tr>
+<tr>
+<td>"50 million pound … so about $7 million"</td>
+<td>£50M 約合 $67M(字幕金額錯誤)/ caption figure is wrong</td>
+</tr>
+<tr>
+<td>texonomy</td>
+<td>taxonomy</td>
+</tr>
+<tr>
+<td>erodess</td>
+<td>erodes</td>
+</tr>
+<tr>
+<td>physically inclinable functions</td>
+<td>physically unclonable functions</td>
+</tr>
+<tr>
+<td>multi- aent</td>
+<td>multi-agent</td>
+</tr>
+<tr>
+<td>principles(指 multi-principal 那段)</td>
+<td>principals</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li><strong>£50M 的美元換算</strong>:講者說「50 million pound, so about $7 million」——£50M 約合 $67M,字幕或口誤其一;金額以 £50M 為準。/ £50M ≈ $67M, not $7M; take the sterling figure as authoritative.</li>
+<li><strong>測試場的正式名稱</strong>:演講中只稱 "a massive test bed";ARIA 官方資料另有 Scaling Trust Arena 的名稱,但講者未在台上使用,故不併入內文。/ He only said "test bed"; ARIA materials refer to a Scaling Trust Arena, but he did not use the name on stage.</li>
+<li><strong>已獲資助的 Berkeley 團隊名稱與 PI</strong>:講者只說 "some teams at Berkeley",未點名。/ He said "some teams at Berkeley" without naming them.</li>
+<li><strong>ARIA 計畫總數</strong>:講者說 "about 16 programmes so far",為口頭近似值。/ "About 16" was a spoken approximation.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/alex-obadia--a-society-of-agents.md" target="_blank" rel="noopener">GitHub 上的 Markdown 原始檔 ↗</a>
+      </p>
+    </article>
+</main>
+
+  <script src="../../../data/data.js"></script>
+  <script src="../../../assets/shell.js"></script>
+  <script src="../../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/talk/sun-compass/alex-obadia--a-society-of-agents.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
+</body>
+</html>

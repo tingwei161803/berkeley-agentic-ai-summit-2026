@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Making Autonomy Autonomous: Toward Mental Models for Discovery and Intuition · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="Physical AI&#x27;s edge cases never run out, so let a team of agents run the discover-experiment-validate-write loop themselves; what keeps that from being hallucination is that every claim traces back …" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/manmohan-chandraker--making-autonomy-autonomous.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/manmohan-chandraker--making-autonomy-autonomous.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-atlas/manmohan-chandraker--making-autonomy-autonomous.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/manmohan-chandraker--making-autonomy-autonomous.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Making Autonomy Autonomous: Toward Mental Models for Discovery and Intuition · Agentic AI Summit ’26 Notes" />
@@ -28,91 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sat-atlas" data-talk="manmohan-chandraker--making-autonomy-autonomous">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Making Autonomy Autonomous: Toward Mental Models for Discovery and Intuition" data-title-zh="讓自主變得自主:邁向可供發現與直覺的心智模型">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 2: Robotics &amp; World Models</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">Making Autonomy Autonomous: Toward Mental Models for Discovery and Intuition</span><span class="lang-zh">讓自主變得自主:邁向可供發現與直覺的心智模型</span></h1>
+        <h1 class="talkdoc__title">Making Autonomy Autonomous: Toward Mental Models for Discovery and Intuition</h1>
         <p class="dialog__speaker"><strong>Manmohan Chandraker</strong> — Professor, University of California, San Diego</p>
-        <p class="dialog__meta"><span class="lang-en">Saturday, August 1</span><span class="lang-zh">8 月 1 日(六)</span> · Atlas Stage · 00:55:06–01:04:41 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Saturday, August 1 · Atlas Stage · 00:55:06–01:04:41 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=psPzCQbjCCo&amp;t=3306s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 00:55:06</span><span class="lang-zh">從 00:55:06 開始觀看</span>
+            Watch from 00:55:06
           </a>
-          <a class="btn-ghost" href="sat-atlas.html">
+          <a class="btn-ghost" href="../../sat-atlas.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Atlas · Sat</span><span class="lang-zh">回 Atlas · 週六</span>
+            Back to Atlas · Sat
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">Physical AI's edge cases never run out, so let a team of agents run the discover-experiment-validate-write loop themselves; what keeps that from being hallucination is that every claim traces back to a real GPU run and a real line of code — and the human's role shifts from executor to the source of *tacit expertise* and *intent*.</span><span class="lang-zh">physical AI 的 edge case 永遠修不完,所以應該讓 agent 團隊自己跑「發現—實驗—驗證—寫論文」的迴圈;而讓這件事不淪為幻覺的關鍵,是每一個宣稱都能追溯到一次真實的 GPU run、一行真實的程式碼,而人類的角色則從執行者轉為提供隱性專業知識與意圖的一方。</span></p>
+        <p class="talkdoc__summary">Physical AI's edge cases never run out, so let a team of agents run the discover-experiment-validate-write loop themselves; what keeps that from being hallucination is that every claim traces back to a real GPU run and a real line of code — and the human's role shifts from executor to the source of *tacit expertise* and *intent*.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>問題設定</strong>:physical AI 活在開放世界,部署後 edge case 無窮無盡,團隊得不斷跑「發現—開發」迴圈修它們,而且<strong>每一次修補都必須有可追溯的釋出證據</strong>。</li>
-<li><strong>三層迴圈</strong>:<strong>execution loop</strong>(資料、模擬、DevOps 構成的<strong>可驗證基底</strong>)→ <strong>discovery loop</strong>(有根據的 ideation、驗證、可追溯性)→ <strong>intent loop</strong>(隱性專業、心智模型、可信歸因、共演化的夥伴關係)。</li>
-<li><strong>實證</strong>:一組 agent 只拿到一句輸入(「產生改進 3DGS 以處理行人的點子,在某類 GPU 上測、在真實 benchmark 驗證、跟 baseline 比、發表論文」),就自行完成從選題到寫論文;<strong>投稿 CVPR 2026 workshop 的 4 篇有 3 篇被接受</strong>(被拒的那篇是公式格式問題)。</li>
-<li><strong>不是「會寫論文的系統」,而是「做可追溯、可驗證科學發現的系統」</strong>:候選方法都是在<strong>已驗證的重現實作</strong>上突變,每個宣稱都能追到真實 log、真實程式碼行、真實 GPU run。</li>
-</ul>
-<h3>重點整理</h3>
-<h4>問題:開放世界的 edge case 修不完,但每次修補都要有證據(約 00:55–00:57)</h4>
-<p>他的起點是一個大家都會同意的事實:<strong>physical AI 活在開放世界</strong>,部署後不斷冒出 edge case,團隊得進入持續的發現與開發迴圈去修——而且<strong>所有修補都必須帶著可追溯的釋出證據(traceable release evidence)</strong>。</p>
-<p>同時,物理世界正在<strong>快速變得可執行(executable)</strong>:CI/CD 框架能持續跑迴圈、agent 能部署程式碼、模擬能補上資料的缺口。這一切指向<strong>自我改進</strong>的未來。</p>
-<p>但阻力也很實際:physical stack 很複雜,需要<strong>真實世界的實驗</strong>與大量真實世界知識;而<strong>人的專業存在於靜態資料之外</strong>——它體現在科學構想、專家工作流、以及與系統的物理互動裡。結論是:在物理工作流中做實驗與發現,需要大量算力、資料<strong>與人才</strong>。</p>
-<p>他這場要談三件事:讓自主變得自主(與人協作)、<strong>以執行為根據的發現框架</strong>、把<strong>人的意圖</strong>反映進 agentic 工作流,並希望能在 AI 原生經濟中維持人的持續參與。</p>
-<h4>示範:一句話輸入,一組 agent 交出一篇論文(約 00:57–00:59)</h4>
-<p>他用一個具體場景說明:某個自駕團隊發現<strong>行人感知</strong>有問題 → 交給模擬團隊 → 團隊判斷行人是細長結構、需要更好的 3D 重建 → 提出新的 Gaussian splatting 方法 → 在真實資料上驗證 → 最後寫成論文或 spec sheet。</p>
-<p>「<strong>如果我告訴你,這整個流程是由一組 agent 跑完的呢?</strong>」開發者唯一的輸入是一句話:<em>產生改進 3DGS 以處理自駕行人的想法,在某個 GPU 家族上測試,在真實 benchmark 上驗證,與 baseline 比較,然後發表論文。</em></p>
-<p>這組 agent 扮演的角色有明確要求:產出<strong>可驗證的</strong>研究、部署<strong>可執行的</strong>程式碼、提出<strong>以物理世界為根據的</strong>想法,並遵循<strong>可追溯、可驗證的</strong>科學發現流程。</p>
-<p>實際流程:輸入進來 → agent 定義要解的任務(這裡選定改進 NVIDIA 的 <strong>OmniRe</strong> 框架)→ 對可能改進的維度提出假設 → 專家 agent 各自啟動一批實驗 → 所有實驗在一個 <strong>ELO 評分的錦標賽</strong>中被驗證或證偽 → ELO 最高的那個想法存活下來,成為新方法,並且<strong>是在真實 GPU 硬體上實作的,所以增益是可量測的</strong> → 最後由 writer 與 reviewer agent 寫成論文。</p>
-<p><strong>效果如何?</strong> 他們挑了幾篇這樣產出的論文,在<strong>取得主辦方同意</strong>的前提下投稿到 CVPR 2026 的一個 physical AI 相關 workshop——「順帶一提,我們不是想鑽系統漏洞」。結果 <strong>4 篇中有 3 篇被接受</strong>,其中一篇獲得高度評價;被拒的那篇有<strong>公式排版問題</strong>,「所以我們認為審稿人在這件事上是對的」。</p>
-<p>但他強調重點:<strong>這不是一個「用來發想與寫論文」的系統,而是一個執行可追溯、可驗證科學發現的系統。</strong></p>
-<h4>核心:可驗證基底(verifiable substrate)(約 00:59–01:02)</h4>
-<p>整套東西建立在一個<strong>可驗證基底</strong>上,由三件事構成:</p>
-<ol>
-<li><strong>有根據的 ideation</strong>:定義一套 <strong>context-free grammar</strong>,讓產生出來的想法是有根據的。</li>
-<li><strong>在已驗證重現實作上突變</strong>:每個候選方法都是在一個<strong>已驗證的重現(verified reproduction)</strong>之上做變異,所以一切都可量測、可驗證、可證偽。</li>
-<li><strong>可追溯</strong>:系統做出的每一個宣稱,都能追回一段真實 log、一行真實程式碼、一次真實 GPU run。</li>
-</ol>
-<p>那這個基底怎麼建?<strong>反向工程</strong>:假設有一個知識庫、有論文,能不能反過來跑科學流程、把寫出這篇論文的程式碼生出來?他的例子是一篇<strong>從未被公開實作過</strong>的論文(「所以不是 Claude 或 GPT 已經知道這篇」):分析論文 → 判定新想法是什麼、哪些因素帶來相對 baseline 的改進 → 生出程式碼 → 對真實資料做<strong>物理驗證</strong> → 提出改進 → 在真實 benchmark 上與真實資料比較驗證。這就構成了發現可以站上去的可驗證基底。</p>
-<p>那麼像自駕這種完整應用,執行迴圈長什麼樣?幸運的是他們這些年在自駕上已經累積了不少 agentic substrate:</p>
-<ul>
-<li><strong>data agent</strong>:給定一批電腦視覺與機器學習工具,分析各種 edge case。</li>
-<li><strong>simulation agent</strong>:給定使用者輸入(例如「讓一台車切入或切出」),重建 3D 背景、重建場景中所有動態 agent、部署 diffusion 模型生成新的反應式行為與困難 edge case,再由其他 diffusion 模型做<strong>照片級渲染</strong>。</li>
-<li><strong>development agent</strong>:吃下 ODD 規格與現有的資料工具、模擬工具,執行 AI 模型的訓練與驗證。</li>
-</ul>
-<h4>人的角色:從靜態資料到 intent loop(約 01:02–01:04)</h4>
-<p>「一旦我們有了這些<strong>驅動自主的自主系統</strong>,人的角色是什麼?」</p>
-<p>他認為會出現新的迴圈:<strong>資料從靜態走向互動</strong>,我們開始能萃取<strong>隱性專業(tacit expertise)</strong>——那是關於<strong>親身經驗</strong>的把手,而親身經驗驅動的是<strong>心智模型</strong>,讓我們能推理的不只是專家<strong>怎麼做</strong>,還有專家<strong>為什麼那樣做</strong>。</p>
-<p>從心智模型出來的<strong>意圖</strong>,接著驅動世界模型;而這些世界模型不再只依賴「聚合後的偏好」,而是帶有<strong>可追溯的貢獻</strong>。歸因機制帶來<strong>可信任的採用</strong>,可信任的採用再帶來<strong>人在迴圈中的持續參與</strong>。</p>
-<p>心智模型怎麼建?把前面 discovery pipeline 的<strong>所有 trace 吃進來</strong>,用 claim-backed 的驗證方法轉成<strong>證據(evidences)</strong>,再把證據<strong>蒸餾成信念(beliefs)</strong>,而系統對<strong>每一個信念的使用都帶有歸因</strong>。</p>
-<p>成效有兩類:</p>
-<ul>
-<li><strong>coding 任務</strong>:能解更多任務、解得更好;更重要的是<strong>更少的使用者介入、更少的 memory token、更少的 token 消耗</strong>——這本質上指向更好的「使用者—系統對齊」。</li>
-<li><strong>物理任務</strong>(例如 Gaussian splatting):心智模型可以採用不同的 <strong>persona</strong>——例如「品質 persona」與「速度 persona」——而這些 persona 是從發現迴圈裡長出來的,並且可被<strong>可控地操縱(controllable steering)</strong>。</li>
-</ul>
-<p>總結他自己的三層架構:<strong>execution loops</strong>(資料、模擬、DevOps)構成可驗證基底 → 其上跑 <strong>discovery loops</strong>(有根據的 ideation、驗證、可追溯性)→ 再加上 <strong>intent loops</strong>(隱性專業、心智模型、可信歸因、最終走向共演化的夥伴關係)。</p>
-<h3>金句</h3>
-<blockquote>
-<p>"Now what if I told you that this whole process is something that is run by a team of agents?"(約 00:57)</p>
-</blockquote>
-<p>從「人做研究」翻轉到「agent 做研究」的那一句。</p>
-<blockquote>
-<p>"Every claim that is made by the system is something that we can trace to a real log or a real line of code, a real GPU run."(約 01:00)</p>
-</blockquote>
-<p>這一句是整套主張的防線:可追溯性把「自動科學」和「自動幻覺」分開。</p>
-<blockquote>
-<p>"Mental models … allow us to reason about not just how experts act but why experts act."(約 01:03)</p>
-</blockquote>
-<p>隱性專業的價值不在動作本身,而在動作背後的理由。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>The setup</strong>: physical AI lives in the open world, edge cases keep arriving after deployment, teams run continuous discovery-and-development loops to fix them — and every fix must ship with <strong>traceable release evidence</strong>.</li>
 <li><strong>Three nested loops</strong>: the <strong>execution loop</strong> (data, simulation, DevOps → a <em>verifiable substrate</em>), the <strong>discovery loop</strong> (grounded ideation, verification, traceability), and the <strong>intent loop</strong> (tacit expertise, mental models, trusted attribution, co-evolving partnerships).</li>
@@ -251,13 +194,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/manmohan-chandraker--making-autonomy-autonomous.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/manmohan-chandraker--making-autonomy-autonomous.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sat-atlas/manmohan-chandraker--making-autonomy-autonomous.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>

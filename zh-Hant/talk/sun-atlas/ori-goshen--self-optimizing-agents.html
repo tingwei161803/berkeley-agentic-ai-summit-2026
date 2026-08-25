@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>會自我最佳化的 Agent · Agentic AI Summit ’26 筆記</title>
+  <meta name="description" content="Agent 上了生產線之後,真正的瓶頸是「在前沿以合理成本運作」;而模型、檢索、scaling、模型組合、執行策略構成的組態空間大到人工搜不完,所以最佳化必須自動化、可觀測,而且能在新模型出現時自動重新適配。" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sun-atlas/ori-goshen--self-optimizing-agents.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/ori-goshen--self-optimizing-agents.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sun-atlas/ori-goshen--self-optimizing-agents.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-atlas/ori-goshen--self-optimizing-agents.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="會自我最佳化的 Agent · Agentic AI Summit ’26 筆記" />
+  <meta property="og:description" content="Agent 上了生產線之後,真正的瓶頸是「在前沿以合理成本運作」;而模型、檢索、scaling、模型組合、執行策略構成的組態空間大到人工搜不完,所以最佳化必須自動化、可觀測,而且能在新模型出現時自動重新適配。" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sun-atlas/ori-goshen--self-optimizing-agents.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 筆記" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../assets/styles.css" />
+</head>
+<body data-page="sun-atlas" data-talk="ori-goshen--self-optimizing-agents">
+  <main id="page">
+<article class="talkdoc" id="talkdoc" data-item="">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--talk">演講</span>
+          <span class="dialog__session">Session 1: Enterprise AI</span>
+        </p>
+        <h1 class="talkdoc__title">會自我最佳化的 Agent</h1>
+        <p class="dialog__speaker"><strong>Ori Goshen</strong> — Co-Founder &amp; CEO, AI21 Labs</p>
+        <p class="dialog__meta">8 月 2 日(日) · Atlas Stage · 00:18:06–00:35:44 · 上午場直播</p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=LGW_6P1CMC8&amp;t=1086s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            從 00:18:06 開始觀看
+          </a>
+          <a class="btn-ghost" href="../../sun-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            回 Atlas · 週日
+          </a>
+        </div>
+        <p class="talkdoc__summary">Agent 上了生產線之後,真正的瓶頸是「在前沿以合理成本運作」;而模型、檢索、scaling、模型組合、執行策略構成的組態空間大到人工搜不完,所以最佳化必須自動化、可觀測,而且能在新模型出現時自動重新適配。</p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
+<ul>
+<li><strong>產業風向已經轉了</strong>:「token maxing 基本上結束了,現在大家談的是 token efficiency」。真正的問題變成「每一塊錢投資能換到多少客戶成效」。</li>
+<li><strong>客戶的痛點很一致</strong>:「這個 agent 我們對品質很滿意,但如果每一個 PR、每一通電話、每一筆訂位、每一筆交易都跑它,成本高到不可行。」</li>
+<li><strong>組態空間有四層</strong>,每一層都能推出新的 Pareto frontier:模型與檢索策略 → scaling(垂直/水平)→ 模型組合(portfolio)→ 執行策略(串接、升級、提早停止)。</li>
+<li><strong>模型組合是最反直覺的一層</strong>:不同模型覆蓋空間的不同區域,只要好好量測 co-variance 與各模型的貢獻,「全部一起用會大於個別使用的總和」;在他們的實驗中約可<strong>用同樣品質換到約 50% 的成本</strong>。</li>
+<li><strong>為什麼一定要自動化</strong>:搜尋空間太大、人工一定漏掉機會;而且新模型每隔一陣子就出、定價會變、流量與任務分布也會漂移——手動調一次就過期了。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>問題:從實驗走向生產後,經濟性成為主瓶頸(約 00:19–00:21)</h4>
+<p>過去幾個月他看到許多 AI 系統從實驗階段真正進入生產、開始規模化部署,而這帶來一組新的挑戰,最明顯的一個就是<strong>如何在前沿以可負擔的成本運作</strong>。</p>
+<p>他說客戶反覆講同一句話:我們有個 agent,對它的表現和整體品質都滿意,但如果要把它套到<strong>每一個</strong> PR、每一通電話、每一筆訂位、每一筆交易上,成本會高到不可行。</p>
+<p>所以產業的重心變了——「token maxing 基本上結束了,大家現在講的是 token efficiency」。真正該問的問題是:<strong>每單位 token 投資能換到最好的表現嗎?每一塊錢投資能換到最好的真實客戶成效嗎?</strong></p>
+<p>他用一張圖說明目標:黑線是某公司(圖上以 Coinbase 為例)的 token 用量,長條是成本、依模型拆分。企業想達到的狀態是<strong>讓用量繼續往上、但把成本曲線從用量曲線上「脫鉤」</strong>。</p>
+<p>典型的最佳化流程是:拿一個 agent → 準備數種組態 → 實驗 → 找出 Pareto frontier(一組可選的操作點)→ 選一個 agent 候選 → 從那裡開始演化系統。多數團隊心裡都有一個目標操作區間(成本 × 品質),但要進到那個區間並不容易。</p>
+<h4>組態空間的四個維度(約 00:23–00:33)</h4>
+<p>他形容組態空間是個「漫畫式」的龐然大物:模型本身與模型權重可以換、模型選擇在今天百家爭鳴的情況下差異極大,再加上 <strong>harness</strong>——工具規格、prompts、skills、程式碼、外圍 scaffold——可動的零件多到本身就是個難題。</p>
+<p><strong>維度一:模型 × 檢索策略。</strong> 以 <strong>BrowseComp</strong>(deep research benchmark,因為答案就在給定語料中所以可驗證)為例,他們把不同模型配上不同檢索組態(dense retrieval、sparse retrieval、late interaction)逐一標到圖上。實驗結果是 <strong>GPT-5 家族搭配 late-interaction 檢索</strong>,以及 <strong>MiniMax</strong>,構成當時的 Pareto frontier——你會在這兩個選項之間挑。他說這是最基本的一步,多數團隊上線前都會做。</p>
+<p><strong>維度二:scaling / 執行策略。</strong>
+- <strong>垂直</strong>:thinking token 的量、迴圈迭代次數、各種 fix-repair loop。
+- <strong>水平</strong>:產生多個候選,再選擇或合併(best-of-n:同一個模型平行 rollout,挑最好的一個)。</p>
+<p>同一個 benchmark 上,原本較便宜但品質較低的 MiniMax,<strong>經過水平 scaling 之後可以達到前一張圖上最高品質候選的水準</strong>。GPT-5 也在品質對成本上有所提升。結論是:光是加上 scaling 這個維度,可選的運行方式就多了一整層。</p>
+<p><strong>維度三:模型組合(portfolio / ensemble)。</strong> 不只從同一個模型生成候選,而是<strong>從不同模型</strong>生成——可搭配調整過的 prompt 與工具定義——再把這些輸出合成最佳結果。他把這稱為產業從 <strong>token maxing 走向 model maxing</strong>。</p>
+<p>關鍵觀察是:不同模型覆蓋空間中的不同區域,只要你<strong>認真量測 co-variance 與每個模型的貢獻</strong>,就能拿到很大的好處——「全部模型一起用的總和,大於分別使用它們」。套上 portfolio 策略之後會浮現一條<strong>新的 Pareto frontier</strong>,而且這些配比<strong>可以按任務學出來,不必人工找</strong>。他報告的數字是:相較先前的 state-of-the-art 設定,在<strong>大致相同的品質下成本約少 50%</strong>;把「準確度 vs 成本」換成「準確度 vs 延遲」,原理完全一樣。</p>
+<p><strong>維度四:執行策略。</strong> 呼叫這些模型的<strong>串接方式</strong>還可以再變:升級(escalation)策略、優先呼叫哪個模型、設定不同的停止門檻——這些都會影響表現。他換到另一個 benchmark(字幕聽作 "three rebench",見待確認)展示這一層對<strong>成本與延遲</strong>權衡的影響:</p>
+<ul>
+<li><strong>單純 best-of-n</strong>:跑完所有候選,最後挑最好的。</li>
+<li><strong>cascading(串聯)</strong>:從最弱的模型開始往上走,一旦對結果有足夠信心就停 → <strong>省成本</strong>。</li>
+<li><strong>平行 + 提早停止</strong>:不省成本,但省延遲 → <strong>優化速度</strong>。</li>
+</ul>
+<p>也就是說,在<strong>同樣的品質水準</strong>上,你可以靠切換執行策略去挑你要的成本/延遲取捨。</p>
+<p>他最後給了一個很具體的類比:法律工作是一群 junior intern 做粗活 → associate 綜合出論點 → partner 下最終判斷。同樣的層級結構可以套到寫程式上——<strong>用弱模型產生大量 rollout,用較強的模型為這些 rollout 補上更相關的資訊,最後由一個非常強的模型(他說 "a Fable level model")產出最終 patch 與決策</strong>。結果是品質更好,而且<strong>比直接用前沿模型便宜約 3 倍</strong>。</p>
+<h4>為什麼一定要自動化(約 00:33–00:35)</h4>
+<p>所有這些策略都是<strong>可以學出來的</strong>,但搜尋空間實在太大,人工調校一定會漏掉很多最佳化機會。更關鍵的是<strong>環境會變</strong>:新模型隨時會出、定價會調整、流量與任務分布也會隨時間漂移。這些都得跟著處理,所以手動搜索這個空間並不實際。</p>
+<p>AI21 的做法是提供一套企業用的工具組:接手一個<strong>既有的</strong> agent——不管它用什麼框架、什麼 runtime、哪些模型——在<strong>生產環境中、對齊真實生產流量</strong>去最佳化它,讓它能持續演化到最好的性價比,並符合客戶自己的偏好。</p>
+<p>他把自動化最佳化該有的三個性質收在結尾:<strong>efficient</strong>(過程本身要有效率)、<strong>observable</strong>(人要能看到不同取捨並自己選)、<strong>future-proof</strong>(新模型上市或分布漂移時容易調整)。相關研究每隔幾週會發在他們的部落格。</p>
+<h3>金句</h3>
+<blockquote>
+<p>"Token maxing is basically over now. Everybody's speaking about token efficiency."(約 00:20:43)</p>
+</blockquote>
+<p>一句話定調整場演講:效率取代規模,成為前沿部署的主題。</p>
+<blockquote>
+<p>"Moving from token maxing to model maxing."(約 00:27:49)</p>
+</blockquote>
+<p>不是把單一模型榨到極限,而是把多個模型的長處榨出來。</p>
+<blockquote>
+<p>"The sum of all using all models is greater than using them separately."(約 00:28)</p>
+</blockquote>
+<p>模型組合這一層之所以值得做的理由——差異化的覆蓋範圍本身就是可利用的資源。</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI21 Labs</td>
+<td>總部位於 Tel Aviv 的 AI lab,講者為共同創辦人暨 CEO</td>
+<td>AI lab based in Tel Aviv; the speaker is co-founder and CEO</td>
+<td></td>
+</tr>
+<tr>
+<td>BrowseComp</td>
+<td>Deep research benchmark;答案含於給定語料,因此可驗證</td>
+<td>Deep-research benchmark; verifiable because answers live in the given corpora</td>
+<td>演講中主要的實驗場 / main experimental testbed</td>
+</tr>
+<tr>
+<td>Late-interaction retrieval</td>
+<td>與 dense / sparse 並列的第三種檢索策略,在 BrowseComp 上表現最好</td>
+<td>Third retrieval strategy alongside dense and sparse; best-performing on BrowseComp</td>
+<td>搭配 GPT-5 家族構成 Pareto frontier</td>
+</tr>
+<tr>
+<td>MiniMax</td>
+<td>較便宜、單次品質較低的模型;水平 scaling 後可追上最高品質候選</td>
+<td>Cheaper, lower single-shot quality; matches the top candidate once horizontally scaled</td>
+<td>字幕誤植為 "miniax"</td>
+</tr>
+<tr>
+<td>AI21 企業 agent 最佳化工具組</td>
+<td>接管既有 agent,依生產流量持續最佳化性價比</td>
+<td>Enterprise toolkit that optimizes an existing agent against production traffic</td>
+<td>演講中未點名產品名稱 / not named in the talk(見待確認)</td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ori Gosian / Ory Gosh / Orie</td>
+<td>Ori Goshen</td>
+</tr>
+<tr>
+<td>browse comp</td>
+<td>BrowseComp</td>
+</tr>
+<tr>
+<td>miniax</td>
+<td>MiniMax</td>
+</tr>
+<tr>
+<td>GP5 / GPT5</td>
+<td>GPT-5</td>
+</tr>
+<tr>
+<td>para frontier / parader frontier</td>
+<td>Pareto frontier</td>
+</tr>
+<tr>
+<td>prohibitly expensive</td>
+<td>prohibitively expensive</td>
+</tr>
+<tr>
+<td>co-variance</td>
+<td>covariance</td>
+</tr>
+<tr>
+<td>three rebench</td>
+<td>待確認(可能為 SWE-rebench)/ to verify (possibly SWE-rebench)</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>第二個 benchmark(字幕作 "three rebench")的正確名稱。發音上最接近的公開 benchmark 是 <strong>SWE-rebench</strong>(arXiv:2505.20411,持續更新、去汙染的 SWE agent benchmark),但無法從逐字稿確認,需看投影片。/ The second benchmark, heard as "three rebench" — phonetically closest public benchmark is SWE-rebench (arXiv:2505.20411), but this needs slide confirmation.</li>
+<li>AI21 用來做 agent 最佳化的產品名稱:講者只說 "a suite / a toolkit",未點名。AI21 官網對外的 agent 最佳化產品為 <strong>Maestro</strong>,但無法確認演講中指的是否為同一個。/ AI21's optimization product was never named on stage; their public offering is Maestro, but the mapping is unconfirmed.</li>
+<li>「約 50% 成本下降」與「約 3x 便宜」的實驗設定細節(基準設定、模型組合比例)只在投影片上,逐字稿未念出。/ Experimental details behind the ~50% cost reduction and ~3x cheaper figures were on slides only.</li>
+<li>Coinbase 用量/成本圖表的出處與時間區間未說明。/ Source and time window of the Coinbase usage-vs-cost chart were not stated.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-atlas/ori-goshen--self-optimizing-agents.md" target="_blank" rel="noopener">GitHub 上的 Markdown 原始檔 ↗</a>
+      </p>
+    </article>
+</main>
+
+  <script src="../../../data/data.js"></script>
+  <script src="../../../assets/shell.js"></script>
+  <script src="../../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/talk/sun-atlas/ori-goshen--self-optimizing-agents.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
+</body>
+</html>

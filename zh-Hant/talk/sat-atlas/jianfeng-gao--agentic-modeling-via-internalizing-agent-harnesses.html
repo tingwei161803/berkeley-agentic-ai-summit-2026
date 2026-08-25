@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-METBF91HYQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-METBF91HYQ');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>把 Agent Harness 內化進模型:Agentic Modeling 的新典範 · Agentic AI Summit ’26 筆記</title>
+  <meta name="description" content="語言模型本身只是個「說話的人」,是外掛的 agent harness 讓它變成「做事的人」;下一步是把 harness 的能力用 post-training 蒸餾回模型本身,而 harness 之於 agentic modeling,就等同於網路資料之於 pre-training。" />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-atlas/jianfeng-gao--agentic-modeling-via-internalizing-agent-harnesses.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/jianfeng-gao--agentic-modeling-via-internalizing-agent-harnesses.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-atlas/jianfeng-gao--agentic-modeling-via-internalizing-agent-harnesses.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sat-atlas/jianfeng-gao--agentic-modeling-via-internalizing-agent-harnesses.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="把 Agent Harness 內化進模型:Agentic Modeling 的新典範 · Agentic AI Summit ’26 筆記" />
+  <meta property="og:description" content="語言模型本身只是個「說話的人」,是外掛的 agent harness 讓它變成「做事的人」;下一步是把 harness 的能力用 post-training 蒸餾回模型本身,而 harness 之於 agentic modeling,就等同於網路資料之於 pre-training。" />
+  <meta property="og:url" content="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sat-atlas/jianfeng-gao--agentic-modeling-via-internalizing-agent-harnesses.html" />
+  <meta property="og:site_name" content="Agentic AI Summit ’26 筆記" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../assets/styles.css" />
+</head>
+<body data-page="sat-atlas" data-talk="jianfeng-gao--agentic-modeling-via-internalizing-agent-harnesses">
+  <main id="page">
+<article class="talkdoc" id="talkdoc" data-item="">
+      <header class="talkdoc__head">
+        <p class="dialog__kicker">
+          <span class="badge badge--keynote">主題演講</span>
+          <span class="dialog__session">Session 1: Foundational Capabilities</span>
+        </p>
+        <h1 class="talkdoc__title">把 Agent Harness 內化進模型:Agentic Modeling 的新典範</h1>
+        <p class="dialog__speaker"><strong>Jianfeng Gao</strong> — Technical Fellow &amp; Corporate Vice President, Microsoft Research</p>
+        <p class="dialog__meta">8 月 1 日(六) · Atlas Stage · 00:01:20–00:17:35 · 上午場直播</p>
+        <div class="dialog__actions">
+          <a class="btn-primary" href="https://www.youtube.com/watch?v=WeriQic-QW0&amp;t=80s" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
+            從 00:01:20 開始觀看
+          </a>
+          <a class="btn-ghost" href="../../sat-atlas.html">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+            回 Atlas · 週六
+          </a>
+        </div>
+        <p class="talkdoc__summary">語言模型本身只是個「說話的人」,是外掛的 agent harness 讓它變成「做事的人」;下一步是把 harness 的能力用 post-training 蒸餾回模型本身,而 harness 之於 agentic modeling,就等同於網路資料之於 pre-training。</p>
+      </header>
+      <div class="talkdoc__body prose">
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
+<ul>
+<li><strong>三個關鍵詞</strong>:agentic modeling(把 talker 變成 doer)、agent harness(模型外面那層硬寫死的程式碼與模組)、internalization(把 harness 的能力蒸餾進模型)。</li>
+<li><strong>Agentic modeling 需要三個元件</strong>:agent harness(資訊層 / 執行層 / 回饋層)、environment(RL 環境,agent 在裡面互動並產生 trajectory)、trainer(用 trajectory 做 mid-training 與 post-training)。</li>
+<li><strong>新的資料飛輪</strong>:harness 產生 trajectory → trajectory 訓練出更會做事的模型 → 更好的模型讓我們蓋出更好的 harness。「Harness 之於 agentic modeling,就像網路資料之於 pre-training。」</li>
+<li><strong>開源瓶頸不在 harness,在 environment</strong>:社群的基礎建設多半在改善 harness 本身,但沒人能同時跑幾十萬個 agent 產生訓練資料。<strong>Orchard</strong> 就是為了補這個洞。</li>
+<li><strong>三個對應的研究成果</strong>:環境端 <strong>Orchard</strong>(核心是 Kubernetes-native 的 Orchard Env)、harness 端 <strong>EvoLib</strong>(test-time learning,靠會演化的知識庫而非改參數)、trainer 端 <strong>GFlowRL</strong>(把 policy learning 定義成 distribution matching 而非 reward maximization)。</li>
+<li><strong>成本效率是 China(訓練端)的關鍵字</strong>:不只要服務便宜,更要 sample-efficient——用少量樣本就能訓起來。</li>
+</ul>
+<h3>重點整理</h3>
+<h4>三個名詞的定義(約 00:02)</h4>
+<ul>
+<li><strong>Agentic modeling</strong>:把大型語言模型轉化成能與環境互動、完成複雜任務的自主 agent。「大型語言模型的刻板印象基本上是個 talker——它好像什麼都知道,但你叫它幫你做事就很困難。」agentic modeling 就是把 talker 變成 doer 的過程。</li>
+<li><strong>Agent harness</strong>:因為語言模型做不了很多事,你得在模型外面包一層 harness。「某種意義上 harness 就是一堆程式碼」,能處理現在的模型處理不了的事。我們平常講的 AI agent,通常就是「一個或多個語言模型 + harness」的組合。</li>
+<li><strong>Internalization</strong>:把 agentic 能力從 harness 蒸餾到語言模型裡。這些能力包括 memory、context management、tool use、planning,一般透過 supervised learning 或 RL 的 mid-training / post-training 達成。</li>
+</ul>
+<h4>Agentic modeling 的三個元件(約 00:04–00:08)</h4>
+<p>Gao 用一張三色圖拆解整個系統:</p>
+<ol>
+<li><strong>Agent(harness,左側)</strong>——他的 lab 不自己蓋大模型,因為太耗資源。Microsoft 有專責的 <strong>MAI</strong> 團隊做自家大模型(最近釋出十幾個模型),另外也跟 OpenAI 等公司有合約取得前沿模型,再加上 <strong>Azure AI Foundry</strong> 可以託管數百到數千個開源模型。Lab 真正的焦點是「發展做出 harness 的使能技術」。Harness 是一層層硬寫死的模組(不是模型本身):
+   - <strong>Information layer</strong>:memory、context management,以及給模型呼叫的大量 tools 與 skills。
+   - <strong>Execution layer</strong>:prompt builder、action parser、decomposition 模組、error recovery 機制。
+   - <strong>Feedback layer</strong>(他強調「最重要」):收集 agent 產生的所有 trajectory,回頭用 post-training 精煉底層模型。<strong>這是 agentic modeling 的關鍵。</strong></li>
+<li><strong>Environment(RL environment / RLE)</strong>——AI agent 與外部世界互動、執行任務並產生 trajectory 的地方。</li>
+<li><strong>Trainer</strong>——用產生的 trajectory 透過 post-training / mid-training 把 agentic 能力灌進模型。最重要的方法是 RL 以及各種蒸餾變體(on-policy distillation、reverse-KL 類演算法)。<strong>成本效率是重點</strong>:不只要 serving 便宜,更希望訓練是 sample-efficient 的。</li>
+</ol>
+<h4>新典範:harness 就是新的訓練資料(約 00:08)</h4>
+<p>「我們正見證 AI modeling 的新典範:<strong>harness 之於 agentic modeling,就像網路資料之於模型 pre-training</strong>。」</p>
+<p>當整個產業與社群每天都在蓋 AI agent 與 harness,一個新的資料飛輪就浮現了:從 harness 蒸餾 agent 能力 → 得到更會做事的模型 → 這些模型幫我們蓋出更好的 agent → 產生更精緻的 trajectory 資料、解更複雜的任務 → 循環繼續。Harness 與模型一起前進。</p>
+<p>MSR 進行中的 agentic 研究基本上就對應到這三格:綠色(harness 的建模技術,如 memory management、test-time learning)、藍色(環境服務,平行託管大量 RL 環境)、黃色(trainer)。</p>
+<h4>專案一:Orchard——開源的 agentic modeling 環境生態系(約 00:11–00:15)</h4>
+<ul>
+<li><strong>問題</strong>:agentic 開放研究卡在基礎建設。早期做訓練只要有網路就不缺資料;agentic modeling 不一樣,你需要一個能<strong>同時跑幾十萬個 agent</strong>的環境來產生 trajectory。研究社群的基礎建設多半用來改善 harness 本身,而不是能平行託管各種 agent 的環境。</li>
+<li><strong>Orchard</strong>:開源、可規模化的 agentic modeling 生態系。核心是 <strong>Orchard Env</strong>——一個 Kubernetes-native 的環境服務,提供 sandbox 生命週期的可重用 primitives。</li>
+<li><strong>比喻</strong>(現場即興的好比喻):Orchard Env 就像 agent 的作業系統 runtime,負責 orchestration 與虛擬化,管理 sandbox 裡的 container image,對 agent 曝露乾淨的介面。「就像這場會議的主辦方——作業系統相當於這棟樓,提供所有水電設施;如果把每個 workshop 看成一個 agent,主辦方把每個 workshop 安排進特定房間,那就是一個 RL 環境的 pod;最後主辦方再把所有 workshop 的結果收集回來分享。Orchard Env 就是整場會議的主辦方。」</li>
+<li><strong>三個示範 recipe</strong>:<strong>Orchard-SWE</strong>(軟體工程 agent)、<strong>Orchard-GUI</strong>(GUI 導航)、<strong>Orchard-Claw</strong>(個人助理)。</li>
+<li><strong>結果</strong>:Orchard-SWE 蒸餾約 10 萬條 trajectory,在 SWE-bench Verified 上拿到 <strong>73%</strong>——「以這個模型的尺寸來說,已經超越很多開源模型」。</li>
+<li>他當場預告論文、程式碼與資料「下週」釋出。(實際上論文為 arXiv 2605.15040,Orchard Env 在論文中的定義是 "lightweight Kubernetes-native environment service"。)</li>
+</ul>
+<h4>專案二:EvoLib——會演化的知識庫式 test-time learning(約 00:15–00:16)</h4>
+<p>Memory 很重要,但我們通常把 memory 當成「原始經驗的儲存」——而原始經驗不等於學習。「我收集了一堆過去的經驗,卻不知道怎麼用這些經驗解新問題。人類的學習不是這樣的:我從來不會回想起過去經驗的所有細節,我只記得<strong>重要的部分</strong>——我要避免的失敗、我學會一次之後希望能重複套用的新技能。」EvoLib 就是設計來模擬這種人類學習方式的:讓模型跨一連串任務累積、重用並演化知識,而不更新參數。</p>
+<h4>專案三:GFlowRL——把 policy learning 當成分布匹配(約 00:16–00:17)</h4>
+<p>他希望這能成為目前主流 RL 方法(GRPO、PPO)之外的另一種選擇。<strong>核心差異:在這個 RL 設定下,policy learning 被定義成 distribution matching,而不是 reward maximization。</strong> 具體來說,模型會<strong>按照 reward 的比例去抽樣解法</strong>,而不是一味往最高 reward 收斂。結果是解出更大的多樣性,同時是更具成本效益的訓練方法。</p>
+<p>(時間不夠,他在此收尾:「我得停在這裡了,有問題歡迎會後找我。」)</p>
+<h3>金句</h3>
+<blockquote>
+<p>"The portrait of the large scale language model is mainly a talker. It seems that the model knows everything, but it's really difficult if you ask it to do something for you. So agentic modeling is the process where we want to turn this talker to a doer."(約 00:02)</p>
+</blockquote>
+<p>整場演講的出發點:talker → doer。</p>
+<blockquote>
+<p>"Harness is like the training data to agentic modeling, just like the internet data to model pre-training."(約 00:08)</p>
+</blockquote>
+<p>這是整場最重要的一句類比——它把「蓋 harness」重新定義成「生產訓練資料」。</p>
+<blockquote>
+<p>"Human learning is different. I never recall all the details of my previous experience. I only remember what matters."(約 00:16)</p>
+</blockquote>
+<p>EvoLib 的動機:memory 不該只是經驗的倉庫,而該是被萃取過的技能與教訓。</p></section>
+        <section class="talkdoc__shared"><h2>提到的專案與資源 / Projects &amp; Resources</h2>
+<table>
+<thead>
+<tr>
+<th>名稱 Name</th>
+<th>說明</th>
+<th>Description</th>
+<th>備註 Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orchard</td>
+<td>開源、可規模化的 agentic modeling 框架與生態系</td>
+<td>Open-source framework/ecosystem for scalable agentic modeling</td>
+<td>arXiv 2605.15040;github.com/microsoft/Orchard</td>
+</tr>
+<tr>
+<td>Orchard Env</td>
+<td>Orchard 核心的 Kubernetes-native 環境服務,提供 sandbox 生命週期 primitives</td>
+<td>Lightweight Kubernetes-native environment service at Orchard's core; reusable sandbox-lifecycle primitives</td>
+<td>講者比喻為「AI agent 的 OS runtime」/ "an OS runtime for AI agents"</td>
+</tr>
+<tr>
+<td>Orchard-SWE</td>
+<td>軟體工程 agent recipe,蒸餾約 10 萬條 trajectory</td>
+<td>Software-engineering agent recipe; ~100k distilled trajectories</td>
+<td>SWE-bench Verified 73%(論文另列 RPR-based RL 69.7%)</td>
+</tr>
+<tr>
+<td>Orchard-GUI</td>
+<td>GUI/網頁導航 agent recipe</td>
+<td>Vision-language computer-use / navigation agent recipe</td>
+<td></td>
+</tr>
+<tr>
+<td>Orchard-Claw</td>
+<td>個人助理 agent recipe</td>
+<td>Personal-assistant agent recipe</td>
+<td>逐字稿聽成 "crow / crawl"</td>
+</tr>
+<tr>
+<td>EvoLib</td>
+<td>test-time learning 框架:靠會演化的知識庫累積與重用技能,不更新參數</td>
+<td>Test-time learning with an evolving library of skills and reflective insights; no parameter updates</td>
+<td>arXiv 2605.14477(Weijia Xu 等,含 Jianfeng Gao)</td>
+</tr>
+<tr>
+<td>GFlowRL</td>
+<td>把 policy learning 定義成 distribution matching 的 RL 方法,按 reward 比例抽樣</td>
+<td>Distribution-matching RL for LLMs; samples in proportion to reward instead of maximizing it</td>
+<td>Microsoft Research;定位為 GRPO / PPO 的替代方案</td>
+</tr>
+<tr>
+<td>MAI</td>
+<td>Microsoft 自建大型語言模型的專責團隊</td>
+<td>Microsoft's dedicated in-house frontier-model team</td>
+<td>講者提到「最近釋出十幾個模型」</td>
+</tr>
+<tr>
+<td>Azure AI Foundry</td>
+<td>託管數百至數千個開源模型的模型商店</td>
+<td>Model store hosting hundreds to thousands of open-source models</td>
+<td>逐字稿聽成 "Asia foundry"</td>
+</tr>
+<tr>
+<td>SWE-bench Verified</td>
+<td>軟體工程 agent 的標準 benchmark</td>
+<td>Standard benchmark for software-engineering agents</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>逐字稿勘誤 / Transcript Corrections</h2>
+<table>
+<thead>
+<tr>
+<th>字幕原文 Heard as</th>
+<th>應為 Should be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jen Ga / Jen Hun / Jang</td>
+<td>Jianfeng Gao</td>
+</tr>
+<tr>
+<td>agenting modeling / analytic modeling / agit modeling / engineic modeling / aging modeling</td>
+<td>agentic modeling</td>
+</tr>
+<tr>
+<td>Asian honey / aging harness / agent honey</td>
+<td>agent harness</td>
+</tr>
+<tr>
+<td>our chart / orchard / okra / ultra / or chart</td>
+<td>Orchard</td>
+</tr>
+<tr>
+<td>ultra ev / ultra environment / or chart Evar</td>
+<td>Orchard Env</td>
+</tr>
+<tr>
+<td>okra swing / okra eval</td>
+<td>Orchard-SWE</td>
+</tr>
+<tr>
+<td>ultra GUI</td>
+<td>Orchard-GUI</td>
+</tr>
+<tr>
+<td>crow / crawl</td>
+<td>Orchard-Claw</td>
+</tr>
+<tr>
+<td>evolve lab / involving libraries</td>
+<td>EvoLib(Evolving Library)</td>
+</tr>
+<tr>
+<td>GRO IO / GRO I am</td>
+<td>GFlowRL</td>
+</tr>
+<tr>
+<td>GP or PO</td>
+<td>GRPO / PPO</td>
+</tr>
+<tr>
+<td>sing coet native</td>
+<td>(lightweight) Kubernetes-native</td>
+</tr>
+<tr>
+<td>Asia foundry</td>
+<td>Azure AI Foundry</td>
+</tr>
+<tr>
+<td>we bench verified</td>
+<td>SWE-bench Verified</td>
+</tr>
+<tr>
+<td>distillering / distating</td>
+<td>distilling</td>
+</tr>
+<tr>
+<td>reverse care divergence</td>
+<td>reverse-KL divergence</td>
+</tr>
+<tr>
+<td>the key for the China</td>
+<td>the key for the trainer(語音辨識錯誤,語境為 trainer)</td>
+</tr>
+<tr>
+<td>expirations</td>
+<td>(on-policy) distillation</td>
+</tr>
+</tbody>
+</table>
+<h2>待確認 / To Verify</h2>
+<ul>
+<li>Orchard-SWE 的 SWE-bench Verified 分數:講者口說「70… 73%」,論文摘要為 69.7%(RPR-based RL)與 73.0%(value-model reranking),筆記採 73%,但需確認他投影片上引用的是哪一個。/ Gao said "70… 73%"; the paper reports 69.7% (RPR-based RL) and 73.0% (value-model reranking) — confirm which number his slide showed.</li>
+<li>蒸餾 trajectory 數量「約 100,000」為口述數字,未在投影片上驗證。/ The "~100,000 distilled trajectories" figure is from speech only.</li>
+<li>MAI 團隊「最近釋出十幾個模型」的具體型號未提及。/ He didn't name the dozen-or-so MAI models.</li>
+<li>GFlowRL 是否即為投影片上的名稱(逐字稿聽成 "GRO IO"),已由「distribution matching / 按 reward 比例抽樣 / GRPO 替代方案」三個特徵交叉比對到 Microsoft Research 的 GFlowRL,但仍建議看投影片確認。/ GFlowRL was matched by three cross-checking features; confirm against the slide.</li>
+</ul></section>
+      </div>
+      <p class="talkdoc__source">
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-01-atlas/jianfeng-gao--agentic-modeling-via-internalizing-agent-harnesses.md" target="_blank" rel="noopener">GitHub 上的 Markdown 原始檔 ↗</a>
+      </p>
+    </article>
+</main>
+
+  <script src="../../../data/data.js"></script>
+  <script src="../../../assets/shell.js"></script>
+  <script src="../../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/talk/sat-atlas/jianfeng-gao--agentic-modeling-via-internalizing-agent-harnesses.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
+</body>
+</html>

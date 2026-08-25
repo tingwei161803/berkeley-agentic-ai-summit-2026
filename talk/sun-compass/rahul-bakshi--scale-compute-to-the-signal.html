@@ -10,13 +10,14 @@
     gtag('js', new Date());
     gtag('config', 'G-METBF91HYQ');
   </script>
-  <script>try{document.documentElement.dataset.lang=localStorage.getItem("lang")||"en";}catch(e){document.documentElement.dataset.lang="en";}</script>
-  <base href="../../" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Scale Compute to the Signal · Agentic AI Summit ’26 Notes</title>
   <meta name="description" content="Everyone asks how to give agents more compute, but at the edge there is a hard ceiling drawn by human skin&#x27;s heat tolerance — roughly 1–1.5 W — so the real question is whether a task earns an escal…" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="canonical" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/rahul-bakshi--scale-compute-to-the-signal.html" />
+  <link rel="alternate" hreflang="en" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/rahul-bakshi--scale-compute-to-the-signal.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/talk/sun-compass/rahul-bakshi--scale-compute-to-the-signal.html" />
+  <link rel="alternate" hreflang="x-default" href="https://berkeley-agentic-ai-summit-2026.peteraim.com/talk/sun-compass/rahul-bakshi--scale-compute-to-the-signal.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003262'/%3E%3Ccircle cx='32' cy='36' r='13' fill='none' stroke='%23FDB515' stroke-width='6'/%3E%3Crect x='41' y='20' width='6' height='30' rx='3' fill='%23FDB515'/%3E%3C/svg%3E" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Scale Compute to the Signal · Agentic AI Summit ’26 Notes" />
@@ -28,80 +29,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 <body data-page="sun-compass" data-talk="rahul-bakshi--scale-compute-to-the-signal">
   <main id="page">
-<article class="talkdoc" id="talkdoc" data-item="" data-title-en="Scale Compute to the Signal" data-title-zh="讓算力貼著訊號走">
+<article class="talkdoc" id="talkdoc" data-item="">
       <header class="talkdoc__head">
         <p class="dialog__kicker">
-          <span class="badge badge--talk"><span class="lang-en">Talk</span><span class="lang-zh">演講</span></span>
+          <span class="badge badge--talk">Talk</span>
           <span class="dialog__session">Session 2: AI Systems</span>
         </p>
-        <h1 class="talkdoc__title"><span class="lang-en">Scale Compute to the Signal</span><span class="lang-zh">讓算力貼著訊號走</span></h1>
+        <h1 class="talkdoc__title">Scale Compute to the Signal</h1>
         <p class="dialog__speaker"><strong>Rahul Bakshi</strong> — Director, Applied Science (Edge AI), Amazon</p>
-        <p class="dialog__meta"><span class="lang-en">Sunday, August 2</span><span class="lang-zh">8 月 2 日(日)</span> · Compass Stage · 00:23:05–00:30:43 · <span class="lang-en">afternoon stream</span><span class="lang-zh">下午場直播</span></p>
+        <p class="dialog__meta">Sunday, August 2 · Compass Stage · 00:23:05–00:30:43 · afternoon stream</p>
         <div class="dialog__actions">
           <a class="btn-primary" href="https://www.youtube.com/watch?v=1UrriPJRSPU&amp;t=1385s" target="_blank" rel="noopener">
             <span class="material-symbols-rounded" aria-hidden="true">play_arrow</span>
-            <span class="lang-en">Watch from 00:23:05</span><span class="lang-zh">從 00:23:05 開始觀看</span>
+            Watch from 00:23:05
           </a>
-          <a class="btn-ghost" href="sun-compass.html">
+          <a class="btn-ghost" href="../../sun-compass.html">
             <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
-            <span class="lang-en">Back to Compass · Sun</span><span class="lang-zh">回 Compass · 週日</span>
+            Back to Compass · Sun
           </a>
         </div>
-        <p class="talkdoc__summary"><span class="lang-en">Everyone asks how to give agents more compute, but at the edge there is a hard ceiling drawn by human skin's heat tolerance — roughly 1–1.5 W — so the real question is whether a task earns an escalation to the next tier; and what's missing isn't a model, it's a composable runtime that budgets sensors, radio, and compute per task.</span><span class="lang-zh">大家都在問「怎麼給 agent 更多算力」,但在邊緣裝置上算力有一道由人體皮膚耐熱極限畫出的硬天花板(約 1–1.5 W),所以真正該問的是「這個任務值不值得往上升級一層」——而現在缺的不是模型,是一個懂得按任務動態編排感測器、無線電與算力預算的 composable runtime。</span></p>
+        <p class="talkdoc__summary">Everyone asks how to give agents more compute, but at the edge there is a hard ceiling drawn by human skin's heat tolerance — roughly 1–1.5 W — so the real question is whether a task earns an escalation to the next tier; and what's missing isn't a model, it's a composable runtime that budgets sensors, radio, and compute per task.</p>
       </header>
       <div class="talkdoc__body prose">
-        <section class="lang-zh"><h3>TL;DR</h3>
-<ul>
-<li><strong>算力天花板是生理性的,不是工程性的</strong>:穿戴式裝置只有大約 1–1.5 W 可用,因為人體皮膚超過 43°C 就會開始灼傷與不適。這道牆不會因為多蓋幾座 gigafactory 而移動,而<strong>邊緣與雲之間的這種不對稱,正是下一代混合架構最肥沃的創新土壤</strong>。</li>
-<li><strong>三層功耗階梯,原則只有一句:非必要不升級</strong>。第一層在訊號源頭處理(wake word 偵測、event camera),耗能極小;第二層在裝置上跑演算法或 tool calling,功耗差幾個數量級;第三層才動用資料中心級算力,又差幾個數量級。而且往上升級不只貴在算力——<strong>無線電的成本十年來幾乎沒跟著傳輸成本一起下降</strong>。</li>
-<li><strong>三個 call to action</strong>:(1) 業界缺的是 <strong>composable runtime</strong>,能判斷「這個任務不需要開相機和麥克風,只要開無線電做一次 API 呼叫」,並據此配置功耗預算;(2) benchmark 應該把 <strong>joules per task</strong> 納入指標,而不只是參數量與準確率;(3) 晶片開發者請把 <strong>resting power</strong> 再往下壓。</li>
-</ul>
-<h3>重點整理</h3>
-<h4>把問題反過來問:如果沒有更多算力可給呢?(約 00:23:05–00:26:20)</h4>
-<p>Rahul Bakshi 帶領 Amazon 的 applied science 團隊,負責自研晶片——最新一代的 <strong>AZ3</strong> 就是去年秋天發表的 Echo 裝置所搭載的矽晶片。他的日常因此都圍繞著 edge compute、edge device 與 edge-scale processing。</p>
-<p>過去幾年的主流問題是「怎麼給 agent 更多算力」,這問題很重要,因為算力解鎖新能力。但他當場把問題翻面:<strong>如果因為物理限制,根本沒有更多算力可以給呢?</strong> 另一個主軸是:很多邊緣 agent <strong>根本不需要 frontier 等級的智能</strong>,在嚴格定義的功耗預算下,反而有很多有趣的最佳化空間可做。</p>
-<p>擴張算力的一條路當然是蓋更多資料中心——Amazon、其他 hyperscaler、neocloud 都在蓋 gigafactory,這是一個槓桿。但另一端有一道<strong>真實的功耗天花板</strong>。他用穿戴式裝置當最極端的例子,因為那裡的限制最硬:智慧手錶、智慧眼鏡、戒指這類裝置,通常只有大約 <strong>1 到 1.5 W</strong> 可用。</p>
-<p>而理由是生物性的:<strong>人體皮膚無法承受超過 43°C 的熱,再上去就開始灼傷、極不舒服</strong>(約 00:25:51)。這就是邊緣側的硬天花板。他認為,<strong>邊緣與雲之間的這種不對稱,正是下一代混合架構的沃土</strong>。</p>
-<h4>三層功耗階梯與「非必要不升級」(約 00:26:20–00:29:00)</h4>
-<p>接受這道天花板之後,邊緣裝置上執行的東西大致落在三層功耗剖面:</p>
-<ol>
-<li><strong>最省的一層:在訊號源頭處理訊號</strong>。微型 wake word 偵測器、event camera 都屬於這層——在來源處偵測,燒最少的能量。</li>
-<li><strong>中間層:拿這個訊號做什麼</strong>。要跑演算法、或跑 tool calling 工作流,就進入下一級能耗;仍在裝置上,但算力與功耗<strong>高出好幾個數量級</strong>。</li>
-<li><strong>最貴的一層:資料中心級算力</strong>。當任務需要裝置上沒有的 context,或需要 world knowledge,才呼叫這一層,又<strong>再高幾個數量級</strong>。</li>
-</ol>
-<p>結論一句話:<strong>escalate only when the task calls for it</strong>(約 00:27:20)。</p>
-<p>接著他用兩個獨立的資料點導向同一個結論(約 00:27:35):</p>
-<ul>
-<li>今年稍早,Berkeley 的 <strong>function calling leaderboard</strong>(BFCL)顯示,<strong>一個小語言模型在 function calling 任務上已經追平 frontier 等級的表現</strong>。這個 benchmark 追蹤的是 function calling 的基本功——產出的 JSON 有沒有正確的 function、API 與參數。重點不在於小模型全面追上,而在於:<strong>對範圍夠小、定義夠明確的任務集合,我們已經有辦法把 frontier 等級的智能放到邊緣裝置上。</strong></li>
-<li>另一個數字更違反直覺(約 00:28:37):過去十年,無線網路<strong>傳輸一個位元的成本</strong>已經下降好幾倍;但<strong>無線電本身的成本並沒有等比例下降</strong>。所以往上升級一層,在能耗與電池續航上都是昂貴的決定,非必要不該做。</li>
-</ul>
-<h4>三個 call to action(約 00:29:00–00:30:40)</h4>
-<p>級聯式的分層架構本身早就成熟——Amazon、Apple、Meta 的助理十幾年來都是「偵測 wake word,必要時才逐級往上升」。<strong>真正缺的是 composable runtime</strong>(約 00:29:22),這是他給現場的第一個 call to action。</p>
-<p>他舉的例子很具體:當你問助理「我的班機幾點?誤點了嗎?」——如果 runtime 有足夠的智能知道,<strong>做這件事根本不需要開啟任何感知感測器(相機、麥克風),只需要開無線電做一次 API 呼叫</strong>,那就可以據此編出一份功耗預算,並給 function calling 一個對應的動態排程。</p>
-<p>第二個 call to action 給 benchmark 社群(約 00:30:16):Berkeley 已經有 function calling benchmark,<strong>應該擴充成也涵蓋 joules per task,而不只是參數量與準確率</strong>——能耗也是一個重要的前沿。</p>
-<p>第三個給在場的晶片開發者(約 00:30:33):<strong>請把 resting power 再往下壓</strong>,這樣我們才能為邊緣做出更有效率的 agent。</p>
-<h3>金句</h3>
-<blockquote>
-<p>"What if there wasn't more compute to give to our agents because of physics limitations?"(約 00:23:45)</p>
-</blockquote>
-<p>整場演講的翻轉點:算力不是無限供給的參數。</p>
-<blockquote>
-<p>"Human skin cannot tolerate more than 43 degrees centigrade of heat without starting getting burned."(約 00:25:51)</p>
-</blockquote>
-<p>穿戴式裝置的功耗天花板不是工程妥協,是生理常數。</p>
-<blockquote>
-<p>"The takeaway is escalate only when the task calls for it."(約 00:27:20)</p>
-</blockquote>
-<p>一句話的邊緣 agent 設計準則。</p>
-<blockquote>
-<p>"What is missing is a composable runtime."(約 00:29:22)</p>
-</blockquote>
-<p>模型已經夠好了,缺的是會編排感測器、無線電與算力預算的那一層。</p></section>
-        <section class="lang-en"><h3>TL;DR</h3>
+        <section class="talkdoc__notes"><h3>TL;DR</h3>
 <ul>
 <li><strong>The compute ceiling at the edge is biological, not engineering.</strong> Wearables have roughly 1–1.5 W to work with because human skin starts burning past 43°C. No number of gigafactories moves that wall — and <strong>the resulting edge/cloud asymmetry is the fertile ground for next-generation hybrid architectures</strong>.</li>
 <li><strong>Three power tiers, one rule: escalate only when the task calls for it.</strong> Tier one processes signals where they originate (wake-word detectors, event cameras) at minimal energy; tier two runs algorithms or tool-calling workflows on-device at orders of magnitude more power; tier three invokes data-center-class compute at orders of magnitude beyond that. Escalation isn't just compute-expensive — <strong>the cost of the radio has not fallen anywhere near as fast as the cost of transporting a bit</strong>.</li>
@@ -228,13 +182,14 @@
 </ul></section>
       </div>
       <p class="talkdoc__source">
-        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/rahul-bakshi--scale-compute-to-the-signal.md" target="_blank" rel="noopener"><span class="lang-en">Markdown source on GitHub ↗</span><span class="lang-zh">GitHub 上的 Markdown 原始檔 ↗</span></a>
+        <a href="https://github.com/tingwei161803/berkeley-agentic-ai-summit-2026/blob/main/notes/talks/2026-08-02-compass/rahul-bakshi--scale-compute-to-the-signal.md" target="_blank" rel="noopener">Markdown source on GitHub ↗</a>
       </p>
     </article>
 </main>
 
-  <script src="data/data.js"></script>
-  <script src="assets/shell.js"></script>
-  <script src="assets/app.js"></script>
+  <script src="../../data/data.js"></script>
+  <script src="../../assets/shell.js"></script>
+  <script src="../../assets/app.js"></script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/zh-Hant/talk/sun-compass/rahul-bakshi--scale-compute-to-the-signal.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
 </body>
 </html>
