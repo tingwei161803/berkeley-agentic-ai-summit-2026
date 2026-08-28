@@ -405,7 +405,10 @@
       teardown();
       if (page.layout === "hub") renderHub();
       else if (page.layout === "digest") renderDigest();
-      else renderDay();
+      else if (page.layout === "daypage") renderDay();
+      /* layout "static": the page ships its own content in the HTML
+         (e.g. taiwan.html) — only wire up the scroll-entry reveals */
+      else observeReveals(main);
     }
 
     renderPage();

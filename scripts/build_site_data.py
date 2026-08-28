@@ -311,7 +311,17 @@ def main():
                 assert tuple(ref) in valid, f"digest ref not found: {ref}"
             theme["refs"] = [{"page": r[0], "slug": r[1]} for r in theme["refs"]]
 
-    pages_out = [hub, digest] + site_pages
+    # taiwan.html / zh-Hant/taiwan.html carry their content in the HTML itself
+    # (hand-written comparison, not derived from notes/) — this entry only puts
+    # the page in the cross-page nav; app.js leaves "static" layouts untouched
+    taiwan = {
+        "slug": "taiwan",
+        "layout": "static",
+        "icon": "compare_arrows",
+        "title": {"en": "Taiwan Lens", "zh": "台灣對照"},
+    }
+
+    pages_out = [hub, digest, taiwan] + site_pages
     js = ("/* Data layer built from notes/talks/ by scripts/build_site_data.py — do not edit by hand. */\n"
           "window.SITE_META = " + json.dumps(meta, ensure_ascii=False) + ";\n"
           "window.SITE_PAGES = " + json.dumps(pages_out, ensure_ascii=False) + ";\n")

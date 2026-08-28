@@ -19,6 +19,7 @@
 ## ✨ 功能特色
 
 - 🌏 **雙語切換** — 中文 / English 一鍵全頁切換
+- 🇹🇼 **台灣對照** — 與台灣三場 AI 年會(人工智慧年會 2024/2025、生成式 AI 年會 2025)的跨活動趨勢比較,連結到[同作者的三個筆記站](https://berkeley-agentic-ai-summit-2026.peteraim.com/zh-Hant/taiwan.html)
 - 🌗 **深色 / 淺色模式** — 手動切換並記憶偏好
 - 🔍 **即時搜尋** — 在各場次頁輸入關鍵字立即過濾演講
 - 🏷️ **類型篩選** — 依 keynote / talk / panel / workshop / fireside 快速篩選
@@ -37,6 +38,7 @@
 berkeley-agentic-ai-summit-2026/
 ├── index.html            # 網站入口(總覽頁)
 ├── sat-*.html sun-*.html # 7 個場次日子頁(週六/週日 × 舞台)
+├── taiwan.html           # 台灣對照頁(vs 台灣三場 AI 年會,手寫靜態內容)
 ├── talk/                 # 147 個站內完整筆記頁(由筆記自動產生)
 ├── assets/               # styles.css(編輯風設計)、shell.js(共用 chrome)、app.js(頁面引擎)
 ├── data/data.js          # 網站資料層(由筆記自動產生)

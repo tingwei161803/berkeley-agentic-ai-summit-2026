@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Generate the 8 HTML entry points (index + 7 day pages) with shared head.
 
+taiwan.html / zh-Hant/taiwan.html are NOT generated here — they are
+hand-written static pages (layout "static"); rerunning this script must not
+touch them, so keep them out of PAGES.
+
 Usage: uv run python scripts/build_html_pages.py
 """
 from pathlib import Path
